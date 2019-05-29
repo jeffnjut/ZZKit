@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */; };
+		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
+		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
+		E7AA951A229E92B7003964B8 /* TestGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCD.m */; };
+		E7AA951B229E92B7003964B8 /* TestGCD.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCD.xib */; };
+		E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C17229CCC8600ED8733 /* AppDelegate.m */; };
+		E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C1A229CCC8600ED8733 /* ViewController.m */; };
+		E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1C229CCC8600ED8733 /* Main.storyboard */; };
+		E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */; };
+		E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C21229CCC8700ED8733 /* LaunchScreen.storyboard */; };
+		E7DC5C26229CCC8700ED8733 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C25229CCC8700ED8733 /* main.m */; };
+		E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */; };
+		E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C30229CD6BC00ED8733 /* ZZKit.m */; };
+		E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */; };
+		E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C39229CDD9D00ED8733 /* ZZLinkedMap.m */; };
+		E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */; };
+		E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */; };
+		E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */; };
+		E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */; };
+		E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C50229D151D00ED8733 /* NSString+ZZKit.m */; };
+		E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */; };
+		E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */; };
+		E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.debug.xcconfig"; sourceTree = "<group>"; };
+		DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.release.xcconfig"; sourceTree = "<group>"; };
+		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
+		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
+		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
+		E7AA9517229E92B7003964B8 /* TestGCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGCD.h; sourceTree = "<group>"; };
+		E7AA9518229E92B7003964B8 /* TestGCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCD.m; sourceTree = "<group>"; };
+		E7AA9519229E92B7003964B8 /* TestGCD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCD.xib; sourceTree = "<group>"; };
+		E7DC5C13229CCC8600ED8733 /* ZZKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7DC5C16229CCC8600ED8733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E7DC5C17229CCC8600ED8733 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E7DC5C19229CCC8600ED8733 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E7DC5C1A229CCC8600ED8733 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E7DC5C1D229CCC8600ED8733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7DC5C22229CCC8700ED8733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E7DC5C24229CCC8700ED8733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7DC5C25229CCC8700ED8733 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZZKit.podspec; sourceTree = "<group>"; };
+		E7DC5C2F229CD6BC00ED8733 /* ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZKit.h; sourceTree = "<group>"; };
+		E7DC5C30229CD6BC00ED8733 /* ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZKit.m; sourceTree = "<group>"; };
+		E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZLRUCache.m; sourceTree = "<group>"; };
+		E7DC5C37229CDD9D00ED8733 /* ZZLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZLRUCache.h; sourceTree = "<group>"; };
+		E7DC5C38229CDD9D00ED8733 /* ZZLinkedMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZLinkedMap.h; sourceTree = "<group>"; };
+		E7DC5C39229CDD9D00ED8733 /* ZZLinkedMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZLinkedMap.m; sourceTree = "<group>"; };
+		E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZZLinkedMapVC.m; sourceTree = "<group>"; };
+		E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestZZLinkedMapVC.h; sourceTree = "<group>"; };
+		E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestZZLinkedMapVC.xib; sourceTree = "<group>"; };
+		E7DC5C46229CE35800ED8733 /* ZZKit+AppStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZKit+AppStore.h"; sourceTree = "<group>"; };
+		E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZZKit+AppStore.m"; sourceTree = "<group>"; };
+		E7DC5C4C229D127300ED8733 /* UIColor+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZZKit.h"; sourceTree = "<group>"; };
+		E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZZKit.m"; sourceTree = "<group>"; };
+		E7DC5C4F229D151D00ED8733 /* NSString+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ZZKit.h"; sourceTree = "<group>"; };
+		E7DC5C50229D151D00ED8733 /* NSString+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZKit.m"; sourceTree = "<group>"; };
+		E7DC5C52229D197600ED8733 /* NSData+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ZZKit.h"; sourceTree = "<group>"; };
+		E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ZZKit.m"; sourceTree = "<group>"; };
+		E7DC5C55229D1A9400ED8733 /* NSDate+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZZKit.h"; sourceTree = "<group>"; };
+		E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZZKit.m"; sourceTree = "<group>"; };
+		E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZZKit.h"; sourceTree = "<group>"; };
+		E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZZKit.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7DC5C10229CCC8600ED8733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79E36189561E6CBFBE1F592D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */,
+				DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C9C8E0306189878D899EC1FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7DC5C0A229CCC8600ED8733 = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */,
+				E7DC5C42229CE2D600ED8733 /* ZZCamera */,
+				E7DC5C2E229CD6A500ED8733 /* ZZKit */,
+				E7DC5C15229CCC8600ED8733 /* Main */,
+				E7DC5C14229CCC8600ED8733 /* Products */,
+				79E36189561E6CBFBE1F592D /* Pods */,
+				C9C8E0306189878D899EC1FA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E7DC5C14229CCC8600ED8733 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C13229CCC8600ED8733 /* ZZKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7DC5C15229CCC8600ED8733 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C3C229CDE6600ED8733 /* test */,
+				E7DC5C16229CCC8600ED8733 /* AppDelegate.h */,
+				E7DC5C17229CCC8600ED8733 /* AppDelegate.m */,
+				E7DC5C19229CCC8600ED8733 /* ViewController.h */,
+				E7DC5C1A229CCC8600ED8733 /* ViewController.m */,
+				E7DC5C1C229CCC8600ED8733 /* Main.storyboard */,
+				E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */,
+				E7DC5C21229CCC8700ED8733 /* LaunchScreen.storyboard */,
+				E7DC5C24229CCC8700ED8733 /* Info.plist */,
+				E7DC5C25229CCC8700ED8733 /* main.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E7DC5C2E229CD6A500ED8733 /* ZZKit */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C35229CD75600ED8733 /* ZZStorage */,
+				E7DC5C34229CD71A00ED8733 /* ZZDevice */,
+				E7DC5C33229CD71000ED8733 /* ZZNetwork */,
+				E7DC5C32229CD6E300ED8733 /* ZZCategory */,
+				E7DC5C2F229CD6BC00ED8733 /* ZZKit.h */,
+				E7DC5C30229CD6BC00ED8733 /* ZZKit.m */,
+			);
+			path = ZZKit;
+			sourceTree = "<group>";
+		};
+		E7DC5C32229CD6E300ED8733 /* ZZCategory */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C46229CE35800ED8733 /* ZZKit+AppStore.h */,
+				E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */,
+				E7DC5C4C229D127300ED8733 /* UIColor+ZZKit.h */,
+				E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */,
+				E7DC5C4F229D151D00ED8733 /* NSString+ZZKit.h */,
+				E7DC5C50229D151D00ED8733 /* NSString+ZZKit.m */,
+				E7DC5C52229D197600ED8733 /* NSData+ZZKit.h */,
+				E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */,
+				E7DC5C55229D1A9400ED8733 /* NSDate+ZZKit.h */,
+				E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */,
+				E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */,
+				E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */,
+			);
+			path = ZZCategory;
+			sourceTree = "<group>";
+		};
+		E7DC5C33229CD71000ED8733 /* ZZNetwork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZZNetwork;
+			sourceTree = "<group>";
+		};
+		E7DC5C34229CD71A00ED8733 /* ZZDevice */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZZDevice;
+			sourceTree = "<group>";
+		};
+		E7DC5C35229CD75600ED8733 /* ZZStorage */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C38229CDD9D00ED8733 /* ZZLinkedMap.h */,
+				E7DC5C39229CDD9D00ED8733 /* ZZLinkedMap.m */,
+				E7DC5C37229CDD9D00ED8733 /* ZZLRUCache.h */,
+				E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */,
+			);
+			path = ZZStorage;
+			sourceTree = "<group>";
+		};
+		E7DC5C3C229CDE6600ED8733 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */,
+				E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */,
+				E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */,
+				E7AA9512229E3759003964B8 /* TestFontVC.h */,
+				E7AA9513229E3759003964B8 /* TestFontVC.m */,
+				E7AA9514229E3759003964B8 /* TestFontVC.xib */,
+				E7AA9517229E92B7003964B8 /* TestGCD.h */,
+				E7AA9518229E92B7003964B8 /* TestGCD.m */,
+				E7AA9519229E92B7003964B8 /* TestGCD.xib */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		E7DC5C42229CE2D600ED8733 /* ZZCamera */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZZCamera;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7DC5C12229CCC8600ED8733 /* ZZKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7DC5C29229CCC8700ED8733 /* Build configuration list for PBXNativeTarget "ZZKit" */;
+			buildPhases = (
+				CA6ADA7970B8B18B75BD6B27 /* [CP] Check Pods Manifest.lock */,
+				E7DC5C0F229CCC8600ED8733 /* Sources */,
+				E7DC5C10229CCC8600ED8733 /* Frameworks */,
+				E7DC5C11229CCC8600ED8733 /* Resources */,
+				D7A2D2D55DD0850EED32020A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZZKit;
+			productName = ZZKit;
+			productReference = E7DC5C13229CCC8600ED8733 /* ZZKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7DC5C0B229CCC8600ED8733 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Jeff;
+				TargetAttributes = {
+					E7DC5C12229CCC8600ED8733 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = E7DC5C0E229CCC8600ED8733 /* Build configuration list for PBXProject "ZZKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E7DC5C0A229CCC8600ED8733;
+			productRefGroup = E7DC5C14229CCC8600ED8733 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7DC5C12229CCC8600ED8733 /* ZZKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7DC5C11229CCC8600ED8733 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
+				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
+				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
+				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
+				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
+				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
+				E7AA951B229E92B7003964B8 /* TestGCD.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CA6ADA7970B8B18B75BD6B27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZZKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7A2D2D55DD0850EED32020A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7DC5C0F229CCC8600ED8733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
+				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
+				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
+				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
+				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
+				E7AA951A229E92B7003964B8 /* TestGCD.m in Sources */,
+				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
+				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
+				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
+				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
+				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
+				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
+				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
+				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7DC5C1C229CCC8600ED8733 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7DC5C1D229CCC8600ED8733 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E7DC5C21229CCC8700ED8733 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7DC5C22229CCC8700ED8733 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E7DC5C27229CCC8700ED8733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E7DC5C28229CCC8700ED8733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E7DC5C2A229CCC8700ED8733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				INFOPLIST_FILE = Main/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jeffnjut.ZZKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E7DC5C2B229CCC8700ED8733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				INFOPLIST_FILE = Main/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jeffnjut.ZZKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7DC5C0E229CCC8600ED8733 /* Build configuration list for PBXProject "ZZKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7DC5C27229CCC8700ED8733 /* Debug */,
+				E7DC5C28229CCC8700ED8733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7DC5C29229CCC8700ED8733 /* Build configuration list for PBXNativeTarget "ZZKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7DC5C2A229CCC8700ED8733 /* Debug */,
+				E7DC5C2B229CCC8700ED8733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7DC5C0B229CCC8600ED8733 /* Project object */;
+}
