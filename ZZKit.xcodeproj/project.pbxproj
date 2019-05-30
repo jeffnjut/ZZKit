@@ -10,8 +10,10 @@
 		9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
-		E7AA951A229E92B7003964B8 /* TestGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCD.m */; };
-		E7AA951B229E92B7003964B8 /* TestGCD.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCD.xib */; };
+		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
+		E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCDVC.xib */; };
+		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
+		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
 		E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C17229CCC8600ED8733 /* AppDelegate.m */; };
 		E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C1A229CCC8600ED8733 /* ViewController.m */; };
 		E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1C229CCC8600ED8733 /* Main.storyboard */; };
@@ -39,9 +41,12 @@
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
-		E7AA9517229E92B7003964B8 /* TestGCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGCD.h; sourceTree = "<group>"; };
-		E7AA9518229E92B7003964B8 /* TestGCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCD.m; sourceTree = "<group>"; };
-		E7AA9519229E92B7003964B8 /* TestGCD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCD.xib; sourceTree = "<group>"; };
+		E7AA9517229E92B7003964B8 /* TestGCDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGCDVC.h; sourceTree = "<group>"; };
+		E7AA9518229E92B7003964B8 /* TestGCDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCDVC.m; sourceTree = "<group>"; };
+		E7AA9519229E92B7003964B8 /* TestGCDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCDVC.xib; sourceTree = "<group>"; };
+		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
+		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
+		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
 		E7DC5C13229CCC8600ED8733 /* ZZKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DC5C16229CCC8600ED8733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7DC5C17229CCC8600ED8733 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -209,9 +214,12 @@
 				E7AA9512229E3759003964B8 /* TestFontVC.h */,
 				E7AA9513229E3759003964B8 /* TestFontVC.m */,
 				E7AA9514229E3759003964B8 /* TestFontVC.xib */,
-				E7AA9517229E92B7003964B8 /* TestGCD.h */,
-				E7AA9518229E92B7003964B8 /* TestGCD.m */,
-				E7AA9519229E92B7003964B8 /* TestGCD.xib */,
+				E7AA9517229E92B7003964B8 /* TestGCDVC.h */,
+				E7AA9518229E92B7003964B8 /* TestGCDVC.m */,
+				E7AA9519229E92B7003964B8 /* TestGCDVC.xib */,
+				E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */,
+				E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */,
+				E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -288,7 +296,8 @@
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
-				E7AA951B229E92B7003964B8 /* TestGCD.xib in Resources */,
+				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
+				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +355,8 @@
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
-				E7AA951A229E92B7003964B8 /* TestGCD.m in Sources */,
+				E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */,
+				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,

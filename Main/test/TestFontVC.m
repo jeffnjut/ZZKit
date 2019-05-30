@@ -19,6 +19,11 @@
 
 @implementation TestFontVC
 
+- (void)dealloc
+{
+    
+}
+
 - (void)viewDidLoad {
     
     NSLog(@"%@,%@,%@,%@", UIFontSymbolicTrait, UIFontWeightTrait, UIFontWidthTrait, UIFontSlantTrait);

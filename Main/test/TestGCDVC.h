@@ -1,5 +1,5 @@
 //
-//  TestGCD.h
+//  TestGCDVC.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2019/5/29.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TestGCD : UIViewController
+@interface TestGCDVC : UIViewController
 
 @end
 

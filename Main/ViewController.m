@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "TestFontVC.h"
-#import "TestGCD.h"
+#import "TestGCDVC.h"
+#import "TestRunLoopVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,7 +32,8 @@
     [self.view addSubview:self.tableView];
     
     self.dataSource = @[@[@"1",@"测试字体"],
-                        @[@"2",@"测试GCD"]];
+                        @[@"2",@"测试GCD"],
+                        @[@"3",@"测试RunLoop"]];
     
     [self.tableView reloadData];
 }
@@ -71,7 +73,13 @@
             break;
         case 2:
         {
-            TestGCD *vc = [[TestGCD alloc] init];
+            TestGCDVC *vc = [[TestGCDVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 3:
+        {
+            TestRunLoopVC *vc = [[TestRunLoopVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

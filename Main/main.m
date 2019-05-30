@@ -11,6 +11,13 @@
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        /*
+        BOOL running = YES;
+        do {
+            
+        } while (running);
+        */
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        NSLog(@"End");
     }
 }
