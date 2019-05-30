@@ -11,6 +11,7 @@
 #import "TestFontVC.h"
 #import "TestGCDVC.h"
 #import "TestRunLoopVC.h"
+#import "TestOperationQueueVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -33,7 +34,9 @@
     
     self.dataSource = @[@[@"1",@"测试字体"],
                         @[@"2",@"测试GCD"],
-                        @[@"3",@"测试RunLoop"]];
+                        @[@"3",@"测试RunLoop"],
+                        @[@"4",@"测试NSOperationQueue"],
+                        ];
     
     [self.tableView reloadData];
 }
@@ -82,6 +85,11 @@
             TestRunLoopVC *vc = [[TestRunLoopVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
+        }
+        case 4:
+        {
+            TestOperationQueueVC *vc = [[TestOperationQueueVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         default:
             break;

@@ -14,6 +14,8 @@
 		E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCDVC.xib */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
 		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
+		E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */; };
+		E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */; };
 		E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C17229CCC8600ED8733 /* AppDelegate.m */; };
 		E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C1A229CCC8600ED8733 /* ViewController.m */; };
 		E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1C229CCC8600ED8733 /* Main.storyboard */; };
@@ -47,6 +49,9 @@
 		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
 		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
 		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
+		E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOperationQueueVC.h; sourceTree = "<group>"; };
+		E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOperationQueueVC.m; sourceTree = "<group>"; };
+		E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestOperationQueueVC.xib; sourceTree = "<group>"; };
 		E7DC5C13229CCC8600ED8733 /* ZZKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DC5C16229CCC8600ED8733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7DC5C17229CCC8600ED8733 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -220,6 +225,9 @@
 				E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */,
 				E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */,
 				E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */,
+				E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */,
+				E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */,
+				E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
+				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
@@ -349,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
