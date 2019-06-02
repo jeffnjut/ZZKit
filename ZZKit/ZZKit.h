@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZZDispatchQueue.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZKit : NSObject
+
++(ZZDispatchQueue *)Queue;
 
 @end
 

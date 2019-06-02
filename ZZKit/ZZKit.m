@@ -10,4 +10,9 @@
 
 @implementation ZZKit
 
++(ZZDispatchQueue *)Queue {
+    
+    return [ZZDispatchQueue shared];
+}
+
 @end

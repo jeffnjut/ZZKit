@@ -12,6 +12,7 @@
 #import "TestGCDVC.h"
 #import "TestRunLoopVC.h"
 #import "TestOperationQueueVC.h"
+#import "TestZZDispatchQueueVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -36,6 +37,7 @@
                         @[@"2",@"测试GCD"],
                         @[@"3",@"测试RunLoop"],
                         @[@"4",@"测试NSOperationQueue"],
+                        @[@"5",@"测试ZZDispatchQueue"]
                         ];
     
     [self.tableView reloadData];
@@ -90,6 +92,13 @@
         {
             TestOperationQueueVC *vc = [[TestOperationQueueVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 5:
+        {
+            TestZZDispatchQueueVC *vc = [[TestZZDispatchQueueVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
         }
         default:
             break;

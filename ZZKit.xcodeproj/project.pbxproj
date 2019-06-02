@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */; };
+		E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */; };
+		E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */; };
+		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
@@ -40,6 +43,11 @@
 		7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.release.xcconfig"; sourceTree = "<group>"; };
+		E70C72E922A369EA00341A2B /* ZZDispatchQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDispatchQueue.h; sourceTree = "<group>"; };
+		E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDispatchQueue.m; sourceTree = "<group>"; };
+		E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZDispatchQueueVC.h; sourceTree = "<group>"; };
+		E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZDispatchQueueVC.m; sourceTree = "<group>"; };
+		E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZDispatchQueueVC.xib; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
@@ -115,6 +123,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E70C72E822A3697F00341A2B /* ZZDispatchQueue */ = {
+			isa = PBXGroup;
+			children = (
+				E70C72E922A369EA00341A2B /* ZZDispatchQueue.h */,
+				E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */,
+			);
+			path = ZZDispatchQueue;
+			sourceTree = "<group>";
+		};
 		E7DC5C0A229CCC8600ED8733 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +173,7 @@
 		E7DC5C2E229CD6A500ED8733 /* ZZKit */ = {
 			isa = PBXGroup;
 			children = (
+				E70C72E822A3697F00341A2B /* ZZDispatchQueue */,
 				E7DC5C35229CD75600ED8733 /* ZZStorage */,
 				E7DC5C34229CD71A00ED8733 /* ZZDevice */,
 				E7DC5C33229CD71000ED8733 /* ZZNetwork */,
@@ -228,6 +246,9 @@
 				E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */,
 				E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */,
 				E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */,
+				E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */,
+				E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */,
+				E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -300,6 +321,7 @@
 			files = (
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
+				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
@@ -361,6 +383,7 @@
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
@@ -373,6 +396,7 @@
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
+				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
 			);
