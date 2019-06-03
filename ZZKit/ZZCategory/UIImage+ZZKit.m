@@ -7,6 +7,8 @@
 //
 
 #import "UIImage+ZZKit.h"
+// 高斯模糊
+#import <Accelerate/Accelerate.h>
 
 @implementation UIImage (ZZKit)
 
@@ -15,7 +17,7 @@
 /**
  *  获得图片（指定区域）
  */
-- (UIImage *)fj_imageCropRect:(CGRect)rect {
+- (UIImage *)zz_imageCropRect:(CGRect)rect {
     
     CGImageRef sourceImageRef = self.CGImage;
     CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, rect);
@@ -27,16 +29,16 @@
 /**
  *  获得图片（指定比例区域）
  */
-- (UIImage *)fj_imageCropBeginPointRatio:(CGPoint)beginPointRatio endPointRatio:(CGPoint)endPointRatio {
+- (UIImage *)zz_imageCropBeginPointRatio:(CGPoint)beginPointRatio endPointRatio:(CGPoint)endPointRatio {
     
     CGRect rect = CGRectMake(self.size.width * beginPointRatio.x, self.size.height * beginPointRatio.y, self.size.width * (endPointRatio.x - beginPointRatio.x), self.size.height * (endPointRatio.y - beginPointRatio.y));
-    return [self fj_imageCropRect:rect];
+    return [self zz_imageCropRect:rect];
 }
 
 /**
  *  裁剪图片（指定区域）
  */
-- (UIImage *)fj_imageCropRect:(CGRect)rect sameRation:(BOOL)sameRatio {
+- (UIImage *)zz_imageCropRect:(CGRect)rect sameRation:(BOOL)sameRatio {
     
     if (sameRatio) {
         CGRect myImageRect = rect;
@@ -82,7 +84,7 @@
 /**
  *  截图UIView（对每个继承自UIView的对象都适用）
  */
-+ (UIImage *)fj_imageCaptureView:(UIView *)view {
++ (UIImage *)zz_imageCaptureView:(UIView *)view {
     
     CGRect rect = view.frame;
     // UIGraphicsBeginImageContext(rect.size);
@@ -97,7 +99,7 @@
 /**
  *  截屏（指定UIView，正方形，无损）
  */
-+ (UIImage *)fj_imageCaptureView:(UIView *)view rect:(CGSize)rect {
++ (UIImage *)zz_imageCaptureView:(UIView *)view rect:(CGSize)rect {
     
     CGRect squareViewrect = view.frame;
     CGFloat max = rect.height >= rect.width ? rect.height : rect.width;
@@ -115,7 +117,7 @@
 /**
  *  截全屏（指定UIViewController）
  */
-+ (UIImage *)fj_imageCaptureController:(UIViewController *)viewController {
++ (UIImage *)zz_imageCaptureController:(UIViewController *)viewController {
     
     CGRect rect = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
     // UIGraphicsBeginImageContext(rect.size);
@@ -131,15 +133,15 @@
 /**
  *  截全屏(NSData)
  */
-+ (NSData *)fj_imageDataCaptureScreen {
++ (NSData *)zz_imageDataCaptureScreen {
     
-    return UIImagePNGRepresentation([self fj_imageCaptureScreen]);
+    return UIImagePNGRepresentation([self zz_imageCaptureScreen]);
 }
 
 /**
  *  截全屏(UIImage)
  */
-+ (UIImage *)fj_imageCaptureScreen {
++ (UIImage *)zz_imageCaptureScreen {
     
     CGSize imageSize = CGSizeZero;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
@@ -184,9 +186,9 @@
 /**
  *  压缩图片，宽度固定，返回Image（调整尺寸减少像素，降低像素质量）
  */
-- (UIImage *)fj_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte width:(CGFloat)width {
+- (UIImage *)zz_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte width:(CGFloat)width {
     
-    NSData *data = [self fj_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte width:width];
+    NSData *data = [self zz_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte width:width];
     if (data != nil) {
         return [UIImage imageWithData:data];
     }
@@ -196,9 +198,9 @@
 /**
  *  压缩图片，尺寸固定，返回Image（调整尺寸减少像素，降低像素质量）
  */
-- (UIImage *)fj_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte size:(CGSize)size {
+- (UIImage *)zz_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte size:(CGSize)size {
     
-    NSData *data = [self fj_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte size:size];
+    NSData *data = [self zz_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte size:size];
     if (data != nil) {
         return [UIImage imageWithData:data];
     }
@@ -208,29 +210,29 @@
 /**
  *  压缩图片，宽度固定，返回Data（调整尺寸减少像素，降低像素质量）
  */
-- (NSData *)fj_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte width:(CGFloat)width {
+- (NSData *)zz_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte width:(CGFloat)width {
     
-    return [self fj_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte size:CGSizeMake(width, width * (self.size.height / self.size.width))];
+    return [self zz_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte size:CGSizeMake(width, width * (self.size.height / self.size.width))];
 }
 
 /**
  *  压缩图片，尺寸固定，返回Data（调整尺寸减少像素，降低像素质量）
  */
-- (NSData *)fj_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte size:(CGSize)size {
+- (NSData *)zz_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte size:(CGSize)size {
     
     UIImage *adjustImage = self;
     if (size.width < adjustImage.size.width ) {
-        adjustImage = [self fj_imageAdjustSize:size];
+        adjustImage = [self zz_imageAdjustSize:size];
     }
-    return [adjustImage fj_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte];
+    return [adjustImage zz_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte];
 }
 
 /**
  *  压缩图片，输出Image（降低像素质量）
  */
-- (UIImage *)fj_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte {
+- (UIImage *)zz_imageCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte {
     
-    NSData *compressedData = [self fj_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte];
+    NSData *compressedData = [self zz_imageDataCompressQuality:compressionQuality lessThanMegaByte:mbyte];
     if (compressedData != nil) {
         return [UIImage imageWithData:compressedData];
     }
@@ -240,7 +242,7 @@
 /**
  *  压缩图片，输出Data（降低像素质量）
  */
-- (NSData *)fj_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte {
+- (NSData *)zz_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte {
     
     NSData *imageData = UIImageJPEGRepresentation(self, compressionQuality);
     if (imageData == nil) {
@@ -295,14 +297,14 @@
         // 压缩超出极限压缩比
         return imageData;
     }else {
-        return [self fj_imageDataCompressQuality:compressedRate lessThanMegaByte:mbyte];
+        return [self zz_imageDataCompressQuality:compressedRate lessThanMegaByte:mbyte];
     }
 }
 
 /**
  *  等比率调整图片（减少像素）
  */
-- (UIImage *)fj_imageAdjustScale:(float)scale {
+- (UIImage *)zz_imageAdjustScale:(float)scale {
     
     UIGraphicsBeginImageContext(CGSizeMake(self.size.width * scale, self.size.height * scale));
     [self drawInRect:CGRectMake(0, 0, self.size.width * scale, self.size.height * scale)];
@@ -314,7 +316,7 @@
 /**
  *  等比率调整图片，图片方向（减少像素）
  */
-- (UIImage *)fj_imageAdjustScale:(CGFloat)scale orientation:(UIImageOrientation)orientation {
+- (UIImage *)zz_imageAdjustScale:(CGFloat)scale orientation:(UIImageOrientation)orientation {
     
     CGImageRef imageRef = self.CGImage;
     UIImage *tmpImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:orientation];
@@ -324,7 +326,7 @@
 /**
  *  自定义长宽调整图片（减少像素）
  */
-- (UIImage *)fj_imageAdjustSize:(CGSize)size {
+- (UIImage *)zz_imageAdjustSize:(CGSize)size {
     
     UIGraphicsBeginImageContext(CGSizeMake(size.width, size.height));
     [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
@@ -336,7 +338,7 @@
 /**
  *  自定义长宽调整图片,可裁切图片（减少像素）
  */
-- (UIImage *)fj_imageAdjustSize:(CGSize)size cropped:(BOOL)cropped {
+- (UIImage *)zz_imageAdjustSize:(CGSize)size cropped:(BOOL)cropped {
     
     if (cropped) {
         UIImage *sourceImage = self;
@@ -374,11 +376,11 @@
         thumbnailRect.size.height = scaledHeight;
         [sourceImage drawInRect:thumbnailRect];
         newImage = UIGraphicsGetImageFromCurrentImageContext();
-        if(newImage == nil) MFLog(@"could not scale image");
+        if(newImage == nil) NSLog(@"could not scale image");
         UIGraphicsEndImageContext();
         return newImage;
     }else {
-        return [self fj_imageAdjustSize:size];
+        return [self zz_imageAdjustSize:size];
     }
 }
 
@@ -387,7 +389,7 @@
 /**
  *  判断图片类型
  */
-+ (FJImageType)fj_imageType:(NSData *)imageData {
++ (FJImageType)zz_imageType:(NSData *)imageData {
     
     if (imageData == nil || ![imageData isKindOfClass:[NSData class]]) {
         return FJImageTypeUnknown;
@@ -421,13 +423,13 @@
 /**
  *  判断图片类型
  */
-- (FJImageType)fj_imageType {
+- (FJImageType)zz_imageType {
     
     NSData *imageData = UIImagePNGRepresentation(self);
     if (imageData == nil) {
         imageData = UIImageJPEGRepresentation(self, 1.0);
     }
-    return [[self class] fj_imageType:imageData];
+    return [[self class] zz_imageType:imageData];
 }
 
 #pragma mark - 转码
@@ -435,19 +437,19 @@
 /**
  *  UIImage转成PNG或JPEG格式的base64码
  */
-- (NSString *)fj_image2Base64 {
+- (NSString *)zz_image2Base64 {
     
-    NSString *base64 = [self fj_image2Base64_JPEG];
+    NSString *base64 = [self zz_image2Base64_JPEG];
     if (base64) {
         return base64;
     }
-    return [self fj_image2Base64_PNG];
+    return [self zz_image2Base64_PNG];
 }
 
 /**
  *  UIImage转成PNG格式的base64码
  */
-- (NSString *)fj_image2Base64_PNG {
+- (NSString *)zz_image2Base64_PNG {
     
     NSData *data = UIImagePNGRepresentation(self);
     NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
@@ -458,7 +460,7 @@
 /**
  *  UIImage转成JPEG格式的base64码
  */
-- (NSString *)fj_image2Base64_JPEG {
+- (NSString *)zz_image2Base64_JPEG {
     
     NSData *data = UIImageJPEGRepresentation(self, 1.0);
     NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
@@ -470,15 +472,15 @@
 /**
  *  根据颜色，输出10*10的图片
  */
-+ (UIImage *)fj_imageWithColor:(UIColor *)color {
++ (UIImage *)zz_imageWithColor:(UIColor *)color {
     
-    return [[self class] fj_imageWithColor:color size:CGSizeMake(10, 10)];
+    return [[self class] zz_imageWithColor:color size:CGSizeMake(10, 10)];
 }
 
 /**
  *  根据指定大小和颜色，输出图片
  */
-+ (UIImage *)fj_imageWithColor:(UIColor *)color size:(CGSize)size {
++ (UIImage *)zz_imageWithColor:(UIColor *)color size:(CGSize)size {
     
     @autoreleasepool {
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
@@ -496,7 +498,7 @@
 /**
  *  获取UIImage的主色
  */
-- (UIColor *)fj_imageMainColor {
+- (UIColor *)zz_imageMainColor {
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
     int bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
@@ -558,7 +560,7 @@
 /**
  *  根据文字输出二维码图片
  */
-+ (UIImage *)fj_imageQR:(NSString *)text width:(CGFloat)width {
++ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width {
     
     // 1.创建滤镜对象
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
@@ -575,97 +577,44 @@
     return image;
 }
 
-#pragma mark - 文字Logo
-
-/**
- *  根据文字输出图片
- */
-+ (UIImage *)fj_imageWithText:(NSString *)text {
-    
-    return [self fj_imageWithText:text font:[UIFont systemFontOfSize:14.0] color:[UIColor whiteColor] kern:0.0 backgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0] square:YES];
-}
-
-/**
- *  根据文字、字体、颜色、部分字体属性kern，backgroundColor，是否正方形等规则输出图片
- */
-+ (UIImage *)fj_imageWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color kern:(CGFloat)kern backgroundColor:(UIColor *)backgroundColor square:(BOOL)square {
-    
-    // 生产Text View
-    CGSize size = [text fj_size:font kern:kern space:0.0 linebreakmode:NSLineBreakByTruncatingTail limitedlineHeight:0 renderSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
-    CGFloat w = size.width;
-    CGFloat h = size.height;
-    CGRect frame = CGRectZero;
-    if (square) {
-        if (w > h) {
-            frame = CGRectMake(0, 0, w + 5.0, w + 5.0);
-        }else{
-            frame = CGRectMake(0, 0, h + 5.0, h + 5.0);
-        }
-    }else{
-        frame = CGRectMake(0, 0, w + 10.0, h + 10.0);
-    }
-    UIView *view = [[UIView alloc] initWithFrame:frame];
-    if (backgroundColor) {
-        view.backgroundColor = backgroundColor;
-    }else {
-        view.backgroundColor = [UIColor blackColor];
-    }
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.font = font;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = color;
-    label.backgroundColor = [UIColor clearColor];
-    label.attributedText = text.typeset.font([font fontName], [font pointSize]).kern(kern).string;
-    [view addSubview:label];
-    // Image
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 2.0);
-    // UIGraphicsBeginImageContext(view.bounds.size);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:ctx];
-    CGImageRef tImageRef = UIGraphicsGetImageFromCurrentImageContext().CGImage;
-    UIGraphicsEndImageContext();
-    UIImage *image = [UIImage imageWithCGImage:tImageRef scale:1.0 orientation:UIImageOrientationUp];
-    return image;
-}
-
 #pragma mark - 水印
 
 /**
  *  按起始点，添加带alpha的图片的水印
  */
-- (UIImage *)fj_imageWaterMarkWithImage:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha {
+- (UIImage *)zz_imageWaterMarkWithImage:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha {
     
-    return [self fj_imageWaterMarkWithString:nil point:CGPointZero attribute:nil image:image imagePoint:imgPoint alpha:alpha];
+    return [self zz_imageWaterMarkWithString:nil point:CGPointZero attribute:nil image:image imagePoint:imgPoint alpha:alpha];
 }
 
 /**
  *  按范围，添加带alpha的图片的水印
  */
-- (UIImage *)fj_imageWaterMarkWithImage:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha {
+- (UIImage *)zz_imageWaterMarkWithImage:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha {
     
-    return [self fj_imageWaterMarkWithString:nil rect:CGRectZero attribute:nil image:image imageRect:imgRect alpha:alpha];
+    return [self zz_imageWaterMarkWithString:nil rect:CGRectZero attribute:nil image:image imageRect:imgRect alpha:alpha];
 }
 
 /**
  *  按起始点，添加带属性的字符串
  */
-- (UIImage *)fj_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute {
+- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute {
     
-    return [self fj_imageWaterMarkWithString:str point:strPoint attribute:attribute image:nil imagePoint:CGPointZero alpha:0];
+    return [self zz_imageWaterMarkWithString:str point:strPoint attribute:attribute image:nil imagePoint:CGPointZero alpha:0];
 }
 
 /**
  *  按范围，添加带属性的字符串
  */
-- (UIImage *)fj_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute {
+- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute {
     
-    return [self fj_imageWaterMarkWithString:str rect:strRect attribute:attribute image:nil imageRect:CGRectZero alpha:0];
+    return [self zz_imageWaterMarkWithString:str rect:strRect attribute:attribute image:nil imageRect:CGRectZero alpha:0];
 }
 
 /**
  *  按起始点，添加带属性的字符串和带alpha的图片的合成水印
  */
-- (UIImage *)fj_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute image:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha {
+- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute image:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha {
     
     UIGraphicsBeginImageContext(self.size);
     [self drawAtPoint:CGPointMake(0, 0) blendMode:kCGBlendModeNormal alpha:1.0];
@@ -683,7 +632,7 @@
 /**
  *  按范围，添加带属性的字符串和带alpha的图片的合成水印
  */
-- (UIImage *)fj_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute image:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha {
+- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute image:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha {
     
     UIGraphicsBeginImageContext(self.size);
     [self drawInRect:CGRectMake(0, 0, self.size.width, self.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
@@ -699,7 +648,7 @@
 }
 
 #pragma mark - 高斯模糊
-- (UIImage *)fj_gaussBlur:(CGFloat)blurRadius {
+- (UIImage *)zz_gaussBlur:(CGFloat)blurRadius {
     
     // Context
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -716,7 +665,7 @@
     return blurImage;
 }
 
-- (UIImage *)fj_boxBlur:(CGFloat)blur {
+- (UIImage *)zz_boxBlur:(CGFloat)blur {
     
     if (blur < 0.f || blur > 1.f) {
         blur = 0.5f;
@@ -760,17 +709,14 @@
 }
 
 #pragma mark - 测试
-- (void)fj_debugShow:(CGRect)frame {
+- (void)zz_debugShow:(CGRect)frame {
     
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
     imageView.image = self;
-    [MF_KEY_WINDOW addSubview:imageView];
+    [window addSubview:imageView];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    MF_WEAK_OBJECT(imageView)
     [imageView setUserInteractionEnabled:YES];
-    [imageView bk_whenTapped:^{
-        [weakimageView removeFromSuperview];
-    }];
 }
 
 @end
