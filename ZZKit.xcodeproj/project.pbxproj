@@ -11,6 +11,7 @@
 		E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */; };
 		E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */; };
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
+		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
@@ -48,6 +49,8 @@
 		E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZDispatchQueueVC.h; sourceTree = "<group>"; };
 		E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZDispatchQueueVC.m; sourceTree = "<group>"; };
 		E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZDispatchQueueVC.xib; sourceTree = "<group>"; };
+		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
+		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */,
 				E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */,
 				E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */,
+				E756192B22A52558000C0ABA /* UIImage+ZZKit.h */,
+				E756192C22A52558000C0ABA /* UIImage+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
+				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,

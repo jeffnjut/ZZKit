@@ -60,28 +60,49 @@ static ZZDispatchQueue *SINGLETON;
 /**
  *  延迟GCD
  */
-- (dispatch_block_t)dispatchAfter:(NSTimeInterval)seconds queue:(dispatch_queue_t)queue onMainThread:(BOOL)onMainThread key:(void *)key block:(void(^)(void))block {
+- (dispatch_block_t)dispatchAfter:(NSTimeInterval)seconds queue:(nullable dispatch_queue_t)queue onMainThread:(BOOL)onMainThread async:(BOOL)async barrier:(BOOL)barrier key:(nullable id)key block:(void(^)(void))block {
     
-    dispatch_block_t _block = dispatch_block_create(DISPATCH_BLOCK_BARRIER, block);
+    dispatch_block_t _block = dispatch_block_create( barrier ? DISPATCH_BLOCK_BARRIER : DISPATCH_BLOCK_DETACHED, block);
     dispatch_queue_t _queue = NULL;
     if (!queue) {
         _queue = onMainThread ? dispatch_get_main_queue() : dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
     }else {
         _queue = queue;
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)), _queue, _block);
-    pthread_mutex_lock(&_lock);
-    // CFDictionaryAddValue(_dict, key, (__bridge void *)callback);
-    pthread_mutex_unlock(&_lock);
+    if (seconds <= 0) {
+        if (async) {
+            dispatch_async(_queue, _block);
+        }else {
+            dispatch_sync(_queue, _block);
+        }
+    }else {
+        if (async) {
+            dispatch_sync(queue, ^{
+                sleep(seconds);
+                _block == nil ? : _block();
+            });
+        }else {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)), _queue, _block);
+        }
+    }
+    if (key) {
+        pthread_mutex_lock(&_lock);
+        CFDictionarySetValue(_dict, (__bridge void const *)key, (__bridge void const *)_block);
+        pthread_mutex_unlock(&_lock);
+    }
     return _block;
 }
 
 /**
  *  取消GCD（Key）
  */
-- (void)dispatchCancelKey:(void *)key {
+- (void)dispatchCancelKey:(id)key {
     
-    dispatch_block_t block = CFDictionaryGetValue(_dict, key);
+    dispatch_block_t block = NULL;
+    pthread_mutex_lock(&_lock);
+    block = CFDictionaryGetValue(_dict, (__bridge void const *)key);
+    CFDictionaryRemoveValue(_dict, (__bridge void const *)key);
+    pthread_mutex_unlock(&_lock);
     [self dispatchCancelBlock:block];
 }
 
