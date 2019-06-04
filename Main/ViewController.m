@@ -13,6 +13,8 @@
 #import "TestRunLoopVC.h"
 #import "TestOperationQueueVC.h"
 #import "TestZZDispatchQueueVC.h"
+#import "TestUIResponderBlockVC.h"
+#import "TestUIimageVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -33,11 +35,13 @@
     self.tableView.rowHeight = 48.0;
     [self.view addSubview:self.tableView];
     
-    self.dataSource = @[@[@"1",@"测试字体"],
-                        @[@"2",@"测试GCD"],
-                        @[@"3",@"测试RunLoop"],
-                        @[@"4",@"测试NSOperationQueue"],
-                        @[@"5",@"测试ZZDispatchQueue"]
+    self.dataSource = @[@[@"测试字体",[TestFontVC class]],
+                        @[@"测试GCD",[TestGCDVC class]],
+                        @[@"测试RunLoop",[TestRunLoopVC class]],
+                        @[@"测试NSOperationQueue",[TestOperationQueueVC class]],
+                        @[@"测试ZZDispatchQueue",[TestZZDispatchQueueVC class]],
+                        @[@"测试UIResponder点击",[TestUIResponderBlockVC class]],
+                        @[@"测试UIImage",[TestUIimageVC class]]
                         ];
     
     [self.tableView reloadData];
@@ -62,47 +66,15 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = self.dataSource[indexPath.row][1];
+    cell.textLabel.text = self.dataSource[indexPath.row][0];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSInteger index = [self.dataSource[indexPath.row][0] integerValue];
-    switch (index) {
-        case 1:
-        {
-            TestFontVC *vc = [[TestFontVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 2:
-        {
-            TestGCDVC *vc = [[TestGCDVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 3:
-        {
-            TestRunLoopVC *vc = [[TestRunLoopVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 4:
-        {
-            TestOperationQueueVC *vc = [[TestOperationQueueVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 5:
-        {
-            TestZZDispatchQueueVC *vc = [[TestZZDispatchQueueVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        default:
-            break;
-    }
+    Class cls = self.dataSource[indexPath.row][1];
+    UIViewController *vc = [[cls alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

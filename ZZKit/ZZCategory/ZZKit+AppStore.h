@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 打开跳转到某个app（Url）
  */
-- (void)appStoreRedirectUrl:(nonnull NSString *)url result:(void(^)(BOOL success))result;
+- (void)appStoreRedirectUrl:(nonnull NSString *)url result:(nullable void(^)(BOOL success))result;
 
 /**
  * 是否安装了某个app

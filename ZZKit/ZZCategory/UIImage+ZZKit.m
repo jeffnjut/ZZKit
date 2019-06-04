@@ -9,6 +9,7 @@
 #import "UIImage+ZZKit.h"
 // 高斯模糊
 #import <Accelerate/Accelerate.h>
+#import "UIView+ZZKit_Blocks.h"
 
 @implementation UIImage (ZZKit)
 
@@ -20,10 +21,10 @@
 - (UIImage *)zz_imageCropRect:(CGRect)rect {
     
     CGImageRef sourceImageRef = self.CGImage;
-    CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, rect);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    CGImageRelease(newImageRef);
-    return newImage;
+    CGImageRef imageRef = CGImageCreateWithImageInRect(sourceImageRef, CGRectMake(rect.origin.x * self.scale, rect.origin.y * self.scale, rect.size.width * self.scale, rect.size.height * self.scale));
+    UIImage *image = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return image;
 }
 
 /**
@@ -713,10 +714,13 @@
     
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+    imageView.backgroundColor = [UIColor lightGrayColor];
     imageView.image = self;
     [window addSubview:imageView];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageView setUserInteractionEnabled:YES];
+    [imageView zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+        [sender removeFromSuperview];
+    }];
 }
 
 @end

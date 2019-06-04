@@ -54,7 +54,7 @@
 /**
  * 打开跳转到某个app（Url）
  */
-- (void)appStoreRedirectUrl:(nonnull NSString *)url result:(void(^)(BOOL success))result {
+- (void)appStoreRedirectUrl:(nonnull NSString *)url result:(nullable void(^)(BOOL success))result {
     
     NSURL *URL = [NSURL URLWithString:url];
     if ([[UIApplication sharedApplication] canOpenURL:URL]) {

@@ -11,11 +11,17 @@
 		E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */; };
 		E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */; };
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
+		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
+		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
 		E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCDVC.xib */; };
+		E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */; };
+		E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */; };
+		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
+		E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
 		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
 		E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */; };
@@ -49,6 +55,9 @@
 		E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZDispatchQueueVC.h; sourceTree = "<group>"; };
 		E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZDispatchQueueVC.m; sourceTree = "<group>"; };
 		E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZDispatchQueueVC.xib; sourceTree = "<group>"; };
+		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
+		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
+		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
@@ -57,6 +66,13 @@
 		E7AA9517229E92B7003964B8 /* TestGCDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGCDVC.h; sourceTree = "<group>"; };
 		E7AA9518229E92B7003964B8 /* TestGCDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCDVC.m; sourceTree = "<group>"; };
 		E7AA9519229E92B7003964B8 /* TestGCDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCDVC.xib; sourceTree = "<group>"; };
+		E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZZKit_Blocks.h"; sourceTree = "<group>"; };
+		E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZZKit_Blocks.m"; sourceTree = "<group>"; };
+		E7C3166422A64F80002E4130 /* TestUIResponderBlockVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIResponderBlockVC.h; sourceTree = "<group>"; };
+		E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIResponderBlockVC.m; sourceTree = "<group>"; };
+		E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIResponderBlockVC.xib; sourceTree = "<group>"; };
+		E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZZKit_Blocks.h"; sourceTree = "<group>"; };
+		E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Blocks.m"; sourceTree = "<group>"; };
 		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
 		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
 		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
@@ -204,6 +220,10 @@
 				E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */,
 				E756192B22A52558000C0ABA /* UIImage+ZZKit.h */,
 				E756192C22A52558000C0ABA /* UIImage+ZZKit.m */,
+				E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */,
+				E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */,
+				E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */,
+				E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -254,6 +274,12 @@
 				E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */,
 				E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */,
 				E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */,
+				E7C3166422A64F80002E4130 /* TestUIResponderBlockVC.h */,
+				E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */,
+				E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */,
+				E715E12122A6767A00228722 /* TestUIimageVC.h */,
+				E715E12222A6767A00228722 /* TestUIimageVC.m */,
+				E715E12322A6767A00228722 /* TestUIimageVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -328,7 +354,9 @@
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
+				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
+				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
@@ -387,13 +415,16 @@
 			files = (
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
+				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
 				E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */,
+				E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */,
 				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
@@ -404,6 +435,7 @@
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
+				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,8 +579,8 @@
 			baseConfigurationReference = 742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,6 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jeffnjut.ZZKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -566,8 +599,8 @@
 			baseConfigurationReference = DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,6 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jeffnjut.ZZKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

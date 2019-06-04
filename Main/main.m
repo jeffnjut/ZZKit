@@ -18,6 +18,5 @@ int main(int argc, char * argv[]) {
         } while (running);
         */
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-        NSLog(@"End");
     }
 }

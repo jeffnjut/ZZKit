@@ -303,7 +303,7 @@
                 });
             }
             if (_lruLinkedMap->_cost > _costLimit) {
-                __weak typeof(self) weakSelf = self;
+//                __weak typeof(self) weakSelf = self;
 //                dispatch_async(_queue, ^{
 //                    __strong typeof(weakSelf) self = weakSelf;
 //                    [self _evictToCostLimit:self->_costLimit lock:NO];
