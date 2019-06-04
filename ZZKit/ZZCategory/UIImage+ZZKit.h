@@ -32,11 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage *)zz_imageCropBeginPointRatio:(CGPoint)beginPointRatio endPointRatio:(CGPoint)endPointRatio;
 
 /**
- *  裁剪图片（指定区域）
- */
-- (UIImage *)zz_imageCropRect:(CGRect)rect sameRation:(BOOL)sameRatio;
-
-/**
  *  截图UIView（对每个继承自UIView的对象都适用）
  */
 + (UIImage *)zz_imageCaptureView:(UIView *)view;

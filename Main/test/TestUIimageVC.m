@@ -25,9 +25,15 @@
 - (IBAction)_tapImageCropRect:(id)sender {
     
     UIImage *image = [UIImage imageNamed:@"test"];
-    // image = [image zz_imageCropRect:CGRectMake(image.size.width / 2.0, image.size.width / 2.0, image.size.width * 0.5, image.size.height * 0.5)];
-    // image = [image zz_imageCropBeginPointRatio:CGPointMake(0.1, 0.1) endPointRatio:CGPointMake(0.9, 0.9)];
-    image = [image zz_imageCropRect:CGRectMake(0, 0, 200, 200) sameRation:NO];
+    image = [image zz_imageCropRect:CGRectMake(image.size.width * 0.3, image.size.height * 0.3, image.size.width * 0.7, image.size.height * 0.7)];
+    [image zz_debugShow:CGRectMake(100, 200, 300, 300)];
+    [[UIImage imageNamed:@"test"] zz_debugShow:CGRectMake(100, 550, 200, 200)];
+}
+
+- (IBAction)_tapImageCropBeginPointRatioEndPointRatio:(id)sender {
+    
+    UIImage *image = [UIImage imageNamed:@"test"];
+    image = [image zz_imageCropBeginPointRatio:CGPointMake(0.1, 0.1) endPointRatio:CGPointMake(0.9, 0.9)];
     [image zz_debugShow:CGRectMake(100, 200, 300, 300)];
     [[UIImage imageNamed:@"test"] zz_debugShow:CGRectMake(100, 550, 200, 200)];
 }

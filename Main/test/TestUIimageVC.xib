@@ -27,10 +27,19 @@
                         <action selector="_tapImageCropRect:" destination="-1" eventType="touchUpInside" id="5Pf-IC-0SU"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEe-tY-4ny">
+                    <rect key="frame" x="20" y="104" width="288" height="30"/>
+                    <state key="normal" title="imageCropBeginPointRatio:EndPointRatio:"/>
+                    <connections>
+                        <action selector="_tapImageCropBeginPointRatioEndPointRatio:" destination="-1" eventType="touchUpInside" id="5k0-4c-Xbv"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="JEe-tY-4ny" firstAttribute="top" secondItem="DN2-79-a7E" secondAttribute="bottom" constant="20" id="ABT-lw-yrq"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="CON-yJ-gMh"/>
+                <constraint firstItem="JEe-tY-4ny" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="CSf-ht-R6Q"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FO7-zN-Uju"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

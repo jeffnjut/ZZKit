@@ -37,52 +37,6 @@
 }
 
 /**
- *  裁剪图片（指定区域）
- */
-- (UIImage *)zz_imageCropRect:(CGRect)rect sameRation:(BOOL)sameRatio {
-    
-    if (sameRatio) {
-        CGRect myImageRect = rect;
-        float cropRatio = rect.size.width / rect.size.height;
-        float imageRatio = self.size.width / self.size.height;
-        if (cropRatio == imageRatio) {
-            return self;
-        }else if (cropRatio > imageRatio) {
-            // 裁剪高度
-            CGFloat width = self.size.width;
-            CGFloat height = self.size.width * cropRatio;
-            CGFloat x = self.size.width * ( rect.size.width / self.size.width );
-            CGFloat y = self.size.height * ( rect.size.width / self.size.width );
-            myImageRect = CGRectMake(x, y, width, height);
-        }else {
-            // 裁剪宽度
-            CGFloat height = self.size.height;
-            CGFloat width = self.size.height / cropRatio;
-            CGFloat x = self.size.width * ( rect.size.width / self.size.width );
-            CGFloat y = self.size.height * ( rect.size.width / self.size.width );
-            myImageRect = CGRectMake(x, y, width, height);
-        }
-        CGImageRef imageRef = self.CGImage;
-        CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, myImageRect);
-        return [UIImage imageWithCGImage:subImageRef];
-    }else {
-        CGRect myImageRect = rect;
-        UIImage *bigImage= self;
-        CGImageRef imageRef = bigImage.CGImage;
-        CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, myImageRect);
-        CGSize size;
-        size.width = rect.size.width;
-        size.height = rect.size.height;
-        UIGraphicsBeginImageContext(size);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, myImageRect, subImageRef);
-        UIImage *smallImage = [UIImage imageWithCGImage:subImageRef];
-        UIGraphicsEndImageContext();
-        return smallImage;
-    }
-}
-
-/**
  *  截图UIView（对每个继承自UIView的对象都适用）
  */
 + (UIImage *)zz_imageCaptureView:(UIView *)view {
