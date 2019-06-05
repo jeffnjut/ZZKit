@@ -21,6 +21,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (ZZKit)
 
+#pragma mark - 裁切、截屏
+
+/**
+ *  截图UIView以及UIView的子视图
+ */
++ (UIImage *)zz_imageCaptureView:(nonnull UIView *)targetView;
+
+/**
+ *  截全屏(UIImage)
+ */
++ (UIImage *)zz_imageCaptureScreen;
+
+/**
+ *  截全屏(NSData)
+ */
++ (NSData *)zz_imageDataCaptureScreen;
+
 /**
  *  获得图片（指定区域）
  */
@@ -30,31 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  获得图片（指定比例区域）
  */
 - (UIImage *)zz_imageCropBeginPointRatio:(CGPoint)beginPointRatio endPointRatio:(CGPoint)endPointRatio;
-
-/**
- *  截图UIView（对每个继承自UIView的对象都适用）
- */
-+ (UIImage *)zz_imageCaptureView:(UIView *)view;
-
-/**
- *  截屏（指定UIView，正方形，无损）
- */
-+ (UIImage *)zz_imageCaptureView:(UIView *)view rect:(CGSize)rect;
-
-/**
- *  截全屏（指定UIViewController）
- */
-+ (UIImage *)zz_imageCaptureController:(UIViewController *)viewController;
-
-/**
- *  截全屏(NSData)
- */
-+ (NSData *)zz_imageDataCaptureScreen;
-
-/**
- *  截全屏(UIImage)
- */
-+ (UIImage *)zz_imageCaptureScreen;
 
 #pragma mark - 压缩
 
@@ -91,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  等比率调整图片（减少像素）
  */
-- (UIImage *)zz_imageAdjustScale:(float)scale;
+- (UIImage *)zz_imageAdjustScale:(CGFloat)scale;
 
 /**
  *  等比率调整图片，图片方向（减少像素）
@@ -113,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  判断图片类型
  */
-+ (FJImageType)zz_imageType:(NSData *)imageData;
++ (FJImageType)zz_imageType:(nonnull NSData *)imageData;
 
 /**
  *  判断图片类型
@@ -130,25 +122,24 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  UIImage转成PNG格式的base64码
  */
-- (NSString *)zz_image2Base64_PNG;
-
+- (NSString *)zz_image2Base64PNG;
 
 /**
  *  UIImage转成JPEG格式的base64码
  */
-- (NSString *)zz_image2Base64_JPEG;
+- (NSString *)zz_image2Base64JPEG;
 
 #pragma mark - 颜色
 
 /**
  *  根据颜色，输出10*10的图片
  */
-+ (UIImage *)zz_imageWithColor:(UIColor *)color;
++ (UIImage *)zz_imageWithColor:(nonnull UIColor *)color;
 
 /**
  *  根据指定大小和颜色，输出图片
  */
-+ (UIImage *)zz_imageWithColor:(UIColor *)color size:(CGSize)size;
++ (UIImage *)zz_imageWithColor:(nonnull UIColor *)color size:(CGSize)size;
 
 /**
  *  获取UIImage的主色
@@ -160,46 +151,48 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  根据文字输出二维码图片
  */
-+ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width;
++ (UIImage *)zz_imageQR:(nonnull NSString *)text width:(CGFloat)width;
 
 #pragma mark - 水印
 
 /**
  *  按起始点，添加带alpha的图片的水印
  */
-- (UIImage *)zz_imageWaterMarkWithImage:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
+- (UIImage *)zz_imageWaterMarkWithImage:(nonnull UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
 
 /**
  *  按范围，添加带alpha的图片的水印
  */
-- (UIImage *)zz_imageWaterMarkWithImage:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
+- (UIImage *)zz_imageWaterMarkWithImage:(nonnull UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
 
 /**
  *  按起始点，添加带属性的字符串
  */
-- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute;
+- (UIImage *)zz_imageWaterMarkWithText:(nonnull NSString*)text textPoint:(CGPoint)textPoint attribute:(NSDictionary*)attribute;
 
 /**
  *  按范围，添加带属性的字符串
  */
-- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute;
+- (UIImage *)zz_imageWaterMarkWithText:(nullable NSString*)text textRect:(CGRect)textRect attribute:(nullable NSDictionary *)attribute;
 
 /**
  *  按起始点，添加带属性的字符串和带alpha的图片的合成水印
  */
-- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attribute image:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
+- (UIImage *)zz_imageWaterMarkWithText:(nullable NSString*)text textPoint:(CGPoint)textPoint attribute:(nullable NSDictionary*)attribute image:(nullable UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
 
 /**
  *  按范围，添加带属性的字符串和带alpha的图片的合成水印
  */
-- (UIImage *)zz_imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attribute image:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
+- (UIImage *)zz_imageWaterMarkWithText:(nullable NSString*)text textRect:(CGRect)textRect attribute:(nullable NSDictionary *)attribute image:(nullable UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
 
 #pragma mark - 高斯模糊
+
 - (UIImage *)zz_gaussBlur:(CGFloat)blurRadius;
 
 - (UIImage *)zz_boxBlur:(CGFloat)blur;
 
 #pragma mark - 测试
+
 - (void)zz_debugShow:(CGRect)frame;
 
 @end
