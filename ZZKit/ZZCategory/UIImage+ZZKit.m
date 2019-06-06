@@ -231,86 +231,89 @@
 }
 
 /**
- *  等比率调整图片（减少像素）
+ *  等比率宽高调整图片（增减像素）
+ *  scale输出和原图一致
  */
 - (UIImage *)zz_imageAdjustScale:(CGFloat)scale {
     
-    UIGraphicsBeginImageContext(CGSizeMake(self.size.width * scale, self.size.height * scale));
-    [self drawInRect:CGRectMake(0, 0, self.size.width * scale, self.size.height * scale)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
+    return [self zz_imageAdjustSize:CGSizeMake(self.size.width * scale, self.size.height * scale) scale:self.scale cropped:NO];
 }
 
 /**
- *  等比率调整图片，图片方向（减少像素）
+ *  自定义长宽调整图片,可变形图片（增减像素）
+ *  可能变形
  */
-- (UIImage *)zz_imageAdjustScale:(CGFloat)scale orientation:(UIImageOrientation)orientation {
+- (UIImage *)zz_imageAdjustSize:(CGSize)size {
+    
+    return [self zz_imageAdjustSize:size scale:self.scale cropped:NO];
+}
+
+/**
+ *  自定义长宽调整图片,可裁切、可变形图片（增减像素）
+ *  cropped : NO 可能变形，保证画面完整度，但可能因为size的宽高比和原图不一致导致图片被压扁
+ *  cropped : YES 可能裁切，不保证画面完整度（只有size比例和原图一致才能完整），多余的宽或高按平均裁切
+ */
+- (UIImage *)zz_imageAdjustSize:(CGSize)size cropped:(BOOL)cropped {
+    
+    return [self zz_imageAdjustSize:size scale:self.scale cropped:cropped];
+}
+
+/**
+ *  自定义长宽调整图片,可裁切、可变形图片（增减像素）
+ *  cropped : NO 可能变形，保证画面完整度，但可能因为size的宽高比和原图不一致导致图片被压扁
+ *  cropped : YES 可能裁切，不保证画面完整度（只有size比例和原图一致才能完整），多余的宽或高按平均裁切
+ *  scale : 按scale输出图片
+ */
+- (UIImage *)zz_imageAdjustSize:(CGSize)size scale:(CGFloat)scale cropped:(BOOL)cropped {
+
+    if (CGSizeEqualToSize(self.size, size) && self.scale == scale) {
+        return self;
+    }else if(cropped && (fabs(self.size.height / self.size.width - size.height / size.width) > 0.0001)) {
+        
+        // 画布以原图的scale展开scale倍
+        CGSize ctxSize = CGSizeMake(size.width * scale, size.height * scale);
+        UIGraphicsBeginImageContext(ctxSize);
+        // 按照原点开始裁切
+        if (ctxSize.height / ctxSize.width < self.size.height / self.size.width) {
+            // 上下裁切
+            CGFloat y = (ctxSize.width * (self.size.height / self.size.width) - ctxSize.height) / 2.0;
+            [self drawInRect:CGRectMake(0, -y, ctxSize.width, ctxSize.width * (self.size.height / self.size.width))];
+        }else {
+            // 左右裁切
+            CGFloat x = (ctxSize.height * (self.size.width / self.size.height) - ctxSize.width) / 2.0;
+            [self drawInRect:CGRectMake(-x, 0, ctxSize.height * (self.size.width / self.size.height), ctxSize.height)];
+        }
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        // 还原scale
+        image = [image zz_imageTuningScale:scale orientation:self.imageOrientation];
+        UIGraphicsEndImageContext();
+        if(image == nil) NSLog(@"could not adjust image");
+        return image;
+    }else {
+        
+        // 画布以原图的scale展开scale倍
+        CGSize ctxSize = CGSizeMake(size.width * scale, size.height * scale);
+        UIGraphicsBeginImageContext(ctxSize);
+        // 按照原点开始裁切
+        [self drawInRect:CGRectMake(0, 0, ctxSize.width, ctxSize.height)];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        // 还原scale
+        image = [image zz_imageTuningScale:scale orientation:self.imageOrientation];
+        UIGraphicsEndImageContext();
+        if(image == nil) NSLog(@"could not adjust image");
+        return image;
+    }
+}
+
+/**
+ *  等比率调整图片，图片方向（等比调整像素，scale）
+ *  scale取值，建议1.0、2.0和3.0
+ */
+- (UIImage *)zz_imageTuningScale:(CGFloat)scale orientation:(UIImageOrientation)orientation {
     
     CGImageRef imageRef = self.CGImage;
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:scale orientation:orientation];
     return image;
-}
-
-/**
- *  自定义长宽调整图片（减少像素）
- */
-- (UIImage *)zz_imageAdjustSize:(CGSize)size {
-    
-    UIGraphicsBeginImageContext(CGSizeMake(size.width, size.height));
-    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-/**
- *  自定义长宽调整图片,可裁切图片（减少像素）
- */
-- (UIImage *)zz_imageAdjustSize:(CGSize)size cropped:(BOOL)cropped {
-    
-    if (cropped) {
-        UIImage *sourceImage = self;
-        UIImage *newImage = nil;
-        CGSize  imageSize = sourceImage.size;
-        CGFloat width = imageSize.width;
-        CGFloat height = imageSize.height;
-        CGFloat targetWidth = size.width;
-        CGFloat targetHeight = size.height;
-        CGFloat scaleFactor = 0.0;
-        CGFloat scaledWidth = targetWidth;
-        CGFloat scaledHeight = targetHeight;
-        CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-        if (CGSizeEqualToSize(imageSize, size) == NO) {
-            CGFloat widthFactor = targetWidth / width;
-            CGFloat heightFactor = targetHeight / height;
-            if (widthFactor > heightFactor) {
-                scaleFactor = widthFactor;
-            }else {
-                scaleFactor = heightFactor;
-            }
-            scaledWidth= width * scaleFactor;
-            scaledHeight = height * scaleFactor;
-            if (widthFactor > heightFactor) {
-                thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-            }
-            else if (widthFactor < heightFactor) {
-                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-            }
-        }
-        UIGraphicsBeginImageContext(size);
-        CGRect thumbnailRect = CGRectZero;
-        thumbnailRect.origin = thumbnailPoint;
-        thumbnailRect.size.width= scaledWidth;
-        thumbnailRect.size.height = scaledHeight;
-        [sourceImage drawInRect:thumbnailRect];
-        newImage = UIGraphicsGetImageFromCurrentImageContext();
-        if(newImage == nil) NSLog(@"could not scale image");
-        UIGraphicsEndImageContext();
-        return newImage;
-    }else {
-        return [self zz_imageAdjustSize:size];
-    }
 }
 
 #pragma mark - 图片类型

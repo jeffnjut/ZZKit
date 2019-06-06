@@ -41,14 +41,23 @@
                         <action selector="_tapImageCaptureView:" destination="-1" eventType="touchUpInside" id="D9r-r3-HPj"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtQ-Su-AMH">
+                    <rect key="frame" x="20" y="166" width="112" height="30"/>
+                    <state key="normal" title="imageCompress"/>
+                    <connections>
+                        <action selector="_tapImageCompress:" destination="-1" eventType="touchUpInside" id="bzj-ve-6pe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="JEe-tY-4ny" firstAttribute="top" secondItem="DN2-79-a7E" secondAttribute="bottom" constant="8" id="ABT-lw-yrq"/>
+                <constraint firstItem="wtQ-Su-AMH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="And-0t-f4G"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="8" id="CON-yJ-gMh"/>
                 <constraint firstItem="JEe-tY-4ny" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="CSf-ht-R6Q"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FO7-zN-Uju"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="TKW-aI-Qt5"/>
+                <constraint firstItem="wtQ-Su-AMH" firstAttribute="top" secondItem="qve-oe-ABK" secondAttribute="bottom" constant="8" id="XWA-QK-JS5"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="top" secondItem="JEe-tY-4ny" secondAttribute="bottom" constant="8" id="l5r-dH-qD5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

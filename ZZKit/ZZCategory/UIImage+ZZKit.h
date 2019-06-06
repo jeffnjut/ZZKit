@@ -81,24 +81,37 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSData *)zz_imageDataCompressQuality:(CGFloat)compressionQuality lessThanMegaByte:(CGFloat)mbyte;
 
 /**
- *  等比率调整图片（减少像素）
+ *  等比率宽高调整图片（增减像素）
+ *  scale输出和原图一致
  */
 - (UIImage *)zz_imageAdjustScale:(CGFloat)scale;
 
 /**
- *  等比率调整图片，图片方向（减少像素）
- */
-- (UIImage *)zz_imageAdjustScale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
-
-/**
- *  自定义长宽调整图片（减少像素）
+ *  自定义长宽调整图片,可变形图片（增减像素）
+ *  可能变形
  */
 - (UIImage *)zz_imageAdjustSize:(CGSize)size;
 
 /**
- *  自定义长宽调整图片,可裁切图片（减少像素）
+ *  自定义长宽调整图片,可裁切、可变形图片（增减像素）
+ *  cropped : NO 可能变形，保证画面完整度，但可能因为size的宽高比和原图不一致导致图片被压扁
+ *  cropped : YES 可能裁切，不保证画面完整度（只有size比例和原图一致才能完整），多余的宽或高按平均裁切
  */
 - (UIImage *)zz_imageAdjustSize:(CGSize)size cropped:(BOOL)cropped;
+
+/**
+ *  自定义长宽调整图片,可裁切、可变形图片（增减像素）
+ *  cropped : NO 可能变形，保证画面完整度，但可能因为size的宽高比和原图不一致导致图片被压扁
+ *  cropped : YES 可能裁切，不保证画面完整度（只有size比例和原图一致才能完整），多余的宽或高按平均裁切
+ *  scale : 按scale输出图片
+ */
+- (UIImage *)zz_imageAdjustSize:(CGSize)size scale:(CGFloat)scale cropped:(BOOL)cropped;
+
+/**
+ *  等比率调整图片，图片方向（等比调整像素，scale）
+ *  scale取值，建议1.0、2.0和3.0
+ */
+- (UIImage *)zz_imageTuningScale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 
 #pragma mark - 图片类型
 

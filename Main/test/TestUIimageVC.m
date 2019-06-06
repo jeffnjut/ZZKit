@@ -64,6 +64,34 @@
     [image zz_debugShow:CGRectMake(100, 650, 200, 200)];
 }
 
+- (IBAction)_tapImageCompress:(id)sender {
+    
+    UIImage *image = [UIImage imageNamed:@"test"];
+    [image zz_debugShow:CGRectMake(10, 100, 150, 150)];
+    
+    UIImage *cImage = nil;
+    // cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2, image.size.height * 2) scale:3 cropped:NO];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 1.0, image.size.height * 1.0) scale:3 cropped:NO];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2, image.size.height * 4) scale:3 cropped:NO];
+    [cImage zz_debugShow:CGRectMake(200, 100, 150, 150)];
+    
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2, image.size.height * 2) scale:3 cropped:YES];  // 和NO一样
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 1.0, image.size.height * 1.0) scale:3 cropped:YES];  // 和NO一样
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 0.5, image.size.height * 1.0) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 1.0, image.size.height * 2.0) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2.0, image.size.height * 10.0) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 1.0, image.size.height * 0.5) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2.0, image.size.height * 1.0) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 6.0, image.size.height * 2.0) scale:3.0 cropped:YES];
+    [cImage zz_debugShow:CGRectMake(10, 300, 150, 150)];
+
+    
+    cImage = [image zz_imageTuningScale:3.0 orientation:UIImageOrientationDown];
+    [cImage zz_debugShow:CGRectMake(200, 300, 150, 150)];
+    
+    
+}
+
 /*
 #pragma mark - Navigation
 
