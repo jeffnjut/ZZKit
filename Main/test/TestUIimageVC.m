@@ -83,10 +83,16 @@
     cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 1.0, image.size.height * 0.5) scale:3.0 cropped:YES];
     cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 2.0, image.size.height * 1.0) scale:3.0 cropped:YES];
     cImage = [image zz_imageAdjustSize:CGSizeMake(image.size.width * 6.0, image.size.height * 2.0) scale:3.0 cropped:YES];
+    cImage = [image zz_imageAdjustScale:12.0];
     [cImage zz_debugShow:CGRectMake(10, 300, 150, 150)];
 
+    CGFloat orgSize = [[image zz_imageData] length];
+    CGFloat expanedSize = [[cImage zz_imageData] length];
+    // UIImageWriteToSavedPhotosAlbum(cImage, nil, nil, nil);
     
-    cImage = [image zz_imageTuningScale:3.0 orientation:UIImageOrientationDown];
+    NSString *base64 = [[UIImage imageNamed:@"testsmall"] zz_image2Base64:YES];
+    
+    cImage = [image zz_imageTuningScale:3.0 orientation:UIImageOrientationRight];
     [cImage zz_debugShow:CGRectMake(200, 300, 150, 150)];
     
     

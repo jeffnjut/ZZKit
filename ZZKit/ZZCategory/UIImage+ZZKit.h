@@ -128,9 +128,20 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 转码
 
 /**
+ *  UIImage转成PNG或JPEG格式的Data
+ */
+- (NSData *)zz_imageData;
+
+/**
  *  UIImage转成PNG或JPEG格式的base64码
  */
 - (NSString *)zz_image2Base64;
+
+/**
+ *  UIImage转成PNG或JPEG格式的base64码，
+ *  带Scheme的URI,比如image/png;base64,xxxxxxx
+ */
+- (NSString *)zz_image2Base64:(BOOL)withScheme;
 
 /**
  *  UIImage转成PNG格式的base64码

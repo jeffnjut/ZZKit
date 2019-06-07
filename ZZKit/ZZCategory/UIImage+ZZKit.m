@@ -369,16 +369,50 @@
 #pragma mark - 转码
 
 /**
+ *  UIImage转成PNG或JPEG格式的Data
+ */
+- (NSData *)zz_imageData {
+    
+    NSData *data = UIImageJPEGRepresentation(self, 1.0);
+    if (!data) {
+        data = UIImagePNGRepresentation(self);
+    }
+    return data;
+}
+
+/**
  *  UIImage转成PNG或JPEG格式的base64码
  */
 - (NSString *)zz_image2Base64 {
     
-    NSString *base64 = [self zz_image2Base64JPEG];
-    if (base64) {
-        return base64;
-    }
-    return [self zz_image2Base64PNG];
+    return [self zz_image2Base64:NO];
 }
+
+/**
+ *  UIImage转成PNG或JPEG格式的base64码，
+ *  带Scheme的URI,比如image/png;base64,xxxxxxx
+ */
+- (NSString *)zz_image2Base64:(BOOL)withScheme {
+    
+    NSData *data = UIImageJPEGRepresentation(self, 1.0);
+    NSString *scheme = nil;
+    NSString *base64 = nil;
+    if (data) {
+        scheme = @"data:image/jpeg;base64,";
+        base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    }else {
+        data = UIImagePNGRepresentation(self);
+        if (data) {
+            scheme = @"data:image/png;base64,";
+            base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        }
+    }
+    if (scheme && base64) {
+        return [NSString stringWithFormat:@"%@%@", scheme, base64];
+    }
+    return base64;
+}
+
 
 /**
  *  UIImage转成PNG格式的base64码
@@ -386,8 +420,11 @@
 - (NSString *)zz_image2Base64PNG {
     
     NSData *data = UIImagePNGRepresentation(self);
-    NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    return base64;
+    if (data) {
+        NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        return base64;
+    }
+    return nil;
 }
 
 /**
@@ -396,8 +433,11 @@
 - (NSString *)zz_image2Base64JPEG {
     
     NSData *data = UIImageJPEGRepresentation(self, 1.0);
-    NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    return base64;
+    if (data) {
+        NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        return base64;
+    }
+    return nil;
 }
 
 #pragma mark - 颜色
