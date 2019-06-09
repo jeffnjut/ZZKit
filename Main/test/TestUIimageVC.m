@@ -98,6 +98,19 @@
     
 }
 
+- (IBAction)_tapImageWatermark:(id)sender {
+    
+    UIImage *image = [UIImage imageNamed:@"test"];
+    
+    // image = [image zz_imageWaterMarkWithImage:[UIImage imageNamed:@"logo"] imageRect:CGRectMake(10, 10, 40, 40) alpha:1.0];
+    
+    image = [image zz_imageWaterMarkWithImage:[UIImage imageNamed:@"logo"] imagePoint:CGPointMake(10, 10) alpha:1.0];
+    
+    
+    [image zz_debugShow:CGRectMake(10, 300, 400, 300)];
+    
+}
+
 /*
 #pragma mark - Navigation
 

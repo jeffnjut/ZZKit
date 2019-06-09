@@ -48,6 +48,13 @@
                         <action selector="_tapImageCompress:" destination="-1" eventType="touchUpInside" id="bzj-ve-6pe"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNW-PV-P84">
+                    <rect key="frame" x="20" y="204" width="116" height="30"/>
+                    <state key="normal" title="imageWatermark"/>
+                    <connections>
+                        <action selector="_tapImageWatermark:" destination="-1" eventType="touchUpInside" id="hY5-2f-EG2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -58,6 +65,8 @@
                 <constraint firstItem="DN2-79-a7E" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FO7-zN-Uju"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="TKW-aI-Qt5"/>
                 <constraint firstItem="wtQ-Su-AMH" firstAttribute="top" secondItem="qve-oe-ABK" secondAttribute="bottom" constant="8" id="XWA-QK-JS5"/>
+                <constraint firstItem="sNW-PV-P84" firstAttribute="top" secondItem="wtQ-Su-AMH" secondAttribute="bottom" constant="8" id="bra-yG-W0l"/>
+                <constraint firstItem="sNW-PV-P84" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="iz6-l2-JNL"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="top" secondItem="JEe-tY-4ny" secondAttribute="bottom" constant="8" id="l5r-dH-qD5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
