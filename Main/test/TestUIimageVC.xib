@@ -55,9 +55,17 @@
                         <action selector="_tapImageWatermark:" destination="-1" eventType="touchUpInside" id="hY5-2f-EG2"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD4-vm-g9X">
+                    <rect key="frame" x="20" y="242" width="69" height="30"/>
+                    <state key="normal" title="imageBlur"/>
+                    <connections>
+                        <action selector="_tapGaussBlur:" destination="-1" eventType="touchUpInside" id="HAY-Cm-PL0"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="TD4-vm-g9X" firstAttribute="top" secondItem="sNW-PV-P84" secondAttribute="bottom" constant="8" id="73g-L0-Dze"/>
                 <constraint firstItem="JEe-tY-4ny" firstAttribute="top" secondItem="DN2-79-a7E" secondAttribute="bottom" constant="8" id="ABT-lw-yrq"/>
                 <constraint firstItem="wtQ-Su-AMH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="And-0t-f4G"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="8" id="CON-yJ-gMh"/>
@@ -68,6 +76,7 @@
                 <constraint firstItem="sNW-PV-P84" firstAttribute="top" secondItem="wtQ-Su-AMH" secondAttribute="bottom" constant="8" id="bra-yG-W0l"/>
                 <constraint firstItem="sNW-PV-P84" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="iz6-l2-JNL"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="top" secondItem="JEe-tY-4ny" secondAttribute="bottom" constant="8" id="l5r-dH-qD5"/>
+                <constraint firstItem="TD4-vm-g9X" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="yye-aZ-FyG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="131.8840579710145" y="106.47321428571428"/>

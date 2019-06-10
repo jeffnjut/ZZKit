@@ -44,6 +44,14 @@
 		E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */; };
 		E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */; };
 		E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */; };
+		E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */; };
+		E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */; };
+		E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179922AE24AE00C24EF2 /* TestNotificationVC.m */; };
+		E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E0179A22AE24AE00C24EF2 /* TestNotificationVC.xib */; };
+		E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179F22AE277D00C24EF2 /* ZZLock.m */; };
+		E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */; };
+		E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */; };
+		E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +119,20 @@
 		E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZZKit.m"; sourceTree = "<group>"; };
 		E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZZKit.h"; sourceTree = "<group>"; };
 		E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZZKit.m"; sourceTree = "<group>"; };
+		E7E0178E22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZZKit_Keyboard.h"; sourceTree = "<group>"; };
+		E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Keyboard.m"; sourceTree = "<group>"; };
+		E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZZKit_Notification.h"; sourceTree = "<group>"; };
+		E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZZKit_Notification.m"; sourceTree = "<group>"; };
+		E7E0179822AE24AE00C24EF2 /* TestNotificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNotificationVC.h; sourceTree = "<group>"; };
+		E7E0179922AE24AE00C24EF2 /* TestNotificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNotificationVC.m; sourceTree = "<group>"; };
+		E7E0179A22AE24AE00C24EF2 /* TestNotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestNotificationVC.xib; sourceTree = "<group>"; };
+		E7E0179E22AE277D00C24EF2 /* ZZLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLock.h; sourceTree = "<group>"; };
+		E7E0179F22AE277D00C24EF2 /* ZZLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLock.m; sourceTree = "<group>"; };
+		E7E017A122AE6F2F00C24EF2 /* TestKeyboardAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestKeyboardAccessoryView.h; sourceTree = "<group>"; };
+		E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestKeyboardAccessoryView.m; sourceTree = "<group>"; };
+		E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestKeyboardAccessoryView.xib; sourceTree = "<group>"; };
+		E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZEnumCompare.h; sourceTree = "<group>"; };
+		E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZEnumCompare.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +228,10 @@
 		E7DC5C32229CD6E300ED8733 /* ZZCategory */ = {
 			isa = PBXGroup;
 			children = (
+				E7E0179E22AE277D00C24EF2 /* ZZLock.h */,
+				E7E0179F22AE277D00C24EF2 /* ZZLock.m */,
+				E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */,
+				E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */,
 				E7DC5C46229CE35800ED8733 /* ZZKit+AppStore.h */,
 				E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */,
 				E7DC5C4C229D127300ED8733 /* UIColor+ZZKit.h */,
@@ -224,6 +250,10 @@
 				E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */,
 				E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */,
 				E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */,
+				E7E0178E22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.h */,
+				E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */,
+				E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */,
+				E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -280,6 +310,12 @@
 				E715E12122A6767A00228722 /* TestUIimageVC.h */,
 				E715E12222A6767A00228722 /* TestUIimageVC.m */,
 				E715E12322A6767A00228722 /* TestUIimageVC.xib */,
+				E7E0179822AE24AE00C24EF2 /* TestNotificationVC.h */,
+				E7E0179922AE24AE00C24EF2 /* TestNotificationVC.m */,
+				E7E0179A22AE24AE00C24EF2 /* TestNotificationVC.xib */,
+				E7E017A122AE6F2F00C24EF2 /* TestKeyboardAccessoryView.h */,
+				E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */,
+				E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -352,6 +388,8 @@
 			files = (
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
+				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
+				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
@@ -392,7 +430,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/Typeset/Typeset.framework",
 			);
@@ -403,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,6 +454,8 @@
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
+				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
+				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
@@ -429,12 +469,16 @@
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
+				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
+				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
+				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
+				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
 			);

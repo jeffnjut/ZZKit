@@ -211,8 +211,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 高斯模糊
 
-- (UIImage *)zz_gaussBlur:(CGFloat)blurRadius;
+/**
+ *  高斯模糊滤镜（默认值10.0）
+ *  An NSNumber object whose attribute type is CIAttributeTypeDistance and whose display name is Radius. Default value: 10.00
+ */
+- (UIImage *)zz_gaussBlur;
 
+/**
+ *  高斯模糊滤镜
+ *  An NSNumber object whose attribute type is CIAttributeTypeDistance and whose display name is Radius. Default value: 10.00
+ *  clipExtent:是否裁掉高斯模糊边缘部分
+ */
+- (UIImage *)zz_gaussBlur:(CGFloat)blurRadius clipExtent:(BOOL)clipExtent;
+
+/**
+ *  通过Accelerate库vImageBoxConvolve_ARGB8888的模糊算法
+ *  blur范围[0, 1.0]，异常或默认为0.5
+ */
+- (UIImage *)zz_boxBlur;
+
+/**
+ *  通过Accelerate库vImageBoxConvolve_ARGB8888的模糊算法
+ *  blur范围[0, 1.0]，异常或默认为0.5
+ */
 - (UIImage *)zz_boxBlur:(CGFloat)blur;
 
 #pragma mark - 测试

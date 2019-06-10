@@ -621,7 +621,21 @@
 
 #pragma mark - 高斯模糊
 
-- (UIImage *)zz_gaussBlur:(CGFloat)blurRadius {
+/**
+ *  高斯模糊滤镜（默认值10.0）
+ *  An NSNumber object whose attribute type is CIAttributeTypeDistance and whose display name is Radius. Default value: 10.00
+ */
+- (UIImage *)zz_gaussBlur {
+    
+    return [self zz_gaussBlur:10.0 clipExtent:YES];
+}
+
+/**
+ *  高斯模糊滤镜
+ *  An NSNumber object whose attribute type is CIAttributeTypeDistance and whose display name is Radius. Default value: 10.00
+ *  clipExtent:是否裁掉高斯模糊边缘部分
+ */
+- (UIImage *)zz_gaussBlur:(CGFloat)blurRadius clipExtent:(BOOL)clipExtent {
     
     // Context
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -631,13 +645,32 @@
     [filter setValue:inputImage forKey:kCIInputImageKey];
     [filter setValue:@(blurRadius) forKey: @"inputRadius"];
     //模糊图片
-    CIImage *result=[filter valueForKey:kCIOutputImageKey];
-    CGImageRef outImage=[context createCGImage:result fromRect:[result extent]];
-    UIImage *blurImage=[UIImage imageWithCGImage:outImage];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    CGRect outImageRect = CGRectZero;
+    if (clipExtent) {
+        outImageRect = CGRectMake(0, 0, result.extent.size.width - fabs(result.extent.origin.x) * 2.0, result.extent.size.height - fabs(result.extent.origin.y) * 2.0);
+    }else {
+        outImageRect = result.extent;
+    }
+    CGImageRef outImage = [context createCGImage:result fromRect:outImageRect];
+    UIImage *blurImage = [UIImage imageWithCGImage:outImage];
     CGImageRelease(outImage);
     return blurImage;
 }
 
+/**
+ *  通过Accelerate库vImageBoxConvolve_ARGB8888的模糊算法
+ *  blur范围[0, 1.0]，异常或默认为0.5
+ */
+- (UIImage *)zz_boxBlur {
+    
+    return [self zz_boxBlur:0.5];
+}
+
+/**
+ *  通过Accelerate库vImageBoxConvolve_ARGB8888的模糊算法
+ *  blur范围[0, 1.0]，异常或默认为0.5
+ */
 - (UIImage *)zz_boxBlur:(CGFloat)blur {
     
     if (blur < 0.f || blur > 1.f) {

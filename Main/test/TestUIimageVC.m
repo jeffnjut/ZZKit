@@ -104,11 +104,33 @@
     
     // image = [image zz_imageWaterMarkWithImage:[UIImage imageNamed:@"logo"] imageRect:CGRectMake(10, 10, 40, 40) alpha:1.0];
     
-    image = [image zz_imageWaterMarkWithImage:[UIImage imageNamed:@"logo"] imagePoint:CGPointMake(10, 10) alpha:1.0];
+    // image = [image zz_imageWaterMarkWithImage:[UIImage imageNamed:@"logo"] imagePoint:CGPointMake(10, 10) alpha:1.0];
     
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.alignment = NSTextAlignmentCenter;
+    // image = [image zz_imageWaterMarkWithText:@"测试" textRect:CGRectMake(10, 10, 200, 440) attribute:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : style}];
+    
+    
+    // image = [image zz_imageWaterMarkWithText:@"测试" textPoint:CGPointMake(10, 10) attribute:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : style}];
+    
+    
+    // image = [image zz_imageWaterMarkWithText:@"测试" textRect:CGRectMake(10, 10, 200, 440) attribute:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : style} image:[UIImage imageNamed:@"logo"] imageRect:CGRectMake(10, 100, 40, 40) alpha:0.8];
+    
+    image = [image zz_imageWaterMarkWithText:@"测试" textPoint:CGPointMake(10, 10) attribute:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : style} image:[UIImage imageNamed:@"logo"] imagePoint:CGPointMake(10, 100) alpha:1.0];
     
     [image zz_debugShow:CGRectMake(10, 300, 400, 300)];
     
+}
+
+- (IBAction)_tapGaussBlur:(id)sender {
+    
+    UIImage *image = [UIImage imageNamed:@"test"];
+    [image zz_debugShow:CGRectMake(10, 100, 300, 300)];
+    
+    // image = [image zz_gaussBlur:5.0 clipExtent:YES];
+    image = [image zz_boxBlur:0.6];
+    
+    [image zz_debugShow:CGRectMake(10, 450, 300, 300)];
 }
 
 /*

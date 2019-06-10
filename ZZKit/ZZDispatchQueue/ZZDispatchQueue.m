@@ -21,8 +21,10 @@ static ZZDispatchQueue *SINGLETON;
 
 @implementation ZZDispatchQueue
 
-- (instancetype)init
-{
+#pragma mark - Singleton Initialization
+
+- (instancetype)init {
+    
     self = [super init];
     if (self) {
         _dict = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);

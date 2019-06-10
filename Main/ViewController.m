@@ -15,6 +15,7 @@
 #import "TestZZDispatchQueueVC.h"
 #import "TestUIResponderBlockVC.h"
 #import "TestUIimageVC.h"
+#import "TestNotificationVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -41,7 +42,8 @@
                         @[@"测试NSOperationQueue",[TestOperationQueueVC class]],
                         @[@"测试ZZDispatchQueue",[TestZZDispatchQueueVC class]],
                         @[@"测试UIResponder点击",[TestUIResponderBlockVC class]],
-                        @[@"测试UIImage",[TestUIimageVC class]]
+                        @[@"测试UIImage",[TestUIimageVC class]],
+                        @[@"测试Notification",[TestNotificationVC class]]
                         ];
     
     [self.tableView reloadData];
