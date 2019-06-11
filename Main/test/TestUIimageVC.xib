@@ -62,6 +62,13 @@
                         <action selector="_tapGaussBlur:" destination="-1" eventType="touchUpInside" id="HAY-Cm-PL0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k2-M3-88e">
+                    <rect key="frame" x="20" y="280" width="105" height="30"/>
+                    <state key="normal" title="imageCategory"/>
+                    <connections>
+                        <action selector="_tapCategory:" destination="-1" eventType="touchUpInside" id="l9V-1E-tJJ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -72,10 +79,12 @@
                 <constraint firstItem="JEe-tY-4ny" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="CSf-ht-R6Q"/>
                 <constraint firstItem="DN2-79-a7E" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FO7-zN-Uju"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="TKW-aI-Qt5"/>
+                <constraint firstItem="5k2-M3-88e" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="UsI-wl-wdS"/>
                 <constraint firstItem="wtQ-Su-AMH" firstAttribute="top" secondItem="qve-oe-ABK" secondAttribute="bottom" constant="8" id="XWA-QK-JS5"/>
                 <constraint firstItem="sNW-PV-P84" firstAttribute="top" secondItem="wtQ-Su-AMH" secondAttribute="bottom" constant="8" id="bra-yG-W0l"/>
                 <constraint firstItem="sNW-PV-P84" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="iz6-l2-JNL"/>
                 <constraint firstItem="qve-oe-ABK" firstAttribute="top" secondItem="JEe-tY-4ny" secondAttribute="bottom" constant="8" id="l5r-dH-qD5"/>
+                <constraint firstItem="5k2-M3-88e" firstAttribute="top" secondItem="TD4-vm-g9X" secondAttribute="bottom" constant="8" id="qYu-oH-kox"/>
                 <constraint firstItem="TD4-vm-g9X" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="yye-aZ-FyG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

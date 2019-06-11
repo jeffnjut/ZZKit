@@ -14,6 +14,14 @@
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
+		E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FF922AF45DB0044B9AD /* ZZDevice.m */; };
+		E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */; };
+		E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */; };
+		E767600222AFB2060044B9AD /* test.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E767600122AFB2060044B9AD /* test.bundle */; };
+		E767600522AFBF220044B9AD /* ZZTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E767600422AFBF220044B9AD /* ZZTimer.m */; };
+		E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E767600722AFC4DE0044B9AD /* TestTimerVC.m */; };
+		E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E767600822AFC4DE0044B9AD /* TestTimerVC.xib */; };
+		E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = E767600C22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
@@ -68,6 +76,21 @@
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
+		E7675FF722AF45070044B9AD /* ZZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZMacro.h; sourceTree = "<group>"; };
+		E7675FF822AF45DB0044B9AD /* ZZDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDevice.h; sourceTree = "<group>"; };
+		E7675FF922AF45DB0044B9AD /* ZZDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDevice.m; sourceTree = "<group>"; };
+		E7675FFB22AF9DD10044B9AD /* NSAttributedString+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+ZZKit.h"; sourceTree = "<group>"; };
+		E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+ZZKit.m"; sourceTree = "<group>"; };
+		E7675FFE22AF9F460044B9AD /* NSBundle+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ZZKit.h"; sourceTree = "<group>"; };
+		E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ZZKit.m"; sourceTree = "<group>"; };
+		E767600122AFB2060044B9AD /* test.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = test.bundle; sourceTree = "<group>"; };
+		E767600322AFBF220044B9AD /* ZZTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTimer.h; sourceTree = "<group>"; };
+		E767600422AFBF220044B9AD /* ZZTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTimer.m; sourceTree = "<group>"; };
+		E767600622AFC4DE0044B9AD /* TestTimerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTimerVC.h; sourceTree = "<group>"; };
+		E767600722AFC4DE0044B9AD /* TestTimerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTimerVC.m; sourceTree = "<group>"; };
+		E767600822AFC4DE0044B9AD /* TestTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTimerVC.xib; sourceTree = "<group>"; };
+		E767600B22AFCBE10044B9AD /* NSObject+ZZKit_Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZZKit_Timer.h"; sourceTree = "<group>"; };
+		E767600C22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZZKit_Timer.m"; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
@@ -173,6 +196,14 @@
 			path = ZZDispatchQueue;
 			sourceTree = "<group>";
 		};
+		E7675FF622AF44F00044B9AD /* ZZMacro */ = {
+			isa = PBXGroup;
+			children = (
+				E7675FF722AF45070044B9AD /* ZZMacro.h */,
+			);
+			path = ZZMacro;
+			sourceTree = "<group>";
+		};
 		E7DC5C0A229CCC8600ED8733 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +245,7 @@
 		E7DC5C2E229CD6A500ED8733 /* ZZKit */ = {
 			isa = PBXGroup;
 			children = (
+				E7675FF622AF44F00044B9AD /* ZZMacro */,
 				E70C72E822A3697F00341A2B /* ZZDispatchQueue */,
 				E7DC5C35229CD75600ED8733 /* ZZStorage */,
 				E7DC5C34229CD71A00ED8733 /* ZZDevice */,
@@ -228,6 +260,8 @@
 		E7DC5C32229CD6E300ED8733 /* ZZCategory */ = {
 			isa = PBXGroup;
 			children = (
+				E767600322AFBF220044B9AD /* ZZTimer.h */,
+				E767600422AFBF220044B9AD /* ZZTimer.m */,
 				E7E0179E22AE277D00C24EF2 /* ZZLock.h */,
 				E7E0179F22AE277D00C24EF2 /* ZZLock.m */,
 				E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */,
@@ -238,6 +272,8 @@
 				E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */,
 				E7DC5C4F229D151D00ED8733 /* NSString+ZZKit.h */,
 				E7DC5C50229D151D00ED8733 /* NSString+ZZKit.m */,
+				E7675FFB22AF9DD10044B9AD /* NSAttributedString+ZZKit.h */,
+				E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */,
 				E7DC5C52229D197600ED8733 /* NSData+ZZKit.h */,
 				E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */,
 				E7DC5C55229D1A9400ED8733 /* NSDate+ZZKit.h */,
@@ -254,6 +290,10 @@
 				E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */,
 				E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */,
 				E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */,
+				E767600B22AFCBE10044B9AD /* NSObject+ZZKit_Timer.h */,
+				E767600C22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m */,
+				E7675FFE22AF9F460044B9AD /* NSBundle+ZZKit.h */,
+				E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -268,6 +308,8 @@
 		E7DC5C34229CD71A00ED8733 /* ZZDevice */ = {
 			isa = PBXGroup;
 			children = (
+				E7675FF822AF45DB0044B9AD /* ZZDevice.h */,
+				E7675FF922AF45DB0044B9AD /* ZZDevice.m */,
 			);
 			path = ZZDevice;
 			sourceTree = "<group>";
@@ -286,6 +328,7 @@
 		E7DC5C3C229CDE6600ED8733 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				E767600122AFB2060044B9AD /* test.bundle */,
 				E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */,
 				E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */,
 				E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */,
@@ -316,6 +359,9 @@
 				E7E017A122AE6F2F00C24EF2 /* TestKeyboardAccessoryView.h */,
 				E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */,
 				E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */,
+				E767600622AFC4DE0044B9AD /* TestTimerVC.h */,
+				E767600722AFC4DE0044B9AD /* TestTimerVC.m */,
+				E767600822AFC4DE0044B9AD /* TestTimerVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -396,9 +442,11 @@
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
+				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
+				E767600222AFB2060044B9AD /* test.bundle in Resources */,
 				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,26 +502,32 @@
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
+				E767600522AFBF220044B9AD /* ZZTimer.m in Sources */,
 				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
+				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
+				E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */,
 				E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */,
 				E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */,
 				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
+				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
+				E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
+				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,

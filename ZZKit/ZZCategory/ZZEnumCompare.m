@@ -27,7 +27,7 @@
 /**
  *  type类型是否在status中存在
  */
-- (BOOL)zz_isType:(NSInteger)type {
+- (BOOL)zz_hasType:(NSInteger)type {
     
     return (_status & type) == type;
 }

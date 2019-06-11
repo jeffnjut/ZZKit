@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  type类型是否在status中存在
  */
-- (BOOL)zz_isType:(NSInteger)type;
+- (BOOL)zz_hasType:(NSInteger)type;
 
 /**
  *  status是否是包含type类型

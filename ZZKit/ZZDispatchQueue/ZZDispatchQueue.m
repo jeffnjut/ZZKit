@@ -62,7 +62,7 @@ static ZZDispatchQueue *SINGLETON;
 /**
  *  延迟GCD
  */
-- (dispatch_block_t)dispatchAfter:(NSTimeInterval)seconds queue:(nullable dispatch_queue_t)queue onMainThread:(BOOL)onMainThread async:(BOOL)async barrier:(BOOL)barrier key:(nullable id)key block:(void(^)(void))block {
+- (dispatch_block_t)zz_dispatchAfter:(NSTimeInterval)seconds queue:(nullable dispatch_queue_t)queue onMainThread:(BOOL)onMainThread async:(BOOL)async barrier:(BOOL)barrier key:(nullable id)key block:(void(^)(void))block {
     
     dispatch_block_t _block = dispatch_block_create( barrier ? DISPATCH_BLOCK_BARRIER : DISPATCH_BLOCK_DETACHED, block);
     dispatch_queue_t _queue = NULL;
@@ -98,20 +98,20 @@ static ZZDispatchQueue *SINGLETON;
 /**
  *  取消GCD（Key）
  */
-- (void)dispatchCancelKey:(id)key {
+- (void)zz_dispatchCancelKey:(id)key {
     
     dispatch_block_t block = NULL;
     pthread_mutex_lock(&_lock);
     block = CFDictionaryGetValue(_dict, (__bridge void const *)key);
     CFDictionaryRemoveValue(_dict, (__bridge void const *)key);
     pthread_mutex_unlock(&_lock);
-    [self dispatchCancelBlock:block];
+    [self zz_dispatchCancelBlock:block];
 }
 
 /**
  *  取消GCD（Block）
  */
-- (void)dispatchCancelBlock:(dispatch_block_t)block {
+- (void)zz_dispatchCancelBlock:(dispatch_block_t)block {
     
     if (block != nil) {
         dispatch_block_cancel(block);

@@ -11,6 +11,7 @@
 #import "TestKeyboardAccessoryView.h"
 #import "UIControl+ZZKit_Keyboard.h"
 #import "ZZEnumCompare.h"
+#import "ZZMacro.h"
 
 @interface TestNotificationVC ()
 
@@ -96,19 +97,19 @@
     [enumCompare zz_addType:0x0100];
     [enumCompare zz_addType:0x0002];
     
-    NSLog(@"%d", [enumCompare zz_isType:0x0005]);
-    NSLog(@"%d", [enumCompare zz_isType:0x0001 | 0x0002]);
-    NSLog(@"%d", [enumCompare zz_isType:0x0004]);
-    NSLog(@"%d", [enumCompare zz_isType:0x0002]);
-    NSLog(@"%d", [enumCompare zz_isType:0x0101]);
-    NSLog(@"%d", [enumCompare zz_isType:0x0001]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0005]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0001 | 0x0002]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0004]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0002]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0101]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0001]);
     
     [enumCompare zz_removeType:0x0002];
-    NSLog(@"%d", [enumCompare zz_isType:0x0001 | 0x0002]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0001 | 0x0002]);
     
-    NSLog(@"%d", [enumCompare zz_isType:0x0001]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0001]);
     
-    NSLog(@"%d", [enumCompare zz_isType:0x0002]);
+    NSLog(@"%d", [enumCompare zz_hasType:0x0002]);
     
     [enumCompare zz_setType:0];
 }

@@ -23,17 +23,17 @@ NS_ASSUME_NONNULL_BEGIN
  *  asymc = YES,queue = 自定义串行队列或主线程，开启一个线程或主线程中，逐个完成任务
  *  barrier,在并发队列中异步执行有格栅效果，其它情况无效
  */
-- (dispatch_block_t)dispatchAfter:(NSTimeInterval)seconds queue:(nullable dispatch_queue_t)queue onMainThread:(BOOL)onMainThread async:(BOOL)async barrier:(BOOL)barrier key:(nullable id)key block:(void(^)(void))block;
+- (dispatch_block_t)zz_dispatchAfter:(NSTimeInterval)seconds queue:(nullable dispatch_queue_t)queue onMainThread:(BOOL)onMainThread async:(BOOL)async barrier:(BOOL)barrier key:(nullable id)key block:(void(^)(void))block;
 
 /**
  *  取消GCD（Key）
  */
-- (void)dispatchCancelKey:(id)key;
+- (void)zz_dispatchCancelKey:(id)key;
 
 /**
  *  取消GCD（Block）
  */
-- (void)dispatchCancelBlock:(dispatch_block_t)block;
+- (void)zz_dispatchCancelBlock:(dispatch_block_t)block;
 
 @end
 

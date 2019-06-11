@@ -10,6 +10,7 @@
 #import "UIControl+ZZKit_Blocks.h"
 #import "UIImage+ZZKit.h"
 #import "UIView+ZZKit_Blocks.h"
+#import "NSString+ZZKit.h"
 
 @interface TestUIimageVC ()
 
@@ -131,6 +132,12 @@
     image = [image zz_boxBlur:0.6];
     
     [image zz_debugShow:CGRectMake(10, 450, 300, 300)];
+}
+
+- (IBAction)_tapCategory:(id)sender {
+    
+    // [@"test".zz_image zz_debugShow:CGRectMake(10, 100, 300, 300)];
+    [@"test.test".zz_image zz_debugShow:CGRectMake(10, 100, 300, 300)];
 }
 
 /*

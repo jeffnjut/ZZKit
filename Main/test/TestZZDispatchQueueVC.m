@@ -63,31 +63,31 @@
     
     dispatch_queue_t queue = dispatch_queue_create("test2", DISPATCH_QUEUE_CONCURRENT);
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
         NSLog(@"1");
         sleep(arc4random() % 3);
         NSLog(@"1 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
         NSLog(@"2");
         sleep(arc4random() % 3);
         NSLog(@"2 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:YES key:@"barrier" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:YES key:@"barrier" block:^{
         NSLog(@"barrier");
         sleep(3);
         NSLog(@"barrier end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
         NSLog(@"3");
         sleep(arc4random() % 3);
         NSLog(@"3 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:NO async:YES barrier:NO key:@"1" block:^{
         NSLog(@"4");
         sleep(arc4random() % 3);
         NSLog(@"4 end");
@@ -106,7 +106,7 @@
     BOOL barrier = NO;
     BOOL async = YES;
     BOOL onMainThread = NO;
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"1" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"1" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"111---%@\n\n",[NSThread currentThread]);
             sleep(1);
@@ -114,7 +114,7 @@
         NSLog(@"111 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"2" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"2" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"222---%@\n\n",[NSThread currentThread]);
             sleep(1);
@@ -122,7 +122,7 @@
         NSLog(@"222 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"3" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"3" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"333---%@\n\n",[NSThread currentThread]);
             sleep(1);
@@ -130,7 +130,7 @@
         NSLog(@"333 end");
     }];
 
-    [ZZKit.Queue dispatchAfter:0.5 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"4" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0.5 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"4" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"444---%@\n\n",[NSThread currentThread]);
             sleep(1);
@@ -138,7 +138,7 @@
         NSLog(@"444 end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:YES key:@"barrier" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:YES key:@"barrier" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"barrier---%@\n\n",[NSThread currentThread]);
             sleep(2);
@@ -146,7 +146,7 @@
         NSLog(@"barrier end");
     }];
     
-    [ZZKit.Queue dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"5" block:^{
+    [ZZKit.Queue zz_dispatchAfter:0 queue:queue onMainThread:onMainThread async:async barrier:barrier key:@"5" block:^{
         for (int i = 0 ; i < 2; i++) {
             NSLog(@"555---%@\n\n",[NSThread currentThread]);
             sleep(1);
@@ -156,9 +156,9 @@
     
     NSLog(@"testZZDispatchQueue --- end ---");
     
-    [ZZKit.Queue dispatchAfter:0 queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0) onMainThread:NO async:YES barrier:NO key:nil block:^{
-        [ZZKit.Queue dispatchCancelKey:@"4"];
-        [ZZKit.Queue dispatchCancelKey:@"5"];
+    [ZZKit.Queue zz_dispatchAfter:0 queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0) onMainThread:NO async:YES barrier:NO key:nil block:^{
+        [ZZKit.Queue zz_dispatchCancelKey:@"4"];
+        [ZZKit.Queue zz_dispatchCancelKey:@"5"];
     }];
 
 }
