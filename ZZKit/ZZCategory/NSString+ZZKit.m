@@ -62,14 +62,9 @@
 
 /**
  *  根据String获取Image
- *  eg,
- *
- *  1) @"XXX".fj_image == [UIImage imageNamed:XXX];
- *
- *  2) @"BUNDLE.XXX".fj_image == [NSBundle fj_image:XXX extension:nil bunldeName:BUNDLE class:[_FJImageInternalObject class]] memCache:NO]
- *
- *  3) @"CLASS.BUNDLE.XXX".fj_image == [NSBundle fj_image:XXX extension:nil bunldeName:BUNDLE class:NSClassFromString(CLASS) memCache:NO]
- *
+ *  “AA”.zz_image,当前app包的图片AA
+ *  "BB.AA".zz_image,BB为类时，返回BB所在app包的图片AAl；当BB非类时，返回当前app包的BB的Bundle中图片AA
+ *  "CC.BB.AA".zz_image, CC必须为类，BB必须为Bundle名称，AA为图片名称
  */
 - (UIImage *)zz_image {
     

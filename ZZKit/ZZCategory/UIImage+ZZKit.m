@@ -321,41 +321,41 @@
 /**
  *  判断图片类型
  */
-+ (FJImageType)zz_imageType:(nonnull NSData *)imageData {
++ (ZZImageType)zz_imageType:(nonnull NSData *)imageData {
     
     if (imageData == nil || ![imageData isKindOfClass:[NSData class]]) {
-        return FJImageTypeUnknown;
+        return ZZImageTypeUnknown;
     }
     
     uint8_t c;
     [imageData getBytes:&c length:1];
     switch (c) {
         case 0xFF:
-            return FJImageTypeJPEG;
+            return ZZImageTypeJPEG;
         case 0x89:
-            return FJImageTypePNG;
+            return ZZImageTypePNG;
         case 0x47:
-            return FJImageTypeGIF;
+            return ZZImageTypeGIF;
         case 0x49:
         case 0x4D:
-            return FJImageTypeTIFF;
+            return ZZImageTypeTIFF;
         case 0x52:
             if ([imageData length] < 12) {
-                return FJImageTypeUnknown;
+                return ZZImageTypeUnknown;
             }
             NSString *testString = [[NSString alloc] initWithData:[imageData subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];
             if ([testString hasPrefix:@"RIFF"] && [testString hasSuffix:@"WEBP"]) {
-                return FJImageTypeWEBP;
+                return ZZImageTypeWEBP;
             }
-            return FJImageTypeUnknown;
+            return ZZImageTypeUnknown;
     }
-    return FJImageTypeUnknown;
+    return ZZImageTypeUnknown;
 }
 
 /**
  *  判断图片类型
  */
-- (FJImageType)zz_imageType {
+- (ZZImageType)zz_imageType {
     
     // JPEG
     NSData *imageData = UIImageJPEGRepresentation(self, 1.0);

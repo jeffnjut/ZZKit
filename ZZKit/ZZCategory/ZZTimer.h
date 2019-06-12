@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, ZZTimerStatus) {
+    ZZTimerStatusRaw,      // 未初始化
+    ZZTimerStatusReady,    // 初始化完成
+    ZZTimerStatusPaused,   // 暂停
+    ZZTimerStatusStarting, // 进行中
+    ZZTimerStatusStopped   // 停止
+};
+
 typedef void(^ZZTimerBlock) (id _Nonnull owner, NSUInteger days, NSUInteger hours, NSUInteger minutes, NSUInteger seconds, NSUInteger totalSeconds);
 
 NS_ASSUME_NONNULL_BEGIN
@@ -25,6 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (float)interval;
 
 /**
+ *  倒计时状态
+ */
+- (ZZTimerStatus)status;
+
+/**
  *  初始化
  *  owner：掌管timer的对象
  *  countdown：倒计时时长
@@ -37,11 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  设置回调
  */
 - (void)zz_setTimerCallback:(nullable ZZTimerBlock)callback;
-
-/**
- *  是否在进行倒计时
- */
-- (BOOL)zz_isCountingDown;
 
 /**
  *  开始倒计时

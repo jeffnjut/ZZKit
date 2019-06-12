@@ -11,29 +11,28 @@
 
 @implementation NSObject (ZZKit_Timer)
 
-
 /**
- *  是否在进行倒计时
+ *  倒计时状态
  */
-- (BOOL)zz_isCountingDown {
+- (ZZTimerStatus)zz_countdownStatus {
     
-    return YES;
+    return [self._zzTimer status];
 }
 
 /**
  *  开始倒计时
  */
-- (void)zz_start {
+- (void)zz_startCountdown {
     
-    [self zz_start:self._zzTimer.countdown interval:self._zzTimer.interval restart:NO];
+    [self._zzTimer zz_start];
 }
 
 /**
  *  重启倒计时
  */
-- (void)zz_reStart {
+- (void)zz_reStartCountdown {
     
-    [self zz_start:self._zzTimer.countdown interval:self._zzTimer.interval restart:YES];
+    [self._zzTimer zz_reStart];
 }
 
 /**
@@ -42,14 +41,14 @@
  *  interval：间隔时长
  *  callback：回调
  */
-- (void)zz_start:(NSUInteger)countdown interval:(NSUInteger)interval callback:(nullable ZZTimerBlock)callback {
+- (void)zz_startCountdown:(NSUInteger)countdown interval:(NSUInteger)interval callback:(nullable ZZTimerBlock)callback {
     
     ZZTimer *_timer = objc_getAssociatedObject(self, "_ZZTimer");
     if (!_timer) {
         _timer = [[ZZTimer alloc] initWithOwner:self countdown:countdown interval:interval callback:callback];
         objc_setAssociatedObject(self, "_ZZTimer", _timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    [self zz_start];
+    [self zz_startCountdown];
 }
 
 /**
@@ -58,7 +57,7 @@
  *  interval：间隔时长
  *  restart：是否重新开始，或继续接着之前的暂时时点开始
  */
-- (void)zz_start:(NSUInteger)countdown interval:(float)interval restart:(BOOL)restart {
+- (void)zz_startCountdown:(NSUInteger)countdown interval:(float)interval restart:(BOOL)restart {
     
     [self._zzTimer zz_start:countdown interval:interval restart:restart];
 }
@@ -66,7 +65,7 @@
 /**
  *  停止倒计时
  */
-- (void)zz_stop {
+- (void)zz_stopCountdown {
     
     [self._zzTimer zz_stop];
 }
@@ -74,7 +73,7 @@
 /**
  *  暂停倒计时
  */
-- (void)zz_suspend {
+- (void)zz_suspendCountdown {
     
     [self._zzTimer zz_suspend];
 }
@@ -82,7 +81,7 @@
 /**
  *  继续倒计时
  */
-- (void)zz_resume {
+- (void)zz_resumeCountdown {
     
     [self._zzTimer zz_resume];
 }
@@ -90,7 +89,7 @@
 /**
  *  移除倒计时
  */
-- (void)zz_remove {
+- (void)zz_removeCountdown {
     
     [self._zzTimer zz_stop];
     objc_setAssociatedObject(self, "_ZZTimer", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

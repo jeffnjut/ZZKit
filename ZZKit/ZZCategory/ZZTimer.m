@@ -20,6 +20,7 @@
     NSUInteger _curTimeout;
     dispatch_source_t _timer;
     ZZTimerBlock _block;
+    ZZTimerStatus _status;
 }
 
 @property (nonatomic, weak) id owner;
@@ -52,6 +53,23 @@
 }
 
 /**
+ *  倒计时状态
+ */
+- (ZZTimerStatus)status {
+    
+    return _status;
+}
+
+- (instancetype)init {
+    
+    self = [super init];
+    if (self) {
+        _status = ZZTimerStatusRaw;
+    }
+    return self;
+}
+
+/**
  *  初始化
  *  owner：掌管timer的对象
  *  countdown：倒计时时长
@@ -66,6 +84,7 @@
         _countdown = countdown;
         _interval = interval;
         _block = callback;
+        _status = ZZTimerStatusReady;
     }
     return self;
 }
@@ -79,19 +98,13 @@
 }
 
 /**
- *  是否在进行倒计时
- */
-- (BOOL)zz_isCountingDown {
-    
-    return _timer != nil;
-}
-
-/**
  *  开始倒计时
  */
 - (void)zz_start {
     
-    [self zz_start:_countdown interval:_interval restart:NO];
+    if (_status == ZZTimerStatusReady) {
+        [self zz_start:_countdown interval:_interval restart:NO];
+    }
 }
 
 /**
@@ -119,6 +132,7 @@
     if (_timer == nil) {
         __block NSUInteger time = countdown;
         if (time != 0 && interval != 0) {
+            _status = ZZTimerStatusStarting;
             __weak typeof(self) weakSelf = self;
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
@@ -149,7 +163,11 @@
                 }
             });
             dispatch_resume(_timer);
+        }else {
+            _status = ZZTimerStatusStopped;
         }
+    }else {
+        _status = ZZTimerStatusStarting;
     }
 }
 
@@ -164,6 +182,7 @@
     }
     self->_countdown = 0;
     self->_interval = 0;
+    _status = ZZTimerStatusStopped;
     [self _setCurrentDays:0 hours:0 minutes:0 seconds:0];
     _block == nil ? : _block(_owner,0,0,0,0,0);
 }
@@ -174,6 +193,7 @@
 - (void)zz_suspend {
     
     [self zz_start:0 interval:0 restart:YES];
+    _status = ZZTimerStatusPaused;
     _block == nil ? : _block(_owner, _curDays, _curHours, _curMinutes, _curSeconds, _curDays * 24 * 60 * 60 + _curHours * 60 * 60 + _curMinutes * 60 + _curSeconds );
 }
 

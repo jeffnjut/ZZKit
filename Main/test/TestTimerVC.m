@@ -36,37 +36,84 @@
         }];
     }];
     
-    [self zz_start:62 interval:2.0 callback:^(id  _Nonnull owner, NSUInteger days, NSUInteger hours, NSUInteger minutes, NSUInteger seconds, NSUInteger totalSeconds) {
+    [self zz_startCountdown:62 interval:2.0 callback:^(id  _Nonnull owner, NSUInteger days, NSUInteger hours, NSUInteger minutes, NSUInteger seconds, NSUInteger totalSeconds) {
         [ZZKit.Queue zz_dispatchAfter:0 queue:nil onMainThread:YES async:YES barrier:NO key:nil block:^{
             TestTimerVC *vc = owner;
             vc.label.text = [NSString stringWithFormat:@"%ld天  %ld小时  %ld分钟  %ld秒  %ld总秒数",days, hours, minutes, seconds, totalSeconds];
         }];
     }];
+    [self printStatus:self.zz_countdownStatus];
 }
 
 - (IBAction)_tapStart:(id)sender {
     
-    [self.timer zz_start];
+    // [self.timer zz_start];
+    [self zz_startCountdown];
+    [self printStatus:self.zz_countdownStatus];
 }
 
 - (IBAction)_tapRestart:(id)sender {
     
-    [self.timer zz_reStart];
+    // [self.timer zz_reStart];
+    [self zz_reStartCountdown];
+    [self printStatus:self.zz_countdownStatus];
 }
 
 - (IBAction)_tapSuspend:(id)sender {
     
-    [self.timer zz_suspend];
+    // [self.timer zz_suspend];
+    [self zz_suspendCountdown];
+    [self printStatus:self.zz_countdownStatus];
 }
 
 - (IBAction)_tapResume:(id)sender {
     
-    [self.timer zz_resume];
+    // [self.timer zz_resume];
+    [self zz_resumeCountdown];
+    [self printStatus:self.zz_countdownStatus];
 }
 
 - (IBAction)_tapStop:(id)sender {
     
-    [self.timer zz_stop];
+    // [self.timer zz_stop];
+    [self zz_stopCountdown];
+    [self printStatus:self.zz_countdownStatus];
+    [self zz_removeCountdown];
+    [self printStatus:self.zz_countdownStatus];
+}
+
+- (void)printStatus:(ZZTimerStatus)status {
+    
+    switch (status) {
+        case ZZTimerStatusPaused:
+        {
+            NSLog(@"ZZTimerStatusPaused");
+        }
+            break;
+        case ZZTimerStatusStarting:
+        {
+            NSLog(@"ZZTimerStatusStarting");
+        }
+            break;
+        case ZZTimerStatusStopped:
+        {
+            NSLog(@"ZZTimerStatusStopped");
+        }
+            break;
+        case ZZTimerStatusRaw:
+        {
+            NSLog(@"ZZTimerStatusRaw");
+        }
+            break;
+        case ZZTimerStatusReady:
+        {
+            NSLog(@"ZZTimerStatusReady");
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /*

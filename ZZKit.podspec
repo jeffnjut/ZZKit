@@ -11,9 +11,13 @@ Pod::Spec.new do |s|
     
     s.subspec 'ZZKit' do |ss|
         ss.source_files = 'ZZKit/**/*.{h,m,mm,c}'
-        ss.resources    = 'FJKit-OC/ZZKit/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
+        ss.resources    = 'ZZKit/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
         ss.frameworks   = 'Foundation'
         ss.frameworks   = 'UIKit'
+        ss.dependency     'SDWebImage'
+        ss.dependency     'Masonry'
+        ss.dependency     'ReactiveObjC'
+        ss.dependency     'Typeset'
     end
     
 end

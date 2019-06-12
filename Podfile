@@ -4,8 +4,9 @@ target "ZZKit" do
 
   pod 'Typeset'
   pod 'ReactiveObjC'
+  pod 'Masonry'
+  pod 'SDWebImage'
   # pod 'AFNetworking'
-  # pod 'Masonry'
   # pod 'BlocksKit'
   # pod 'MJRefresh'
 

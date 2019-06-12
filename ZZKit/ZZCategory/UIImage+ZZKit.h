@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, FJImageType) {
-    FJImageTypeJPEG,    // JPEG
-    FJImageTypePNG,     // PNG
-    FJImageTypeGIF,     // GIF
-    FJImageTypeTIFF,    // TIFF
-    FJImageTypeWEBP,    // WEBP
-    FJImageTypeUnknown  // UNKNOWN
+typedef NS_ENUM(NSInteger, ZZImageType) {
+    ZZImageTypeJPEG,    // JPEG
+    ZZImageTypePNG,     // PNG
+    ZZImageTypeGIF,     // GIF
+    ZZImageTypeTIFF,    // TIFF
+    ZZImageTypeWEBP,    // WEBP
+    ZZImageTypeUnknown  // UNKNOWN
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -118,12 +118,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  判断图片类型
  */
-+ (FJImageType)zz_imageType:(nonnull NSData *)imageData;
++ (ZZImageType)zz_imageType:(nonnull NSData *)imageData;
 
 /**
  *  判断图片类型
  */
-- (FJImageType)zz_imageType;
+- (ZZImageType)zz_imageType;
 
 #pragma mark - 转码
 
