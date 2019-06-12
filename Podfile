@@ -6,6 +6,7 @@ target "ZZKit" do
   pod 'ReactiveObjC'
   pod 'Masonry'
   pod 'SDWebImage'
+  pod 'OpenUDID'
   # pod 'AFNetworking'
   # pod 'BlocksKit'
   # pod 'MJRefresh'

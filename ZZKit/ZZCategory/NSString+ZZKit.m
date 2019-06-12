@@ -10,6 +10,8 @@
 #import "UIColor+ZZKit.h"
 #import "NSBundle+ZZKit.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import <AdSupport/AdSupport.h>
+#import <OpenUDID/OpenUDID.h>
 
 @interface _ZZImageTemporaryObject : NSObject
 
@@ -637,7 +639,6 @@
  *  NSString转NSURL
  */
 - (NSURL *)zz_URL {
-    
     return [NSURL URLWithString:self];
 }
 
@@ -645,16 +646,15 @@
  *  NSString转NSURLRequest
  */
 - (NSURLRequest *)zz_URLRequest {
-    
     return [NSURLRequest requestWithURL:[self zz_URL]];
 }
 
 #pragma mark - JSON字符串处理
+
 /**
  *  JSON字符串转NSDictionary或NSArray
  */
 - (id)zz_jsonToCocoaObject {
-    
     NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
     id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
                                                     options:NSJSONReadingAllowFragments
@@ -663,11 +663,11 @@
 }
 
 #pragma mark - 哈希
+
 /**
  *  字符串的MD5值
  */
 - (NSString *)zz_md5 {
-    
     const char *cStr = self.UTF8String;
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
@@ -676,6 +676,80 @@
         [md5Str appendFormat:@"%02x", result[i]];
     }
     return md5Str;
+}
+
+#pragma mark - UUID
+
+/**
+ *  UUID - IDFA
+ */
++ (NSString *)zz_uuidIDFA {
+    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+}
+
+/**
+ *  UUID - IDFA Trimming Line
+ */
++ (NSString *)zz_uuidIDFATrimmingLine {
+    return [[self zz_uuidIDFA] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+}
+
+/**
+ *  UUID - IDFV
+ */
++ (NSString *)zz_uuidIDFV {
+    UIDevice *myDevice = [UIDevice currentDevice];
+    NSString *deviceUDID = [[myDevice identifierForVendor] UUIDString];
+    return deviceUDID;
+}
+
+/**
+ *  UUID - IDFV Trimming Line
+ */
++ (NSString *)zz_uuidIDFVTrimmingLine {
+    return [[self zz_uuidIDFV] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+}
+
+/**
+ *  UUID - 随机UUID
+ */
++ (NSString *)zz_uuidRandom {
+    CFUUIDRef puuid = CFUUIDCreate( nil );
+    CFStringRef uuidString = CFUUIDCreateString( nil, puuid );
+    NSString *result = (NSString *)CFBridgingRelease(CFStringCreateCopy( NULL, uuidString));
+    CFRelease(puuid);
+    CFRelease(uuidString);
+    return result;
+}
+
+/**
+ *  UUID - 随机UUID Trimming Line
+ */
++ (NSString *)zz_uuidRandomTrimmingLine {
+    return [[self zz_uuidRandom] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+}
+
+/**
+ *  UUID - 随机UUID + 时间戳TimeStamp
+ */
++ (NSString *)zz_uuidRandomTimestamp {
+    NSDate *dateNow = [NSDate date];
+    long long now = (long long)[dateNow timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%@_%lld", [self zz_uuidRandom], now];
+}
+
+/**
+ *  UUID - 随机UUID + 时间戳TimeStamp Trimming Line
+ */
++ (NSString *)zz_uuidRandomTimestampTrimmingLine {
+    return [[self zz_uuidRandomTimestamp] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+}
+
+/**
+ *  UUID - OpenUDID(iOS6后已废弃使用)
+ */
++ (NSString *)zz_uuidOpenUDID {
+    return [OpenUDID value];
 }
 
 @end

@@ -153,32 +153,32 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  弹出OK AlertView
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message;
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message;
 
 /**
  *  弹出AlertView(Title,Message,Cancel,可变参数)
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  弹出AlertView(Title,Message,Cancel,Cancel颜色,可变参数)
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  弹出ActionSheet(Title,Message,Cancel,可变参数)
  */
--(void)zz_alertSheet:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
+-(void)zz_alertSheet:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  弹出ActionSheet(Title,Message,Cancel,Cancel颜色,可变参数)
  */
--(void)zz_alertSheet:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
+-(void)zz_alertSheet:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  弹窗,AlertView + ActionSheet
  */
-- (void)zz_alert:(NSString *)title message:(NSString *)message items:(NSMutableArray *)items cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor alertStyle:(UIAlertControllerStyle)alertStyle;
+- (void)zz_alert:(nullable NSString *)title message:(nullable NSString *)message items:(nonnull NSMutableArray *)items cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor alertStyle:(UIAlertControllerStyle)alertStyle;
 
 @end
 

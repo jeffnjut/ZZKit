@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
         ss.dependency     'Masonry'
         ss.dependency     'ReactiveObjC'
         ss.dependency     'Typeset'
+        ss.dependency     'OpenUDID'
     end
     
 end

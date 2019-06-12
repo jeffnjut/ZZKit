@@ -219,16 +219,65 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLRequest *)zz_URLRequest;
 
 #pragma mark - JSON字符串处理
+
 /**
  *  JSON字符串转NSDictionary或NSArray
  */
 - (id)zz_jsonToCocoaObject;
 
 #pragma mark - 哈希
+
 /**
  *  字符串的MD5值
  */
 - (NSString *)zz_md5;
+
+#pragma mark - UUID
+
+/**
+ *  UUID - IDFA
+ */
++ (NSString *)zz_uuidIDFA;
+
+/**
+ *  UUID - IDFA Trimming Line
+ */
++ (NSString *)zz_uuidIDFATrimmingLine;
+
+/**
+ *  UUID - IDFV
+ */
++ (NSString *)zz_uuidIDFV;
+
+/**
+ *  UUID - IDFV Trimming Line
+ */
++ (NSString *)zz_uuidIDFVTrimmingLine;
+
+/**
+ *  UUID - 随机UUID
+ */
++ (NSString *)zz_uuidRandom;
+
+/**
+ *  UUID - 随机UUID Trimming Line
+ */
++ (NSString *)zz_uuidRandomTrimmingLine;
+
+/**
+ *  UUID - 随机UUID + 时间戳TimeStamp
+ */
++ (NSString *)zz_uuidRandomTimestamp;
+
+/**
+ *  UUID - 随机UUID + 时间戳TimeStamp Trimming Line
+ */
++ (NSString *)zz_uuidRandomTimestampTrimmingLine;
+
+/**
+ *  UUID - OpenUDID(iOS6后已废弃使用)
+ */
++ (NSString *)zz_uuidOpenUDID;
 
 @end
 

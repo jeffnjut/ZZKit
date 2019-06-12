@@ -13,6 +13,12 @@
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
+		E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */; };
+		E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */; };
+		E72DFBBD22B15F200099A8C4 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFBBC22B15F200099A8C4 /* SafariServices.framework */; };
+		E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBF22B15F420099A8C4 /* ZZSafariController.m */; };
+		E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC222B1601A0099A8C4 /* ZZWebView.m */; };
+		E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
 		E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FF922AF45DB0044B9AD /* ZZDevice.m */; };
 		E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */; };
@@ -84,6 +90,17 @@
 		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
 		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
+		E72DFBB622B155BF0099A8C4 /* CALayer+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+ZZKit.h"; sourceTree = "<group>"; };
+		E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ZZKit.m"; sourceTree = "<group>"; };
+		E72DFBB922B156800099A8C4 /* UITabBarController+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ZZKit.h"; sourceTree = "<group>"; };
+		E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ZZKit.m"; sourceTree = "<group>"; };
+		E72DFBBC22B15F200099A8C4 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		E72DFBBE22B15F420099A8C4 /* ZZSafariController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZSafariController.h; sourceTree = "<group>"; };
+		E72DFBBF22B15F420099A8C4 /* ZZSafariController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZSafariController.m; sourceTree = "<group>"; };
+		E72DFBC122B1601A0099A8C4 /* ZZWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWebView.h; sourceTree = "<group>"; };
+		E72DFBC222B1601A0099A8C4 /* ZZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebView.m; sourceTree = "<group>"; };
+		E72DFBC422B1603E0099A8C4 /* ZZWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
+		E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
 		E7675FF722AF45070044B9AD /* ZZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZMacro.h; sourceTree = "<group>"; };
@@ -192,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72DFBBD22B15F200099A8C4 /* SafariServices.framework in Frameworks */,
 				9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +229,7 @@
 		C9C8E0306189878D899EC1FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E72DFBBC22B15F200099A8C4 /* SafariServices.framework */,
 				7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */,
 			);
 			name = Frameworks;
@@ -240,6 +259,12 @@
 				E767601B22B0DC470044B9AD /* ZZTabBarController.m */,
 				E767601D22B0DC5B0044B9AD /* ZZNavigationController.h */,
 				E767601E22B0DC5B0044B9AD /* ZZNavigationController.m */,
+				E72DFBBE22B15F420099A8C4 /* ZZSafariController.h */,
+				E72DFBBF22B15F420099A8C4 /* ZZSafariController.m */,
+				E72DFBC422B1603E0099A8C4 /* ZZWebViewController.h */,
+				E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */,
+				E72DFBC122B1601A0099A8C4 /* ZZWebView.h */,
+				E72DFBC222B1601A0099A8C4 /* ZZWebView.m */,
 			);
 			path = ZZController;
 			sourceTree = "<group>";
@@ -329,6 +354,8 @@
 				E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */,
 				E756192B22A52558000C0ABA /* UIImage+ZZKit.h */,
 				E756192C22A52558000C0ABA /* UIImage+ZZKit.m */,
+				E72DFBB622B155BF0099A8C4 /* CALayer+ZZKit.h */,
+				E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */,
 				E767601122B09A6E0044B9AD /* UIView+ZZKit.h */,
 				E767601222B09A6E0044B9AD /* UIView+ZZKit.m */,
 				E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */,
@@ -341,12 +368,14 @@
 				E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */,
 				E767600E22B099D20044B9AD /* UITabBar+ZZKit.h */,
 				E767600F22B099D20044B9AD /* UITabBar+ZZKit.m */,
-				E767602322B0E3F30044B9AD /* UIViewController+ZZKit.h */,
-				E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */,
 				E767602622B0F8600044B9AD /* UIButton+ZZKit.h */,
 				E767602722B0F8600044B9AD /* UIButton+ZZKit.m */,
 				E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */,
 				E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */,
+				E767602322B0E3F30044B9AD /* UIViewController+ZZKit.h */,
+				E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */,
+				E72DFBB922B156800099A8C4 /* UITabBarController+ZZKit.h */,
+				E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -535,8 +564,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Typeset/Typeset.framework",
@@ -544,13 +574,14 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenUDID.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Typeset.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -573,9 +604,12 @@
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
+				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
+				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
+				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
@@ -586,6 +620,7 @@
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
+				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
@@ -604,6 +639,7 @@
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */,
+				E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */,
 				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

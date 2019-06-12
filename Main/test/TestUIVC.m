@@ -83,7 +83,7 @@
     
     [vc2.view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            ZZ_STRONG_SELF
+            // ZZ_STRONG_SELF
             // [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
             vc2.tabBarItem.badgeValue = @"1";
             [tabVC.tabBar zz_setBadge:0 value:21 badgeSize:CGSizeMake(20, 20) badgeBackgroundColor:[UIColor whiteColor] textColor:[UIColor redColor] textFont:[UIFont systemFontOfSize:14.0] offset:UIOffsetMake(0, 0)];

@@ -471,7 +471,7 @@
 /**
  *  弹出OK AlertView
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message {
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message {
     ZZAlertModel *okAlertModel = [ZZAlertModel zz_alertModelOkayButton:nil];
     [self zz_alertView:title message:message cancel:NO cancelColor:nil item:okAlertModel, nil];
 }
@@ -479,7 +479,7 @@
 /**
  *  弹出AlertView(Title,Message,Cancel,可变参数)
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
     // 多参数处理
     NSMutableArray *items = [NSMutableArray array];
     va_list argList;
@@ -499,7 +499,7 @@
 /**
  *  弹出AlertView(Title,Message,Cancel,Cancel颜色,可变参数)
  */
--(void)zz_alertView:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
+-(void)zz_alertView:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
     // 多参数处理
     NSMutableArray *items = [NSMutableArray array];
     va_list argList;
@@ -519,7 +519,7 @@
 /**
  *  弹出ActionSheet(Title,Message,Cancel,可变参数)
  */
--(void)zz_alertSheet:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
+-(void)zz_alertSheet:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
     // 多参数处理
     NSMutableArray *items = [NSMutableArray array];
     va_list argList;
@@ -539,7 +539,7 @@
 /**
  *  弹出ActionSheet(Title,Message,Cancel,Cancel颜色,可变参数)
  */
--(void)zz_alertSheet:(NSString *)title message:(NSString *)message cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor item:(ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
+-(void)zz_alertSheet:(nullable NSString *)title message:(nullable NSString *)message cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor item:(nonnull ZZAlertModel *)item,...NS_REQUIRES_NIL_TERMINATION {
     // 多参数处理
     NSMutableArray *items = [NSMutableArray array];
     va_list argList;
@@ -559,7 +559,7 @@
 /**
  *  弹窗,AlertView + ActionSheet
  */
-- (void)zz_alert:(NSString *)title message:(NSString *)message items:(NSMutableArray *)items cancel:(BOOL)cancel cancelColor:(UIColor *)cancelColor alertStyle:(UIAlertControllerStyle)alertStyle {
+- (void)zz_alert:(nullable NSString *)title message:(nullable NSString *)message items:(nonnull NSMutableArray *)items cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor alertStyle:(UIAlertControllerStyle)alertStyle {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:alertStyle];
     for (ZZAlertModel *item in items) {
         if (item.title.length != 0) {
@@ -602,7 +602,7 @@
 /**
  *  找出一个View的子控件中高度小于等于1像素的UIImageView控件
  */
-- (UIImageView *)_findHairlineImageView:(UIView *)view {
+- (UIImageView *)_findHairlineImageView:(nonnull UIView *)view {
     if ([view isKindOfClass:UIImageView.class] && CGRectGetHeight(view.bounds) <= 1.f) {
         return (UIImageView *)view;
     }
