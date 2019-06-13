@@ -7,9 +7,40 @@
 //
 
 #import "UITabBarController+ZZKit.h"
+#import "UITabBar+ZZKit.h"
 #import <objc/runtime.h>
 
 @implementation UITabBarController (ZZKit)
+
+#pragma mark - Tabbar消息数、红点
+
+/**
+ *  以系统默认的方式设置消息数
+ */
+- (void)zz_setSystemBadge:(NSUInteger)index value:(NSUInteger)value color:(nullable UIColor *)color {
+    [self.tabBar zz_setSystemBadge:index value:value color:color];
+}
+
+/**
+ *  以圆点显示Badge
+ */
+- (void)zz_setBadge:(NSUInteger)index pointColor:(nullable UIColor *)pointColor badgeSize:(CGSize)badgeSize offset:(UIOffset)offset {
+    [self.tabBar zz_setBadge:index pointColor:pointColor badgeSize:badgeSize offset:offset];
+}
+
+/**
+ *  以数字显示Badge
+ */
+- (void)zz_setBadge:(NSUInteger)index value:(NSUInteger)value badgeSize:(CGSize)badgeSize badgeBackgroundColor:(UIColor *)badgeBackgroundColor textColor:(nonnull UIColor *)textColor textFont:(nonnull UIFont *)textFont offset:(UIOffset)offset {
+    [self.tabBar zz_setBadge:index value:value badgeSize:badgeSize badgeBackgroundColor:badgeBackgroundColor textColor:textColor textFont:textFont offset:offset];
+}
+
+/**
+ *  移除Badge
+ */
+- (void)zz_removeBadge:(NSUInteger)index {
+    [self.tabBar zz_removeBadge:index];
+}
 
 #pragma mark - Tabbar隐藏
 

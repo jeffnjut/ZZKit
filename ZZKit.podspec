@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
         ss.dependency     'ReactiveObjC'
         ss.dependency     'Typeset'
         ss.dependency     'OpenUDID'
+        ss.dependency     'YYModel'
     end
     
 end

@@ -662,6 +662,96 @@
     return jsonObject;
 }
 
+#pragma mark - Cookie字符串处理
+
+/**
+ *  将单条Cookie字符串转成NSHTTPCookie对象
+ *  Cookie的规范可以见相应的RFC文档
+ *  http://tools.ietf.org/html/rfc6265
+ */
+- (NSHTTPCookie *)zz_cookie {
+    NSDictionary *cookieProperties = [self zz_cookieProperties];
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+    return cookie;
+}
+
+/**
+ *  Cookie字符串转NSDictionary
+ */
+- (NSDictionary *)zz_cookieToDictionary {
+    NSMutableDictionary *cookieDict = [NSMutableDictionary dictionary];
+    NSArray *cookieKeyValueStrings = [self componentsSeparatedByString:@";"];
+    for (NSString *cookieKeyValueString in cookieKeyValueStrings) {
+        //找出第一个"="号的位置
+        NSRange separatorRange = [cookieKeyValueString rangeOfString:@"="];
+        if (separatorRange.location != NSNotFound &&
+            separatorRange.location > 0 &&
+            separatorRange.location < ([cookieKeyValueString length] - 1)) {
+            //以上条件确保"="前后都有内容，不至于key或者value为空
+            NSRange keyRange = NSMakeRange(0, separatorRange.location);
+            NSString *key = [cookieKeyValueString substringWithRange:keyRange];
+            NSString *value = [cookieKeyValueString substringFromIndex:separatorRange.location + separatorRange.length];
+            key = [key stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            [cookieDict setObject:value forKey:key];
+        }
+    }
+    return cookieDict;
+}
+
+/**
+ *  获取 Cookie Properties
+ */
+- (NSDictionary *)zz_cookieProperties {
+    NSDictionary *cookieDict = [self zz_cookieToDictionary];
+    NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+    for (NSString *key in [cookieDict allKeys]) {
+        NSString *value = [cookieDict objectForKey:key];
+        NSString *uppercaseKey = [key uppercaseString];//主要是排除命名不规范的问题
+        if ([uppercaseKey isEqualToString:@"DOMAIN"]) {
+            if (![value hasPrefix:@"."] && ![value hasPrefix:@"www"]) {
+                value = [NSString stringWithFormat:@".%@",value];
+            }
+            [cookieProperties setObject:value forKey:NSHTTPCookieDomain];
+        }else if ([uppercaseKey isEqualToString:@"VERSION"]) {
+            [cookieProperties setObject:value forKey:NSHTTPCookieVersion];
+        }else if ([uppercaseKey isEqualToString:@"MAX-AGE"]||[uppercaseKey isEqualToString:@"MAXAGE"]) {
+            [cookieProperties setObject:value forKey:NSHTTPCookieMaximumAge];
+        }else if ([uppercaseKey isEqualToString:@"PATH"]) {
+            [cookieProperties setObject:value forKey:NSHTTPCookiePath];
+        }else if([uppercaseKey isEqualToString:@"ORIGINURL"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieOriginURL];
+        }else if([uppercaseKey isEqualToString:@"PORT"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookiePort];
+        }else if([uppercaseKey isEqualToString:@"SECURE"]||[uppercaseKey isEqualToString:@"ISSECURE"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieSecure];
+        }else if([uppercaseKey isEqualToString:@"COMMENT"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieComment];
+        }else if([uppercaseKey isEqualToString:@"COMMENTURL"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieCommentURL];
+        }else if([uppercaseKey isEqualToString:@"EXPIRES"]){
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+            dateFormatter.dateFormat = @"EEE, dd-MMM-yyyy HH:mm:ss zzz";
+            [cookieProperties setObject:[dateFormatter dateFromString:value] forKey:NSHTTPCookieExpires];
+        }else if([uppercaseKey isEqualToString:@"DISCART"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieDiscard];
+        }else if([uppercaseKey isEqualToString:@"NAME"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieName];
+        }else if([uppercaseKey isEqualToString:@"VALUE"]){
+            [cookieProperties setObject:value forKey:NSHTTPCookieValue];
+        }else{
+            [cookieProperties setObject:key forKey:NSHTTPCookieName];
+            [cookieProperties setObject:value forKey:NSHTTPCookieValue];
+        }
+    }
+    //由于cookieWithProperties:方法properties中不能没有NSHTTPCookiePath，所以这边需要确认下，如果没有则默认为@"/"
+    if (![cookieProperties objectForKey:NSHTTPCookiePath]) {
+        [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+    }
+    return cookieProperties;
+}
+
 #pragma mark - 哈希
 
 /**

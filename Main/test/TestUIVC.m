@@ -15,6 +15,21 @@
 #import "UIView+ZZKit_Blocks.h"
 #import "ZZMacro.h"
 #import "UITabBar+ZZKit.h"
+#import "NSDictionary+ZZKit.h"
+#import "NSArray+ZZKit.h"
+#import "NSMutableArray+ZZKit.h"
+
+@interface TestObject : NSObject
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) NSInteger code;
+@property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) NSDictionary *dict;
+
+@end
+
+@implementation TestObject
+@end
 
 @interface TestUIVC ()
 
@@ -56,6 +71,21 @@
         return YES;
     }];
     
+    NSArray *array = @[@"1",@"2",@"3",@"4",@"5"];
+    NSDictionary *dict = @{@"A":@"AA",@"B":@"BB"};
+    TestObject *object = [TestObject new];
+    object.name = @"Hello";
+    object.code = 1111;
+    object.dict = dict;
+    object.array = array;
+    NSDictionary *_dict = @{@"string":@"Jeff",@"object":object, @"dict":dict,@"array":array};
+    
+    NSString *jsonString = [_dict zz_toJSONString];
+    NSLog(@"%@", jsonString);
+    
+    NSArray *_array = @[array, @"Jeff", @(100), _dict, object];
+    jsonString = [_array zz_toJSONString];
+    NSLog(@"%@", jsonString);
 }
 
 - (IBAction)_tapZZTabbarController:(id)sender {
@@ -71,6 +101,10 @@
     vc2.view.backgroundColor = [UIColor redColor];
     [tabVC zz_addChildViewController:vc2 tabName:@"第二页" tabUnselectedImage:@"tab_me".zz_image tabSelectedImage:@"tab_me_selected".zz_image tabUnselectedTextAttrs:nil tabSelectedTextAttrs:nil imageEdgeInsets:UIEdgeInsetsZero textOffset:UIOffsetZero navigationControllerClass:nil];
     
+    UIViewController *vc3 = [UIViewController new];
+    vc3.view.backgroundColor = [UIColor greenColor];
+    [tabVC zz_addChildViewController:vc3 tabName:@"第三页" tabUnselectedImage:@"tab_offers".zz_image tabSelectedImage:@"tab_offers_selected".zz_image tabUnselectedTextAttrs:nil tabSelectedTextAttrs:nil imageEdgeInsets:UIEdgeInsetsZero textOffset:UIOffsetZero navigationControllerClass:nil];
+    
     [UIWindow zz_window].rootViewController = tabVC;
     
     ZZ_WEAK_SELF
@@ -85,8 +119,20 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // ZZ_STRONG_SELF
             // [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
-            vc2.tabBarItem.badgeValue = @"1";
+            [tabVC.tabBar zz_setBadge:1 pointColor:[UIColor redColor] badgeSize:CGSizeMake(6.0, 6.0) offset:UIOffsetZero];
             [tabVC.tabBar zz_setBadge:0 value:21 badgeSize:CGSizeMake(20, 20) badgeBackgroundColor:[UIColor whiteColor] textColor:[UIColor redColor] textFont:[UIFont systemFontOfSize:14.0] offset:UIOffsetMake(0, 0)];
+            
+            
+        });
+    }];
+    
+    [vc3.view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // ZZ_STRONG_SELF
+            // [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
+            [tabVC.tabBar zz_setSystemBadge:2 value:9999 color:[UIColor blackColor]];
+            
+            
         });
     }];
 }

@@ -38,6 +38,9 @@
 		E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */; };
 		E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602722B0F8600044B9AD /* UIButton+ZZKit.m */; };
 		E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */; };
+		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
+		E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */; };
+		E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
@@ -137,6 +140,12 @@
 		E767602722B0F8600044B9AD /* UIButton+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZZKit.m"; sourceTree = "<group>"; };
 		E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ZZKit.h"; sourceTree = "<group>"; };
 		E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ZZKit.m"; sourceTree = "<group>"; };
+		E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZZKit.h"; sourceTree = "<group>"; };
+		E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZZKit.m"; sourceTree = "<group>"; };
+		E788654222B1E59200B20F3E /* NSMutableArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ZZKit.h"; sourceTree = "<group>"; };
+		E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ZZKit.m"; sourceTree = "<group>"; };
+		E788654522B1E5B200B20F3E /* NSDictionary+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZZKit.h"; sourceTree = "<group>"; };
+		E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZZKit.m"; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
@@ -342,6 +351,12 @@
 				E767602122B0E1A10044B9AD /* NSObject+ZZKit_Image.m */,
 				E7DC5C52229D197600ED8733 /* NSData+ZZKit.h */,
 				E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */,
+				E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */,
+				E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */,
+				E788654222B1E59200B20F3E /* NSMutableArray+ZZKit.h */,
+				E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */,
+				E788654522B1E5B200B20F3E /* NSDictionary+ZZKit.h */,
+				E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */,
 				E7DC5C55229D1A9400ED8733 /* NSDate+ZZKit.h */,
 				E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */,
 				E7DC5C4F229D151D00ED8733 /* NSString+ZZKit.h */,
@@ -366,8 +381,6 @@
 				E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */,
 				E7E0178E22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.h */,
 				E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */,
-				E767600E22B099D20044B9AD /* UITabBar+ZZKit.h */,
-				E767600F22B099D20044B9AD /* UITabBar+ZZKit.m */,
 				E767602622B0F8600044B9AD /* UIButton+ZZKit.h */,
 				E767602722B0F8600044B9AD /* UIButton+ZZKit.m */,
 				E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */,
@@ -376,6 +389,8 @@
 				E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */,
 				E72DFBB922B156800099A8C4 /* UITabBarController+ZZKit.h */,
 				E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */,
+				E767600E22B099D20044B9AD /* UITabBar+ZZKit.h */,
+				E767600F22B099D20044B9AD /* UITabBar+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -564,12 +579,13 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Typeset/Typeset.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -578,10 +594,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Typeset.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -629,14 +646,17 @@
 				E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
+				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
 				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
+				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
+				E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */,
 				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */,
 				E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */,

@@ -6,11 +6,13 @@
 //  Copyright © 2019 Jeff. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <SafariServices/SafariServices.h>
+
+// TODO
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZZSafariController : NSObject
+@interface ZZSafariController : SFSafariViewController
 
 @end
 

@@ -225,6 +225,25 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id)zz_jsonToCocoaObject;
 
+#pragma mark - Cookie字符串处理
+
+/**
+ *  将单条Cookie字符串转成NSHTTPCookie对象
+ *  Cookie的规范可以见相应的RFC文档
+ *  http://tools.ietf.org/html/rfc6265
+ */
+- (NSHTTPCookie *)zz_cookie;
+
+/**
+ *  Cookie字符串转NSDictionary
+ */
+- (NSDictionary *)zz_cookieToDictionary;
+
+/**
+ *  获取 Cookie Properties
+ */
+- (NSDictionary *)zz_cookieProperties;
+
 #pragma mark - 哈希
 
 /**

@@ -7,6 +7,7 @@ target "ZZKit" do
   pod 'Masonry'
   pod 'SDWebImage'
   pod 'OpenUDID'
+  pod 'YYModel'
   # pod 'AFNetworking'
   # pod 'BlocksKit'
   # pod 'MJRefresh'

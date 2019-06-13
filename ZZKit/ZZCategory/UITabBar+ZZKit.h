@@ -13,9 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UITabBar (ZZKit)
 
 /**
+ *  以系统默认的方式设置消息数
+ */
+- (void)zz_setSystemBadge:(NSUInteger)index value:(NSUInteger)value color:(nullable UIColor *)color;
+
+/**
  *  以圆点显示Badge
  */
-- (void)zz_tabBarSetBadgePoint:(NSUInteger)index tabBarItemCount:(NSUInteger)tabBarItemCount badgeSize:(CGSize)badgeSize tabbarBadgeBackgroundColor:(nullable UIColor *)tabbarBadgeBackgroundColor;
+- (void)zz_setBadge:(NSUInteger)index pointColor:(nullable UIColor *)pointColor badgeSize:(CGSize)badgeSize offset:(UIOffset)offset;
 
 /**
  *  以数字显示Badge
@@ -25,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  移除Badge
  */
-- (void)zz_tabBarRemoveBadge:(NSUInteger)index;
+- (void)zz_removeBadge:(NSUInteger)index;
 
 @end
 
