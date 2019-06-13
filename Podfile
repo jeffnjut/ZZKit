@@ -8,6 +8,7 @@ target "ZZKit" do
   pod 'SDWebImage'
   pod 'OpenUDID'
   pod 'YYModel'
+  pod 'Reachability'
   # pod 'AFNetworking'
   # pod 'BlocksKit'
   # pod 'MJRefresh'

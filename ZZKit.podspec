@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
         ss.dependency     'Typeset'
         ss.dependency     'OpenUDID'
         ss.dependency     'YYModel'
+        ss.dependency     'Reachability'
     end
     
 end
