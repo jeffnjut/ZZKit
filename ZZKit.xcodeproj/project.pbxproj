@@ -13,6 +13,7 @@
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
+		E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D830322B32F9E004B9CA6 /* ZZTableView.m */; };
 		E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */; };
 		E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */; };
 		E72DFBBD22B15F200099A8C4 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFBBC22B15F200099A8C4 /* SafariServices.framework */; };
@@ -104,6 +105,8 @@
 		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
 		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
+		E72D830222B32F9E004B9CA6 /* ZZTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTableView.h; sourceTree = "<group>"; };
+		E72D830322B32F9E004B9CA6 /* ZZTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTableView.m; sourceTree = "<group>"; };
 		E72DFBB622B155BF0099A8C4 /* CALayer+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+ZZKit.h"; sourceTree = "<group>"; };
 		E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ZZKit.m"; sourceTree = "<group>"; };
 		E72DFBB922B156800099A8C4 /* UITabBarController+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ZZKit.h"; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 		E788655A22B2198D00B20F3E /* ZZTableView */ = {
 			isa = PBXGroup;
 			children = (
+				E72D830222B32F9E004B9CA6 /* ZZTableView.h */,
+				E72D830322B32F9E004B9CA6 /* ZZTableView.m */,
 			);
 			path = ZZTableView;
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
+				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
 				E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */,
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
