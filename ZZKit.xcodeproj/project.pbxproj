@@ -53,6 +53,8 @@
 		E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */; };
 		E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */; };
 		E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */; };
+		E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */; };
+		E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
@@ -182,6 +184,9 @@
 		E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetDropSheetView.m; sourceTree = "<group>"; };
 		E788656F22B21B9E00B20F3E /* ZZWidgetLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetLoadingView.h; sourceTree = "<group>"; };
 		E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetLoadingView.m; sourceTree = "<group>"; };
+		E7A45D3A22B3D16900AA1EBF /* TestZZTableViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZTableViewVC.h; sourceTree = "<group>"; };
+		E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZTableViewVC.m; sourceTree = "<group>"; };
+		E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZTableViewVC.xib; sourceTree = "<group>"; };
 		E7AA9512229E3759003964B8 /* TestFontVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFontVC.h; sourceTree = "<group>"; };
 		E7AA9513229E3759003964B8 /* TestFontVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFontVC.m; sourceTree = "<group>"; };
 		E7AA9514229E3759003964B8 /* TestFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestFontVC.xib; sourceTree = "<group>"; };
@@ -418,7 +423,7 @@
 				E767601922B0DC2A0044B9AD /* ZZController */,
 				E7675FF622AF44F00044B9AD /* ZZMacro */,
 				E70C72E822A3697F00341A2B /* ZZDispatchQueue */,
-				E7DC5C35229CD75600ED8733 /* ZZStorage */,
+				E7DC5C35229CD75600ED8733 /* ZZCache */,
 				E7DC5C34229CD71A00ED8733 /* ZZDevice */,
 				E7DC5C33229CD71000ED8733 /* ZZNetwork */,
 				E7DC5C32229CD6E300ED8733 /* ZZCategory */,
@@ -511,7 +516,7 @@
 			path = ZZDevice;
 			sourceTree = "<group>";
 		};
-		E7DC5C35229CD75600ED8733 /* ZZStorage */ = {
+		E7DC5C35229CD75600ED8733 /* ZZCache */ = {
 			isa = PBXGroup;
 			children = (
 				E7DC5C38229CDD9D00ED8733 /* ZZLinkedMap.h */,
@@ -519,7 +524,7 @@
 				E7DC5C37229CDD9D00ED8733 /* ZZLRUCache.h */,
 				E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */,
 			);
-			path = ZZStorage;
+			path = ZZCache;
 			sourceTree = "<group>";
 		};
 		E7DC5C3C229CDE6600ED8733 /* test */ = {
@@ -562,6 +567,9 @@
 				E767601422B0AA120044B9AD /* TestUIVC.h */,
 				E767601522B0AA120044B9AD /* TestUIVC.m */,
 				E767601622B0AA120044B9AD /* TestUIVC.xib */,
+				E7A45D3A22B3D16900AA1EBF /* TestZZTableViewVC.h */,
+				E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */,
+				E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
@@ -679,7 +688,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -700,7 +709,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -746,6 +755,7 @@
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
 				E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
+				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
 				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,

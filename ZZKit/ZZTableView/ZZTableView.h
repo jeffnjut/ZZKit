@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class ZZTableViewCell,ZZTableViewCellDataSource,ZZTableViewHeaderFooterView,ZZTableViewHeaderFooterViewDataSource,ZZTableView;
+@class ZZTableSectionObject,ZZTableViewCell,ZZTableViewCellDataSource,ZZTableViewHeaderFooterView,ZZTableViewHeaderFooterViewDataSource,ZZTableView;
 
 #pragma mark - 类型定义
 
+// 定义EditingCellType
 typedef NS_ENUM(NSInteger, ZZTableViewCellEditingStyle) {
     ZZTableViewCellEditingStyleNone,                    // 没有Cell编辑式样
     ZZTableViewCellEditingStyleInsert,                  // 插入Cell
@@ -25,6 +26,7 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellEditingStyle) {
     ZZTableViewCellEditingStyleLongPressDeleteConfirm   // 长按删除Cell，有确认
 };
 
+// 定义Cell事件类型
 typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
     ZZTableViewCellActionTapped,          // 点击Cell
     ZZTableViewCellActionCustomeTapped,   // 点击Cell上自定义事件（按钮或其它部件的事件监听）
@@ -40,27 +42,15 @@ typedef void (^ZZTableViewCellActionBlock)(__weak ZZTableView * _Nonnull tableVi
 // 移动Cell Block定义
 typedef void (^ZZTableViewCellMoveBlock)(__weak ZZTableView * _Nonnull tableView, NSIndexPath * _Nonnull fromIndex, NSIndexPath * _Nonnull toIndex, __kindof ZZTableViewCellDataSource * _Nonnull fromCellData, __kindof ZZTableViewCell * _Nonnull fromCell, __kindof ZZTableViewCellDataSource * _Nonnull toCellData, __kindof ZZTableViewCell * _Nonnull toCell);
 
+// UITableViewCell Indexes Block定义
+// 设置Indexes数组，return list of section titles to display in section index view (e.g. "ABCD...Z#")
+typedef NSArray* _Nonnull (^ZZTableViewIndexesBlock)(__weak ZZTableView * _Nonnull tableView);
+
+// UITableViewCell Index Block定义
+// 设置点击Index返回Section位置，tell table which section corresponds to section title/index (e.g. "B",1))
+typedef NSUInteger (^ZZTableViewIndexBlock)(__weak ZZTableView * _Nonnull tableView, NSString * _Nonnull title, NSUInteger index);
+
 NS_ASSUME_NONNULL_BEGIN
-
-#pragma mark - ZZTableViewCell类
-
-@interface ZZTableViewCell : UITableViewCell
-
-@end
-
-@interface ZZTableViewCellDataSource : NSObject
-
-@end
-
-#pragma mark - ZZTableViewHeaderFooterView类
-
-@interface ZZTableViewHeaderFooterView : UITableViewHeaderFooterView
-
-@end
-
-@interface ZZTableViewHeaderFooterViewDataSource : NSObject
-
-@end
 
 #pragma mark - ZZTableView类
 
@@ -81,6 +71,60 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) ZZTableViewCellEditingStyle zzTableViewCellEditingStyle;
 
+// 等同于
+@property (nonatomic, assign) UITableViewCellSeparatorStyle zzSeparatorStyle;
+
+
+@end
+
+#pragma mark - ZZTableSectionObject类
+
+@interface ZZTableSectionObject : NSObject
+
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *headerDataSource;
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *footerDataSource;
+@property (nonatomic, strong) NSMutableArray<ZZTableViewCellDataSource *> *cellDataSource;
+
+@end
+
+#pragma mark - ZZTableViewCell类
+
+@interface ZZTableViewCell : UITableViewCell
+
+// 数据
+@property (nonatomic, strong) ZZTableViewCellDataSource *data;
+
+// 用户自定义点击Block
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewCellDataSource * _Nonnull data, __kindof ZZTableViewCell * _Nonnull cell);
+
+@end
+
+@interface ZZTableViewCellDataSource : NSObject
+
+// 用户自定义式样
+@property (nonatomic, assign) BOOL zzUsingCustomType;
+
+// 高度
+@property (nonatomic, assign) CGFloat zzHeight;
+
+@end
+
+#pragma mark - ZZTableViewHeaderFooterView类
+
+@interface ZZTableViewHeaderFooterView : UITableViewHeaderFooterView
+
+// 数据
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *data;
+
+// 用户自定义点击Block
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view);
+
+@end
+
+@interface ZZTableViewHeaderFooterViewDataSource : NSObject
+
+// 高度
+@property (nonatomic, assign) CGFloat zzHeight;
 
 @end
 
