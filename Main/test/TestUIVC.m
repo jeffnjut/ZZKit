@@ -49,21 +49,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.view zz_quickAddLine:nil frame:CGRectMake(10, 200, 400, 0.5) makeConstraint:nil];
+    [self.view zz_quickAddLine:nil frame:CGRectMake(10, 200, 400, 0.5) constraintBlock:nil];
     
-    [self.view zz_quickAddLine:[UIColor redColor] frame:CGRectZero makeConstraint:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+    [self.view zz_quickAddLine:[UIColor redColor] frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.leftMargin.equalTo(superView.mas_left).offset(100.0);
         make.rightMargin.equalTo(superView.mas_right).offset(-100.0);
         make.topMargin.equalTo(superView.mas_top).offset(300.0);
         make.height.mas_equalTo(0.5);
     }];
     
-    [self.view zz_quickAddButton:@"测试" titleColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:18.0 weight:UIFontWeightMedium] backgroundColor:[UIColor blackColor] frame:CGRectMake(200, 100, 120, 36) makeConstraint:nil touchupInsideBlock:^(UIButton * _Nonnull sender) {
+    [self.view zz_quickAddButton:@"测试" titleColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:18.0 weight:UIFontWeightMedium] backgroundColor:[UIColor blackColor] frame:CGRectMake(200, 100, 120, 36) constraintBlock:nil touchupInsideBlock:^(UIButton * _Nonnull sender) {
         NSLog(@"Tapped");
     }];
     
     NSString *text = @"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降，伦敦布伦特、纽约WTI油价最低分别降至每桶61和52美元，回落至近五个月来的低位。平均来看，两市油价比上轮调价周期下降9.94%，受此影响，国内汽油、柴油零售价格随之大幅下调。";
-    [self.view zz_quickAddLabel:text font:[UIFont systemFontOfSize:14.0] textColor:[UIColor whiteColor] numberOfLines:0 textAlignment:NSTextAlignmentLeft perLineHeight:20.0 kern:1.0 space:0 lineBreakmode:NSLineBreakByWordWrapping attributedText:nil needCalculateTextFrame:YES backgroundColor:[UIColor grayColor] frame:CGRectMake(100, 350, 300, 400) makeConstraint:^BOOL(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make) {
+    [self.view zz_quickAddLabel:text font:[UIFont systemFontOfSize:14.0] textColor:[UIColor whiteColor] numberOfLines:0 textAlignment:NSTextAlignmentLeft perLineHeight:20.0 kern:1.0 space:0 lineBreakmode:NSLineBreakByWordWrapping attributedText:nil needCalculateTextFrame:YES backgroundColor:[UIColor grayColor] frame:CGRectMake(100, 350, 300, 400) constraintBlock:^BOOL(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make) {
         make.left.equalTo(superView.mas_left).offset(10.0);
         make.top.equalTo(superView.mas_top).offset(350.0);
         make.width.mas_equalTo(300.0);

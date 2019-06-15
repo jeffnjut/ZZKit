@@ -90,14 +90,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_mutableArrayMappedUsingBlock:(nonnull id (^)(id object))block;
 
 /**
- *  NSMutableArray是否为非空
- */
-- (BOOL)zz_mutableArrayHasObject;
-
-/**
  *  NSMutableArray是否为空
  */
 - (BOOL)zz_mutableArrayIsEmpty;
+
+/**
+ *  NSArray是否含有Class类型的对象
+ */
+- (BOOL)zz_mutableArrayContainsClassType:(nonnull Class)cls;
 
 @end
 

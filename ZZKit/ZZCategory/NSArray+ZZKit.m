@@ -22,60 +22,56 @@
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         return [((NSMutableArray *)self) zz_mutableArrayObjectAtIndex:index];
-    }else {
-        if (index >= 0 && index < self.count) {
-            return [self objectAtIndex:index];
-        }
-        return nil;
     }
+    if (index >= 0 && index < self.count) {
+        return [self objectAtIndex:index];
+    }
+    return nil;
 }
 
 /**
  *  NSArray增加对象
  */
-- (NSMutableArray *)zz_arrayAddObject:(id)anObject {
+- (NSMutableArray *)zz_arrayAddObject:(nonnull id)anObject {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayAddObject:anObject];
         return (NSMutableArray *)self;
-    }else {
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-        [mutableArray zz_mutableArrayAddObject:anObject];
-        return mutableArray;
     }
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+    [mutableArray zz_mutableArrayAddObject:anObject];
+    return mutableArray;
 }
 
 /**
  *  NSArray插入对象
  */
-- (NSMutableArray *)zz_arrayInsertObject:(id)anObject atIndex:(NSUInteger)index {
+- (NSMutableArray *)zz_arrayInsertObject:(nonnull id)anObject atIndex:(NSUInteger)index {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayInsertObject:anObject atIndex:index];
         return (NSMutableArray *)self;
-    }else {
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-        [mutableArray zz_mutableArrayInsertObject:anObject atIndex:index];
-        return mutableArray;
     }
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+    [mutableArray zz_mutableArrayInsertObject:anObject atIndex:index];
+    return mutableArray;
 }
 
 /**
  *  NSArray删除对象（按对象）
  */
-- (NSMutableArray *)zz_arrayRemoveObject:(id)object {
+- (NSMutableArray *)zz_arrayRemoveObject:(nonnull id)object {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayRemoveObject:object];
         return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        return [NSMutableArray new];
     }else {
-        if ([self count] == 0) {
-            return [NSMutableArray new];
-        }else {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-            [mutableArray removeObject:object];
-            return mutableArray;
-        }
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray removeObject:object];
+        return mutableArray;
     }
 }
 
@@ -87,37 +83,35 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayRemoveObjectAtIndex:index];
         return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        return [NSMutableArray new];
+    } else if (index < 0 || index >= [self count]) {
+        // 越界
+        return [NSMutableArray arrayWithArray:self];
     }else {
-        if ([self count] == 0) {
-            return [NSMutableArray new];
-        } else if (index < 0 || index >= [self count]) {
-            // 越界
-            return [NSMutableArray arrayWithArray:self];
-        }else {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-            [mutableArray removeObjectAtIndex:index];
-            return mutableArray;
-        }
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray removeObjectAtIndex:index];
+        return mutableArray;
     }
 }
 
 /**
  *  NSArray替换对象
  */
-- (NSMutableArray *)zz_arrayReplaceObjectAtIndex:(NSUInteger)index withObject:(id)object {
+- (NSMutableArray *)zz_arrayReplaceObjectAtIndex:(NSUInteger)index withObject:(nonnull id)object {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayReplaceObjectAtIndex:index withObject:object];
         return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        // 数据为空
+        return [NSMutableArray new];
     }else {
-        if ([self count] == 0) {
-            // 数据为空
-            return [NSMutableArray new];
-        }else {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-            [mutableArray replaceObjectAtIndex:index withObject:object];
-            return mutableArray;
-        }
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray replaceObjectAtIndex:index withObject:object];
+        return mutableArray;
     }
 }
 
@@ -129,17 +123,16 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayRemoveFirstObject];
         return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        // 数据为空
+        return [NSMutableArray new];
+    }else if ([self count] == 1) {
+        return [NSMutableArray new];
     }else {
-        if ([self count] == 0) {
-            // 数据为空
-            return [NSMutableArray new];
-        }else if ([self count] == 1) {
-            return [NSMutableArray new];
-        }else {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-            [mutableArray removeObjectAtIndex:0];
-            return mutableArray;
-        }
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray removeObjectAtIndex:0];
+        return mutableArray;
     }
 }
 
@@ -151,17 +144,16 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayRemoveLastObject];
         return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        // 数据为空
+        return [NSMutableArray new];
+    }else if ([self count] == 1) {
+        return [NSMutableArray new];
     }else {
-        if ([self count] == 0) {
-            // 数据为空
-            return [NSMutableArray new];
-        }else if ([self count] == 1) {
-            return [NSMutableArray new];
-        }else {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-            [mutableArray removeLastObject];
-            return mutableArray;
-        }
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray removeLastObject];
+        return mutableArray;
     }
 }
 
@@ -173,11 +165,10 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayShuffle];
         return (NSMutableArray *)self;
-    }else {
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-        [mutableArray zz_mutableArrayShuffle];
-        return mutableArray;
     }
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+    [mutableArray zz_mutableArrayShuffle];
+    return mutableArray;
 }
 
 /**
@@ -188,24 +179,22 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayReverse];
         return (NSMutableArray *)self;
-    }else {
-        return [NSMutableArray arrayWithArray:[[self reverseObjectEnumerator] allObjects]];
     }
+    return [NSMutableArray arrayWithArray:[[self reverseObjectEnumerator] allObjects]];
 }
 
 /**
  *  添加的NSArray数组以去重的方式被添加的NSArray(Self)数据
  */
-- (NSMutableArray *)zz_arrayMergeAndRemoveDuplicateObjects:(NSArray *)array {
+- (NSMutableArray *)zz_arrayMergeAndRemoveDuplicateObjects:(nonnull NSArray *)array {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayMergeAndRemoveDuplicateObjects:array];
         return (NSMutableArray *)self;
-    }else {
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-        [mutableArray zz_mutableArrayMergeAndRemoveDuplicateObjects:array];
-        return mutableArray;
     }
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+    [mutableArray zz_mutableArrayMergeAndRemoveDuplicateObjects:array];
+    return mutableArray;
 }
 
 /**
@@ -216,24 +205,22 @@
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayRemoveDuplicateObjects];
         return (NSMutableArray *)self;
-    }else {
-        return [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:self] array]];
     }
+    return [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:self] array]];
 }
 
 /**
  *  取两个数组的交集
  */
-- (NSMutableArray *)zz_arrayInterSectionWithArray:(NSArray *)array {
+- (NSMutableArray *)zz_arrayInterSectionWithArray:(nonnull NSArray *)array {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayInterSectionWithArray:array];
         return (NSMutableArray *)self;
-    }else {
-        NSMutableOrderedSet *mutableSet = [NSMutableOrderedSet orderedSetWithArray:self];
-        [mutableSet intersectSet:[NSSet setWithArray:array]];
-        return [NSMutableArray arrayWithArray:[mutableSet array]];
     }
+    NSMutableOrderedSet *mutableSet = [NSMutableOrderedSet orderedSetWithArray:self];
+    [mutableSet intersectSet:[NSSet setWithArray:array]];
+    return [NSMutableArray arrayWithArray:[mutableSet array]];
 }
 
 /**
@@ -243,47 +230,30 @@
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         return (NSMutableArray *)self;
-    }else {
-        return [NSMutableArray arrayWithArray:self];
     }
+    return [NSMutableArray arrayWithArray:self];
 }
 
 /**
  *  按Mapping Block规则生成NSArray
  */
-- (NSMutableArray *)zz_arrayMappedUsingBlock:(id (^)(id object))block {
+- (NSMutableArray *)zz_arrayMappedUsingBlock:(nonnull  id(^)(id object))block {
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         [((NSMutableArray *)self) zz_mutableArrayMappedUsingBlock:block];
         return (NSMutableArray *)self;
-    }else {
-        if (block) {
-            NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[self count]];
-            for (id object in self) {
-                id replacement = block(object);
-                if (replacement) {
-                    [mutableArray addObject:replacement];
-                }
-            }
-            return mutableArray;
-        }else {
-            return [NSMutableArray arrayWithArray:self];
-        }
     }
-}
-
-/**
- *  NSArray是否为非空
- */
-- (BOOL)zz_arrayHasObject {
-    
-    if ([self isKindOfClass:[NSMutableArray class]]) {
-        return [((NSMutableArray *)self) zz_mutableArrayHasObject];
-    }else {
-        if ([self count] > 0) {
-            return YES;
+    if (block) {
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[self count]];
+        for (id object in self) {
+            id replacement = block(object);
+            if (replacement) {
+                [mutableArray addObject:replacement];
+            }
         }
-        return NO;
+        return mutableArray;
+    }else {
+        return [NSMutableArray arrayWithArray:self];
     }
 }
 
@@ -294,12 +264,25 @@
     
     if ([self isKindOfClass:[NSMutableArray class]]) {
         return [((NSMutableArray *)self) zz_mutableArrayIsEmpty];
-    }else {
-        if ([self count] > 0) {
-            return NO;
-        }
-        return YES;
     }
+    if ([self count] > 0) {
+        return NO;
+    }
+    return YES;
+}
+
+/**
+ *  NSArray是否含有Class类型的对象
+ */
+- (BOOL)zz_arrayContainsClassType:(nonnull Class)cls {
+    
+    if ([self isKindOfClass:[NSMutableArray class]]) {
+        return [((NSMutableArray *)self) zz_mutableArrayContainsClassType:cls];
+    }
+    if (self.count > 0) {
+        return [[self objectAtIndex:0] isKindOfClass:cls];
+    }
+    return NO;
 }
 
 /**

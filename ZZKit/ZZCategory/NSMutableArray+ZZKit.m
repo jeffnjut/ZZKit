@@ -172,17 +172,6 @@
 }
 
 /**
- *  NSMutableArray是否为非空
- */
-- (BOOL)zz_mutableArrayHasObject {
-    
-    if ([self count] > 0) {
-        return YES;
-    }
-    return NO;
-}
-
-/**
  *  NSMutableArray是否为空
  */
 - (BOOL)zz_mutableArrayIsEmpty {
@@ -191,6 +180,17 @@
         return NO;
     }
     return YES;
+}
+
+/**
+ *  NSArray是否含有Class类型的对象
+ */
+- (BOOL)zz_mutableArrayContainsClassType:(nonnull Class)cls {
+    
+    if (self.count > 0) {
+        return [[self objectAtIndex:0] isKindOfClass:cls];
+    }
+    return NO;
 }
 
 @end

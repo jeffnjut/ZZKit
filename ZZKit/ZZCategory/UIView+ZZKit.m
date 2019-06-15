@@ -392,15 +392,15 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
 /**
  *  快速创建Button（常规）
  */
-- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame makeConstraint:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock {
+- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock {
     
-    return [self zz_quickAddButton:buttonTitle titleColor:titleColor font:font backgroundColor:backgroundColor borderColor:nil borderWidth:0 cornerRadius:0 frame:frame makeConstraint:constraintBlock touchupInsideBlock:touchupInsideBlock];
+    return [self zz_quickAddButton:buttonTitle titleColor:titleColor font:font backgroundColor:backgroundColor borderColor:nil borderWidth:0 cornerRadius:0 frame:frame constraintBlock:constraintBlock touchupInsideBlock:touchupInsideBlock];
 }
 
 /**
  *  快速创建Button（完整）
  */
-- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius frame:(CGRect)frame makeConstraint:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock {
+- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock {
     
     UIButton *button = [[UIButton alloc] initWithFrame:frame];
     [self addSubview:button];
@@ -408,6 +408,12 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     [button setTitleColor:titleColor forState:UIControlStateNormal];
     button.titleLabel.font = font;
     button.backgroundColor = backgroundColor;
+    if (constraintBlock != nil) {
+        __weak typeof(self) weakSelf = self;
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            constraintBlock(weakSelf, make);
+        }];
+    }
     [button zz_cornerRadius:cornerRadius borderWidth:borderWidth boderColor:borderColor];
     if (touchupInsideBlock) {
         [button zz_tapBlock:UIControlEventTouchUpInside block:touchupInsideBlock];
@@ -418,7 +424,7 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
 /**
  *  快速创建Line
  */
-- (nonnull UIView *)zz_quickAddLine:(nullable UIColor *)color frame:(CGRect)frame makeConstraint:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
+- (nonnull UIView *)zz_quickAddLine:(nullable UIColor *)color frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     UIView *lineView = [[UIView alloc] initWithFrame:frame];
     [self addSubview:lineView];
@@ -440,7 +446,7 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
 /**
  *  快速创建Label
  */
-- (nonnull UILabel *)zz_quickAddLabel:(nullable NSString *)text font:(nullable UIFont *)font textColor:(nullable UIColor *)textColor numberOfLines:(NSInteger)numberOfLines textAlignment:(NSTextAlignment)textAlignment perLineHeight:(CGFloat)perLineHeight kern:(CGFloat)kern space:(CGFloat)space lineBreakmode:(NSLineBreakMode)lineBreakmode attributedText:(nullable NSAttributedString *)attributedText needCalculateTextFrame:(BOOL)needCalculateTextFrame backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame makeConstraint:(nullable BOOL(^)(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make))constraintBlock {
+- (nonnull UILabel *)zz_quickAddLabel:(nullable NSString *)text font:(nullable UIFont *)font textColor:(nullable UIColor *)textColor numberOfLines:(NSInteger)numberOfLines textAlignment:(NSTextAlignment)textAlignment perLineHeight:(CGFloat)perLineHeight kern:(CGFloat)kern space:(CGFloat)space lineBreakmode:(NSLineBreakMode)lineBreakmode attributedText:(nullable NSAttributedString *)attributedText needCalculateTextFrame:(BOOL)needCalculateTextFrame backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame constraintBlock:(nullable BOOL(^)(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     [self addSubview:label];

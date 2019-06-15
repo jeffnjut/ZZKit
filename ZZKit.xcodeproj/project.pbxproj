@@ -53,6 +53,8 @@
 		E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */; };
 		E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */; };
 		E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */; };
+		E79318DA22B4E7CD00077FDE /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E79318D822B4E7CD00077FDE /* TestCell.m */; };
+		E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E79318D922B4E7CD00077FDE /* TestCell.xib */; };
 		E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */; };
 		E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */; };
 		E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9513229E3759003964B8 /* TestFontVC.m */; };
@@ -184,6 +186,9 @@
 		E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetDropSheetView.m; sourceTree = "<group>"; };
 		E788656F22B21B9E00B20F3E /* ZZWidgetLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetLoadingView.h; sourceTree = "<group>"; };
 		E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetLoadingView.m; sourceTree = "<group>"; };
+		E79318D722B4E7CD00077FDE /* TestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
+		E79318D822B4E7CD00077FDE /* TestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
+		E79318D922B4E7CD00077FDE /* TestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		E7A45D3A22B3D16900AA1EBF /* TestZZTableViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZTableViewVC.h; sourceTree = "<group>"; };
 		E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZTableViewVC.m; sourceTree = "<group>"; };
 		E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZTableViewVC.xib; sourceTree = "<group>"; };
@@ -570,6 +575,9 @@
 				E7A45D3A22B3D16900AA1EBF /* TestZZTableViewVC.h */,
 				E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */,
 				E7A45D3C22B3D16900AA1EBF /* TestZZTableViewVC.xib */,
+				E79318D722B4E7CD00077FDE /* TestCell.h */,
+				E79318D822B4E7CD00077FDE /* TestCell.m */,
+				E79318D922B4E7CD00077FDE /* TestCell.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -648,6 +656,7 @@
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
+				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
@@ -688,7 +697,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -709,7 +718,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -761,6 +770,7 @@
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
+				E79318DA22B4E7CD00077FDE /* TestCell.m in Sources */,
 				E767601322B09A6E0044B9AD /* UIView+ZZKit.m in Sources */,
 				E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,

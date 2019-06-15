@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZTableView.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 

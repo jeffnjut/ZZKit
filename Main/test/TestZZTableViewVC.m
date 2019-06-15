@@ -7,7 +7,7 @@
 //
 
 #import "TestZZTableViewVC.h"
-#import "ZZTableView.h"
+#import "TestCell.h"
 
 @interface TestZZTableViewVC ()
 
@@ -20,12 +20,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.tableView = [ZZTableView new];
-    ZZTableViewCell *cell = [ZZTableViewCell new];
-    cell.zzTapBlock = ^(ZZTableViewCellDataSource * _Nonnull data, ZZTableViewCell * _Nonnull cell) {
-        
-    };
-
+    self.tableView = [ZZTableView zz_quickAdd:ZZTableViewCellEditingStyleMultiSelect backgroundColor:UIColor.redColor onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+        make.edges.equalTo(superView);
+    } actionBlock:^(ZZTableView *__weak  _Nonnull tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action, __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView) {
+        if (action == ZZTableViewCellActionTapped) {
+            if ([cellData isKindOfClass:[TestCellDataSource class]]) {
+                TestCellDataSource *testCellData = cellData;
+                NSLog(@"Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
+            }
+        }else if (action == ZZTableViewCellActionCustomeTapped) {
+            if ([cellData isKindOfClass:[TestCellDataSource class]]) {
+                TestCellDataSource *testCellData = cellData;
+                NSLog(@"Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
+            }
+        }
+    }];
+    
+    for (int i = 0; i < 100; i++) {
+        TestCellDataSource *ds = [[TestCellDataSource alloc] init];
+        ds.text = [NSString stringWithFormat:@"测试：%d", i];
+        [self.tableView zz_addDataSource:ds];
+    }
+    
+    [self.tableView zz_refresh];
 }
 
 /*

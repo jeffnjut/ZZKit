@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Masonry/Masonry.h>
 
 @class ZZTableSectionObject,ZZTableViewCell,ZZTableViewCellDataSource,ZZTableViewHeaderFooterView,ZZTableViewHeaderFooterViewDataSource,ZZTableView;
 
@@ -37,10 +38,23 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
 };
 
 // 点击Cell Block定义
-typedef void (^ZZTableViewCellActionBlock)(__weak ZZTableView * _Nonnull tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action,  __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView);
+typedef void (^ZZTableViewCellActionBlock)(__weak ZZTableView * _Nonnull tableView,
+                                           NSInteger section,
+                                           NSInteger row,
+                                           ZZTableViewCellAction action,
+                                           __kindof ZZTableViewCellDataSource * _Nullable cellData,
+                                           __kindof ZZTableViewCell * _Nullable cell,
+                                           __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData,
+                                           __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView);
 
 // 移动Cell Block定义
-typedef void (^ZZTableViewCellMoveBlock)(__weak ZZTableView * _Nonnull tableView, NSIndexPath * _Nonnull fromIndex, NSIndexPath * _Nonnull toIndex, __kindof ZZTableViewCellDataSource * _Nonnull fromCellData, __kindof ZZTableViewCell * _Nonnull fromCell, __kindof ZZTableViewCellDataSource * _Nonnull toCellData, __kindof ZZTableViewCell * _Nonnull toCell);
+typedef void (^ZZTableViewCellMoveBlock)(__weak ZZTableView * _Nonnull tableView,
+                                         NSIndexPath * _Nonnull fromIndex,
+                                         NSIndexPath * _Nonnull toIndex,
+                                         __kindof ZZTableViewCellDataSource * _Nonnull fromCellData,
+                                         __kindof ZZTableViewCell * _Nonnull fromCell,
+                                         __kindof ZZTableViewCellDataSource * _Nonnull toCellData,
+                                         __kindof ZZTableViewCell * _Nonnull toCell);
 
 // UITableViewCell Indexes Block定义
 // 设置Indexes数组，return list of section titles to display in section index view (e.g. "ABCD...Z#")
@@ -56,7 +70,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTableView : UITableView
 
-
 /**
  *  ZZTableViewCellEditingStyleNone                     editing = YES, UITableViewCellEditingStyleNone
  *  ZZTableViewCellEditingStyleInsert                   editing = YES, UITableViewCellEditingStyleInsert
@@ -71,9 +84,30 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) ZZTableViewCellEditingStyle zzTableViewCellEditingStyle;
 
-// 等同于
-@property (nonatomic, assign) UITableViewCellSeparatorStyle zzSeparatorStyle;
+// Cell Block
+@property (nonatomic, copy) ZZTableViewCellActionBlock zzActionBlock;
 
+/**
+ *  创建ZZTableView的方法
+ */
++ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(ZZTableViewCellActionBlock)actionBlock;
+
+/**
+ *  一组安全的操作datasource的方法
+ */
+- (void)zz_addDataSource:(nonnull id)data;
+- (void)zz_insertDataSource:(nonnull id)anObject atIndex:(NSUInteger)index;
+- (void)zz_removeDataSource:(nonnull id)data;
+- (void)zz_removeDataSourceObjectAtIndex:(NSInteger)index;
+- (void)zz_removeFirstDataSource;
+- (void)zz_removeLastDataSource;
+- (void)zz_removeAllDataSource;
+- (void)zz_replaceDataSourceAtIndex:(NSUInteger)index withObject:(nonnull id)data;
+
+/**
+ *  TableView安全加载刷新Data
+ */
+- (void)zz_refresh;
 
 @end
 
@@ -92,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZZTableViewCell : UITableViewCell
 
 // 数据
-@property (nonatomic, strong) ZZTableViewCellDataSource *data;
+@property (nonatomic, strong) __kindof ZZTableViewCellDataSource *zzData;
 
 // 用户自定义点击Block
 @property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewCellDataSource * _Nonnull data, __kindof ZZTableViewCell * _Nonnull cell);
@@ -102,10 +136,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZZTableViewCellDataSource : NSObject
 
 // 用户自定义式样
-@property (nonatomic, assign) BOOL zzUsingCustomType;
+@property (nonatomic, assign) BOOL zzUsingSelectionStyleNone;
 
 // 高度
 @property (nonatomic, assign) CGFloat zzHeight;
+
+// 多选的选中状态
+@property (nonatomic, assign) BOOL zzSelected;
+
+// 支持删除操作
+@property (nonatomic, assign) BOOL zzAllowEditing;
 
 @end
 
@@ -114,7 +154,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZZTableViewHeaderFooterView : UITableViewHeaderFooterView
 
 // 数据
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *data;
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzData;
 
 // 用户自定义点击Block
 @property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view);
