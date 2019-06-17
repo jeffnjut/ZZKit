@@ -447,28 +447,23 @@
     switch (self.zzTableViewCellEditingStyle) {
         case ZZTableViewCellEditingStyleNone:
         {
-            self.editing = NO;
             return UITableViewCellEditingStyleNone;
         }
         case ZZTableViewCellEditingStyleInsert:
         {
-            self.editing = YES;
             return UITableViewCellEditingStyleInsert;
         }
         case ZZTableViewCellEditingStyleMove:
         {
-            self.editing = YES;
             return UITableViewCellEditingStyleNone;
         }
         case ZZTableViewCellEditingStyleMultiSelect:
         {
-            self.editing = YES;
             return UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete;
         }
         case ZZTableViewCellEditingStyleDirectDelete:
         case ZZTableViewCellEditingStyleDirectDeleteConfirm:
         {
-            self.editing = YES;
             return UITableViewCellEditingStyleDelete;
         }
         case ZZTableViewCellEditingStyleSlidingDelete:
@@ -476,7 +471,6 @@
         case ZZTableViewCellEditingStyleLongPressDelete:
         case ZZTableViewCellEditingStyleLongPressDeleteConfirm:
         {
-            self.editing = NO;
             return UITableViewCellEditingStyleDelete;
         }
             default:
@@ -488,6 +482,7 @@
 
     // 插入、删除操作的响应API
     // 当TableView的Cell的编辑风格为UITableViewCellEditingStyleDelete 或 UITableViewCellEditingStyleInsert时，响应事件
+    __weak typeof(self) weakSelf = self;
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
         cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
@@ -500,12 +495,33 @@
             // 插入
             self.zzActionBlock == nil ? : self.zzActionBlock(self, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
         }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDelete ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDeleteConfirm ||
                   self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDeleteConfirm ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDelete ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDeleteConfirm) {
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDelete) {
             // 删除
+            if (_sectionEnabled) {
+                ZZTableSectionObject *sectionObject = [_dataSource zz_arrayObjectAtIndex:indexPath.section];
+                [sectionObject.cellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
+            }else {
+                [self zz_removeDataSourceObjectAtIndex:indexPath.row];
+            }
+            [self zz_refresh];
+            self.zzActionBlock == nil ? : self.zzActionBlock(self, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
+        }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDeleteConfirm ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDeleteConfirm ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDeleteConfirm) {
+            // 确认后删除
+            ZZTableViewVoidBlock _okAction = ^{
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if (strongSelf->_sectionEnabled) {
+                    ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:indexPath.section];
+                    [sectionObject.cellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
+                }else {
+                    [strongSelf zz_removeDataSourceObjectAtIndex:indexPath.row];
+                }
+                [strongSelf zz_refresh];
+                strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
+            };
+            self.zzDeletionConfirmBlock == nil ? : self.zzDeletionConfirmBlock(_okAction);
         }
     }
 }

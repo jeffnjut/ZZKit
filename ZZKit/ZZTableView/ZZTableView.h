@@ -37,6 +37,9 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
     ZZTableViewCellActionDeleteConfirm    // 删除Cell，有确认
 };
 
+// ZZTableView Void Block定义
+typedef void (^ZZTableViewVoidBlock)(void);
+
 // 点击Cell Block定义
 typedef void (^ZZTableViewCellActionBlock)(__weak ZZTableView * _Nonnull tableView,
                                            NSInteger section,
@@ -64,6 +67,9 @@ typedef NSArray* _Nonnull (^ZZTableViewIndexesBlock)(__weak ZZTableView * _Nonnu
 // 设置点击Index返回Section位置，tell table which section corresponds to section title/index (e.g. "B",1))
 typedef NSUInteger (^ZZTableViewIndexBlock)(__weak ZZTableView * _Nonnull tableView, NSString * _Nonnull title, NSUInteger index);
 
+// 删除Cell的Block定义
+typedef void (^ZZTableViewDeleteConfirmBlock)(ZZTableViewVoidBlock _Nonnull okAction);
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - ZZTableView类
@@ -84,8 +90,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) ZZTableViewCellEditingStyle zzTableViewCellEditingStyle;
 
-// Cell Block
+// Cell 响应事件Block
 @property (nonatomic, copy) ZZTableViewCellActionBlock zzActionBlock;
+
+// Cell 删除确认Block
+@property (nonatomic, copy) ZZTableViewDeleteConfirmBlock zzDeletionConfirmBlock;
 
 /**
  *  创建ZZTableView的方法
