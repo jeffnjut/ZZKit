@@ -414,11 +414,16 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    return YES;
+    
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
         cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
         cellData = _dataSource[indexPath.row];
+    }
+    if (cellData == nil) {
+        return NO;
     }
     // 是否可以删除、插入和选择
     return self.zzTableViewCellEditingStyle != ZZTableViewCellEditingStyleNone && cellData.zzAllowEditing == YES;
@@ -480,13 +485,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
+    // 插入、删除操作的响应API
     // 当TableView的Cell的编辑风格为UITableViewCellEditingStyleDelete 或 UITableViewCellEditingStyleInsert时，响应事件
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
         cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
         cellData = _dataSource[indexPath.row];
+    }
+    if (cellData) {
+        ZZTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleInsert) {
+            // 插入
+            self.zzActionBlock == nil ? : self.zzActionBlock(self, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
+        }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDelete ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDeleteConfirm ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDeleteConfirm ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDelete ||
+                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDeleteConfirm) {
+            // 删除
+        }
     }
 }
 
@@ -561,12 +581,6 @@
             }
         }
     }
-    if (selected) {
-        self.backgroundColor = [UIColor greenColor];
-    }else {
-        self.backgroundColor = [UIColor whiteColor];
-    }
-    
     [super setSelected:selected animated:animated];
 }
 

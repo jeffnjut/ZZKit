@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.tableView = [ZZTableView zz_quickAdd:ZZTableViewCellEditingStyleMultiSelect backgroundColor:UIColor.redColor onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+    self.tableView = [ZZTableView zz_quickAdd:ZZTableViewCellEditingStyleSlidingDelete backgroundColor:UIColor.redColor onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     } actionBlock:^(ZZTableView *__weak  _Nonnull tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action, __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView) {
         if (action == ZZTableViewCellActionTapped) {
@@ -32,6 +32,11 @@
             if ([cellData isKindOfClass:[TestCellDataSource class]]) {
                 TestCellDataSource *testCellData = cellData;
                 NSLog(@"Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
+            }
+        }else if (action == ZZTableViewCellActionMultiSelect) {
+            if ([cellData isKindOfClass:[TestCellDataSource class]]) {
+                TestCellDataSource *testCellData = cellData;
+                NSLog(@"Section : %ld, Row : %ld, Text : %@ isSelected : %d", section, row, testCellData.text, testCellData.zzSelected);
             }
         }
     }];
