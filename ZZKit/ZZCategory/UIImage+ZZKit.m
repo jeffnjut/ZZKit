@@ -724,7 +724,7 @@
     imageView.image = self;
     [window addSubview:imageView];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageView zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [imageView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         [sender removeFromSuperview];
     }];
 }

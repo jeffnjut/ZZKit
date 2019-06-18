@@ -7,6 +7,8 @@
 //
 
 #import "TestCell.h"
+#import "UIImage+ZZKit.h"
+#import "NSString+ZZKit.h"
 
 @interface TestCell()
 

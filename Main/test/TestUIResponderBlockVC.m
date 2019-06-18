@@ -28,15 +28,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.blackView zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [self.blackView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         NSLog(@"Tap Black View");
     }];
     
-    [self.imageView zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [self.imageView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         NSLog(@"Tap Image View");
     }];
     
-    [self.label zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [self.label zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         NSLog(@"Tap Label");
     }];
     
@@ -48,7 +48,7 @@
         NSLog(@"TouchUpInside Button");
     }];
     
-    [self.button zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [self.button zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         NSLog(@"Tap Button");
     }];
 }

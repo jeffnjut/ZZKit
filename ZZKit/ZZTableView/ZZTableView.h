@@ -13,18 +13,21 @@
 
 #pragma mark - 类型定义
 
+// 自定义按钮左滑功能键的常量
+#define kZZCellSwipeText            @"kZZCellSwipeText"
+#define kZZCellSwipeBackgroundColor @"kZZCellSwipeBackgroundColor"
+#define kZZCellSwipeAction          @"kZZCellSwipeAction"
+// #define kZZCellSwipeTextColor       @"kZZCellSwipeTextColor"  // (暂不支持)
+// #define kZZCellSwipeTextFont        @"kZZCellSwipeTextColor"  // (暂不支持)
+
 // 定义EditingCellType
 typedef NS_ENUM(NSInteger, ZZTableViewCellEditingStyle) {
     ZZTableViewCellEditingStyleNone,                    // 没有Cell编辑式样
     ZZTableViewCellEditingStyleInsert,                  // 插入Cell
     ZZTableViewCellEditingStyleMove,                    // 移动Cell
     ZZTableViewCellEditingStyleMultiSelect,             // 多选Cell
-    ZZTableViewCellEditingStyleDirectDelete,            // 调用方法显示删除
-    ZZTableViewCellEditingStyleDirectDeleteConfirm,     // 调用方法显示删除，有确认
-    ZZTableViewCellEditingStyleSlidingDelete,           // 滑动删除Cell
-    ZZTableViewCellEditingStyleSlidingDeleteConfirm,    // 滑动删除Cell，有确认
-    ZZTableViewCellEditingStyleLongPressDelete,         // 长按删除Cell
-    ZZTableViewCellEditingStyleLongPressDeleteConfirm   // 长按删除Cell，有确认
+    ZZTableViewCellEditingStyleSlidingDelete,           // 滑动删除Cell，有确认
+    ZZTableViewCellEditingStyleLongPressDelete          // 长按删除Cell，有确认
 };
 
 // 定义Cell事件类型
@@ -68,7 +71,7 @@ typedef NSArray* _Nonnull (^ZZTableViewIndexesBlock)(__weak ZZTableView * _Nonnu
 typedef NSUInteger (^ZZTableViewIndexBlock)(__weak ZZTableView * _Nonnull tableView, NSString * _Nonnull title, NSUInteger index);
 
 // 删除Cell的Block定义
-typedef void (^ZZTableViewDeleteConfirmBlock)(ZZTableViewVoidBlock _Nonnull okAction);
+typedef void (^ZZTableViewDeleteConfirmBlock)(ZZTableViewVoidBlock _Nonnull deleteAction);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -95,6 +98,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Cell 删除确认Block
 @property (nonatomic, copy) ZZTableViewDeleteConfirmBlock zzDeletionConfirmBlock;
+
+// Cell 左滑自定义按钮，
+// 当设置了ZZTableView的zzCustomSwipes Block,ZZTableView的zzDeletionConfirmBlock失效
+@property (nonatomic, strong) NSArray<NSDictionary<NSString *, id> *> *zzCustomSwipes;
+
+// Cell 多选选中Selected状态图标
+@property (nonatomic, strong) UIImage *zzSelectedImage;
+
+// Cell 多选未选中Selected状态图标
+@property (nonatomic, strong) UIImage *zzUnselectedImage;
 
 /**
  *  创建ZZTableView的方法
@@ -140,6 +153,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 用户自定义点击Block
 @property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewCellDataSource * _Nonnull data, __kindof ZZTableViewCell * _Nonnull cell);
 
+// Cell 多选选中Selected状态图标
+@property (nonatomic, strong) UIImage *zzSelectedImage;
+
+// Cell 多选未选中Selected状态图标
+@property (nonatomic, strong) UIImage *zzUnselectedImage;
+
 @end
 
 @interface ZZTableViewCellDataSource : NSObject
@@ -155,6 +174,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 支持删除操作
 @property (nonatomic, assign) BOOL zzAllowEditing;
+
+// Cell 删除确认Block
+@property (nonatomic, copy) ZZTableViewDeleteConfirmBlock zzDeletionConfirmBlock;
+
+// Cell 左滑自定义按钮
+// 当设置了ZZTableViewCell的zzCustomSwipes Block,将覆盖ZZTableView的zzCustomSwipes，
+// 并且ZZTableView的zzDeletionConfirmBlock失效
+@property (nonatomic, strong) NSArray<NSDictionary<NSString *, id> *> *zzCustomSwipes;
 
 @end
 

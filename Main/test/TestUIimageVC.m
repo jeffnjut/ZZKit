@@ -44,7 +44,7 @@
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 200, 300, 350)];
     view.backgroundColor = [UIColor blueColor];
-    [view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         [sender removeFromSuperview];
     }];
     

@@ -10,18 +10,24 @@
 #import <pthread.h>
 #import "NSArray+ZZKit.h"
 #import "NSBundle+ZZKit.h"
+#import "UIView+ZZKit_Blocks.h"
+#import "NSString+ZZKit.h"
+#import "UIImage+ZZKit.h"
+#import "ZZMacro.h"
 
 #pragma mark - ZZTableView类
 
 @interface ZZTableView () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 {
-    @private
+@private
     // 锁
     pthread_mutex_t _lock;
     // 数据源
     NSMutableArray *_dataSource;
     // 是否Section数据
     BOOL _sectionEnabled;
+    // SuperView
+    UIView *_superView;
 }
 
 @end
@@ -55,16 +61,8 @@
             self.editing = YES;
             break;
         }
-        case ZZTableViewCellEditingStyleDirectDelete:
-        case ZZTableViewCellEditingStyleDirectDeleteConfirm:
-        {
-            self.editing = YES;
-            break;
-        }
         case ZZTableViewCellEditingStyleSlidingDelete:
-        case ZZTableViewCellEditingStyleSlidingDeleteConfirm:
         case ZZTableViewCellEditingStyleLongPressDelete:
-        case ZZTableViewCellEditingStyleLongPressDeleteConfirm:
         {
             self.editing = NO;
             break;
@@ -72,6 +70,44 @@
         default:
             self.editing = NO;
             break;
+    }
+    
+    if (zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDelete) {
+        __weak ZZTableView *weakSelf = self;
+        [self zz_longPress:1.0 block:^(UILongPressGestureRecognizer * _Nonnull longPressGesture, __kindof UIView * _Nonnull sender) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            ZZTableView *_tableView = (ZZTableView *)sender;
+            if (![_tableView isKindOfClass:[ZZTableView class]]) {
+                return;
+            }
+            CGPoint point = [longPressGesture locationInView:_tableView];
+            NSIndexPath *_indexPath = [_tableView indexPathForRowAtPoint:point];
+            ZZTableViewCell *_cell = [_tableView cellForRowAtIndexPath:_indexPath];
+            ZZTableViewCellDataSource *_cellData = _cell.zzData;
+            
+            if (!_cellData.zzAllowEditing) {
+                return;
+            }
+            
+            // 确认后删除
+            ZZTableViewVoidBlock _deleteAction = ^{
+                if (strongSelf->_sectionEnabled) {
+                    ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:_indexPath.section];
+                    [sectionObject.cellDataSource zz_arrayRemoveObjectAtIndex:_indexPath.row];
+                }else {
+                    [strongSelf zz_removeDataSourceObjectAtIndex:_indexPath.row];
+                }
+                [strongSelf zz_refresh];
+                strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, _indexPath.section, _indexPath.row, ZZTableViewCellActionInsert, _cellData, _cell, nil, nil);
+            };
+            if (_cellData.zzDeletionConfirmBlock != nil) {
+                _cellData.zzDeletionConfirmBlock(_deleteAction);
+            }else if (strongSelf.zzDeletionConfirmBlock != nil) {
+                strongSelf.zzDeletionConfirmBlock(_deleteAction);
+            }
+        }];
+    }else {
+        [self zz_removeLongPress];
     }
 }
 
@@ -107,6 +143,7 @@
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     if (onView != nil) {
+        tableView->_superView = onView;
         [onView addSubview:tableView];
         if (constraintBlock != nil) {
             [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,6 +151,7 @@
             }];
         }
     }
+    
     return tableView;
 }
 
@@ -266,14 +304,19 @@
         NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
         [tableView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellReuseIdentifier:cellClassName];
         cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+    }
+    if (cellData.zzAllowEditing == NO) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }else{
         if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMultiSelect) {
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
+            if (self.zzSelectedImage && self.zzUnselectedImage) {
+                cell.zzSelectedImage = self.zzSelectedImage;
+                cell.zzUnselectedImage = self.zzUnselectedImage;
+            }
         }else if (cellData.zzUsingSelectionStyleNone) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }else {
-            /* 这种方式会导致其它UI的颜色设置全部失效 */
             cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
             cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         }
@@ -444,42 +487,44 @@
      * 多组选中风格:
      * UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete  ||| 相应方法：didSelectRowAtIndexPath
      */
-    switch (self.zzTableViewCellEditingStyle) {
-        case ZZTableViewCellEditingStyleNone:
-        {
-            return UITableViewCellEditingStyleNone;
-        }
-        case ZZTableViewCellEditingStyleInsert:
-        {
-            return UITableViewCellEditingStyleInsert;
-        }
-        case ZZTableViewCellEditingStyleMove:
-        {
-            return UITableViewCellEditingStyleNone;
-        }
-        case ZZTableViewCellEditingStyleMultiSelect:
-        {
-            return UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete;
-        }
-        case ZZTableViewCellEditingStyleDirectDelete:
-        case ZZTableViewCellEditingStyleDirectDeleteConfirm:
-        {
-            return UITableViewCellEditingStyleDelete;
-        }
-        case ZZTableViewCellEditingStyleSlidingDelete:
-        case ZZTableViewCellEditingStyleSlidingDeleteConfirm:
-        case ZZTableViewCellEditingStyleLongPressDelete:
-        case ZZTableViewCellEditingStyleLongPressDeleteConfirm:
-        {
-            return UITableViewCellEditingStyleDelete;
-        }
-            default:
-            return UITableViewCellEditingStyleNone;
+    ZZTableViewCellDataSource *cellData = nil;
+    if (_sectionEnabled) {
+        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
+    }else {
+        cellData = _dataSource[indexPath.row];
     }
+    if (cellData.zzAllowEditing) {
+        switch (self.zzTableViewCellEditingStyle) {
+            case ZZTableViewCellEditingStyleNone:
+            {
+                return UITableViewCellEditingStyleNone;
+            }
+            case ZZTableViewCellEditingStyleInsert:
+            {
+                return UITableViewCellEditingStyleInsert;
+            }
+            case ZZTableViewCellEditingStyleMove:
+            {
+                return UITableViewCellEditingStyleNone;
+            }
+            case ZZTableViewCellEditingStyleMultiSelect:
+            {
+                return UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete;
+            }
+            case ZZTableViewCellEditingStyleSlidingDelete:
+            case ZZTableViewCellEditingStyleLongPressDelete:
+            {
+                return UITableViewCellEditingStyleDelete;
+            }
+            default:
+                return UITableViewCellEditingStyleNone;
+        }
+    }
+    return UITableViewCellEditingStyleNone;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     // 插入、删除操作的响应API
     // 当TableView的Cell的编辑风格为UITableViewCellEditingStyleDelete 或 UITableViewCellEditingStyleInsert时，响应事件
     __weak typeof(self) weakSelf = self;
@@ -494,23 +539,10 @@
         if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleInsert) {
             // 插入
             self.zzActionBlock == nil ? : self.zzActionBlock(self, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
-        }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDelete ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete ||
+        }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete ||
                   self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDelete) {
-            // 删除
-            if (_sectionEnabled) {
-                ZZTableSectionObject *sectionObject = [_dataSource zz_arrayObjectAtIndex:indexPath.section];
-                [sectionObject.cellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
-            }else {
-                [self zz_removeDataSourceObjectAtIndex:indexPath.row];
-            }
-            [self zz_refresh];
-            self.zzActionBlock == nil ? : self.zzActionBlock(self, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
-        }else if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleDirectDeleteConfirm ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDeleteConfirm ||
-                  self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleLongPressDeleteConfirm) {
             // 确认后删除
-            ZZTableViewVoidBlock _okAction = ^{
+            ZZTableViewVoidBlock _deleteAction = ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 if (strongSelf->_sectionEnabled) {
                     ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:indexPath.section];
@@ -521,7 +553,11 @@
                 [strongSelf zz_refresh];
                 strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
             };
-            self.zzDeletionConfirmBlock == nil ? : self.zzDeletionConfirmBlock(_okAction);
+            if (cellData.zzDeletionConfirmBlock != nil) {
+                cellData.zzDeletionConfirmBlock(_deleteAction);
+            }else if (self.zzDeletionConfirmBlock != nil) {
+                self.zzDeletionConfirmBlock(_deleteAction);
+            }
         }
     }
 }
@@ -549,15 +585,72 @@
     return 0;
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete) {
+        ZZTableViewCellDataSource *cellData = nil;
+        if (_sectionEnabled) {
+            cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        }else {
+            cellData = _dataSource[indexPath.row];
+        }
+        
+        if (cellData.zzAllowEditing == NO || (cellData && cellData.zzCustomSwipes && cellData.zzCustomSwipes.count == 0)) {
+            return nil;
+        }
+        
+        NSArray *_customeSwipes = cellData.zzCustomSwipes;
+        if (!_customeSwipes) {
+            _customeSwipes = self.zzCustomSwipes;
+        }
+        if (_customeSwipes) {
+            __weak ZZTableView *weakSelf = self;
+            ZZTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dict in _customeSwipes) {
+                NSString *text = [dict objectForKey:kZZCellSwipeText];
+                // UIColor *color = [dict objectForKey:kZZCellSwipeTextColor];
+                // UIFont *font = [dict objectForKey:kZZCellSwipeTextFont];
+                UIColor *backgroundColor = [dict objectForKey:kZZCellSwipeBackgroundColor];
+                __block ZZTableViewDeleteConfirmBlock block = [dict objectForKey:kZZCellSwipeAction];
+                // 确认后删除
+                __block ZZTableViewVoidBlock _deleteAction = ^{
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    if (strongSelf->_sectionEnabled) {
+                        ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:indexPath.section];
+                        [sectionObject.cellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
+                    }else {
+                        [strongSelf zz_removeDataSourceObjectAtIndex:indexPath.row];
+                    }
+                    [strongSelf zz_refresh];
+                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
+                };
+                UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
+                                                                                  title:text
+                                                                                handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                                                    // 这句很重要，退出编辑模式，隐藏左滑菜单
+                                                                                    [tableView setEditing:NO animated:YES];
+                                                                                    block == nil ? : block(_deleteAction);
+                                                                                }];
+                
+                action.backgroundColor = backgroundColor;
+                [array zz_arrayAddObject:action];
+            }
+            return array;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - UIScrollView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
 
@@ -586,8 +679,49 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    
+    if (self.zzSelectedImage && self.zzUnselectedImage) {
+        for (UIControl *control in self.subviews){
+            if ([control isMemberOfClass:NSClassFromString(@"UITableViewCellEditControl")]){
+                for (UIView *v in control.subviews)
+                {
+                    if ([v isKindOfClass: [UIImageView class]]) {
+                        UIImageView *img = (UIImageView *)v;
+                        if (self.selected) {
+                            img.image = self.zzSelectedImage;
+                        }else {
+                            img.image = self.zzUnselectedImage;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    [super layoutSubviews];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    
+    [super setEditing:editing animated:animated];
+    if (self.zzSelectedImage && self.zzUnselectedImage) {
+        for (UIControl *control in self.subviews){
+            if ([control isMemberOfClass:NSClassFromString(@"UITableViewCellEditControl")]){
+                for (UIView *v in control.subviews) {
+                    if ([v isKindOfClass: [UIImageView class]]) {
+                        UIImageView *img=(UIImageView *)v;
+                        if (!self.selected) {
+                            img.image = self.zzUnselectedImage;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
- 
+    
     // UITableViewCell多选状态多出分割线（分割线偏移）解决方案
     for (UIView *view in self.subviews) {
         if ([@"_UITableViewCellSeparatorView" isEqualToString:NSStringFromClass([view class])]) {

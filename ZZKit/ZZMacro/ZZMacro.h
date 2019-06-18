@@ -85,4 +85,7 @@ pf_l = pf_d;
 
 #define ZZ_KEY_WINDOW                   [[UIApplication sharedApplication].delegate window]
 
+#define ZZ_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define ZZ_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #endif /* ZZMacro_h */

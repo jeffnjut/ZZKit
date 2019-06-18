@@ -108,14 +108,14 @@
     [UIWindow zz_window].rootViewController = tabVC;
     
     ZZ_WEAK_SELF
-    [vc1.view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [vc1.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         dispatch_async(dispatch_get_main_queue(), ^{
             ZZ_STRONG_SELF
             [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
         });
     }];
     
-    [vc2.view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [vc2.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // ZZ_STRONG_SELF
             // [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
@@ -126,7 +126,7 @@
         });
     }];
     
-    [vc3.view zz_tapBlock:^(__kindof UIView * _Nonnull sender) {
+    [vc3.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // ZZ_STRONG_SELF
             // [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
