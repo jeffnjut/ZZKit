@@ -37,7 +37,6 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
     ZZTableViewCellActionInsert,          // 插入Cell
     ZZTableViewCellActionMultiSelect,     // 多选Cell
     ZZTableViewCellActionDelete,          // 删除Cell
-    ZZTableViewCellActionDeleteConfirm    // 删除Cell，有确认
 };
 
 // ZZTableView Void Block定义
@@ -64,11 +63,15 @@ typedef void (^ZZTableViewCellMoveBlock)(__weak ZZTableView * _Nonnull tableView
 
 // UITableViewCell Indexes Block定义
 // 设置Indexes数组，return list of section titles to display in section index view (e.g. "ABCD...Z#")
-typedef NSArray* _Nonnull (^ZZTableViewIndexesBlock)(__weak ZZTableView * _Nonnull tableView);
+typedef NSArray* _Nonnull (^ZZTableViewSectionIndexesBlock)(__weak ZZTableView * _Nonnull tableView);
 
 // UITableViewCell Index Block定义
 // 设置点击Index返回Section位置，tell table which section corresponds to section title/index (e.g. "B",1))
-typedef NSUInteger (^ZZTableViewIndexBlock)(__weak ZZTableView * _Nonnull tableView, NSString * _Nonnull title, NSUInteger index);
+typedef NSUInteger (^ZZTableViewSectionIndexBlock)(__weak ZZTableView * _Nonnull tableView, NSString * _Nonnull title, NSUInteger index);
+
+// UITableViewCell Index Title Block定义
+// 设置返回Section的Title
+typedef NSString * _Nonnull (^ZZTableViewSectionIndexTitleBlock)(__weak ZZTableView * _Nonnull tableView, NSUInteger section);
 
 // 删除Cell的Block定义
 typedef void (^ZZTableViewDeleteConfirmBlock)(ZZTableViewVoidBlock _Nonnull deleteAction);
@@ -84,14 +87,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  ZZTableViewCellEditingStyleInsert                   editing = YES, UITableViewCellEditingStyleInsert
  *  ZZTableViewCellEditingStyleMove                     editing = YES, UITableViewCellEditingStyleNone
  *  ZZTableViewCellEditingStyleMultiSelect              editing = YES, UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete
- *  ZZTableViewCellEditingStyleDirectDelete
- *  ZZTableViewCellEditingStyleDirectDeleteConfirm      editing = YES, UITableViewCellEditingStyleDelete
  *  ZZTableViewCellEditingStyleSlidingDelete
- *  ZZTableViewCellEditingStyleSlidingDeleteConfirm
- *  ZZTableViewCellEditingStyleLongPressDelete
- *  ZZTableViewCellEditingStyleLongPressDeleteConfirm   editing = NO, UITableViewCellEditingStyleDelete
+ *  ZZTableViewCellEditingStyleLongPressDelete          editing = NO, UITableViewCellEditingStyleDelete
  */
 @property (nonatomic, assign) ZZTableViewCellEditingStyle zzTableViewCellEditingStyle;
+
+// TableView IndexesBlock 返回索引数字
+@property (nonatomic, copy) ZZTableViewSectionIndexesBlock zzTableViewSectionIndexesBlock;
+
+// TableView IndexBlock 快速索引条对应关系
+@property (nonatomic, copy) ZZTableViewSectionIndexBlock zzTableViewSectionIndexBlock;
+
+// TableView Index Title Block返回Section对应的Title
+@property (nonatomic, copy) ZZTableViewSectionIndexTitleBlock zzTableViewSectionIndexTitleBlock;
 
 // Cell 响应事件Block
 @property (nonatomic, copy) ZZTableViewCellActionBlock zzActionBlock;
@@ -108,6 +116,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Cell 多选未选中Selected状态图标
 @property (nonatomic, strong) UIImage *zzUnselectedImage;
+
+// TableView Index Title Section对应的Title高度
+@property (nonatomic, assign) CGFloat zzTableViewSectionIndexTitleHeight;
 
 /**
  *  创建ZZTableView的方法

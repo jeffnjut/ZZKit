@@ -118,6 +118,7 @@
     if (self) {
         pthread_mutex_init(&_lock, NULL);
         _dataSource = [[NSMutableArray alloc] init];
+        _zzTableViewSectionIndexTitleHeight = 32.0;
     }
     return self;
 }
@@ -230,8 +231,20 @@
     pthread_mutex_lock(&_lock);
     if ([_dataSource zz_arrayContainsClassType:[ZZTableSectionObject class]]) {
         _sectionEnabled = YES;
+        for (ZZTableSectionObject *sectionObject in _dataSource) {
+            if (![sectionObject isKindOfClass:[ZZTableSectionObject class]]) {
+                NSAssert(NO, @"ZZTableView ## dataSource数据类型不一致");
+                break;
+            }
+        }
     }else {
         _sectionEnabled = NO;
+        for (ZZTableViewCellDataSource *ds in _dataSource) {
+            if (![ds isKindOfClass:[ZZTableViewCellDataSource class]]) {
+                NSAssert(NO, @"ZZTableView ## dataSource数据类型不一致");
+                break;
+            }
+        }
     }
     [self reloadData];
     self.scrollEnabled = YES;
@@ -272,6 +285,9 @@
     
     if (_sectionEnabled) {
         ZZTableViewHeaderFooterViewDataSource *headerData = ((ZZTableSectionObject *)_dataSource[section]).headerDataSource;
+        if (headerData == nil && self.zzTableViewSectionIndexesBlock != nil) {
+            return self.zzTableViewSectionIndexTitleHeight;
+        }
         return headerData.zzHeight;
     }
     return 0;
@@ -574,15 +590,18 @@
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    
-    // TODO
-    return nil;
+
+    return self.zzTableViewSectionIndexesBlock == nil ? nil : self.zzTableViewSectionIndexesBlock(self);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     
-    // TODO
-    return 0;
+    return self.zzTableViewSectionIndexBlock == nil ? 0 : self.zzTableViewSectionIndexBlock(self, title, index);
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    return self.zzTableViewSectionIndexTitleBlock == nil ? nil : self.zzTableViewSectionIndexTitleBlock(self, section);
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
