@@ -136,6 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_removeLastDataSource;
 - (void)zz_removeAllDataSource;
 - (void)zz_replaceDataSourceAtIndex:(NSUInteger)index withObject:(nonnull id)data;
+- (void)zz_exchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2;
 
 /**
  *  TableView安全加载刷新Data

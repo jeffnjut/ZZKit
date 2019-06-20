@@ -39,6 +39,9 @@
 		E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */; };
 		E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602722B0F8600044B9AD /* UIButton+ZZKit.m */; };
 		E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */; };
+		E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E770C7A722BB2F5F00625C85 /* TestHeaderView.m */; };
+		E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E770C7A922BB2FB400625C85 /* TestHeaderView.xib */; };
+		E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */; };
 		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
 		E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */; };
 		E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */; };
@@ -158,6 +161,11 @@
 		E767602722B0F8600044B9AD /* UIButton+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZZKit.m"; sourceTree = "<group>"; };
 		E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ZZKit.h"; sourceTree = "<group>"; };
 		E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ZZKit.m"; sourceTree = "<group>"; };
+		E770C7A622BB2F5F00625C85 /* TestHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderView.h; sourceTree = "<group>"; };
+		E770C7A722BB2F5F00625C85 /* TestHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
+		E770C7A922BB2FB400625C85 /* TestHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestHeaderView.xib; sourceTree = "<group>"; };
+		E77ADD3C22BB3B990015DB1B /* UITableView+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ZZKit.h"; sourceTree = "<group>"; };
+		E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ZZKit.m"; sourceTree = "<group>"; };
 		E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZZKit.h"; sourceTree = "<group>"; };
 		E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZZKit.m"; sourceTree = "<group>"; };
 		E788654222B1E59200B20F3E /* NSMutableArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ZZKit.h"; sourceTree = "<group>"; };
@@ -368,6 +376,8 @@
 			children = (
 				E72D830222B32F9E004B9CA6 /* ZZTableView.h */,
 				E72D830322B32F9E004B9CA6 /* ZZTableView.m */,
+				E77ADD3C22BB3B990015DB1B /* UITableView+ZZKit.h */,
+				E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */,
 			);
 			path = ZZTableView;
 			sourceTree = "<group>";
@@ -578,6 +588,9 @@
 				E79318D722B4E7CD00077FDE /* TestCell.h */,
 				E79318D822B4E7CD00077FDE /* TestCell.m */,
 				E79318D922B4E7CD00077FDE /* TestCell.xib */,
+				E770C7A622BB2F5F00625C85 /* TestHeaderView.h */,
+				E770C7A722BB2F5F00625C85 /* TestHeaderView.m */,
+				E770C7A922BB2FB400625C85 /* TestHeaderView.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -663,6 +676,7 @@
 				E767601822B0AA120044B9AD /* TestUIVC.xib in Resources */,
 				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
+				E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
 				E767600222AFB2060044B9AD /* test.bundle in Resources */,
@@ -748,6 +762,7 @@
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */,
+				E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */,
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
@@ -767,6 +782,7 @@
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
 				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
+				E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,

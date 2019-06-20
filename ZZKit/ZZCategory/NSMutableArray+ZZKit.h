@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_mutableArrayReplaceObjectAtIndex:(NSUInteger)index withObject:(nonnull id)anObject;
 
 /**
+ *  NSMutableArray交换两个对象
+ */
+- (void)zz_mutableArrayExchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2;
+
+/**
  *  NSMutableArray删除第一个对象
  */
 - (void)zz_mutableArrayRemoveFirstObject;

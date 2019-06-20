@@ -8,6 +8,7 @@
 
 #import "TestZZTableViewVC.h"
 #import "TestCell.h"
+#import "TestHeaderView.h"
 #import "UIView+ZZKit_Blocks.h"
 #import "NSString+ZZKit.h"
 
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self _test2];
+    [self _test1];
 }
 
 - (void)_test1 {
@@ -128,14 +129,6 @@
     self.tableView.zzSelectedImage = @"ic_select".zz_image;
     self.tableView.zzUnselectedImage = @"ic_unselect".zz_image;
     
-    self.tableView.zzTableViewSectionIndexesBlock = ^NSArray * _Nonnull(ZZTableView *__weak  _Nonnull tableView) {
-        return @[@"1", @"10", @"20", @"30", @"40", @"50", @"60", @"70", @"80", @"90"];
-    };
-    
-    self.tableView.zzTableViewSectionIndexBlock = ^NSUInteger(ZZTableView *__weak  _Nonnull tableView, NSString * _Nonnull title, NSUInteger index) {
-        return index * 10;
-    };
-    
     [self.tableView zz_refresh];
     
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleLongPressDelete;
@@ -144,7 +137,6 @@
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleInsert;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMultiSelect;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMove;
-    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleNone;
 }
 
 - (void)_test2 {
@@ -193,6 +185,8 @@
     
     for (int i = 0; i < 10; i++) {
         ZZTableSectionObject *sectionObject = [[ZZTableSectionObject alloc] init];
+        TestHeaderViewDataSource *headerDataSource = [[TestHeaderViewDataSource alloc] init];
+        sectionObject.headerDataSource = headerDataSource;
         for (int j = 0 ; j < arc4random() % 20 + 10; j++) {
             TestCellDataSource *ds = [[TestCellDataSource alloc] init];
             ds.text = [NSString stringWithFormat:@"%c %d", 65 + i, j];
@@ -243,7 +237,6 @@
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleInsert;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMultiSelect;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMove;
-    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleNone;
 }
 
 /*

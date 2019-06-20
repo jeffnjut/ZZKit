@@ -116,6 +116,25 @@
 }
 
 /**
+ *  NSArray交换两个对象
+ */
+- (NSMutableArray *)zz_arrayExchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2 {
+    
+    if ([self isKindOfClass:[NSMutableArray class]]) {
+        [((NSMutableArray *)self) zz_mutableArrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+        return (NSMutableArray *)self;
+    }
+    if ([self count] == 0) {
+        // 数据为空
+        return [NSMutableArray arrayWithArray:self];
+    }else {
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
+        [mutableArray exchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+        return mutableArray;
+    }
+}
+
+/**
  *  NSArray删除第一个对象
  */
 - (NSMutableArray *)zz_arrayRemoveFirstObject {

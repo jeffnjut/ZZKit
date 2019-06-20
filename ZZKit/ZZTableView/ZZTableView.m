@@ -223,6 +223,14 @@
     pthread_mutex_unlock(&_lock);
 }
 
+- (void)zz_exchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2 {
+    
+    pthread_mutex_lock(&_lock);
+    self.scrollEnabled = NO;
+    [_dataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+    pthread_mutex_unlock(&_lock);
+}
+
 /**
  *  TableView安全加载刷新Data
  */
@@ -365,7 +373,7 @@
             ZZTableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
             if (!headerView) {
                 NSBundle *bundle = [NSBundle zz_resourceClass:[headerData class] bundleName:nil];
-                [tableView registerNib:[UINib nibWithNibName:headerViewClassName bundle:bundle] forCellReuseIdentifier:headerViewClassName];
+                [tableView registerNib:[UINib nibWithNibName:headerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:headerViewClassName];
                 headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
             }
             headerView.zzData = headerData;
@@ -389,6 +397,7 @@
                     }
                 };
             }
+            return headerView;
         }
     }
     return nil;
@@ -406,7 +415,7 @@
             ZZTableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
             if (!footerView) {
                 NSBundle *bundle = [NSBundle zz_resourceClass:[footerData class] bundleName:nil];
-                [tableView registerNib:[UINib nibWithNibName:footerViewClassName bundle:bundle] forCellReuseIdentifier:footerViewClassName];
+                [tableView registerNib:[UINib nibWithNibName:footerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:footerViewClassName];
                 footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
             }
             footerView.zzData = footerData;
@@ -430,11 +439,11 @@
                     }
                 };
             }
+            return footerView;
         }
     }
     return nil;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -580,13 +589,34 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // TODO
+    if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMove) {
+        ZZTableViewCellDataSource *cellData = nil;
+        if (_sectionEnabled) {
+            cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        }else {
+            cellData = _dataSource[indexPath.row];
+        }
+        return cellData.zzAllowEditing;
+    }
     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     
-    // TODO
+    // 移动交换数据源
+    if (_sectionEnabled) {
+        ZZTableSectionObject *section1 = _dataSource[sourceIndexPath.section];
+        ZZTableSectionObject *section2 = _dataSource[destinationIndexPath.section];
+        ZZTableViewCellDataSource *ds = [section1.cellDataSource zz_arrayObjectAtIndex:sourceIndexPath.row];
+        [section1.cellDataSource zz_arrayRemoveObjectAtIndex:sourceIndexPath.row];
+        [section2.cellDataSource zz_arrayInsertObject:ds atIndex:destinationIndexPath.row];
+    }else {
+        pthread_mutex_lock(&_lock);
+        ZZTableViewCellDataSource *ds = _dataSource[sourceIndexPath.row];
+        [_dataSource zz_arrayRemoveObjectAtIndex:sourceIndexPath.row];
+        [_dataSource zz_arrayInsertObject:ds atIndex:destinationIndexPath.row];
+        pthread_mutex_unlock(&_lock);
+    }
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -659,6 +689,13 @@
         }
     }
     return nil;
+}
+
+// 处理Cell间的分割线偏移的问题
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [cell setSeparatorInset:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
 }
 
 #pragma mark - UIScrollView

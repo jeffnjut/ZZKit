@@ -74,6 +74,16 @@
 }
 
 /**
+ *  NSMutableArray交换两个对象
+ */
+- (void)zz_mutableArrayExchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2 {
+    
+    if (index1 >= 0 && index1 < self.count && index2 >= 0 && index2 < self.count) {
+        [self exchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+    }
+}
+
+/**
  *  NSMutableArray删除第一个对象
  */
 - (void)zz_mutableArrayRemoveFirstObject {
