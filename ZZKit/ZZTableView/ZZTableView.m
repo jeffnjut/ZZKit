@@ -50,9 +50,15 @@
             self.editing = YES;
             break;
         }
-        case ZZTableViewCellEditingStyleMove:
+        case ZZTableViewCellEditingStyleMoveSystem:
         {
             self.editing = YES;
+            break;
+        }
+        case ZZTableViewCellEditingStyleMoveDefault:
+        case ZZTableViewCellEditingStyleMoveShaking:
+        {
+            self.editing = NO;
             break;
         }
         case ZZTableViewCellEditingStyleMultiSelect:
@@ -528,7 +534,9 @@
             {
                 return UITableViewCellEditingStyleInsert;
             }
-            case ZZTableViewCellEditingStyleMove:
+            case ZZTableViewCellEditingStyleMoveSystem:
+            case ZZTableViewCellEditingStyleMoveDefault:
+            case ZZTableViewCellEditingStyleMoveShaking:
             {
                 return UITableViewCellEditingStyleNone;
             }
@@ -589,7 +597,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMove) {
+    if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMoveSystem) {
         ZZTableViewCellDataSource *cellData = nil;
         if (_sectionEnabled) {
             cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).cellDataSource zz_arrayObjectAtIndex:indexPath.row];

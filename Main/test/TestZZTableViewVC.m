@@ -136,7 +136,7 @@
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleNone;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleInsert;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMultiSelect;
-    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMove;
+    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMoveSystem;
 }
 
 - (void)_test2 {
@@ -236,7 +236,7 @@
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleNone;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleInsert;
     self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMultiSelect;
-    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMove;
+    self.tableView.zzTableViewCellEditingStyle = ZZTableViewCellEditingStyleMoveSystem;
 }
 
 /*

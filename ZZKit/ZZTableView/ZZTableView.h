@@ -23,8 +23,10 @@
 // 定义EditingCellType
 typedef NS_ENUM(NSInteger, ZZTableViewCellEditingStyle) {
     ZZTableViewCellEditingStyleNone,                    // 没有Cell编辑式样
-    ZZTableViewCellEditingStyleInsert,                  // 插入Cell
-    ZZTableViewCellEditingStyleMove,                    // 移动Cell
+    ZZTableViewCellEditingStyleInsert,                  // 插入Cell（系统）
+    ZZTableViewCellEditingStyleMoveSystem,              // 移动Cell（系统）
+    ZZTableViewCellEditingStyleMoveDefault,             // 移动Cell（默认无动画）   TODO
+    ZZTableViewCellEditingStyleMoveShaking,             // 移动Cell（默认无动画）   TODO
     ZZTableViewCellEditingStyleMultiSelect,             // 多选Cell
     ZZTableViewCellEditingStyleSlidingDelete,           // 滑动删除Cell，有确认
     ZZTableViewCellEditingStyleLongPressDelete          // 长按删除Cell，有确认
