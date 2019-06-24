@@ -42,6 +42,10 @@
 		E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E770C7A722BB2F5F00625C85 /* TestHeaderView.m */; };
 		E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E770C7A922BB2FB400625C85 /* TestHeaderView.xib */; };
 		E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */; };
+		E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */; };
+		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
+		E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4622BBABBA0015DB1B /* CalcMarker.m */; };
+		E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */; };
 		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
 		E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */; };
 		E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */; };
@@ -166,6 +170,14 @@
 		E770C7A922BB2FB400625C85 /* TestHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestHeaderView.xib; sourceTree = "<group>"; };
 		E77ADD3C22BB3B990015DB1B /* UITableView+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ZZKit.h"; sourceTree = "<group>"; };
 		E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ZZKit.m"; sourceTree = "<group>"; };
+		E77ADD4022BBABB90015DB1B /* CalcMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcMarker.h; sourceTree = "<group>"; };
+		E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Calc.m"; sourceTree = "<group>"; };
+		E77ADD4222BBABBA0015DB1B /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		E77ADD4322BBABBA0015DB1B /* NSObject+Calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Calc.h"; sourceTree = "<group>"; };
+		E77ADD4422BBABBA0015DB1B /* FJWrapNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWrapNumber.h; sourceTree = "<group>"; };
+		E77ADD4522BBABBA0015DB1B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		E77ADD4622BBABBA0015DB1B /* CalcMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcMarker.m; sourceTree = "<group>"; };
+		E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWrapNumber.m; sourceTree = "<group>"; };
 		E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZZKit.h"; sourceTree = "<group>"; };
 		E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZZKit.m"; sourceTree = "<group>"; };
 		E788654222B1E59200B20F3E /* NSMutableArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ZZKit.h"; sourceTree = "<group>"; };
@@ -330,6 +342,21 @@
 				E72DFBC222B1601A0099A8C4 /* ZZWebView.m */,
 			);
 			path = ZZController;
+			sourceTree = "<group>";
+		};
+		E77ADD3F22BBAB9D0015DB1B /* TestFP */ = {
+			isa = PBXGroup;
+			children = (
+				E77ADD4022BBABB90015DB1B /* CalcMarker.h */,
+				E77ADD4622BBABBA0015DB1B /* CalcMarker.m */,
+				E77ADD4522BBABBA0015DB1B /* Calculator.h */,
+				E77ADD4222BBABBA0015DB1B /* Calculator.m */,
+				E77ADD4422BBABBA0015DB1B /* FJWrapNumber.h */,
+				E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */,
+				E77ADD4322BBABBA0015DB1B /* NSObject+Calc.h */,
+				E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */,
+			);
+			path = TestFP;
 			sourceTree = "<group>";
 		};
 		E788654B22B2054200B20F3E /* ZZTrace */ = {
@@ -546,6 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				E767600122AFB2060044B9AD /* test.bundle */,
+				E77ADD3F22BBAB9D0015DB1B /* TestFP */,
 				E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */,
 				E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */,
 				E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */,
@@ -751,6 +779,7 @@
 				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
 				E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */,
@@ -763,6 +792,7 @@
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */,
 				E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */,
+				E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */,
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
@@ -774,6 +804,7 @@
 				E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */,
 				E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */,
 				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
+				E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
@@ -800,6 +831,7 @@
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */,
 				E788655822B218C600B20F3E /* ZZReachability.m in Sources */,
+				E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,

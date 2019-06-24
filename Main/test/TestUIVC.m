@@ -18,6 +18,9 @@
 #import "NSDictionary+ZZKit.h"
 #import "NSArray+ZZKit.h"
 #import "NSMutableArray+ZZKit.h"
+#import "CalcMarker.h"
+#import "Calculator.h"
+#import "NSObject+Calc.h"
 
 @interface TestObject : NSObject
 
@@ -135,6 +138,27 @@
             
         });
     }];
+}
+
+- (void)_testFP {
+    
+    int t = 0;
+    t = [NSObject make:^(CalcMarker *marker) {
+        marker.add(1).add(10).delete(5);
+    }];
+    NSLog(@"%d", t);
+    
+    
+    Calculator *calculator = [[Calculator alloc] init];
+    BOOL equal = [[calculator calculator:^int(int result) {
+        result += 2;
+        result += 5;
+        return result;
+    }] equal:^BOOL(int result) {
+        
+        return result == 7;
+    }].isEqual;
+    NSLog(@"%d", equal);
 }
 
 /*
