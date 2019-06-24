@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		9879D01D126C6452FED0B61F /* Pods_ZZKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */; };
+		E70C3FFC22C09F8C0047A1C0 /* ZZCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C3FFB22C09F8C0047A1C0 /* ZZCollectionView.m */; };
+		E70C400522C0D60C0047A1C0 /* TestZZCollectionViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C400322C0D60C0047A1C0 /* TestZZCollectionViewVC.m */; };
+		E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C400422C0D60C0047A1C0 /* TestZZCollectionViewVC.xib */; };
+		E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C400822C0D6ED0047A1C0 /* TestCollectionViewCell.m */; };
+		E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C400922C0D6ED0047A1C0 /* TestCollectionViewCell.xib */; };
+		E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C400D22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m */; };
+		E70C401022C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C400E22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib */; };
 		E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */; };
 		E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */; };
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
@@ -108,6 +115,17 @@
 		7321BA8F6DD7F5018D3A2D24 /* Pods_ZZKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit.release.xcconfig"; sourceTree = "<group>"; };
+		E70C3FFA22C09F8C0047A1C0 /* ZZCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCollectionView.h; sourceTree = "<group>"; };
+		E70C3FFB22C09F8C0047A1C0 /* ZZCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCollectionView.m; sourceTree = "<group>"; };
+		E70C400222C0D60C0047A1C0 /* TestZZCollectionViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZCollectionViewVC.h; sourceTree = "<group>"; };
+		E70C400322C0D60C0047A1C0 /* TestZZCollectionViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZCollectionViewVC.m; sourceTree = "<group>"; };
+		E70C400422C0D60C0047A1C0 /* TestZZCollectionViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZCollectionViewVC.xib; sourceTree = "<group>"; };
+		E70C400722C0D6ED0047A1C0 /* TestCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewCell.h; sourceTree = "<group>"; };
+		E70C400822C0D6ED0047A1C0 /* TestCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCollectionViewCell.m; sourceTree = "<group>"; };
+		E70C400922C0D6ED0047A1C0 /* TestCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCollectionViewCell.xib; sourceTree = "<group>"; };
+		E70C400C22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeadCollectionViewCell.h; sourceTree = "<group>"; };
+		E70C400D22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeadCollectionViewCell.m; sourceTree = "<group>"; };
+		E70C400E22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestHeadCollectionViewCell.xib; sourceTree = "<group>"; };
 		E70C72E922A369EA00341A2B /* ZZDispatchQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDispatchQueue.h; sourceTree = "<group>"; };
 		E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDispatchQueue.m; sourceTree = "<group>"; };
 		E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZDispatchQueueVC.h; sourceTree = "<group>"; };
@@ -412,6 +430,8 @@
 		E788655B22B2199700B20F3E /* ZZCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E70C3FFA22C09F8C0047A1C0 /* ZZCollectionView.h */,
+				E70C3FFB22C09F8C0047A1C0 /* ZZCollectionView.m */,
 			);
 			path = ZZCollectionView;
 			sourceTree = "<group>";
@@ -619,6 +639,15 @@
 				E770C7A622BB2F5F00625C85 /* TestHeaderView.h */,
 				E770C7A722BB2F5F00625C85 /* TestHeaderView.m */,
 				E770C7A922BB2FB400625C85 /* TestHeaderView.xib */,
+				E70C400222C0D60C0047A1C0 /* TestZZCollectionViewVC.h */,
+				E70C400322C0D60C0047A1C0 /* TestZZCollectionViewVC.m */,
+				E70C400422C0D60C0047A1C0 /* TestZZCollectionViewVC.xib */,
+				E70C400722C0D6ED0047A1C0 /* TestCollectionViewCell.h */,
+				E70C400822C0D6ED0047A1C0 /* TestCollectionViewCell.m */,
+				E70C400922C0D6ED0047A1C0 /* TestCollectionViewCell.xib */,
+				E70C400C22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.h */,
+				E70C400D22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m */,
+				E70C400E22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -692,16 +721,19 @@
 				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
+				E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
+				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E767601822B0AA120044B9AD /* TestUIVC.xib in Resources */,
+				E70C401022C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib in Resources */,
 				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */,
@@ -772,6 +804,7 @@
 			files = (
 				E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */,
 				E767601022B099D20044B9AD /* UITabBar+ZZKit.m in Sources */,
+				E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */,
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
@@ -796,6 +829,7 @@
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
+				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
 				E788655122B205BF00B20F3E /* NSObject+ZZKit_Storge.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
@@ -812,6 +846,7 @@
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
 				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
+				E70C400522C0D60C0047A1C0 /* TestZZCollectionViewVC.m in Sources */,
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
 				E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
@@ -820,6 +855,7 @@
 				E79318DA22B4E7CD00077FDE /* TestCell.m in Sources */,
 				E767601322B09A6E0044B9AD /* UIView+ZZKit.m in Sources */,
 				E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */,
+				E70C3FFC22C09F8C0047A1C0 /* ZZCollectionView.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,

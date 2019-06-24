@@ -19,6 +19,7 @@
 #import "TestTimerVC.h"
 #import "TestUIVC.h"
 #import "TestZZTableViewVC.h"
+#import "TestZZCollectionViewVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -49,8 +50,8 @@
                         @[@"测试Notification",[TestNotificationVC class]],
                         @[@"测试ZZTimer",[TestTimerVC class]],
                         @[@"测试UI",[TestUIVC class]],
-                        @[@"测试ZZTableView",[TestZZTableViewVC class]]
-                        ];
+                        @[@"测试ZZTableView",[TestZZTableViewVC class]],
+                        @[@"测试ZZCollectionView",[TestZZCollectionViewVC class]]];
     
     [self.tableView reloadData];
 }

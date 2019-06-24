@@ -42,7 +42,7 @@
                 TestCellDataSource *testCellData = cellData;
                 NSLog(@"Tap ### Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
             }
-        }else if (action == ZZTableViewCellActionCustomeTapped) {
+        }else if (action == ZZTableViewCellActionCustomTapped) {
             if ([cellData isKindOfClass:[TestCellDataSource class]]) {
                 TestCellDataSource *testCellData = cellData;
                 NSLog(@"CustomeTapped ### Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
@@ -150,7 +150,7 @@
                 TestCellDataSource *testCellData = cellData;
                 NSLog(@"Tap ### Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
             }
-        }else if (action == ZZTableViewCellActionCustomeTapped) {
+        }else if (action == ZZTableViewCellActionCustomTapped) {
             if ([cellData isKindOfClass:[TestCellDataSource class]]) {
                 TestCellDataSource *testCellData = cellData;
                 NSLog(@"CustomeTapped ### Section : %ld, Row : %ld, Text : %@", section, row, testCellData.text);
@@ -186,11 +186,11 @@
     for (int i = 0; i < 10; i++) {
         ZZTableSectionObject *sectionObject = [[ZZTableSectionObject alloc] init];
         TestHeaderViewDataSource *headerDataSource = [[TestHeaderViewDataSource alloc] init];
-        sectionObject.headerDataSource = headerDataSource;
+        sectionObject.zzHeaderDataSource = headerDataSource;
         for (int j = 0 ; j < arc4random() % 20 + 10; j++) {
             TestCellDataSource *ds = [[TestCellDataSource alloc] init];
             ds.text = [NSString stringWithFormat:@"%c %d", 65 + i, j];
-            [sectionObject.cellDataSource addObject:ds];
+            [sectionObject.zzCellDataSource addObject:ds];
         }
         [self.tableView zz_addDataSource:sectionObject];
     }

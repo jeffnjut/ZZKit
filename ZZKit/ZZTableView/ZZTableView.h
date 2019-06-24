@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellEditingStyle) {
 // 定义Cell事件类型
 typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
     ZZTableViewCellActionTapped,          // 点击Cell
-    ZZTableViewCellActionCustomeTapped,   // 点击Cell上自定义事件（按钮或其它部件的事件监听）
+    ZZTableViewCellActionCustomTapped,    // 点击Cell上自定义事件（按钮或其它部件的事件监听）
     ZZTableViewCellActionInsert,          // 插入Cell
     ZZTableViewCellActionMultiSelect,     // 多选Cell
     ZZTableViewCellActionDelete,          // 删除Cell
@@ -151,9 +151,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTableSectionObject : NSObject
 
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *headerDataSource;
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *footerDataSource;
-@property (nonatomic, strong) NSMutableArray<ZZTableViewCellDataSource *> *cellDataSource;
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzHeaderDataSource;
+@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzFooterDataSource;
+@property (nonatomic, strong) NSMutableArray<ZZTableViewCellDataSource *> *zzCellDataSource;
 
 @end
 
