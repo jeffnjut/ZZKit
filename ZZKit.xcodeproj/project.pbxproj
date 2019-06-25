@@ -109,6 +109,8 @@
 		E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */; };
 		E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */; };
 		E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */; };
+		E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */; };
+		E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -295,6 +297,9 @@
 		E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestKeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZEnumCompare.h; sourceTree = "<group>"; };
 		E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZEnumCompare.m; sourceTree = "<group>"; };
+		E7F85F1D22C1B7430018A217 /* TestWidgetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWidgetVC.h; sourceTree = "<group>"; };
+		E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWidgetVC.m; sourceTree = "<group>"; };
+		E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestWidgetVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -648,6 +653,9 @@
 				E70C400C22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.h */,
 				E70C400D22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m */,
 				E70C400E22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib */,
+				E7F85F1D22C1B7430018A217 /* TestWidgetVC.h */,
+				E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */,
+				E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -724,6 +732,7 @@
 				E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
+				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
@@ -866,6 +875,7 @@
 				E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */,
+				E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */,
 				E788655822B218C600B20F3E /* ZZReachability.m in Sources */,
 				E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,

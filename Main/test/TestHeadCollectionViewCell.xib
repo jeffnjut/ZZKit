@@ -42,6 +42,9 @@
                 <constraint firstAttribute="bottom" secondItem="Rmd-UW-INZ" secondAttribute="bottom" id="yDj-ee-kmC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="label" destination="Rmd-UW-INZ" id="9g1-WL-9Xs"/>
+            </connections>
             <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
         </collectionViewCell>
     </objects>

@@ -29,6 +29,12 @@
         make.edges.equalTo(superView);
     } actionBlock:^(ZZCollectionView *__weak  _Nonnull collectionView, NSInteger section, NSInteger row, ZZCollectionViewCellAction action, __kindof ZZCollectionViewCellDataSource * _Nullable cellData, __kindof ZZCollectionViewCell * _Nullable cell) {
         
+        if (action == ZZCollectionViewCellActionCustomTapped) {
+            if ([cellData isKindOfClass:[TestHeadCollectionViewCellDataSource class]]) {
+                NSLog(@"Tap Header");
+            }
+        }
+        
     }];
     
     [self.collectionView reloadData];
@@ -50,10 +56,8 @@
     sectionObject.zzMinimumInteritemSpacing = 10.0;
     sectionObject.zzColumns = 1;
     sectionObject.zzEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    for (int i = 0; i < 10; i ++) {
-        TestCollectionViewCellDataSource *ds = [[TestCollectionViewCellDataSource alloc] init];
-        [sectionObject.zzCellDataSource addObject:ds];
-    }
+    TestHeadCollectionViewCellDataSource *ds = [[TestHeadCollectionViewCellDataSource alloc] init];
+    [sectionObject.zzCellDataSource addObject:ds];
     [self.collectionView zz_addDataSource:sectionObject];
 
     sectionObject = [ZZCollectionSectionObject new];
@@ -68,6 +72,7 @@
     [self.collectionView zz_addDataSource:sectionObject];
     
     [self.collectionView zz_refresh];
+    
 }
 
 /*

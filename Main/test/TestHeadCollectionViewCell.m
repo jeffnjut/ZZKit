@@ -7,12 +7,27 @@
 //
 
 #import "TestHeadCollectionViewCell.h"
+#import "UIView+ZZKit_Blocks.h"
+#import "ZZMacro.h"
+
+@interface TestHeadCollectionViewCell()
+
+@property (nonatomic, weak) IBOutlet UILabel *label;
+
+@end
 
 @implementation TestHeadCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    ZZ_WEAK_SELF
+    [self.label zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+        
+        weakSelf.zzTapBlock(weakSelf.zzData, weakSelf);
+        
+    }];
 }
 
 - (void)setZzData:(__kindof ZZCollectionViewCellDataSource *)zzData {

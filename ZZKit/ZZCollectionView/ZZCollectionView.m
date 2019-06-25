@@ -231,11 +231,11 @@
     collectionView->_superView = onView;
     if (onView) {
         [onView addSubview:collectionView];
-    }
-    if (constraintBlock) {
-        [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            constraintBlock(onView, make);
-        }];
+        if (constraintBlock) {
+            [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+                constraintBlock(onView, make);
+            }];
+        }
     }
     if (registerCellsBlock) {
         NSArray *array = registerCellsBlock();
