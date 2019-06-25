@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+#pragma mark - FJProgressView
 
 @interface ZZWidgetProgressView : UIView
 
-@end
+// TODO
 
-NS_ASSUME_NONNULL_END
+@end

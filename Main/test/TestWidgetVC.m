@@ -8,6 +8,7 @@
 
 #import "TestWidgetVC.h"
 #import "ZZWidgetTimerView.h"
+#import "ZZWidgetProgressView.h"
 #import "ZZMacro.h"
 #import <Typeset/Typeset.h>
 
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    ZZWidgetTimerView *timerView = [ZZWidgetTimerView zz_quickAdd:YES time:10 onView:self.view backgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0] borderWidth:1.0 borderColor:[UIColor blackColor] circleLineWidth:10.0 circleLineColor:[UIColor whiteColor] circleLineFillColor:[UIColor blackColor] circleLineMargin:10.0 frame:CGRectMake(50, 100, 100, 100) tapBlock:^(ZZWidgetTimerView * _Nonnull zzWidgetTimerView) {
+    ZZWidgetTimerView *timerView = [ZZWidgetTimerView zz_quickAdd:YES time:101 onView:self.view backgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0] borderWidth:1.0 borderColor:[UIColor blackColor] circleLineWidth:10.0 circleLineColor:[UIColor whiteColor] circleLineFillColor:[UIColor blackColor] circleLineMargin:10.0 frame:CGRectMake(50, 50, 100, 100) tapBlock:^(ZZWidgetTimerView * _Nonnull zzWidgetTimerView) {
         NSLog(@"Tap TimerView");
     } completionBlock:^(ZZWidgetTimerView * _Nonnull zzWidgetTimerView) {
         NSLog(@"Timer Completed");
@@ -33,6 +34,10 @@
     timerView.zzTimeTextOffset = UIOffsetMake(0, 5.0);
     timerView.zzTimeTextAttibutes = @{NSForegroundColorAttributeName:[UIColor lightGrayColor], NSFontAttributeName:[UIFont boldSystemFontOfSize:10.0]};
     [timerView zz_start];
+    
+    ZZWidgetProgressView *progressView = [ZZWidgetProgressView zz_quickAdd:[UIColor blueColor] onView:self.view frame:CGRectMake(10, 300, 300, 50) progressFillColor:[UIColor redColor] progressBorderColor:[UIColor whiteColor] borderWidth:8.0 borderColor:[UIColor blackColor] margin:0];
+    // [self.view addSubview:progressView];
+    [progressView setProgress:0.5];
 }
 
 /*

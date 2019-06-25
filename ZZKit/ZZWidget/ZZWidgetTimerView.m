@@ -10,8 +10,6 @@
 #import "UIView+ZZKit.h"
 #import "UIView+ZZKit_Blocks.h"
 
-#define kPace (0.01)
-
 @interface ZZWidgetTimerView ()
 
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
@@ -19,6 +17,7 @@
 @property (nonatomic, strong) UILabel *labelTime;
 @property (nonatomic, assign) CGFloat time;
 @property (nonatomic, assign) CGFloat interval;
+@property (nonatomic, assign) CGFloat kPace;
 @property (nonatomic, assign) BOOL reverse;
 @property (nonatomic, copy) void(^completionBlock)(ZZWidgetTimerView *zzWidgetTimerView);
 @property (nonatomic, copy) void(^tapBlock)(ZZWidgetTimerView *zzWidgetTimerView);
@@ -63,7 +62,14 @@
     
     ZZWidgetTimerView *widgetTimerView = [[ZZWidgetTimerView alloc] initWithFrame:frame];
     widgetTimerView.time = time;
-    widgetTimerView.interval = time / (1.0 / kPace);
+    if (time > 1000) {
+        widgetTimerView.kPace = 1.0 / time;
+    }else if (time > 100) {
+        widgetTimerView.kPace = 0.001;
+    }else {
+        widgetTimerView.kPace = 0.01;
+    }
+    widgetTimerView.interval = time / (1.0 / widgetTimerView.kPace);
     widgetTimerView.completionBlock = completionBlock;
     widgetTimerView.reverse = reverse;
     [widgetTimerView _buildUI:backgroundColor frame:frame borderWidth:borderWidth borderColor:borderColor circleLineWidth:circleLineWidth circleLineColor:circleLineColor circleLineFillColor:circleLineFillColor circleLineMargin:circleLineMargin time:time];
@@ -167,7 +173,7 @@
             });
             return;
         }else{
-            self.shapeLayer.strokeStart += kPace;
+            self.shapeLayer.strokeStart += self.kPace;
             int t = (int)self.time - (int)floorf(self.shapeLayer.strokeStart / (1.0 / self.time));
             [self _updateTime:t];
         }
@@ -176,7 +182,7 @@
         });
     }else {
         CGFloat currentEnd = self.shapeLayer.strokeEnd;
-        if (currentEnd + kPace >= 1.0) {
+        if (currentEnd + self.kPace >= 1.0) {
             self.shapeLayer.strokeEnd = 1.0;
             [self _updateTime:0];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -184,7 +190,7 @@
             });
             return;
         }else{
-            self.shapeLayer.strokeEnd += kPace;
+            self.shapeLayer.strokeEnd += self.kPace;
             int t = (int)self.time - (int)floorf(self.shapeLayer.strokeEnd / (1.0 / self.time));
             [self _updateTime:t];
         }
