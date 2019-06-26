@@ -66,6 +66,12 @@
 		E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */; };
 		E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */; };
 		E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */; };
+		E78E766222C3626300D1EF5A /* cn.json in Resources */ = {isa = PBXBuildFile; fileRef = E78E766122C3626200D1EF5A /* cn.json */; };
+		E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */; };
+		E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766A22C3630400D1EF5A /* ZZCountryModel.m */; };
+		E78E767122C3633E00D1EF5A /* ZZCNRegionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E767022C3633E00D1EF5A /* ZZCNRegionController.m */; };
+		E78E767422C3635100D1EF5A /* ZZCountryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E767322C3635100D1EF5A /* ZZCountryController.m */; };
+		E78E767622C3642500D1EF5A /* countrys.json in Resources */ = {isa = PBXBuildFile; fileRef = E78E767522C3642500D1EF5A /* countrys.json */; };
 		E79318DA22B4E7CD00077FDE /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E79318D822B4E7CD00077FDE /* TestCell.m */; };
 		E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E79318D922B4E7CD00077FDE /* TestCell.xib */; };
 		E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A45D3B22B3D16900AA1EBF /* TestZZTableViewVC.m */; };
@@ -224,6 +230,16 @@
 		E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetDropSheetView.m; sourceTree = "<group>"; };
 		E788656F22B21B9E00B20F3E /* ZZWidgetLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetLoadingView.h; sourceTree = "<group>"; };
 		E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetLoadingView.m; sourceTree = "<group>"; };
+		E78E766122C3626200D1EF5A /* cn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cn.json; sourceTree = "<group>"; };
+		E78E766622C362D300D1EF5A /* ZZCNRegionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCNRegionModel.h; sourceTree = "<group>"; };
+		E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCNRegionModel.m; sourceTree = "<group>"; };
+		E78E766922C3630400D1EF5A /* ZZCountryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCountryModel.h; sourceTree = "<group>"; };
+		E78E766A22C3630400D1EF5A /* ZZCountryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCountryModel.m; sourceTree = "<group>"; };
+		E78E766F22C3633E00D1EF5A /* ZZCNRegionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCNRegionController.h; sourceTree = "<group>"; };
+		E78E767022C3633E00D1EF5A /* ZZCNRegionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCNRegionController.m; sourceTree = "<group>"; };
+		E78E767222C3635100D1EF5A /* ZZCountryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCountryController.h; sourceTree = "<group>"; };
+		E78E767322C3635100D1EF5A /* ZZCountryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCountryController.m; sourceTree = "<group>"; };
+		E78E767522C3642500D1EF5A /* countrys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countrys.json; sourceTree = "<group>"; };
 		E79318D722B4E7CD00077FDE /* TestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
 		E79318D822B4E7CD00077FDE /* TestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
 		E79318D922B4E7CD00077FDE /* TestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
@@ -353,6 +369,7 @@
 		E767601922B0DC2A0044B9AD /* ZZController */ = {
 			isa = PBXGroup;
 			children = (
+				E78E765D22C3621700D1EF5A /* ZZCountryController */,
 				E767601A22B0DC470044B9AD /* ZZTabBarController.h */,
 				E767601B22B0DC470044B9AD /* ZZTabBarController.m */,
 				E767601D22B0DC5B0044B9AD /* ZZNavigationController.h */,
@@ -439,6 +456,23 @@
 				E70C3FFB22C09F8C0047A1C0 /* ZZCollectionView.m */,
 			);
 			path = ZZCollectionView;
+			sourceTree = "<group>";
+		};
+		E78E765D22C3621700D1EF5A /* ZZCountryController */ = {
+			isa = PBXGroup;
+			children = (
+				E78E767522C3642500D1EF5A /* countrys.json */,
+				E78E766122C3626200D1EF5A /* cn.json */,
+				E78E766622C362D300D1EF5A /* ZZCNRegionModel.h */,
+				E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */,
+				E78E766F22C3633E00D1EF5A /* ZZCNRegionController.h */,
+				E78E767022C3633E00D1EF5A /* ZZCNRegionController.m */,
+				E78E766922C3630400D1EF5A /* ZZCountryModel.h */,
+				E78E766A22C3630400D1EF5A /* ZZCountryModel.m */,
+				E78E767222C3635100D1EF5A /* ZZCountryController.h */,
+				E78E767322C3635100D1EF5A /* ZZCountryController.m */,
+			);
+			path = ZZCountryController;
 			sourceTree = "<group>";
 		};
 		E7DC5C0A229CCC8600ED8733 = {
@@ -736,6 +770,7 @@
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
+				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
@@ -747,6 +782,7 @@
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
+				E78E766222C3626300D1EF5A /* cn.json in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
 				E767600222AFB2060044B9AD /* test.bundle in Resources */,
 				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
@@ -831,6 +867,7 @@
 				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
+				E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */,
 				E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */,
@@ -851,6 +888,7 @@
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
+				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
 				E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
@@ -865,11 +903,13 @@
 				E767601322B09A6E0044B9AD /* UIView+ZZKit.m in Sources */,
 				E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */,
 				E70C3FFC22C09F8C0047A1C0 /* ZZCollectionView.m in Sources */,
+				E78E767422C3635100D1EF5A /* ZZCountryController.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
 				E788656822B21B0500B20F3E /* ZZWidgetTagsView.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
+				E78E767122C3633E00D1EF5A /* ZZCNRegionController.m in Sources */,
 				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
 				E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
