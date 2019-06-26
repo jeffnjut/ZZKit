@@ -10,9 +10,13 @@
 #import "ZZWidgetTimerView.h"
 #import "ZZWidgetProgressView.h"
 #import "ZZMacro.h"
+#import "UIView+ZZKit_Blocks.h"
 #import <Typeset/Typeset.h>
 
 @interface TestWidgetVC ()
+
+@property (nonatomic, strong) ZZWidgetProgressView *progressView;
+
 
 @end
 
@@ -35,9 +39,14 @@
     timerView.zzTimeTextAttibutes = @{NSForegroundColorAttributeName:[UIColor lightGrayColor], NSFontAttributeName:[UIFont boldSystemFontOfSize:10.0]};
     [timerView zz_start];
     
-    ZZWidgetProgressView *progressView = [ZZWidgetProgressView zz_quickAdd:[UIColor blueColor] onView:self.view frame:CGRectMake(10, 300, 300, 50) progressFillColor:[UIColor redColor] progressBorderColor:[UIColor whiteColor] borderWidth:8.0 borderColor:[UIColor blackColor] margin:0];
-    // [self.view addSubview:progressView];
-    [progressView setProgress:0.5];
+    self.progressView = [ZZWidgetProgressView zz_quickAdd:self.view frame:CGRectMake(10, 300, 300, 60) progressTintColor:[UIColor whiteColor] progressedTintColor:[UIColor greenColor] progressBorderWidth:5.0 progressBorderColor:[UIColor redColor] containerBorderWidth:2.0 containerBorderColor:[UIColor blueColor] round:NO progress:0];
+    
+    ZZ_WEAK_SELF
+    [self.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.progressView zz_updateProgress:weakSelf.progressView.zz_progress + 0.1];
+        });
+    }];
 }
 
 /*

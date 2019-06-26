@@ -12,6 +12,26 @@
 
 @interface ZZWidgetProgressView : UIView
 
-// TODO
+/**
+ *  快速创建ProgressView
+ */
++ (nonnull ZZWidgetProgressView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame progressTintColor:(nullable UIColor *)progressTintColor progressedTintColor:(nullable UIColor *)progressedTintColor progressBorderWidth:(CGFloat)progressBorderWidth progressBorderColor:(nullable UIColor *)progressBorderColor containerBorderWidth:(CGFloat)containerBorderWidth containerBorderColor:(nullable UIColor *)containerBorderColor round:(BOOL)round progress:(CGFloat)progress;
+
+/**
+ *  更新Progress进度
+ *  progress范围[0,100]
+ */
+- (void)zz_updateProgress:(CGFloat)progress;
+
+/**
+ *  更新Progress进度
+ *  progress范围[0,100]
+ */
+// - (void)zz_updateProgress:(NSUInteger)progress animated:(BOOL)animated;
+
+/**
+ *  Progress进度
+ */
+- (CGFloat)zz_progress;
 
 @end
