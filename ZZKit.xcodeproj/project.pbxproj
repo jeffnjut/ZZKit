@@ -28,6 +28,10 @@
 		E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC222B1601A0099A8C4 /* ZZWebView.m */; };
 		E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
+		E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E759CDE122CC59B4001EC3AE /* TestZZWebView.m */; };
+		E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */; };
+		E759CDE622CC849B001EC3AE /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE522CC849B001EC3AE /* test.html */; };
+		E759CDE822CE1FEB001EC3AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE722CE1FEB001EC3AE /* test.js */; };
 		E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FF922AF45DB0044B9AD /* ZZDevice.m */; };
 		E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */; };
 		E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */; };
@@ -157,6 +161,11 @@
 		E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
+		E759CDE022CC59B4001EC3AE /* TestZZWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZWebView.h; sourceTree = "<group>"; };
+		E759CDE122CC59B4001EC3AE /* TestZZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZWebView.m; sourceTree = "<group>"; };
+		E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZWebView.xib; sourceTree = "<group>"; };
+		E759CDE522CC849B001EC3AE /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		E759CDE722CE1FEB001EC3AE /* test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		E7675FF722AF45070044B9AD /* ZZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZMacro.h; sourceTree = "<group>"; };
 		E7675FF822AF45DB0044B9AD /* ZZDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDevice.h; sourceTree = "<group>"; };
 		E7675FF922AF45DB0044B9AD /* ZZDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDevice.m; sourceTree = "<group>"; };
@@ -690,6 +699,11 @@
 				E7F85F1D22C1B7430018A217 /* TestWidgetVC.h */,
 				E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */,
 				E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */,
+				E759CDE022CC59B4001EC3AE /* TestZZWebView.h */,
+				E759CDE122CC59B4001EC3AE /* TestZZWebView.m */,
+				E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */,
+				E759CDE522CC849B001EC3AE /* test.html */,
+				E759CDE722CE1FEB001EC3AE /* test.js */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -760,6 +774,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E759CDE622CC849B001EC3AE /* test.html in Resources */,
 				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
@@ -768,12 +783,14 @@
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
+				E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
+				E759CDE822CE1FEB001EC3AE /* test.js in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E767601822B0AA120044B9AD /* TestUIVC.xib in Resources */,
@@ -921,6 +938,7 @@
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
 				E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */,
+				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
@@ -1071,8 +1089,9 @@
 			baseConfigurationReference = 742A95A0B7D510DB7CB7D1EA /* Pods-ZZKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1091,8 +1110,9 @@
 			baseConfigurationReference = DB4C59C6F857D28A542958CF /* Pods-ZZKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

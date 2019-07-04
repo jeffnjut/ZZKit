@@ -1,0 +1,75 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+        // iOS和Android的调用方法适配
+        var handler = {
+            callHander: function (funcName, json) {
+                //if (iOS端) {
+                // window.webkit.messageHandlers[funcName].postMessage(JSON.stringify(json))
+                window.webkit.messageHandlers[funcName].postMessage(json)
+                //}
+                //if (安卓端) {
+                // window[funcName].postMessage(json);
+                //}
+            }
+        }
+    
+    function openSelector(param) {
+        handler.callHander('openSelector', param);
+    }
+    
+    //声明
+    function share(shareData) {
+        var title = shareData.title;
+        var imgUrl = shareData.imgUrl;
+        var link = shareData.link;
+        var result = shareData.result;
+        //do something
+        
+    }
+    //调用的时候需要这么写
+    function test() {
+        share({
+              title: "title",
+              imgUrl: "http://img.dd.com/xxx.png",
+              link: location.href,
+              result: function(res) {
+              // 函数作为参数
+              myAlert(res);
+              // setTimeout(function(){alert(res);},0);
+              // console.log(res ? "success" : "failure");
+              }
+              });
+    }
+    
+    function add(arg1, arg2) {
+        return arg1 + arg2;
+    }
+    
+    function test2() {
+        var res = add(1,2);
+        myAlert(res);
+    }
+    
+    function callNative() {
+        
+    }
+    
+    function myAlert(arg) {
+        setTimeout(function(){alert(arg);},0);
+    }
+    </script>
+    <html>
+        <body>
+            <p><a href="zzkit://smsLogin?username=12323123&code=892845">可以打开的URLScheme</a></p>
+            <p><a href="ifly://smsLogin?username=12323123&code=892845">禁止打开的URLScheme</a></p>
+            <p><a href="https://www.baidu.com">可以打开的URL</a></p>
+            <p><a href="http://www.baidu.com">禁止打开的URL</a></p>
+            <p><a href="http://www.baidu.com">禁止打开的URL</a></p>
+            
+            <p><button onclick="test()">测试</button></p>
+            <p><button onclick="test2()">测试</button></p>
+            <p><button onclick="callNative()">测试</button></p>
+            <p><button onclick="alert('aaa')">测试</button></p>
+            <p><button onclick="print()">测试test.js</button></p>
+        </body>
+    </html>

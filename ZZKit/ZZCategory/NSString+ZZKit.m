@@ -707,7 +707,8 @@
     NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
     for (NSString *key in [cookieDict allKeys]) {
         NSString *value = [cookieDict objectForKey:key];
-        NSString *uppercaseKey = [key uppercaseString];//主要是排除命名不规范的问题
+        NSString *uppercaseKey = [key uppercaseString];
+        //主要是排除命名不规范的问题
         if ([uppercaseKey isEqualToString:@"DOMAIN"]) {
             if (![value hasPrefix:@"."] && ![value hasPrefix:@"www"]) {
                 value = [NSString stringWithFormat:@".%@",value];

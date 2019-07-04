@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ZZWebView.h"
 
 @interface AppDelegate ()
 
@@ -14,6 +15,13 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    if ([ZZWebView zz_handleOpenURL:url option:options]) {
+        return YES;
+    }
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

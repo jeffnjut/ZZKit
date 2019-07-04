@@ -21,6 +21,7 @@
 #import "TestZZTableViewVC.h"
 #import "TestZZCollectionViewVC.h"
 #import "TestWidgetVC.h"
+#import "TestZZWebView.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -53,7 +54,8 @@
                         @[@"测试UI",[TestUIVC class]],
                         @[@"测试ZZTableView",[TestZZTableViewVC class]],
                         @[@"测试ZZCollectionView",[TestZZCollectionViewVC class]],
-                        @[@"测试Widget小组件",[TestWidgetVC class]]];
+                        @[@"测试Widget小组件",[TestWidgetVC class]],
+                        @[@"测试ZZWebView",[TestZZWebView class]]];
     
     [self.tableView reloadData];
 }
