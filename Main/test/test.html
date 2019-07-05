@@ -57,9 +57,49 @@
     function myAlert(arg) {
         setTimeout(function(){alert(arg);},0);
     }
+    
+    // -- Webkit --
+    var JS_Fun_01 = function (){
+        var args = arguments;
+        var args_num = arguments.length;
+        window.webkit.messageHandlers.Call.postMessage({
+                                                       'functionName':'OC_Fun_01',
+                                                       'arguments': args_num == 0 ? {} : JSON.stringify(args),
+                                                       });
+    };
+    
+    var JS_Fun_05 = function (){
+        var args = arguments;
+        var type = "JSbridge";
+        var functionName = "OC_Fun_05";
+        var payload = {"type": type, "functionName": functionName, "arguments": args};
+        var res = prompt(JSON.stringify(payload));
+        return res;
+    };
+    
+    function wktest() {
+        var res = JS_Fun_05();
+        myAlert(res);
+    }
+    
+    function wktest2() {
+        
+        var args = arguments;
+        var args_num = arguments.length;
+        window.webkit.messageHandlers.share.postMessage({
+                                                        'title': 'title',
+                                                        'imgUrl': 'http://img.dd.com/xxx.png',
+                                                        'link': location.href,
+                                                        'callback': 'myAlert(__PARAM__)',
+                                                        });
+    }
+    
     </script>
     <html>
         <body>
+            
+            <p>UIWebView</p>
+            
             <p><a href="zzkit://smsLogin?username=12323123&code=892845">可以打开的URLScheme</a></p>
             <p><a href="ifly://smsLogin?username=12323123&code=892845">禁止打开的URLScheme</a></p>
             <p><a href="https://www.baidu.com">可以打开的URL</a></p>
@@ -71,5 +111,11 @@
             <p><button onclick="callNative()">测试</button></p>
             <p><button onclick="alert('aaa')">测试</button></p>
             <p><button onclick="print()">测试test.js</button></p>
+            
+            
+            <p>WKWebView</p>
+            <p><button onclick="JS_Fun_01('hahah')">WKWebView JavaScript 调OC</button></p>
+            <p><button onclick="wktest()">WKWebView JavaScript 调OC方法，并同步回传值</button></p>
+            <p><button onclick="wktest2()">WKWebView JavaScript 调OC方法，并异步回传值</button></p>
         </body>
     </html>

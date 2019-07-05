@@ -11,29 +11,34 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @class MASConstraintMaker;
+@class ZZWebViewJavaScriptResult;
 
 typedef NS_ENUM(NSInteger, ZZWebViewType) {
     ZZWebViewTypeUIWebView,   // UIWebView
     ZZWebViewTypeWKWebView    // WKWebView
 };
 
+typedef void(^ZZUserContentProcessJavaScriptMessageBlock)(WKUserContentController *userContentController, WKScriptMessage *message);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebView : UIView
 
-@property (nonatomic, readonly) UIWebView *webView;
+@property (nonatomic, readonly) UIWebView *zzUIWebView;
 
-@property (nonatomic, readonly) WKWebView *wkWebView;
+@property (nonatomic, readonly) WKWebView *zzWKWebView;
 
-@property (nonatomic, readonly) JSContext *zzContext;
+@property (nonatomic, readonly) JSContext *zzUIWebViewContext;
 
-@property (nonatomic, readonly) WKWebViewConfiguration *wkConfiguration;
+@property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
 
-@property (nonatomic, copy) BOOL(^zzShouldLoadRequestBlock)(NSURLRequest *request);
+@property (nonatomic, copy) BOOL(^zzUIWebViewShouldLoadRequestBlock)(NSURLRequest *request);
 
-@property (nonatomic, copy) BOOL(^zzOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
+@property (nonatomic, copy) BOOL(^zzUIWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
 
-@property (nonatomic, strong) NSDictionary<NSString *, id> *zzProcessJavaScriptCallingDictionary;
+@property (nonatomic, strong) NSDictionary<NSString *, id> *zzUIWebViewProcessJavaScriptCallingDictionary;
+
+@property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
 
 /**
  *  加载HTML文本
@@ -58,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  OC执行JavaScript,回调有异常捕获
  */
-- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, JSValue *value, JSValue *exception))result;
+- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result;
 
 /**
  *  快速新建ZZWebView的方法
@@ -69,6 +74,17 @@ NS_ASSUME_NONNULL_BEGIN
  *  URL Schemes时候执行处理方法
  */
 + (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option;
+
+@end
+
+@interface ZZWebViewJavaScriptResult : NSObject
+
+@property (nonatomic, strong) JSValue *data;
+@property (nonatomic, strong) JSValue *error;
+@property (nonatomic, strong) id wkData;
+@property (nonatomic, strong) NSError *wkError;
+
++ (ZZWebViewJavaScriptResult *)create;
 
 @end
 

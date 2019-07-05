@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "ZZMacro.h"
 #import "UIWindow+ZZKit.h"
+#import "NSString+ZZKit.h"
 
 @interface ZZWebView () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 {
@@ -19,6 +20,7 @@
     WKWebView *_wkWebView;
     JSContext *_context;
     BOOL _addedJavaScriptProcess;
+    
 }
 
 @end
@@ -27,36 +29,44 @@
 
 #pragma mark - Property Setting & Getter
 
-- (UIWebView *)webView {
+- (UIWebView *)zzUIWebView {
     
     return _webView;
 }
 
-- (WKWebView *)wkWebView {
+- (WKWebView *)zzWKWebView {
     
     return _wkWebView;
 }
 
-- (JSContext *)zzContext {
+- (JSContext *)zzUIWebViewContext {
     
     return _context;
 }
 
-- (WKWebViewConfiguration *)wkConfiguration {
+- (WKWebViewConfiguration *)zzWKConfiguration {
     
     return _wkWebView.configuration;
 }
 
-- (void)setZzProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,id> *)zzProcessJavaScriptCallingDictionary {
+- (void)setZzUIWebViewProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,id> *)zzUIWebViewProcessJavaScriptCallingDictionary {
     
-    _zzProcessJavaScriptCallingDictionary = zzProcessJavaScriptCallingDictionary;
+    _zzUIWebViewProcessJavaScriptCallingDictionary = zzUIWebViewProcessJavaScriptCallingDictionary;
     if (_context) {
         __weak typeof(self) weakSelf = self;
-        [zzProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [zzUIWebViewProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             strongSelf->_context[key] = obj;
         }];
         _addedJavaScriptProcess = YES;
+    }
+}
+
+- (void)setZzWKWebViewProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,ZZUserContentProcessJavaScriptMessageBlock> *)zzWKWebViewProcessJavaScriptCallingDictionary {
+
+    _zzWKWebViewProcessJavaScriptCallingDictionary = zzWKWebViewProcessJavaScriptCallingDictionary;
+    for (NSString *name in zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
+        [self.zzWKConfiguration.userContentController addScriptMessageHandler:self name:name];
     }
 }
 
@@ -121,7 +131,7 @@
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         return [_webView stringByEvaluatingJavaScriptFromString:@"document.titledss"];
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        
+        NSAssert(NO, @"请使用方法zz_evaluateScript:result:");
     }
     return nil;
 }
@@ -129,9 +139,10 @@
 /**
  *  OC执行JavaScript,回调有异常捕获
  */
-- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, JSValue *value, JSValue *exception))result {
+- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result {
     
     __weak typeof(self) weakSelf = self;
+    
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         
         if (_context == nil) {
@@ -140,19 +151,30 @@
         __block BOOL _isErrorRaised = NO;
         _context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
             _isErrorRaised = YES;
-            result == nil ? : result(context, nil, exception);
+            ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+            resultData.error = exception;
+            result == nil ? : result(context, resultData);
         };
-        JSValue *jsValue = [_context evaluateScript:script];
+        __block JSValue *jsValue = [_context evaluateScript:script];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             if (!_isErrorRaised && result != nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     __strong typeof(weakSelf) strongSelf = weakSelf;
-                    result(strongSelf->_context, jsValue, nil);
+                    ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+                    resultData.data = jsValue;
+                    result == nil ? : result(strongSelf->_context, resultData);
                 });
             }
         });
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         
+        [_wkWebView evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+            
+            ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+            resultData.wkData = data;
+            resultData.wkError = error;
+            result == nil ? : result(nil, resultData);
+        }];
     }
 }
 
@@ -181,8 +203,8 @@
 + (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option {
     
     ZZWebView *zzWebView = [ZZWebView _getActiveZZWebView];
-    if (zzWebView != nil && zzWebView.zzOpenURLBlock != nil) {
-        return zzWebView.zzOpenURLBlock(url, option);
+    if (zzWebView != nil && zzWebView.zzUIWebViewOpenURLBlock != nil) {
+        return zzWebView.zzUIWebViewOpenURLBlock(url, option);
     }
     return NO;
 }
@@ -262,9 +284,9 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
     
-    if (self.zzShouldLoadRequestBlock != nil) {
+    if (self.zzUIWebViewShouldLoadRequestBlock != nil) {
         
-        return self.zzShouldLoadRequestBlock(request);
+        return self.zzUIWebViewShouldLoadRequestBlock(request);
     }
     return YES;
 }
@@ -281,7 +303,7 @@
     
     if (!_addedJavaScriptProcess) {
         __weak typeof(self) weakSelf = self;
-        [_zzProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [_zzUIWebViewProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             strongSelf->_context[key] = obj;
         }];
@@ -293,10 +315,51 @@
     
 }
 
-#pragma mark - WKScriptMessageHandler
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+#pragma mark - WKNavigationDelegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    
+}
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    
+}
+
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    
+}
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler {
+    
+}
+
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0)) {
+    
+}
+
+#pragma mark - WKUIDelegate
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
     
@@ -317,6 +380,41 @@
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler {
     
+    id dict = [prompt zz_jsonToCocoaObject];
+    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
+        
+        NSDictionary *_dict = dict;
+        
+        NSString *type = [_dict objectForKey:@"type"];
+        if (type && [type isEqualToString:@"JSbridge"])
+        {
+            NSString *returnValue = @"";
+            NSString *functionName = [_dict objectForKey:@"functionName"];
+            NSDictionary *args = [_dict objectForKey:@"arguments"];
+            if ([functionName isEqualToString:@"OC_Fun_05"])
+            {
+                returnValue = @"Fun:OC_Fun_05";
+            }
+            else if ([functionName isEqualToString:@"OC_Fun_06"])
+            {
+                returnValue = @"Fun:OC_Fun_06";
+            }
+            
+            completionHandler(@"test");
+        }
+    }
+}
+
+
+
+#pragma mark - WKScriptMessageHandler
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    
+    ZZUserContentProcessJavaScriptMessageBlock wkProcessBlock = [_zzWKWebViewProcessJavaScriptCallingDictionary objectForKey:message.name];
+    if (wkProcessBlock) {
+        wkProcessBlock(userContentController, message);
+    }
 }
 
 /*
@@ -326,5 +424,15 @@
     // Drawing code
 }
 */
+
+@end
+
+@implementation ZZWebViewJavaScriptResult
+
++ (ZZWebViewJavaScriptResult *)create {
+    
+    ZZWebViewJavaScriptResult *result = [[ZZWebViewJavaScriptResult alloc] init];
+    return result;
+}
 
 @end

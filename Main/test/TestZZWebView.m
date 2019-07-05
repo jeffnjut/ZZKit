@@ -32,12 +32,15 @@
 
 - (void)testWKWebView {
     
+    __weak typeof(self) weakSelf = self;
     self.webView = [ZZWebView zz_quickAdd:ZZWebViewTypeWKWebView onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     }];
+
     
-    WKUserScript *newCookieScript = [[WKUserScript alloc] initWithSource:@"document.cookie = 'DarkAngelCookie=DarkAngel;'" injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource:@"alert(document.cookie);" injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+    // 添加脚本
+    // WKUserScript *newCookieScript = [[WKUserScript alloc] initWithSource:@"document.cookie = 'DarkAngelCookie=DarkAngel;'" injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+    // WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource:@"alert(document.cookie);" injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
 
     // [self.webView.wkConfiguration.userContentController addUserScript:newCookieScript];
     // [self.webView.wkConfiguration.userContentController addUserScript:cookieScript];
@@ -48,11 +51,57 @@
         jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
     });
     //添加自定义的脚本
-    WKUserScript *js = [[WKUserScript alloc] initWithSource:jsSource injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
-    [self.webView.wkConfiguration.userContentController addUserScript:js];
+    // WKUserScript *js = [[WKUserScript alloc] initWithSource:jsSource injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+    // [self.webView.zzWKConfiguration.userContentController addUserScript:js];
     
     [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
     
+    /*
+     share({
+     title: "title",
+     imgUrl: "http://img.dd.com/xxx.png",
+     link: location.href,
+     result: function(res) {
+     // 函数作为参数
+     myAlert(res);
+     // setTimeout(function(){alert(res);},0);
+     // console.log(res ? "success" : "failure");
+     }
+     });
+     */
+    
+    self.webView.zzWKWebViewProcessJavaScriptCallingDictionary =
+    @{
+      @"Call": ^(WKUserContentController *controller, WKScriptMessage *message) {
+          NSLog(@"name : %@\nbody : %@", message.name, message.body);
+      },
+      @"share": ^(WKUserContentController *controller, WKScriptMessage *message) {
+          NSLog(@"name : %@\nbody : %@", message.name, message.body);
+          // 模拟回调
+          __block NSString *script = [message.body objectForKey:@"callback"];
+          script = [script stringByReplacingOccurrencesOfString:@"__PARAM__" withString:[NSString stringWithFormat:@"\'%@\'", [message.body objectForKey:@"title"]]];
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              [weakSelf.webView zz_evaluateScript:script result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
+                  if (data.error) {
+                      NSLog(@"异常：%@", data.error);
+                  }else {
+                      NSLog(@"%@", data.data);
+                  }
+              }];
+          });
+      }
+      };
+    
+    [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
+        
+        [weakSelf.webView zz_evaluateScript:@"myAlert('hahah')" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
+            if (data.error) {
+                NSLog(@"异常：%@", data.error);
+            }else {
+                NSLog(@"%@", data.data);
+            }
+        }];
+    }];
 }
 
 - (void)testUIWebView {
@@ -62,7 +111,7 @@
         make.edges.equalTo(weakSelf.view);
     }];
     
-    self.webView.zzShouldLoadRequestBlock = ^BOOL(NSURLRequest * _Nonnull request) {
+    self.webView.zzUIWebViewShouldLoadRequestBlock = ^BOOL(NSURLRequest * _Nonnull request) {
         
         NSString *url = request.URL.absoluteString;
         if ([url hasPrefix:@"zzkit://"]) {
@@ -77,7 +126,7 @@
         return YES;
     };
     
-    self.webView.zzOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
+    self.webView.zzUIWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
         
         if ([url.absoluteString hasPrefix:@"zzkit://"]) {
             UIViewController *testVC = [[UIViewController alloc] init];
@@ -115,18 +164,20 @@
     //    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     //    [self.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
     
-    [self zz_navigationAddRightBarTextButton:@"测试".typeset.string action:^{
+    [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
         
-        [weakSelf.webView zz_evaluateScript:@"document.title" result:^(JSContext * _Nonnull context, JSValue * _Nonnull value, JSValue * _Nonnull exception) {
-            if (exception) {
-                NSLog(@"异常：%@", exception);
+        [weakSelf.webView zz_evaluateScript:@"document.title" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
+            if (data.error) {
+                NSLog(@"异常：%@", data.error);
             }else {
-                NSLog(@"%@", value);
+                NSLog(@"%@", data.data);
             }
         }];
     }];
     
-    self.webView.zzProcessJavaScriptCallingDictionary = @{@"share" : ^(JSValue *shareData) {
+    self.webView.zzUIWebViewProcessJavaScriptCallingDictionary =
+    
+    @{@"share" : ^(JSValue *shareData) {
         //首先这里要注意，回调的参数不能直接写NSDictionary类型，为何呢？
         //仔细看，打印出的确实是一个NSDictionary，但是result字段对应的不是block而是一个NSDictionary
         NSLog(@"%@", [shareData toObject]);
@@ -142,13 +193,13 @@
         });
         
     },
-                                                          @"add" : ^NSString* (NSInteger a, NSInteger b){
-                                                              return [NSString stringWithFormat:@"%ld+%ld=%ld", a, b , a+b];
-                                                          },
-                                                          @"callNative" : ^(){
-                                                              [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Set-Cookie":@"customCookieName=1314521;"}];
-                                                          }
-                                                          };
+      @"add" : ^NSString* (NSInteger a, NSInteger b){
+          return [NSString stringWithFormat:@"%ld+%ld=%ld", a, b , a+b];
+      },
+      @"callNative" : ^(){
+          [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Set-Cookie":@"customCookieName=1314521;"}];
+      }
+    };
 }
 
 /*
