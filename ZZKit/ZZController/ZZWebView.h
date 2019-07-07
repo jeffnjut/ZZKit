@@ -18,6 +18,22 @@ typedef NS_ENUM(NSInteger, ZZWebViewType) {
     ZZWebViewTypeWKWebView    // WKWebView
 };
 
+typedef NS_ENUM(NSInteger, ZZWebViewNavigationStatus) {
+    
+    // 根据Request判断是否允许导航
+    ZZWebViewNavigationStatusShouldStartNavigation,
+    // 根据Request判断是否允许导航
+    ZZWebViewNavigationStatusDecidePolicyForNavigationAction,
+    // 根据Response判断是否允许导航
+    ZZWebViewNavigationStatusDecidePolicyForNavigationResponse,
+    // 开始导航
+    ZZWebViewNavigationStatusDidStartNavigation,
+    // 完成导航
+    ZZWebViewNavigationStatusDidFinishNavigation,
+    // 导航失败
+    ZZWebViewNavigationStatusDidFailedWithNavigation
+};
+
 typedef void(^ZZUserContentProcessJavaScriptMessageBlock)(WKUserContentController *userContentController, WKScriptMessage *message);
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,13 +48,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
 
-@property (nonatomic, copy) BOOL(^zzUIWebViewShouldLoadRequestBlock)(NSURLRequest *request);
-
+// UIWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
 @property (nonatomic, copy) BOOL(^zzUIWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
 
+// UIWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, id> *zzUIWebViewProcessJavaScriptCallingDictionary;
 
+// WKWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
+
+@property (nonatomic, copy) BOOL(^zzWebNavigationBlock)(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error);
 
 /**
  *  加载HTML文本

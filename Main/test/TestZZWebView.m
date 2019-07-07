@@ -111,8 +111,7 @@
         make.edges.equalTo(weakSelf.view);
     }];
     
-    self.webView.zzUIWebViewShouldLoadRequestBlock = ^BOOL(NSURLRequest * _Nonnull request) {
-        
+    self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
         NSString *url = request.URL.absoluteString;
         if ([url hasPrefix:@"zzkit://"]) {
             return YES;

@@ -284,15 +284,17 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
     
-    if (self.zzUIWebViewShouldLoadRequestBlock != nil) {
-        
-        return self.zzUIWebViewShouldLoadRequestBlock(request);
+    if (self.zzWebNavigationBlock != nil) {
+        return self.zzWebNavigationBlock(ZZWebViewNavigationStatusShouldStartNavigation, webView, nil, request, navigationType, nil, nil, nil, nil, nil, nil);
     }
     return YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
-    
+ 
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidStartNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, nil);
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
@@ -309,36 +311,61 @@
         }];
         _addedJavaScriptProcess = YES;
     }
+    
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFinishNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, nil);
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
     
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFailedWithNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, error);
+    }
 }
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
-    decisionHandler(WKNavigationActionPolicyAllow);
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationAction, nil, webView, nil, 0, navigationAction, nil, nil, decisionHandler, nil, nil);
+    }else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     
-    decisionHandler(WKNavigationResponsePolicyAllow);
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationAction, nil, webView, nil, 0, nil, navigationResponse, nil, nil, decisionHandler, nil);
+    }else {
+        decisionHandler(WKNavigationResponsePolicyAllow);
+    }
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidStartNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+    }
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFinishNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+    }
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     
+    if (self.zzWebNavigationBlock != nil) {
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFailedWithNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+    }
 }
 
+/*
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     
 }
@@ -358,6 +385,7 @@
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0)) {
     
 }
+*/
 
 #pragma mark - WKUIDelegate
 
