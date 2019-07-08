@@ -203,8 +203,8 @@
 + (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option {
     
     ZZWebView *zzWebView = [ZZWebView _getActiveZZWebView];
-    if (zzWebView != nil && zzWebView.zzUIWebViewOpenURLBlock != nil) {
-        return zzWebView.zzUIWebViewOpenURLBlock(url, option);
+    if (zzWebView != nil && zzWebView.zzWebViewOpenURLBlock != nil) {
+        return zzWebView.zzWebViewOpenURLBlock(url, option);
     }
     return NO;
 }
@@ -338,7 +338,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationAction, nil, webView, nil, 0, nil, navigationResponse, nil, nil, decisionHandler, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationResponse, nil, webView, nil, 0, nil, navigationResponse, nil, nil, decisionHandler, nil);
     }else {
         decisionHandler(WKNavigationResponsePolicyAllow);
     }

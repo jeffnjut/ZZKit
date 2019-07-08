@@ -48,8 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
 
-// UIWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
-@property (nonatomic, copy) BOOL(^zzUIWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
+// UIWebView、WKWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
+@property (nonatomic, copy) BOOL(^zzWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
 
 // UIWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, id> *zzUIWebViewProcessJavaScriptCallingDictionary;

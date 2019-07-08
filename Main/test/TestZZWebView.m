@@ -102,6 +102,45 @@
             }
         }];
     }];
+    
+    self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
+        if (status == ZZWebViewNavigationStatusDecidePolicyForNavigationAction) {
+            NSString *url = navigationAction.request.URL.absoluteString;
+            if ([url hasPrefix:@"zzkit://"]) {
+                decisionRequestHandler(WKNavigationActionPolicyCancel);
+            }else if ([url hasPrefix:@"ifly://"]) {
+                decisionRequestHandler(WKNavigationActionPolicyCancel);
+            }else if ([url hasPrefix:@"https://"]) {
+                decisionRequestHandler(WKNavigationActionPolicyAllow);
+            }else if ([url hasPrefix:@"http://"]) {
+                decisionRequestHandler(WKNavigationActionPolicyCancel);
+            }
+            decisionRequestHandler(WKNavigationActionPolicyAllow);
+        }else if (status == ZZWebViewNavigationStatusDecidePolicyForNavigationResponse) {
+            decisionResponseHandler(WKNavigationResponsePolicyAllow);
+        }
+        return YES;
+    };
+    
+    self.webView.zzWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
+        
+        if ([url.absoluteString hasPrefix:@"zzkit://"]) {
+            UIViewController *testVC = [[UIViewController alloc] init];
+            testVC.view.backgroundColor = [UIColor redColor];
+            [weakSelf.navigationController zz_push:testVC animated:YES];
+            
+            [testVC.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                UIViewController *controller = (UIViewController *)[sender nextResponder];
+                if ([controller isKindOfClass:[UIViewController class]]) {
+                    [controller zz_dismiss];
+                }
+            }];
+            return YES;
+        }else if ([url.absoluteString hasPrefix:@"ifly://"]) {
+            
+        }
+        return NO;
+    };
 }
 
 - (void)testUIWebView {
@@ -125,7 +164,7 @@
         return YES;
     };
     
-    self.webView.zzUIWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
+    self.webView.zzWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
         
         if ([url.absoluteString hasPrefix:@"zzkit://"]) {
             UIViewController *testVC = [[UIViewController alloc] init];
