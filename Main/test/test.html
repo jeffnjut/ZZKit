@@ -94,6 +94,47 @@
                                                         });
     }
     
+    function shareNew(shareData) {
+        
+        //这是该方法的默认实现，上篇文章中有所提及
+        var title = shareData.title;
+        var imgUrl = shareData.imgUrl;
+        var link = shareData.link;
+        var result = shareData.result;
+        //do something
+        //这里模拟异步操作
+        setTimeout(function() {
+                   //2s之后，回调true分享成功
+                   result(true);
+                   }, 2000);
+                   
+        //用于WKWebView，因为WKWebView并没有办法把js function传递过去，因此需要特殊处理一下
+        //把js function转换为字符串，oc端调用时 (<js function string>)(true); 即可
+        shareData.result = result.toString();
+        window.webkit.messageHandlers.shareNew.postMessage(shareData);
+    }
+    
+    function wktest3() {
+        //清空分享结果
+        shareResult.innerHTML = "";
+        
+        //调用时，应该
+        shareNew({
+                 title: "title",
+                 imgUrl: "http://img.dd.com/xxx.png",
+                 link: location.href,
+                 result: function(res) {
+                 //这里shareResult 等同于 document.getElementById("shareResult")
+                 shareResult.innerHTML = res ? "success" : "failure";
+                 }
+                 });
+    }
+    
+    function wktest4() {
+        var cook = document.cookie;
+        window.webkit.messageHandlers.currentCookie.postMessage(cook);
+    }
+    
     </script>
     <html>
         <body>
@@ -116,6 +157,9 @@
             <p>WKWebView</p>
             <p><button onclick="JS_Fun_01('hahah')">WKWebView JavaScript 调OC</button></p>
             <p><button onclick="wktest()">WKWebView JavaScript 调OC方法，并同步回传值</button></p>
-            <p><button onclick="wktest2()">WKWebView JavaScript 调OC方法，并异步回传值</button></p>
+            <p><button onclick="wktest2()">WKWebView JavaScript 调OC方法，并异步回传值（JS方法拼接参数）</button></p>
+            <p><button onclick="wktest3()">WKWebView JavaScript 调OC方法，并异步回传值（JS Function转字符串）</button></p>
+            <p><button onclick="wktest4()">当前Cookie</button></p>
+            <h>下面展示分享结果</p><div id="shareResult"></div>
         </body>
     </html>

@@ -48,8 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
 
-// UIWebView、WKWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
-@property (nonatomic, copy) BOOL(^zzWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
+// UIWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
+@property (nonatomic, copy) BOOL(^zzUIWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
 
 // UIWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, id> *zzUIWebViewProcessJavaScriptCallingDictionary;
@@ -96,6 +96,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark - Class ZZWebViewJavaScriptResult
+
 @interface ZZWebViewJavaScriptResult : NSObject
 
 @property (nonatomic, strong) JSValue *data;
@@ -104,6 +106,44 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSError *wkError;
 
 + (ZZWebViewJavaScriptResult *)create;
+
+@end
+
+#pragma mark - Class ZZCookieManager
+
+typedef BOOL (^ZZCookieFilter)(NSHTTPCookie *, NSURL *);
+
+@interface ZZCookieManager : NSObject
+
++ (instancetype)shared;
+
+/**
+ * 指定URL匹配Cookie策略
+ * @param filter 匹配器
+ */
+- (void)zz_setCookieFilter:(ZZCookieFilter)filter;
+
+/**
+ * 处理HTTP Reponse携带的Cookie并存储
+ * @param headerFields HTTP Header Fields
+ * @param URL 根据匹配策略获取查找URL关联的Cookie
+ * @return 返回添加到存储的Cookie
+ */
+- (NSArray<NSHTTPCookie *> *)zz_handleHeaderFields:(NSDictionary *)headerFields forURL:(NSURL *)URL;
+
+/**
+ * 匹配本地Cookie存储，获取对应URL的request cookie字符串
+ * @param URL 根据匹配策略指定查找URL关联的Cookie
+ * @return 返回对应URL的request Cookie字符串
+ */
+- (NSString *)zz_getRequestCookieHeaderForURL:(NSURL *)URL;
+
+/**
+ * 删除存储cookie
+ * @param URL 根据匹配策略查找URL关联的cookie
+ * @return 返回成功删除cookie数
+ */
+- (NSInteger)zz_deleteCookieForURL:(NSURL *)URL;
 
 @end
 

@@ -27,6 +27,13 @@
 
 @implementation ZZWebView
 
+- (void)dealloc {
+    
+    for (NSString *name in _zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
+        [self.zzWKConfiguration.userContentController removeScriptMessageHandlerForName:name];
+    }
+}
+
 #pragma mark - Property Setting & Getter
 
 - (UIWebView *)zzUIWebView {
@@ -89,16 +96,33 @@
  */
 - (void)zz_loadRequest:(nonnull NSString *)fileName ofType:(nonnull NSString *)ofType bunlde:(nullable NSBundle *)bundle headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
     
+    ZZ_WEAK_SELF
     NSBundle *_bundle = bundle;
     if (!_bundle) {
         _bundle = [NSBundle mainBundle];
     }
     NSString *path = [_bundle pathForResource:fileName ofType:ofType];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
-    for (NSString *headerField in headerFields.allKeys) {
-        NSString *value = headerFields[headerField];
-        [request addValue:value forHTTPHeaderField:headerField];
+    
+    BOOL available11 = NO;
+    if (@available(iOS 11.0, *)) {
+        available11 = YES;
     }
+    
+    if (_type == ZZWebViewTypeWKWebView && available11) {
+        // WKWebView iOS 11以及以上
+        [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
+            ZZ_STRONG_SELF
+            [strongSelf->_wkWebView loadRequest:request];
+        }];
+        return;
+    }else {
+        for (NSString *headerField in headerFields.allKeys) {
+            NSString *value = headerFields[headerField];
+            [request addValue:value forHTTPHeaderField:headerField];
+        }
+    }
+    
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         [_webView loadRequest:request];
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
@@ -111,10 +135,26 @@
  */
 - (void)zz_loadRequest:(nonnull NSString *)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
     
+    ZZ_WEAK_SELF
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    for (NSString *headerField in headerFields.allKeys) {
-        NSString *value = headerFields[headerField];
-        [request addValue:value forHTTPHeaderField:headerField];
+    
+    BOOL available11 = NO;
+    if (@available(iOS 11.0, *)) {
+        available11 = YES;
+    }
+    
+    if (_type == ZZWebViewTypeWKWebView && available11) {
+        // WKWebView iOS 11以及以上
+        [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
+            ZZ_STRONG_SELF
+            [strongSelf->_wkWebView loadRequest:request];
+        }];
+        return;
+    }else {
+        for (NSString *headerField in headerFields.allKeys) {
+            NSString *value = headerFields[headerField];
+            [request addValue:value forHTTPHeaderField:headerField];
+        }
     }
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         [_webView loadRequest:request];
@@ -203,11 +243,13 @@
 + (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option {
     
     ZZWebView *zzWebView = [ZZWebView _getActiveZZWebView];
-    if (zzWebView != nil && zzWebView.zzWebViewOpenURLBlock != nil) {
-        return zzWebView.zzWebViewOpenURLBlock(url, option);
+    if (zzWebView != nil && zzWebView.zzUIWebViewOpenURLBlock != nil) {
+        return zzWebView.zzUIWebViewOpenURLBlock(url, option);
     }
     return NO;
 }
+
+#pragma mark - Private
 
 + (ZZWebView *)_getActiveZZWebView {
     
@@ -277,6 +319,28 @@
         [_wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(weakSelf);
         }];
+    }
+}
+
+- (void)_copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:(nullable void (^)(void))theCompletionHandler {
+    
+    if (@available(iOS 11.0, *)) {
+        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+        WKHTTPCookieStore *cookieStroe = _wkWebView.configuration.websiteDataStore.httpCookieStore;
+        if (cookies.count == 0) {
+            !theCompletionHandler ? : theCompletionHandler();
+            return;
+        }
+        for (NSHTTPCookie *cookie in cookies) {
+            [cookieStroe setCookie:cookie completionHandler:^{
+                if ([[cookies lastObject] isEqual:cookie]) {
+                    !theCompletionHandler ? : theCompletionHandler();
+                    return;
+                }
+            }];
+        }
+    } else {
+        !theCompletionHandler ? : theCompletionHandler();
     }
 }
 
@@ -381,11 +445,14 @@
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler {
     
 }
+*/
 
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0)) {
     
+    // WKWebView白屏处理
+    [_wkWebView reload];
 }
-*/
+
 
 #pragma mark - WKUIDelegate
 
@@ -445,6 +512,7 @@
     }
 }
 
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -455,12 +523,143 @@
 
 @end
 
+#pragma mark - Class ZZWebViewJavaScriptResult
+
 @implementation ZZWebViewJavaScriptResult
 
 + (ZZWebViewJavaScriptResult *)create {
     
     ZZWebViewJavaScriptResult *result = [[ZZWebViewJavaScriptResult alloc] init];
     return result;
+}
+
+@end
+
+#pragma mark - Class ZZCookieManager
+
+@implementation ZZCookieManager
+{
+    ZZCookieFilter cookieFilter;
+}
+
+- (instancetype)init {
+    
+    if (self = [super init]) {
+        /*
+         此处设置的Cookie和URL匹配策略比较简单，检查URL.host是否包含Cookie的domain字段
+         通过调用setCookieFilter接口设定Cookie匹配策略，
+         比如可以设定Cookie的domain字段和URL.host的后缀匹配 | URL是否符合Cookie的path设定
+         细节匹配规则可参考RFC 2965 3.3节
+        */
+        cookieFilter = ^BOOL(NSHTTPCookie *cookie, NSURL *URL) {
+            if ([URL.host containsString:cookie.domain]) {
+                return YES;
+            }
+            return NO;
+        };
+    }
+    return self;
+}
+
++ (instancetype)shared {
+    
+    static id singletonInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (!singletonInstance) {
+            singletonInstance = [[super allocWithZone:NULL] init];
+        }
+    });
+    return singletonInstance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone {
+    return [self shared];
+}
+
+- (id)copyWithZone:(struct _NSZone *)zone {
+    return self;
+}
+
+/**
+ * 指定URL匹配Cookie策略
+ * @param filter 匹配器
+ */
+- (void)zz_setCookieFilter:(ZZCookieFilter)filter {
+    
+    if (filter != nil) {
+        cookieFilter = filter;
+    }
+}
+
+/**
+ * 处理HTTP Reponse携带的Cookie并存储
+ * @param headerFields HTTP Header Fields
+ * @param URL 根据匹配策略获取查找URL关联的Cookie
+ * @return 返回添加到存储的Cookie
+ */
+- (NSArray<NSHTTPCookie *> *)zz_handleHeaderFields:(NSDictionary *)headerFields forURL:(NSURL *)URL {
+    
+    NSArray *cookieArray = [NSHTTPCookie cookiesWithResponseHeaderFields:headerFields forURL:URL];
+    if (cookieArray != nil) {
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *cookie in cookieArray) {
+            if (cookieFilter(cookie, URL)) {
+                NSLog(@"Add a cookie: %@", cookie);
+                [cookieStorage setCookie:cookie];
+            }
+        }
+    }
+    return cookieArray;
+}
+
+/**
+ * 匹配本地Cookie存储，获取对应URL的request cookie字符串
+ * @param URL 根据匹配策略指定查找URL关联的Cookie
+ * @return 返回对应URL的request Cookie字符串
+ */
+- (NSString *)zz_getRequestCookieHeaderForURL:(NSURL *)URL {
+    
+    NSArray *cookieArray = [self _searchAppropriateCookies:URL];
+    if (cookieArray != nil && cookieArray.count > 0) {
+        NSDictionary *cookieDic = [NSHTTPCookie requestHeaderFieldsWithCookies:cookieArray];
+        if ([cookieDic objectForKey:@"Cookie"]) {
+            return cookieDic[@"Cookie"];
+        }
+    }
+    return nil;
+}
+
+- (NSArray *)_searchAppropriateCookies:(NSURL *)URL {
+    
+    NSMutableArray *cookieArray = [NSMutableArray array];
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieStorage cookies]) {
+        if (cookieFilter(cookie, URL)) {
+            NSLog(@"Search an appropriate cookie: %@", cookie);
+            [cookieArray addObject:cookie];
+        }
+    }
+    return cookieArray;
+}
+
+/**
+ * 删除存储cookie
+ * @param URL 根据匹配策略查找URL关联的cookie
+ * @return 返回成功删除cookie数
+ */
+- (NSInteger)zz_deleteCookieForURL:(NSURL *)URL {
+    
+    int delCount = 0;
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieStorage cookies]) {
+        if (cookieFilter(cookie, URL)) {
+            NSLog(@"Delete a cookie: %@", cookie);
+            [cookieStorage deleteCookie:cookie];
+            delCount++;
+        }
+    }
+    return delCount;
 }
 
 @end
