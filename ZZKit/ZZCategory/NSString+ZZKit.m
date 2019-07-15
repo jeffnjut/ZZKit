@@ -103,6 +103,24 @@
     return [NSBundle zz_image:imageName extension:nil class:cls bunldeName:bundleName memCache:NO];
 }
 
+/**
+ * Base64字符串转UIImage
+ */
+- (UIImage *)zz_base64toImage {
+    
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:self options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
+    if (decodedData == nil) {
+        NSString *base64Str = [[self componentsSeparatedByString:@"base64,"] lastObject];
+        if (base64Str == nil) {
+            return nil;
+        }
+        decodedData = [[NSData alloc] initWithBase64EncodedString:base64Str options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
+    }
+    // 将NSData转为UIImage
+    UIImage *decodedImage = [UIImage imageWithData:decodedData];
+    return decodedImage;
+}
+
 #pragma mark - 校验、比较、转换
 
 /**

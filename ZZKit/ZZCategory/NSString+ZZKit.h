@@ -42,6 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIImage *)zz_image;
 
+/**
+ * Base64字符串转UIImage
+ */
+- (UIImage *)zz_base64toImage;
+
 #pragma mark - 校验、比较、转换
 
 /**

@@ -44,7 +44,7 @@
 {
     self = [super init];
     if (self) {
-        self.zzSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 88.0);
+        self.zzSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 188.0);
     }
     return self;
 }

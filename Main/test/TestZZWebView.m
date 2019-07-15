@@ -32,42 +32,65 @@
 
 - (void)testWKWebView {
     
+    // customUserAgent属性设置的优先级比zz_setUserAgent:方法设置全局UserAgent的优先级高。
+    
+    [ZZWebView zz_setUserAgent:^NSString * _Nonnull(NSString * _Nonnull userAgent) {
+        return [userAgent stringByAppendingString:@"哈哈哈"];
+    }];
+    
     __weak typeof(self) weakSelf = self;
     self.webView = [ZZWebView zz_quickAdd:ZZWebViewTypeWKWebView onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     }];
-
     
     // 添加脚本
     // WKUserScript *newCookieScript = [[WKUserScript alloc] initWithSource:@"document.cookie = 'DarkAngelCookie=DarkAngel;'" injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource:@"alert(document.cookie);" injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+    // WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource:@"alert(document.cookie);" injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
 
     // [self.webView.zzWKConfiguration.userContentController addUserScript:newCookieScript];
-    [self.webView.zzWKConfiguration.userContentController addUserScript:cookieScript];
+    // [self.webView.zzWKConfiguration.userContentController addUserScript:cookieScript];
     
-    static NSString *jsSource;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
-    });
-    //添加自定义的脚本
+    // static NSString *jsSource;
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
+    // });
+    // 添加自定义的脚本
     // WKUserScript *js = [[WKUserScript alloc] initWithSource:jsSource injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
     // [self.webView.zzWKConfiguration.userContentController addUserScript:js];
     
-    // [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
+    // 注入获取DOM中图片元素的JavaScript脚本
+    //防止频繁IO操作，造成性能影响
+    static NSString *jsSource;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ImgAddClickEvent" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
+    });
+    //添加自定义的脚本
+    WKUserScript *js = [[WKUserScript alloc] initWithSource:jsSource injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+    [self.webView.zzWKConfiguration.userContentController addUserScript:js];
     
+    // 加载本地 HTML
+    [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
+    
+    // 加载URL
+    /*
     if (@available(iOS 11.0, *)) {
+        
         NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
                                                                     NSHTTPCookieName: @"customCookieName",
-                                                                    NSHTTPCookieValue: @"KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKzKKKKKKKKKKKKK",
+                                                                    NSHTTPCookieValue: @"KKKKKKKK",
                                                                     NSHTTPCookieDomain: @".baidu.com",
                                                                     NSHTTPCookiePath: @"/"
+         
                                                                     }];
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        
         [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
     }else {
         [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Cookie":@"customCookieName=1314521;"}];
     }
+    */
     
     self.webView.zzWKWebViewProcessJavaScriptCallingDictionary =
     @{
@@ -123,15 +146,22 @@
           NSLog(@"Name : %@\nCookie : %@", message.name, message.body);
           NSArray *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
           NSLog(@"%@",cookies);
+      },
+      // 测试在网页上点击图片的JavaScript功能
+      @"imageDidClick": ^(WKUserContentController *controller, WKScriptMessage *message) {
+          NSLog(@"点击了html上的图片，参数为%@", message.body);
       }
       };
     
     [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
         
+        /*
         [weakSelf.webView zz_evaluateScript:@"document.cookie" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
             
         }];
+        */
         
+        /*
         [weakSelf.webView zz_evaluateScript:@"myAlert('hahah')" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
             if (data.error) {
                 NSLog(@"异常：%@", data.error);
@@ -139,6 +169,24 @@
                 NSLog(@"%@", data.data);
             }
         }];
+        */
+        
+        if (@available(iOS 11.0, *)) {
+            
+            NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+                                                                        NSHTTPCookieName: @"customCookieName",
+                                                                        NSHTTPCookieValue: @"KKKKKKKK",
+                                                                        NSHTTPCookieDomain: @".baidu.com",
+                                                                        NSHTTPCookiePath: @"/"
+                                                                        
+                                                                        }];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+            
+            [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
+        }else {
+            [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Cookie":@"customCookieName=1314521;"}];
+        }
+        
     }];
     
     self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
@@ -182,16 +230,35 @@
     }];
     
     self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
-        NSString *url = request.URL.absoluteString;
-        if ([url hasPrefix:@"zzkit://"]) {
-            return YES;
-        }else if ([url hasPrefix:@"ifly://"]) {
-            return YES;
-        }else if ([url hasPrefix:@"https://"]) {
-            return YES;
-        }else if ([url hasPrefix:@"http://"]) {
-            return NO;
+        
+        
+        if (status == ZZWebViewNavigationStatusDidStartNavigation) {
+            NSString *url = request.URL.absoluteString;
+            if ([url hasPrefix:@"zzkit://"]) {
+                return YES;
+            }else if ([url hasPrefix:@"ifly://"]) {
+                return YES;
+            }else if ([url hasPrefix:@"https://"]) {
+                return YES;
+            }else if ([url hasPrefix:@"http://"]) {
+                return NO;
+            }
+        }else if (status == ZZWebViewNavigationStatusDidFinishNavigation) {
+            
+            //先注入给图片添加点击事件的js
+            //防止频繁IO操作，造成性能影响
+            static NSString *jsSource;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ImgAddClickEvent" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
+            });
+            [weakSelf.webView.zzUIWebViewContext evaluateScript:jsSource];
+            //替换回调方法
+            weakSelf.webView.zzUIWebViewContext[@"h5ImageDidClick"] = ^(NSDictionary *imgInfo) {
+                NSLog(@"UIWebView点击了html上的图片，信息是：%@", imgInfo);
+            };
         }
+        
         return YES;
     };
     
@@ -222,16 +289,16 @@
     //    [self.webView.webView loadRequest:request];
     
     
-    [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
+    // [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
     
-    //    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
-    //                                                                NSHTTPCookieName: @"customCookieName",
-    //                                                                NSHTTPCookieValue: @"1314521",
-    //                                                                NSHTTPCookieDomain: @".baidu.com",
-    //                                                                NSHTTPCookiePath: @"/"
-    //                                                                }];
-    //    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    //    [self.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+                                                                NSHTTPCookieName: @"customCookieName",
+                                                                NSHTTPCookieValue: @"1314521",
+                                                                NSHTTPCookieDomain: @".baidu.com",
+                                                                NSHTTPCookiePath: @"/"
+                                                                }];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    [self.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
     
     [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
         

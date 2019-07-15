@@ -37,8 +37,10 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
 
 // 行间距
 - (CGFloat)zz_minimumLineSpacingForSectionAtIndex:(NSInteger)section;
+
 // 列间距
 - (CGFloat)zz_minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
+
 // SectionInset
 - (UIEdgeInsets)zz_contentInsetOfSectionAtIndex:(NSInteger)section;
 
@@ -46,8 +48,10 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
 
 // Section的数量
 - (NSInteger)zz_numberOfSection;
+
 // Cell的大小
 - (CGSize)zz_sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+
 // 每个Section对应的列数
 - (NSInteger)zz_numberOfColumnInSectionAtIndex:(NSInteger)section;
 

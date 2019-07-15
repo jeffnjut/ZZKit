@@ -84,6 +84,7 @@
 		E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9514229E3759003964B8 /* TestFontVC.xib */; };
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
 		E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCDVC.xib */; };
+		E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */ = {isa = PBXBuildFile; fileRef = E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */; };
 		E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */; };
 		E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */; };
 		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
@@ -261,6 +262,7 @@
 		E7AA9517229E92B7003964B8 /* TestGCDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGCDVC.h; sourceTree = "<group>"; };
 		E7AA9518229E92B7003964B8 /* TestGCDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCDVC.m; sourceTree = "<group>"; };
 		E7AA9519229E92B7003964B8 /* TestGCDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCDVC.xib; sourceTree = "<group>"; };
+		E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ImgAddClickEvent.js; sourceTree = "<group>"; };
 		E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZZKit_Blocks.h"; sourceTree = "<group>"; };
 		E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZZKit_Blocks.m"; sourceTree = "<group>"; };
 		E7C3166422A64F80002E4130 /* TestUIResponderBlockVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIResponderBlockVC.h; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 				E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */,
 				E759CDE522CC849B001EC3AE /* test.html */,
 				E759CDE722CE1FEB001EC3AE /* test.js */,
+				E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */,
+				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,

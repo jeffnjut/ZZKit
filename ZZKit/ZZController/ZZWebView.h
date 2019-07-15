@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, ZZWebViewNavigationStatus) {
     ZZWebViewNavigationStatusDidFailedWithNavigation
 };
 
-typedef void(^ZZUserContentProcessJavaScriptMessageBlock)(WKUserContentController *userContentController, WKScriptMessage *message);
+typedef void(^ZZUserContentProcessJavaScriptMessageBlock)(WKUserContentController * _Nullable userContentController, WKScriptMessage * _Nullable message);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -58,6 +58,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
 
 @property (nonatomic, copy) BOOL(^zzWebNavigationBlock)(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error);
+
+/**
+ *  获取UIWebView的默认User-Agent
+ */
++ (NSString *)zz_getUIWebViewUserAgent;
+
+/**
+ *  设置全局User-Agent
+ */
++ (void)zz_setUserAgent:(NSString *(^)(NSString *userAgent))userAgentBlock;
 
 /**
  *  加载HTML文本

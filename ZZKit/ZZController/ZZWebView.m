@@ -80,6 +80,29 @@
 #pragma mark - Public Method
 
 /**
+ *  获取UIWebView的默认User-Agent
+ */
++ (NSString *)zz_getUIWebViewUserAgent {
+    
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    NSString *ua = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    return ua;
+}
+
+/**
+ *  设置全局User-Agent
+ */
++ (void)zz_setUserAgent:(NSString *(^)(NSString *userAgent))userAgentBlock {
+    
+    if (userAgentBlock != nil) {
+        // 全局User-Agent
+        NSString *ua = [self zz_getUIWebViewUserAgent];
+        NSString *newAgent = userAgentBlock(ua);
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : newAgent, @"User-Agent" : newAgent}];
+    }
+}
+
+/**
  *  加载HTML文本
  */
 - (void)zz_loadHTMLStringL:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL {
@@ -151,10 +174,21 @@
         }];
         return;
     }else {
+        // 方法：通过一一设置Request Header
         for (NSString *headerField in headerFields.allKeys) {
             NSString *value = headerFields[headerField];
             [request addValue:value forHTTPHeaderField:headerField];
         }
+        
+        /*
+        // 方法：通过设置Request Header
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSArray *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+        //Cookies数组转换为requestHeaderFields
+        NSDictionary *requestHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+        //设置请求头
+        request.allHTTPHeaderFields = requestHeaderFields;
+        */
     }
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         [_webView loadRequest:request];
@@ -312,7 +346,6 @@
         // 允许链接3D Touch
         _wkWebView.allowsLinkPreview = YES;
         // 自定义UA，UIWebView就没有此功能，后面会讲到通过其他方式实现
-        _wkWebView.customUserAgent = @"WebViewDemo/1.0.0";
         _wkWebView.UIDelegate = self;
         _wkWebView.navigationDelegate = self;
         [self addSubview:_wkWebView];
