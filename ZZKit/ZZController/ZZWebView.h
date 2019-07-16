@@ -14,8 +14,8 @@
 @class ZZWebViewJavaScriptResult;
 
 typedef NS_ENUM(NSInteger, ZZWebViewType) {
-    ZZWebViewTypeUIWebView,   // UIWebView
-    ZZWebViewTypeWKWebView    // WKWebView
+    ZZWebViewTypeUIWebView = 0x0001,   // UIWebView
+    ZZWebViewTypeWKWebView = 0x0002    // WKWebView
 };
 
 typedef NS_ENUM(NSInteger, ZZWebViewNavigationStatus) {
@@ -70,9 +70,29 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)zz_setUserAgent:(NSString *(^)(NSString *userAgent))userAgentBlock;
 
 /**
+ *  清除所有Cookies
+ */
++ (void)zz_clearAllCookie;
+
+/**
+ *  清除某个URL下的Cookies
+ */
++ (void)zz_clearCookie:(nonnull NSURL *)URL;
+
+/**
+ *  清除所有缓存方法
+ */
++ (void)zz_clearAllCachedResponse:(ZZWebViewType)webViewType wkWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes;
+
+/**
+ *  清除某一个URL缓存的方法
+ */
++ (void)zz_clearCachedResponse:(nonnull NSURL *)URL;
+
+/**
  *  加载HTML文本
  */
-- (void)zz_loadHTMLStringL:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL;
+- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL;
 
 /**
  *  加载本地HTML文件

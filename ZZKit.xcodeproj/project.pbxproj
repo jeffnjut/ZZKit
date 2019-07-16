@@ -57,6 +57,7 @@
 		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
 		E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4622BBABBA0015DB1B /* CalcMarker.m */; };
 		E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */; };
+		E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */ = {isa = PBXBuildFile; fileRef = E7814E2222DC707E00C2CE44 /* NativePack.js */; };
 		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
 		E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */; };
 		E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */; };
@@ -214,6 +215,7 @@
 		E77ADD4522BBABBA0015DB1B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		E77ADD4622BBABBA0015DB1B /* CalcMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcMarker.m; sourceTree = "<group>"; };
 		E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWrapNumber.m; sourceTree = "<group>"; };
+		E7814E2222DC707E00C2CE44 /* NativePack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = NativePack.js; sourceTree = "<group>"; };
 		E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZZKit.h"; sourceTree = "<group>"; };
 		E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZZKit.m"; sourceTree = "<group>"; };
 		E788654222B1E59200B20F3E /* NSMutableArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ZZKit.h"; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				E759CDE522CC849B001EC3AE /* test.html */,
 				E759CDE722CE1FEB001EC3AE /* test.js */,
 				E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */,
+				E7814E2222DC707E00C2CE44 /* NativePack.js */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
+				E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,

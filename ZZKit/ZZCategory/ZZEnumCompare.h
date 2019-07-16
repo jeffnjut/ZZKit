@@ -19,12 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  type类型是否在status中存在
+ *  type类型由A|B|...|N等限定枚举类型的任意一个或多个subType组成，
+ *  组成type的subType全部包含在status中返回true；否则为false
  */
 - (BOOL)zz_hasType:(NSInteger)type;
 
 /**
- *  status是否是包含type类型
- *  type类型由A|B|...|N等subType组成，包含任意一个subType返回true；否则为false
+ *  type类型是否在status中存在某个子subType或全部
+ *  type类型由A|B|...|N等限定枚举类型的任意一个或多个subType组成，
+ *  组成type的subType任意一个包含在status中返回true；否则为false
  */
 - (BOOL)zz_hasAnySubType:(NSInteger)type;
 
@@ -42,6 +45,20 @@ NS_ASSUME_NONNULL_BEGIN
  *  设置status为type
  */
 - (void)zz_setType:(NSInteger)type;
+
+/**
+ *  type类型是否在status中存在
+ *  type类型由A|B|...|N等限定枚举类型的任意一个或多个subType组成，
+ *  组成type的subType全部包含在status中返回true；否则为false
+ */
++ (BOOL)zz_has:(NSInteger)type aType:(NSInteger)aType;
+    
+/**
+ *  type类型是否在status中存在某个子subType或全部
+ *  type类型由A|B|...|N等限定枚举类型的任意一个或多个subType组成，
+ *  组成type的subType任意一个包含在status中返回true；否则为false
+ */
++ (BOOL)zz_has:(NSInteger)type anySubType:(NSInteger)anySubType;
 
 @end
 

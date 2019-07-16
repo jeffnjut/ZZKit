@@ -15,7 +15,7 @@ for (var i = 0; i < imgs.length; i++) {
         //如果图片没有默认的onclick事件，且父元素不是a标签，则添加onclick事件，当用户点击时，把图片链接回传给Native
         if (!img.onclick && img.parentElement.tagName !== "A") {
             //给图片添加下标的属性
-            img.index = i; //记录下标
+            img.index = i;      //记录下标
             //添加点击事件，并且回传选中的图片链接、下标、屏幕上的位置、全部的图片数组等
             img.onclick = function() {
                 x = this.getBoundingClientRect().left;
@@ -40,7 +40,7 @@ for (var i = 0; i < imgs.length; i++) {
     }
 }
 
-function h5ImageDidClick(info) {
-    //WKWebView使用
-    window.webkit.messageHandlers.imageDidClick.postMessage(info);
+function h5ImageDidClick (info){
+    // WKWebView使用
+    // window.webkit.messageHandlers.imageDidClick.postMessage(info);
 }

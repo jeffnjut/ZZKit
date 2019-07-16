@@ -11,6 +11,7 @@
 #import "ZZMacro.h"
 #import "UIWindow+ZZKit.h"
 #import "NSString+ZZKit.h"
+#import "ZZEnumCompare.h"
 
 @interface ZZWebView () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 {
@@ -103,9 +104,93 @@
 }
 
 /**
+ *  清除所有Cookies
+ */
++ (void)zz_clearAllCookie {
+    
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    for (NSInteger i = cookies.count - 1; i >=0 ; i--) {
+        NSHTTPCookie *cookie = (NSHTTPCookie *)[cookies objectAtIndex:i];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+}
+
+/**
+ *  清除某个URL下的Cookies
+ */
++ (void)zz_clearCookie:(nonnull NSURL *)URL {
+    
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:URL];
+    for (NSInteger i = cookies.count - 1; i >=0 ; i--) {
+        NSHTTPCookie *cookie = (NSHTTPCookie *)[cookies objectAtIndex:i];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+}
+
+/**
+ *  清除所有缓存方法
+ */
++ (void)zz_clearAllCachedResponse:(ZZWebViewType)webViewType wkWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes {
+    
+    if ([ZZEnumCompare zz_has:webViewType aType:ZZWebViewTypeUIWebView]) {
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        [[NSURLCache sharedURLCache] setDiskCapacity:0];
+        [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    }
+    
+    if ([ZZEnumCompare zz_has:webViewType aType:ZZWebViewTypeWKWebView]) {
+        
+        if (@available(iOS 9.0, *)) {
+            NSMutableSet *_wkWebsiteDataTypes = nil;
+            if (wkWebsiteDataTypes.count > 0) {
+                _wkWebsiteDataTypes = [NSMutableSet setWithArray:wkWebsiteDataTypes];
+            }else {
+                _wkWebsiteDataTypes = [NSMutableSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                       WKWebsiteDataTypeOfflineWebApplicationCache,
+                                       WKWebsiteDataTypeMemoryCache,
+                                       WKWebsiteDataTypeLocalStorage,
+                                       WKWebsiteDataTypeSessionStorage,
+                                       WKWebsiteDataTypeIndexedDBDatabases,
+                                       WKWebsiteDataTypeWebSQLDatabases,
+                                       WKWebsiteDataTypeCookies, nil];
+                
+                if (@available(iOS 11.3, *)) {
+                    [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeFetchCache];
+                    [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeServiceWorkerRegistrations];
+                }
+            }
+            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:_wkWebsiteDataTypes modifiedSince:[NSDate dateWithTimeIntervalSince1970:0] completionHandler:^{}];
+        }else {
+            NSString *libraryDir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask, YES)[0];
+            NSString *bundleId               = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+            NSString *webkitFolderInLib      = [NSString stringWithFormat:@"%@/WebKit",libraryDir];
+            NSString *webKitFolderInCaches   = [NSString stringWithFormat:@"%@/Caches/%@/WebKit",libraryDir,bundleId];
+            NSString *webKitFolderInCachesfs = [NSString stringWithFormat:@"%@/Caches/%@/fsCachedData",libraryDir,bundleId];
+            NSError *error;
+            if (@available(iOS 8.0, *)) {
+                /* iOS8.0 WebView Cache的存放路径 */
+                [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCaches error:&error];
+                [[NSFileManager defaultManager] removeItemAtPath:webkitFolderInLib error:nil];
+            }else if (@available(iOS 7.0, *)) {
+                /* iOS7.0 WebView Cache的存放路径 */
+                [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCachesfs error:&error];
+            }
+        }
+    }
+}
+
+/**
+ *  清除某一个URL缓存的方法
+ */
++ (void)zz_clearCachedResponse:(nonnull NSURL *)URL {
+    
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:[NSURLRequest requestWithURL:URL]];
+}
+
+/**
  *  加载HTML文本
  */
-- (void)zz_loadHTMLStringL:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL {
+- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL {
     
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         [_webView loadHTMLString:string baseURL:baseURL];

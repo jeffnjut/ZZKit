@@ -26,8 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    // [self testUIWebView];
-    [self testWKWebView];
+    [self testUIWebView];
+    // [self testWKWebView];
 }
 
 - (void)testWKWebView {
@@ -289,16 +289,16 @@
     //    [self.webView.webView loadRequest:request];
     
     
-    // [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
+//     [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
     
-    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
-                                                                NSHTTPCookieName: @"customCookieName",
-                                                                NSHTTPCookieValue: @"1314521",
-                                                                NSHTTPCookieDomain: @".baidu.com",
-                                                                NSHTTPCookiePath: @"/"
-                                                                }];
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    [self.webView zz_loadRequest:@"https://www.baidu.com" headerFields:nil];
+//    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+//                                                                NSHTTPCookieName: @"customCookieName",
+//                                                                NSHTTPCookieValue: @"1314521",
+//                                                                NSHTTPCookieDomain: @".baidu.com",
+//                                                                NSHTTPCookiePath: @"/"
+//                                                                }];
+//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    [self.webView zz_loadRequest:@"https://www.55haitao.com" headerFields:nil];
     
     [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
         
