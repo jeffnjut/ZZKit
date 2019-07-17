@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Reachability/Reachability.h>
 
 // TODO
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZZReachability : Reachability
+@interface ZZReachability : NSObject
 
 @end
 

@@ -6,6 +6,8 @@ target "ZZKit" do
   pod 'ReactiveObjC'
   pod 'Masonry'
   pod 'SDWebImage'
+  pod 'YYImage'
+  pod 'FLAnimatedImage'
   pod 'OpenUDID'
   pod 'YYModel'
   pod 'Reachability'

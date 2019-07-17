@@ -15,12 +15,13 @@ Pod::Spec.new do |s|
         ss.frameworks   = 'Foundation'
         ss.frameworks   = 'UIKit'
         ss.dependency     'SDWebImage'
+        ss.dependency     'YYImage'
+        ss.dependency     'FLAnimatedImage'
         ss.dependency     'Masonry'
         ss.dependency     'ReactiveObjC'
         ss.dependency     'Typeset'
         ss.dependency     'OpenUDID'
         ss.dependency     'YYModel'
-        ss.dependency     'Reachability'
     end
     
 end
