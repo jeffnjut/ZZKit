@@ -251,8 +251,9 @@
             if ([cellClassName hasSuffix:@"DataSource"]) {
                 cellClassName = [cellClassName stringByReplacingOccurrencesOfString:@"DataSource" withString:@""];
             }
-            NSBundle *bundle = [NSBundle zz_resourceClass:[collectionView class] bundleName:nil];
-            [collectionView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellWithReuseIdentifier:cellClassName];
+            NSBundle *bundle = [NSBundle zz_resourceClass:NSClassFromString(cellClassName) bundleName:nil];
+            UINib *nib = [UINib nibWithNibName:cellClassName bundle:bundle];
+            [collectionView registerNib:nib forCellWithReuseIdentifier:cellClassName];
         }
     }
     collectionView.zzActionBlock = actionBlock;
@@ -384,8 +385,9 @@
     cellClassName = [cellClassName stringByReplacingOccurrencesOfString:@"DataSource" withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, cellClassName.length)];
     ZZCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellClassName forIndexPath:indexPath];
     if (!cell) {
-        NSBundle *bundle = [NSBundle zz_resourceClass:[self class] bundleName:nil];
-        [collectionView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellWithReuseIdentifier:cellClassName];
+        NSBundle *bundle = [NSBundle zz_resourceClass:NSClassFromString(cellClassName) bundleName:nil];
+        UINib *nib = [UINib nibWithNibName:cellClassName bundle:bundle];
+        [collectionView registerNib:nib forCellWithReuseIdentifier:cellClassName];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellClassName forIndexPath:indexPath];
     }
     cell.zzData = ds;

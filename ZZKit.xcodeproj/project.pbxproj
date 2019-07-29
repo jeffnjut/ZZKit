@@ -20,6 +20,9 @@
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
+		E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */; };
+		E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500522EEAB8D00040AD2 /* ZZLBSNavigation.m */; };
+		E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */; };
 		E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D830322B32F9E004B9CA6 /* ZZTableView.m */; };
 		E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBB722B155BF0099A8C4 /* CALayer+ZZKit.m */; };
 		E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */; };
@@ -120,6 +123,12 @@
 		E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */; };
 		E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */; };
 		E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */; };
+		E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F2150D22ED8AF9007C587B /* cncity.plist */; };
+		E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151022ED8CC4007C587B /* ZZCityModel.m */; };
+		E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151322ED8D3E007C587B /* ZZCityController.m */; };
+		E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151622ED8E13007C587B /* TestCountryVC.m */; };
+		E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F2151722ED8E13007C587B /* TestCountryVC.xib */; };
+		E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */; };
 		E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */; };
 		E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */; };
 		E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */; };
@@ -148,6 +157,12 @@
 		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
 		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
+		E72D500122EE8FAB00040AD2 /* ZZLocationCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLocationCoordinate.h; sourceTree = "<group>"; };
+		E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLocationCoordinate.m; sourceTree = "<group>"; };
+		E72D500422EEAB8D00040AD2 /* ZZLBSNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSNavigation.h; sourceTree = "<group>"; };
+		E72D500522EEAB8D00040AD2 /* ZZLBSNavigation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLBSNavigation.m; sourceTree = "<group>"; };
+		E72D500A22EEDAD200040AD2 /* ZZLBSBackgroundTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSBackgroundTask.h; sourceTree = "<group>"; };
+		E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLBSBackgroundTask.m; sourceTree = "<group>"; };
 		E72D830222B32F9E004B9CA6 /* ZZTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTableView.h; sourceTree = "<group>"; };
 		E72D830322B32F9E004B9CA6 /* ZZTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTableView.m; sourceTree = "<group>"; };
 		E72DFBB622B155BF0099A8C4 /* CALayer+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+ZZKit.h"; sourceTree = "<group>"; };
@@ -324,6 +339,16 @@
 		E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestKeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZEnumCompare.h; sourceTree = "<group>"; };
 		E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZEnumCompare.m; sourceTree = "<group>"; };
+		E7F2150D22ED8AF9007C587B /* cncity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cncity.plist; sourceTree = "<group>"; };
+		E7F2150F22ED8CC4007C587B /* ZZCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityModel.h; sourceTree = "<group>"; };
+		E7F2151022ED8CC4007C587B /* ZZCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityModel.m; sourceTree = "<group>"; };
+		E7F2151222ED8D3E007C587B /* ZZCityController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityController.h; sourceTree = "<group>"; };
+		E7F2151322ED8D3E007C587B /* ZZCityController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityController.m; sourceTree = "<group>"; };
+		E7F2151522ED8E13007C587B /* TestCountryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCountryVC.h; sourceTree = "<group>"; };
+		E7F2151622ED8E13007C587B /* TestCountryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCountryVC.m; sourceTree = "<group>"; };
+		E7F2151722ED8E13007C587B /* TestCountryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCountryVC.xib; sourceTree = "<group>"; };
+		E7F2151B22EDAC14007C587B /* ZZLBSRectangle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSRectangle.h; sourceTree = "<group>"; };
+		E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLBSRectangle.m; sourceTree = "<group>"; };
 		E7F85F1D22C1B7430018A217 /* TestWidgetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWidgetVC.h; sourceTree = "<group>"; };
 		E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWidgetVC.m; sourceTree = "<group>"; };
 		E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestWidgetVC.xib; sourceTree = "<group>"; };
@@ -474,16 +499,21 @@
 		E78E765D22C3621700D1EF5A /* ZZCountryController */ = {
 			isa = PBXGroup;
 			children = (
-				E78E767522C3642500D1EF5A /* countrys.json */,
 				E78E766122C3626200D1EF5A /* cn.json */,
 				E78E766622C362D300D1EF5A /* ZZCNRegionModel.h */,
 				E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */,
 				E78E766F22C3633E00D1EF5A /* ZZCNRegionController.h */,
 				E78E767022C3633E00D1EF5A /* ZZCNRegionController.m */,
+				E78E767522C3642500D1EF5A /* countrys.json */,
 				E78E766922C3630400D1EF5A /* ZZCountryModel.h */,
 				E78E766A22C3630400D1EF5A /* ZZCountryModel.m */,
 				E78E767222C3635100D1EF5A /* ZZCountryController.h */,
 				E78E767322C3635100D1EF5A /* ZZCountryController.m */,
+				E7F2150D22ED8AF9007C587B /* cncity.plist */,
+				E7F2150F22ED8CC4007C587B /* ZZCityModel.h */,
+				E7F2151022ED8CC4007C587B /* ZZCityModel.m */,
+				E7F2151222ED8D3E007C587B /* ZZCityController.h */,
+				E7F2151322ED8D3E007C587B /* ZZCityController.m */,
 			);
 			path = ZZCountryController;
 			sourceTree = "<group>";
@@ -529,6 +559,7 @@
 		E7DC5C2E229CD6A500ED8733 /* ZZKit */ = {
 			isa = PBXGroup;
 			children = (
+				E7F2151A22EDAB97007C587B /* ZZLBS */,
 				E788655B22B2199700B20F3E /* ZZCollectionView */,
 				E788655A22B2198D00B20F3E /* ZZTableView */,
 				E788655922B218FD00B20F3E /* ZZWidget */,
@@ -710,6 +741,9 @@
 				E759CDE722CE1FEB001EC3AE /* test.js */,
 				E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */,
 				E7814E2222DC707E00C2CE44 /* NativePack.js */,
+				E7F2151522ED8E13007C587B /* TestCountryVC.h */,
+				E7F2151622ED8E13007C587B /* TestCountryVC.m */,
+				E7F2151722ED8E13007C587B /* TestCountryVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -719,6 +753,21 @@
 			children = (
 			);
 			path = ZZCamera;
+			sourceTree = "<group>";
+		};
+		E7F2151A22EDAB97007C587B /* ZZLBS */ = {
+			isa = PBXGroup;
+			children = (
+				E7F2151B22EDAC14007C587B /* ZZLBSRectangle.h */,
+				E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */,
+				E72D500122EE8FAB00040AD2 /* ZZLocationCoordinate.h */,
+				E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */,
+				E72D500422EEAB8D00040AD2 /* ZZLBSNavigation.h */,
+				E72D500522EEAB8D00040AD2 /* ZZLBSNavigation.m */,
+				E72D500A22EEDAD200040AD2 /* ZZLBSBackgroundTask.h */,
+				E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */,
+			);
+			path = ZZLBS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -783,9 +832,11 @@
 				E759CDE622CC849B001EC3AE /* test.html in Resources */,
 				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
+				E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
 				E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
+				E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
@@ -886,6 +937,7 @@
 				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
 				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
@@ -896,6 +948,7 @@
 				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
+				E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */,
 				E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */,
@@ -921,6 +974,7 @@
 				E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
+				E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */,
 				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
 				E70C400522C0D60C0047A1C0 /* TestZZCollectionViewVC.m in Sources */,
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
@@ -934,6 +988,8 @@
 				E70C3FFC22C09F8C0047A1C0 /* ZZCollectionView.m in Sources */,
 				E78E767422C3635100D1EF5A /* ZZCountryController.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
+				E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */,
+				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
 				E788656822B21B0500B20F3E /* ZZWidgetTagsView.m in Sources */,
@@ -946,6 +1002,8 @@
 				E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */,
 				E788655822B218C600B20F3E /* ZZReachability.m in Sources */,
 				E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */,
+				E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */,
+				E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,

@@ -22,6 +22,7 @@
 #import "TestZZCollectionViewVC.h"
 #import "TestWidgetVC.h"
 #import "TestZZWebView.h"
+#import "TestCountryVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -55,7 +56,8 @@
                         @[@"测试ZZTableView",[TestZZTableViewVC class]],
                         @[@"测试ZZCollectionView",[TestZZCollectionViewVC class]],
                         @[@"测试Widget小组件",[TestWidgetVC class]],
-                        @[@"测试ZZWebView",[TestZZWebView class]]];
+                        @[@"测试ZZWebView",[TestZZWebView class]],
+                        @[@"测试Country、Region、City选择",[TestCountryVC class]]];
     
     [self.tableView reloadData];
 }
