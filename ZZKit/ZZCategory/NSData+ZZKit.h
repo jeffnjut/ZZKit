@@ -15,17 +15,22 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  NSData转NSString
  */
-- (NSString *)zz_string;
+- (nullable NSString *)zz_string;
+
+/**
+ *  NSData转成UIImage
+ */
+- (nullable UIImage *)zz_image;
 
 /**
  *  NSData取得第一帧图片
  */
-- (UIImage *)zz_imageFirstGifFrame;
+- (nullable UIImage *)zz_imageFirstGifFrame;
 
 /**
  *  NSData转成PNG或JPEG格式的base64码
  */
-- (NSString *)zz_stringBase64;
+- (nullable NSString *)zz_stringBase64;
 
 @end
 

@@ -13,7 +13,7 @@
 /**
  *  NSData转NSString
  */
-- (NSString *)zz_string {
+- (nullable NSString *)zz_string {
     
     if ([self isKindOfClass:[NSData class]]) {
         const unsigned *bytes = [(NSData *)self bytes];
@@ -24,9 +24,17 @@
 }
 
 /**
+ *  NSData转成UIImage
+ */
+- (nullable UIImage *)zz_image {
+    
+    return [UIImage imageWithData:self];
+}
+
+/**
  *  NSData取得第一帧图片
  */
-- (UIImage *)zz_imageFirstGifFrame {
+- (nullable UIImage *)zz_imageFirstGifFrame {
     
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)self, NULL);
     size_t count = CGImageSourceGetCount(source);
@@ -44,7 +52,7 @@
 /**
  *  NSData转成PNG或JPEG格式的base64码
  */
-- (NSString *)zz_stringBase64 {
+- (nullable NSString *)zz_stringBase64 {
     
     NSString *base64 = [self base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     return base64;

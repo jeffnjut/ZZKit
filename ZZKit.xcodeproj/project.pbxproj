@@ -60,6 +60,7 @@
 		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
 		E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4622BBABBA0015DB1B /* CalcMarker.m */; };
 		E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */; };
+		E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E77FA4B022EFE02E005DF522 /* ZZStorage.m */; };
 		E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */ = {isa = PBXBuildFile; fileRef = E7814E2222DC707E00C2CE44 /* NativePack.js */; };
 		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
 		E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654322B1E59200B20F3E /* NSMutableArray+ZZKit.m */; };
@@ -230,6 +231,8 @@
 		E77ADD4522BBABBA0015DB1B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		E77ADD4622BBABBA0015DB1B /* CalcMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcMarker.m; sourceTree = "<group>"; };
 		E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWrapNumber.m; sourceTree = "<group>"; };
+		E77FA4AF22EFE02E005DF522 /* ZZStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZStorage.h; sourceTree = "<group>"; };
+		E77FA4B022EFE02E005DF522 /* ZZStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZStorage.m; sourceTree = "<group>"; };
 		E7814E2222DC707E00C2CE44 /* NativePack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = NativePack.js; sourceTree = "<group>"; };
 		E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZZKit.h"; sourceTree = "<group>"; };
 		E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZZKit.m"; sourceTree = "<group>"; };
@@ -668,6 +671,8 @@
 				E7DC5C39229CDD9D00ED8733 /* ZZLinkedMap.m */,
 				E7DC5C37229CDD9D00ED8733 /* ZZLRUCache.h */,
 				E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */,
+				E77FA4AF22EFE02E005DF522 /* ZZStorage.h */,
+				E77FA4B022EFE02E005DF522 /* ZZStorage.m */,
 			);
 			path = ZZCache;
 			sourceTree = "<group>";
@@ -932,6 +937,7 @@
 				E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */,
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
+				E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
 				E767600522AFBF220044B9AD /* ZZTimer.m in Sources */,
 				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,

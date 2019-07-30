@@ -27,6 +27,14 @@
                         <action selector="_tapZZTabbarController:" destination="-1" eventType="touchUpInside" id="8ap-Ex-dWG"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nss-5y-6pK">
+                    <rect key="frame" x="72" y="124" width="62" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="文件操作"/>
+                    <connections>
+                        <action selector="_tapFile:" destination="-1" eventType="touchUpInside" id="Tfr-gF-3Ni"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

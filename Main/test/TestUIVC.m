@@ -21,6 +21,9 @@
 #import "CalcMarker.h"
 #import "Calculator.h"
 #import "NSObject+Calc.h"
+#import "ZZStorage.h"
+#import "UIImage+ZZKit.h"
+#import "NSData+ZZKit.h"
 
 @interface TestObject : NSObject
 
@@ -74,8 +77,24 @@
         return YES;
     }];
     
+    [ZZStorage zz_plistSave:@"Jeff" forKey:@"a"];
+    id a = [ZZStorage zz_plistFetch:@"a"];
+    
+    [ZZStorage zz_plistSave:@100 forKey:@"b"];
+    id b = [ZZStorage zz_plistFetch:@"b"];
+    
+    
+    [ZZStorage zz_plistSave:@"Jeff2"];
+    id _NSString = [ZZStorage zz_plistFetch:@"__NSCFConstantString"];
+    
     NSArray *array = @[@"1",@"2",@"3",@"4",@"5"];
+    [ZZStorage zz_plistSave:array forKey:@"c"];
+    id c = [ZZStorage zz_plistFetch:[NSArray class] forKey:@"c"];
+    
     NSDictionary *dict = @{@"A":@"AA",@"B":@"BB"};
+    [ZZStorage zz_plistSave:dict forKey:@"d"];
+    id d = [ZZStorage zz_plistFetch:[NSDictionary class] forKey:@"d"];
+    
     TestObject *object = [TestObject new];
     object.name = @"Hello";
     object.code = 1111;
@@ -83,20 +102,25 @@
     object.array = array;
     NSDictionary *_dict = @{@"string":@"Jeff",@"object":object, @"dict":dict,@"array":array};
     
+    [ZZStorage zz_plistSave:_dict forKey:@"e"];
+    id e = [ZZStorage zz_plistFetch:[NSDictionary class] forKey:@"e"];
+    
     NSString *jsonString = [_dict zz_toJSONString];
     NSLog(@"%@", jsonString);
     
     NSArray *_array = @[array, @"Jeff", @(100), _dict, object];
+    [ZZStorage zz_plistSave:_array forKey:@"f"];
+    id f = [ZZStorage zz_plistFetch:[NSArray<NSString *> class] forKey:@"f"];
+    
     jsonString = [_array zz_toJSONString];
     NSLog(@"%@", jsonString);
-    
-    
     
     NSString *cookieStr = @"Hm_lpvt_12423ecbc0e2ca965d84259063d35238=1562658360; Hm_lvt_12423ecbc0e2ca965d84259063d35238=1562657844,1562657876,1562657902,1562658360; plus_cv=1::m:49a3f4a6; H_WISE_SIDS=133613_126887_127758_131440_133850_130511_128069_131888_133721_120154_131601_133017_132910_133041_131246_122155_132439_130762_132378_131518_118882_118858_118855_118824_118788_132840_132604_107320_133159_132783_130120_133351_129655_132250_124637_132538_133837_133472_131906_128891_133847_132551_133695_132674_133838_132543_132494_129643_131423_133412_133005_133863_133917_133938_110085_131574_133893_127969_123289_131299_127315_127416_131545; rsv_i=942b8yVe%2B%2FyCtmGPQ2cUlgFrJraSSFjQxg7x9NNyY%2F4tLmiaJPPeuj%2BfTXcouajtvyomUel6YnsbhLTsBVP9%2BL21KqM8GfU; plus_lsv=2d21860f0bf6b85c; BDSVRTM=292; customCookieName=Jeff; BDORZ=AE84CDB3A529C0F8A2B9DCDD1D18B695; SE_LAUNCH=5%3A26044276_0%3A26044276; reload=lsDiff:_0_2d21860f0bf6b85c_null; BAIDUID=64D65F39794654FAE25B853449317C7D:FG=1";
     NSDictionary *cookieDict = [cookieStr zz_cookieToDictionary];
     NSDictionary *property = [cookieStr zz_cookieProperties];
     NSHTTPCookie *cookie = [cookieStr zz_cookie];
     NSLog(@"%@ %@ %@", property, cookieDict, cookie);
+    
 }
 
 - (IBAction)_tapZZTabbarController:(id)sender {
@@ -167,6 +191,27 @@
         return result == 7;
     }].isEqual;
     NSLog(@"%d", equal);
+}
+
+- (IBAction)_tapFile:(id)sender {
+    
+    double size = [ZZStorage zz_sandboxSize:[ZZStorage zz_documentDirectory]];
+    
+    UIImage *image = @"KN".zz_image;
+    [ZZStorage zz_sandboxSaveData:[image zz_imageData] name:@"A"];
+    
+    size = [ZZStorage zz_sandboxSize:[ZZStorage zz_documentDirectory]];
+    
+    NSData *data = [ZZStorage zz_sandboxFetchData:@"B"];
+    
+    data = [ZZStorage zz_sandboxFetchData:@"A"];
+    [[data zz_image] zz_debugShow:CGRectMake(100, 100, 200, 200)];
+    
+    [ZZStorage zz_sandboxRemove:@"A"];
+    
+     size = [ZZStorage zz_sandboxSize:[ZZStorage zz_documentDirectory]];
+    
+    data = [ZZStorage zz_sandboxFetchData:@"A"];
 }
 
 /*
