@@ -24,6 +24,7 @@
 #import "ZZStorage.h"
 #import "UIImage+ZZKit.h"
 #import "NSData+ZZKit.h"
+#import "UIView+ZZKit_HUD.h"
 
 @interface TestObject : NSObject
 
@@ -71,7 +72,7 @@
     NSString *text = @"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降，伦敦布伦特、纽约WTI油价最低分别降至每桶61和52美元，回落至近五个月来的低位。平均来看，两市油价比上轮调价周期下降9.94%，受此影响，国内汽油、柴油零售价格随之大幅下调。";
     [self.view zz_quickAddLabel:text font:[UIFont systemFontOfSize:14.0] textColor:[UIColor whiteColor] numberOfLines:0 textAlignment:NSTextAlignmentLeft perLineHeight:20.0 kern:1.0 space:0 lineBreakmode:NSLineBreakByWordWrapping attributedText:nil needCalculateTextFrame:YES backgroundColor:[UIColor grayColor] frame:CGRectMake(100, 350, 300, 400) constraintBlock:^BOOL(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make) {
         make.left.equalTo(superView.mas_left).offset(10.0);
-        make.top.equalTo(superView.mas_top).offset(350.0);
+        make.top.equalTo(superView.mas_top).offset(550.0);
         make.width.mas_equalTo(300.0);
         make.height.mas_equalTo(renderedSize.height);
         return YES;
@@ -212,6 +213,22 @@
      size = [ZZStorage zz_sandboxSize:[ZZStorage zz_documentDirectory]];
     
     data = [ZZStorage zz_sandboxFetchData:@"A"];
+}
+
+- (IBAction)_tapHUD:(id)sender {
+    
+    // [self.navigationController.view zz_startLoading];
+    
+    // [self.navigationController.view zz_showHUD:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
+    
+    // [self.navigationController.view zz_toast:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
+    
+    [self.view zz_dropSheet:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
+}
+
+- (IBAction)_tapStopHUD:(id)sender {
+    
+    // [self.view zz_stopLoading];
 }
 
 /*

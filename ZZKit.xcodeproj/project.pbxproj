@@ -30,6 +30,13 @@
 		E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBF22B15F420099A8C4 /* ZZSafariController.m */; };
 		E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC222B1601A0099A8C4 /* ZZWebView.m */; };
 		E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */; };
+		E744127D22F286A800773562 /* gif_loading_bull.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744127C22F286A800773562 /* gif_loading_bull.gif */; };
+		E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744128022F2B33000773562 /* gif_loading_rotataion.gif */; };
+		E744128322F2B6C900773562 /* gif_loading_shopping.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744128222F2B6C800773562 /* gif_loading_shopping.gif */; };
+		E744128822F2BABE00773562 /* lottie_toast_error.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128422F2BABE00773562 /* lottie_toast_error.json */; };
+		E744128922F2BABE00773562 /* lottie_toast_warning.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128522F2BABE00773562 /* lottie_toast_warning.json */; };
+		E744128A22F2BABE00773562 /* lottie_toast_sign.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128622F2BABE00773562 /* lottie_toast_sign.json */; };
+		E744128B22F2BABE00773562 /* lottie_toast_success.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128722F2BABE00773562 /* lottie_toast_success.json */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
 		E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E759CDE122CC59B4001EC3AE /* TestZZWebView.m */; };
 		E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */; };
@@ -67,14 +74,11 @@
 		E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654622B1E5B200B20F3E /* NSDictionary+ZZKit.m */; };
 		E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654922B2008D00B20F3E /* UIImageView+ZZKit.m */; };
 		E788654E22B2055900B20F3E /* ZZTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654D22B2055900B20F3E /* ZZTrace.m */; };
-		E788655122B205BF00B20F3E /* NSObject+ZZKit_Storge.m in Sources */ = {isa = PBXBuildFile; fileRef = E788655022B205BF00B20F3E /* NSObject+ZZKit_Storge.m */; };
 		E788655822B218C600B20F3E /* ZZReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E788655722B218C600B20F3E /* ZZReachability.m */; };
 		E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788655D22B21A1600B20F3E /* ZZWidgetTimerView.m */; };
 		E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656322B21A8A00B20F3E /* ZZWidgetRippleView.m */; };
 		E788656822B21B0500B20F3E /* ZZWidgetTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656722B21B0500B20F3E /* ZZWidgetTagsView.m */; };
-		E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */; };
 		E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */; };
-		E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */; };
 		E78E766222C3626300D1EF5A /* cn.json in Resources */ = {isa = PBXBuildFile; fileRef = E78E766122C3626200D1EF5A /* cn.json */; };
 		E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */; };
 		E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766A22C3630400D1EF5A /* ZZCountryModel.m */; };
@@ -124,12 +128,21 @@
 		E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A222AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m */; };
 		E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */; };
 		E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */; };
+		E7E18AF822F30F64007451B4 /* toast_close_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF422F30F63007451B4 /* toast_close_active@2x.png */; };
+		E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */; };
+		E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */; };
+		E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */; };
 		E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F2150D22ED8AF9007C587B /* cncity.plist */; };
 		E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151022ED8CC4007C587B /* ZZCityModel.m */; };
 		E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151322ED8D3E007C587B /* ZZCityController.m */; };
 		E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151622ED8E13007C587B /* TestCountryVC.m */; };
 		E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F2151722ED8E13007C587B /* TestCountryVC.xib */; };
 		E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */; };
+		E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */; };
+		E7F5B88022F182D7001F0C80 /* ic_nav_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */; };
+		E7F5B88122F182D7001F0C80 /* ic_nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */; };
+		E7F5B88222F182D7001F0C80 /* ic_nav_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87E22F182D7001F0C80 /* ic_nav_close@3x.png */; };
+		E7F5B88522F1BA75001F0C80 /* UIView+ZZKit_HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5B88422F1BA75001F0C80 /* UIView+ZZKit_HUD.m */; };
 		E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */; };
 		E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */; };
 		E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */; };
@@ -177,6 +190,13 @@
 		E72DFBC222B1601A0099A8C4 /* ZZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebView.m; sourceTree = "<group>"; };
 		E72DFBC422B1603E0099A8C4 /* ZZWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
 		E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
+		E744127C22F286A800773562 /* gif_loading_bull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_bull.gif; sourceTree = "<group>"; };
+		E744128022F2B33000773562 /* gif_loading_rotataion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_rotataion.gif; sourceTree = "<group>"; };
+		E744128222F2B6C800773562 /* gif_loading_shopping.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_shopping.gif; sourceTree = "<group>"; };
+		E744128422F2BABE00773562 /* lottie_toast_error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_toast_error.json; sourceTree = "<group>"; };
+		E744128522F2BABE00773562 /* lottie_toast_warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_toast_warning.json; sourceTree = "<group>"; };
+		E744128622F2BABE00773562 /* lottie_toast_sign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_toast_sign.json; sourceTree = "<group>"; };
+		E744128722F2BABE00773562 /* lottie_toast_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_toast_success.json; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
 		E759CDE022CC59B4001EC3AE /* TestZZWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZWebView.h; sourceTree = "<group>"; };
@@ -244,8 +264,6 @@
 		E788654922B2008D00B20F3E /* UIImageView+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZZKit.m"; sourceTree = "<group>"; };
 		E788654C22B2055900B20F3E /* ZZTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTrace.h; sourceTree = "<group>"; };
 		E788654D22B2055900B20F3E /* ZZTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTrace.m; sourceTree = "<group>"; };
-		E788654F22B205BF00B20F3E /* NSObject+ZZKit_Storge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZZKit_Storge.h"; sourceTree = "<group>"; };
-		E788655022B205BF00B20F3E /* NSObject+ZZKit_Storge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZZKit_Storge.m"; sourceTree = "<group>"; };
 		E788655622B218C600B20F3E /* ZZReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZReachability.h; sourceTree = "<group>"; };
 		E788655722B218C600B20F3E /* ZZReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZReachability.m; sourceTree = "<group>"; };
 		E788655C22B21A1600B20F3E /* ZZWidgetTimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetTimerView.h; sourceTree = "<group>"; };
@@ -254,12 +272,8 @@
 		E788656322B21A8A00B20F3E /* ZZWidgetRippleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetRippleView.m; sourceTree = "<group>"; };
 		E788656622B21B0500B20F3E /* ZZWidgetTagsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetTagsView.h; sourceTree = "<group>"; };
 		E788656722B21B0500B20F3E /* ZZWidgetTagsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetTagsView.m; sourceTree = "<group>"; };
-		E788656922B21B2800B20F3E /* ZZWidgetToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetToastView.h; sourceTree = "<group>"; };
-		E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetToastView.m; sourceTree = "<group>"; };
 		E788656C22B21B3B00B20F3E /* ZZWidgetDropSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetDropSheetView.h; sourceTree = "<group>"; };
 		E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetDropSheetView.m; sourceTree = "<group>"; };
-		E788656F22B21B9E00B20F3E /* ZZWidgetLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetLoadingView.h; sourceTree = "<group>"; };
-		E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetLoadingView.m; sourceTree = "<group>"; };
 		E78E766122C3626200D1EF5A /* cn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cn.json; sourceTree = "<group>"; };
 		E78E766622C362D300D1EF5A /* ZZCNRegionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCNRegionModel.h; sourceTree = "<group>"; };
 		E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCNRegionModel.m; sourceTree = "<group>"; };
@@ -306,7 +320,7 @@
 		E7DC5C22229CCC8700ED8733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7DC5C24229CCC8700ED8733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DC5C25229CCC8700ED8733 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZZKit.podspec; sourceTree = "<group>"; };
+		E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZZKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E7DC5C2F229CD6BC00ED8733 /* ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZKit.h; sourceTree = "<group>"; };
 		E7DC5C30229CD6BC00ED8733 /* ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZKit.m; sourceTree = "<group>"; };
 		E7DC5C36229CDD9D00ED8733 /* ZZLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZLRUCache.m; sourceTree = "<group>"; };
@@ -342,6 +356,10 @@
 		E7E017A422AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestKeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZEnumCompare.h; sourceTree = "<group>"; };
 		E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZEnumCompare.m; sourceTree = "<group>"; };
+		E7E18AF422F30F63007451B4 /* toast_close_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_active@2x.png"; sourceTree = "<group>"; };
+		E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@2x.png"; sourceTree = "<group>"; };
+		E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_active@3x.png"; sourceTree = "<group>"; };
+		E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@3x.png"; sourceTree = "<group>"; };
 		E7F2150D22ED8AF9007C587B /* cncity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cncity.plist; sourceTree = "<group>"; };
 		E7F2150F22ED8CC4007C587B /* ZZCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityModel.h; sourceTree = "<group>"; };
 		E7F2151022ED8CC4007C587B /* ZZCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityModel.m; sourceTree = "<group>"; };
@@ -352,6 +370,12 @@
 		E7F2151722ED8E13007C587B /* TestCountryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCountryVC.xib; sourceTree = "<group>"; };
 		E7F2151B22EDAC14007C587B /* ZZLBSRectangle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSRectangle.h; sourceTree = "<group>"; };
 		E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLBSRectangle.m; sourceTree = "<group>"; };
+		E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_close@2x.png"; sourceTree = "<group>"; };
+		E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_back@3x.png"; sourceTree = "<group>"; };
+		E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_back@2x.png"; sourceTree = "<group>"; };
+		E7F5B87E22F182D7001F0C80 /* ic_nav_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_close@3x.png"; sourceTree = "<group>"; };
+		E7F5B88322F1BA75001F0C80 /* UIView+ZZKit_HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZZKit_HUD.h"; sourceTree = "<group>"; };
+		E7F5B88422F1BA75001F0C80 /* UIView+ZZKit_HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZZKit_HUD.m"; sourceTree = "<group>"; };
 		E7F85F1D22C1B7430018A217 /* TestWidgetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWidgetVC.h; sourceTree = "<group>"; };
 		E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWidgetVC.m; sourceTree = "<group>"; };
 		E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestWidgetVC.xib; sourceTree = "<group>"; };
@@ -421,6 +445,10 @@
 				E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */,
 				E72DFBC122B1601A0099A8C4 /* ZZWebView.h */,
 				E72DFBC222B1601A0099A8C4 /* ZZWebView.m */,
+				E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */,
+				E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */,
+				E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */,
+				E7F5B87E22F182D7001F0C80 /* ic_nav_close@3x.png */,
 			);
 			path = ZZController;
 			sourceTree = "<group>";
@@ -469,10 +497,6 @@
 				E788656322B21A8A00B20F3E /* ZZWidgetRippleView.m */,
 				E788656622B21B0500B20F3E /* ZZWidgetTagsView.h */,
 				E788656722B21B0500B20F3E /* ZZWidgetTagsView.m */,
-				E788656922B21B2800B20F3E /* ZZWidgetToastView.h */,
-				E788656A22B21B2800B20F3E /* ZZWidgetToastView.m */,
-				E788656F22B21B9E00B20F3E /* ZZWidgetLoadingView.h */,
-				E788657022B21B9E00B20F3E /* ZZWidgetLoadingView.m */,
 				E788656C22B21B3B00B20F3E /* ZZWidgetDropSheetView.h */,
 				E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */,
 			);
@@ -584,6 +608,17 @@
 		E7DC5C32229CD6E300ED8733 /* ZZCategory */ = {
 			isa = PBXGroup;
 			children = (
+				E7E18AF422F30F63007451B4 /* toast_close_active@2x.png */,
+				E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */,
+				E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */,
+				E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */,
+				E744128722F2BABE00773562 /* lottie_toast_success.json */,
+				E744128422F2BABE00773562 /* lottie_toast_error.json */,
+				E744128522F2BABE00773562 /* lottie_toast_warning.json */,
+				E744128622F2BABE00773562 /* lottie_toast_sign.json */,
+				E744128222F2B6C800773562 /* gif_loading_shopping.gif */,
+				E744128022F2B33000773562 /* gif_loading_rotataion.gif */,
+				E744127C22F286A800773562 /* gif_loading_bull.gif */,
 				E767600322AFBF220044B9AD /* ZZTimer.h */,
 				E767600422AFBF220044B9AD /* ZZTimer.m */,
 				E7E0179E22AE277D00C24EF2 /* ZZLock.h */,
@@ -598,8 +633,6 @@
 				E767600C22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m */,
 				E767602022B0E1A10044B9AD /* NSObject+ZZKit_Image.h */,
 				E767602122B0E1A10044B9AD /* NSObject+ZZKit_Image.m */,
-				E788654F22B205BF00B20F3E /* NSObject+ZZKit_Storge.h */,
-				E788655022B205BF00B20F3E /* NSObject+ZZKit_Storge.m */,
 				E7DC5C52229D197600ED8733 /* NSData+ZZKit.h */,
 				E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */,
 				E788653F22B1E57C00B20F3E /* NSArray+ZZKit.h */,
@@ -626,6 +659,8 @@
 				E767601222B09A6E0044B9AD /* UIView+ZZKit.m */,
 				E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */,
 				E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */,
+				E7F5B88322F1BA75001F0C80 /* UIView+ZZKit_HUD.h */,
+				E7F5B88422F1BA75001F0C80 /* UIView+ZZKit_HUD.m */,
 				E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */,
 				E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */,
 				E7675FFE22AF9F460044B9AD /* NSBundle+ZZKit.h */,
@@ -834,23 +869,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E744128B22F2BABE00773562 /* lottie_toast_success.json in Resources */,
 				E759CDE622CC849B001EC3AE /* test.html in Resources */,
 				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
+				E744127D22F286A800773562 /* gif_loading_bull.gif in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
 				E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
 				E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */,
+				E744128922F2BABE00773562 /* lottie_toast_warning.json in Resources */,
+				E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
 				E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
+				E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */,
 				E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */,
+				E744128822F2BABE00773562 /* lottie_toast_error.json in Resources */,
+				E7F5B88222F182D7001F0C80 /* ic_nav_close@3x.png in Resources */,
+				E744128322F2B6C900773562 /* gif_loading_shopping.gif in Resources */,
 				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
+				E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
+				E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
@@ -859,13 +904,18 @@
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E767601822B0AA120044B9AD /* TestUIVC.xib in Resources */,
 				E70C401022C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib in Resources */,
+				E7F5B88022F182D7001F0C80 /* ic_nav_back@3x.png in Resources */,
+				E7F5B88122F182D7001F0C80 /* ic_nav_back@2x.png in Resources */,
 				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
 				E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */,
+				E744128A22F2BABE00773562 /* lottie_toast_sign.json in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
 				E78E766222C3626300D1EF5A /* cn.json in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
+				E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */,
 				E767600222AFB2060044B9AD /* test.bundle in Resources */,
+				E7E18AF822F30F64007451B4 /* toast_close_active@2x.png in Resources */,
 				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -899,26 +949,28 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Typeset/Typeset.framework",
 				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenUDID.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Typeset.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -964,9 +1016,9 @@
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
-				E788655122B205BF00B20F3E /* NSObject+ZZKit_Storge.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
+				E7F5B88522F1BA75001F0C80 /* UIView+ZZKit_HUD.m in Sources */,
 				E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */,
 				E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */,
 				E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */,
@@ -977,7 +1029,6 @@
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
 				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
-				E788657122B21B9E00B20F3E /* ZZWidgetLoadingView.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
 				E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */,
@@ -1013,7 +1064,6 @@
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
-				E788656B22B21B2800B20F3E /* ZZWidgetToastView.m in Sources */,
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,

@@ -64,6 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CGFloat)zz_alpha;
 
+/**
+ *  生成颜色的背景图片
+ */
+- (nonnull UIImage *)zz_image:(CGSize)size;
+
 @end
 
 NS_ASSUME_NONNULL_END

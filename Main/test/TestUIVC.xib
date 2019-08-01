@@ -28,11 +28,27 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nss-5y-6pK">
-                    <rect key="frame" x="72" y="124" width="62" height="30"/>
+                    <rect key="frame" x="20" y="98" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="文件操作"/>
                     <connections>
                         <action selector="_tapFile:" destination="-1" eventType="touchUpInside" id="Tfr-gF-3Ni"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgL-jk-xxs">
+                    <rect key="frame" x="20" y="136" width="33" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="HUD"/>
+                    <connections>
+                        <action selector="_tapHUD:" destination="-1" eventType="touchUpInside" id="EaM-zH-el6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njy-T9-6sl">
+                    <rect key="frame" x="61" y="136" width="65" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="StopHUD"/>
+                    <connections>
+                        <action selector="_tapStopHUD:" destination="-1" eventType="touchUpInside" id="x4V-Uz-A97"/>
                     </connections>
                 </button>
             </subviews>

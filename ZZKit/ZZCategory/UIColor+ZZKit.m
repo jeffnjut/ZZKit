@@ -193,6 +193,29 @@
     return c[CGColorGetNumberOfComponents(self.CGColor) - 1];
 }
 
+/**
+ *  生成颜色的背景图片
+ */
+- (nonnull UIImage *)zz_image:(CGSize)size {
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    
+    // 开始画图的上下文
+    UIGraphicsBeginImageContext(rect.size);
+    
+    // 设置背景颜色
+    [self set];
+    // 设置填充区域
+    UIRectFill(CGRectMake(0, 0, rect.size.width, rect.size.height));
+    
+    // 返回UIImage
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 结束上下文
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 #pragma mark - Private
 
 /**

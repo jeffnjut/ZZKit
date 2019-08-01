@@ -14,6 +14,7 @@
 #import <Masonry/Masonry.h>
 #import <Typeset/Typeset.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "ZZWebViewController.h"
 
 @interface TestZZWebView ()
 
@@ -26,8 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self testUIWebView];
-    // [self testWKWebView];
+    // [self testUIWebView];
+    [self testWKWebView];
 }
 
 - (void)testWKWebView {
@@ -150,6 +151,12 @@
       // 测试在网页上点击图片的JavaScript功能
       @"imageDidClick": ^(WKUserContentController *controller, WKScriptMessage *message) {
           NSLog(@"点击了html上的图片，参数为%@", message.body);
+      },
+      // Push一个ZZWebViewController
+      @"pushZZWebViewController": ^(WKUserContentController *controller, WKScriptMessage *message) {
+          ZZWebViewController *vc = [[ZZWebViewController alloc] init];
+          vc.zzURL = @"https://www.baidu.com";
+          [weakSelf zz_push:vc animated:YES];
       }
       };
     
@@ -230,7 +237,6 @@
     }];
     
     self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
-        
         
         if (status == ZZWebViewNavigationStatusDidStartNavigation) {
             NSString *url = request.URL.absoluteString;

@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// TODO
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZCarrier : NSObject

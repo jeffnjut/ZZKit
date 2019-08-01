@@ -7,16 +7,61 @@
 //
 
 #import "ZZWebViewController.h"
+#import "ZZWebView.h"
+#import <Masonry/Masonry.h>
+#import "UIViewController+ZZKit.h"
+#import "NSString+ZZKit.h"
 
 @interface ZZWebViewController ()
+
+@property (nonatomic, strong) ZZWebView *zzWebView;
 
 @end
 
 @implementation ZZWebViewController
 
+- (ZZWebViewType)zzWebType {
+    
+    if (_zzWebType == 0) {
+        _zzWebType = ZZWebViewTypeWKWebView;
+    }
+    return _zzWebType;
+}
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    __weak typeof(self) weakSelf = self;
+    if (!self.zzBackImage || ![self.zzBackImage isKindOfClass:[UIImage class]]) {
+        self.zzBackImage = @"ic_nav_back".zz_image;
+    }
+    if (!self.zzReloadImage || ![self.zzReloadImage isKindOfClass:[UIImage class]]) {
+        self.zzReloadImage = @"ic_nav_close".zz_image;
+    }
+    [self zz_navigationAddLeftBarButton:self.zzBackImage action:^{
+        if (weakSelf.zzWebView.zzUIWebView && [weakSelf.zzWebView.zzUIWebView canGoBack]) {
+            [weakSelf.zzWebView.zzUIWebView goBack];
+        }else if (weakSelf.zzWebView.zzWKWebView && [weakSelf.zzWebView.zzWKWebView canGoBack]) {
+            [weakSelf.zzWebView.zzWKWebView goBack];
+        }else {
+            [weakSelf zz_dismiss];
+        }
+    }];
+    [self zz_navigationAddLeftBarButton:self.zzReloadImage action:^{
+        [weakSelf zz_dismiss];
+    }];
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    if (_zzWebView == nil) {
+        _zzWebView = [ZZWebView zz_quickAdd:self.zzWebType onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+            make.edges.equalTo(superView);
+        }];
+    }
+    [self.zzWebView zz_loadRequest:self.zzURL headerFields:nil];
 }
 
 /*

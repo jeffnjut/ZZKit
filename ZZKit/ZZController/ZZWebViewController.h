@@ -7,12 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZWebView.h"
 
 // TODO
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebViewController : UIViewController
+
+// WebView容器类型
+@property (nonatomic, assign) ZZWebViewType zzWebType;
+
+// WebView容器
+@property (nonatomic, strong, readonly) ZZWebView *zzWebView;
+
+// URL
+@property (nonatomic, copy) NSString *zzURL;
+
+// 返回按钮的Image
+@property (nonatomic, strong) UIImage *zzBackImage;
+
+// 重新加载按钮的Image
+@property (nonatomic, strong) UIImage *zzReloadImage;
 
 @end
 

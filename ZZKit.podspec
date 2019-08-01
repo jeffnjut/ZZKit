@@ -14,14 +14,16 @@ Pod::Spec.new do |s|
         ss.resources    = 'ZZKit/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
         ss.frameworks   = 'Foundation'
         ss.frameworks   = 'UIKit'
+        ss.dependency     'Typeset'
+        ss.dependency     'ReactiveObjC'
+        ss.dependency     'Masonry'
+        ss.dependency     'MBProgressHUD'
+        ss.dependency     'lottie-ios'
+        ss.dependency     'FLAnimatedImage'
         ss.dependency     'SDWebImage'
         ss.dependency     'YYImage'
-        ss.dependency     'FLAnimatedImage'
-        ss.dependency     'Masonry'
-        ss.dependency     'ReactiveObjC'
-        ss.dependency     'Typeset'
-        ss.dependency     'OpenUDID'
         ss.dependency     'YYModel'
+        ss.dependency     'OpenUDID'
     end
     
 end
