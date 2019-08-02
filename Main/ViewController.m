@@ -23,6 +23,8 @@
 #import "TestWidgetVC.h"
 #import "TestZZWebView.h"
 #import "TestCountryVC.h"
+#import "NetImagesBannerViewController.h"
+#import "NetImagesCollectionViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -57,7 +59,9 @@
                         @[@"测试ZZCollectionView",[TestZZCollectionViewVC class]],
                         @[@"测试Widget小组件",[TestWidgetVC class]],
                         @[@"测试ZZWebView",[TestZZWebView class]],
-                        @[@"测试Country、Region、City选择",[TestCountryVC class]]];
+                        @[@"测试Country、Region、City选择",[TestCountryVC class]],
+                        @[@"测试显示图片Banner",[NetImagesBannerViewController class]],
+                        @[@"测试显示图片ColloctionView",[NetImagesCollectionViewController class]]];
     
     [self.tableView reloadData];
 }

@@ -25,6 +25,8 @@
 #import "UIImage+ZZKit.h"
 #import "NSData+ZZKit.h"
 #import "UIView+ZZKit_HUD.h"
+#import "ZZWidgetPinCodeView.h"
+#import "ZZWidgetMaskView.h"
 
 @interface TestObject : NSObject
 
@@ -125,6 +127,20 @@
     NSHTTPCookie *cookie = [cookieStr zz_cookie];
     NSLog(@"%@ %@ %@", property, cookieDict, cookie);
     
+    ZZWidgetPinCodeView *pinCodeView = [ZZWidgetPinCodeView zz_createPinCodeTextView:CGRectMake(10, 400 , 300, 40) itemNumber:6 itemGap:30 pinTextColor:[UIColor redColor] pinTextFont:[UIFont systemFontOfSize:20.0] normalUnderLineColor:[UIColor blackColor] normalUnderLineWidth:2.0 highlightedUnderLineColor:[UIColor redColor] highlightedUnderLineWidth:2.0];
+    [self.view addSubview:pinCodeView];
+    
+    
+    ZZWidgetMaskView *mask1 = [[ZZWidgetMaskView alloc] initWithRevalView:self.testSpinnerView layoutType:ZZWidgetMaskViewLayoutTypeUP];
+    mask1.des = @"这是SpinnerView";
+    
+    ZZWidgetMaskView *mask2 = [[ZZWidgetMaskView alloc] initWithRevalView:self.testSpinnerButton layoutType:ZZWidgetMaskViewLayoutTypeDown];
+    mask2.des = @"这是SpinnerButton哦！";
+    
+    ZZWidgetMaskQueue *queue = [[ZZWidgetMaskQueue alloc] init];
+    [queue addPromptMaskView:mask1];
+    [queue addPromptMaskView:mask2];
+    [queue showMasksInView:self.view];
 }
 
 - (IBAction)_tapZZTabbarController:(id)sender {

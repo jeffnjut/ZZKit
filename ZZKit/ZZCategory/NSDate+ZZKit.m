@@ -291,7 +291,7 @@ static NSDateFormatter *_displayFormatter = nil;
             [[NSDate sharedDateFormatter] setDateFormat:[prefix stringByAppendingString:dateFormat]];
         }
     }
-    // use display formatter to return formatted date string∂
+    // use display formatter to return formatted date string
     displayString = [[NSDate sharedDateFormatter] stringFromDate:date];
     return displayString;
 }
