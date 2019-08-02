@@ -62,6 +62,7 @@
 		E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */; };
 		E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E770C7A722BB2F5F00625C85 /* TestHeaderView.m */; };
 		E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E770C7A922BB2FB400625C85 /* TestHeaderView.xib */; };
+		E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751BC322F3D39800ECD06D /* ZZWidgetSpinnerView.m */; };
 		E77ADD3E22BB3B990015DB1B /* UITableView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */; };
 		E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */; };
 		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
@@ -241,6 +242,8 @@
 		E770C7A622BB2F5F00625C85 /* TestHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderView.h; sourceTree = "<group>"; };
 		E770C7A722BB2F5F00625C85 /* TestHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
 		E770C7A922BB2FB400625C85 /* TestHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestHeaderView.xib; sourceTree = "<group>"; };
+		E7751BC222F3D39800ECD06D /* ZZWidgetSpinnerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetSpinnerView.h; sourceTree = "<group>"; };
+		E7751BC322F3D39800ECD06D /* ZZWidgetSpinnerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetSpinnerView.m; sourceTree = "<group>"; };
 		E77ADD3C22BB3B990015DB1B /* UITableView+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ZZKit.h"; sourceTree = "<group>"; };
 		E77ADD3D22BB3B990015DB1B /* UITableView+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ZZKit.m"; sourceTree = "<group>"; };
 		E77ADD4022BBABB90015DB1B /* CalcMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcMarker.h; sourceTree = "<group>"; };
@@ -499,6 +502,8 @@
 				E788656722B21B0500B20F3E /* ZZWidgetTagsView.m */,
 				E788656C22B21B3B00B20F3E /* ZZWidgetDropSheetView.h */,
 				E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */,
+				E7751BC222F3D39800ECD06D /* ZZWidgetSpinnerView.h */,
+				E7751BC322F3D39800ECD06D /* ZZWidgetSpinnerView.m */,
 			);
 			path = ZZWidget;
 			sourceTree = "<group>";
@@ -1014,6 +1019,7 @@
 				E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */,
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
+				E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,

@@ -42,6 +42,9 @@
 
 @property (nonatomic, strong) UIViewController *rootViewController;
 
+@property (nonatomic, weak) IBOutlet UIView *testSpinnerView;
+@property (nonatomic, weak) IBOutlet UIButton *testSpinnerButton;
+
 @end
 
 @implementation TestUIVC
@@ -223,12 +226,18 @@
     
     // [self.navigationController.view zz_toast:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
     
-    [self.view zz_dropSheet:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
+    // [self.view zz_dropSheet:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
+    
+    [self.testSpinnerView zz_startSpinning:ZZSpinnerLoadingStyleWhite];
+    [self.testSpinnerButton zz_startSpinning:@"加载" style:ZZSpinnerLoadingStyleWhite];
 }
 
 - (IBAction)_tapStopHUD:(id)sender {
     
     // [self.view zz_stopLoading];
+    
+    [self.testSpinnerView zz_stopSpinning];
+    [self.testSpinnerButton zz_stopSpinning];
 }
 
 /*

@@ -7,6 +7,7 @@
 //
 
 #import "UIView+ZZKit_HUD.h"
+#import <objc/runtime.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import <Lottie/Lottie.h>
 #import <Masonry/Masonry.h>
@@ -14,6 +15,8 @@
 #import "NSString+ZZKit.h"
 #import "UIColor+ZZKit.h"
 #import "NSAttributedString+ZZKit.h"
+#import "ZZWidgetSpinnerView.h"
+#import "UIView+ZZKit.h"
 
 #pragma mark - UIView Category
 
@@ -295,6 +298,182 @@
     [dropSheet zz_show];
 }
 
+#pragma mark - Spinner动画
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinningNoMessage:(ZZSpinnerLoadingStyle)style {
+    
+    [self zz_startSpinning:nil style:style];
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinningNoMessage:(ZZSpinnerPosistion)position style:(ZZSpinnerLoadingStyle)style {
+    
+    [self zz_startSpinning:nil position:position style:style];
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(ZZSpinnerLoadingStyle)style {
+    
+    [self zz_startSpinning:@"正在加载..." style:style];
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title style:(ZZSpinnerLoadingStyle)style {
+    
+    [self zz_startSpinning:title position:ZZSpinnerPosistionCenter style:style];
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title position:(ZZSpinnerPosistion)position style:(ZZSpinnerLoadingStyle)style {
+    
+    UIColor *color = nil;
+    switch (style) {
+        case ZZSpinnerLoadingStyleWhite:
+        {
+            color = @"#FFFFFF".zz_color;
+            break;
+        }
+        case ZZSpinnerLoadingStyleBlack:
+        {
+            color = @"#333333".zz_color;
+            break;
+        }
+    }
+    [self zz_startSpinning:title titleColor:color titleFont:[UIFont systemFontOfSize:12.0] kern:2.0 colorSequence:@[color] position:ZZSpinnerPosistionCenter offsetRateFromTop:0 layout:ZZSpinnerLoadingViewLayoutLeft backgroundColor:[UIColor clearColor] cornerRadius:0];
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence position:(ZZSpinnerPosistion)position offsetRateFromTop:(CGFloat)offsetRateFromTop layout:(ZZSpinnerLoadingViewLayout)layout backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius {
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        CGFloat y = self.bounds.size.height / 8.0;
+        switch (position) {
+            case ZZSpinnerPosistionTop:
+            {
+                y = 10.0;
+                break;
+            }
+            case ZZSpinnerPosistionNearTop:
+            {
+                y = 2 * y;
+                break;
+            }
+            case ZZSpinnerPosistionTopNearCenter:
+            {
+                y = 3 * y;
+                break;
+            }
+            case ZZSpinnerPosistionCenter:
+            {
+                y = 4 * y;
+                break;
+            }
+            case ZZSpinnerPosistionBottomNearCenter:
+            {
+                y = 5 * y;
+                break;
+            }
+            case ZZSpinnerPosistionNearBottom:
+            {
+                y = 6 * y;
+                break;
+            }
+            case ZZSpinnerPosistionBottom:
+            {
+                y = 7 * y;
+                break;
+            }
+            case ZZSpinnerPosistionOffset:
+            {
+                y = offsetRateFromTop;
+                break;
+            }
+            default:
+                break;
+        }
+        
+        if ([weakSelf isKindOfClass:[UIButton class]]) {
+            [weakSelf setUserInteractionEnabled:NO];
+            [weakSelf _setButtonTitle:((UIButton *)weakSelf).titleLabel.text];
+            [(UIButton *)weakSelf setTitle:@"" forState:UIControlStateNormal];
+        }
+        
+        [weakSelf zz_startSpinning:CGPointMake(weakSelf.bounds.size.width / 2.0, y) layout:layout loadingWidth:0 spinnerHeight:0 labelHeight:0 spinnerLabelGap:0 backgroundColor:backgroundColor cornerRadius:cornerRadius title:title titleColor:titleColor titleFont:titleFont kern:kern colorSequence:colorSequence cycleDuration:0];
+    });
+}
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(CGPoint)point layout:(ZZSpinnerLoadingViewLayout)layout loadingWidth:(CGFloat)loadingWidth spinnerHeight:(CGFloat)spinnerHeight labelHeight:(CGFloat)labelHeight spinnerLabelGap:(CGFloat)spinnerLabelGap backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence cycleDuration:(CGFloat)cycleDuration {
+    
+    for (ZZSpinnerLoadingView *loadingView in [self subviews]) {
+        if ([loadingView isKindOfClass:[ZZSpinnerLoadingView class]]) {
+            [self bringSubviewToFront:loadingView];
+            [loadingView zz_startSpinning:title];
+            break;
+        }
+    }
+    if (![[[self subviews] lastObject] isKindOfClass:[ZZSpinnerLoadingView class]]) {
+        ZZSpinnerLoadingView *loadingView = [ZZSpinnerLoadingView zz_spinnerLoadingView:layout loadingWidth:loadingWidth spinnerHeight:spinnerHeight labelHeight:labelHeight spinnerLabelGap:spinnerLabelGap backgroundColor:backgroundColor cornerRadius:cornerRadius title:title titleColor:titleColor titleFont:titleFont kern:kern colorSequence:colorSequence ];
+        [self addSubview:loadingView];
+        if (point.x > 0 && point.y > 0) {
+            loadingView.center = point;
+        }
+        if (cycleDuration > 0) {
+            [loadingView zz_startSpinningCycleDuration:cycleDuration];
+        }else{
+            [loadingView zz_StartSpinning];
+        }
+    }
+}
+
+/**
+ * Spinner动画停止
+ */
+- (void)zz_stopSpinning {
+    
+    for (ZZSpinnerLoadingView *loadingView in [self subviews]) {
+        if ([loadingView isKindOfClass:[ZZSpinnerLoadingView class]]) {
+            [self bringSubviewToFront:loadingView];
+            [loadingView zz_stopSpinning];
+            break;
+        }
+    }
+    if ([self isKindOfClass:[UIButton class]]) {
+        [(UIButton *)self setTitle:[self _getButtonTitle] forState:UIControlStateNormal];
+        [self setUserInteractionEnabled:YES];
+    }
+}
+
+#pragma mark - Private
+
+- (void)_setButtonTitle:(NSString *)title {
+    
+    objc_setAssociatedObject(self, @"ButtonTitle", title, OBJC_ASSOCIATION_COPY);
+}
+
+- (nullable NSString *)_getButtonTitle {
+    
+    NSString *title = objc_getAssociatedObject(self, @"ButtonTitle");
+    return title;
+}
+
 @end
 
 #pragma mark - ZZDropSheet
@@ -490,6 +669,7 @@ typedef NS_ENUM(NSInteger, ZZDropSheetState) {
 }
 
 #pragma mark - UIResponder touchesBegan
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     @synchronized (self) {
@@ -505,6 +685,210 @@ typedef NS_ENUM(NSInteger, ZZDropSheetState) {
         }
         [self _dismissDropSheet:nil];
     }
+}
+
+@end
+
+#pragma mark - ZZSpinnerLoadingView
+
+static CGFloat kZZSpinnerLoadingViewSpinnerH = 20.0;
+static CGFloat kZZSpinnerLoadingViewLabelH   = 20.0;
+static CGFloat kZZSpinnerLoadingViewW        = 100.0;
+static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
+
+@interface ZZSpinnerLoadingView()
+
+@property (nonatomic, assign) CGFloat zzLoadingWidth;
+@property (nonatomic, assign) CGFloat zzSpinnerHeight;
+@property (nonatomic, assign) CGFloat zzLabelHeight;
+@property (nonatomic, assign) CGFloat zzSpinnerLabelGap;
+@property (nonatomic, assign) CGFloat zzLabelWidth;
+@property (nonatomic, strong) ZZWidgetSpinnerView *spinner;
+@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, assign) ZZSpinnerLoadingViewLayout layout;
+
+@end
+
+@implementation ZZSpinnerLoadingView
+
+- (ZZWidgetSpinnerView *)spinner {
+    
+    if (_spinner == nil) {
+        _spinner = [[ZZWidgetSpinnerView alloc] init];
+        _spinner.lineWidth = 2.0;
+        [self addSubview:_spinner];
+        switch (self.layout) {
+            case ZZSpinnerLoadingViewLayoutUp:
+            {
+                _spinner.frame = CGRectMake(0, 0, _zzLoadingWidth, _zzSpinnerHeight);
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutDown:
+            {
+                _spinner.frame = CGRectMake(0, _zzLabelHeight, _zzLoadingWidth, _zzSpinnerHeight);
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutLeft:
+            {
+                _spinner.frame = CGRectMake(0, 0, _zzSpinnerHeight, _zzSpinnerHeight);
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutRight:
+            {
+                _spinner.frame = CGRectMake(_zzLabelWidth + _zzSpinnerLabelGap, 0, _zzSpinnerHeight , _zzSpinnerHeight);
+                break;
+            }
+        }
+    }
+    return _spinner;
+}
+
+- (UILabel *)label {
+    
+    if (_label == nil) {
+        _label = [[UILabel alloc] init];
+        _label.font = [UIFont systemFontOfSize:8.0];
+        _label.textColor = @"#999999".zz_color;
+        [self addSubview:_label];
+        switch (self.layout) {
+            case ZZSpinnerLoadingViewLayoutUp:
+            {
+                _label.frame = CGRectMake(0, _zzSpinnerHeight, _zzLoadingWidth, _zzLabelHeight);
+                _label.textAlignment = NSTextAlignmentCenter;
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutDown:
+            {
+                _label.frame = CGRectMake(0, 0, _zzLoadingWidth, _zzLabelHeight);
+                _label.textAlignment = NSTextAlignmentCenter;
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutLeft:
+            {
+                _label.frame = CGRectMake(_zzSpinnerHeight, 0, _zzLabelWidth + _zzSpinnerLabelGap, _zzLabelHeight);
+                _label.textAlignment = NSTextAlignmentCenter;
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutRight:
+            {
+                _label.frame = CGRectMake(0, 0, _zzLabelWidth + _zzSpinnerLabelGap, _zzLabelHeight);
+                _label.textAlignment = NSTextAlignmentCenter;
+                break;
+            }
+        }
+    }
+    return _label;
+}
+
+/**
+ *  创建ZZSpinnerLoadingView
+ */
++ (ZZSpinnerLoadingView *)zz_spinnerLoadingView:(ZZSpinnerLoadingViewLayout)layout backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence {
+    
+    
+    return [self zz_spinnerLoadingView:layout loadingWidth:0 spinnerHeight:0 labelHeight:0 spinnerLabelGap:0 backgroundColor:backgroundColor cornerRadius:cornerRadius title:title titleColor:titleColor titleFont:titleFont kern:kern colorSequence:colorSequence];
+}
+
+/**
+ *  创建ZZSpinnerLoadingView
+ */
++ (ZZSpinnerLoadingView *)zz_spinnerLoadingView:(ZZSpinnerLoadingViewLayout)layout loadingWidth:(CGFloat)loadingWidth spinnerHeight:(CGFloat)spinnerHeight labelHeight:(CGFloat)labelHeight spinnerLabelGap:(CGFloat)spinnerLabelGap backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence {
+    
+    ZZSpinnerLoadingView *loadingView = [[ZZSpinnerLoadingView alloc] init];
+    loadingView.zzLoadingWidth = loadingWidth > 0 ? loadingWidth : kZZSpinnerLoadingViewW;
+    loadingView.zzSpinnerHeight = spinnerHeight > 0 ? spinnerHeight : kZZSpinnerLoadingViewSpinnerH;
+    loadingView.zzLabelHeight = labelHeight > 0 ? labelHeight : kZZSpinnerLoadingViewLabelH;
+    loadingView.zzSpinnerLabelGap = spinnerLabelGap > 0 ? spinnerLabelGap : kZZSpinnerLoadingViewGap;
+    loadingView.layout = layout;
+    if (backgroundColor != nil) {
+        loadingView.backgroundColor = backgroundColor;
+    }else {
+        loadingView.backgroundColor = [UIColor clearColor];
+    }
+    if (cornerRadius > 0 ) {
+        [loadingView zz_cornerRadius:cornerRadius];
+    }
+    CGFloat w = 0.0;
+    CGFloat h = 0.0;
+    if ([title length] > 0) {
+        CGFloat labelWidth = [title zz_size:titleFont kern:kern space:0 linebreakmode:NSLineBreakByCharWrapping limitedlineHeight:loadingView.zzLabelHeight renderSize:CGSizeMake(MAXFLOAT, loadingView.zzLabelHeight)].width;
+        loadingView.zzLabelWidth = labelWidth;
+        switch (layout) {
+            case ZZSpinnerLoadingViewLayoutUp:
+            case ZZSpinnerLoadingViewLayoutDown:
+            {
+                w = labelWidth > loadingView.zzLoadingWidth ? labelWidth : loadingView.zzLoadingWidth;
+                h = loadingView.zzSpinnerHeight + loadingView.zzLabelHeight;
+                break;
+            }
+            case ZZSpinnerLoadingViewLayoutLeft:
+            case ZZSpinnerLoadingViewLayoutRight:
+            {
+                w = labelWidth + loadingView.zzSpinnerHeight + loadingView.zzSpinnerLabelGap;
+                h = loadingView.zzSpinnerHeight > loadingView.zzLabelHeight ? loadingView.zzSpinnerHeight : loadingView.zzLabelHeight;
+                break;
+            }
+        }
+    }else{
+        w = loadingView.zzLoadingWidth;
+        h = loadingView.zzLoadingWidth;
+        loadingView.spinner.center = loadingView.center;
+    }
+    loadingView.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - w) / 2.0 , ([UIScreen mainScreen].bounds.size.height - h) / 2.0 , w , h);
+    if (colorSequence != nil) {
+        loadingView.spinner.colorSequence = colorSequence;
+        if (title == nil || [title length] == 0) {
+            loadingView.spinner.frame = CGRectMake((loadingView.bounds.size.width  - loadingView.spinner.bounds.size.width) / 2.0,
+                                                   (loadingView.bounds.size.height - loadingView.spinner.bounds.size.height) / 2.0,
+                                                   loadingView.spinner.bounds.size.width,
+                                                   loadingView.spinner.bounds.size.height);
+        }
+    }
+    if ([title length] > 0) {
+        loadingView.label.attributedText = title.typeset.font(titleFont.fontName, titleFont.pointSize).color(titleColor).kern(kern).string;
+    }
+    return loadingView;
+}
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_StartSpinning {
+    
+    [self.spinner startAnimating];
+}
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_startSpinningCycleDuration:(CGFloat)drawCycleDuration {
+    
+    self.spinner.drawCycleDuration = drawCycleDuration;
+    [self.spinner startAnimating];
+}
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_startSpinning:(id)title {
+    
+    [self.spinner startAnimating];
+    if ([title isKindOfClass:[NSAttributedString class]]) {
+        self.label.attributedText = title;
+    }else if ([title isKindOfClass:[NSString class]]) {
+        self.label.text = title;
+    }
+}
+
+/**
+ *  ZZSpinnerLoadingView停止动画
+ */
+- (void)zz_stopSpinning {
+    
+    [self.spinner stopAnimating];
+    [self.spinner removeFromSuperview];
+    [self.label removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 @end

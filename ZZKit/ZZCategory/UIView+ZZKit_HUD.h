@@ -10,11 +10,35 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @class ZZDropSheet;
+@class ZZSpinnerLoadingView;
 
 typedef NS_ENUM(NSInteger, ZZToastType) {
     ZZToastTypeSuccess,  // 成功
     ZZToastTypeError,    // 异常
     ZZToastTypeWarning   // 警告
+};
+
+typedef NS_ENUM(NSInteger, ZZSpinnerLoadingStyle) {
+    ZZSpinnerLoadingStyleWhite,
+    ZZSpinnerLoadingStyleBlack
+};
+
+typedef NS_ENUM(NSInteger, ZZSpinnerPosistion) {
+    ZZSpinnerPosistionOffset,           // 参考偏移量
+    ZZSpinnerPosistionTop,              // 顶端
+    ZZSpinnerPosistionNearTop,          // 靠近顶端
+    ZZSpinnerPosistionTopNearCenter,    // 顶端靠近中线
+    ZZSpinnerPosistionCenter,           // 中线
+    ZZSpinnerPosistionBottomNearCenter, // 底端靠近中线
+    ZZSpinnerPosistionNearBottom,       // 靠近底端
+    ZZSpinnerPosistionBottom            // 底端
+};
+
+typedef NS_ENUM(NSInteger, ZZSpinnerLoadingViewLayout) {
+    ZZSpinnerLoadingViewLayoutUp,     // Spinner在上，文字在下
+    ZZSpinnerLoadingViewLayoutDown,   // Spinner在下，文字在上
+    ZZSpinnerLoadingViewLayoutLeft,   // Spinner在左，文字在右
+    ZZSpinnerLoadingViewLayoutRight   // Spinner在右，文字在左
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -74,6 +98,48 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_dropSheet:(nonnull NSString *)message textFont:(nullable UIFont *)textFont textColor:(nullable UIColor *)textColor sheetbackgroundColor:(nullable UIColor *)sheetbackgroundColor closeImageNormal:(nullable UIImage *)closeImageNormal closeImageHighlighted:(nullable UIImage *)closeImageHighlighted stayDuration:(CGFloat)stayDuration tapBlock:(nullable void(^)(void))tapBlock cancelBlock:(nullable void(^)(void))cancelBlock;
 
+#pragma mark - Spinner动画
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinningNoMessage:(ZZSpinnerLoadingStyle)style;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinningNoMessage:(ZZSpinnerPosistion)position style:(ZZSpinnerLoadingStyle)style;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(ZZSpinnerLoadingStyle)style;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title style:(ZZSpinnerLoadingStyle)style;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title position:(ZZSpinnerPosistion)position style:(ZZSpinnerLoadingStyle)style;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence position:(ZZSpinnerPosistion)position offsetRateFromTop:(CGFloat)offsetRateFromTop layout:(ZZSpinnerLoadingViewLayout)layout backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius;
+
+/**
+ * Spinner动画开始
+ */
+- (void)zz_startSpinning:(CGPoint)point layout:(ZZSpinnerLoadingViewLayout)layout loadingWidth:(CGFloat)loadingWidth spinnerHeight:(CGFloat)spinnerHeight labelHeight:(CGFloat)labelHeight spinnerLabelGap:(CGFloat)spinnerLabelGap backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence cycleDuration:(CGFloat)cycleDuration;
+
+/**
+ * Spinner动画停止
+ */
+- (void)zz_stopSpinning;
+
 
 @end
 
@@ -95,6 +161,47 @@ NS_ASSUME_NONNULL_BEGIN
  *  显示DropSheet
  */
 - (void)zz_show;
+
+@end
+
+#pragma mark - ZZSpinnerLoadingView
+
+@interface ZZSpinnerLoadingView : UIView
+
+@property (nonatomic, assign, readonly) CGFloat zzLoadingWidth;
+@property (nonatomic, assign, readonly) CGFloat zzSpinnerHeight;
+@property (nonatomic, assign, readonly) CGFloat zzLabelHeight;
+@property (nonatomic, assign, readonly) CGFloat zzSpinnerLabelGap;
+
+/**
+ *  创建ZZSpinnerLoadingView
+ */
++ (ZZSpinnerLoadingView *)zz_spinnerLoadingView:(ZZSpinnerLoadingViewLayout)layout backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence;
+
+/**
+ *  创建ZZSpinnerLoadingView
+ */
++ (ZZSpinnerLoadingView *)zz_spinnerLoadingView:(ZZSpinnerLoadingViewLayout)layout loadingWidth:(CGFloat)loadingWidth spinnerHeight:(CGFloat)spinnerHeight labelHeight:(CGFloat)labelHeight spinnerLabelGap:(CGFloat)spinnerLabelGap backgroundColor:(nullable UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius title:(nullable NSString *)title titleColor:(nullable UIColor *)titleColor titleFont:(nullable UIFont *)titleFont kern:(CGFloat)kern colorSequence:(nullable NSArray *)colorSequence;
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_StartSpinning;
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_startSpinningCycleDuration:(CGFloat)drawCycleDuration;
+
+/**
+ *  ZZSpinnerLoadingView启动动画
+ */
+- (void)zz_startSpinning:(id)title;
+
+/**
+ *  ZZSpinnerLoadingView停止动画
+ */
+- (void)zz_stopSpinning;
 
 @end
 
