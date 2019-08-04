@@ -461,6 +461,12 @@
     }
 }
 
+#pragma mark - Popup View
+
+/**
+ *
+ */
+
 #pragma mark - Private
 
 - (void)_setButtonTitle:(NSString *)title {
@@ -890,5 +896,23 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     [self.label removeFromSuperview];
     [self removeFromSuperview];
 }
+
+@end
+
+#pragma mark - ZZPopupView
+
+@interface ZZPopupView ()
+
+@end
+
+@implementation ZZPopupView
+
+@end
+
+@interface ZZPopupBlurView ()
+
+@end
+
+@implementation ZZPopupBlurView
 
 @end

@@ -205,4 +205,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark - ZZPopupView
+
+typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
+    ZZPopupViewAnimationNoneCenter,      // 没有动画Center
+    ZZPopupViewAnimationNoneTop,         // 没有动画Top
+    ZZPopupViewAnimationNoneBottom,      // 没有动画Bottom
+    ZZPopupViewAnimationScaleCenter,     // 缩放动画Center
+    ZZPopupViewAnimationDropCenter,      // 从顶至下动画Center
+    ZZPopupViewAnimationDropTop,         // 从顶至下动画Top
+    ZZPopupViewAnimationPopCenter,       // 从底至上动画Center
+    ZZPopupViewAnimationPopBottom,       // 从底至上动画Bottom
+};
+
+@class ZZPopupBlurView;
+
+@interface ZZPopupView : UIView
+
+// 自定义显示动画Block
+@property (nonatomic, copy) void(^zzAppearAnimationBlock)(ZZPopupView __weak *popView, ZZPopupBlurView __weak *blurView, CGRect rect);
+
+// 自定义消失动画Block
+@property (nonatomic, copy) void(^zzdisappearAnimationBlock)(ZZPopupView __weak *popView, ZZPopupBlurView  __weak *blurView, CGRect rect, void(^completion)(void));
+
+
+@end
+
+@interface ZZPopupBlurView : UIView
+
+@end
+
 NS_ASSUME_NONNULL_END
