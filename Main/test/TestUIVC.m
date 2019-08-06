@@ -28,6 +28,7 @@
 #import "ZZWidgetPinCodeView.h"
 #import "ZZWidgetMaskView.h"
 #import "TestPopupView.h"
+#import "UIViewController+ZZKit_ErrorPlaceholder.h"
 
 @interface TestObject : NSObject
 
@@ -262,6 +263,25 @@
     
     [self.testSpinnerView zz_stopSpinning];
     [self.testSpinnerButton zz_stopSpinning];
+}
+
+- (IBAction)_tapNetworkError:(id)sender {
+
+    ZZ_WEAK_SELF
+    [self zz_showNetworkError:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf zz_hideError];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf zz_reShowError];
+            });
+        });
+    }];
+}
+
+- (IBAction)_tapNetworkErrorDropSheet:(id)sender {
+    
+    [self zz_showNetworkErrorDropSheet];
 }
 
 /*

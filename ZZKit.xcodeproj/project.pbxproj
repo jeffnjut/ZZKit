@@ -42,6 +42,18 @@
 		E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */; };
 		E759CDE622CC849B001EC3AE /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE522CC849B001EC3AE /* test.html */; };
 		E759CDE822CE1FEB001EC3AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE722CE1FEB001EC3AE /* test.js */; };
+		E760BECC22F970FC00944380 /* UIViewController+ZZTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BECB22F970FC00944380 /* UIViewController+ZZTrace.m */; };
+		E760BED322F9783400944380 /* icon_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BECD22F9783300944380 /* icon_right_arrow@2x.png */; };
+		E760BED422F9783400944380 /* icon_wifi_connect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BECE22F9783400944380 /* icon_wifi_connect@2x.png */; };
+		E760BED522F9783400944380 /* icon_network_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BECF22F9783400944380 /* icon_network_error@2x.png */; };
+		E760BED622F9783400944380 /* icon_right_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BED022F9783400944380 /* icon_right_arrow@3x.png */; };
+		E760BED722F9783400944380 /* icon_wifi_connect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BED122F9783400944380 /* icon_wifi_connect@3x.png */; };
+		E760BED822F9783400944380 /* icon_network_error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BED222F9783400944380 /* icon_network_error@3x.png */; };
+		E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEDD22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m */; };
+		E760BEE522F9797000944380 /* ZZNetworkErrorDropSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760BEE022F9796F00944380 /* ZZNetworkErrorDropSheet.xib */; };
+		E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEE122F9796F00944380 /* ZZNetworkErrorDropSheet.m */; };
+		E760BEE722F9797000944380 /* ZZNetworkErrorDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEE222F9796F00944380 /* ZZNetworkErrorDescViewController.m */; };
+		E760BEE822F9797000944380 /* ZZNetworkErrorDescViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760BEE422F9797000944380 /* ZZNetworkErrorDescViewController.xib */; };
 		E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FF922AF45DB0044B9AD /* ZZDevice.m */; };
 		E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */; };
 		E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */; };
@@ -215,6 +227,22 @@
 		E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZWebView.xib; sourceTree = "<group>"; };
 		E759CDE522CC849B001EC3AE /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		E759CDE722CE1FEB001EC3AE /* test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		E760BECA22F970FC00944380 /* UIViewController+ZZTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZZTrace.h"; sourceTree = "<group>"; };
+		E760BECB22F970FC00944380 /* UIViewController+ZZTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZZTrace.m"; sourceTree = "<group>"; };
+		E760BECD22F9783300944380 /* icon_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@2x.png"; sourceTree = "<group>"; };
+		E760BECE22F9783400944380 /* icon_wifi_connect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wifi_connect@2x.png"; sourceTree = "<group>"; };
+		E760BECF22F9783400944380 /* icon_network_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_network_error@2x.png"; sourceTree = "<group>"; };
+		E760BED022F9783400944380 /* icon_right_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@3x.png"; sourceTree = "<group>"; };
+		E760BED122F9783400944380 /* icon_wifi_connect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wifi_connect@3x.png"; sourceTree = "<group>"; };
+		E760BED222F9783400944380 /* icon_network_error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_network_error@3x.png"; sourceTree = "<group>"; };
+		E760BEDC22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZZKit_ErrorPlaceholder.h"; sourceTree = "<group>"; };
+		E760BEDD22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZZKit_ErrorPlaceholder.m"; sourceTree = "<group>"; };
+		E760BEDF22F9796E00944380 /* ZZNetworkErrorDropSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNetworkErrorDropSheet.h; sourceTree = "<group>"; };
+		E760BEE022F9796F00944380 /* ZZNetworkErrorDropSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZNetworkErrorDropSheet.xib; sourceTree = "<group>"; };
+		E760BEE122F9796F00944380 /* ZZNetworkErrorDropSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZNetworkErrorDropSheet.m; sourceTree = "<group>"; };
+		E760BEE222F9796F00944380 /* ZZNetworkErrorDescViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZNetworkErrorDescViewController.m; sourceTree = "<group>"; };
+		E760BEE322F9796F00944380 /* ZZNetworkErrorDescViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNetworkErrorDescViewController.h; sourceTree = "<group>"; };
+		E760BEE422F9797000944380 /* ZZNetworkErrorDescViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZNetworkErrorDescViewController.xib; sourceTree = "<group>"; };
 		E7675FF722AF45070044B9AD /* ZZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZMacro.h; sourceTree = "<group>"; };
 		E7675FF822AF45DB0044B9AD /* ZZDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDevice.h; sourceTree = "<group>"; };
 		E7675FF922AF45DB0044B9AD /* ZZDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDevice.m; sourceTree = "<group>"; };
@@ -504,6 +532,8 @@
 			children = (
 				E788654C22B2055900B20F3E /* ZZTrace.h */,
 				E788654D22B2055900B20F3E /* ZZTrace.m */,
+				E760BECA22F970FC00944380 /* UIViewController+ZZTrace.h */,
+				E760BECB22F970FC00944380 /* UIViewController+ZZTrace.m */,
 			);
 			path = ZZTrace;
 			sourceTree = "<group>";
@@ -659,6 +689,12 @@
 				E744128222F2B6C800773562 /* gif_loading_shopping.gif */,
 				E744128022F2B33000773562 /* gif_loading_rotataion.gif */,
 				E744127C22F286A800773562 /* gif_loading_bull.gif */,
+				E760BECF22F9783400944380 /* icon_network_error@2x.png */,
+				E760BED222F9783400944380 /* icon_network_error@3x.png */,
+				E760BECD22F9783300944380 /* icon_right_arrow@2x.png */,
+				E760BED022F9783400944380 /* icon_right_arrow@3x.png */,
+				E760BECE22F9783400944380 /* icon_wifi_connect@2x.png */,
+				E760BED122F9783400944380 /* icon_wifi_connect@3x.png */,
 				E767600322AFBF220044B9AD /* ZZTimer.h */,
 				E767600422AFBF220044B9AD /* ZZTimer.m */,
 				E7E0179E22AE277D00C24EF2 /* ZZLock.h */,
@@ -715,6 +751,14 @@
 				E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */,
 				E72DFBB922B156800099A8C4 /* UITabBarController+ZZKit.h */,
 				E72DFBBA22B156800099A8C4 /* UITabBarController+ZZKit.m */,
+				E760BEDC22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.h */,
+				E760BEDD22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m */,
+				E760BEE322F9796F00944380 /* ZZNetworkErrorDescViewController.h */,
+				E760BEE222F9796F00944380 /* ZZNetworkErrorDescViewController.m */,
+				E760BEE422F9797000944380 /* ZZNetworkErrorDescViewController.xib */,
+				E760BEDF22F9796E00944380 /* ZZNetworkErrorDropSheet.h */,
+				E760BEE122F9796F00944380 /* ZZNetworkErrorDropSheet.m */,
+				E760BEE022F9796F00944380 /* ZZNetworkErrorDropSheet.xib */,
 				E767600E22B099D20044B9AD /* UITabBar+ZZKit.h */,
 				E767600F22B099D20044B9AD /* UITabBar+ZZKit.m */,
 				E788654822B2008D00B20F3E /* UIImageView+ZZKit.h */,
@@ -930,14 +974,17 @@
 				E70C400622C0D60C0047A1C0 /* TestZZCollectionViewVC.xib in Resources */,
 				E744128922F2BABE00773562 /* lottie_toast_warning.json in Resources */,
 				E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */,
+				E760BED822F9783400944380 /* icon_network_error@3x.png in Resources */,
 				E7E017A522AE6F3C00C24EF2 /* TestKeyboardAccessoryView.xib in Resources */,
 				E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
+				E760BED422F9783400944380 /* icon_wifi_connect@2x.png in Resources */,
 				E7D7C1AF22F91171002890A8 /* TestPopupView.xib in Resources */,
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */,
 				E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */,
+				E760BED322F9783400944380 /* icon_right_arrow@2x.png in Resources */,
 				E7751BCC22F42DDB00ECD06D /* ZZWidgetMaskView.bundle in Resources */,
 				E744128822F2BABE00773562 /* lottie_toast_error.json in Resources */,
 				E7F5B88222F182D7001F0C80 /* ic_nav_close@3x.png in Resources */,
@@ -945,6 +992,7 @@
 				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */,
+				E760BEE522F9797000944380 /* ZZNetworkErrorDropSheet.xib in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
@@ -953,6 +1001,7 @@
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E759CDE822CE1FEB001EC3AE /* test.js in Resources */,
+				E760BED622F9783400944380 /* icon_right_arrow@3x.png in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
 				E7AA9516229E3759003964B8 /* TestFontVC.xib in Resources */,
 				E767601822B0AA120044B9AD /* TestUIVC.xib in Resources */,
@@ -965,9 +1014,12 @@
 				E744128A22F2BABE00773562 /* lottie_toast_sign.json in Resources */,
 				E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */,
 				E78E766222C3626300D1EF5A /* cn.json in Resources */,
+				E760BEE822F9797000944380 /* ZZNetworkErrorDescViewController.xib in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
 				E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */,
 				E767600222AFB2060044B9AD /* test.bundle in Resources */,
+				E760BED522F9783400944380 /* icon_network_error@2x.png in Resources */,
+				E760BED722F9783400944380 /* icon_wifi_connect@3x.png in Resources */,
 				E7E18AF822F30F64007451B4 /* toast_close_active@2x.png in Resources */,
 				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 			);
@@ -1049,6 +1101,7 @@
 				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
+				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
 				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
@@ -1070,6 +1123,7 @@
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E7D7C1AD22F9114F002890A8 /* TestPopupView.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
+				E760BECC22F970FC00944380 /* UIViewController+ZZTrace.m in Sources */,
 				E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
@@ -1125,7 +1179,9 @@
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
+				E760BEE722F9797000944380 /* ZZNetworkErrorDescViewController.m in Sources */,
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
+				E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,

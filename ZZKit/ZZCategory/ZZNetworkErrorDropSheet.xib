@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZZNetworkErrorDropSheet">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_wifi_connect.png" translatesAutoresizingMaskIntoConstraints="NO" id="IAB-51-KX8">
+                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Czi-7O-pGz"/>
+                        <constraint firstAttribute="height" constant="20" id="Uo8-Zr-6C8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网络请求失败，请检查您的网络设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClG-gA-dzk">
+                    <rect key="frame" x="38" y="13" width="278" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="uSz-2y-qg7">
+                    <rect key="frame" x="349" y="12" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="Bdj-Jh-Sat"/>
+                        <constraint firstAttribute="width" constant="16" id="nTe-F5-Qhe"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m94-o6-1dE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.599059198943662" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="m94-o6-1dE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0ig-tl-2fe"/>
+                <constraint firstItem="ClG-gA-dzk" firstAttribute="leading" secondItem="IAB-51-KX8" secondAttribute="trailing" constant="8" id="IMv-ZQ-8zN"/>
+                <constraint firstItem="ClG-gA-dzk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OSt-et-HNZ"/>
+                <constraint firstItem="uSz-2y-qg7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qyh-An-bsR"/>
+                <constraint firstAttribute="trailing" secondItem="uSz-2y-qg7" secondAttribute="trailing" constant="10" id="Zsd-HX-awr"/>
+                <constraint firstItem="IAB-51-KX8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aUg-7W-bJT"/>
+                <constraint firstAttribute="trailing" secondItem="m94-o6-1dE" secondAttribute="trailing" id="dzf-nr-7F6"/>
+                <constraint firstItem="m94-o6-1dE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h6X-Ch-RQZ"/>
+                <constraint firstItem="IAB-51-KX8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="p4V-pK-SME"/>
+                <constraint firstAttribute="bottom" secondItem="m94-o6-1dE" secondAttribute="bottom" id="wue-p0-vxO"/>
+                <constraint firstAttribute="trailing" secondItem="ClG-gA-dzk" secondAttribute="trailing" constant="59" id="z3c-vG-EQX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnTap" destination="m94-o6-1dE" id="3Pw-mp-fng"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="-259"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_right_arrow.png" width="32" height="32"/>
+        <image name="icon_wifi_connect.png" width="64" height="64"/>
+    </resources>
+</document>

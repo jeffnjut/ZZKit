@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZZNetworkErrorDescViewController">
+            <connections>
+                <outlet property="textView" destination="DWL-pU-mG3" id="6yN-zh-hai"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请设置你的网络" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faC-cd-H7V">
+                    <rect key="frame" x="10" y="20" width="355" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="XSe-8C-Zcw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1、打开设置的&quot;系统设置&quot;&gt;&quot;无线和网络&quot;&gt;&quot;移动网络&quot;。  2、打开设置的&quot;系统设置&quot;&gt;&quot;WLAN&quot;&gt;,&quot;启动WLAN&quot;后从中选择一个连接Internet的WIFI连接。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeF-c7-DdJ">
+                    <rect key="frame" x="10" y="56" width="355" height="67"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz0-wx-zHb">
+                    <rect key="frame" x="0.0" y="138" width="375" height="10"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="c82-9x-lCZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果你已经连接WIFI网络" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf9-ly-3hc">
+                    <rect key="frame" x="10" y="163" width="355" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="xAb-fc-6Ie"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请确认你所接入的WIFI网络连接了互联网，或者确认您的设备是否被允许访问互联网。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tp-EH-G4k">
+                    <rect key="frame" x="10" y="199" width="355" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uO-7T-c1k">
+                    <rect key="frame" x="0.0" y="247.5" width="375" height="10"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="Fpg-c9-B6R"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="h5V-ZN-qvn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开启网络权限方法" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0It-OJ-T3N">
+                    <rect key="frame" x="10" y="272.5" width="355" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="s7k-DZ-ccz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWL-pU-mG3">
+                    <rect key="frame" x="10" y="308.5" width="355" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="bKN-xf-dYf"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="打开【设置】-【蜂窝移动网络】-【使用无线局域网与蜂窝移动数据应用，找到【55海淘】】，勾选【无线局域网与蜂窝移动网络】即可，">
+                            <attributes>
+                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="14" name="PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="点此检查">
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.73333333329999995" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="14" name="PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Mz0-wx-zHb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9gL-no-55H"/>
+                <constraint firstItem="pf9-ly-3hc" firstAttribute="top" secondItem="Mz0-wx-zHb" secondAttribute="bottom" constant="15" id="ANm-Ol-d4G"/>
+                <constraint firstItem="7uO-7T-c1k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BK9-mN-q19"/>
+                <constraint firstAttribute="trailing" secondItem="DWL-pU-mG3" secondAttribute="trailing" constant="10" id="EcA-2g-dXP"/>
+                <constraint firstItem="ZeF-c7-DdJ" firstAttribute="top" secondItem="faC-cd-H7V" secondAttribute="bottom" constant="15" id="Eo6-e6-cth"/>
+                <constraint firstItem="5Tp-EH-G4k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="KAS-HP-ddY"/>
+                <constraint firstItem="pf9-ly-3hc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="M5L-M5-uxV"/>
+                <constraint firstAttribute="trailing" secondItem="0It-OJ-T3N" secondAttribute="trailing" constant="10" id="MNk-pc-oUU"/>
+                <constraint firstAttribute="trailing" secondItem="Mz0-wx-zHb" secondAttribute="trailing" id="RcH-G9-BXD"/>
+                <constraint firstItem="DWL-pU-mG3" firstAttribute="top" secondItem="0It-OJ-T3N" secondAttribute="bottom" constant="15" id="W73-eg-Hh3"/>
+                <constraint firstAttribute="trailing" secondItem="faC-cd-H7V" secondAttribute="trailing" constant="10" id="ZeJ-kE-kS5"/>
+                <constraint firstAttribute="trailing" secondItem="7uO-7T-c1k" secondAttribute="trailing" id="Znw-m0-c1O"/>
+                <constraint firstItem="5Tp-EH-G4k" firstAttribute="top" secondItem="pf9-ly-3hc" secondAttribute="bottom" constant="15" id="caf-Yp-xk4"/>
+                <constraint firstItem="faC-cd-H7V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="crZ-yd-Xl8"/>
+                <constraint firstItem="ZeF-c7-DdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="gSn-kE-rDz"/>
+                <constraint firstItem="0It-OJ-T3N" firstAttribute="top" secondItem="7uO-7T-c1k" secondAttribute="bottom" constant="15" id="h5P-Za-PMp"/>
+                <constraint firstItem="DWL-pU-mG3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="hq3-Cp-tL1"/>
+                <constraint firstAttribute="trailing" secondItem="pf9-ly-3hc" secondAttribute="trailing" constant="10" id="jpR-Is-fdQ"/>
+                <constraint firstItem="7uO-7T-c1k" firstAttribute="top" secondItem="5Tp-EH-G4k" secondAttribute="bottom" constant="15" id="mnM-Sx-zvp"/>
+                <constraint firstAttribute="trailing" secondItem="5Tp-EH-G4k" secondAttribute="trailing" constant="10" id="nDZ-4S-ato"/>
+                <constraint firstItem="Mz0-wx-zHb" firstAttribute="top" secondItem="ZeF-c7-DdJ" secondAttribute="bottom" constant="15" id="p42-tY-57Z"/>
+                <constraint firstItem="0It-OJ-T3N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="qDi-S4-Sau"/>
+                <constraint firstItem="faC-cd-H7V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="qOp-rT-Swb"/>
+                <constraint firstAttribute="trailing" secondItem="ZeF-c7-DdJ" secondAttribute="trailing" constant="10" id="y5d-Sf-Aso"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

@@ -64,20 +64,20 @@ typedef NS_ENUM(NSInteger, ZZDeviceProductType) {
 #pragma mark - 判断iPhone类型
 
 #define ZZ_DEVICE_isiPad               ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-#define ZZ_DEVICE_isiPhone4            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhone5            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhone6            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhone6P           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhoneX            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhoneXMAX         ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)&& !isPad : NO)
-#define ZZ_DEVICE_isiPhoneXR           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
-#define ZZ_DEVICE_isiPhoneXSeries      ZZDeviceIsiPhoneX
-#define ZZ_DEVICE_isiPhoneXAllSeries   (ZZDeviceIsiPhoneX || ZZDeviceIsiPhoneXMAX || ZZDeviceIsiPhoneXR)
+#define ZZ_DEVICE_isiPhone4            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhone5            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhone6            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhone6P           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhoneX            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhoneXMAX         ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)&& !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhoneXR           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_isiPad : NO)
+#define ZZ_DEVICE_isiPhoneXSeries      ZZ_DEVICE_isiPhoneX
+#define ZZ_DEVICE_isiPhoneXAllSeries   (ZZ_DEVICE_isiPhoneX || ZZ_DEVICE_isiPhoneXMAX || ZZ_DEVICE_isiPhoneXR)
 
 // 设备UI组件常用常量
 #pragma mark - 设备UI组件常用常量
 
-#define ZZ_DEVICED_STATUS_BAR_HEIGHT            (ZZ_DEVICE_isiPhoneXAllSeries ? 44 : 20)
+#define ZZ_DEVICE_STATUS_BAR_HEIGHT             (ZZ_DEVICE_isiPhoneXAllSeries ? 44 : 20)
 #define ZZ_DEVICE_NAVIGATION_BAR_HEIGHT         (44.0)
 #define ZZ_DEVICE_NAVIGATION_TOP_HEIGHT         (ZZ_DEVICE_isiPhoneXAllSeries ? 88 : 64)
 #define ZZ_DEVICE_TAB_BAR_HEIGHT                (ZZ_DEVICE_isiPhoneXAllSeries ? 83 : 49)
