@@ -11,6 +11,8 @@
 
 @class ZZDropSheet;
 @class ZZSpinnerLoadingView;
+@class ZZPopupView;
+@class ZZPopupBlurView;
 
 typedef NS_ENUM(NSInteger, ZZToastType) {
     ZZToastTypeSuccess,  // 成功
@@ -140,6 +142,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_stopSpinning;
 
+#pragma mark - Popup View
+
+/**
+ *  Popup动画
+ */
+- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(NSArray<NSNumber *> *)springs actionBlock:(void(^)(id value))actionBlock;
 
 @end
 
@@ -218,16 +226,39 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
     ZZPopupViewAnimationPopBottom,       // 从底至上动画Bottom
 };
 
-@class ZZPopupBlurView;
-
 @interface ZZPopupView : UIView
 
+// 默认的显示动画类型
+@property (nonatomic, assign) ZZPopupViewAnimation zzAppearAnimation;
+
+// 默认的消失动画类型
+@property (nonatomic, assign) ZZPopupViewAnimation zzDisappearAnimation;
+
 // 自定义显示动画Block
-@property (nonatomic, copy) void(^zzAppearAnimationBlock)(ZZPopupView __weak *popView, ZZPopupBlurView __weak *blurView, CGRect rect);
+@property (nonnull, nonatomic, copy) void(^zzAppearAnimationBlock)(void);
 
 // 自定义消失动画Block
-@property (nonatomic, copy) void(^zzdisappearAnimationBlock)(ZZPopupView __weak *popView, ZZPopupBlurView  __weak *blurView, CGRect rect, void(^completion)(void));
+@property (nonnull, nonatomic, copy) void(^zzDisappearAnimationBlock)(void(^_Nullable dismissCompletion)(void));
 
+// 消失动画后的后续Block
+@property (nullable, nonatomic, copy) void(^zzActionBlock)(id value);
+
+// 父页面
+@property (nonatomic, weak) UIView *zzParentView;
+
+// 背景页
+@property (nonatomic, weak) ZZPopupBlurView *zzBlurView;
+
+// Spring动画参数Duration
+@property (nonatomic, strong) NSNumber *zzDuration;
+
+// Spring动画参数DampingRation
+@property (nonatomic, strong) NSNumber *zzSpringDampingRatio;
+
+// Spring动画参数Velocity
+@property (nonatomic, strong) NSNumber *zzSpringVelocity;
+
+- (IBAction)tapClosePopupView:(id)sender;
 
 @end
 

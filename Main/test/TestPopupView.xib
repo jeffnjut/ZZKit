@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TestPopupView">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="tKS-c3-XiZ">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="tKS-c3-XiZ" secondAttribute="height" multiplier="1:1" id="8H6-EQ-yKy"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyF-6U-cxi">
+                    <rect key="frame" x="0.0" y="200" width="200" height="100"/>
+                    <color key="backgroundColor" red="1" green="0.25882352939999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="点我">
+                        <color key="titleColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="tapClosePopupView:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xk9-CI-5Oj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auz-wa-UEt">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="_tap:" destination="iN0-l3-epB" eventType="touchUpInside" id="Zn7-AI-i3k"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="eyF-6U-cxi" secondAttribute="bottom" id="8ka-OR-zYT"/>
+                <constraint firstItem="auz-wa-UEt" firstAttribute="bottom" secondItem="tKS-c3-XiZ" secondAttribute="bottom" id="L5e-RY-lRU"/>
+                <constraint firstItem="tKS-c3-XiZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MWT-tv-oEi"/>
+                <constraint firstItem="auz-wa-UEt" firstAttribute="leading" secondItem="tKS-c3-XiZ" secondAttribute="leading" id="YGw-i8-7KK"/>
+                <constraint firstItem="auz-wa-UEt" firstAttribute="trailing" secondItem="tKS-c3-XiZ" secondAttribute="trailing" id="exo-jM-Jsm"/>
+                <constraint firstItem="auz-wa-UEt" firstAttribute="top" secondItem="tKS-c3-XiZ" secondAttribute="top" id="fxv-qX-tzC"/>
+                <constraint firstItem="eyF-6U-cxi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jaC-3X-FAh"/>
+                <constraint firstItem="tKS-c3-XiZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lO3-kA-1hj"/>
+                <constraint firstItem="eyF-6U-cxi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="lkT-xb-jmR"/>
+                <constraint firstItem="tKS-c3-XiZ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="vRY-Dv-xKJ"/>
+                <constraint firstItem="eyF-6U-cxi" firstAttribute="top" secondItem="tKS-c3-XiZ" secondAttribute="bottom" id="wTi-1X-ACm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="tKS-c3-XiZ" id="r7B-Qm-qO8"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="141.29464285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="test" width="400" height="300"/>
+    </resources>
+</document>

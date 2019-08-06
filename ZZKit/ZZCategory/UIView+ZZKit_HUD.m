@@ -7,6 +7,7 @@
 //
 
 #import "UIView+ZZKit_HUD.h"
+#import "UIView+ZZKit_Blocks.h"
 #import <objc/runtime.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import <Lottie/Lottie.h>
@@ -461,14 +462,6 @@
     }
 }
 
-#pragma mark - Popup View
-
-/**
- *
- */
-
-#pragma mark - Private
-
 - (void)_setButtonTitle:(NSString *)title {
     
     objc_setAssociatedObject(self, @"ButtonTitle", title, OBJC_ASSOCIATION_COPY);
@@ -479,6 +472,44 @@
     NSString *title = objc_getAssociatedObject(self, @"ButtonTitle");
     return title;
 }
+
+
+#pragma mark - Popup View
+
+/**
+ *  Popup动画
+ */
+- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(NSArray<NSNumber *> *)springs actionBlock:(void(^)(id value))actionBlock {
+
+    if (popupView == nil || popupView.zzAppearAnimationBlock == nil || popupView.zzDisappearAnimationBlock == nil) {
+        return;
+    }
+    popupView.zzParentView = self;
+    popupView.zzActionBlock = actionBlock;
+    if (springs.count == 1) {
+        popupView.zzDuration = springs[0];
+    }
+    else if (springs.count == 3) {
+        popupView.zzDuration = springs[0];
+        popupView.zzSpringDampingRatio = springs[1];
+        popupView.zzSpringVelocity = springs[2];
+    }
+    ZZPopupBlurView *blurView = nil;
+    if (blurColor != nil) {
+        blurView = [[ZZPopupBlurView alloc] init];
+        blurView.backgroundColor = blurColor;
+        blurView.frame = self.bounds;
+        [self addSubview:blurView];
+        if (userInteractionEnabled == YES) {
+            [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                popupView.zzDisappearAnimationBlock(nil);
+            }];
+        }
+        popupView.zzBlurView = blurView;
+    }
+    popupView.zzAppearAnimationBlock();
+}
+
 
 @end
 
@@ -906,6 +937,223 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
 @end
 
 @implementation ZZPopupView
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.zzAppearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.zzAppearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+    }
+    return self;
+}
+
+- (void)setZzAppearAnimation:(ZZPopupViewAnimation)zzAppearAnimation {
+    
+    _zzAppearAnimation = zzAppearAnimation;
+    __weak typeof(self) weakSelf = self;
+    switch (zzAppearAnimation) {
+        case ZZPopupViewAnimationNoneCenter:
+        {
+            // 没有动画Center
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.center = weakSelf.zzParentView.center;
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationNoneTop:
+        {
+            // 没有动画Top
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzTop = weakSelf.zzParentView.zzTop;
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationNoneBottom:
+        {
+            // 没有动画Bottom
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzBottom = weakSelf.zzParentView.zzBottom;
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationScaleCenter:
+        {
+            // 缩放动画Center
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.center = weakSelf.zzParentView.center;
+                weakSelf.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
+                if (weakSelf.zzDuration && weakSelf.zzSpringDampingRatio && weakSelf.zzSpringVelocity) {
+                    [UIView animateWithDuration:[weakSelf.zzDuration floatValue] delay:0.0 usingSpringWithDamping:[weakSelf.zzSpringDampingRatio floatValue] initialSpringVelocity:[weakSelf.zzSpringVelocity floatValue] options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        weakSelf.transform = CGAffineTransformIdentity;
+                    } completion:^(BOOL finished) {
+
+                    }];
+                }else{
+                    CGFloat duration = weakSelf.zzDuration ? [weakSelf.zzDuration floatValue] : 0.3;
+                    [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                        weakSelf.transform = CGAffineTransformIdentity;
+                    } completion:^(BOOL finished) {
+
+                    }];
+                }
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationDropCenter:
+        {
+            // 从顶至下动画Center
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzBottom = weakSelf.zzParentView.zzTop;
+                CGFloat duration = weakSelf.zzDuration ? [weakSelf.zzDuration floatValue] : 0.3;
+                [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.center = weakSelf.zzParentView.center;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationDropTop:
+        {
+            // 从顶至下动画Top
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzBottom = weakSelf.zzParentView.zzTop;
+                CGFloat duration = weakSelf.zzDuration ? [weakSelf.zzDuration floatValue] : 0.2;
+                [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.zzTop = weakSelf.zzParentView.zzTop;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationPopCenter:
+        {
+            // 从底至上动画Center
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzTop = weakSelf.zzParentView.zzBottom;
+                CGFloat duration = weakSelf.zzDuration ? [weakSelf.zzDuration floatValue] : 0.3;
+                [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.center = weakSelf.zzParentView.center;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationPopBottom:
+        {
+            // 从底至上动画Bottom
+            self.zzAppearAnimationBlock = ^{
+                weakSelf.zzLeft = (weakSelf.zzParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
+                weakSelf.zzTop = weakSelf.zzParentView.zzBottom;
+                CGFloat duration = weakSelf.zzDuration ? [weakSelf.zzDuration floatValue] : 0.2;
+                [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.zzBottom = weakSelf.zzParentView.zzBottom;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                [weakSelf.zzParentView addSubview:weakSelf];
+            };
+        }
+            break;
+    }
+}
+
+- (void)setZzDisappearAnimation:(ZZPopupViewAnimation)zzDisappearAnimation {
+    
+    __weak typeof(self) weakSelf = self;
+    _zzDisappearAnimation = zzDisappearAnimation;
+    switch (zzDisappearAnimation) {
+        case ZZPopupViewAnimationNoneCenter:
+        case ZZPopupViewAnimationNoneTop:
+        case ZZPopupViewAnimationNoneBottom:
+        {
+            // 消失无动画，立即消失
+            self.zzDisappearAnimationBlock = ^(void (^ _Nullable dismissCompletion)(void)) {
+                [weakSelf.zzBlurView removeFromSuperview];
+                [weakSelf removeFromSuperview];
+                dismissCompletion == nil ? : dismissCompletion();
+            };
+        }
+            break;
+        case ZZPopupViewAnimationScaleCenter:
+        {
+            // 缩放消失
+            self.zzDisappearAnimationBlock = ^(void (^ _Nullable dismissCompletion)(void)) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    weakSelf.zzBlurView.backgroundColor = [UIColor clearColor];
+                    weakSelf.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
+                } completion:^(BOOL finished) {
+                    [weakSelf.zzBlurView removeFromSuperview];
+                    [weakSelf removeFromSuperview];
+                    dismissCompletion == nil ? : dismissCompletion();
+                }];
+            };
+            break;
+        }
+        case ZZPopupViewAnimationDropCenter:
+        case ZZPopupViewAnimationDropTop:
+        {
+            // 从顶至下消失
+            self.zzDisappearAnimationBlock = ^(void (^ _Nullable dismissCompletion)(void)) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    weakSelf.zzBlurView.backgroundColor = [UIColor clearColor];
+                    weakSelf.zzTop = weakSelf.zzParentView.zzBottom;
+                } completion:^(BOOL finished) {
+                    [weakSelf.zzBlurView removeFromSuperview];
+                    [weakSelf removeFromSuperview];
+                    dismissCompletion == nil ? : dismissCompletion();
+                }];
+            };
+        }
+            break;
+        case ZZPopupViewAnimationPopCenter:
+        case ZZPopupViewAnimationPopBottom:
+        {
+            // 从底至上消失
+            self.zzDisappearAnimationBlock = ^(void (^ _Nullable dismissCompletion)(void)) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    weakSelf.zzBlurView.backgroundColor = [UIColor clearColor];
+                    weakSelf.zzBottom = weakSelf.zzParentView.zzTop;
+                } completion:^(BOOL finished) {
+                    [weakSelf.zzBlurView removeFromSuperview];
+                    [weakSelf removeFromSuperview];
+                    dismissCompletion == nil ? : dismissCompletion();
+                }];
+            };
+        }
+            break;
+    }
+}
+
+- (IBAction)tapClosePopupView:(id)sender {
+    
+    self.zzDisappearAnimationBlock == nil ? : self.zzDisappearAnimationBlock(nil);
+}
 
 @end
 

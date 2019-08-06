@@ -27,6 +27,7 @@
 #import "UIView+ZZKit_HUD.h"
 #import "ZZWidgetPinCodeView.h"
 #import "ZZWidgetMaskView.h"
+#import "TestPopupView.h"
 
 @interface TestObject : NSObject
 
@@ -244,8 +245,15 @@
     
     // [self.view zz_dropSheet:@"据国家发改委价格监测中心监测，本轮成品油调价周期内（5月27日—6月10日），国际油价大幅下降!!iOS导航栏背景颜色,背景图片,标题字体颜色大小,透明度渐变,去除导航栏下划线等一...然后图片是根据颜色值生成的 核心代码"];
     
-    [self.testSpinnerView zz_startSpinning:ZZSpinnerLoadingStyleWhite];
-    [self.testSpinnerButton zz_startSpinning:@"加载" style:ZZSpinnerLoadingStyleWhite];
+    // [self.testSpinnerView zz_startSpinning:ZZSpinnerLoadingStyleWhite];
+    // [self.testSpinnerButton zz_startSpinning:@"加载" style:ZZSpinnerLoadingStyleWhite];
+    
+    TestPopupView *testPopupView = ZZ_LOAD_NIB(@"TestPopupView");
+    testPopupView.zzAppearAnimation = ZZPopupViewAnimationPopCenter;
+    testPopupView.zzDisappearAnimation = ZZPopupViewAnimationPopBottom;
+    [ZZ_KEY_WINDOW zz_popup:testPopupView blurColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] userInteractionEnabled:YES springs:@[@(0.2), @(0.6), @(2.0)] actionBlock:^(id  _Nonnull value) {
+        NSLog(@"%@", value);
+    }];
 }
 
 - (IBAction)_tapStopHUD:(id)sender {
