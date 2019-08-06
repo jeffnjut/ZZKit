@@ -13,9 +13,13 @@
 #import "NSDictionary+ZZKit.h"
 #import "UIViewController+ZZTrace.h"
 
+#pragma mark - ZZTraceConfig
+
 @implementation ZZTraceConfig
 
 @end
+
+#pragma mark - ZZTraceCommonObject
 
 @implementation ZZTraceCommonObject
 
@@ -26,6 +30,8 @@
 
 @end
 
+#pragma mark - ZZTraceObject
+
 @implementation ZZTraceObject
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
@@ -34,6 +40,8 @@
 }
 
 @end
+
+#pragma mark - ZZTraceBatchData
 
 @implementation ZZTraceBatchData
 
@@ -56,6 +64,8 @@
 @property (nonatomic, strong) NSDictionary *pvs;
 
 @end
+
+#pragma mark - ZZTrace
 
 @implementation ZZTrace
 

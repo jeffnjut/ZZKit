@@ -48,6 +48,8 @@ typedef void(^ZZUploadImmediateBlock)(ZZTraceObject *object, ZZNetworkVoidBlock 
 
 typedef void(^ZZUploadBatchBlock)(ZZTraceBatchData *data, ZZNetworkVoidBlock success, ZZNetworkVoidBlock error);
 
+#pragma mark - ZZTraceConfig
+
 @interface ZZTraceConfig : NSObject
 
 // 上传策略
@@ -67,9 +69,8 @@ typedef void(^ZZUploadBatchBlock)(ZZTraceBatchData *data, ZZNetworkVoidBlock suc
 
 @end
 
-/**
- *  ZZTraceCommonObject
- */
+#pragma mark - ZZTraceCommonObject
+
 @interface ZZTraceCommonObject : NSObject
 
 // 用户ID
@@ -89,10 +90,8 @@ typedef void(^ZZUploadBatchBlock)(ZZTraceBatchData *data, ZZNetworkVoidBlock suc
 
 @end
 
+#pragma mark - ZZTraceObject
 
-/**
- *  TraceObject
- */
 @interface ZZTraceObject : ZZTraceCommonObject
 
 // TraceEvent 版本号
@@ -134,10 +133,8 @@ typedef void(^ZZUploadBatchBlock)(ZZTraceBatchData *data, ZZNetworkVoidBlock suc
 @protocol ZZTraceObject <NSObject>
 @end
 
+#pragma mark - ZZTraceBatchData
 
-/**
- *  TraceBatchData
- */
 @interface ZZTraceBatchData : ZZTraceCommonObject
 
 // 用户的Trace数据
@@ -152,11 +149,14 @@ typedef void(^ZZUploadBatchBlock)(ZZTraceBatchData *data, ZZNetworkVoidBlock suc
 @protocol ZZTraceDelegate <NSObject>
 
 @required
+
 - (NSString *)zz_tracePVType;
 
 - (NSUInteger)zz_tracePVValue;
 
 @end
+
+#pragma mark - ZZTrace
 
 @interface ZZTrace : NSObject
 

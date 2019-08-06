@@ -54,6 +54,7 @@
 		E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEE122F9796F00944380 /* ZZNetworkErrorDropSheet.m */; };
 		E760BEE722F9797000944380 /* ZZNetworkErrorDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEE222F9796F00944380 /* ZZNetworkErrorDescViewController.m */; };
 		E760BEE822F9797000944380 /* ZZNetworkErrorDescViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760BEE422F9797000944380 /* ZZNetworkErrorDescViewController.xib */; };
+		E760BEEB22F9A1EA00944380 /* ZZWidgetTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */; };
 		E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FF922AF45DB0044B9AD /* ZZDevice.m */; };
 		E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFC22AF9DD10044B9AD /* NSAttributedString+ZZKit.m */; };
 		E767600022AF9F460044B9AD /* NSBundle+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */; };
@@ -243,6 +244,8 @@
 		E760BEE222F9796F00944380 /* ZZNetworkErrorDescViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZNetworkErrorDescViewController.m; sourceTree = "<group>"; };
 		E760BEE322F9796F00944380 /* ZZNetworkErrorDescViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNetworkErrorDescViewController.h; sourceTree = "<group>"; };
 		E760BEE422F9797000944380 /* ZZNetworkErrorDescViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZNetworkErrorDescViewController.xib; sourceTree = "<group>"; };
+		E760BEE922F9A1EA00944380 /* ZZWidgetTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetTagView.h; sourceTree = "<group>"; };
+		E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetTagView.m; sourceTree = "<group>"; };
 		E7675FF722AF45070044B9AD /* ZZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZMacro.h; sourceTree = "<group>"; };
 		E7675FF822AF45DB0044B9AD /* ZZDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDevice.h; sourceTree = "<group>"; };
 		E7675FF922AF45DB0044B9AD /* ZZDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDevice.m; sourceTree = "<group>"; };
@@ -569,6 +572,8 @@
 				E7751BC922F42CF800ECD06D /* ZZWidgetMaskView.m */,
 				E7751BCD22F435FC00ECD06D /* ZZWidgetImageBrowser.h */,
 				E7751BCE22F435FC00ECD06D /* ZZWidgetImageBrowser.m */,
+				E760BEE922F9A1EA00944380 /* ZZWidgetTagView.h */,
+				E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */,
 			);
 			path = ZZWidget;
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
+				E760BEEB22F9A1EA00944380 /* ZZWidgetTagView.m in Sources */,
 				E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */,
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
