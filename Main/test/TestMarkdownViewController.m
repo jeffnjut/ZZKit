@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view from its nib.
     NSString *text = @"##大标题 32pt，底部间距 8pt\n###小标题 24pt，底部间距 8pt\n普通文字 24pt，底部间距 8pt换行高度 16pt\n普通文字 24pt，底部间距 8pt换行高度 16pt\n普通文字 24pt，底部间距 8pt换行高度 16pt\n#Markdown Editor\nThis is a simple markdown editor based on `YYTextView`.\n*********************************************\nIt\'s *italic* style.\nIt\'s also _italic_ style.\nIt\'s **bold** style.\nIt\'s ***italic and bold*** style.\nIt\'s __underline__ style.\nIt\'s ~~deleteline~~ style.\nHere is a link: [YYKit](https://github.com/ibireme/YYKit)";
     ZZWidgetMDTextView *mdView = [ZZWidgetMDTextView create:CGRectMake(10, 90, UIScreen.mainScreen.bounds.size.width - 20.0, 10)
-                                                 edgeInsets:UIEdgeInsetsMake(30, 100, 30, 70)
+                                                 edgeInsets:UIEdgeInsetsMake(30, 40, 30, 20)
                                                        text:text
                                                        font:[UIFont systemFontOfSize:14.0]
                                                       color:[UIColor blackColor]

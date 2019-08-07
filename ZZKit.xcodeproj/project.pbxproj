@@ -120,6 +120,8 @@
 		E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */; };
 		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
 		E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */; };
+		E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */; };
+		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
 		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
 		E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */; };
@@ -366,6 +368,9 @@
 		E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIResponderBlockVC.xib; sourceTree = "<group>"; };
 		E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZZKit_Blocks.h"; sourceTree = "<group>"; };
 		E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Blocks.m"; sourceTree = "<group>"; };
+		E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTagViewVC.h; sourceTree = "<group>"; };
+		E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTagViewVC.m; sourceTree = "<group>"; };
+		E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTagViewVC.xib; sourceTree = "<group>"; };
 		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
 		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
 		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
@@ -897,6 +902,9 @@
 				E7EE5D2222FA720700CE9121 /* TestMarkdownViewController.h */,
 				E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */,
 				E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */,
+				E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */,
+				E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */,
+				E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -984,6 +992,7 @@
 			files = (
 				E744128B22F2BABE00773562 /* lottie_toast_success.json in Resources */,
 				E759CDE622CC849B001EC3AE /* test.html in Resources */,
+				E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */,
 				E7A45D3E22B3D16900AA1EBF /* TestZZTableViewVC.xib in Resources */,
 				E744127D22F286A800773562 /* gif_loading_bull.gif in Resources */,
 				E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */,
@@ -1164,6 +1173,7 @@
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
 				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
+				E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
 				E7751BC722F416DD00ECD06D /* ZZWidgetPinCodeView.m in Sources */,
 				E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */,

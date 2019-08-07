@@ -81,19 +81,19 @@ typedef NS_ENUM(NSInteger, ZZTagViewPattern) {
 @interface ZZTagButtonConfig : NSObject
 
 // Tag的背景颜色
-@property (nonatomic, strong) UIColor *zzBackgroundColor;
+@property (nonatomic, strong, nullable) UIColor *zzBackgroundColor;
 
 // Tag的字体颜色
-@property (nonatomic, strong) UIColor *zzTitleColor;
+@property (nonatomic, strong, nullable) UIColor *zzTitleColor;
 
 // Tag的字体
-@property (nonatomic, strong) UIFont *zzTitleFont;
+@property (nonatomic, strong, nullable) UIFont *zzTitleFont;
 
 // Tag的边框宽度
 @property (nonatomic, assign) CGFloat zzBorderWidth;
 
 // Tag的边框颜色
-@property (nonatomic, strong) UIColor *zzBorderColor;
+@property (nonatomic, strong, nullable) UIColor *zzBorderColor;
 
 // Tag的Corner Radius
 @property (nonatomic, assign) CGFloat zzCornerRadius;
@@ -102,40 +102,40 @@ typedef NS_ENUM(NSInteger, ZZTagViewPattern) {
 @property (nonatomic, assign) BOOL zzEnableMultiTap;
 
 // Tag勾选图片(NSString, UIImage)
-@property (nonatomic, strong) id zzSelectedImage;
+@property (nonatomic, strong, nullable) id zzSelectedImage;
 
 // Tag勾选图片 EdgeInsets
 @property (nonatomic, assign) UIEdgeInsets zzSelectedImageEdgeInsets;
 
 // Tag的Highlighted字体颜色(当zz_enableMultiTap为YES有效)
-@property (nonatomic, strong) UIColor *zzMultiTappedTitleColor;
+@property (nonatomic, strong, nullable) UIColor *zzMultiTappedTitleColor;
 
 // Tag的Highlighted字体(当zz_enableMultiTap为YES有效)
-@property (nonatomic, strong) UIFont *zzMultiTappedTitleFont;
+@property (nonatomic, strong, nullable) UIFont *zzMultiTappedTitleFont;
 
 // Tag的Highlighted背景颜色(当zz_enableMultiTap为YES有效)
-@property (nonatomic, strong) UIColor *zzMultiTappedBackgroundColor;
+@property (nonatomic, strong, nullable) UIColor *zzMultiTappedBackgroundColor;
 
 // Tag的Highlighted边框宽度
 @property (nonatomic, assign) CGFloat zzMultiTappedBorderWidth;
 
 // Tag的Highlighted边框颜色(当zz_enableMultiTap为YES有效)
-@property (nonatomic, strong) UIColor *zzMultiTappedBorderColor;
+@property (nonatomic, strong, nullable) UIColor *zzMultiTappedBorderColor;
 
 // Tag的Disabled字体颜色
-@property (nonatomic, strong) UIColor *zzDisabledTitleColor;
+@property (nonatomic, strong, nullable) UIColor *zzDisabledTitleColor;
 
 // Tag的Disabled字体
-@property (nonatomic, strong) UIFont *zzDisabledTitleFont;
+@property (nonatomic, strong, nullable) UIFont *zzDisabledTitleFont;
 
 // Tag的Disabled背景颜色
-@property (nonatomic, strong) UIColor *zzDisabledBackgroundColor;
+@property (nonatomic, strong, nullable) UIColor *zzDisabledBackgroundColor;
 
 // Tag的Highlighted边框宽度
 @property (nonatomic, assign) CGFloat zzDisabledBorderWidth;
 
 // Tag的Disabled边框颜色
-@property (nonatomic, strong) UIColor *zzDisabledBorderColor;
+@property (nonatomic, strong, nullable) UIColor *zzDisabledBorderColor;
 
 @end
 
@@ -144,7 +144,7 @@ typedef NS_ENUM(NSInteger, ZZTagViewPattern) {
 @interface ZZTagConfig : ZZTagButtonConfig
 
 // Padding EdgeInsets
-@property (assign, nonatomic) UIEdgeInsets zzEdgeInsets;
+@property (nonatomic, assign) UIEdgeInsets zzEdgeInsets;
 
 // Item Horizontal Space
 @property (nonatomic, assign) CGFloat zzItemHorizontalSpace;
@@ -153,7 +153,7 @@ typedef NS_ENUM(NSInteger, ZZTagViewPattern) {
 @property (nonatomic, assign) CGFloat zzItemVerticalSpace;
 
 // 每行固定个数 (值大于0时,横向间距zz_itemMinWidth失效)
-@property (assign, nonatomic) NSInteger zzNumsPerRow;
+@property (nonatomic, assign) NSInteger zzNumsPerRow;
 
 // Item Minmun Width(zz_numsPerRow值大于0时,zz_itemMinWidth失效)
 @property (nonatomic, assign) CGFloat zzItemMinWidth;
@@ -173,10 +173,10 @@ typedef NS_ENUM(NSInteger, ZZTagViewPattern) {
 
 @interface ZZTagModel : NSObject
 
-@property (nonatomic, copy)   NSString *zzName;
+@property (nonatomic, copy, nonnull)   NSString *zzName;
 @property (nonatomic, assign) BOOL     zzSelected;
 @property (nonatomic, assign) BOOL     zzDisabled;
-@property (nonatomic, strong) id       zzReservedData;
+@property (nonatomic, strong, nullable) id       zzReservedData;
 
 - (instancetype)initWithName:(nonnull NSString *)name;
 
