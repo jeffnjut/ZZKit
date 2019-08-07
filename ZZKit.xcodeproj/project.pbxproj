@@ -156,6 +156,9 @@
 		E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */; };
 		E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */; };
 		E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */; };
+		E7EE5D2122FA71C700CE9121 /* ZZWidgetMDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */; };
+		E7EE5D2522FA720700CE9121 /* TestMarkdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */; };
+		E7EE5D2622FA720700CE9121 /* TestMarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */; };
 		E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F2150D22ED8AF9007C587B /* cncity.plist */; };
 		E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151022ED8CC4007C587B /* ZZCityModel.m */; };
 		E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151322ED8D3E007C587B /* ZZCityController.m */; };
@@ -422,6 +425,11 @@
 		E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@2x.png"; sourceTree = "<group>"; };
 		E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_active@3x.png"; sourceTree = "<group>"; };
 		E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@3x.png"; sourceTree = "<group>"; };
+		E7EE5D1F22FA71C700CE9121 /* ZZWidgetMDTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetMDTextView.h; sourceTree = "<group>"; };
+		E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetMDTextView.m; sourceTree = "<group>"; };
+		E7EE5D2222FA720700CE9121 /* TestMarkdownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestMarkdownViewController.h; sourceTree = "<group>"; };
+		E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMarkdownViewController.m; sourceTree = "<group>"; };
+		E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestMarkdownViewController.xib; sourceTree = "<group>"; };
 		E7F2150D22ED8AF9007C587B /* cncity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cncity.plist; sourceTree = "<group>"; };
 		E7F2150F22ED8CC4007C587B /* ZZCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityModel.h; sourceTree = "<group>"; };
 		E7F2151022ED8CC4007C587B /* ZZCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityModel.m; sourceTree = "<group>"; };
@@ -574,6 +582,8 @@
 				E7751BCE22F435FC00ECD06D /* ZZWidgetImageBrowser.m */,
 				E760BEE922F9A1EA00944380 /* ZZWidgetTagView.h */,
 				E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */,
+				E7EE5D1F22FA71C700CE9121 /* ZZWidgetMDTextView.h */,
+				E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */,
 			);
 			path = ZZWidget;
 			sourceTree = "<group>";
@@ -884,6 +894,9 @@
 				E7751BD422F4413800ECD06D /* NetImagesBannerViewController.m */,
 				E7751BD322F4413800ECD06D /* NetImagesCollectionViewController.h */,
 				E7751BDA22F441DE00ECD06D /* NetImagesCollectionViewController.m */,
+				E7EE5D2222FA720700CE9121 /* TestMarkdownViewController.h */,
+				E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */,
+				E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -996,6 +1009,7 @@
 				E744128322F2B6C900773562 /* gif_loading_shopping.gif in Resources */,
 				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
+				E7EE5D2622FA720700CE9121 /* TestMarkdownViewController.xib in Resources */,
 				E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */,
 				E760BEE522F9797000944380 /* ZZNetworkErrorDropSheet.xib in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
@@ -1118,6 +1132,7 @@
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
 				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
+				E7EE5D2122FA71C700CE9121 /* ZZWidgetMDTextView.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */,
 				E7751BD822F4413900ECD06D /* NetImagesBannerViewController.m in Sources */,
@@ -1145,6 +1160,7 @@
 				E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
+				E7EE5D2522FA720700CE9121 /* TestMarkdownViewController.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
 				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
