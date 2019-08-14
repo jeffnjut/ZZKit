@@ -126,6 +126,8 @@
 		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
 		E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */; };
 		E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */; };
+		E7D758522303B9FD008FE69F /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D758502303B9FD008FE69F /* SimplePing.m */; };
+		E7D758532303B9FD008FE69F /* ZZPingTester.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D758512303B9FD008FE69F /* ZZPingTester.m */; };
 		E7D7C1AD22F9114F002890A8 /* TestPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D7C1AC22F9114F002890A8 /* TestPopupView.m */; };
 		E7D7C1AF22F91171002890A8 /* TestPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D7C1AE22F91171002890A8 /* TestPopupView.xib */; };
 		E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C17229CCC8600ED8733 /* AppDelegate.m */; };
@@ -377,6 +379,10 @@
 		E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOperationQueueVC.h; sourceTree = "<group>"; };
 		E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOperationQueueVC.m; sourceTree = "<group>"; };
 		E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestOperationQueueVC.xib; sourceTree = "<group>"; };
+		E7D7584E2303B9FC008FE69F /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		E7D7584F2303B9FC008FE69F /* ZZPingTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPingTester.h; sourceTree = "<group>"; };
+		E7D758502303B9FD008FE69F /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		E7D758512303B9FD008FE69F /* ZZPingTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPingTester.m; sourceTree = "<group>"; };
 		E7D7C1AB22F9114F002890A8 /* TestPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestPopupView.h; sourceTree = "<group>"; };
 		E7D7C1AC22F9114F002890A8 /* TestPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPopupView.m; sourceTree = "<group>"; };
 		E7D7C1AE22F91171002890A8 /* TestPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestPopupView.xib; sourceTree = "<group>"; };
@@ -557,6 +563,10 @@
 		E788655222B205E300B20F3E /* ZZReachability */ = {
 			isa = PBXGroup;
 			children = (
+				E7D7584E2303B9FC008FE69F /* SimplePing.h */,
+				E7D758502303B9FD008FE69F /* SimplePing.m */,
+				E7D7584F2303B9FC008FE69F /* ZZPingTester.h */,
+				E7D758512303B9FD008FE69F /* ZZPingTester.m */,
 				E788655622B218C600B20F3E /* ZZReachability.h */,
 				E788655722B218C600B20F3E /* ZZReachability.m */,
 			);
@@ -1118,6 +1128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */,
+				E7D758532303B9FD008FE69F /* ZZPingTester.m in Sources */,
 				E767601022B099D20044B9AD /* UITabBar+ZZKit.m in Sources */,
 				E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */,
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
@@ -1152,6 +1163,7 @@
 				E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */,
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E7D7C1AD22F9114F002890A8 /* TestPopupView.m in Sources */,
+				E7D758522303B9FD008FE69F /* SimplePing.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
 				E760BECC22F970FC00944380 /* UIViewController+ZZTrace.m in Sources */,
 				E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */,

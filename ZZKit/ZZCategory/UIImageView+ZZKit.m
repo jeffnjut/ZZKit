@@ -81,6 +81,9 @@
                     [strongSelf zz_load:url round:NO borderWidth:0 borderColor:nil placeholderImage:placeholderImage placeholderContentMode:contentMode placeholderBackgroudColor:backgroundColor contentMode:contentMode backgroundColor:backgroundColor completion:completion];
                     return;
                 }
+            }else if (error) {
+                strongSelf.image = placeholderImage;
+                strongSelf.contentMode = contentMode;
             }
             if (completion != nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
