@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTabBarController : UITabBarController
 
+// 前一次选中的TabBar Index
+@property (nonatomic, assign, readonly) NSUInteger zzPreviousIndex;
+
 // shouldSelectViewController
 @property(nonatomic, copy) BOOL(^zzShouldSelectViewController)(__weak __kindof UITabBarController *tabController, __weak UIViewController *viewController);
 

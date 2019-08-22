@@ -148,8 +148,6 @@ typedef NS_ENUM(NSUInteger, ZZTextParserPattern) {
 // UI
 @property (nonatomic, strong, readonly) UITextView *markdownTextView;
 
-@property (nonatomic, strong, readonly) UILabel *markdownLabel;
-
 // Text
 @property (nonatomic, copy) NSString *text;
 
@@ -167,8 +165,8 @@ typedef NS_ENUM(NSUInteger, ZZTextParserPattern) {
 + (ZZWidgetMDTextView *)create:(CGRect)frame
                     edgeInsets:(UIEdgeInsets)edgeInsets
                           text:(nonnull NSString *)text
-                          font:(nonnull UIFont *)font
-                         color:(nonnull UIColor *)color
+                          font:(nullable UIFont *)font
+                         color:(nullable UIColor *)color
                 paragraphStyle:(nullable NSMutableParagraphStyle *)paragraphStyle
                 baselineOffset:(nullable NSNumber *)baselineOffset
              attributedHeader2:(nullable NSDictionary *)attributedHeader2
@@ -199,7 +197,7 @@ typedef NS_ENUM(NSUInteger, ZZTextParserPattern) {
        missAttributeItalicBold:(BOOL)missAttributeItalicBold
              missAttributeBold:(BOOL)missAttributeBold
            missAttributeItalic:(BOOL)missAttributeItalic
-                      delegate:(nullable  id<ZZWidgetMDTextViewDelegate>)delegate
+                      delegate:(nullable id<ZZWidgetMDTextViewDelegate>)delegate
                       urlBlock:(nullable void(^)(NSURL *url))urlBlock;
 
 @end

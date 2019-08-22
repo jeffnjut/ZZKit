@@ -582,8 +582,6 @@
 // UI
 @property (nonatomic, strong) UITextView *markdownTextView;
 
-@property (nonatomic, strong) UILabel *markdownLabel;
-
 // Markdown 解析器
 @property (nonatomic, strong) ZZMarkdownParser *parser;
 
@@ -636,38 +634,20 @@
  */
 - (void)render {
     
-    __weak typeof(self) weakSelf = self;
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.height);
-    if (self.hasURL) {
-        [_markdownLabel removeFromSuperview];
-        if (_markdownTextView == nil) {
-            _markdownTextView = [[UITextView alloc] init];
-            _markdownTextView.textContainerInset = UIEdgeInsetsZero;
-            _markdownTextView.delegate = self;
-            _markdownTextView.showsVerticalScrollIndicator = NO;
-            _markdownTextView.showsHorizontalScrollIndicator = NO;
-            _markdownTextView.scrollEnabled = NO;
-            _markdownTextView.editable = self.editable;
-            [self addSubview:_markdownTextView];
-            _markdownTextView.frame = CGRectMake(self.edgeInsets.left, self.edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom);
-        }
-        self.markdownTextView.attributedText = self.attributedText;
-        [self.markdownTextView sizeToFit];
-    }else {
-        [_markdownTextView removeFromSuperview];
-        if (_markdownLabel == nil) {
-            _markdownLabel = [[UILabel alloc] init];
-            _markdownLabel.numberOfLines = 0;
-            [self addSubview:_markdownLabel];
-            [_markdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(weakSelf).offset(weakSelf.edgeInsets.top);
-                make.left.equalTo(weakSelf).offset(weakSelf.edgeInsets.left);
-                make.bottom.equalTo(weakSelf).offset(-weakSelf.edgeInsets.bottom);
-                make.right.equalTo(weakSelf).offset(-weakSelf.edgeInsets.right);
-            }];
-        }
-        self.markdownLabel.attributedText = self.attributedText;
+    if (_markdownTextView == nil) {
+        _markdownTextView = [[UITextView alloc] init];
+        _markdownTextView.textContainerInset = UIEdgeInsetsZero;
+        _markdownTextView.delegate = self;
+        _markdownTextView.showsVerticalScrollIndicator = NO;
+        _markdownTextView.showsHorizontalScrollIndicator = NO;
+        _markdownTextView.scrollEnabled = NO;
+        _markdownTextView.editable = self.editable;
+        [self addSubview:_markdownTextView];
+        _markdownTextView.frame = CGRectMake(self.edgeInsets.left, self.edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom);
     }
+    self.markdownTextView.attributedText = self.attributedText;
+    [self.markdownTextView sizeToFit];
 }
 
 /**
@@ -676,8 +656,8 @@
 + (ZZWidgetMDTextView *)create:(CGRect)frame
                     edgeInsets:(UIEdgeInsets)edgeInsets
                           text:(nonnull NSString *)text
-                          font:(nonnull UIFont *)font
-                         color:(nonnull UIColor *)color
+                          font:(nullable UIFont *)font
+                         color:(nullable UIColor *)color
                 paragraphStyle:(nullable NSMutableParagraphStyle *)paragraphStyle
                 baselineOffset:(nullable NSNumber *)baselineOffset
              attributedHeader2:(nullable NSDictionary *)attributedHeader2

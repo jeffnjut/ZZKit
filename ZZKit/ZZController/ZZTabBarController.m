@@ -12,6 +12,8 @@
 
 @interface ZZTabBarController () <UITabBarControllerDelegate>
 
+@property (nonatomic, assign) NSUInteger zzPreviousIndex;
+
 @end
 
 @implementation ZZTabBarController
@@ -121,6 +123,7 @@
     if (self.zzDidSelectViewController != nil) {
         self.zzDidSelectViewController(tabBarController, viewController);
     }
+    self.zzPreviousIndex = tabBarController.selectedIndex;
 }
 
 /*
