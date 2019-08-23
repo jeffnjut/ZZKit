@@ -194,11 +194,19 @@
     // FlowLayout
     ZZCollectionViewFlowLayout *_layout;
 }
+
+@property (nonatomic, strong) NSMutableArray *zzDataSource;
+
 @end
 
 @implementation ZZCollectionView
 
 #pragma mark - ZZCollectionView 属性
+
+- (NSMutableArray *)zzDataSource {
+    
+    return _dataSource;
+}
 
 - (ZZCollectionViewFlowLayout *)zzLayout {
     

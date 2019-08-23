@@ -72,6 +72,9 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
 
 @interface ZZCollectionView : UICollectionView
 
+// 数据源（尽量不要用，线程不安全）
+@property (nonatomic, strong, readonly) NSMutableArray *zzDataSource;
+
 // Cell 响应事件Block
 @property (nonatomic, copy) ZZCollectionViewCellActionBlock zzActionBlock;
 
