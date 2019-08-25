@@ -153,6 +153,9 @@
  *  导航条设置是否隐藏
  */
 - (void)zz_navigationBarHidden:(BOOL)isBarHidden {
+    if (self.navigationController.navigationBarHidden == isBarHidden) {
+        return;
+    }
     [self.navigationController setNavigationBarHidden:isBarHidden];
 }
 
