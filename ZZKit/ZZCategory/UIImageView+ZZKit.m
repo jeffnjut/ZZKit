@@ -21,6 +21,22 @@
 
 #pragma mark - Public
 
+/**
+ * 加载图片
+ * URL                        imageURL : NSString / NSURL
+ * placeholderImage           占位图
+ * backgroundColor 占位图的背景色
+ * contentMode     占位图的填充方式
+ * completion                 加载完图片的回调Block
+ */
+- (____ZZKitVoid____)zz_load:(nonnull id)URL
+            placeholderImage:(nullable UIImage *)placeholderImage
+             backgroundColor:(nullable UIColor *)backgroundColor
+                 contentMode:(UIViewContentMode)contentMode
+                  completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+    
+    [self zz_load:URL placeholderImage:placeholderImage placeholderBackgroundColor:backgroundColor finishedBackgroundColor:backgroundColor placeholderContentMode:contentMode finishedContentMode:contentMode fadeIn:YES completion:completion];
+}
 
 /**
  * 加载图片
@@ -30,6 +46,7 @@
  * placeholderContentMode     占位图的填充方式
  * finishedBackgroundColor    加载完图片的背景色
  * finishedContentMode        显示图片的填充方式
+ * fadeIn                     是否淡入显示
  * completion                 加载完图片的回调Block
  */
 - (____ZZKitVoid____)zz_load:(nonnull id)URL
@@ -38,15 +55,12 @@
      finishedBackgroundColor:(nullable UIColor *)finishedBackgroundColor
       placeholderContentMode:(UIViewContentMode)placeholderContentMode
          finishedContentMode:(UIViewContentMode)finishedContentMode
+                      fadeIn:(BOOL)fadeIn
                   completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
     @synchronized (self) {
         
         __weak typeof(self) weakSelf = self;
-        
-        // Gif FLAnimatedImageView 隐藏
-        // FLAnimatedImageView *gifImageView = [self viewWithTag:1111];
-        // gifImageView.hidden = YES;
         
         // 处理URL Encode
         __block NSString *_zzKey = nil;
@@ -101,7 +115,7 @@
                             default:
                             {
                                 // 其它图片
-                                [weakSelf _setOtherImage:image data:nil key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                                [weakSelf _setOtherImage:image data:nil key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode fadeIn:fadeIn completion:completion];
                                 break;
                             }
                         }
@@ -125,7 +139,7 @@
             }
             default:
             {
-                [self _setOtherImage:nil data:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                [self _setOtherImage:nil data:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode fadeIn:NO completion:completion];
                 break;
             }
         }
@@ -144,7 +158,7 @@
     if (backgroundColor) {
         self.backgroundColor = backgroundColor;
     }
-        
+    
     // 设置ContentMode
     self.contentMode = contentMode;
     
@@ -176,7 +190,7 @@
     completion == nil ? : completion(self, _webPImage, data, nil, key);
 }
 
-- (void)_setOtherImage:(nullable UIImage *)image data:(nullable NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+- (void)_setOtherImage:(nullable UIImage *)image data:(nullable NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode fadeIn:(BOOL)fadeIn completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
     if (key.hash != [self _zzHash]) {
         return;
@@ -197,6 +211,17 @@
     // 设置ContentMode
     self.contentMode = contentMode;
     
+    if (fadeIn) {
+        self.alpha = 0.5;
+        [self.layer removeAllAnimations];
+        [UIView transitionWithView:self
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{ self.alpha = 1.0; }
+                        completion:nil];
+    }else {
+        
+    }
     // 回调
     completion == nil ? : completion(self, image, data, nil, key);
 }
