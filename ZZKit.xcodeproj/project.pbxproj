@@ -73,6 +73,8 @@
 		E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602422B0E3F30044B9AD /* UIViewController+ZZKit.m */; };
 		E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602722B0F8600044B9AD /* UIButton+ZZKit.m */; };
 		E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */; };
+		E76B8B672313E4C3001E4C34 /* TestImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E76B8B652313E4C3001E4C34 /* TestImageTableViewCell.m */; };
+		E76B8B682313E4C3001E4C34 /* TestImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76B8B662313E4C3001E4C34 /* TestImageTableViewCell.xib */; };
 		E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E770C7A722BB2F5F00625C85 /* TestHeaderView.m */; };
 		E770C7AA22BB2FB400625C85 /* TestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E770C7A922BB2FB400625C85 /* TestHeaderView.xib */; };
 		E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751BC322F3D39800ECD06D /* ZZWidgetSpinnerView.m */; };
@@ -288,6 +290,9 @@
 		E767602722B0F8600044B9AD /* UIButton+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZZKit.m"; sourceTree = "<group>"; };
 		E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ZZKit.h"; sourceTree = "<group>"; };
 		E767602A22B0FEC60044B9AD /* UIWindow+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ZZKit.m"; sourceTree = "<group>"; };
+		E76B8B642313E4C3001E4C34 /* TestImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestImageTableViewCell.h; sourceTree = "<group>"; };
+		E76B8B652313E4C3001E4C34 /* TestImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestImageTableViewCell.m; sourceTree = "<group>"; };
+		E76B8B662313E4C3001E4C34 /* TestImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestImageTableViewCell.xib; sourceTree = "<group>"; };
 		E770C7A622BB2F5F00625C85 /* TestHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderView.h; sourceTree = "<group>"; };
 		E770C7A722BB2F5F00625C85 /* TestHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
 		E770C7A922BB2FB400625C85 /* TestHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestHeaderView.xib; sourceTree = "<group>"; };
@@ -920,6 +925,9 @@
 				E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */,
 				E7C548DA2313A63800536FD3 /* TestWebImageVC.h */,
 				E7C548DB2313A63800536FD3 /* TestWebImageVC.m */,
+				E76B8B642313E4C3001E4C34 /* TestImageTableViewCell.h */,
+				E76B8B652313E4C3001E4C34 /* TestImageTableViewCell.m */,
+				E76B8B662313E4C3001E4C34 /* TestImageTableViewCell.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1039,6 +1047,7 @@
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
 				E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
+				E76B8B682313E4C3001E4C34 /* TestImageTableViewCell.xib in Resources */,
 				E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
@@ -1096,7 +1105,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZZKit/Pods-ZZKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
@@ -1109,7 +1117,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenUDID.framework",
@@ -1233,6 +1240,7 @@
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
 				E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
+				E76B8B672313E4C3001E4C34 /* TestImageTableViewCell.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E7751BD922F4413900ECD06D /* ImageClCell.m in Sources */,

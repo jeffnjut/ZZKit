@@ -8,239 +8,197 @@
 
 #import "UIImageView+ZZKit.h"
 #import <objc/runtime.h>
+#import <SDWebImage/UIImage+GIF.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/NSData+ImageContentType.h>
 #import <SDWebImage/UIImage+MultiFormat.h>
-#import <FLAnimatedImage/FLAnimatedImage.h>
 #import <YYImage/YYImage.h>
+#import "NSString+ZZKit.h"
 #import "UIView+ZZKit.h"
+#import "NSData+ZZKit.h"
 
 @implementation UIImageView (ZZKit)
 
 #pragma mark - Public
 
+
 /**
- * 加载图片（所有网络图片格式）
- * url              url
- * placeholderImage 占位图
- * backgroundColor  加载完图片的背景色
- * contentMode      占位图或image url加载的填充方式
- * completion       完成加载的回调block
+ * 加载图片
+ * URL                        imageURL : NSString / NSURL
+ * placeholderImage           占位图
+ * placeholderBackgroundColor 占位图的背景色
+ * placeholderContentMode     占位图的填充方式
+ * finishedBackgroundColor    加载完图片的背景色
+ * finishedContentMode        显示图片的填充方式
+ * completion                 加载完图片的回调Block
  */
-- (void)zz_load:(nonnull NSString *)url placeholderImage:(nullable UIImage *)placeholderImage backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+- (____ZZKitVoid____)zz_load:(nonnull id)URL
+            placeholderImage:(nullable UIImage *)placeholderImage
+  placeholderBackgroundColor:(nullable UIColor *)placeholderBackgroundColor
+     finishedBackgroundColor:(nullable UIColor *)finishedBackgroundColor
+      placeholderContentMode:(UIViewContentMode)placeholderContentMode
+         finishedContentMode:(UIViewContentMode)finishedContentMode
+                  completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
-    @synchronized(self) {
-        
-        FLAnimatedImageView *gifImageView = [self viewWithTag:1000];
-        gifImageView.hidden = YES;
-        
-        self.contentMode = contentMode;
-        self.backgroundColor = backgroundColor;
-        
-        if (url == nil || url.length == 0 || ![url isKindOfClass:[NSString class]] || ![url hasPrefix:@"http"]) {
-            // 非法的http或者https的URL
-            self.image = placeholderImage;
-            return;
-        }else {
-            // 合法URL，URL字符转义
-            url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-            // 设置Hash
-            [self _setHash:[url hash]];
-        }
+    @synchronized (self) {
         
         __weak typeof(self) weakSelf = self;
-        if (self.image == nil) {
-            self.image = placeholderImage;
+        
+        // Gif FLAnimatedImageView 隐藏
+        // FLAnimatedImageView *gifImageView = [self viewWithTag:1111];
+        // gifImageView.hidden = YES;
+        
+        // 处理URL Encode
+        __block NSString *_zzKey = nil;
+        __block NSURL *_zzURL = nil;
+        if ([URL isKindOfClass:[NSURL class]]) {
+            _zzURL = URL;
+            _zzKey = _zzURL.absoluteString;
+        }else if ([URL isKindOfClass:[NSString class]]) {
+            _zzKey = URL;
+            if (![_zzKey containsString:@"%"]) {
+                // 未Encode的URL，URL需要Encode
+                _zzKey = [_zzKey stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            }
+            _zzURL = [NSURL URLWithString:_zzKey];
         }else {
-            [self sd_setImageWithURL:[NSURL URLWithString:url]];
+            NSAssert(NO, @"UIImageView : imageURL 参数不正确");
         }
-        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:url] options:SDWebImageDownloaderLowPriority progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-            
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            if (data) {
-                // 防止复用Cell产生的图片错乱问题
-                if ([strongSelf _hash] != [url hash]) {
-                    return;
-                }
-                SDImageFormat format = [NSData sd_imageFormatForImageData:data];
-                if (format == SDImageFormatGIF) {
-                    // SDWebImgae+Gif对高帧的gif支持不理想
-                    FLAnimatedImageView *gifImageView = [strongSelf viewWithTag:1000];
-                    if (gifImageView == nil) {
-                        gifImageView = [[FLAnimatedImageView alloc] initWithFrame:strongSelf.bounds];
-                        [strongSelf addSubview:gifImageView];
-                        gifImageView.tag = 1000;
+        [self _setZzHash:_zzKey.hash];
+        
+        // 设置Placeholder背景颜色
+        if (placeholderBackgroundColor) {
+            self.backgroundColor = placeholderBackgroundColor;
+        }
+        // 设置Placeholder ContentMode
+        self.contentMode = placeholderContentMode;
+        
+        // 查询缓存
+        NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
+        SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
+        switch (format) {
+            case SDImageFormatUndefined:
+            {
+                // 缓存未命中
+                [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    
+                    if (!error && image) {
+                        NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
+                        SDImageFormat format = [NSData sd_imageFormatForImageData:_data];
+                        switch (format) {
+                            case SDImageFormatGIF:
+                            {
+                                // 缓存Gif
+                                [weakSelf _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                                break;
+                            }
+                            case SDImageFormatWebP:
+                            {
+                                // 缓存WebP
+                                [weakSelf _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                                break;
+                            }
+                            default:
+                            {
+                                // 其它图片
+                                [weakSelf _setOtherImage:image data:nil key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                                break;
+                            }
+                        }
+                    }else {
+                        completion == nil ? : completion(weakSelf, image, nil, error, _zzKey);
                     }
-                    gifImageView.hidden = NO;
-                    gifImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:data];
-                    strongSelf.image = nil;
-                    if (!backgroundColor) {
-                        strongSelf.backgroundColor = [UIColor clearColor];
-                    }
-                }else {
-                    [strongSelf zz_load:url round:NO borderWidth:0 borderColor:nil placeholderImage:placeholderImage placeholderContentMode:contentMode placeholderBackgroudColor:backgroundColor contentMode:contentMode backgroundColor:backgroundColor completion:completion];
-                    return;
-                }
-            }else if (error) {
-                strongSelf.image = placeholderImage;
-                strongSelf.contentMode = contentMode;
+                }];
+                break;
             }
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(strongSelf, image, data, error, url);
-                });
+            case SDImageFormatGIF:
+            {
+                // 缓存Gif
+                [self _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                break;
             }
-        }];
+            case SDImageFormatWebP:
+            {
+                // 缓存WebP
+                [self _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                break;
+            }
+            default:
+            {
+                [self _setOtherImage:nil data:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                break;
+            }
+        }
     }
 }
 
-/**
- * 加载图片（除了Gif的网络图片格式）
- * url                       image url
- * round                     是否圆型
- * borderWidth               边框宽度
- * borderColor               边框颜色
- * placeholderImage          占位图
- * placeholderContentMode    占位图的填充方式
- * placeholderBackgroudColor 占位图的背景色
- * contentMode               显示图片的填充方式
- * backgroundColor           加载完图片的背景色
- * completion                加载完图片的回调block
- */
-- (void)zz_load:(nonnull NSString *)url round:(BOOL)round borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor placeholderImage:(nullable UIImage *)placeholderImage placeholderContentMode:(UIViewContentMode)placeholderContentMode placeholderBackgroudColor:(nullable UIColor *)placeholderBackgroudColor contentMode:(UIViewContentMode)contentMode backgroundColor:(nullable UIColor *)backgroundColor completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+- (void)_setGifImage:(nonnull NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
-    if (url == nil || url.length == 0 || ![url isKindOfClass:[NSString class]] || ![url hasPrefix:@"http"]) {
-        // 非法的http或者https的URL
-        self.image = placeholderImage;
-        self.contentMode = placeholderContentMode;
+    if (key.hash != [self _zzHash]) {
         return;
-    }else {
-        // 合法URL，URL字符转义
-        url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        // 设置Hash
-        [self _setHash:[url hash]];
     }
     
-    // 设置Round、BorderWidth和BorderColor
-    if (borderWidth > 0 && borderColor != nil) {
-        if (round) {
-            [self zz_roundWithBorderWidth:borderWidth borderColor:borderColor];
-        }else {
-            [self zz_borderWidth:borderWidth boderColor:borderColor];
-        }
-    }else if (round == YES) {
-        [self zz_round];
-    }else {
-        [self setClipsToBounds:YES];
-        [self.layer setMasksToBounds:YES];
+    self.image = [UIImage sd_animatedGIFWithData:data];
+    
+    // 设置背景颜色
+    if (backgroundColor) {
+        self.backgroundColor = backgroundColor;
     }
-    // 设置PlaceHolder图片
-    self.image = placeholderImage;
-    // 设置PlaceHolder背景颜色
-    self.backgroundColor = placeholderBackgroudColor;
-    // 设置PlaceHolder的ContentMode
-    self.contentMode = placeholderContentMode;
-    // 加载图片
-    __weak typeof(self) weakSelf = self;
-    [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholderImage options:SDWebImageDownloaderHighPriority | SDWebImageAllowInvalidSSLCertificates progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         
-    } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        // 防止复用Cell产生的图片错乱问题
-        if ([strongSelf _hash] != [url hash]) {
-            return;
-        }
-        if (image != nil) {
-            // 图片设置成功
-            // 设置图片的ContentMode
-            strongSelf.contentMode = contentMode;
-            // 设置图片的BackgroundColor
-            strongSelf.backgroundColor = backgroundColor;
-            // 图片渲染动画
-            if (cacheType == SDImageCacheTypeNone) {
-                // 设置图片
-                strongSelf.image = image;
-                // 设置“淡入淡出”动画
-                strongSelf.alpha = 0.5;
-                [strongSelf.layer removeAllAnimations];
-                [UIView transitionWithView:strongSelf
-                                  duration:1.0
-                                   options:UIViewAnimationOptionTransitionCrossDissolve
-                                animations:^{ strongSelf.alpha = 1.0; }
-                                completion:nil];
-            }else{
-                // 设置图片
-                strongSelf.image = image;
-            }
-            // 成功回调
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(strongSelf, image, image.sd_imageData, error, imageURL.absoluteString);
-                });
-            }
-        }else if (error != nil) {
-            // 图片设置异常
-            // WebP处理
-            __block NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:imageURL.absoluteString];
-            if (_data != nil) {
-                NSString *url = [imageURL.absoluteString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-                // 防止复用Cell产生的图片错乱问题
-                if ([strongSelf _hash] != [url hash]) {
-                    return;
-                }
-                __block UIImage *decodeImage = nil;
-                YYImageDecoder *decoder = [YYImageDecoder decoderWithData:_data scale:[UIScreen mainScreen].scale];
-                decodeImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
-                if (decodeImage != nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        strongSelf.image = decodeImage;
-                    });
-                    if (completion != nil) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            completion(strongSelf, decodeImage, _data, error, imageURL.absoluteString);
-                        });
-                    }
-                }else {
-                    if (completion != nil) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            completion(strongSelf, image, image.sd_imageData, error, imageURL.absoluteString);
-                        });
-                    }
-                }
-            }else {
-                NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                    
-                    __block UIImage *decodeImage = nil;
-                    YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
-                    decodeImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
-                    if (decodeImage != nil) {
-                        [[SDWebImageManager sharedManager] saveImageToCache:decodeImage forURL:imageURL];
-                        NSString *url = [imageURL.absoluteString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-                        // 防止复用Cell产生的图片错乱问题
-                        if ([strongSelf _hash] != [url hash]) {
-                            return;
-                        }
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            strongSelf.image = decodeImage;
-                        });
-                        if (completion != nil) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                completion(strongSelf, decodeImage, data, error, imageURL.absoluteString);
-                            });
-                        }
-                    }else {
-                        if (completion != nil) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                completion(strongSelf, image, image.sd_imageData, error, imageURL.absoluteString);
-                            });
-                        }
-                    }
-                }];
-                [task resume];
-            }
-        }
-    }];
+    // 设置ContentMode
+    self.contentMode = contentMode;
+    
+    // 回调
+    completion == nil ? : completion(self, data.zz_imageFirstGifFrame, data, nil, key);
+}
+
+- (void)_setWebPImage:(nonnull NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+    
+    if (key.hash != [self _zzHash]) {
+        return;
+    }
+    
+    YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
+    UIImage *_webPImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
+    
+    // 设置图片
+    self.image = _webPImage;
+    
+    // 设置背景颜色
+    if (backgroundColor) {
+        self.backgroundColor = backgroundColor;
+    }
+    
+    // 设置ContentMode
+    self.contentMode = contentMode;
+    
+    // 回调
+    completion == nil ? : completion(self, _webPImage, data, nil, key);
+}
+
+- (void)_setOtherImage:(nullable UIImage *)image data:(nullable NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+    
+    if (key.hash != [self _zzHash]) {
+        return;
+    }
+    
+    // 设置图片
+    if (image == nil) {
+        self.image = data.zz_image;
+    }else {
+        self.image = image;
+    }
+    
+    // 设置背景颜色
+    if (backgroundColor) {
+        self.backgroundColor = backgroundColor;
+    }
+    
+    // 设置ContentMode
+    self.contentMode = contentMode;
+    
+    // 回调
+    completion == nil ? : completion(self, image, data, nil, key);
 }
 
 #pragma mark - Private
@@ -266,12 +224,12 @@
 
 static void const* kImageViewUrlHash = "kImageViewUrlHash";
 
-- (NSInteger)_hash {
+- (NSInteger)_zzHash {
     
     return [objc_getAssociatedObject(self, kImageViewUrlHash) integerValue];
 }
 
-- (void)_setHash:(NSInteger)hash {
+- (void)_setZzHash:(NSInteger)hash {
     
     objc_setAssociatedObject(self, kImageViewUrlHash, @(hash), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

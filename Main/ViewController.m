@@ -66,7 +66,8 @@
                         @[@"测试显示图片Banner",[NetImagesBannerViewController class]],
                         @[@"测试显示图片ColloctionView",[NetImagesCollectionViewController class]],
                         @[@"测试Markdonw语法",[TestMarkdownViewController class]],
-                        @[@"测试TagView",[TestTagViewVC class]]];
+                        @[@"测试TagView",[TestTagViewVC class]],
+                        @[@"测试Web Image",[TestWebImageVC class]]];
     
     [self.tableView reloadData];
 }

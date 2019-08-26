@@ -7,7 +7,6 @@ target "ZZKit" do
   pod 'Masonry'
   pod 'MBProgressHUD'
   pod 'lottie-ios'
-  pod 'FLAnimatedImage'
   pod 'SDWebImage', '~> 4.4.7'
   pod 'YYImage'
   pod 'YYModel'

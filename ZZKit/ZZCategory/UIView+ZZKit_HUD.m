@@ -9,10 +9,10 @@
 #import "UIView+ZZKit_HUD.h"
 #import "UIView+ZZKit_Blocks.h"
 #import <objc/runtime.h>
-#import <FLAnimatedImage/FLAnimatedImage.h>
 #import <Lottie/Lottie.h>
 #import <Masonry/Masonry.h>
 #import <Typeset/Typeset.h>
+#import <SDWebImage/UIImage+GIF.h>
 #import "NSString+ZZKit.h"
 #import "UIColor+ZZKit.h"
 #import "NSAttributedString+ZZKit.h"
@@ -55,9 +55,9 @@
     hud.bezelView.color = bezelViewColor;
     
     // 设置自定义View
-    FLAnimatedImageView *animatedImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIImageView *animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     animatedImageView.backgroundColor = gifViewColor;
-    animatedImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:gifData];
+    animatedImageView.image = [UIImage sd_animatedGIFWithData:gifData];
     hud.customView = animatedImageView;
     hud.customView.layer.masksToBounds = YES;
     hud.customView.layer.borderWidth = borderWidth;
@@ -82,7 +82,7 @@
     for (int i = (int)self.subviews.count - 1; i >= 0; i--) {
         MBProgressHUD *hud = [self.subviews objectAtIndex:i];
         if ([hud isKindOfClass:[MBProgressHUD class]]) {
-            if ([hud.customView isKindOfClass:[FLAnimatedImageView class]] && hud.customView.tag == 1234) {
+            if ([hud.customView isKindOfClass:[UIImageView class]] && hud.customView.tag == 1234) {
                 [hud hideAnimated:YES];
             }
         }
