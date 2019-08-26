@@ -27,6 +27,7 @@
 #import "NetImagesCollectionViewController.h"
 #import "TestMarkdownViewController.h"
 #import "TestTagViewVC.h"
+#import "TestWebImageVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 

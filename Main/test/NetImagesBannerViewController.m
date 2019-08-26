@@ -7,10 +7,11 @@
 //
 
 #import "NetImagesBannerViewController.h"
-#import "ZZWidgetImageBrowser.h"
-#import "BannerClCell.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/SDImageCache.h>
+#import "ZZWidgetImageBrowser.h"
+#import "BannerClCell.h"
 
 @interface NetImagesBannerViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIActionSheetDelegate>
 

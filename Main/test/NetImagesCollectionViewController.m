@@ -8,6 +8,7 @@
 
 #import "NetImagesCollectionViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/SDImageCache.h>
 #import "ZZWidgetImageBrowser.h"
 #import "ImageClCell.h"
 

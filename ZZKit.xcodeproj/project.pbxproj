@@ -120,6 +120,7 @@
 		E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */; };
 		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
 		E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */; };
+		E7C548DC2313A63800536FD3 /* TestWebImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C548DB2313A63800536FD3 /* TestWebImageVC.m */; };
 		E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */; };
 		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
@@ -370,6 +371,8 @@
 		E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIResponderBlockVC.xib; sourceTree = "<group>"; };
 		E7C3166922A66830002E4130 /* UIControl+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZZKit_Blocks.h"; sourceTree = "<group>"; };
 		E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Blocks.m"; sourceTree = "<group>"; };
+		E7C548DA2313A63800536FD3 /* TestWebImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWebImageVC.h; sourceTree = "<group>"; };
+		E7C548DB2313A63800536FD3 /* TestWebImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWebImageVC.m; sourceTree = "<group>"; };
 		E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTagViewVC.h; sourceTree = "<group>"; };
 		E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTagViewVC.m; sourceTree = "<group>"; };
 		E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTagViewVC.xib; sourceTree = "<group>"; };
@@ -915,6 +918,8 @@
 				E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */,
 				E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */,
 				E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */,
+				E7C548DA2313A63800536FD3 /* TestWebImageVC.h */,
+				E7C548DB2313A63800536FD3 /* TestWebImageVC.m */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1150,6 +1155,7 @@
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
+				E7C548DC2313A63800536FD3 /* TestWebImageVC.m in Sources */,
 				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
 				E7EE5D2122FA71C700CE9121 /* ZZWidgetMDTextView.m in Sources */,
