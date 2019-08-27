@@ -149,7 +149,8 @@
         if (index < column) {
             // 第一行直接添加到当前的列
             currentColumn = index;
-        }else {// 其他行添加到最短的那一列
+        }else {
+            // 其他行添加到最短的那一列
             // 这里使用!会得到期望的值
             NSNumber *minMaxY = [_maxYOfColumns valueForKeyPath:@"@min.self"];
             currentColumn = [_maxYOfColumns indexOfObject:minMaxY];
@@ -187,26 +188,22 @@
 {
     // 锁
     pthread_mutex_t _lock;
-    // 数据源
-    NSMutableArray *_dataSource;
     // SuperView
     UIView *_superView;
     // FlowLayout
     ZZCollectionViewFlowLayout *_layout;
 }
 
-@property (nonatomic, strong) NSMutableArray *zzDataSource;
-
 @end
 
 @implementation ZZCollectionView
 
-#pragma mark - ZZCollectionView 属性
-
-- (NSMutableArray *)zzDataSource {
+- (void)dealloc
+{
     
-    return _dataSource;
 }
+
+#pragma mark - ZZCollectionView 属性
 
 - (ZZCollectionViewFlowLayout *)zzLayout {
     
@@ -219,7 +216,7 @@
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
         pthread_mutex_init(&_lock, NULL);
-        _dataSource = [[NSMutableArray alloc] init];
+        self.zzDataSource = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -276,7 +273,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayAddObject:data];
+    [self.zzDataSource zz_arrayAddObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -284,7 +281,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayInsertObject:anObject atIndex:index];
+    [self.zzDataSource zz_arrayInsertObject:anObject atIndex:index];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -292,7 +289,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveObject:data];
+    [self.zzDataSource zz_arrayRemoveObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -300,7 +297,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveObjectAtIndex:index];
+    [self.zzDataSource zz_arrayRemoveObjectAtIndex:index];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -308,7 +305,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveFirstObject];
+    [self.zzDataSource zz_arrayRemoveFirstObject];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -316,7 +313,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveLastObject];
+    [self.zzDataSource zz_arrayRemoveLastObject];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -324,7 +321,10 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource removeAllObjects];
+    for (ZZCollectionSectionObject *section in self.zzDataSource) {
+        [section.zzCellDataSource removeAllObjects];
+    }
+    [self.zzDataSource removeAllObjects];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -332,7 +332,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayReplaceObjectAtIndex:index withObject:data];
+    [self.zzDataSource zz_arrayReplaceObjectAtIndex:index withObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -340,7 +340,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+    [self.zzDataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -351,7 +351,7 @@
     
     pthread_mutex_lock(&_lock);
     int cnt = 0;
-    for (ZZCollectionSectionObject *sectionObject in _dataSource) {
+    for (ZZCollectionSectionObject *sectionObject in self.zzDataSource) {
         if ([sectionObject isKindOfClass:[ZZCollectionSectionObject class]]) {
             cnt++;
         }
@@ -359,10 +359,10 @@
     if (cnt == 0) {
         NSMutableArray *arr = [[NSMutableArray alloc] init];
         ZZCollectionSectionObject *sectionObject = [[ZZCollectionSectionObject alloc] init];
-        [sectionObject.zzCellDataSource addObjectsFromArray:_dataSource];
+        [sectionObject.zzCellDataSource addObjectsFromArray:self.zzDataSource];
         [arr zz_arrayAddObject:sectionObject];
-        _dataSource = arr;
-    }else if (cnt == _dataSource.count) {
+        self.zzDataSource = arr;
+    }else if (cnt == self.zzDataSource.count) {
         // 格式正确
     }else {
         NSAssert(NO, @"ZZCollectionView:数据源类型异常");
@@ -376,18 +376,18 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return _dataSource.count;
+    return self.zzDataSource.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
     return sectionObject.zzCellDataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:indexPath.section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     NSString *cellClassName = NSStringFromClass([ds class]);
     cellClassName = [cellClassName stringByReplacingOccurrencesOfString:@"DataSource" withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, cellClassName.length)];
@@ -403,9 +403,10 @@
     cell.zzTapBlock = ^(__kindof ZZCollectionViewCellDataSource * _Nonnull data, __kindof ZZCollectionViewCell * _Nonnull cell) {
         __strong ZZCollectionView *strongSelf = weakSelf;
         if (data != nil && cell != nil) {
-            NSIndexPath *_indexPath = [strongSelf indexPathForCell:cell];
+            __block NSIndexPath *_indexPath = [strongSelf indexPathForCell:cell];
+            __weak typeof(strongSelf) weakSelf = strongSelf;
             dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, _indexPath.section, _indexPath.row, ZZCollectionViewCellActionCustomTapped, data, cell);
+                weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, _indexPath.section, _indexPath.row, ZZCollectionViewCellActionCustomTapped, data, cell);
             });
         }
     };
@@ -425,7 +426,7 @@
 // Cell的大小
 - (CGSize)zz_sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:indexPath.section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     return ds.zzSize;
 }
@@ -433,7 +434,7 @@
 // 每个Section对应的列数
 - (NSInteger)zz_numberOfColumnInSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
     return sectionObject.zzColumns;
 }
 
@@ -441,19 +442,19 @@
 
 - (CGFloat)zz_minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
     return sectionObject.zzMinimumLineSpacing;
 }
 
 - (CGFloat)zz_minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
     return sectionObject.zzMinimumInteritemSpacing;
 }
 
 - (UIEdgeInsets)zz_contentInsetOfSectionAtIndex:(NSInteger)section {
  
-    ZZCollectionSectionObject *sectionObject = [_dataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
     return sectionObject.zzEdgeInsets;
 }
 
