@@ -185,14 +185,13 @@
 #pragma mark - ZZCollectionView
 
 @interface ZZCollectionView() <UICollectionViewDelegate, UICollectionViewDataSource, ZZCollectionViewFlowLayoutDelegate>
-{
-    // 锁
-    pthread_mutex_t _lock;
-    // SuperView
-    UIView *_superView;
-    // FlowLayout
-    ZZCollectionViewFlowLayout *_layout;
-}
+
+// 锁
+@property (nonatomic, assign) pthread_mutex_t lock;
+// SuperView
+@property (nonatomic, weak) UIView *superView;
+// FlowLayout
+@property (nonatomic, strong) ZZCollectionViewFlowLayout *zzLayout;
 
 @end
 
@@ -204,11 +203,6 @@
 }
 
 #pragma mark - ZZCollectionView 属性
-
-- (ZZCollectionViewFlowLayout *)zzLayout {
-    
-    return _layout;
-}
 
 #pragma mark - ZZCollectionView 初始化
 
@@ -232,8 +226,8 @@
     collectionView.delegate = collectionView;
     collectionView.dataSource = collectionView;
     
-    collectionView->_layout = flowLayout;
-    collectionView->_superView = onView;
+    collectionView.zzLayout = flowLayout;
+    collectionView.superView = onView;
     if (onView) {
         [onView addSubview:collectionView];
         if (constraintBlock) {
