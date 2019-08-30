@@ -110,17 +110,27 @@
     switch (toastType) {
         case ZZToastTypeSuccess:
         {
-            path = [[NSBundle mainBundle] pathForResource:@"lottie_toast_success" ofType:@"json"];
+            path = [[NSBundle bundleForClass:[ZZWidgetSpinnerView class]] pathForResource:@"lottie_toast_success" ofType:@"json"];
             break;
         }
         case ZZToastTypeError:
         {
-            path = [[NSBundle mainBundle] pathForResource:@"lottie_toast_error" ofType:@"json"];
+            path = [[NSBundle bundleForClass:[ZZWidgetSpinnerView class]] pathForResource:@"lottie_toast_error" ofType:@"json"];
             break;
         }
         case ZZToastTypeWarning:
         {
-            path = [[NSBundle mainBundle] pathForResource:@"lottie_toast_warning" ofType:@"json"];
+            path = [[NSBundle bundleForClass:[ZZWidgetSpinnerView class]] pathForResource:@"lottie_toast_warning" ofType:@"json"];
+            break;
+        }
+        case ZZToastTypeSignSuccess:
+        {
+            path = [[NSBundle bundleForClass:[ZZWidgetSpinnerView class]] pathForResource:@"lottie_toast_sign" ofType:@"json"];
+            break;
+        }
+        case ZZToastTypeText:
+        {
+            path = nil;
             break;
         }
         default:

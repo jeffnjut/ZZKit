@@ -15,9 +15,11 @@
 @class ZZPopupBlurView;
 
 typedef NS_ENUM(NSInteger, ZZToastType) {
-    ZZToastTypeSuccess,  // 成功
-    ZZToastTypeError,    // 异常
-    ZZToastTypeWarning   // 警告
+    ZZToastTypeText,       // 纯文本消息
+    ZZToastTypeSuccess,    // 成功
+    ZZToastTypeError,      // 异常
+    ZZToastTypeWarning,    // 警告
+    ZZToastTypeSignSuccess // 签到成功
 };
 
 typedef NS_ENUM(NSInteger, ZZSpinnerLoadingStyle) {
