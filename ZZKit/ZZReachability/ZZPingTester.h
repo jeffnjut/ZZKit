@@ -11,6 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ZZPingStatus) {
+    
+    ZZPingStatusReceived,     // 正常接收到Ping Response
+    ZZPingStatusSendTimeout,  // Ping超时
+    ZZPingStatusSendFailed    // 网络异常或Host名称异常导致Ping没有正确发送
+    
+};
+
 @interface ZZPingItem : NSObject
 
 @property(nonatomic, assign) uint16_t sequence;
@@ -21,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-- (void)zz_didPing:(float)time error:(nullable NSError*) error;
+- (void)zz_didPing:(float)time status:(ZZPingStatus)status error:(nullable NSError*) error;
 
 @end
 
@@ -32,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, NSError *error))block NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, ZZPingStatus status, NSError *error))block NS_DESIGNATED_INITIALIZER;
 
 /**
  *  开始Ping

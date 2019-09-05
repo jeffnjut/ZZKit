@@ -97,7 +97,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"A"];
     }
     NSString *url = [self.dataSource objectAtIndex:indexPath.row];
-    [cell.iv zz_load:url placeholderImage:@"logo".zz_image placeholderBackgroundColor:[UIColor lightGrayColor] finishedBackgroundColor:[UIColor whiteColor] placeholderContentMode:UIViewContentModeScaleAspectFit finishedContentMode:UIViewContentModeScaleAspectFit completion:^(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url) {
+    [cell.iv zz_load:url placeholderImage:@"logo".zz_image backgroundColor:[UIColor lightGrayColor] contentMode:UIViewContentModeScaleAspectFit completion:^(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url) {
         
     }];
     return cell;

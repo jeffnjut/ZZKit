@@ -25,13 +25,13 @@
 
 @property (nonatomic, strong) NSMutableArray<ZZPingItem*>* pingItems;
 
-@property (nonatomic, copy) void(^block)(float time, NSError *error);
+@property (nonatomic, copy) void(^block)(float time, ZZPingStatus status, NSError *error);
 
 @end
 
 @implementation ZZPingTester
 
-- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, NSError *error))block {
+- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, ZZPingStatus status, NSError *error))block {
     
     if(self = [super init]) {
         self.host = hostName;
@@ -96,12 +96,12 @@
         {
             NSLog(@"超时---->");
             [self.pingItems removeObject:item];
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:error:)])
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:status:error:)])
             {
-                [self.delegate zz_didPing:0 error:[NSError errorWithDomain:NSURLErrorDomain code:111 userInfo:nil]];
+                [self.delegate zz_didPing:0 status:ZZPingStatusSendTimeout error:[NSError errorWithDomain:NSURLErrorDomain code:111 userInfo:nil]];
             }
             if (self.block != nil) {
-                self.block(0, [NSError errorWithDomain:NSURLErrorDomain code:111 userInfo:nil]);
+                self.block(0, ZZPingStatusSendTimeout, [NSError errorWithDomain:NSURLErrorDomain code:111 userInfo:nil]);
             }
         }
     });
@@ -109,11 +109,11 @@
 - (void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet sequenceNumber:(uint16_t)sequenceNumber error:(NSError *)error {
     
     NSLog(@"发包失败--->%@", error);
-    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:error:)]) {
-        [self.delegate zz_didPing:0 error:error];
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:status:error:)]) {
+        [self.delegate zz_didPing:0 status:ZZPingStatusSendFailed error:error];
     }
     if (self.block != nil) {
-        self.block(0, error);
+        self.block(0, ZZPingStatusSendFailed, error);
     }
 }
 
@@ -125,11 +125,11 @@
             [self.pingItems removeObject:obj];
         }
     }];
-    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:error:)]) {
-        [self.delegate zz_didPing:delayTime error:nil];
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(zz_didPing:status:error:)]) {
+        [self.delegate zz_didPing:delayTime status:ZZPingStatusReceived error:nil];
     }
     if (self.block != nil) {
-        self.block(delayTime, nil);
+        self.block(delayTime, ZZPingStatusReceived, nil);
     }
 }
 
