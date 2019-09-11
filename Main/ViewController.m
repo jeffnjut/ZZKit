@@ -28,6 +28,8 @@
 #import "TestMarkdownViewController.h"
 #import "TestTagViewVC.h"
 #import "TestWebImageVC.h"
+#import "TestCollectionViewBasicVC.h"
+#import "TestCollectionCardVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -48,26 +50,28 @@
     self.tableView.rowHeight = 48.0;
     [self.view addSubview:self.tableView];
     
-    self.dataSource = @[@[@"测试字体",[TestFontVC class]],
-                        @[@"测试GCD",[TestGCDVC class]],
-                        @[@"测试RunLoop",[TestRunLoopVC class]],
-                        @[@"测试NSOperationQueue",[TestOperationQueueVC class]],
-                        @[@"测试ZZDispatchQueue",[TestZZDispatchQueueVC class]],
-                        @[@"测试UIResponder点击",[TestUIResponderBlockVC class]],
-                        @[@"测试UIImage",[TestUIimageVC class]],
-                        @[@"测试Notification",[TestNotificationVC class]],
-                        @[@"测试ZZTimer",[TestTimerVC class]],
-                        @[@"测试UI",[TestUIVC class]],
-                        @[@"测试ZZTableView",[TestZZTableViewVC class]],
-                        @[@"测试ZZCollectionView",[TestZZCollectionViewVC class]],
-                        @[@"测试Widget小组件",[TestWidgetVC class]],
-                        @[@"测试ZZWebView",[TestZZWebView class]],
-                        @[@"测试Country、Region、City选择",[TestCountryVC class]],
-                        @[@"测试显示图片Banner",[NetImagesBannerViewController class]],
-                        @[@"测试显示图片ColloctionView",[NetImagesCollectionViewController class]],
-                        @[@"测试Markdonw语法",[TestMarkdownViewController class]],
-                        @[@"测试TagView",[TestTagViewVC class]],
-                        @[@"测试Web Image",[TestWebImageVC class]]];
+    self.dataSource = @[@[@"测试字体", [TestFontVC class]],
+                        @[@"测试GCD", [TestGCDVC class]],
+                        @[@"测试RunLoop", [TestRunLoopVC class]],
+                        @[@"测试NSOperationQueue", [TestOperationQueueVC class]],
+                        @[@"测试ZZDispatchQueue", [TestZZDispatchQueueVC class]],
+                        @[@"测试UIResponder点击", [TestUIResponderBlockVC class]],
+                        @[@"测试UIImage", [TestUIimageVC class]],
+                        @[@"测试Notification", [TestNotificationVC class]],
+                        @[@"测试ZZTimer", [TestTimerVC class]],
+                        @[@"测试UI", [TestUIVC class]],
+                        @[@"测试ZZTableView", [TestZZTableViewVC class]],
+                        @[@"测试ZZCollectionView", [TestZZCollectionViewVC class]],
+                        @[@"测试CollectionView Basic", [TestCollectionViewBasicVC class]],
+                        @[@"测试CollectionView Card", [TestCollectionCardVC class]],
+                        @[@"测试Widget小组件", [TestWidgetVC class]],
+                        @[@"测试ZZWebView", [TestZZWebView class]],
+                        @[@"测试Country、Region、City选择", [TestCountryVC class]],
+                        @[@"测试显示图片Banner", [NetImagesBannerViewController class]],
+                        @[@"测试显示图片ColloctionView", [NetImagesCollectionViewController class]],
+                        @[@"测试Markdonw语法", [TestMarkdownViewController class]],
+                        @[@"测试TagView", [TestTagViewVC class]],
+                        @[@"测试Web Image", [TestWebImageVC class]]];
     
     [self.tableView reloadData];
 }

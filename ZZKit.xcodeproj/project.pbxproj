@@ -127,6 +127,14 @@
 		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
 		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
+		E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */; };
+		E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24642328999100F7C8FE /* BasicHeaderView.m */; };
+		E7CE24672328999100F7C8FE /* BasicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE24652328999100F7C8FE /* BasicHeaderView.xib */; };
+		E7CE246B232899AD00F7C8FE /* BasicFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE2469232899AD00F7C8FE /* BasicFooterView.m */; };
+		E7CE246C232899AD00F7C8FE /* BasicFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE246A232899AD00F7C8FE /* BasicFooterView.xib */; };
+		E7CE2470232899C100F7C8FE /* BasicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE246E232899C100F7C8FE /* BasicCollectionViewCell.m */; };
+		E7CE2471232899C100F7C8FE /* BasicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE246F232899C100F7C8FE /* BasicCollectionViewCell.xib */; };
+		E7CE24742328D1CD00F7C8FE /* TestCollectionCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24732328D1CD00F7C8FE /* TestCollectionCardVC.m */; };
 		E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */; };
 		E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */; };
 		E7D758522303B9FD008FE69F /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D758502303B9FD008FE69F /* SimplePing.m */; };
@@ -384,6 +392,19 @@
 		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
 		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
 		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
+		E7CE24602328962200F7C8FE /* TestCollectionViewBasicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewBasicVC.h; sourceTree = "<group>"; };
+		E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCollectionViewBasicVC.m; sourceTree = "<group>"; };
+		E7CE24632328999100F7C8FE /* BasicHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicHeaderView.h; sourceTree = "<group>"; };
+		E7CE24642328999100F7C8FE /* BasicHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicHeaderView.m; sourceTree = "<group>"; };
+		E7CE24652328999100F7C8FE /* BasicHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicHeaderView.xib; sourceTree = "<group>"; };
+		E7CE2468232899AD00F7C8FE /* BasicFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicFooterView.h; sourceTree = "<group>"; };
+		E7CE2469232899AD00F7C8FE /* BasicFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicFooterView.m; sourceTree = "<group>"; };
+		E7CE246A232899AD00F7C8FE /* BasicFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicFooterView.xib; sourceTree = "<group>"; };
+		E7CE246D232899C100F7C8FE /* BasicCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicCollectionViewCell.h; sourceTree = "<group>"; };
+		E7CE246E232899C100F7C8FE /* BasicCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicCollectionViewCell.m; sourceTree = "<group>"; };
+		E7CE246F232899C100F7C8FE /* BasicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicCollectionViewCell.xib; sourceTree = "<group>"; };
+		E7CE24722328D1CD00F7C8FE /* TestCollectionCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollectionCardVC.h; sourceTree = "<group>"; };
+		E7CE24732328D1CD00F7C8FE /* TestCollectionCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCollectionCardVC.m; sourceTree = "<group>"; };
 		E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOperationQueueVC.h; sourceTree = "<group>"; };
 		E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOperationQueueVC.m; sourceTree = "<group>"; };
 		E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestOperationQueueVC.xib; sourceTree = "<group>"; };
@@ -653,6 +674,26 @@
 			path = ZZCountryController;
 			sourceTree = "<group>";
 		};
+		E7CE245F2328957E00F7C8FE /* TestCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E7CE24602328962200F7C8FE /* TestCollectionViewBasicVC.h */,
+				E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */,
+				E7CE24722328D1CD00F7C8FE /* TestCollectionCardVC.h */,
+				E7CE24732328D1CD00F7C8FE /* TestCollectionCardVC.m */,
+				E7CE24632328999100F7C8FE /* BasicHeaderView.h */,
+				E7CE24642328999100F7C8FE /* BasicHeaderView.m */,
+				E7CE24652328999100F7C8FE /* BasicHeaderView.xib */,
+				E7CE2468232899AD00F7C8FE /* BasicFooterView.h */,
+				E7CE2469232899AD00F7C8FE /* BasicFooterView.m */,
+				E7CE246A232899AD00F7C8FE /* BasicFooterView.xib */,
+				E7CE246D232899C100F7C8FE /* BasicCollectionViewCell.h */,
+				E7CE246E232899C100F7C8FE /* BasicCollectionViewCell.m */,
+				E7CE246F232899C100F7C8FE /* BasicCollectionViewCell.xib */,
+			);
+			path = TestCollectionView;
+			sourceTree = "<group>";
+		};
 		E7DC5C0A229CCC8600ED8733 = {
 			isa = PBXGroup;
 			children = (
@@ -838,6 +879,7 @@
 			isa = PBXGroup;
 			children = (
 				E767600122AFB2060044B9AD /* test.bundle */,
+				E7CE245F2328957E00F7C8FE /* TestCollectionView */,
 				E77ADD3F22BBAB9D0015DB1B /* TestFP */,
 				E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */,
 				E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */,
@@ -1034,6 +1076,7 @@
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
 				E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */,
 				E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */,
+				E7CE2471232899C100F7C8FE /* BasicCollectionViewCell.xib in Resources */,
 				E760BED322F9783400944380 /* icon_right_arrow@2x.png in Resources */,
 				E7751BCC22F42DDB00ECD06D /* ZZWidgetMaskView.bundle in Resources */,
 				E744128822F2BABE00773562 /* lottie_toast_error.json in Resources */,
@@ -1051,6 +1094,7 @@
 				E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
+				E7CE246C232899AD00F7C8FE /* BasicFooterView.xib in Resources */,
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E759CDE822CE1FEB001EC3AE /* test.js in Resources */,
 				E760BED622F9783400944380 /* icon_right_arrow@3x.png in Resources */,
@@ -1073,6 +1117,7 @@
 				E760BED522F9783400944380 /* icon_network_error@2x.png in Resources */,
 				E760BED722F9783400944380 /* icon_wifi_connect@3x.png in Resources */,
 				E7E18AF822F30F64007451B4 /* toast_close_active@2x.png in Resources */,
+				E7CE24672328999100F7C8FE /* BasicHeaderView.xib in Resources */,
 				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1221,12 +1266,14 @@
 				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
+				E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */,
 				E788656822B21B0500B20F3E /* ZZWidgetTagsView.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
 				E78E767122C3633E00D1EF5A /* ZZCNRegionController.m in Sources */,
 				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
 				E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
+				E7CE246B232899AD00F7C8FE /* BasicFooterView.m in Sources */,
 				E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */,
 				E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */,
 				E788655822B218C600B20F3E /* ZZReachability.m in Sources */,
@@ -1234,13 +1281,16 @@
 				E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */,
 				E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
+				E7CE24742328D1CD00F7C8FE /* TestCollectionCardVC.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
+				E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */,
 				E760BEE722F9797000944380 /* ZZNetworkErrorDescViewController.m in Sources */,
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
 				E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
 				E76B8B672313E4C3001E4C34 /* TestImageTableViewCell.m in Sources */,
+				E7CE2470232899C100F7C8FE /* BasicCollectionViewCell.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E7751BD922F4413900ECD06D /* ImageClCell.m in Sources */,
