@@ -75,6 +75,14 @@
                 _zzKey = [_zzKey stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
             }
             _zzURL = [NSURL URLWithString:_zzKey];
+        }else if (URL == nil) {
+            // 设置Placeholder背景颜色
+            if (placeholderBackgroundColor) {
+                self.backgroundColor = placeholderBackgroundColor;
+            }
+            self.contentMode = placeholderContentMode;
+            self.image = placeholderImage;
+            return;
         }else {
             NSAssert(NO, @"UIImageView : imageURL 参数不正确");
         }
