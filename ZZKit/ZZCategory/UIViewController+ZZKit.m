@@ -11,6 +11,7 @@
 #import "UIControl+ZZKit_Blocks.h"
 #import "NSAttributedString+ZZKit.h"
 #import "NSString+ZZKit.h"
+#import "UIView+ZZKit_Blocks.h"
 
 #pragma mark - UIViewController Extension
 
@@ -114,6 +115,9 @@
     }else if ([object isKindOfClass:[UIView class]]) {
         // 自定义类型
         customView = object;
+        [customView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+            action == nil ? : action();
+        }];
     }else{
         return;
     }
@@ -424,7 +428,7 @@
  *  消失或者Offset页[默认动画转场]
  */
 - (void)zz_dismissOffset:(NSUInteger)offset {
-    [self zz_dismissOffset:YES];
+    [self zz_dismissOffset:offset animated:YES];
 }
 
 /**
@@ -453,7 +457,7 @@
         if (self.navigationController != nil) {
             if ([self.navigationController.viewControllers count] > 1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIViewController *toVC = [((UINavigationController *)weakSelf).viewControllers objectAtIndex:((UINavigationController *)weakSelf).viewControllers.count - 1 - offset];
+                    UIViewController *toVC = [weakSelf.navigationController.viewControllers objectAtIndex:weakSelf.navigationController.viewControllers.count - 1 - offset];
                     [weakSelf.navigationController popToViewController:toVC animated:animated];
                 });
             }else {
@@ -598,6 +602,14 @@
         }else{
             shadowImageView.backgroundColor = bottomLineColor;
             shadowImageView.hidden = NO;
+        }
+    }else {
+        if (bottomLineColor == nil) {
+            [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+            [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        }else {
+            [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+            [self.navigationController.navigationBar setShadowImage:nil];
         }
     }
 }

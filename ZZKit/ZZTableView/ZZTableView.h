@@ -204,7 +204,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZZTableViewHeaderFooterView : UITableViewHeaderFooterView
 
 // 数据
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzData;
+@property (nonatomic, strong) __kindof ZZTableViewHeaderFooterViewDataSource *zzData;
 
 // 用户自定义点击Block
 @property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view);

@@ -18,10 +18,10 @@ Pod::Spec.new do |s|
         ss.dependency     'ReactiveObjC'
         ss.dependency     'Masonry'
         ss.dependency     'MBProgressHUD'
-        ss.dependency     'lottie-ios'
+        ss.dependency     'lottie-ios', '~> 2.5.3'
         ss.dependency     'SDWebImage', '~> 4.4.7'
-        ss.dependency     'YYImage'
         ss.dependency     'YYModel'
+        ss.dependency     'YYImage'
         ss.dependency     'OpenUDID'
     end
     

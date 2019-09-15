@@ -33,7 +33,7 @@
  */
 - (MBProgressHUD *)zz_startLoading {
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"gif_loading_shopping" ofType:@"gif"];
+    NSString *path = [[NSBundle bundleForClass:[ZZWidgetSpinnerView class]] pathForResource:@"gif_loading_shopping" ofType:@"gif"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return [self zz_startLoading:data backgroundColor:[UIColor clearColor] bezelViewColor:[UIColor clearColor] gifViewColor:[UIColor clearColor] boderWidth:0.5 borderColor:@"#E6E6E6".zz_color cornerRadius:2.0 userInteractionEnabled:NO];
 }

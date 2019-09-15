@@ -88,7 +88,57 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZDevice : UIDevice
 
+/**
+ *  屏幕宽度
+ */
++ (CGFloat)zz_screenWidth;
 
+/**
+ *  屏幕高度
+ */
++ (CGFloat)zz_screenHeight;
+
+/**
+ *  屏幕尺寸
+ */
++ (CGRect)zz_screenBounds;
+
+/**
+ *  屏幕正中心
+ */
++ (CGPoint)zz_screenCenterPoint;
+
+/**
+ *  不同机型的屏幕宽度
+ */
++ (CGFloat)zz_screenWidth:(ZZDeviceProductType)type;
+
+#pragma mark - 设备产品名称、类型
+
+/**
+ *  是否是iPad
+ */
++ (BOOL)zz_isIpadSeries;
+
+/**
+ *  是否是iPhone
+ */
++ (BOOL)zz_isIphoneSeries;
+
+/**
+ *  是否是某个iPhone类型
+ */
++ (BOOL)zz_isIphone:(ZZDeviceProductType)type;
+
+/**
+ *  不同机型的屏幕宽度
+ */
++ (CGFloat)zz_screenHeight:(ZZDeviceProductType)type;
+
+/**
+ *  手机设备型号
+ */
++ (NSString *)zz_productName;
 
 @end
 

@@ -125,6 +125,7 @@
         pthread_mutex_init(&_lock, NULL);
         _dataSource = [[NSMutableArray alloc] init];
         _zzTableViewSectionIndexTitleHeight = 32.0;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
