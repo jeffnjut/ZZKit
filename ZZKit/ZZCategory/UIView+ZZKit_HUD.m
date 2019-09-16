@@ -489,7 +489,7 @@
 /**
  *  Popup动画
  */
-- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(NSArray<NSNumber *> *)springs actionBlock:(void(^)(id value))actionBlock {
+- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
 
     if (popupView == nil || popupView.zzAppearAnimationBlock == nil || popupView.zzDisappearAnimationBlock == nil) {
         return;
@@ -519,7 +519,6 @@
     }
     popupView.zzAppearAnimationBlock();
 }
-
 
 @end
 
@@ -1160,7 +1159,8 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     }
 }
 
-- (IBAction)tapClosePopupView:(id)sender {
+// 关闭PopupView
+- (IBAction)zz_tapClosePopupView:(nullable id)sender {
     
     self.zzDisappearAnimationBlock == nil ? : self.zzDisappearAnimationBlock(nil);
 }

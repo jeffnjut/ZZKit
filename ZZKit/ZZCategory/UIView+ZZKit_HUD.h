@@ -149,7 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Popup动画
  */
-- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(NSArray<NSNumber *> *)springs actionBlock:(void(^)(id value))actionBlock;
+- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock;
 
 @end
 
@@ -260,7 +260,8 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
 // Spring动画参数Velocity
 @property (nonatomic, strong) NSNumber *zzSpringVelocity;
 
-- (IBAction)tapClosePopupView:(id)sender;
+// 关闭PopupView
+- (IBAction)zz_tapClosePopupView:(nullable id)sender;
 
 @end
 
