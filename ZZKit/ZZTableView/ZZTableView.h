@@ -41,6 +41,26 @@ typedef NS_ENUM(NSInteger, ZZTableViewCellAction) {
     ZZTableViewCellActionDelete,          // 删除Cell
 };
 
+// 定义TableView滚动事件类型
+typedef NS_ENUM(NSInteger, ZZTableViewScrollAction) {
+    // any offset changes
+    ZZTableViewScrollActionDidScroll,
+    // called on start of dragging (may require some time and or distance to move)
+    ZZTableViewScrollActionWillBeginDragging,
+    // called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
+    ZZTableViewScrollActionWillEndDragging,
+    // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+    ZZTableViewScrollActionDidEndDragging,
+    // called on finger up as we are moving
+    ZZTableViewScrollActionWillBeginDecelerating,
+    // called when scroll view grinds to a halt
+    ZZTableViewScrollActionDidEndDecelerating,
+    // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+    ZZTableViewScrollActionDidEndScrollingAnimation,
+    // called when scrolling animation finished. may be called immediately if already at top
+    ZZTableViewScrollActionDidScrollToTop
+};
+
 // ZZTableView Void Block定义
 typedef void (^ZZTableViewVoidBlock)(void);
 
@@ -53,6 +73,13 @@ typedef void (^ZZTableViewCellActionBlock)(__weak ZZTableView * _Nonnull tableVi
                                            __kindof ZZTableViewCell * _Nullable cell,
                                            __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData,
                                            __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView);
+
+// TableView的滚动定义
+typedef void (^ZZTableViewScrollActionBlock)(__weak ZZTableView * _Nonnull tableView,
+                                             ZZTableViewScrollAction action,
+                                             CGPoint velocity,
+                                             CGPoint targetContentOffset,
+                                             BOOL decelerate);
 
 // 移动Cell Block定义
 typedef void (^ZZTableViewCellMoveBlock)(__weak ZZTableView * _Nonnull tableView,
@@ -105,6 +132,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Cell 响应事件Block
 @property (nonatomic, copy) ZZTableViewCellActionBlock zzActionBlock;
+
+// TableView滚动事件Block
+@property (nonatomic, copy) ZZTableViewScrollActionBlock zzScrollBlock;
 
 // Cell 删除确认Block
 @property (nonatomic, copy) ZZTableViewDeleteConfirmBlock zzDeletionConfirmBlock;

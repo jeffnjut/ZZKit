@@ -709,6 +709,54 @@
 
 #pragma mark - UIScrollView
 
+// any offset changes
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionDidScroll, CGPointZero, CGPointZero, NO);
+}
+
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionWillBeginDragging, CGPointZero, CGPointZero, NO);
+}
+
+// called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0) {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionWillEndDragging, velocity, CGPointMake(targetContentOffset->x, targetContentOffset->y), NO);
+}
+
+// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionDidEndDragging, CGPointZero, CGPointZero, decelerate);
+}
+
+// called on finger up as we are moving
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionWillBeginDecelerating, CGPointZero, CGPointZero, NO);
+}
+
+// called when scroll view grinds to a halt
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionDidEndDecelerating, CGPointZero, CGPointZero, NO);
+}
+
+// called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionDidEndScrollingAnimation, CGPointZero, CGPointZero, NO);
+}
+
+// called when scrolling animation finished. may be called immediately if already at top
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    
+    self.zzScrollBlock == nil ? : self.zzScrollBlock(self, ZZTableViewScrollActionDidScrollToTop, CGPointZero, CGPointZero, NO);
+}
+
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
