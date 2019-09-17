@@ -278,4 +278,18 @@
     return @"";
 }
 
+/**
+ *  是否是模拟器
+ */
++ (BOOL)zz_isSimulator {
+    
+    if (TARGET_IPHONE_SIMULATOR == 1 && TARGET_OS_IPHONE == 1) {
+        // 模拟器
+        return YES;
+    }else {
+        // 真机
+        return NO;
+    }
+}
+
 @end

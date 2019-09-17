@@ -140,6 +140,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)zz_productName;
 
+/**
+ *  是否是模拟器
+ */
++ (BOOL)zz_isSimulator;
+
 @end
 
 NS_ASSUME_NONNULL_END
