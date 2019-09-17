@@ -231,7 +231,7 @@
         
     }
     // 回调
-    completion == nil ? : completion(self, image, data, nil, key);
+    completion == nil ? : completion(self, self.image, data, nil, key);
 }
 
 #pragma mark - Private

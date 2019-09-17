@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, ZZPingStatus) {
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, ZZPingStatus status, NSError *error))block NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(nullable void(^)(float time, ZZPingStatus status, NSError *error))block NS_DESIGNATED_INITIALIZER;
 
 /**
  *  开始Ping

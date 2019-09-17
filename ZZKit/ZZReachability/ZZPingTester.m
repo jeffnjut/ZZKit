@@ -31,7 +31,7 @@
 
 @implementation ZZPingTester
 
-- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(void(^)(float time, ZZPingStatus status, NSError *error))block {
+- (instancetype)initWithHostName:(nonnull NSString *)hostName block:(nullable void(^)(float time, ZZPingStatus status, NSError *error))block {
     
     if(self = [super init]) {
         self.host = hostName;
