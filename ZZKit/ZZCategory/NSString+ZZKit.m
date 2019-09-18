@@ -861,4 +861,14 @@
     return [OpenUDID value];
 }
 
+#pragma mark - UUID
+
+/**
+ *  Error - 转Error
+ */
+- (NSError *)zz_error {
+    
+    return [NSError errorWithDomain:self code:-1 userInfo:nil];
+}
+
 @end

@@ -111,6 +111,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTableView : UITableView
 
+// 数据源
+@property(nonatomic, strong, readonly) NSMutableArray *zzDataSource;
+
 /**
  *  ZZTableViewCellEditingStyleNone                     editing = YES, UITableViewCellEditingStyleNone
  *  ZZTableViewCellEditingStyleInsert                   editing = YES, UITableViewCellEditingStyleInsert

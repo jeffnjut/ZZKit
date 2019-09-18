@@ -303,6 +303,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)zz_uuidOpenUDID;
 
+#pragma mark - UUID
+
+/**
+ *  Error - 转Error
+ */
+- (NSError *)zz_error;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -18,17 +18,15 @@
 #pragma mark - ZZTableView类
 
 @interface ZZTableView () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
-{
-@private
-    // 锁
-    pthread_mutex_t _lock;
-    // 数据源
-    NSMutableArray *_dataSource;
-    // 是否Section数据
-    BOOL _sectionEnabled;
-    // SuperView
-    UIView *_superView;
-}
+
+// 锁
+@property(nonatomic, assign) pthread_mutex_t lock;
+// 数据源
+@property(nonatomic, strong) NSMutableArray *zzDataSource;
+// 是否Section数据
+@property(nonatomic, assign) BOOL sectionEnabled;
+// SuperView
+@property(nonatomic, weak) UIView *superView;
 
 @end
 
@@ -97,8 +95,8 @@
             
             // 确认后删除
             ZZTableViewVoidBlock _deleteAction = ^{
-                if (strongSelf->_sectionEnabled) {
-                    ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:_indexPath.section];
+                if (strongSelf.sectionEnabled) {
+                    ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:_indexPath.section];
                     [sectionObject.zzCellDataSource zz_arrayRemoveObjectAtIndex:_indexPath.row];
                 }else {
                     [strongSelf zz_removeDataSourceObjectAtIndex:_indexPath.row];
@@ -123,7 +121,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         pthread_mutex_init(&_lock, NULL);
-        _dataSource = [[NSMutableArray alloc] init];
+        _zzDataSource = [[NSMutableArray alloc] init];
         _zzTableViewSectionIndexTitleHeight = 32.0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
@@ -151,7 +149,7 @@
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     if (onView != nil) {
-        tableView->_superView = onView;
+        tableView.superView = onView;
         [onView addSubview:tableView];
         if (constraintBlock != nil) {
             [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -170,7 +168,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayAddObject:data];
+    [_zzDataSource zz_arrayAddObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -178,7 +176,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayInsertObject:anObject atIndex:index];
+    [_zzDataSource zz_arrayInsertObject:anObject atIndex:index];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -186,7 +184,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveObject:data];
+    [_zzDataSource zz_arrayRemoveObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -194,7 +192,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveObjectAtIndex:index];
+    [_zzDataSource zz_arrayRemoveObjectAtIndex:index];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -202,7 +200,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveFirstObject];
+    [_zzDataSource zz_arrayRemoveFirstObject];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -210,7 +208,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayRemoveLastObject];
+    [_zzDataSource zz_arrayRemoveLastObject];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -218,7 +216,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource removeAllObjects];
+    [_zzDataSource removeAllObjects];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -226,7 +224,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayReplaceObjectAtIndex:index withObject:data];
+    [_zzDataSource zz_arrayReplaceObjectAtIndex:index withObject:data];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -234,7 +232,7 @@
     
     pthread_mutex_lock(&_lock);
     self.scrollEnabled = NO;
-    [_dataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
+    [_zzDataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
     pthread_mutex_unlock(&_lock);
 }
 
@@ -244,9 +242,9 @@
 - (void)zz_refresh {
     
     pthread_mutex_lock(&_lock);
-    if ([_dataSource zz_arrayContainsClassType:[ZZTableSectionObject class]]) {
+    if ([_zzDataSource zz_arrayContainsClassType:[ZZTableSectionObject class]]) {
         _sectionEnabled = YES;
-        for (ZZTableSectionObject *sectionObject in _dataSource) {
+        for (ZZTableSectionObject *sectionObject in _zzDataSource) {
             if (![sectionObject isKindOfClass:[ZZTableSectionObject class]]) {
                 NSAssert(NO, @"ZZTableView ## dataSource数据类型不一致");
                 break;
@@ -254,7 +252,7 @@
         }
     }else {
         _sectionEnabled = NO;
-        for (ZZTableViewCellDataSource *ds in _dataSource) {
+        for (ZZTableViewCellDataSource *ds in _zzDataSource) {
             if (![ds isKindOfClass:[ZZTableViewCellDataSource class]]) {
                 NSAssert(NO, @"ZZTableView ## dataSource数据类型不一致");
                 break;
@@ -271,7 +269,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     if (_sectionEnabled) {
-        return _dataSource.count;
+        return _zzDataSource.count;
     }
     return 1;
 }
@@ -279,9 +277,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (_sectionEnabled) {
-        return ((ZZTableSectionObject *)_dataSource[section]).zzCellDataSource.count;
+        return ((ZZTableSectionObject *)_zzDataSource[section]).zzCellDataSource.count;
     }else {
-        return _dataSource.count;
+        return _zzDataSource.count;
     }
 }
 
@@ -289,9 +287,9 @@
     
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     return cellData.zzHeight;
 }
@@ -299,7 +297,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if (_sectionEnabled) {
-        ZZTableViewHeaderFooterViewDataSource *headerData = ((ZZTableSectionObject *)_dataSource[section]).zzHeaderDataSource;
+        ZZTableViewHeaderFooterViewDataSource *headerData = ((ZZTableSectionObject *)_zzDataSource[section]).zzHeaderDataSource;
         if (headerData == nil && self.zzTableViewSectionIndexesBlock != nil) {
             return self.zzTableViewSectionIndexTitleHeight;
         }
@@ -311,7 +309,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
     if (_sectionEnabled) {
-        ZZTableViewHeaderFooterViewDataSource *footerData = ((ZZTableSectionObject *)_dataSource[section]).zzFooterDataSource;
+        ZZTableViewHeaderFooterViewDataSource *footerData = ((ZZTableSectionObject *)_zzDataSource[section]).zzFooterDataSource;
         return footerData.zzHeight;
     }
     return 0;
@@ -321,9 +319,9 @@
     
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     if (!cellData) {
         return nil;
@@ -371,7 +369,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     if (_sectionEnabled) {
-        ZZTableSectionObject *sectionObject = _dataSource[section];
+        ZZTableSectionObject *sectionObject = _zzDataSource[section];
         ZZTableViewHeaderFooterViewDataSource *headerData = sectionObject.zzHeaderDataSource;
         if (headerData) {
             NSString *headerDataClassName = [NSString stringWithUTF8String:object_getClassName(headerData)];
@@ -388,9 +386,9 @@
                 __weak ZZTableView *weakSelf = self;
                 headerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view) {
                     __strong ZZTableView *strongSelf = weakSelf;
-                    if (strongSelf->_sectionEnabled && data != nil && view != nil) {
-                        for (NSUInteger i = 0; i < strongSelf->_dataSource.count; i++) {
-                            ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:i];
+                    if (strongSelf.sectionEnabled && data != nil && view != nil) {
+                        for (NSUInteger i = 0; i < strongSelf.zzDataSource.count; i++) {
+                            ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:i];
                             if (sectionObject.zzHeaderDataSource == nil) {
                                 continue;
                             }
@@ -413,7 +411,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
     if (_sectionEnabled) {
-        ZZTableSectionObject *sectionObject = _dataSource[section];
+        ZZTableSectionObject *sectionObject = _zzDataSource[section];
         ZZTableViewHeaderFooterViewDataSource *footerData = sectionObject.zzFooterDataSource;
         if (footerData) {
             NSString *footerDataClassName = [NSString stringWithUTF8String:object_getClassName(footerData)];
@@ -430,9 +428,9 @@
                 __weak ZZTableView *weakSelf = self;
                 footerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view) {
                     __strong ZZTableView *strongSelf = weakSelf;
-                    if (strongSelf->_sectionEnabled && data != nil && view != nil) {
-                        for (NSUInteger i = 0; i < strongSelf->_dataSource.count; i++) {
-                            ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:i];
+                    if (strongSelf.sectionEnabled && data != nil && view != nil) {
+                        for (NSUInteger i = 0; i < strongSelf.zzDataSource.count; i++) {
+                            ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:i];
                             if (sectionObject.zzFooterDataSource == nil) {
                                 continue;
                             }
@@ -456,9 +454,9 @@
     
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     ZZTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMultiSelect) {
@@ -477,9 +475,9 @@
     if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMultiSelect) {
         ZZTableViewCellDataSource *cellData = nil;
         if (_sectionEnabled) {
-            cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+            cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
         }else {
-            cellData = _dataSource[indexPath.row];
+            cellData = _zzDataSource[indexPath.row];
         }
         ZZTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         cellData.zzSelected = NO;
@@ -493,9 +491,9 @@
     
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     if (cellData == nil) {
         return NO;
@@ -521,9 +519,9 @@
      */
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     if (cellData.zzAllowEditing) {
         switch (self.zzTableViewCellEditingStyle) {
@@ -564,9 +562,9 @@
     __weak typeof(self) weakSelf = self;
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
-        cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     }else {
-        cellData = _dataSource[indexPath.row];
+        cellData = _zzDataSource[indexPath.row];
     }
     if (cellData) {
         ZZTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -578,8 +576,8 @@
             // 确认后删除
             ZZTableViewVoidBlock _deleteAction = ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;
-                if (strongSelf->_sectionEnabled) {
-                    ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:indexPath.section];
+                if (strongSelf.sectionEnabled) {
+                    ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
                     [sectionObject.zzCellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
                 }else {
                     [strongSelf zz_removeDataSourceObjectAtIndex:indexPath.row];
@@ -601,9 +599,9 @@
     if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleMoveSystem) {
         ZZTableViewCellDataSource *cellData = nil;
         if (_sectionEnabled) {
-            cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+            cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
         }else {
-            cellData = _dataSource[indexPath.row];
+            cellData = _zzDataSource[indexPath.row];
         }
         return cellData.zzAllowEditing;
     }
@@ -614,16 +612,16 @@
     
     // 移动交换数据源
     if (_sectionEnabled) {
-        ZZTableSectionObject *section1 = _dataSource[sourceIndexPath.section];
-        ZZTableSectionObject *section2 = _dataSource[destinationIndexPath.section];
+        ZZTableSectionObject *section1 = _zzDataSource[sourceIndexPath.section];
+        ZZTableSectionObject *section2 = _zzDataSource[destinationIndexPath.section];
         ZZTableViewCellDataSource *ds = [section1.zzCellDataSource zz_arrayObjectAtIndex:sourceIndexPath.row];
         [section1.zzCellDataSource zz_arrayRemoveObjectAtIndex:sourceIndexPath.row];
         [section2.zzCellDataSource zz_arrayInsertObject:ds atIndex:destinationIndexPath.row];
     }else {
         pthread_mutex_lock(&_lock);
-        ZZTableViewCellDataSource *ds = _dataSource[sourceIndexPath.row];
-        [_dataSource zz_arrayRemoveObjectAtIndex:sourceIndexPath.row];
-        [_dataSource zz_arrayInsertObject:ds atIndex:destinationIndexPath.row];
+        ZZTableViewCellDataSource *ds = _zzDataSource[sourceIndexPath.row];
+        [_zzDataSource zz_arrayRemoveObjectAtIndex:sourceIndexPath.row];
+        [_zzDataSource zz_arrayInsertObject:ds atIndex:destinationIndexPath.row];
         pthread_mutex_unlock(&_lock);
     }
 }
@@ -648,9 +646,9 @@
     if (self.zzTableViewCellEditingStyle == ZZTableViewCellEditingStyleSlidingDelete) {
         ZZTableViewCellDataSource *cellData = nil;
         if (_sectionEnabled) {
-            cellData = [((ZZTableSectionObject *)_dataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+            cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
         }else {
-            cellData = _dataSource[indexPath.row];
+            cellData = _zzDataSource[indexPath.row];
         }
         
         if (cellData.zzAllowEditing == NO || (cellData && cellData.zzCustomSwipes && cellData.zzCustomSwipes.count == 0)) {
@@ -674,8 +672,8 @@
                 // 确认后删除
                 __block ZZTableViewVoidBlock _deleteAction = ^{
                     __strong typeof(weakSelf) strongSelf = weakSelf;
-                    if (strongSelf->_sectionEnabled) {
-                        ZZTableSectionObject *sectionObject = [strongSelf->_dataSource zz_arrayObjectAtIndex:indexPath.section];
+                    if (strongSelf.sectionEnabled) {
+                        ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
                         [sectionObject.zzCellDataSource zz_arrayRemoveObjectAtIndex:indexPath.row];
                     }else {
                         [strongSelf zz_removeDataSourceObjectAtIndex:indexPath.row];
