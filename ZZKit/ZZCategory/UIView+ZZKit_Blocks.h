@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  删除通用的点击事件
  */
--(void)zz_removeTap;
+- (void)zz_removeTap;
 
 /**
  *  设置通用的长按事件

@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/UIImage+GIF.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/NSData+ImageContentType.h>
+#import <SDWebImage/UIImage+MultiFormat.h>
+#import <YYImage/YYImage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
