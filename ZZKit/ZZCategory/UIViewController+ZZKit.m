@@ -115,9 +115,11 @@
     }else if ([object isKindOfClass:[UIView class]]) {
         // 自定义类型
         customView = object;
-        [customView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
-            action == nil ? : action();
-        }];
+        if (![object isKindOfClass:[UIButton class]] && action != nil) {
+            [customView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                action == nil ? : action();
+            }];
+        }
     }else{
         return;
     }
@@ -274,6 +276,7 @@
  */
 - (void)zz_present:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion {
     @synchronized (self) {
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
         if (![self _isLastPushOver:1.0]) {
             // Present间隔1秒
             return;

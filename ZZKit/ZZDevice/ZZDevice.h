@@ -54,8 +54,8 @@ typedef NS_ENUM(NSInteger, ZZDeviceProductType) {
     ZZDeviceProductTypeIphone5Series = ZZDeviceProductTypeIphone5 | ZZDeviceProductTypeIphone5C | ZZDeviceProductTypeIphone5S | ZZDeviceProductTypeIphoneSE,
     ZZDeviceProductTypeIphone6Series = ZZDeviceProductTypeIphone6 | ZZDeviceProductTypeIphone6S | ZZDeviceProductTypeIphone7 | ZZDeviceProductTypeIphone8,
     ZZDeviceProductTypeIphone6PlusSeries = ZZDeviceProductTypeIphone6Plus | ZZDeviceProductTypeIphone6SPlus | ZZDeviceProductTypeIphone7Plus | ZZDeviceProductTypeIphone8Plus,
-    ZZDeviceProductTypeIphoneXSeries = ZZDeviceProductTypeIphoneX | ZZDeviceProductTypeIphoneXR,
-    ZZDeviceProductTypeIphoneXAllSeries = ZZDeviceProductTypeIphoneX | ZZDeviceProductTypeIphoneXR | ZZDeviceProductTypeIphoneXMax | ZZDeviceProductTypeIphoneXR,
+    ZZDeviceProductTypeIphoneXSeries = ZZDeviceProductTypeIphoneX | ZZDeviceProductTypeIphoneXS,
+    ZZDeviceProductTypeIphoneXAllSeries = ZZDeviceProductTypeIphoneX | ZZDeviceProductTypeIphoneXS | ZZDeviceProductTypeIphoneXMax | ZZDeviceProductTypeIphoneXR,
     
     ZZDeviceProductTypeIPadSeries = 0x10000000
 };

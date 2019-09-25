@@ -21,6 +21,26 @@ typedef NS_ENUM(NSInteger, ZZCollectionViewCellAction) {
     ZZCollectionViewCellActionCustomTapped,    // 点击Cell上自定义事件（按钮或其它部件的事件监听）
 };
 
+// 定义CollectionView滚动事件类型
+typedef NS_ENUM(NSInteger, ZZCollectionViewScrollAction) {
+    // any offset changes
+    ZZCollectionViewScrollActionDidScroll,
+    // called on start of dragging (may require some time and or distance to move)
+    ZZCollectionViewScrollActionWillBeginDragging,
+    // called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
+    ZZCollectionViewScrollActionWillEndDragging,
+    // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+    ZZCollectionViewScrollActionDidEndDragging,
+    // called on finger up as we are moving
+    ZZCollectionViewScrollActionWillBeginDecelerating,
+    // called when scroll view grinds to a halt
+    ZZCollectionViewScrollActionDidEndDecelerating,
+    // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+    ZZCollectionViewScrollActionDidEndScrollingAnimation,
+    // called when scrolling animation finished. may be called immediately if already at top
+    ZZCollectionViewScrollActionDidScrollToTop
+};
+
 // 点击Cell Block定义
 typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnull collectionView,
                                                 NSInteger section,
@@ -28,6 +48,13 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
                                                 ZZCollectionViewCellAction action,
                                                 __kindof ZZCollectionViewCellDataSource * _Nullable cellData,
                                                 __kindof ZZCollectionViewCell * _Nullable cell);
+
+// CollectionView的滚动定义
+typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Nonnull collectionView,
+                                                  ZZCollectionViewScrollAction action,
+                                                  CGPoint velocity,
+                                                  CGPoint targetContentOffset,
+                                                  BOOL decelerate);
 
 #pragma mark - ZZCollectionViewFlowLayoutDelegate
 
@@ -78,11 +105,14 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
 // Cell 响应事件Block
 @property (nonatomic, copy) ZZCollectionViewCellActionBlock zzActionBlock;
 
+// CollectionView滚动事件Block
+@property (nonatomic, copy) ZZCollectionViewScrollActionBlock zzScrollBlock;
+
 // FlowLayout
 @property (nonatomic, strong, readonly) ZZCollectionViewFlowLayout *zzLayout;
 
 /**
- *  创建ZZTableView的方法
+ *  创建ZZCollectionView的方法
  */
 + (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(ZZCollectionViewCellActionBlock)actionBlock;
 
