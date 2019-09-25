@@ -276,7 +276,6 @@
  */
 - (void)zz_present:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion {
     @synchronized (self) {
-        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
         if (![self _isLastPushOver:1.0]) {
             // Present间隔1秒
             return;
@@ -292,6 +291,7 @@
         }
         __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
+            viewController.modalPresentationStyle = UIModalPresentationFullScreen;
             [weakSelf presentViewController:viewController animated:animated completion:completion];
         });
     }
