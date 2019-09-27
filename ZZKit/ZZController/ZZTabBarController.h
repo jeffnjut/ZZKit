@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) NSUInteger zzPreviousIndex;
 
 // shouldSelectViewController
-@property(nonatomic, copy) BOOL(^zzShouldSelectViewController)(__weak __kindof UITabBarController *tabController, __weak UIViewController *viewController);
+@property(nonatomic, copy) BOOL(^zzShouldSelectViewController)(__weak __kindof ZZTabBarController *tabController, __weak UIViewController *viewController);
 
 // didSelectViewController
-@property(nonatomic, copy) void(^zzDidSelectViewController)(__weak __kindof UITabBarController *tabController, __weak UIViewController *viewController);
+@property(nonatomic, copy) void(^zzDidSelectViewController)(__weak __kindof ZZTabBarController *tabController, __weak UIViewController *viewController);
 
 /**
  *  添加视图控制器

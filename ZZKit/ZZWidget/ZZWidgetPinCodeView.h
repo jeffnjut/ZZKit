@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - ZZWidgetNoPasteTextField
+
+@interface ZZWidgetNoPasteTextField : UITextField
+
+@end
+
+#pragma mark - ZZWidgetPinCodeView
+
 @interface ZZWidgetPinCodeView : UIView
+
+@property (nonatomic, copy, readonly) NSString *text;
 
 /**
  * 创建ZZWidgetPinCodeView

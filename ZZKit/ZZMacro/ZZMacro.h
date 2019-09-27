@@ -26,7 +26,6 @@
 
 #define ZZ_STR_NULL_OR_EMPTY(str)             (str == nil || ((NSString *)str).length == 0)
 #define ZZ_STR_NULL_OR_EMPTY_TRIMSPACE(str)   (str == nil || ((NSString *)str).length == 0 || [((NSString *)str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0)
-#define ZZ_STR_NIL_TO_EMPTY(str)              (str == nil ? @"" : str)
 #define ZZ_STR_FORMAT_OBJECT(object)          (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])
 #define ZZ_STR_FORMAT_INTEGER(num)            [NSString stringWithFormat:@"%ld",(long)(num)]
 #define ZZ_STR_FORMAT_FLOAT_0_DECIMAL(num)    [NSString stringWithFormat:@"%f",num]
@@ -35,6 +34,17 @@
 #define ZZ_STR_FORMAT_FLOAT_3_DECIMAL(num)    [NSString stringWithFormat:@"%.3f",num]
 #define ZZ_STR_FORMAT_FLOAT_4_DECIMAL(num)    [NSString stringWithFormat:@"%.4f",num]
 #define ZZ_STR_FORMAT_FLOAT_5_DECIMAL(num)    [NSString stringWithFormat:@"%.5f",num]
+#define ZZ_STR_MERGE(a,b)                     [NSString stringWithFormat:@"%@%@",a,b]
+#define ZZ_STR_TO_FLOAT_ACCURACY_1(str)       [NSString stringWithFormat:@"%.1f",str]
+#define ZZ_STR_TO_FLOAT_ACCURACY_2(str)       [NSString stringWithFormat:@"%.2f",str]
+#define ZZ_STR_TO_FLOAT_ACCURACY_3(str)       [NSString stringWithFormat:@"%.3f",str]
+#define ZZ_STR_TO_FLOAT_ACCURACY_4(str)       [NSString stringWithFormat:@"%.4f",str]
+
+// Object Helper
+#define ZZ_OBJECT_NIL_TO_EMPTY(object)        (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])
+#define ZZ_OBJECT_ZERO(object)                (object == nil ? NO : object.intValue == 0)
+#define ZZ_OBJECT_IS_KIND(object, class)      [object isKindOfClass:class]
+#define ZZ_OBJECT_IS_MEMBER(object, class)    [object isMemberOfClass:class]
 
 // Resouce Loading Helper
 #pragma mark - Resouce Loading Helper
@@ -76,9 +86,9 @@ pf_l = pf_d;
 // Info.plist Helper
 #pragma mark - Info.plist Helper
 
-#define ZZ_APP_NAME          ZZ_STR_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"])
-#define ZZ_APP_VERSION       ZZ_STR_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"])
-#define ZZ_BUNDLE_VERSION    ZZ_STR_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
+#define ZZ_APP_NAME          ZZ_OBJECT_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"])
+#define ZZ_APP_VERSION       ZZ_OBJECT_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"])
+#define ZZ_BUNDLE_VERSION    ZZ_OBJECT_NIL_TO_EMPTY([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
 
 // Window
 #pragma mark - Window

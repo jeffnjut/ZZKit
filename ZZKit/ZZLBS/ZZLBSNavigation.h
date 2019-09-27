@@ -29,14 +29,25 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZZLBSNavigation : NSObject
 
 /**
- *  唤醒第三方导航
+ *  唤醒第三方导航（CLLocationCoordinate2D + ZZLocationCoordinateSystem）
  */
-+ (void)zz_startNavigaion:(CLLocationCoordinate2D)destinationCoordinate coordinateSystem:(ZZLocationCoordinateSystem)coordinateSystem destinationName:(nonnull NSString *)destinationName yourAppScheme:(nonnull NSString *)yourAppScheme controller:(nonnull UIViewController *)controller maps:(nullable NSArray<NSString *> *)maps block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
++ (void)zz_startNavigaion:(CLLocationCoordinate2D)destinationCoordinate
+         coordinateSystem:(ZZLocationCoordinateSystem)coordinateSystem
+          destinationName:(nonnull NSString *)destinationName
+            yourAppScheme:(nonnull NSString *)yourAppScheme
+               controller:(nonnull UIViewController *)controller
+                     maps:(nullable NSArray<NSString *> *)maps
+                    block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
 
 /**
- *  唤醒第三方导航
+ *  唤醒第三方导航（ZZLocationCoordinate）
  */
-+ (void)zz_startNavigaion:(nonnull ZZLocationCoordinate *)destinationCoordinate destinationName:(nonnull NSString *)destinationName yourAppScheme:(nonnull NSString *)yourAppScheme controller:(nullable UIViewController *)controller maps:(nullable NSArray<NSString *> *)maps block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
++ (void)zz_startNavigaion:(nonnull ZZLocationCoordinate *)destinationCoordinate
+          destinationName:(nonnull NSString *)destinationName
+            yourAppScheme:(nonnull NSString *)yourAppScheme
+               controller:(nullable UIViewController *)controller
+                     maps:(nullable NSArray<NSString *> *)maps
+                    block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
 
 @end
 

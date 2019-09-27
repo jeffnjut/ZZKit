@@ -32,11 +32,6 @@
 
 #pragma mark - ZZWidgetNoPasteTextField
 
-
-@interface ZZWidgetNoPasteTextField : UITextField
-
-@end
-
 @implementation ZZWidgetNoPasteTextField
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {

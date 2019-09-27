@@ -89,6 +89,9 @@
     if (anyObjectClass == [NSArray class] || anyObjectClass == [NSMutableArray class]) {
         return [_json zz_jsonToCocoaObject];
     }else if (anyObjectClass == [NSDictionary class] || anyObjectClass == [NSMutableDictionary class]) {
+        if ([_json isKindOfClass:anyObjectClass]) {
+            return _json;
+        }
         return [_json zz_jsonToCocoaObject];
     }else {
         return [anyObjectClass yy_modelWithJSON:_json];
