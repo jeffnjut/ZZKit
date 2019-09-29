@@ -102,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  加载URL
  */
-- (void)zz_loadRequest:(nonnull NSString *)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields;
+- (void)zz_loadRequest:(nonnull id)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields;
 
 /**
  *  OC执行JavaScript,没有异常捕获
