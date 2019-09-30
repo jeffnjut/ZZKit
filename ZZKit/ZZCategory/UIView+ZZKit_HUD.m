@@ -491,6 +491,15 @@
  */
 - (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
 
+    __weak typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf _popup:popupView blurColor:blurColor userInteractionEnabled:userInteractionEnabled springs:springs actionBlock:actionBlock];
+    });
+}
+
+- (void)_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
+
     if (popupView == nil || popupView.zzAppearAnimationBlock == nil || popupView.zzDisappearAnimationBlock == nil) {
         return;
     }
@@ -504,6 +513,7 @@
         popupView.zzSpringDampingRatio = springs[1];
         popupView.zzSpringVelocity = springs[2];
     }
+    
     ZZPopupBlurView *blurView = nil;
     if (blurColor != nil) {
         blurView = [[ZZPopupBlurView alloc] init];
