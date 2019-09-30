@@ -241,10 +241,15 @@
 /**
  *  加载URL
  */
-- (void)zz_loadRequest:(nonnull NSString *)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
+- (void)zz_loadRequest:(nonnull id)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
     
     ZZ_WEAK_SELF
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest *request = nil;
+    if ([url isKindOfClass:[NSString class]]) {
+        request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    }else if ([url isKindOfClass:[NSURL class]]) {
+        request = [NSMutableURLRequest requestWithURL:url];
+    }
     
     BOOL available11 = NO;
     if (@available(iOS 11.0, *)) {
