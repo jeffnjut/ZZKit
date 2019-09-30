@@ -81,6 +81,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable __kindof UIView*)zz_findView:(nonnull Class)cls;
 
+/**
+ *  根据Class查找UIViewController
+ */
+- (nullable __kindof UIViewController*)zz_findViewController:(nonnull Class)cls;
+
 #pragma mark - Layer
 
 /**

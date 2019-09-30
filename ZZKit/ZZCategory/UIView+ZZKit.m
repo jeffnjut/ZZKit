@@ -318,6 +318,25 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     return nil;
 }
 
+/**
+ *  根据Class查找UIViewController
+ */
+- (nullable __kindof UIViewController*)zz_findViewController:(nonnull Class)cls {
+    
+    if (cls == nil) {
+        return nil;
+    }
+    
+    UIControl *object = (UIControl *)self;
+    do {
+        if ([object isKindOfClass:cls]) {
+            return (UIViewController *)object;
+        }
+        object = (UIControl *)object.nextResponder;
+    } while (object);
+    return nil;
+}
+
 #pragma mark - Layer
 
 /**
