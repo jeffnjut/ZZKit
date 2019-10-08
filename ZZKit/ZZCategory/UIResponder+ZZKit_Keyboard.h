@@ -1,5 +1,5 @@
 //
-//  UIControl+ZZKit_Keyboard.h
+//  UIResponder+ZZKit_Keyboard.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2019/6/10.
@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIControl (ZZKit_Keyboard)
+@interface UIResponder (ZZKit_Keyboard)
 
 /**
  *  创建UITextField和UITextView的键盘InputAccessoryView
  */
-- (void)zz_createInputAccessory:(UIView *(^)(void))inputAccessoryBlock;
+- (void)zz_createInputAccessory:(UIView *(^)(UIResponder * _Nonnull responder))inputAccessoryBlock;
 
 @end
 

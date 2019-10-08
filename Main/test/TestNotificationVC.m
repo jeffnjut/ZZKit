@@ -9,7 +9,7 @@
 #import "TestNotificationVC.h"
 #import "NSObject+ZZKit_Notification.h"
 #import "TestKeyboardAccessoryView.h"
-#import "UIControl+ZZKit_Keyboard.h"
+#import "UIResponder+ZZKit_Keyboard.h"
 #import "ZZEnumCompare.h"
 #import "ZZMacro.h"
 

@@ -65,6 +65,10 @@
 
 #define ZZ_DEVICE_TAB_ICON_LENGTH               (30.0)
 
+#define ZZ_DEVICE_NAVIGATION_SAFE_DELTA_X       (20.0)
+
+#define ZZ_DEVICE_TAB_SAFE_DELTA_X              (34.0)
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZDevice : UIDevice

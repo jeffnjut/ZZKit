@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -159,7 +159,7 @@
 		E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */; };
 		E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */; };
 		E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */; };
-		E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */; };
+		E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0178F22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m */; };
 		E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */; };
 		E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179922AE24AE00C24EF2 /* TestNotificationVC.m */; };
 		E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E0179A22AE24AE00C24EF2 /* TestNotificationVC.xib */; };
@@ -447,8 +447,8 @@
 		E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZZKit.m"; sourceTree = "<group>"; };
 		E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZZKit.h"; sourceTree = "<group>"; };
 		E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZZKit.m"; sourceTree = "<group>"; };
-		E7E0178E22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZZKit_Keyboard.h"; sourceTree = "<group>"; };
-		E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Keyboard.m"; sourceTree = "<group>"; };
+		E7E0178E22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+ZZKit_Keyboard.h"; sourceTree = "<group>"; };
+		E7E0178F22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+ZZKit_Keyboard.m"; sourceTree = "<group>"; };
 		E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZZKit_Notification.h"; sourceTree = "<group>"; };
 		E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZZKit_Notification.m"; sourceTree = "<group>"; };
 		E7E0179822AE24AE00C24EF2 /* TestNotificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNotificationVC.h; sourceTree = "<group>"; };
@@ -820,8 +820,8 @@
 				E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */,
 				E7675FFE22AF9F460044B9AD /* NSBundle+ZZKit.h */,
 				E7675FFF22AF9F460044B9AD /* NSBundle+ZZKit.m */,
-				E7E0178E22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.h */,
-				E7E0178F22AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m */,
+				E7E0178E22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.h */,
+				E7E0178F22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m */,
 				E767602622B0F8600044B9AD /* UIButton+ZZKit.h */,
 				E767602722B0F8600044B9AD /* UIButton+ZZKit.m */,
 				E767602922B0FEC60044B9AD /* UIWindow+ZZKit.h */,
@@ -1177,7 +1177,7 @@
 				E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
 				E767600522AFBF220044B9AD /* ZZTimer.m in Sources */,
-				E7E0179022AE009500C24EF2 /* UIControl+ZZKit_Keyboard.m in Sources */,
+				E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,

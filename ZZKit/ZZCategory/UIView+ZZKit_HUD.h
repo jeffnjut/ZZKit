@@ -231,34 +231,34 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
 @interface ZZPopupView : UIView
 
 // 默认的显示动画类型
-@property (nonatomic, assign) ZZPopupViewAnimation zzAppearAnimation;
+@property (nonatomic, assign) ZZPopupViewAnimation zzPopupAppearAnimation;
 
 // 默认的消失动画类型
-@property (nonatomic, assign) ZZPopupViewAnimation zzDisappearAnimation;
+@property (nonatomic, assign) ZZPopupViewAnimation zzPopupDisappearAnimation;
 
 // 自定义显示动画Block
-@property (nonnull, nonatomic, copy) void(^zzAppearAnimationBlock)(void);
+@property (nonnull, nonatomic, copy) void(^zzPopupAppearAnimationBlock)(void);
 
 // 自定义消失动画Block
-@property (nonnull, nonatomic, copy) void(^zzDisappearAnimationBlock)(void(^_Nullable dismissCompletion)(void));
+@property (nonnull, nonatomic, copy) void(^zzPopupDisappearAnimationBlock)(void(^_Nullable dismissCompletion)(void));
 
 // 消失动画后的后续Block
-@property (nullable, nonatomic, copy) void(^zzActionBlock)(id value);
+@property (nullable, nonatomic, copy) void(^zzPopupActionBlock)(id value);
 
 // 父页面
-@property (nonatomic, weak) UIView *zzParentView;
+@property (nonatomic, weak) UIView *zzPopupParentView;
 
 // 背景页
-@property (nonatomic, weak) ZZPopupBlurView *zzBlurView;
+@property (nonatomic, weak) ZZPopupBlurView *zzPopupBlurView;
 
 // Spring动画参数Duration
-@property (nonatomic, strong) NSNumber *zzDuration;
+@property (nonatomic, strong) NSNumber *zzPopupDuration;
 
 // Spring动画参数DampingRation
-@property (nonatomic, strong) NSNumber *zzSpringDampingRatio;
+@property (nonatomic, strong) NSNumber *zzPopupSpringDampingRatio;
 
 // Spring动画参数Velocity
-@property (nonatomic, strong) NSNumber *zzSpringVelocity;
+@property (nonatomic, strong) NSNumber *zzPopupSpringVelocity;
 
 // 关闭PopupView
 - (IBAction)zz_tapClosePopupView:(nullable id)sender;
