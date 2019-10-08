@@ -193,7 +193,10 @@
 - (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL {
     
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        [_webView loadHTMLString:string baseURL:baseURL];
+        if (@available(iOS 13.0, *)) {
+        }else {
+            [_webView loadHTMLString:string baseURL:baseURL];
+        }
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         
     }
@@ -232,7 +235,10 @@
     }
     
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        [_webView loadRequest:request];
+        if (@available(iOS 13.0, *)) {
+        }else {
+            [_webView loadRequest:request];
+        }
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         [_wkWebView loadRequest:request];
     }
@@ -281,7 +287,10 @@
         */
     }
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        [_webView loadRequest:request];
+        if (@available(iOS 13.0, *)) {
+        }else {
+            [_webView loadRequest:request];
+        }
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         [_wkWebView loadRequest:request];
     }
@@ -293,7 +302,10 @@
 - (nullable NSString *)zz_evaluateScript:(nonnull NSString *)script {
     
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        return [_webView stringByEvaluatingJavaScriptFromString:@"document.titledss"];
+        if (@available(iOS 13.0, *)) {
+        }else {
+            return [_webView stringByEvaluatingJavaScriptFromString:@"document.titledss"];
+        }
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         NSAssert(NO, @"请使用方法zz_evaluateScript:result:");
     }
@@ -309,27 +321,30 @@
     
     if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
         
-        if (_context == nil) {
-            _context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-        }
-        __block BOOL _isErrorRaised = NO;
-        _context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-            _isErrorRaised = YES;
-            ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
-            resultData.error = exception;
-            result == nil ? : result(context, resultData);
-        };
-        __block JSValue *jsValue = [_context evaluateScript:script];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            if (!_isErrorRaised && result != nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    __strong typeof(weakSelf) strongSelf = weakSelf;
-                    ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
-                    resultData.data = jsValue;
-                    result == nil ? : result(strongSelf->_context, resultData);
-                });
+        if (@available(iOS 13.0, *)) {
+        }else {
+            if (_context == nil) {
+                _context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
             }
-        });
+            __block BOOL _isErrorRaised = NO;
+            _context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+                _isErrorRaised = YES;
+                ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+                resultData.error = exception;
+                result == nil ? : result(context, resultData);
+            };
+            __block JSValue *jsValue = [_context evaluateScript:script];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                if (!_isErrorRaised && result != nil) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        __strong typeof(weakSelf) strongSelf = weakSelf;
+                        ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+                        resultData.data = jsValue;
+                        result == nil ? : result(strongSelf->_context, resultData);
+                    });
+                }
+            });
+        }
     }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
         
         [_wkWebView evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
@@ -368,7 +383,10 @@
     
     ZZWebView *zzWebView = [ZZWebView _getActiveZZWebView];
     if (zzWebView != nil && zzWebView.zzUIWebViewOpenURLBlock != nil) {
-        return zzWebView.zzUIWebViewOpenURLBlock(url, option);
+        if (@available(iOS 13.0, *)) {
+        }else {
+            return zzWebView.zzUIWebViewOpenURLBlock(url, option);
+        }
     }
     return NO;
 }
@@ -434,7 +452,11 @@
         // 允许右滑返回上个链接，左滑前进
         _wkWebView.allowsBackForwardNavigationGestures = YES;
         // 允许链接3D Touch
-        _wkWebView.allowsLinkPreview = YES;
+        if (@available(iOS 9.0, *)) {
+            _wkWebView.allowsLinkPreview = YES;
+        } else {
+            // Fallback on earlier versions
+        }
         // 自定义UA，UIWebView就没有此功能，后面会讲到通过其他方式实现
         _wkWebView.UIDelegate = self;
         _wkWebView.navigationDelegate = self;
@@ -608,7 +630,7 @@
         {
             NSString *returnValue = @"";
             NSString *functionName = [_dict objectForKey:@"functionName"];
-            NSDictionary *args = [_dict objectForKey:@"arguments"];
+            // NSDictionary *args = [_dict objectForKey:@"arguments"];
             if ([functionName isEqualToString:@"OC_Fun_05"])
             {
                 returnValue = @"Fun:OC_Fun_05";

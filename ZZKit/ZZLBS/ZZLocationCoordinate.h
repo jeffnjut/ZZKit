@@ -82,7 +82,7 @@ typedef NS_ENUM(NSInteger, ZZLocationCoordinateSystem) {
 /**
  *  将WGS-84(地球坐标)转为GCJ-02(火星坐标),输出经度
  */
-static bool zz_isContain(CLLocationCoordinate2D point, CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
++ (BOOL)zz_isContain:(CLLocationCoordinate2D)point coordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2;
 
 #pragma mark - 判断WGS-84坐标是否在中国区域内
 

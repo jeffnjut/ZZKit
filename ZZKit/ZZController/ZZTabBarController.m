@@ -111,8 +111,8 @@
 #pragma mark - UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
-    if (self.zzShouldSelectViewController != nil) {
-        return self.zzShouldSelectViewController(tabBarController, viewController);
+    if (self.zzShouldSelectViewController != nil && [tabBarController isKindOfClass:[ZZTabBarController class]]) {
+        return self.zzShouldSelectViewController((ZZTabBarController *)tabBarController, viewController);
     }
     return YES;
 }
@@ -120,8 +120,8 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     
-    if (self.zzDidSelectViewController != nil) {
-        self.zzDidSelectViewController(tabBarController, viewController);
+    if (self.zzDidSelectViewController != nil && [tabBarController isKindOfClass:[ZZTabBarController class]]) {
+        self.zzDidSelectViewController((ZZTabBarController *)tabBarController, viewController);
     }
     self.zzPreviousIndex = tabBarController.selectedIndex;
 }

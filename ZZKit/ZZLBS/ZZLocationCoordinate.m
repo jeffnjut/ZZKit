@@ -227,6 +227,11 @@ static const double xPi = M_PI * 3000.0 / 180.0;
 /**
  *  将WGS-84(地球坐标)转为GCJ-02(火星坐标),输出经度
  */
++ (BOOL)zz_isContain:(CLLocationCoordinate2D)point coordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2 {
+    
+    return zz_isContain(point, coordinate1, coordinate2);
+}
+
 static bool zz_isContain(CLLocationCoordinate2D point, CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
     
     return (point.latitude >= MIN(coordinate1.latitude, coordinate2.latitude) && point.latitude <= MAX(coordinate1.latitude, coordinate2.latitude)) && (point.longitude >= MIN(coordinate1.longitude, coordinate2.longitude) && point.longitude <= MAX(coordinate1.longitude, coordinate2.longitude));

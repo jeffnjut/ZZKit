@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebView : UIView
 
-@property (nonatomic, readonly) UIWebView *zzUIWebView;
+@property (nonatomic, readonly) UIWebView *zzUIWebView NS_DEPRECATED_IOS(2_0, 12_0);
 
 @property (nonatomic, readonly) WKWebView *zzWKWebView;
 
