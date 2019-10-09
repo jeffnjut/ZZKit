@@ -94,7 +94,11 @@
 /**
  *  吐司（消息）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSString *)message {
+- (nullable MBProgressHUD *)zz_toast:(nullable NSString *)message {
+    
+    if (message == nil || message.length == 0) {
+        return nil;
+    }
     
     NSAttributedString *attributedString = message.typeset.font([UIFont systemFontOfSize:14.0].fontName, 14.0).color([UIColor whiteColor]).textAlignment(NSTextAlignmentCenter).minimumLineHeight(20.0).string;
     return [self zz_toast:attributedString lottiePath:nil lottieViewSize:CGSizeZero edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:3.0 scaleAnimation:YES otherDisappearAnimationBlock:nil];
@@ -103,7 +107,11 @@
 /**
  *  吐司（消息、动画）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSString *)message toastType:(ZZToastType)toastType {
+- (nullable MBProgressHUD *)zz_toast:(nullable NSString *)message toastType:(ZZToastType)toastType {
+    
+    if (toastType == ZZToastTypeText && (message == nil || message.length == 0)) {
+        return nil;
+    }
     
     NSAttributedString *attributedString = message.typeset.font([UIFont systemFontOfSize:14.0].fontName, 14.0).color([UIColor whiteColor]).textAlignment(NSTextAlignmentCenter).minimumLineHeight(20.0).string;
     NSString *path = nil;
@@ -136,13 +144,13 @@
         default:
             return nil;
     }
-    return [self zz_toast:attributedString lottiePath:path lottieViewSize:CGSizeMake(64.0, 32.0) edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:12.0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:3.0 scaleAnimation:YES otherDisappearAnimationBlock:nil];
+    return [self zz_toast:attributedString lottiePath:path lottieViewSize:CGSizeMake(64.0, 32.0) edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:12.0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:2.0 scaleAnimation:YES otherDisappearAnimationBlock:nil];
 }
 
 /**
  *  吐司（消息、动画等完整参数）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSAttributedString *)message lottiePath:(nullable NSString *)lottiePath lottieViewSize:(CGSize)lottieViewSize edgeInsects:(UIEdgeInsets)edgeInsets imageTextPadding:(CGFloat)imageTextPadding textMaxWidth:(CGFloat)textMaxWidth textMinWidth:(CGFloat)textMinWidth borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius duration:(CGFloat)duration scaleAnimation:(BOOL)scaleAnimation otherDisappearAnimationBlock:(nullable void(^)(id contentView, void(^finished)(void)))otherDisappearAnimationBlock  {
+- (nullable MBProgressHUD *)zz_toast:(nullable NSAttributedString *)message lottiePath:(nullable NSString *)lottiePath lottieViewSize:(CGSize)lottieViewSize edgeInsects:(UIEdgeInsets)edgeInsets imageTextPadding:(CGFloat)imageTextPadding textMaxWidth:(CGFloat)textMaxWidth textMinWidth:(CGFloat)textMinWidth borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius duration:(CGFloat)duration scaleAnimation:(BOOL)scaleAnimation otherDisappearAnimationBlock:(nullable void(^)(id contentView, void(^finished)(void)))otherDisappearAnimationBlock  {
     
     CGSize contentViewSize = CGSizeZero;
     __block CGSize textSize = CGSizeZero;

@@ -73,17 +73,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  吐司（消息）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSString *)message;
+- (nullable MBProgressHUD *)zz_toast:(nullable NSString *)message;
 
 /**
  *  吐司（消息、动画）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSString *)message toastType:(ZZToastType)toastType;
+- (nullable MBProgressHUD *)zz_toast:(nullable NSString *)message toastType:(ZZToastType)toastType;
 
 /**
  *  吐司（消息、动画等完整参数）
  */
-- (MBProgressHUD *)zz_toast:(nullable NSAttributedString *)message lottiePath:(nullable NSString *)lottiePath lottieViewSize:(CGSize)lottieViewSize edgeInsects:(UIEdgeInsets)edgeInsets imageTextPadding:(CGFloat)imageTextPadding textMaxWidth:(CGFloat)textMaxWidth textMinWidth:(CGFloat)textMinWidth borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius duration:(CGFloat)duration scaleAnimation:(BOOL)scaleAnimation otherDisappearAnimationBlock:(nullable void(^)(id contentView, void(^finished)(void)))otherDisappearAnimationBlock;
+- (nullable MBProgressHUD *)zz_toast:(nullable NSAttributedString *)message lottiePath:(nullable NSString *)lottiePath lottieViewSize:(CGSize)lottieViewSize edgeInsects:(UIEdgeInsets)edgeInsets imageTextPadding:(CGFloat)imageTextPadding textMaxWidth:(CGFloat)textMaxWidth textMinWidth:(CGFloat)textMinWidth borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius duration:(CGFloat)duration scaleAnimation:(BOOL)scaleAnimation otherDisappearAnimationBlock:(nullable void(^)(id contentView, void(^finished)(void)))otherDisappearAnimationBlock;
 
 #pragma mark - 顶部消息
 
