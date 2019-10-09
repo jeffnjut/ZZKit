@@ -34,7 +34,7 @@
         if ([self length] == 9) {
             NSString *colorHex = [self substringToIndex:7];
             NSString *alphaPercent = [self substringFromIndex:7];
-            float alpha = [alphaPercent floatValue] / 100.0;
+            float alpha = [alphaPercent floatValue] / 255.0;
             return [UIColor zz_colorHexString:colorHex withAlpha:alpha];
         }else if ([self length] == 7) {
             return [UIColor zz_colorHexString:self];
@@ -43,7 +43,7 @@
         if ([self length] == 8) {
             NSString *colorHex = [NSString stringWithFormat:@"#%@",[self substringToIndex:6]];
             NSString *alphaPercent = [self substringFromIndex:6];
-            float alpha = [alphaPercent floatValue] / 100.0;
+            float alpha = [alphaPercent floatValue] / 255.0;
             return [UIColor zz_colorHexString:colorHex withAlpha:alpha];
         }else if ([self length] == 6) {
             return [UIColor zz_colorHexString:[NSString stringWithFormat:@"#%@",self]];
