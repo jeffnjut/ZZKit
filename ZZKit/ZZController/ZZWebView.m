@@ -21,7 +21,9 @@
     WKWebView *_wkWebView;
     JSContext *_context;
     BOOL _addedJavaScriptProcess;
-    
+    UIProgressView *_progressView;
+    UIColor *_progressBarTintColor;
+    double _estimatedProgress;
 }
 
 @end
@@ -33,9 +35,30 @@
     for (NSString *name in _zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
         [self.zzWKConfiguration.userContentController removeScriptMessageHandlerForName:name];
     }
+    
+    if (_progressBarTintColor) {
+        [_wkWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+    }
+    [_wkWebView removeObserver:self forKeyPath:@"title"];
 }
 
 #pragma mark - Property Setting & Getter
+
+- (UIProgressView *)zzProgressView {
+    
+    if (_progressView == nil) {
+        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+       [ _progressView setTrackTintColor :[UIColor whiteColor]];
+        [_progressView setProgressTintColor:_progressBarTintColor ? _progressBarTintColor : @"#FF7A00".zz_color];
+        [self addSubview:_progressView];
+        __weak typeof(self) weakSelf = self;
+        [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.equalTo(weakSelf);
+            make.height.equalTo(@2.0);
+        }];
+    }
+    return _progressView;
+}
 
 - (UIWebView *)zzUIWebView {
     
@@ -358,9 +381,17 @@
 }
 
 /**
- *  快速新建ZZWebView的方法
+ *  快速新建ZZWebView的方法(默认开启进度条)
  */
 + (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
+    
+    return [ZZWebView zz_quickAdd:type onView:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
+}
+
+/**
+ *  快速新建ZZWebView的方法(Base)
+ */
++ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame];
     if (onView != nil) {
@@ -372,6 +403,7 @@
         }
     }
     zzWebView->_type = type;
+    zzWebView->_progressBarTintColor = progressBarTintColor;
     [zzWebView _buildUI];
     return zzWebView;
 }
@@ -465,7 +497,52 @@
             make.edges.equalTo(weakSelf);
         }];
     }
+    if (_progressBarTintColor) {
+        [self zzProgressView];
+        [_wkWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    [_wkWebView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
 }
+
+#pragma mark - Observe Estimated Progress
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
+    
+    ZZ_WEAK_SELF
+    if ([keyPath isEqualToString:@"estimatedProgress"]) {
+        _estimatedProgress = [change[NSKeyValueChangeNewKey] doubleValue];
+        if (_progressView) {
+            [_progressView setProgress:_estimatedProgress animated:NO];
+            if (_estimatedProgress >= 0.89) {
+                int64_t delayInSeconds = 0.5;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    if (strongSelf->_estimatedProgress >= 0.89) {
+                        
+                    }
+                });
+                if (_estimatedProgress == 1.0) {
+                    _progressView.alpha = 0;
+                    _estimatedProgress = 0;
+                }
+            }else {
+                _progressView.alpha = 1.0;
+            }
+        }
+        self.zzWebViewProgressBlock == nil ? : self.zzWebViewProgressBlock(_estimatedProgress);
+    }
+    else if ([keyPath isEqualToString:@"title"]) {
+        
+        NSString *title = change[NSKeyValueChangeNewKey];
+        self.zzWebViewTitleBlock == nil ? : self.zzWebViewTitleBlock(title);
+        
+    }else {
+        [self willChangeValueForKey:keyPath];
+        [self didChangeValueForKey:keyPath];
+    }
+}
+
+
 
 - (void)_copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:(nullable void (^)(void))theCompletionHandler {
     

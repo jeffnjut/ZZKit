@@ -250,8 +250,8 @@
     // [self.testSpinnerButton zz_startSpinning:@"加载" style:ZZSpinnerLoadingStyleWhite];
     
     TestPopupView *testPopupView = ZZ_LOAD_NIB(@"TestPopupView");
-    testPopupView.zzAppearAnimation = ZZPopupViewAnimationPopCenter;
-    testPopupView.zzDisappearAnimation = ZZPopupViewAnimationPopBottom;
+    testPopupView.zzPopupAppearAnimation = ZZPopupViewAnimationPopCenter;
+    testPopupView.zzPopupDisappearAnimation = ZZPopupViewAnimationPopBottom;
     [ZZ_KEY_WINDOW zz_popup:testPopupView blurColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] userInteractionEnabled:YES springs:@[@(0.2), @(0.6), @(2.0)] actionBlock:^(id  _Nonnull value) {
         NSLog(@"%@", value);
     }];

@@ -36,6 +36,10 @@ typedef NS_ENUM(NSInteger, ZZWebViewNavigationStatus) {
 
 typedef void(^ZZUserContentProcessJavaScriptMessageBlock)(WKUserContentController * _Nullable userContentController, WKScriptMessage * _Nullable message);
 
+typedef void (^ZZWebViewProgressBlock)(double progress);
+
+typedef void (^ZZWebViewTitleBlock)(NSString * _Nullable title);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebView : UIView
@@ -56,6 +60,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // WKWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
+
+// 加载进度条Block
+@property (nonatomic, copy) ZZWebViewProgressBlock zzWebViewProgressBlock;
+
+// 网页Title Block
+@property (nonatomic, copy) ZZWebViewTitleBlock zzWebViewTitleBlock;
 
 @property (nonatomic, copy) BOOL(^zzWebNavigationBlock)(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error);
 
@@ -115,9 +125,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result;
 
 /**
- *  快速新建ZZWebView的方法
+ *  快速新建ZZWebView的方法(默认开启进度条)
  */
 + (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
+
+/**
+ *  快速新建ZZWebView的方法(Base)
+ */
++ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 /**
  *  URL Schemes时候执行处理方法

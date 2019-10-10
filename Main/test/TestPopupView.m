@@ -26,8 +26,8 @@
 - (IBAction)_tap:(id)sender {
     
     __weak typeof(self) weakSelf = self;
-    self.zzDisappearAnimationBlock(^{
-        weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(@(weakSelf.imageView.image.hash));
+    self.zzPopupDisappearAnimationBlock(^{
+        weakSelf.zzPopupActionBlock == nil ? : weakSelf.zzPopupActionBlock(@(weakSelf.imageView.image.hash));
     });
 }
 

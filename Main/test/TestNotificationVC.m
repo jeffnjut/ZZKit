@@ -81,8 +81,7 @@
 
 - (IBAction)_tapPushKeyboard:(id)sender {
     
-    [self.textField zz_createInputAccessory:^UIView * _Nonnull{
-        
+    [self.textField zz_createInputAccessory:^UIView * _Nonnull(UIResponder * _Nonnull responder) {
         TestKeyboardAccessoryView *view = [NSBundle.mainBundle loadNibNamed:@"TestKeyboardAccessoryView" owner:nil options:nil].lastObject;
         view.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 100.0);
         return view;
