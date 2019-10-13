@@ -122,7 +122,7 @@
     if (self) {
         pthread_mutex_init(&_lock, NULL);
         _zzDataSource = [[NSMutableArray alloc] init];
-        _zzTableViewSectionIndexTitleHeight = 32.0;
+        _zzTableViewSectionIndexTitleHeight = 0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
