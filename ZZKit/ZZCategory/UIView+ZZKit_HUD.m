@@ -101,7 +101,7 @@
     }
     
     NSAttributedString *attributedString = message.typeset.font([UIFont systemFontOfSize:14.0].fontName, 14.0).color([UIColor whiteColor]).textAlignment(NSTextAlignmentCenter).minimumLineHeight(20.0).string;
-    return [self zz_toast:attributedString lottiePath:nil lottieViewSize:CGSizeZero edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:3.0 scaleAnimation:YES otherDisappearAnimationBlock:nil];
+    return [self zz_toast:attributedString lottiePath:nil lottieViewSize:CGSizeZero edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:1.8 scaleAnimation:YES otherDisappearAnimationBlock:nil];
 }
 
 /**
@@ -144,7 +144,7 @@
         default:
             return nil;
     }
-    return [self zz_toast:attributedString lottiePath:path lottieViewSize:CGSizeMake(64.0, 32.0) edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:12.0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:2.0 scaleAnimation:YES otherDisappearAnimationBlock:nil];
+    return [self zz_toast:attributedString lottiePath:path lottieViewSize:CGSizeMake(64.0, 32.0) edgeInsects:UIEdgeInsetsMake(12.0, 16.0, 12.0, 16.0) imageTextPadding:12.0 textMaxWidth:0 textMinWidth:0 borderColor:nil borderWidth:0 cornerRadius:2.0 duration:1.8 scaleAnimation:YES otherDisappearAnimationBlock:nil];
 }
 
 /**
@@ -340,7 +340,7 @@
  */
 - (void)zz_startSpinning:(ZZSpinnerLoadingStyle)style {
     
-    [self zz_startSpinning:@"正在加载..." style:style];
+    [self zz_startSpinning:nil style:style];
 }
 
 /**

@@ -511,6 +511,7 @@
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         _estimatedProgress = [change[NSKeyValueChangeNewKey] doubleValue];
         if (_progressView) {
+            [self bringSubviewToFront:_progressView];
             [_progressView setProgress:_estimatedProgress animated:NO];
             if (_estimatedProgress >= 0.89) {
                 int64_t delayInSeconds = 0.5;
