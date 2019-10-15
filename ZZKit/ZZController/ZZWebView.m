@@ -13,7 +13,7 @@
 #import "NSString+ZZKit.h"
 #import "ZZEnumCompare.h"
 
-@interface ZZWebView () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
+@interface ZZWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 
 @property (nonatomic, strong) WKWebView *zzWKWebView;
 
@@ -291,7 +291,6 @@
     } else {
         // Fallback on earlier versions
     }
-    // 自定义UA，UIWebView就没有此功能，后面会讲到通过其他方式实现
     _zzWKWebView.UIDelegate = self;
     _zzWKWebView.navigationDelegate = self;
     [self addSubview:_zzWKWebView];
