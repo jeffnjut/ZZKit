@@ -102,12 +102,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  快速新建ZZWebView的方法(默认开启进度条)
  */
-+ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
++ (nonnull ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 /**
  *  快速新建ZZWebView的方法(Base)
  */
-+ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
++ (nonnull ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 @end
 

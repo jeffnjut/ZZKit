@@ -237,15 +237,15 @@
 /**
  *  快速新建ZZWebView的方法(默认开启进度条)
  */
-+ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
++ (nonnull ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
-    return [ZZWebView zz_quickAddOnView:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
+    return [ZZWebView zz_quickAdd:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
 }
 
 /**
  *  快速新建ZZWebView的方法(Base)
  */
-+ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
++ (nonnull ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame];
     if (onView != nil) {

@@ -47,7 +47,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     if (_zzWebView == nil) {
-        _zzWebView = [ZZWebView zz_quickAddOnView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+        _zzWebView = [ZZWebView zz_quickAdd:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
             make.edges.equalTo(superView);
         }];
     }
