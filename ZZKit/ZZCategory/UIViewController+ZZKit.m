@@ -214,16 +214,20 @@
  *  设置导航条的Title（NSString）
  */
 - (void)zz_navigationBarTitle:(nonnull NSString *)title {
-    [self zz_navigationBarHidden:NO];
-    // 方法一
-    if (@available(iOS 8.2, *)) {
-        [self zz_navigationBarTitle:title titleAttrs:@{NSForegroundColorAttributeName : @"#1D1D1F".zz_color, NSFontAttributeName : [UIFont systemFontOfSize:16.0 weight:UIFontWeightSemibold]}];
-    } else {
-        [self zz_navigationBarTitle:title titleAttrs:@{NSForegroundColorAttributeName : @"#1D1D1F".zz_color, NSFontAttributeName : [UIFont systemFontOfSize:16.0]}];
-    }
-    // 方法二
-    // NSAttributedString *attrStr = title.typeset.font(MediumWithSize(16).fontName, 16).color(HTColor1D1D1F.zz_color).textAlignment(NSTextAlignmentCenter).string;
-    // [self ht_navigationBarTitle:attrStr];
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf zz_navigationBarHidden:NO];
+        // 方法一
+        if (@available(iOS 8.2, *)) {
+            [weakSelf zz_navigationBarTitle:title titleAttrs:@{NSForegroundColorAttributeName : @"#1D1D1F".zz_color, NSFontAttributeName : [UIFont systemFontOfSize:16.0 weight:UIFontWeightSemibold]}];
+        } else {
+            [weakSelf zz_navigationBarTitle:title titleAttrs:@{NSForegroundColorAttributeName : @"#1D1D1F".zz_color, NSFontAttributeName : [UIFont systemFontOfSize:16.0]}];
+        }
+        // 方法二
+        // NSAttributedString *attrStr = title.typeset.font(MediumWithSize(16).fontName, 16).color(HTColor1D1D1F.zz_color).textAlignment(NSTextAlignmentCenter).string;
+        // [self ht_navigationBarTitle:attrStr];
+    });
 }
 
 #pragma mark - 电池条
