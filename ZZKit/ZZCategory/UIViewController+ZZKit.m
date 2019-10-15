@@ -231,7 +231,8 @@
 /**
  *  设置StatusBar是否隐藏
  */
-- (void)zz_statusBarHidden:(BOOL)hidden {
+- (void)zz_statusBarHidden:(BOOL)hidden API_DEPRECATED("Use -[UIViewController prefersStatusBarHidden]", ios(2.0, 9.0)) {
+
     [[UIApplication sharedApplication] setStatusBarHidden:hidden];
 }
 

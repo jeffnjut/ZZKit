@@ -34,13 +34,10 @@
 - (void)testWKWebView {
     
     // customUserAgent属性设置的优先级比zz_setUserAgent:方法设置全局UserAgent的优先级高。
-    
-    [ZZWebView zz_setUserAgent:^NSString * _Nonnull(NSString * _Nonnull userAgent) {
-        return [userAgent stringByAppendingString:@"哈哈哈"];
-    }];
+    self.webView.zzWKWebView.customUserAgent = @"哈哈哈";
     
     __weak typeof(self) weakSelf = self;
-    self.webView = [ZZWebView zz_quickAdd:ZZWebViewTypeWKWebView onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+    self.webView = [ZZWebView zz_quickAddOnView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     }];
     
@@ -196,7 +193,8 @@
         
     }];
     
-    self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
+    self.webView.zzWebNavigationBlock = ^(ZZWebViewNavigationStatus status, WKWebView * _Nullable wkWebView, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
+        
         if (status == ZZWebViewNavigationStatusDecidePolicyForNavigationAction) {
             NSString *url = navigationAction.request.URL.absoluteString;
             if ([url hasPrefix:@"zzkit://"]) {
@@ -223,136 +221,135 @@
         }else if (status == ZZWebViewNavigationStatusDecidePolicyForNavigationResponse) {
             decisionResponseHandler(WKNavigationResponsePolicyAllow);
         }
-        return YES;
     };
     
     self.webView.zzWKWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
-- (void)testUIWebView {
-    
-    __weak typeof(self) weakSelf = self;
-    self.webView = [ZZWebView zz_quickAdd:ZZWebViewTypeUIWebView onView:self.view frame:CGRectMake(0, 0, 0, 0) constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
-        make.edges.equalTo(weakSelf.view);
-    }];
-    
-    self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
-        
-        if (status == ZZWebViewNavigationStatusDidStartNavigation) {
-            NSString *url = request.URL.absoluteString;
-            if ([url hasPrefix:@"zzkit://"]) {
-                return YES;
-            }else if ([url hasPrefix:@"ifly://"]) {
-                return YES;
-            }else if ([url hasPrefix:@"https://"]) {
-                return YES;
-            }else if ([url hasPrefix:@"http://"]) {
-                return NO;
-            }
-        }else if (status == ZZWebViewNavigationStatusDidFinishNavigation) {
-            
-            //先注入给图片添加点击事件的js
-            //防止频繁IO操作，造成性能影响
-            static NSString *jsSource;
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
-                jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ImgAddClickEvent" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
-            });
-            [weakSelf.webView.zzUIWebViewContext evaluateScript:jsSource];
-            //替换回调方法
-            weakSelf.webView.zzUIWebViewContext[@"h5ImageDidClick"] = ^(NSDictionary *imgInfo) {
-                NSLog(@"UIWebView点击了html上的图片，信息是：%@", imgInfo);
-            };
-        }
-        
-        return YES;
-    };
-    
-    self.webView.zzUIWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
-        
-        if ([url.absoluteString hasPrefix:@"zzkit://"]) {
-            UIViewController *testVC = [[UIViewController alloc] init];
-            testVC.view.backgroundColor = [UIColor redColor];
-            [weakSelf.navigationController zz_push:testVC animated:YES];
-            
-            [testVC.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
-                UIViewController *controller = (UIViewController *)[sender nextResponder];
-                if ([controller isKindOfClass:[UIViewController class]]) {
-                    [controller zz_dismiss];
-                }
-            }];
-            return YES;
-        }else if ([url.absoluteString hasPrefix:@"ifly://"]) {
-            
-        }
-        return NO;
-    };
-    
-    //    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
-    //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
-    //    [request setValue:@"A" forHTTPHeaderField:@"User-Agent"];
-    //    [request setValue:@"A" forHTTPHeaderField:@"A"];
-    //    [self.webView.webView loadRequest:request];
-    
-    
-//     [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
-    
-//    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
-//                                                                NSHTTPCookieName: @"customCookieName",
-//                                                                NSHTTPCookieValue: @"1314521",
-//                                                                NSHTTPCookieDomain: @".baidu.com",
-//                                                                NSHTTPCookiePath: @"/"
-//                                                                }];
-//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    [self.webView zz_loadRequest:@"https://www.55haitao.com" headerFields:nil];
-    
-    [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
-        
-        [weakSelf.webView zz_evaluateScript:@"document.title" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
-            if (data.error) {
-                NSLog(@"异常：%@", data.error);
-            }else {
-                NSLog(@"%@", data.data);
-            }
-        }];
-    }];
-    
-    self.webView.zzUIWebViewProcessJavaScriptCallingDictionary =
-    
-    @{@"share" : ^(JSValue *shareData) {
-        //首先这里要注意，回调的参数不能直接写NSDictionary类型，为何呢？
-        //仔细看，打印出的确实是一个NSDictionary，但是result字段对应的不是block而是一个NSDictionary
-        NSLog(@"%@", [shareData toObject]);
-        //获取shareData对象的result属性，这个JSValue对应的其实是一个javascript的function。
-        JSValue *resultFunction = [shareData valueForProperty:@"result"];
-        //回调block，将js的function转换为OC的block
-        __block void (^result)(BOOL) = ^(BOOL isSuccess) {
-            [resultFunction callWithArguments:@[@(isSuccess)]];
-        };
-        //模拟异步回调
-        dispatch_async(dispatch_get_main_queue(), ^{
-            result(YES);
-        });
-        
-    },
-      @"add" : ^NSString* (NSInteger a, NSInteger b){
-          return [NSString stringWithFormat:@"%ld+%ld=%ld", a, b , a+b];
-      },
-      @"callNative" : ^(){
-          
-          NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
-                                                                      NSHTTPCookieName: @"customCookieName",
-                                                                      NSHTTPCookieValue: @"Jeff",
-                                                                      NSHTTPCookieDomain: @".baidu.com",
-                                                                      NSHTTPCookiePath: @"/"
-                                                                      }];
-          [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-          [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Set-Cookie":@"customCookieName=1314521;"}];
-      }
-    };
-    
-    self.webView.zzUIWebView.scrollView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-}
+//- (void)testUIWebView {
+//
+//    __weak typeof(self) weakSelf = self;
+//    self.webView = [ZZWebView zz_quickAdd:ZZWebViewTypeUIWebView onView:self.view frame:CGRectMake(0, 0, 0, 0) constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+//        make.edges.equalTo(weakSelf.view);
+//    }];
+//
+//    self.webView.zzWebNavigationBlock = ^BOOL(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error) {
+//
+//        if (status == ZZWebViewNavigationStatusDidStartNavigation) {
+//            NSString *url = request.URL.absoluteString;
+//            if ([url hasPrefix:@"zzkit://"]) {
+//                return YES;
+//            }else if ([url hasPrefix:@"ifly://"]) {
+//                return YES;
+//            }else if ([url hasPrefix:@"https://"]) {
+//                return YES;
+//            }else if ([url hasPrefix:@"http://"]) {
+//                return NO;
+//            }
+//        }else if (status == ZZWebViewNavigationStatusDidFinishNavigation) {
+//
+//            //先注入给图片添加点击事件的js
+//            //防止频繁IO操作，造成性能影响
+//            static NSString *jsSource;
+//            static dispatch_once_t onceToken;
+//            dispatch_once(&onceToken, ^{
+//                jsSource = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ImgAddClickEvent" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
+//            });
+//            [weakSelf.webView.zzUIWebViewContext evaluateScript:jsSource];
+//            //替换回调方法
+//            weakSelf.webView.zzUIWebViewContext[@"h5ImageDidClick"] = ^(NSDictionary *imgInfo) {
+//                NSLog(@"UIWebView点击了html上的图片，信息是：%@", imgInfo);
+//            };
+//        }
+//
+//        return YES;
+//    };
+//
+//    self.webView.zzUIWebViewOpenURLBlock = ^BOOL(NSURL * _Nonnull url, NSDictionary<UIApplicationOpenURLOptionsKey,id> * _Nonnull options) {
+//
+//        if ([url.absoluteString hasPrefix:@"zzkit://"]) {
+//            UIViewController *testVC = [[UIViewController alloc] init];
+//            testVC.view.backgroundColor = [UIColor redColor];
+//            [weakSelf.navigationController zz_push:testVC animated:YES];
+//
+//            [testVC.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+//                UIViewController *controller = (UIViewController *)[sender nextResponder];
+//                if ([controller isKindOfClass:[UIViewController class]]) {
+//                    [controller zz_dismiss];
+//                }
+//            }];
+//            return YES;
+//        }else if ([url.absoluteString hasPrefix:@"ifly://"]) {
+//
+//        }
+//        return NO;
+//    };
+//
+//    //    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
+//    //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
+//    //    [request setValue:@"A" forHTTPHeaderField:@"User-Agent"];
+//    //    [request setValue:@"A" forHTTPHeaderField:@"A"];
+//    //    [self.webView.webView loadRequest:request];
+//
+//
+////     [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
+//
+////    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+////                                                                NSHTTPCookieName: @"customCookieName",
+////                                                                NSHTTPCookieValue: @"1314521",
+////                                                                NSHTTPCookieDomain: @".baidu.com",
+////                                                                NSHTTPCookiePath: @"/"
+////                                                                }];
+////    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+//    [self.webView zz_loadRequest:@"https://www.55haitao.com" headerFields:nil];
+//
+//    [self zz_navigationAddRightBarTextButton:@"OC调JavaScript".typeset.string action:^{
+//
+//        [weakSelf.webView zz_evaluateScript:@"document.title" result:^(JSContext * _Nonnull context, ZZWebViewJavaScriptResult * _Nonnull data) {
+//            if (data.error) {
+//                NSLog(@"异常：%@", data.error);
+//            }else {
+//                NSLog(@"%@", data.data);
+//            }
+//        }];
+//    }];
+//
+//    self.webView.zzUIWebViewProcessJavaScriptCallingDictionary =
+//
+//    @{@"share" : ^(JSValue *shareData) {
+//        //首先这里要注意，回调的参数不能直接写NSDictionary类型，为何呢？
+//        //仔细看，打印出的确实是一个NSDictionary，但是result字段对应的不是block而是一个NSDictionary
+//        NSLog(@"%@", [shareData toObject]);
+//        //获取shareData对象的result属性，这个JSValue对应的其实是一个javascript的function。
+//        JSValue *resultFunction = [shareData valueForProperty:@"result"];
+//        //回调block，将js的function转换为OC的block
+//        __block void (^result)(BOOL) = ^(BOOL isSuccess) {
+//            [resultFunction callWithArguments:@[@(isSuccess)]];
+//        };
+//        //模拟异步回调
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            result(YES);
+//        });
+//
+//    },
+//      @"add" : ^NSString* (NSInteger a, NSInteger b){
+//          return [NSString stringWithFormat:@"%ld+%ld=%ld", a, b , a+b];
+//      },
+//      @"callNative" : ^(){
+//
+//          NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+//                                                                      NSHTTPCookieName: @"customCookieName",
+//                                                                      NSHTTPCookieValue: @"Jeff",
+//                                                                      NSHTTPCookieDomain: @".baidu.com",
+//                                                                      NSHTTPCookiePath: @"/"
+//                                                                      }];
+//          [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+//          [weakSelf.webView zz_loadRequest:@"https://www.baidu.com" headerFields:@{@"B":@"CCC",@"Set-Cookie":@"customCookieName=1314521;"}];
+//      }
+//    };
+//
+//    self.webView.zzUIWebView.scrollView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+//}
 
 /*
 #pragma mark - Navigation

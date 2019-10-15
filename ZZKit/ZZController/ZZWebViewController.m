@@ -20,14 +20,6 @@
 
 @implementation ZZWebViewController
 
-- (ZZWebViewType)zzWebType {
-    
-    if (_zzWebType == 0) {
-        _zzWebType = ZZWebViewTypeWKWebView;
-    }
-    return _zzWebType;
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -41,9 +33,7 @@
         self.zzReloadImage = @"ic_nav_close".zz_image;
     }
     [self zz_navigationAddLeftBarButton:self.zzBackImage action:^{
-        if (weakSelf.zzWebView.zzUIWebView && [weakSelf.zzWebView.zzUIWebView canGoBack]) {
-            [weakSelf.zzWebView.zzUIWebView goBack];
-        }else if (weakSelf.zzWebView.zzWKWebView && [weakSelf.zzWebView.zzWKWebView canGoBack]) {
+        if ([weakSelf.zzWebView.zzWKWebView canGoBack]) {
             [weakSelf.zzWebView.zzWKWebView goBack];
         }else {
             [weakSelf zz_dismiss];
@@ -57,7 +47,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     if (_zzWebView == nil) {
-        _zzWebView = [ZZWebView zz_quickAdd:self.zzWebType onView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+        _zzWebView = [ZZWebView zz_quickAddOnView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
             make.edges.equalTo(superView);
         }];
     }

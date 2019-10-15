@@ -14,17 +14,14 @@
 #import "ZZEnumCompare.h"
 
 @interface ZZWebView () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
-{
-    @private
-    ZZWebViewType _type;
-    UIWebView *_webView;
-    WKWebView *_wkWebView;
-    JSContext *_context;
-    BOOL _addedJavaScriptProcess;
-    UIProgressView *_progressView;
-    UIColor *_progressBarTintColor;
-    double _estimatedProgress;
-}
+
+@property (nonatomic, strong) WKWebView *zzWKWebView;
+
+@property (nonatomic, strong) UIProgressView *zzProgressView;
+
+@property (nonatomic, strong) UIColor *zzProgressBarTintColor;
+
+@property (nonatomic, assign) double zzEstimatedProgress;
 
 @end
 
@@ -36,61 +33,33 @@
         [self.zzWKConfiguration.userContentController removeScriptMessageHandlerForName:name];
     }
     
-    if (_progressBarTintColor) {
-        [_wkWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+    if (_zzProgressBarTintColor) {
+        [_zzWKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
     }
-    [_wkWebView removeObserver:self forKeyPath:@"title"];
+    [_zzWKWebView removeObserver:self forKeyPath:@"title"];
 }
 
 #pragma mark - Property Setting & Getter
 
 - (UIProgressView *)zzProgressView {
     
-    if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-       [ _progressView setTrackTintColor :[UIColor whiteColor]];
-        [_progressView setProgressTintColor:_progressBarTintColor ? _progressBarTintColor : @"#FF7A00".zz_color];
-        [self addSubview:_progressView];
+    if (_zzProgressView == nil) {
+        _zzProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+       [ _zzProgressView setTrackTintColor:[UIColor whiteColor]];
+        [_zzProgressView setProgressTintColor:_zzProgressBarTintColor ? _zzProgressBarTintColor : @"#FF7A00".zz_color];
+        [self addSubview:_zzProgressView];
         __weak typeof(self) weakSelf = self;
-        [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_zzProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.equalTo(weakSelf);
             make.height.equalTo(@2.0);
         }];
     }
-    return _progressView;
-}
-
-- (UIWebView *)zzUIWebView {
-    
-    return _webView;
-}
-
-- (WKWebView *)zzWKWebView {
-    
-    return _wkWebView;
-}
-
-- (JSContext *)zzUIWebViewContext {
-    
-    return _context;
+    return _zzProgressView;
 }
 
 - (WKWebViewConfiguration *)zzWKConfiguration {
     
-    return _wkWebView.configuration;
-}
-
-- (void)setZzUIWebViewProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,id> *)zzUIWebViewProcessJavaScriptCallingDictionary {
-    
-    _zzUIWebViewProcessJavaScriptCallingDictionary = zzUIWebViewProcessJavaScriptCallingDictionary;
-    if (_context) {
-        __weak typeof(self) weakSelf = self;
-        [zzUIWebViewProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            strongSelf->_context[key] = obj;
-        }];
-        _addedJavaScriptProcess = YES;
-    }
+    return _zzWKWebView.configuration;
 }
 
 - (void)setZzWKWebViewProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,ZZUserContentProcessJavaScriptMessageBlock> *)zzWKWebViewProcessJavaScriptCallingDictionary {
@@ -102,29 +71,6 @@
 }
 
 #pragma mark - Public Method
-
-/**
- *  获取UIWebView的默认User-Agent
- */
-+ (NSString *)zz_getUIWebViewUserAgent {
-    
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    NSString *ua = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-    return ua;
-}
-
-/**
- *  设置全局User-Agent
- */
-+ (void)zz_setUserAgent:(NSString *(^)(NSString *userAgent))userAgentBlock {
-    
-    if (userAgentBlock != nil) {
-        // 全局User-Agent
-        NSString *ua = [self zz_getUIWebViewUserAgent];
-        NSString *newAgent = userAgentBlock(ua);
-        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : newAgent, @"User-Agent" : newAgent}];
-    }
-}
 
 /**
  *  清除所有Cookies
@@ -153,51 +99,42 @@
 /**
  *  清除所有缓存方法
  */
-+ (void)zz_clearAllCachedResponse:(ZZWebViewType)webViewType wkWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes {
-    
-    if ([ZZEnumCompare zz_has:webViewType aType:ZZWebViewTypeUIWebView]) {
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        [[NSURLCache sharedURLCache] setDiskCapacity:0];
-        [[NSURLCache sharedURLCache] setMemoryCapacity:0];
-    }
-    
-    if ([ZZEnumCompare zz_has:webViewType aType:ZZWebViewTypeWKWebView]) {
-        
-        if (@available(iOS 9.0, *)) {
-            NSMutableSet *_wkWebsiteDataTypes = nil;
-            if (wkWebsiteDataTypes.count > 0) {
-                _wkWebsiteDataTypes = [NSMutableSet setWithArray:wkWebsiteDataTypes];
-            }else {
-                _wkWebsiteDataTypes = [NSMutableSet setWithObjects:WKWebsiteDataTypeDiskCache,
-                                       WKWebsiteDataTypeOfflineWebApplicationCache,
-                                       WKWebsiteDataTypeMemoryCache,
-                                       WKWebsiteDataTypeLocalStorage,
-                                       WKWebsiteDataTypeSessionStorage,
-                                       WKWebsiteDataTypeIndexedDBDatabases,
-                                       WKWebsiteDataTypeWebSQLDatabases,
-                                       WKWebsiteDataTypeCookies, nil];
-                
-                if (@available(iOS 11.3, *)) {
-                    [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeFetchCache];
-                    [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeServiceWorkerRegistrations];
-                }
-            }
-            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:_wkWebsiteDataTypes modifiedSince:[NSDate dateWithTimeIntervalSince1970:0] completionHandler:^{}];
++ (void)zz_clearAllCachedResponseWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes {
+            
+    if (@available(iOS 9.0, *)) {
+        NSMutableSet *_wkWebsiteDataTypes = nil;
+        if (wkWebsiteDataTypes.count > 0) {
+            _wkWebsiteDataTypes = [NSMutableSet setWithArray:wkWebsiteDataTypes];
         }else {
-            NSString *libraryDir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask, YES)[0];
-            NSString *bundleId               = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-            NSString *webkitFolderInLib      = [NSString stringWithFormat:@"%@/WebKit",libraryDir];
-            NSString *webKitFolderInCaches   = [NSString stringWithFormat:@"%@/Caches/%@/WebKit",libraryDir,bundleId];
-            NSString *webKitFolderInCachesfs = [NSString stringWithFormat:@"%@/Caches/%@/fsCachedData",libraryDir,bundleId];
-            NSError *error;
-            if (@available(iOS 8.0, *)) {
-                /* iOS8.0 WebView Cache的存放路径 */
-                [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCaches error:&error];
-                [[NSFileManager defaultManager] removeItemAtPath:webkitFolderInLib error:nil];
-            }else if (@available(iOS 7.0, *)) {
-                /* iOS7.0 WebView Cache的存放路径 */
-                [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCachesfs error:&error];
+            _wkWebsiteDataTypes = [NSMutableSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                   WKWebsiteDataTypeOfflineWebApplicationCache,
+                                   WKWebsiteDataTypeMemoryCache,
+                                   WKWebsiteDataTypeLocalStorage,
+                                   WKWebsiteDataTypeSessionStorage,
+                                   WKWebsiteDataTypeIndexedDBDatabases,
+                                   WKWebsiteDataTypeWebSQLDatabases,
+                                   WKWebsiteDataTypeCookies, nil];
+            
+            if (@available(iOS 11.3, *)) {
+                [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeFetchCache];
+                [_wkWebsiteDataTypes addObject:WKWebsiteDataTypeServiceWorkerRegistrations];
             }
+        }
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:_wkWebsiteDataTypes modifiedSince:[NSDate dateWithTimeIntervalSince1970:0] completionHandler:^{}];
+    }else {
+        NSString *libraryDir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask, YES)[0];
+        NSString *bundleId               = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+        NSString *webkitFolderInLib      = [NSString stringWithFormat:@"%@/WebKit",libraryDir];
+        NSString *webKitFolderInCaches   = [NSString stringWithFormat:@"%@/Caches/%@/WebKit",libraryDir,bundleId];
+        NSString *webKitFolderInCachesfs = [NSString stringWithFormat:@"%@/Caches/%@/fsCachedData",libraryDir,bundleId];
+        NSError *error;
+        if (@available(iOS 8.0, *)) {
+            /* iOS8.0 WebView Cache的存放路径 */
+            [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCaches error:&error];
+            [[NSFileManager defaultManager] removeItemAtPath:webkitFolderInLib error:nil];
+        }else if (@available(iOS 7.0, *)) {
+            /* iOS7.0 WebView Cache的存放路径 */
+            [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCachesfs error:&error];
         }
     }
 }
@@ -213,16 +150,9 @@
 /**
  *  加载HTML文本
  */
-- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL {
+- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
     
-    if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        if (@available(iOS 13.0, *)) {
-        }else {
-            [_webView loadHTMLString:string baseURL:baseURL];
-        }
-    }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        
-    }
+    [self.zzWKWebView loadHTMLString:string baseURL:baseURL];
 }
 
 /**
@@ -238,32 +168,17 @@
     NSString *path = [_bundle pathForResource:fileName ofType:ofType];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
     
-    BOOL available11 = NO;
     if (@available(iOS 11.0, *)) {
-        available11 = YES;
-    }
-    
-    if (_type == ZZWebViewTypeWKWebView && available11) {
         // WKWebView iOS 11以及以上
         [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
-            ZZ_STRONG_SELF
-            [strongSelf->_wkWebView loadRequest:request];
+            [weakSelf.zzWKWebView loadRequest:request];
         }];
-        return;
     }else {
         for (NSString *headerField in headerFields.allKeys) {
             NSString *value = headerFields[headerField];
             [request addValue:value forHTTPHeaderField:headerField];
         }
-    }
-    
-    if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        if (@available(iOS 13.0, *)) {
-        }else {
-            [_webView loadRequest:request];
-        }
-    }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        [_wkWebView loadRequest:request];
+        [self.zzWKWebView loadRequest:request];
     }
 }
 
@@ -280,18 +195,11 @@
         request = [NSMutableURLRequest requestWithURL:url];
     }
     
-    BOOL available11 = NO;
     if (@available(iOS 11.0, *)) {
-        available11 = YES;
-    }
-    
-    if (_type == ZZWebViewTypeWKWebView && available11) {
         // WKWebView iOS 11以及以上
         [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
-            ZZ_STRONG_SELF
-            [strongSelf->_wkWebView loadRequest:request];
+            [weakSelf.zzWKWebView loadRequest:request];
         }];
-        return;
     }else {
         // 方法：通过一一设置Request Header
         for (NSString *headerField in headerFields.allKeys) {
@@ -308,90 +216,36 @@
         //设置请求头
         request.allHTTPHeaderFields = requestHeaderFields;
         */
+        [weakSelf.zzWKWebView loadRequest:request];
     }
-    if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        if (@available(iOS 13.0, *)) {
-        }else {
-            [_webView loadRequest:request];
-        }
-    }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        [_wkWebView loadRequest:request];
-    }
-}
-
-/**
- *  OC执行JavaScript,没有异常捕获
- */
-- (nullable NSString *)zz_evaluateScript:(nonnull NSString *)script {
-    
-    if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
-        if (@available(iOS 13.0, *)) {
-        }else {
-            return [_webView stringByEvaluatingJavaScriptFromString:@"document.titledss"];
-        }
-    }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        NSAssert(NO, @"请使用方法zz_evaluateScript:result:");
-    }
-    return nil;
 }
 
 /**
  *  OC执行JavaScript,回调有异常捕获
  */
-- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result {
+- (void)zz_evaluateScript:(nonnull NSString *)script result:(nullable void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result {
     
-    __weak typeof(self) weakSelf = self;
-    
-    if (_type == ZZWebViewTypeUIWebView && _webView != nil) {
+    [self.zzWKWebView evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
         
-        if (@available(iOS 13.0, *)) {
-        }else {
-            if (_context == nil) {
-                _context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-            }
-            __block BOOL _isErrorRaised = NO;
-            _context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-                _isErrorRaised = YES;
-                ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
-                resultData.error = exception;
-                result == nil ? : result(context, resultData);
-            };
-            __block JSValue *jsValue = [_context evaluateScript:script];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                if (!_isErrorRaised && result != nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        __strong typeof(weakSelf) strongSelf = weakSelf;
-                        ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
-                        resultData.data = jsValue;
-                        result == nil ? : result(strongSelf->_context, resultData);
-                    });
-                }
-            });
-        }
-    }else if (_type == ZZWebViewTypeWKWebView && _wkWebView != nil) {
-        
-        [_wkWebView evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
-            
-            ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
-            resultData.wkData = data;
-            resultData.wkError = error;
-            result == nil ? : result(nil, resultData);
-        }];
-    }
+        ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
+        resultData.wkData = data;
+        resultData.wkError = error;
+        result == nil ? : result(nil, resultData);
+    }];
 }
 
 /**
  *  快速新建ZZWebView的方法(默认开启进度条)
  */
-+ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
++ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
-    return [ZZWebView zz_quickAdd:type onView:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
+    return [ZZWebView zz_quickAddOnView:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
 }
 
 /**
  *  快速新建ZZWebView的方法(Base)
  */
-+ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
++ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame];
     if (onView != nil) {
@@ -402,54 +256,12 @@
             }];
         }
     }
-    zzWebView->_type = type;
-    zzWebView->_progressBarTintColor = progressBarTintColor;
+    zzWebView.zzProgressBarTintColor = progressBarTintColor;
     [zzWebView _buildUI];
     return zzWebView;
 }
 
-/**
- *  URL Schemes时候执行处理方法
- */
-+ (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option {
-    
-    ZZWebView *zzWebView = [ZZWebView _getActiveZZWebView];
-    if (zzWebView != nil && zzWebView.zzUIWebViewOpenURLBlock != nil) {
-        if (@available(iOS 13.0, *)) {
-        }else {
-            return zzWebView.zzUIWebViewOpenURLBlock(url, option);
-        }
-    }
-    return NO;
-}
-
 #pragma mark - Private
-
-+ (ZZWebView *)_getActiveZZWebView {
-    
-    UIViewController *viewController = [ZZ_KEY_WINDOW zz_topViewController];
-    for (ZZWebView *subView in viewController.view.subviews) {
-        if ([subView isKindOfClass:[ZZWebView class]]) {
-            return subView;
-        }
-    }
-    
-    viewController = [ZZ_KEY_WINDOW zz_presentedViewController];
-    for (ZZWebView *subView in viewController.view.subviews) {
-        if ([subView isKindOfClass:[ZZWebView class]]) {
-            return subView;
-        }
-    }
-    
-    viewController = [ZZ_KEY_WINDOW zz_activedViewController];
-    for (ZZWebView *subView in viewController.view.subviews) {
-        if ([subView isKindOfClass:[ZZWebView class]]) {
-            return subView;
-        }
-    }
-    
-    return nil;
-}
 
 - (UIViewController *)_responder:(UIView *)view {
     
@@ -466,42 +278,31 @@
 
 - (void)_buildUI {
     
-    __weak typeof(self) weakSelf = self;
-    if (_type == ZZWebViewTypeUIWebView) {
-        
-        _webView = [[UIWebView alloc] init];
-        _webView.delegate = self;
-        [self addSubview:_webView];
-        [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf);
-        }];
-    }else if (_type == ZZWebViewTypeWKWebView) {
-        
-        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-        WKUserContentController *controller = [[WKUserContentController alloc] init];
-        configuration.userContentController = controller;
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-        // 允许右滑返回上个链接，左滑前进
-        _wkWebView.allowsBackForwardNavigationGestures = YES;
-        // 允许链接3D Touch
-        if (@available(iOS 9.0, *)) {
-            _wkWebView.allowsLinkPreview = YES;
-        } else {
-            // Fallback on earlier versions
-        }
-        // 自定义UA，UIWebView就没有此功能，后面会讲到通过其他方式实现
-        _wkWebView.UIDelegate = self;
-        _wkWebView.navigationDelegate = self;
-        [self addSubview:_wkWebView];
-        [_wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf);
-        }];
+    ZZ_WEAK_SELF
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    configuration.userContentController = controller;
+    _zzWKWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+    // 允许右滑返回上个链接，左滑前进
+    _zzWKWebView.allowsBackForwardNavigationGestures = YES;
+    // 允许链接3D Touch
+    if (@available(iOS 9.0, *)) {
+        _zzWKWebView.allowsLinkPreview = YES;
+    } else {
+        // Fallback on earlier versions
     }
-    if (_progressBarTintColor) {
+    // 自定义UA，UIWebView就没有此功能，后面会讲到通过其他方式实现
+    _zzWKWebView.UIDelegate = self;
+    _zzWKWebView.navigationDelegate = self;
+    [self addSubview:_zzWKWebView];
+    [_zzWKWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf);
+    }];
+    if (_zzProgressBarTintColor != nil) {
         [self zzProgressView];
-        [_wkWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+        [_zzWKWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     }
-    [_wkWebView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+    [_zzWKWebView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark - Observe Estimated Progress
@@ -509,28 +310,28 @@
     
     ZZ_WEAK_SELF
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
-        _estimatedProgress = [change[NSKeyValueChangeNewKey] doubleValue];
-        if (_progressView) {
-            [self bringSubviewToFront:_progressView];
-            [_progressView setProgress:_estimatedProgress animated:NO];
-            if (_estimatedProgress >= 0.89) {
+        self.zzEstimatedProgress = [change[NSKeyValueChangeNewKey] doubleValue];
+        if (_zzProgressView != nil) {
+            [self bringSubviewToFront:_zzProgressView];
+            [_zzProgressView setProgress:_zzEstimatedProgress animated:NO];
+            if (_zzEstimatedProgress >= 0.89) {
                 int64_t delayInSeconds = 0.5;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
                     __strong typeof(weakSelf) strongSelf = weakSelf;
-                    if (strongSelf->_estimatedProgress >= 0.89) {
-                        
+                    if (strongSelf.zzEstimatedProgress >= 0.89) {
+                        // 几乎完成加载了
                     }
                 });
-                if (_estimatedProgress == 1.0) {
-                    _progressView.alpha = 0;
-                    _estimatedProgress = 0;
+                if (_zzEstimatedProgress == 1.0) {
+                    _zzProgressView.alpha = 0;
+                    _zzEstimatedProgress = 0;
                 }
             }else {
-                _progressView.alpha = 1.0;
+                _zzProgressView.alpha = 1.0;
             }
         }
-        self.zzWebViewProgressBlock == nil ? : self.zzWebViewProgressBlock(_estimatedProgress);
+        self.zzWebViewProgressBlock == nil ? : self.zzWebViewProgressBlock(_zzEstimatedProgress);
     }
     else if ([keyPath isEqualToString:@"title"]) {
         
@@ -543,13 +344,11 @@
     }
 }
 
-
-
 - (void)_copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:(nullable void (^)(void))theCompletionHandler {
     
     if (@available(iOS 11.0, *)) {
         NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-        WKHTTPCookieStore *cookieStroe = _wkWebView.configuration.websiteDataStore.httpCookieStore;
+        WKHTTPCookieStore *cookieStroe = _zzWKWebView.configuration.websiteDataStore.httpCookieStore;
         if (cookies.count == 0) {
             !theCompletionHandler ? : theCompletionHandler();
             return;
@@ -567,56 +366,12 @@
     }
 }
 
-#pragma mark - UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
-    
-    if (self.zzWebNavigationBlock != nil) {
-        return self.zzWebNavigationBlock(ZZWebViewNavigationStatusShouldStartNavigation, webView, nil, request, navigationType, nil, nil, nil, nil, nil, nil);
-    }
-    return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
- 
-    if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidStartNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, nil);
-    }
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
-    
-    if (_context == nil) {
-        _context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    }
-    
-    if (!_addedJavaScriptProcess) {
-        __weak typeof(self) weakSelf = self;
-        [_zzUIWebViewProcessJavaScriptCallingDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            strongSelf->_context[key] = obj;
-        }];
-        _addedJavaScriptProcess = YES;
-    }
-    
-    if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFinishNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, nil);
-    }
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
-    
-    if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFailedWithNavigation, webView, nil, nil, 0, nil, nil, nil, nil, nil, error);
-    }
-}
-
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationAction, nil, webView, nil, 0, navigationAction, nil, nil, decisionHandler, nil, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationAction, webView, navigationAction, nil, nil, decisionHandler, nil, nil);
     }else {
         decisionHandler(WKNavigationActionPolicyAllow);
     }
@@ -625,7 +380,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationResponse, nil, webView, nil, 0, nil, navigationResponse, nil, nil, decisionHandler, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDecidePolicyForNavigationResponse, webView, nil, navigationResponse, nil, nil, decisionHandler, nil);
     }else {
         decisionHandler(WKNavigationResponsePolicyAllow);
     }
@@ -634,21 +389,21 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidStartNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidStartNavigation, webView, nil, nil, navigation, nil, nil, nil);
     }
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFinishNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFinishNavigation, webView, nil, nil, navigation, nil, nil, nil);
     }
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     
     if (self.zzWebNavigationBlock != nil) {
-        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFailedWithNavigation, nil, webView, nil, 0, nil, nil, navigation, nil, nil, nil);
+        self.zzWebNavigationBlock(ZZWebViewNavigationStatusDidFailedWithNavigation, webView, nil, nil, navigation, nil, nil, nil);
     }
 }
 
@@ -673,7 +428,7 @@
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0)) {
     
     // WKWebView白屏处理
-    [_wkWebView reload];
+    [_zzWKWebView reload];
 }
 
 

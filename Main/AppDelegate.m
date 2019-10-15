@@ -17,9 +17,6 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-    if ([ZZWebView zz_handleOpenURL:url option:options]) {
-        return YES;
-    }
     return YES;
 }
 

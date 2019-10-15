@@ -25,7 +25,7 @@
 - (void)setZzData:(__kindof ZZCollectionViewCellDataSource *)zzData {
     
     [super setZzData:zzData];
-    ZZCollectionViewCellDataSource *ds = zzData;
+    // ZZCollectionViewCellDataSource *ds = zzData;
     self.backgroundColor = [UIColor colorWithRed:(arc4random() % 255 / 255.0) green:(arc4random() % 255 / 255.0) blue:(arc4random() % 255 / 255.0) alpha:1.0];
     self.label.text = [NSString stringWithFormat:@"%u", arc4random() % 10000];
 }

@@ -13,15 +13,8 @@
 @class MASConstraintMaker;
 @class ZZWebViewJavaScriptResult;
 
-typedef NS_ENUM(NSInteger, ZZWebViewType) {
-    ZZWebViewTypeUIWebView = 0x0001,   // UIWebView
-    ZZWebViewTypeWKWebView = 0x0002    // WKWebView
-};
-
 typedef NS_ENUM(NSInteger, ZZWebViewNavigationStatus) {
     
-    // 根据Request判断是否允许导航
-    ZZWebViewNavigationStatusShouldStartNavigation,
     // 根据Request判断是否允许导航
     ZZWebViewNavigationStatusDecidePolicyForNavigationAction,
     // 根据Response判断是否允许导航
@@ -40,44 +33,31 @@ typedef void (^ZZWebViewProgressBlock)(double progress);
 
 typedef void (^ZZWebViewTitleBlock)(NSString * _Nullable title);
 
+typedef void(^ZZWebNavigationBlock)(ZZWebViewNavigationStatus status, WKWebView * _Nullable wkWebView, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebView : UIView
 
-@property (nonatomic, readonly) UIWebView *zzUIWebView NS_DEPRECATED_IOS(2_0, 12_0);
+#pragma mark - Properties
 
-@property (nonatomic, readonly) WKWebView *zzWKWebView;
-
-@property (nonatomic, readonly) JSContext *zzUIWebViewContext;
+@property (nonatomic, strong, readonly) WKWebView *zzWKWebView;
 
 @property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
-
-// UIWebView的处理URL Scheme方式调用自身Navtive的事件处理和跳转
-@property (nonatomic, copy) BOOL(^zzUIWebViewOpenURLBlock)(NSURL *url, NSDictionary<UIApplicationOpenURLOptionsKey,id> *options);
-
-// UIWebView的处理JavaScript调用Navtive的事件预设
-@property (nonatomic, strong) NSDictionary<NSString *, id> *zzUIWebViewProcessJavaScriptCallingDictionary;
 
 // WKWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
 
-// 加载进度条Block
+// 网页加载进度条Block
 @property (nonatomic, copy) ZZWebViewProgressBlock zzWebViewProgressBlock;
 
 // 网页Title Block
 @property (nonatomic, copy) ZZWebViewTitleBlock zzWebViewTitleBlock;
 
-@property (nonatomic, copy) BOOL(^zzWebNavigationBlock)(ZZWebViewNavigationStatus status, UIWebView * _Nullable webView, WKWebView * _Nullable wkWebView, NSURLRequest * _Nullable request, UIWebViewNavigationType type, WKNavigationAction * _Nullable navigationAction, WKNavigationResponse * _Nullable navigationResponse, WKNavigation * _Nullable navigation, void (^ _Nullable decisionRequestHandler)(WKNavigationActionPolicy), void (^ _Nullable decisionResponseHandler)(WKNavigationResponsePolicy), NSError * _Nullable error);
+// 网页加载请求周期Block
+@property (nonatomic, copy) ZZWebNavigationBlock zzWebNavigationBlock;
 
-/**
- *  获取UIWebView的默认User-Agent
- */
-+ (NSString *)zz_getUIWebViewUserAgent;
-
-/**
- *  设置全局User-Agent
- */
-+ (void)zz_setUserAgent:(NSString *(^)(NSString *userAgent))userAgentBlock;
+#pragma mark - Public Method
 
 /**
  *  清除所有Cookies
@@ -92,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  清除所有缓存方法
  */
-+ (void)zz_clearAllCachedResponse:(ZZWebViewType)webViewType wkWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes;
++ (void)zz_clearAllCachedResponseWebsiteDataTypes:(nullable NSArray<NSString *> *)wkWebsiteDataTypes;
 
 /**
  *  清除某一个URL缓存的方法
@@ -102,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  加载HTML文本
  */
-- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL;
+- (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields;
 
 /**
  *  加载本地HTML文件
@@ -115,29 +95,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_loadRequest:(nonnull id)url headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields;
 
 /**
- *  OC执行JavaScript,没有异常捕获
- */
-- (nullable NSString *)zz_evaluateScript:(nonnull NSString *)script;
-
-/**
  *  OC执行JavaScript,回调有异常捕获
  */
-- (void)zz_evaluateScript:(nonnull NSString *)script result:(void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result;
+- (void)zz_evaluateScript:(nonnull NSString *)script result:(nullable void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result;
 
 /**
  *  快速新建ZZWebView的方法(默认开启进度条)
  */
-+ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
++ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 /**
  *  快速新建ZZWebView的方法(Base)
  */
-+ (nonnull ZZWebView *)zz_quickAdd:(ZZWebViewType)type onView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
-
-/**
- *  URL Schemes时候执行处理方法
- */
-+ (BOOL)zz_handleOpenURL:(nonnull NSURL *)url option:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option;
++ (nonnull ZZWebView *)zz_quickAddOnView:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 @end
 

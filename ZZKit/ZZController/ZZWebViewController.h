@@ -15,9 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZWebViewController : UIViewController
 
-// WebView容器类型
-@property (nonatomic, assign) ZZWebViewType zzWebType;
-
 // WebView容器
 @property (nonatomic, strong, readonly) ZZWebView *zzWebView;
 
