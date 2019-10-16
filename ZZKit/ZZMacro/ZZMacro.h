@@ -35,10 +35,10 @@
 #define ZZ_STR_FORMAT_FLOAT_4_DECIMAL(num)    [NSString stringWithFormat:@"%.4f",num]
 #define ZZ_STR_FORMAT_FLOAT_5_DECIMAL(num)    [NSString stringWithFormat:@"%.5f",num]
 #define ZZ_STR_MERGE(a,b)                     [NSString stringWithFormat:@"%@%@",a,b]
-#define ZZ_STR_TO_FLOAT_ACCURACY_1(str)       [NSString stringWithFormat:@"%.1f",str]
-#define ZZ_STR_TO_FLOAT_ACCURACY_2(str)       [NSString stringWithFormat:@"%.2f",str]
-#define ZZ_STR_TO_FLOAT_ACCURACY_3(str)       [NSString stringWithFormat:@"%.3f",str]
-#define ZZ_STR_TO_FLOAT_ACCURACY_4(str)       [NSString stringWithFormat:@"%.4f",str]
+#define ZZ_STR_TO_FLOAT_ACCURACY_1(num)       [NSString stringWithFormat:@"%.1f",num]
+#define ZZ_STR_TO_FLOAT_ACCURACY_2(num)       [NSString stringWithFormat:@"%.2f",num]
+#define ZZ_STR_TO_FLOAT_ACCURACY_3(num)       [NSString stringWithFormat:@"%.3f",num]
+#define ZZ_STR_TO_FLOAT_ACCURACY_4(num)       [NSString stringWithFormat:@"%.4f",num]
 
 // Object Helper
 #define ZZ_OBJECT_NIL_TO_EMPTY(object)        (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])
