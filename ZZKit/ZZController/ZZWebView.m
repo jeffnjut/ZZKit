@@ -171,6 +171,10 @@
     if (@available(iOS 11.0, *)) {
         // WKWebView iOS 11以及以上
         [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
+            for (NSString *headerField in headerFields.allKeys) {
+                NSString *value = headerFields[headerField];
+                [request addValue:value forHTTPHeaderField:headerField];
+            }
             [weakSelf.zzWKWebView loadRequest:request];
         }];
     }else {
@@ -198,6 +202,10 @@
     if (@available(iOS 11.0, *)) {
         // WKWebView iOS 11以及以上
         [self _copyNSHTTPCookieStorageToWKHTTPCookieStoreWithCompletionHandler:^{
+            for (NSString *headerField in headerFields.allKeys) {
+                NSString *value = headerFields[headerField];
+                [request addValue:value forHTTPHeaderField:headerField];
+            }
             [weakSelf.zzWKWebView loadRequest:request];
         }];
     }else {
@@ -347,13 +355,13 @@
     
     if (@available(iOS 11.0, *)) {
         NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-        WKHTTPCookieStore *cookieStroe = _zzWKWebView.configuration.websiteDataStore.httpCookieStore;
+        WKHTTPCookieStore *cookieStore = _zzWKWebView.configuration.websiteDataStore.httpCookieStore;
         if (cookies.count == 0) {
             !theCompletionHandler ? : theCompletionHandler();
             return;
         }
         for (NSHTTPCookie *cookie in cookies) {
-            [cookieStroe setCookie:cookie completionHandler:^{
+            [cookieStore setCookie:cookie completionHandler:^{
                 if ([[cookies lastObject] isEqual:cookie]) {
                     !theCompletionHandler ? : theCompletionHandler();
                     return;
