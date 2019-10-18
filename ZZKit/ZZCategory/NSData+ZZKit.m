@@ -7,6 +7,7 @@
 //
 
 #import "NSData+ZZKit.h"
+#import "NSString+ZZKit.h"
 
 @implementation NSData (ZZKit)
 
@@ -56,6 +57,15 @@
     
     NSString *base64 = [self base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     return base64;
+}
+
+/**
+ *  NSData转md5
+ */
+- (nullable NSString *)zz_md5 {
+    
+    NSString *str  = [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+    return [str zz_md5];
 }
 
 @end

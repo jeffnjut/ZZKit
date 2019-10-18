@@ -32,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSString *)zz_stringBase64;
 
+/**
+ *  NSData转md5
+ */
+- (nullable NSString *)zz_md5;
+
 @end
 
 NS_ASSUME_NONNULL_END
