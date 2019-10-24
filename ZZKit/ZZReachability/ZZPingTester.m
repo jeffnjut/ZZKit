@@ -31,6 +31,11 @@
 
 @implementation ZZPingTester
 
+- (void)dealloc
+{
+
+}
+
 - (instancetype)initWithHostName:(nonnull NSString *)hostName block:(nullable void(^)(float time, ZZPingStatus status, NSError *error))block {
     
     if(self = [super init]) {

@@ -777,6 +777,7 @@
  *  字符串的MD5值
  */
 - (NSString *)zz_md5 {
+    
     const char *cStr = self.UTF8String;
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
@@ -785,6 +786,10 @@
         [md5Str appendFormat:@"%02x", result[i]];
     }
     return md5Str;
+    /*
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [data zz_md5];
+    */
 }
 
 #pragma mark - UUID
