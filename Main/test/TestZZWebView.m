@@ -37,7 +37,8 @@
     self.webView.zzWKWebView.customUserAgent = @"哈哈哈";
     
     __weak typeof(self) weakSelf = self;
-    self.webView = [ZZWebView zz_quickAddOnView:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+    
+    self.webView = [ZZWebView zz_quickAdd:self.view frame:CGRectZero constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     }];
     
