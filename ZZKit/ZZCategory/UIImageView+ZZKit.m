@@ -88,7 +88,9 @@
             self.backgroundColor = placeholderBackgroundColor;
         }
         // 设置Placeholder ContentMode
-        self.contentMode = placeholderContentMode;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.contentMode = placeholderContentMode;
+        });
         
         // 查询缓存
         NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
@@ -155,18 +157,20 @@
         return;
     }
     
-    self.image = [UIImage sd_animatedGIFWithData:data];
-    
-    // 设置背景颜色
-    if (backgroundColor) {
-        self.backgroundColor = backgroundColor;
-    }
-    
-    // 设置ContentMode
-    self.contentMode = contentMode;
-    
-    // 回调
-    completion == nil ? : completion(self, data.zz_imageFirstGifFrame, data, nil, key);
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        weakSelf.image = [UIImage sd_animatedGIFWithData:data];
+        // 设置背景颜色
+        if (backgroundColor) {
+            weakSelf.backgroundColor = backgroundColor;
+        }
+        // 设置ContentMode
+        weakSelf.contentMode = contentMode;
+        
+        // 回调
+        completion == nil ? : completion(weakSelf, data.zz_imageFirstGifFrame, data, nil, key);
+    });
 }
 
 - (void)_setWebPImage:(nonnull NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
@@ -175,22 +179,25 @@
         return;
     }
     
-    YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
-    UIImage *_webPImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
-    
-    // 设置图片
-    self.image = _webPImage;
-    
-    // 设置背景颜色
-    if (backgroundColor) {
-        self.backgroundColor = backgroundColor;
-    }
-    
-    // 设置ContentMode
-    self.contentMode = contentMode;
-    
-    // 回调
-    completion == nil ? : completion(self, _webPImage, data, nil, key);
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
+        UIImage *_webPImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
+        
+        // 设置图片
+        weakSelf.image = _webPImage;
+        
+        // 设置背景颜色
+        if (backgroundColor) {
+            weakSelf.backgroundColor = backgroundColor;
+        }
+        
+        // 设置ContentMode
+        weakSelf.contentMode = contentMode;
+        
+        // 回调
+        completion == nil ? : completion(weakSelf, _webPImage, data, nil, key);
+    });
 }
 
 - (void)_setOtherImage:(nullable UIImage *)image data:(nullable NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode fadeIn:(BOOL)fadeIn completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
@@ -199,34 +206,37 @@
         return;
     }
     
-    // 设置图片
-    if (image == nil) {
-        self.image = data.zz_image;
-    }else {
-        self.image = image;
-    }
-    
-    // 设置背景颜色
-    if (backgroundColor) {
-        self.backgroundColor = backgroundColor;
-    }
-    
-    // 设置ContentMode
-    self.contentMode = contentMode;
-    
-    if (fadeIn) {
-        self.alpha = 0.5;
-        [self.layer removeAllAnimations];
-        [UIView transitionWithView:self
-                          duration:1.0
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:^{ self.alpha = 1.0; }
-                        completion:nil];
-    }else {
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // 设置图片
+        if (image == nil) {
+            weakSelf.image = data.zz_image;
+        }else {
+            weakSelf.image = image;
+        }
         
-    }
-    // 回调
-    completion == nil ? : completion(self, self.image, data, nil, key);
+        // 设置背景颜色
+        if (backgroundColor) {
+            weakSelf.backgroundColor = backgroundColor;
+        }
+        
+        // 设置ContentMode
+        self.contentMode = contentMode;
+        
+        if (fadeIn) {
+            weakSelf.alpha = 0.5;
+            [weakSelf.layer removeAllAnimations];
+            [UIView transitionWithView:weakSelf
+                              duration:1.0
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{ weakSelf.alpha = 1.0; }
+                            completion:nil];
+        }else {
+            
+        }
+        // 回调
+        completion == nil ? : completion(weakSelf, weakSelf.image, data, nil, key);
+    });
 }
 
 #pragma mark - Private
