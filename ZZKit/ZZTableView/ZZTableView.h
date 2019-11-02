@@ -158,7 +158,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  创建ZZTableView的方法
  */
-+ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(ZZTableViewCellActionBlock)actionBlock;
++ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock;
+
+/**
+ *  创建ZZTableView的方法（全）
+ */
++ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock;
 
 /**
  *  一组安全的操作datasource的方法

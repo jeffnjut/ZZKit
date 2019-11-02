@@ -131,11 +131,20 @@
 /**
  *  创建ZZTableView的方法
  */
-+ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(ZZTableViewCellActionBlock)actionBlock {
++ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock {
+    
+    return [ZZTableView zz_quickAdd:editingStyle backgroundColor:backgroundColor onView:onView frame:frame constraintBlock:constraintBlock actionBlock:actionBlock scrollBlock:nil];
+}
+
+/**
+ *  创建ZZTableView的方法（全）
+ */
++ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock {
     
     ZZTableView *tableView = [[ZZTableView alloc] initWithFrame:frame];
     tableView.zzTableViewCellEditingStyle = editingStyle;
     tableView.zzActionBlock = actionBlock;
+    tableView.zzScrollBlock = scrollBlock;
     tableView.delegate = tableView;
     tableView.dataSource = tableView;
     tableView.showsVerticalScrollIndicator = NO;
