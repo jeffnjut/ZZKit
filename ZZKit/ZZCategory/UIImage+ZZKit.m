@@ -311,6 +311,9 @@
  */
 - (UIImage *)zz_imageTuningScale:(CGFloat)scale orientation:(UIImageOrientation)orientation {
     
+    if (scale <= 0 || scale > 3.0 || scale == self.scale) {
+        return self;
+    }
     CGImageRef imageRef = self.CGImage;
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:scale orientation:orientation];
     return image;
