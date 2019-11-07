@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FJPhotoLibraryNoAlbumView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_photolibrary_no_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="R8y-K0-vkb">
+                    <rect key="frame" x="97.5" y="245" width="180" height="137"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="137" id="XSY-83-fAI"/>
+                        <constraint firstAttribute="width" constant="180" id="z9l-pd-zt4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无可用的照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRE-eu-YVi">
+                    <rect key="frame" x="130" y="414" width="115" height="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快去拍摄一张吧～" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcB-57-FNi">
+                    <rect key="frame" x="130" y="450" width="115" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="R8y-K0-vkb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9jD-BY-rmW"/>
+                <constraint firstItem="xRE-eu-YVi" firstAttribute="centerX" secondItem="R8y-K0-vkb" secondAttribute="centerX" id="IOO-5g-nhL"/>
+                <constraint firstItem="GcB-57-FNi" firstAttribute="top" secondItem="xRE-eu-YVi" secondAttribute="bottom" constant="16" id="Sqp-da-luk"/>
+                <constraint firstItem="xRE-eu-YVi" firstAttribute="top" secondItem="R8y-K0-vkb" secondAttribute="bottom" constant="32" id="VZ0-5s-5Vq"/>
+                <constraint firstItem="GcB-57-FNi" firstAttribute="centerX" secondItem="R8y-K0-vkb" secondAttribute="centerX" id="oiC-s4-r7u"/>
+                <constraint firstItem="R8y-K0-vkb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="qsJ-H6-VYn"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_photolibrary_no_album.png" width="181" height="137"/>
+    </resources>
+</document>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FJPhotoTagAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="114" height="32"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewb-7Y-kp8">
+                    <rect key="frame" x="57" y="11" width="0.5" height="10"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="0.5" id="68b-kk-eAg"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="删除" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATj-0x-UcM">
+                    <rect key="frame" x="6" y="6" width="45" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="切换" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-ur-FtP">
+                    <rect key="frame" x="63.5" y="6" width="44.5" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwb-4t-eOU">
+                    <rect key="frame" x="0.0" y="0.0" width="57" height="32"/>
+                    <connections>
+                        <action selector="_tapDelete:" destination="iN0-l3-epB" eventType="touchUpInside" id="5WJ-Fb-eh0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypZ-ap-YB0">
+                    <rect key="frame" x="57.5" y="0.0" width="56.5" height="32"/>
+                    <connections>
+                        <action selector="_tapSwitch:" destination="iN0-l3-epB" eventType="touchUpInside" id="bEC-fP-Ije"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ypZ-ap-YB0" secondAttribute="bottom" id="3Ck-bq-e1e"/>
+                <constraint firstItem="rwb-4t-eOU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="An4-Vi-1iz"/>
+                <constraint firstAttribute="trailing" secondItem="ypZ-ap-YB0" secondAttribute="trailing" id="BK9-bM-6wk"/>
+                <constraint firstAttribute="bottom" secondItem="ewb-7Y-kp8" secondAttribute="bottom" constant="11" id="CBA-Lx-9Zc"/>
+                <constraint firstAttribute="bottom" secondItem="ATj-0x-UcM" secondAttribute="bottom" constant="6" id="F7l-AL-exc"/>
+                <constraint firstItem="ewb-7Y-kp8" firstAttribute="leading" secondItem="rwb-4t-eOU" secondAttribute="trailing" id="Imz-PR-08Y"/>
+                <constraint firstItem="ATj-0x-UcM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="K4c-zY-QBS"/>
+                <constraint firstItem="ewb-7Y-kp8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nvz-5I-j39"/>
+                <constraint firstAttribute="bottom" secondItem="SWa-ur-FtP" secondAttribute="bottom" constant="6" id="OLM-iz-TTk"/>
+                <constraint firstAttribute="bottom" secondItem="rwb-4t-eOU" secondAttribute="bottom" id="QNg-sk-9kq"/>
+                <constraint firstItem="ewb-7Y-kp8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="U88-MK-aq6"/>
+                <constraint firstItem="ATj-0x-UcM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Y4g-VV-eui"/>
+                <constraint firstItem="rwb-4t-eOU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZOF-ae-jFt"/>
+                <constraint firstItem="ypZ-ap-YB0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fED-YM-fBX"/>
+                <constraint firstAttribute="trailing" secondItem="SWa-ur-FtP" secondAttribute="trailing" constant="6" id="h9d-cI-xuH"/>
+                <constraint firstItem="ewb-7Y-kp8" firstAttribute="leading" secondItem="ATj-0x-UcM" secondAttribute="trailing" constant="6" id="kp2-yt-IT2"/>
+                <constraint firstItem="SWa-ur-FtP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="r37-Wx-3Hc"/>
+                <constraint firstItem="ypZ-ap-YB0" firstAttribute="leading" secondItem="ewb-7Y-kp8" secondAttribute="trailing" id="vEy-iE-Dd9"/>
+                <constraint firstItem="SWa-ur-FtP" firstAttribute="leading" secondItem="ewb-7Y-kp8" secondAttribute="trailing" constant="6" id="yxr-yk-5he"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

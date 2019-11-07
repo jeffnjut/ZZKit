@@ -14,5 +14,6 @@ target "ZZKit" do
   # pod 'AFNetworking'
   # pod 'BlocksKit'
   # pod 'MJRefresh'
+  pod 'SMPageControl'
 
 end
