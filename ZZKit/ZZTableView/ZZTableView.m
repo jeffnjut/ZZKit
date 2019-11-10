@@ -117,6 +117,17 @@
 
 #pragma mark - 初始化函数
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        pthread_mutex_init(&_lock, NULL);
+        _zzDataSource = [[NSMutableArray alloc] init];
+        _zzTableViewSectionIndexTitleHeight = 0;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -340,8 +351,13 @@
     ZZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
     if (!cell) {
         NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
-        [tableView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellReuseIdentifier:cellClassName];
-        cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+        if ([bundle pathForResource:cellClassName ofType:@"nib"] == nil) {
+            [tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellClassName];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+        }else {
+            [tableView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellReuseIdentifier:cellClassName];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+        }
     }
     if (cellData.zzAllowEditing == NO) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -387,8 +403,13 @@
             ZZTableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
             if (!headerView) {
                 NSBundle *bundle = [NSBundle zz_resourceClass:[headerData class] bundleName:nil];
-                [tableView registerNib:[UINib nibWithNibName:headerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:headerViewClassName];
-                headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
+                if ([bundle pathForResource:headerViewClassName ofType:@"nib"] == nil) {
+                    [tableView registerClass:NSClassFromString(headerViewClassName) forHeaderFooterViewReuseIdentifier:headerViewClassName];
+                    headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
+                }else {
+                    [tableView registerNib:[UINib nibWithNibName:headerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:headerViewClassName];
+                    headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewClassName];
+                }
             }
             headerView.zzData = headerData;
             if (headerView.zzTapBlock == nil) {
@@ -429,8 +450,13 @@
             ZZTableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
             if (!footerView) {
                 NSBundle *bundle = [NSBundle zz_resourceClass:[footerData class] bundleName:nil];
-                [tableView registerNib:[UINib nibWithNibName:footerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:footerViewClassName];
-                footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
+                if ([bundle pathForResource:footerViewClassName ofType:@"nib"] == nil) {
+                    [tableView registerClass:NSClassFromString(footerViewClassName) forHeaderFooterViewReuseIdentifier:footerViewClassName];
+                    footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
+                }else {
+                    [tableView registerNib:[UINib nibWithNibName:footerViewClassName bundle:bundle] forHeaderFooterViewReuseIdentifier:footerViewClassName];
+                    footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerViewClassName];
+                }
             }
             footerView.zzData = footerData;
             if (footerView.zzTapBlock == nil) {
