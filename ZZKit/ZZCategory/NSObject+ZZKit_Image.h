@@ -28,9 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_setImage:(id)anyResource isSelected:(BOOL)isSelected renderingMode:(UIImageRenderingMode)renderingMode;
 
 /**
- *  设置任意图片源(Base, isSelect, renderingMode, scale)
+ *  设置任意图片源(Base, isSelect, renderingMode, scale, fixedWidth[与scale、fixedWidth设置一个，fixedWidth和Height是等比缩放])
  */
-- (void)zz_setImage:(id)anyResource isSelected:(BOOL)isSelected renderingMode:(UIImageRenderingMode)renderingMode scale:(nullable NSNumber *)scale;
+- (void)zz_setImage:(id)anyResource isSelected:(BOOL)isSelected renderingMode:(UIImageRenderingMode)renderingMode scale:(nullable NSNumber *)scale fixedWidth:(nullable NSNumber *)fixedWidth;
 
 @end
 
