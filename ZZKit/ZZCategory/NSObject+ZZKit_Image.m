@@ -174,6 +174,7 @@ typedef NS_ENUM(NSInteger, SelfType) {
                 break;
             case SelfTypeTabBarItem:
             {
+                UIImage *_image = nil;
                 if (fixedWidth > 0) {
                     
                     CGFloat _scale = scale;
@@ -181,15 +182,18 @@ typedef NS_ENUM(NSInteger, SelfType) {
                         _scale = 2.0;
                     }
                     if (isSelected) {
-                        ((UITabBarItem *)self).selectedImage = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                        _image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
                     }else {
-                        ((UITabBarItem *)self).image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                        _image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
                     }
+                    ((UITabBarItem *)self).image = _image;
                 }else {
                     if (isSelected) {
-                        ((UITabBarItem *)self).selectedImage = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                        _image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                        ((UITabBarItem *)self).selectedImage = _image;
                     }else {
-                        ((UITabBarItem *)self).image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                        _image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                        ((UITabBarItem *)self).image = _image;
                     }
                 }
             }

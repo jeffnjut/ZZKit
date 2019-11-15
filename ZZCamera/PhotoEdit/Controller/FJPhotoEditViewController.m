@@ -176,10 +176,16 @@
     if (self.editPhotoIndex != nil) {
         self.index = [self.editPhotoIndex intValue];
         // 当从编辑进来的，相册数量同步FJPhotoManager
-        [FJPhotoManager shared].currentEditPhoto = [self.selectedPhotos objectAtIndex:self.index];
+        FJPhotoModel *photoModel = [self.selectedPhotos zz_arrayObjectAtIndex:self.index];
+        if (photoModel) {
+            [FJPhotoManager shared].currentEditPhoto = photoModel;
+        }else {
+            self.index = 0;
+            [FJPhotoManager shared].currentEditPhoto = [self.selectedPhotos zz_arrayObjectAtIndex:0];
+        }
     }else {
         self.index = 0;
-        [FJPhotoManager shared].currentEditPhoto = [self.selectedPhotos objectAtIndex:0];
+        [FJPhotoManager shared].currentEditPhoto = [self.selectedPhotos zz_arrayObjectAtIndex:0];
     }
     
     // Title View
@@ -395,6 +401,10 @@
             
             // 加调整和滤镜效果
             UIImage *filteredImage = [[FJFilterManager shared] getImage:image tuningObject:model.tuningObject appendFilterType:model.tuningObject.filterType];
+            if (filteredImage == nil) {
+                // 可能内存异常了
+                filteredImage = image;
+            }
             UIImageView *imageView = [[UIImageView alloc] initWithImage:filteredImage];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             if (filteredImage.size.width / filteredImage.size.height >= _scrollView.bounds.size.width / _scrollView.bounds.size.height) {
