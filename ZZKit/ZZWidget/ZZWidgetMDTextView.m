@@ -643,6 +643,7 @@
         _markdownTextView.showsHorizontalScrollIndicator = NO;
         _markdownTextView.scrollEnabled = NO;
         _markdownTextView.editable = self.editable;
+        _markdownTextView.backgroundColor = self.backgroundColor;
         [self addSubview:_markdownTextView];
         _markdownTextView.frame = CGRectMake(self.edgeInsets.left, self.edgeInsets.top, self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right, self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom);
     }
@@ -750,6 +751,7 @@
     }
     
     return [ZZWidgetMDTextView create:frame
+                      backgroundColor:[UIColor whiteColor]
                          parsePattern:ZZTextParserPatternFont | ZZTextParserPatternHeader | ZZTextParserPatternURLAnnotation | ZZTextParserPatternURLRaw
                            edgeInsets:edgeInsets
                                  text:text
@@ -773,6 +775,7 @@
  *  创建ZZWidgetMDTextView(完整参数)
  */
 + (ZZWidgetMDTextView *)create:(CGRect)frame
+               backgroundColor:(nullable UIColor *)backgroundColor
                   parsePattern:(ZZTextParserPattern)parsePattern
                     edgeInsets:(UIEdgeInsets)edgeInsets
                           text:(nonnull NSString *)text
@@ -792,6 +795,7 @@
                       urlBlock:(nullable void(^)(NSURL *url))urlBlock {
     
     ZZWidgetMDTextView *markdownView = [[ZZWidgetMDTextView alloc] initWithFrame:frame];
+    markdownView.backgroundColor = backgroundColor;
     markdownView.parser = [ZZMarkdownParser create:parsePattern
                                         attributes:attributes
                                missParseItalicBold:missAttributeItalicBold

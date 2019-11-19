@@ -153,6 +153,7 @@
 + (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock {
     
     ZZTableView *tableView = [[ZZTableView alloc] initWithFrame:frame];
+    tableView.backgroundColor = backgroundColor;
     tableView.zzTableViewCellEditingStyle = editingStyle;
     tableView.zzActionBlock = actionBlock;
     tableView.zzScrollBlock = scrollBlock;

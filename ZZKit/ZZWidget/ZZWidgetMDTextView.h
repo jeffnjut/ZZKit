@@ -182,6 +182,7 @@ typedef NS_ENUM(NSUInteger, ZZTextParserPattern) {
  *  创建ZZWidgetMDTextView(完整参数)
  */
 + (ZZWidgetMDTextView *)create:(CGRect)frame
+               backgroundColor:(nullable UIColor *)backgroundColor
                   parsePattern:(ZZTextParserPattern)parsePattern
                     edgeInsets:(UIEdgeInsets)edgeInsets
                           text:(nonnull NSString *)text
