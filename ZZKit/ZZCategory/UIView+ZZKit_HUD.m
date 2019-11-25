@@ -499,6 +499,10 @@
  */
 - (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
 
+    if ([self.window.subviews.lastObject isMemberOfClass:[popupView class]]) {
+        return;
+    }
+
     __weak typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -530,6 +534,7 @@
         [self addSubview:blurView];
         if (userInteractionEnabled == YES) {
             [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
                 popupView.zzPopupDisappearAnimationBlock(nil);
             }];
         }

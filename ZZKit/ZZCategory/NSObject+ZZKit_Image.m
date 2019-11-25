@@ -77,26 +77,26 @@ typedef NS_ENUM(NSInteger, SelfType) {
                                                        progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
                                                            
                                                        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-                                                           [weakSelf _setImage:(image.renderingMode == renderingMode ? image : [image imageWithRenderingMode:renderingMode]) gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue];
+                                                           [weakSelf _setImage:image gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue renderingMode:renderingMode];
                                                        }];
         }else{
             UIImage *image = [UIImage imageNamed:anyResource];
-            [self _setImage:(image.renderingMode == renderingMode ? image : [image imageWithRenderingMode:renderingMode]) gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue];
+            [self _setImage:image gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue renderingMode:renderingMode];
         }
         
     }else if ([anyResource isKindOfClass:[UIImage class]]) {
         
         UIImage *image = anyResource;
-        [self _setImage:(image.renderingMode == renderingMode ? image : [image imageWithRenderingMode:renderingMode]) gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue];
+        [self _setImage:image gifData:nil type:type isSelected:isSelected scale:scale ? scale.floatValue : image.scale fixedWidth:fixedWidth.floatValue renderingMode:renderingMode];
     }else if ([anyResource isKindOfClass:[NSData class]]) {
         
-        [self _setImage:nil gifData:anyResource type:type isSelected:isSelected scale:scale ? scale.floatValue : ((NSData *)anyResource).zz_image.scale fixedWidth:fixedWidth.floatValue];
+        [self _setImage:nil gifData:anyResource type:type isSelected:isSelected scale:scale ? scale.floatValue : ((NSData *)anyResource).zz_image.scale fixedWidth:fixedWidth.floatValue renderingMode:renderingMode];
     }
 }
 
 #pragma mark - Private
 
-- (void)_setImage:(UIImage *)image gifData:(NSData *)gifData type:(SelfType)type isSelected:(BOOL)isSelected scale:(CGFloat)scale fixedWidth:(CGFloat)fixedWidth {
+- (void)_setImage:(UIImage *)image gifData:(NSData *)gifData type:(SelfType)type isSelected:(BOOL)isSelected scale:(CGFloat)scale fixedWidth:(CGFloat)fixedWidth renderingMode:(UIImageRenderingMode)renderingMode {
     
     if (gifData != nil && [UIImage zz_imageType:gifData] == ZZImageTypeGIF) {
         switch (type) {
@@ -129,6 +129,7 @@ typedef NS_ENUM(NSInteger, SelfType) {
                 break;
         }
     }else{
+        UIImage *_image = nil;
         switch (type) {
             case SelfTypeUIImageView:
             {
@@ -138,10 +139,11 @@ typedef NS_ENUM(NSInteger, SelfType) {
                     if (_scale != 1.0 && _scale != 2.0 && _scale != 3.0) {
                         _scale = 2.0;
                     }
-                    ((UIImageView *)self).image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                    _image = [[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] imageWithRenderingMode:renderingMode];
                 }else {
-                    ((UIImageView *)self).image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                    _image = [[image zz_imageTuningScale:scale orientation:image.imageOrientation] imageWithRenderingMode:renderingMode];
                 }
+                ((UIImageView *)self).image = _image;
             }
                 break;
             case SelfTypeUIButton:
@@ -152,10 +154,11 @@ typedef NS_ENUM(NSInteger, SelfType) {
                     if (_scale != 1.0 && _scale != 2.0 && _scale != 3.0) {
                         _scale = 2.0;
                     }
-                    [((UIButton *)self) setImage:[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] forState:UIControlStateNormal | UIControlStateHighlighted];
+                    _image = [[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] imageWithRenderingMode:renderingMode];
                 }else {
-                    [((UIButton *)self) setImage:[image zz_imageTuningScale:scale orientation:image.imageOrientation] forState:UIControlStateNormal | UIControlStateHighlighted];
+                    _image = [[image zz_imageTuningScale:scale orientation:image.imageOrientation] imageWithRenderingMode:renderingMode];
                 }
+                [((UIButton *)self) setImage:_image forState:UIControlStateNormal | UIControlStateHighlighted];
             }
                 break;
             case SelfTypeBarButtonItem:
@@ -166,15 +169,15 @@ typedef NS_ENUM(NSInteger, SelfType) {
                     if (_scale != 1.0 && _scale != 2.0 && _scale != 3.0) {
                         _scale = 2.0;
                     }
-                    ((UIBarButtonItem *)self).image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                    _image = [[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] imageWithRenderingMode:renderingMode];
                 }else {
-                    ((UIBarButtonItem *)self).image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
+                    _image = [[image zz_imageTuningScale:scale orientation:image.imageOrientation] imageWithRenderingMode:renderingMode];
                 }
+                ((UIBarButtonItem *)self).image = _image;
             }
                 break;
             case SelfTypeTabBarItem:
             {
-                UIImage *_image = nil;
                 if (fixedWidth > 0) {
                     
                     CGFloat _scale = scale;
@@ -182,19 +185,21 @@ typedef NS_ENUM(NSInteger, SelfType) {
                         _scale = 2.0;
                     }
                     if (isSelected) {
-                        _image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                        _image = [[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] imageWithRenderingMode:renderingMode];
                     }else {
-                        _image = [image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO];
+                        _image = [[image zz_imageAdjustSize:CGSizeMake(fixedWidth, fixedWidth * (image.size.height / image.size.width)) scale:_scale cropped:NO] imageWithRenderingMode:renderingMode];
                     }
-                    ((UITabBarItem *)self).image = _image;
                 }else {
                     if (isSelected) {
-                        _image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
-                        ((UITabBarItem *)self).selectedImage = _image;
+                        _image = [[image zz_imageTuningScale:scale orientation:image.imageOrientation] imageWithRenderingMode:renderingMode];
                     }else {
-                        _image = [image zz_imageTuningScale:scale orientation:image.imageOrientation];
-                        ((UITabBarItem *)self).image = _image;
+                        _image = [[image zz_imageTuningScale:scale orientation:image.imageOrientation] imageWithRenderingMode:renderingMode];
                     }
+                }
+                if (isSelected) {
+                    ((UITabBarItem *)self).selectedImage = _image;
+                }else {
+                    ((UITabBarItem *)self).image = _image;
                 }
             }
                 break;
