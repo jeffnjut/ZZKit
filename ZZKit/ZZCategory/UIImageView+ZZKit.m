@@ -92,62 +92,35 @@
             weakSelf.contentMode = placeholderContentMode;
         });
         
-        // 查询缓存
-        NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
-        SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
-        switch (format) {
-            case SDImageFormatUndefined:
-            {
-                // 缓存未命中
-                [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    
-                    if (!error && image) {
-                        NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
-                        SDImageFormat format = [NSData sd_imageFormatForImageData:_data];
-                        switch (format) {
-                            case SDImageFormatGIF:
-                            {
-                                // 缓存Gif
-                                [weakSelf _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                                break;
-                            }
-                            case SDImageFormatWebP:
-                            {
-                                // 缓存WebP
-                                [weakSelf _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                                break;
-                            }
-                            default:
-                            {
-                                // 其它图片
-                                [weakSelf _setOtherImage:image data:nil key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode fadeIn:fadeIn completion:completion];
-                                break;
-                            }
-                        }
-                    }else {
-                        completion == nil ? : completion(weakSelf, image, nil, error, _zzKey);
+        [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+
+            // 查询缓存
+            NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
+            SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
+            switch (format) {
+                case SDImageFormatGIF:
+                {
+                    // 缓存Gif
+                    [weakSelf _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                    break;
+                }
+                case SDImageFormatWebP:
+                {
+                    // 缓存WebP
+                    [weakSelf _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                    break;
+                }
+                default:
+                {
+                    if (finishedBackgroundColor) {
+                        weakSelf.backgroundColor = finishedBackgroundColor;
                     }
-                }];
-                break;
+                    weakSelf.contentMode = finishedContentMode;
+                    completion == nil ? : completion(weakSelf, image, nil, error, _zzKey);
+                    break;
+                }
             }
-            case SDImageFormatGIF:
-            {
-                // 缓存Gif
-                [self _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                break;
-            }
-            case SDImageFormatWebP:
-            {
-                // 缓存WebP
-                [self _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                break;
-            }
-            default:
-            {
-                [self _setOtherImage:nil data:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode fadeIn:NO completion:completion];
-                break;
-            }
-        }
+        }];
     }
 }
 
@@ -231,8 +204,6 @@
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:^{ weakSelf.alpha = 1.0; }
                             completion:nil];
-        }else {
-            
         }
         // 回调
         completion == nil ? : completion(weakSelf, weakSelf.image, data, nil, key);
