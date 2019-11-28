@@ -37,13 +37,9 @@ typedef void(^ZZWebNavigationBlock)(ZZWebViewNavigationStatus status, WKWebView 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZZWebView : UIView
+@interface ZZWebView : WKWebView
 
 #pragma mark - Properties
-
-@property (nonatomic, strong, readonly) WKWebView *zzWKWebView;
-
-@property (nonatomic, readonly) WKWebViewConfiguration *zzWKConfiguration;
 
 // WKWebView的处理JavaScript调用Navtive的事件预设
 @property (nonatomic, strong) NSDictionary<NSString *, ZZUserContentProcessJavaScriptMessageBlock> *zzWKWebViewProcessJavaScriptCallingDictionary;
@@ -98,6 +94,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  OC执行JavaScript,回调有异常捕获
  */
 - (void)zz_evaluateScript:(nonnull NSString *)script result:(nullable void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result;
+
+/**
+ *  当ViewController即将消失时调用
+ */
+- (void)zz_viewControllerWillDisappear;
 
 /**
  *  快速新建ZZWebView的方法(默认开启进度条)

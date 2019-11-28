@@ -15,8 +15,6 @@
 
 @interface ZZWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 
-@property (nonatomic, strong) WKWebView *zzWKWebView;
-
 @property (nonatomic, strong) UIProgressView *zzProgressView;
 
 @property (nonatomic, strong) UIColor *zzProgressBarTintColor;
@@ -29,14 +27,10 @@
 
 - (void)dealloc {
     
-    for (NSString *name in _zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
-        [self.zzWKConfiguration.userContentController removeScriptMessageHandlerForName:name];
-    }
-    
     if (_zzProgressBarTintColor) {
-        [_zzWKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+        [self removeObserver:self forKeyPath:@"estimatedProgress"];
     }
-    [_zzWKWebView removeObserver:self forKeyPath:@"title"];
+    [self removeObserver:self forKeyPath:@"title"];
 }
 
 #pragma mark - Property Setting & Getter
@@ -57,16 +51,11 @@
     return _zzProgressView;
 }
 
-- (WKWebViewConfiguration *)zzWKConfiguration {
-    
-    return _zzWKWebView.configuration;
-}
-
 - (void)setZzWKWebViewProcessJavaScriptCallingDictionary:(NSDictionary<NSString *,ZZUserContentProcessJavaScriptMessageBlock> *)zzWKWebViewProcessJavaScriptCallingDictionary {
 
     _zzWKWebViewProcessJavaScriptCallingDictionary = zzWKWebViewProcessJavaScriptCallingDictionary;
     for (NSString *name in zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
-        [self.zzWKConfiguration.userContentController addScriptMessageHandler:self name:name];
+        [self.configuration.userContentController addScriptMessageHandler:self name:name];
     }
 }
 
@@ -152,7 +141,7 @@
  */
 - (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
     
-    [self.zzWKWebView loadHTMLString:string baseURL:baseURL];
+    [self loadHTMLString:string baseURL:baseURL];
 }
 
 /**
@@ -175,14 +164,14 @@
                 NSString *value = headerFields[headerField];
                 [request addValue:value forHTTPHeaderField:headerField];
             }
-            [weakSelf.zzWKWebView loadRequest:request];
+            [weakSelf loadRequest:request];
         }];
     }else {
         for (NSString *headerField in headerFields.allKeys) {
             NSString *value = headerFields[headerField];
             [request addValue:value forHTTPHeaderField:headerField];
         }
-        [self.zzWKWebView loadRequest:request];
+        [self loadRequest:request];
     }
 }
 
@@ -206,7 +195,7 @@
                 NSString *value = headerFields[headerField];
                 [request addValue:value forHTTPHeaderField:headerField];
             }
-            [weakSelf.zzWKWebView loadRequest:request];
+            [weakSelf loadRequest:request];
         }];
     }else {
         // 方法：通过一一设置Request Header
@@ -224,7 +213,7 @@
         //设置请求头
         request.allHTTPHeaderFields = requestHeaderFields;
         */
-        [weakSelf.zzWKWebView loadRequest:request];
+        [weakSelf loadRequest:request];
     }
 }
 
@@ -233,13 +222,23 @@
  */
 - (void)zz_evaluateScript:(nonnull NSString *)script result:(nullable void(^)(JSContext *context, ZZWebViewJavaScriptResult *data))result {
     
-    [self.zzWKWebView evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+    [self evaluateJavaScript:script completionHandler:^(id _Nullable data, NSError * _Nullable error) {
         
         ZZWebViewJavaScriptResult *resultData = [ZZWebViewJavaScriptResult create];
         resultData.wkData = data;
         resultData.wkError = error;
         result == nil ? : result(nil, resultData);
     }];
+}
+
+/**
+ *  当ViewController即将消失时调用
+ */
+- (void)zz_viewControllerWillDisappear {
+    
+    for (NSString *name in self.zzWKWebViewProcessJavaScriptCallingDictionary.allKeys) {
+        [self.configuration.userContentController removeScriptMessageHandlerForName:name];
+    }
 }
 
 /**
@@ -255,7 +254,10 @@
  */
 + (nonnull ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
-    ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame];
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    configuration.userContentController = controller;
+    ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame configuration:configuration];
     if (onView != nil) {
         [onView addSubview:zzWebView];
         if (constraintBlock != nil) {
@@ -264,8 +266,20 @@
             }];
         }
     }
+    // 允许右滑返回上个链接，左滑前进
+    zzWebView.allowsBackForwardNavigationGestures = YES;
+    // 允许链接3D Touch
+    if (@available(iOS 9.0, *)) {
+        zzWebView.allowsLinkPreview = YES;
+    }
+    zzWebView.UIDelegate = zzWebView;
+    zzWebView.navigationDelegate = zzWebView;
     zzWebView.zzProgressBarTintColor = progressBarTintColor;
-    [zzWebView _buildUI];
+    if (progressBarTintColor != nil) {
+        [zzWebView zzProgressView];
+        [zzWebView addObserver:zzWebView forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    [zzWebView addObserver:zzWebView forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     return zzWebView;
 }
 
@@ -284,36 +298,8 @@
     return [self _responder:nextResponder];
 }
 
-- (void)_buildUI {
-    
-    ZZ_WEAK_SELF
-    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-    WKUserContentController *controller = [[WKUserContentController alloc] init];
-    configuration.userContentController = controller;
-    _zzWKWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-    // 允许右滑返回上个链接，左滑前进
-    _zzWKWebView.allowsBackForwardNavigationGestures = YES;
-    // 允许链接3D Touch
-    if (@available(iOS 9.0, *)) {
-        _zzWKWebView.allowsLinkPreview = YES;
-    } else {
-        // Fallback on earlier versions
-    }
-    _zzWKWebView.UIDelegate = self;
-    _zzWKWebView.navigationDelegate = self;
-    [self addSubview:_zzWKWebView];
-    [_zzWKWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf);
-    }];
-    if (_zzProgressBarTintColor != nil) {
-        [self zzProgressView];
-        [_zzWKWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-    }
-    [_zzWKWebView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
-}
-
 #pragma mark - Observe Estimated Progress
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context {
     
     ZZ_WEAK_SELF
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
@@ -325,8 +311,7 @@
                 int64_t delayInSeconds = 0.5;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-                    __strong typeof(weakSelf) strongSelf = weakSelf;
-                    if (strongSelf.zzEstimatedProgress >= 0.89) {
+                    if (weakSelf.zzEstimatedProgress >= 0.89) {
                         // 几乎完成加载了
                     }
                 });
@@ -355,7 +340,7 @@
     
     if (@available(iOS 11.0, *)) {
         NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-        WKHTTPCookieStore *cookieStore = _zzWKWebView.configuration.websiteDataStore.httpCookieStore;
+        WKHTTPCookieStore *cookieStore = self.configuration.websiteDataStore.httpCookieStore;
         if (cookies.count == 0) {
             !theCompletionHandler ? : theCompletionHandler();
             return;
@@ -435,7 +420,7 @@
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0)) {
     
     // WKWebView白屏处理
-    [_zzWKWebView reload];
+    [self reload];
 }
 
 
@@ -466,20 +451,15 @@
         NSDictionary *_dict = dict;
         
         NSString *type = [_dict objectForKey:@"type"];
-        if (type && [type isEqualToString:@"JSbridge"])
-        {
+        if (type && [type isEqualToString:@"JSbridge"]) {
             NSString *returnValue = @"";
             NSString *functionName = [_dict objectForKey:@"functionName"];
             // NSDictionary *args = [_dict objectForKey:@"arguments"];
-            if ([functionName isEqualToString:@"OC_Fun_05"])
-            {
+            if ([functionName isEqualToString:@"OC_Fun_05"]) {
                 returnValue = @"Fun:OC_Fun_05";
-            }
-            else if ([functionName isEqualToString:@"OC_Fun_06"])
-            {
+            }else if ([functionName isEqualToString:@"OC_Fun_06"]) {
                 returnValue = @"Fun:OC_Fun_06";
             }
-            
             completionHandler(@"test");
         }
     }

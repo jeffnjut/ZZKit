@@ -33,8 +33,8 @@
         self.zzReloadImage = @"ic_nav_close".zz_image;
     }
     [self zz_navigationAddLeftBarButton:self.zzBackImage action:^{
-        if ([weakSelf.zzWebView.zzWKWebView canGoBack]) {
-            [weakSelf.zzWebView.zzWKWebView goBack];
+        if ([weakSelf.zzWebView canGoBack]) {
+            [weakSelf.zzWebView goBack];
         }else {
             [weakSelf zz_dismiss];
         }
