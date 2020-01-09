@@ -373,7 +373,9 @@
     ZZ_WEAK_SELF
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         if (granted) {
-            [weakSelf.navigationController presentViewController:weakSelf.imagePickerController animated:YES completion:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.navigationController presentViewController:weakSelf.imagePickerController animated:YES completion:nil];
+            });
         }else {
             //提醒用户打开开关
             ZZAlertModel *goSettingAlertModel = [ZZAlertModel zz_alertModel:@"去开启" action:^{

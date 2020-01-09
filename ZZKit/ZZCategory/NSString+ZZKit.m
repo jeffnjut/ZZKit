@@ -72,7 +72,8 @@
     
     UIImage *image = nil;
     if (![self containsString:@"."]) {
-        image = [UIImage imageNamed:self];
+        
+        image = [[NSBundle mainBundle] zz_image:self extension:nil];
         if (image != nil) {
             return image;
         }
@@ -100,7 +101,7 @@
         imageName =[components objectAtIndex:2];
         cls = NSClassFromString(className);
     }
-    return [NSBundle zz_image:imageName extension:nil class:cls bunldeName:bundleName memCache:NO];
+    return [NSBundle zz_image:imageName extension:nil class:cls bunldeName:bundleName];
 }
 
 /**

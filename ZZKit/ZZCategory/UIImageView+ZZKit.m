@@ -93,7 +93,7 @@
         });
         
         [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-
+            
             // 查询缓存
             NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
             SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];

@@ -34,7 +34,7 @@
 - (void)testWKWebView {
     
     // customUserAgent属性设置的优先级比zz_setUserAgent:方法设置全局UserAgent的优先级高。
-    self.webView.zzWKWebView.customUserAgent = @"哈哈哈";
+    self.webView.customUserAgent = @"哈哈哈";
     
     __weak typeof(self) weakSelf = self;
     
@@ -67,7 +67,7 @@
     });
     //添加自定义的脚本
     WKUserScript *js = [[WKUserScript alloc] initWithSource:jsSource injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
-    [self.webView.zzWKConfiguration.userContentController addUserScript:js];
+    [self.webView.configuration.userContentController addUserScript:js];
     
     // 加载本地 HTML
     [self.webView zz_loadRequest:@"test" ofType:@"html" bunlde:nil headerFields:@{@"A":@"AAA",@"Set-Cookie":@"customCookieName=1314521;"}];
@@ -224,7 +224,7 @@
         }
     };
     
-    self.webView.zzWKWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 //- (void)testUIWebView {

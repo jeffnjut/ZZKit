@@ -33,19 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)zz_image:(nonnull NSString *)imageName extension:(nullable NSString *)extension class:(nonnull Class)cls bunldeName:(nullable NSString *)bundleName;
 
 /**
- *  获取Resource Bundle的图片，Memory Cache（类方法）
- */
-+ (UIImage *)zz_image:(nonnull NSString *)imageName extension:(nullable NSString *)extension class:(nonnull Class)cls bunldeName:(nullable NSString *)bundleName memCache:(BOOL)memCache;
-
-/**
  *  获取Resource Bundle的图片（实例方法）
  */
 - (UIImage *)zz_image:(nonnull NSString *)imageName extension:(nullable NSString *)extension;
-
-/**
- *  获取Resource Bundle的图片，Memory Cache（实例方法）
- */
-- (UIImage *)zz_image:(nonnull NSString *)imageName extension:(nullable NSString *)extension memCache:(BOOL)memCache;
 
 @end
 
