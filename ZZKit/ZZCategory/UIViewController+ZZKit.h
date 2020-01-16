@@ -89,13 +89,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_navigationBarTitle:(nonnull NSString *)title;
 
-#pragma mark - 电池条
-
-/**
- *  设置StatusBar是否隐藏
- */
-- (void)zz_statusBarHidden:(BOOL)hidden API_DEPRECATED("Use -[UIViewController prefersStatusBarHidden]", ios(2.0, 9.0));
-
 #pragma mark - Push、Present、Popup、Dismiss
 
 /**

@@ -552,6 +552,32 @@
     return image;
 }
 
+/**
+ *  生成带图片的二维码
+ */
++ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width icon:(UIImage *)icon iconWidth:(CGFloat)iconWidth {
+    
+    // 生成二维码
+    UIImage *codeImage = [UIImage zz_imageQR:text width:width];
+    
+    if (icon == nil || iconWidth == 0) {
+        return codeImage;
+    }
+    
+    //开启上下文
+    CGSize imageSize = codeImage.size;
+    UIGraphicsBeginImageContext(imageSize);
+    //画原图
+    [codeImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    
+    //在中间画用户头像，宽高为20%，正方形
+    [icon drawInRect:CGRectMake((imageSize.width - iconWidth) * 0.5, (imageSize.height - iconWidth) * 0.5, iconWidth, iconWidth)];
+    
+    UIImage *newImage =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 #pragma mark - 水印
 
 /**
@@ -719,17 +745,42 @@
 
 #pragma mark - 测试
 
-- (void)zz_debugShow:(CGRect)frame {
+- (NSInteger)zz_show:(CGRect)frame backgroundColor:(nullable UIColor *)backgroundColor {
     
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.backgroundColor = [UIColor lightGrayColor];
+    imageView.backgroundColor = backgroundColor;
     imageView.image = self;
     [window addSubview:imageView];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.tag = arc4random() % 100000 + 100000;
     [imageView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         [sender removeFromSuperview];
     }];
+    return imageView.tag;
+}
+
+- (NSInteger)zz_show:(CGRect)frame {
+    
+    return [self zz_show:frame backgroundColor:[UIColor clearColor]];
+}
+
+- (NSInteger)zz_debugShow:(CGRect)frame {
+    
+    return [self zz_show:frame backgroundColor:[UIColor lightGrayColor]];
+}
+
++ (void)zz_removeShow:(NSInteger)tag {
+    
+    if (tag >= 100000) {
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        [window.subviews enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[UIImageView class]] && obj.tag == tag) {
+                [obj removeFromSuperview];
+                *stop = YES;
+            }
+        }];
+    }
 }
 
 @end

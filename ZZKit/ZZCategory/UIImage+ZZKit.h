@@ -177,6 +177,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIImage *)zz_imageQR:(nonnull NSString *)text width:(CGFloat)width;
 
+/**
+ *  生成带图片的二维码
+ */
++ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width icon:(UIImage *)icon iconWidth:(CGFloat)iconWidth;
+
 #pragma mark - 水印
 
 /**
@@ -238,7 +243,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 测试
 
-- (void)zz_debugShow:(CGRect)frame;
+- (NSInteger)zz_show:(CGRect)frame backgroundColor:(nullable UIColor *)backgroundColor;
+
+- (NSInteger)zz_show:(CGRect)frame;
+
+- (NSInteger)zz_debugShow:(CGRect)frame;
+
++ (void)zz_removeShow:(NSInteger)tag;
 
 @end
 

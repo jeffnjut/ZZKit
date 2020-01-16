@@ -223,6 +223,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSURLRequest *)zz_URLRequest;
 
+/**
+ *  解析短链，转为字典
+*/
+- (NSMutableDictionary *)zz_URLToDictionary;
+
 #pragma mark - JSON字符串处理
 
 /**

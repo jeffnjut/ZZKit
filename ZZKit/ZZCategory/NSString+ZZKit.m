@@ -668,6 +668,29 @@
     return [NSURLRequest requestWithURL:[self zz_URL]];
 }
 
+
+/**
+ *  解析短链，转为字典
+*/
+- (NSMutableDictionary *)zz_URLToDictionary {
+    
+    NSString *validString = [[self componentsSeparatedByString:@"://"] lastObject];
+    NSArray *keyValueStrings = [validString componentsSeparatedByString:@"/"];
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    for (NSString *string in keyValueStrings) {
+        NSArray *items = [string componentsSeparatedByString:@"="];
+        
+        if ([items count] >= 2) {
+            NSString *key = [items objectAtIndex:0];
+            NSString *value = [items objectAtIndex:1];
+            if (key != nil && value != nil) {
+                [dict setObject:value forKey:key];
+            }
+        }
+    }
+    return dict;
+}
+
 #pragma mark - JSON字符串处理
 
 /**
@@ -676,7 +699,7 @@
 - (id)zz_jsonToCocoaObject {
     NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
     id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                    options:NSJSONReadingAllowFragments
+                                                    options:NSJSONReadingAllowFragments | NSJSONReadingMutableContainers
                                                       error:nil];
     return jsonObject;
 }

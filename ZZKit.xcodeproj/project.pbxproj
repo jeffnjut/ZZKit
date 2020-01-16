@@ -18,6 +18,7 @@
 		E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */; };
 		E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */; };
 		E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */; };
+		E70CB66923C89EF00085496B /* UITextField+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E70CB66823C89EF00085496B /* UITextField+ZZKit.m */; };
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
 		E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */; };
@@ -417,6 +418,8 @@
 		E70C72EC22A36C0000341A2B /* TestZZDispatchQueueVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZDispatchQueueVC.h; sourceTree = "<group>"; };
 		E70C72ED22A36C0000341A2B /* TestZZDispatchQueueVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZDispatchQueueVC.m; sourceTree = "<group>"; };
 		E70C72EE22A36C0000341A2B /* TestZZDispatchQueueVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZDispatchQueueVC.xib; sourceTree = "<group>"; };
+		E70CB66723C89EF00085496B /* UITextField+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+ZZKit.h"; sourceTree = "<group>"; };
+		E70CB66823C89EF00085496B /* UITextField+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ZZKit.m"; sourceTree = "<group>"; };
 		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
 		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
@@ -1693,6 +1696,8 @@
 				E767600F22B099D20044B9AD /* UITabBar+ZZKit.m */,
 				E788654822B2008D00B20F3E /* UIImageView+ZZKit.h */,
 				E788654922B2008D00B20F3E /* UIImageView+ZZKit.m */,
+				E70CB66723C89EF00085496B /* UITextField+ZZKit.h */,
+				E70CB66823C89EF00085496B /* UITextField+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -2226,6 +2231,7 @@
 				E77EBD122373CB6A0062E4A9 /* FJPhotoImageTagView.m in Sources */,
 				E7751BD822F4413900ECD06D /* NetImagesBannerViewController.m in Sources */,
 				E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */,
+				E70CB66923C89EF00085496B /* UITextField+ZZKit.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E77EBD3F2373CB6A0062E4A9 /* NSURL+PreviewImage.m in Sources */,
 				E77EBD002373CB6A0062E4A9 /* FJPhotoEditFilterView.m in Sources */,

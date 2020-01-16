@@ -137,6 +137,85 @@
 }
 
 /**
+ *  清除WKWebView的缓存
+ */
++ (void)zz_clearWebKitCache:(nullable NSArray *)dataTypes clearCookies:(BOOL)clearCookies {
+    
+    if ([[UIDevice currentDevice].systemVersion intValue] >= 9) {
+        NSSet *websiteDataTypes = nil;
+        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+        if (dataTypes) {
+            websiteDataTypes = [NSSet setWithArray:dataTypes];
+        }else {
+            if (@available(iOS 11.3, *)) {
+                if (clearCookies) {
+                    websiteDataTypes = [NSSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                        WKWebsiteDataTypeOfflineWebApplicationCache,
+                                        WKWebsiteDataTypeMemoryCache,
+                                        WKWebsiteDataTypeLocalStorage,
+                                        WKWebsiteDataTypeFetchCache, /* 11.3 */
+                                        WKWebsiteDataTypeSessionStorage,
+                                        WKWebsiteDataTypeIndexedDBDatabases,
+                                        WKWebsiteDataTypeWebSQLDatabases,
+                                        WKWebsiteDataTypeServiceWorkerRegistrations, /* 11.3 */
+                                        WKWebsiteDataTypeCookies, /* Cookies */
+                                        nil];
+                }else {
+                    websiteDataTypes = [NSSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                        WKWebsiteDataTypeOfflineWebApplicationCache,
+                                        WKWebsiteDataTypeMemoryCache,
+                                        WKWebsiteDataTypeLocalStorage,
+                                        WKWebsiteDataTypeFetchCache, /* 11.3 */
+                                        WKWebsiteDataTypeSessionStorage,
+                                        WKWebsiteDataTypeIndexedDBDatabases,
+                                        WKWebsiteDataTypeWebSQLDatabases,
+                                        WKWebsiteDataTypeServiceWorkerRegistrations, /* 11.3 */
+                                        nil];
+                }
+                
+            }else {
+                if (clearCookies) {
+                    websiteDataTypes = [NSSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                        WKWebsiteDataTypeOfflineWebApplicationCache,
+                                        WKWebsiteDataTypeMemoryCache,
+                                        WKWebsiteDataTypeLocalStorage,
+                                        WKWebsiteDataTypeSessionStorage,
+                                        WKWebsiteDataTypeIndexedDBDatabases,
+                                        WKWebsiteDataTypeWebSQLDatabases,
+                                        WKWebsiteDataTypeCookies, /* Cookies */
+                                        nil];
+                }else {
+                    websiteDataTypes = [NSSet setWithObjects:WKWebsiteDataTypeDiskCache,
+                                        WKWebsiteDataTypeOfflineWebApplicationCache,
+                                        WKWebsiteDataTypeMemoryCache,
+                                        WKWebsiteDataTypeLocalStorage,
+                                        WKWebsiteDataTypeSessionStorage,
+                                        WKWebsiteDataTypeIndexedDBDatabases,
+                                        WKWebsiteDataTypeWebSQLDatabases,
+                                        nil];
+                }
+            }
+        }
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{}];
+    }else {
+        NSString *libraryDir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask, YES)[0];
+        NSString *bundleId               = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+        NSString *webkitFolderInLib      = [NSString stringWithFormat:@"%@/WebKit",libraryDir];
+        NSString *webKitFolderInCaches   = [NSString stringWithFormat:@"%@/Caches/%@/WebKit",libraryDir,bundleId];
+        NSString *webKitFolderInCachesfs = [NSString stringWithFormat:@"%@/Caches/%@/fsCachedData",libraryDir,bundleId];
+        NSError *error;
+        if ([[UIDevice currentDevice].systemVersion intValue] >= 8) {
+            /* iOS8.0 WebView Cache的存放路径 */
+            [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCaches error:&error];
+            [[NSFileManager defaultManager] removeItemAtPath:webkitFolderInLib error:nil];
+        }else {
+            /* iOS7.0 WebView Cache的存放路径 */
+            [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCachesfs error:&error];
+        }
+    }
+}
+
+/**
  *  加载HTML文本
  */
 - (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields {
@@ -247,6 +326,14 @@
 + (nonnull __kindof ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     return [ZZWebView zz_quickAdd:onView frame:frame progressBarTintColor:@"#FF7A00".zz_color constraintBlock:constraintBlock];
+}
+
+/**
+ *  快速新建ZZWebView的方法(开启进度条作为参数)
+ */
++ (nonnull __kindof ZZWebView *)zz_quickAdd:(nullable UIView *)onView withProgressBar:(BOOL)withProgressBar frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
+    
+    return [ZZWebView zz_quickAdd:onView frame:frame progressBarTintColor:(withProgressBar ? @"#FF7A00".zz_color : nil) constraintBlock:constraintBlock];
 }
 
 /**

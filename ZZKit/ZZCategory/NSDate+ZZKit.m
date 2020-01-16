@@ -130,6 +130,19 @@ static NSDateFormatter *_displayFormatter = nil;
 }
 
 /**
+ *  当前NSDate的TimeStampSince1970的字符串
+ */
++ (NSString *)zz_dateStringTimeStampSince1970 {
+    
+    double timeStamp = ceil([[NSDate date] timeIntervalSince1970]);
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setGeneratesDecimalNumbers:false];
+    NSNumber *timeNumber = [NSNumber numberWithDouble:timeStamp];
+    NSString *timeString = [formatter stringFromNumber:timeNumber];
+    return timeString;
+}
+
+/**
  *  当前NSDate的默认格式化时间字符串
  */
 + (NSString *)zz_dateString {

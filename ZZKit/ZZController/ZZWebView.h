@@ -76,6 +76,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)zz_clearCachedResponse:(nonnull NSURL *)URL;
 
 /**
+ *  清除WKWebView的缓存
+ */
++ (void)zz_clearWebKitCache:(nullable NSArray *)dataTypes clearCookies:(BOOL)clearCookies;
+
+/**
  *  加载HTML文本
  */
 - (void)zz_loadHTMLString:(nonnull NSString *)string baseURL:(nullable NSURL *)baseURL headerFields:(nullable NSDictionary<NSString *, NSString *> *)headerFields;
@@ -104,6 +109,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  快速新建ZZWebView的方法(默认开启进度条)
  */
 + (nonnull __kindof ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
+
+/**
+ *  快速新建ZZWebView的方法(开启进度条作为参数)
+ */
++ (nonnull __kindof ZZWebView *)zz_quickAdd:(nullable UIView *)onView withProgressBar:(BOOL)withProgressBar frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 /**
  *  快速新建ZZWebView的方法(Base)

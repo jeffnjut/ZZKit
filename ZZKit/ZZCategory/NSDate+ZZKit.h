@@ -74,6 +74,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSInteger)zz_dateNumberWhichDayOfWeekFromTimeStamp:(NSTimeInterval)timeStamp;
 
 /**
+ *  当前NSDate的TimeStampSince1970的字符串
+ */
++ (NSString *)zz_dateStringTimeStampSince1970;
+
+/**
  *  当前NSDate的默认格式化时间字符串
  */
 + (NSString *)zz_dateString;
