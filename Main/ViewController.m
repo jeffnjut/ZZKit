@@ -25,7 +25,6 @@
 #import "TestCountryVC.h"
 #import "NetImagesBannerViewController.h"
 #import "NetImagesCollectionViewController.h"
-#import "TestMarkdownViewController.h"
 #import "TestTagViewVC.h"
 #import "TestWebImageVC.h"
 #import "TestCollectionViewBasicVC.h"
@@ -69,7 +68,6 @@
                         @[@"测试Country、Region、City选择", [TestCountryVC class]],
                         @[@"测试显示图片Banner", [NetImagesBannerViewController class]],
                         @[@"测试显示图片ColloctionView", [NetImagesCollectionViewController class]],
-                        @[@"测试Markdonw语法", [TestMarkdownViewController class]],
                         @[@"测试TagView", [TestTagViewVC class]],
                         @[@"测试Web Image", [TestWebImageVC class]]];
     

@@ -379,9 +379,6 @@
 		E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */; };
 		E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */; };
 		E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */; };
-		E7EE5D2122FA71C700CE9121 /* ZZWidgetMDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */; };
-		E7EE5D2522FA720700CE9121 /* TestMarkdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */; };
-		E7EE5D2622FA720700CE9121 /* TestMarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */; };
 		E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F2150D22ED8AF9007C587B /* cncity.plist */; };
 		E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151022ED8CC4007C587B /* ZZCityModel.m */; };
 		E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151322ED8D3E007C587B /* ZZCityController.m */; };
@@ -936,11 +933,6 @@
 		E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@2x.png"; sourceTree = "<group>"; };
 		E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_active@3x.png"; sourceTree = "<group>"; };
 		E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@3x.png"; sourceTree = "<group>"; };
-		E7EE5D1F22FA71C700CE9121 /* ZZWidgetMDTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetMDTextView.h; sourceTree = "<group>"; };
-		E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetMDTextView.m; sourceTree = "<group>"; };
-		E7EE5D2222FA720700CE9121 /* TestMarkdownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestMarkdownViewController.h; sourceTree = "<group>"; };
-		E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMarkdownViewController.m; sourceTree = "<group>"; };
-		E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestMarkdownViewController.xib; sourceTree = "<group>"; };
 		E7F2150D22ED8AF9007C587B /* cncity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cncity.plist; sourceTree = "<group>"; };
 		E7F2150F22ED8CC4007C587B /* ZZCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityModel.h; sourceTree = "<group>"; };
 		E7F2151022ED8CC4007C587B /* ZZCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityModel.m; sourceTree = "<group>"; };
@@ -1480,8 +1472,6 @@
 				E7751BCE22F435FC00ECD06D /* ZZWidgetImageBrowser.m */,
 				E760BEE922F9A1EA00944380 /* ZZWidgetTagView.h */,
 				E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */,
-				E7EE5D1F22FA71C700CE9121 /* ZZWidgetMDTextView.h */,
-				E7EE5D2022FA71C700CE9121 /* ZZWidgetMDTextView.m */,
 			);
 			path = ZZWidget;
 			sourceTree = "<group>";
@@ -1815,9 +1805,6 @@
 				E7751BD422F4413800ECD06D /* NetImagesBannerViewController.m */,
 				E7751BD322F4413800ECD06D /* NetImagesCollectionViewController.h */,
 				E7751BDA22F441DE00ECD06D /* NetImagesCollectionViewController.m */,
-				E7EE5D2222FA720700CE9121 /* TestMarkdownViewController.h */,
-				E7EE5D2322FA720700CE9121 /* TestMarkdownViewController.m */,
-				E7EE5D2422FA720700CE9121 /* TestMarkdownViewController.xib */,
 				E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */,
 				E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */,
 				E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */,
@@ -1993,7 +1980,6 @@
 				E77EBCCB2373CB6A0062E4A9 /* ic_3_4@3x.png in Resources */,
 				E77EBD072373CB6A0062E4A9 /* FJPhotoLibraryNoAlbumView.xib in Resources */,
 				E77EBC9F2373CB6A0062E4A9 /* ic_delete@2x.png in Resources */,
-				E7EE5D2622FA720700CE9121 /* TestMarkdownViewController.xib in Resources */,
 				E77EBCB92373CB6A0062E4A9 /* ic_edit_light@2x.png in Resources */,
 				E77EBC812373CB6A0062E4A9 /* ic_edit_tuning@3x.png in Resources */,
 				E77EBC9C2373CB6A0062E4A9 /* ic_4_3_highlighted@3x.png in Resources */,
@@ -2223,7 +2209,6 @@
 				E7C548DC2313A63800536FD3 /* TestWebImageVC.m in Sources */,
 				E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */,
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
-				E7EE5D2122FA71C700CE9121 /* ZZWidgetMDTextView.m in Sources */,
 				E77EBD162373CB6A0062E4A9 /* PHAsset+Utility.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
 				E77EBCF42373CB6A0062E4A9 /* FJPhotoLibrarySelectionView.m in Sources */,
@@ -2266,7 +2251,6 @@
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E77EBCED2373CB6A0062E4A9 /* FJPhotoLibraryAlbumCell.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
-				E7EE5D2522FA720700CE9121 /* TestMarkdownViewController.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
 				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
