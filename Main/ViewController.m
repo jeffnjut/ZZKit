@@ -29,6 +29,7 @@
 #import "TestWebImageVC.h"
 #import "TestCollectionViewBasicVC.h"
 #import "TestCollectionCardVC.h"
+#import "TestCameraVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -49,7 +50,8 @@
     self.tableView.rowHeight = 48.0;
     [self.view addSubview:self.tableView];
     
-    self.dataSource = @[@[@"测试字体", [TestFontVC class]],
+    self.dataSource = @[@[@"测试相册相机", [TestCameraVC class]],
+                        @[@"测试字体", [TestFontVC class]],
                         @[@"测试GCD", [TestGCDVC class]],
                         @[@"测试RunLoop", [TestRunLoopVC class]],
                         @[@"测试NSOperationQueue", [TestOperationQueueVC class]],

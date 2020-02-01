@@ -11,7 +11,7 @@
 @implementation ZZTableView (ZZKit)
 
 // 获取CellDataSource对应的Cell
-- (nullable ZZTableViewCell *)zz_cellForDataSource:(nullable __kindof ZZTableViewCellDataSource *)data {
+- (nullable __kindof ZZTableViewCell *)zz_cellForDataSource:(nullable __kindof ZZTableViewCellDataSource *)data {
     
     if (self.zzDataSource.count > 0) {
         id first = [self.zzDataSource objectAtIndex:0];

@@ -1,6 +1,6 @@
 //
 //  PHAsset+QuickEdit.h
-//  FJCamera
+//  ZZCamera
 //
 //  Created by Fu Jie on 2018/12/19.
 //  Copyright © 2018 Fu Jie. All rights reserved.
@@ -9,7 +9,7 @@
 #import <Photos/Photos.h>
 #import "PHAsset+Utility.h"
 
-// 用于FJPhotoEditViewController
+// 用于ZZPhotoEditViewController
 #define FJCAMERA_IMAGE_WIDTH  (800.0)
 #define FJCAMERA_IMAGE_HEIGHT (1000.0)
 

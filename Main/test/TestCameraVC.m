@@ -8,10 +8,10 @@
 
 #import "TestCameraVC.h"
 #import "NSString+ZZKit.h"
-#import "FJPhotoLibraryViewController.h"
-#import "FJPhotoLibraryCropperViewController.h"
-#import "FJAVCaptureViewController.h"
-#import "FJTakePhotoView.h"
+#import "ZZPhotoLibraryViewController.h"
+#import "ZZAVCaptureViewController.h"
+#import "ZZTakePhotoView.h"
+#import "UIImage+ZZKit.h"
 
 @interface TestCameraVC ()
 
@@ -26,28 +26,41 @@
 
 - (IBAction)tapPhotoLibrary:(id)sender {
     
-    FJPhotoLibraryViewController *photoLibVC = [[FJPhotoLibraryViewController alloc] initWithMode:FJPhotoEditModeAll editController:^__kindof FJPhotoUserTagBaseViewController *(FJPhotoEditViewController *controller) {
-        return nil;
+    [ZZPhotoManager presentPhotoLibraryController:self configureBlock:^(ZZPhotoLibraryConfig * _Nullable config) {
+        
+        config.mode = ZZPhotoEditModeFilter | ZZPhotoEditModeTag | ZZPhotoEditModeCropprer | ZZPhotoEditModeTuning;
+        
+        config.cameraButtonType = ZZPhotoLibraryCameraButtonTypeNone;
+        
+        config.showDraft = YES;
+        
+        config.sortType = ZZPhotoLibrarySortTypeModificationDateDesc;
+        
+        config.maxSelectionCount = 2;
+        
+        config.cropperType = ZZPhotoLibraryCropperTypeShow;
+        
+        config.userEditSelectTagBlock = ^ZZPhotoSelectTagBaseViewController * _Nonnull(ZZPhotoEditViewController * _Nonnull controller) {
+            
+            return nil;
+        };
+        
+        config.userEditNextBlock = ^(UINavigationController * _Nonnull navigationController, NSArray<ZZPhotoAsset *> * _Nonnull photoQueue) {
+            NSLog(@"%@", photoQueue);
+            
+            NSArray *arr = photoQueue.zz_images;
+            UIImage *image = [arr objectAtIndex:0];
+            
+            [image zz_debugShow:CGRectMake(10, 10, 200, 200)];
+        };
     }];
-    [self.navigationController pushViewController:photoLibVC animated:YES];
-}
-
-- (IBAction)tapINSPhotoLibrary:(id)sender {
-    
-    FJPhotoLibraryCropperViewController *photoLibVC = [[FJPhotoLibraryCropperViewController alloc] initWithMode:FJPhotoEditModeFilter | FJPhotoEditModeTag editController:^__kindof FJPhotoUserTagBaseViewController *(FJPhotoEditViewController *controller) {
-        return nil;
-    }];
-    photoLibVC.maxSelectionCount = 3;
-    photoLibVC.photoListColumn = 5;
-    photoLibVC.takeButtonPosition = FJTakePhotoButtonPositionBottomWithDraft;
-    [self.navigationController pushViewController:photoLibVC animated:YES];
 }
 
 - (IBAction)tapAVCapture:(id)sender {
     
     FJAVInputSettingConfig *inputConfig = [[FJAVInputSettingConfig alloc] init];
-    FJAVCaptureViewController *avCaptureVC = [[FJAVCaptureViewController alloc] initWithAVInputSettingConfig:inputConfig outputExtension:FJAVFileTypeMP4];
-    FJCaptureConfig *config = [[FJCaptureConfig alloc] init];
+    ZZAVCaptureViewController *avCaptureVC = [[ZZAVCaptureViewController alloc] initWithAVInputSettingConfig:inputConfig outputExtension:FJAVFileTypeMP4];
+    ZZCaptureConfig *config = [[ZZCaptureConfig alloc] init];
     config.enableSwitch = YES;
     config.enableLightSupplement = YES;
     config.enableFlashLight = YES;

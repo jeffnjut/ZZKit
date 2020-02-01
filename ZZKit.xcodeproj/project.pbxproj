@@ -89,6 +89,7 @@
 		E7751BD822F4413900ECD06D /* NetImagesBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751BD422F4413800ECD06D /* NetImagesBannerViewController.m */; };
 		E7751BD922F4413900ECD06D /* ImageClCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751BD522F4413800ECD06D /* ImageClCell.m */; };
 		E7751BDB22F441DE00ECD06D /* NetImagesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751BDA22F441DE00ECD06D /* NetImagesCollectionViewController.m */; };
+		E777A35F23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E777A35E23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m */; };
 		E77ADD3E22BB3B990015DB1B /* ZZTableView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD3D22BB3B990015DB1B /* ZZTableView+ZZKit.m */; };
 		E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */; };
 		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
@@ -204,57 +205,55 @@
 		E77EBCE02373CB6A0062E4A9 /* ic_3_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBCF2373CB690062E4A9 /* ic_3_4@2x.png */; };
 		E77EBCE12373CB6A0062E4A9 /* ic_edit_cropper_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBD02373CB690062E4A9 /* ic_edit_cropper_highlighted@3x.png */; };
 		E77EBCE22373CB6A0062E4A9 /* ic_logo_tag_euro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBD12373CB690062E4A9 /* ic_logo_tag_euro@3x.png */; };
-		E77EBCE32373CB6A0062E4A9 /* StaticScaleCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBD42373CB690062E4A9 /* StaticScaleCropView.m */; };
-		E77EBCE42373CB6A0062E4A9 /* TKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBD62373CB690062E4A9 /* TKImageView.m */; };
-		E77EBCE52373CB6A0062E4A9 /* FJPhotoLibraryCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBD92373CB690062E4A9 /* FJPhotoLibraryCropperViewController.m */; };
-		E77EBCE62373CB6A0062E4A9 /* FJPhotoLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBDD2373CB690062E4A9 /* FJPhotoLibraryViewController.m */; };
-		E77EBCE72373CB6A0062E4A9 /* FJPhotoUserTagBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBDE2373CB690062E4A9 /* FJPhotoUserTagBaseViewController.m */; };
-		E77EBCE82373CB6A0062E4A9 /* FJPhotoDraftHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE12373CB690062E4A9 /* FJPhotoDraftHistoryViewController.m */; };
-		E77EBCE92373CB6A0062E4A9 /* FJPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE22373CB690062E4A9 /* FJPhotoEditViewController.m */; };
-		E77EBCEA2373CB6A0062E4A9 /* FJPhotoDraftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBE52373CB690062E4A9 /* FJPhotoDraftCell.xib */; };
-		E77EBCEB2373CB6A0062E4A9 /* FJPhotoDraftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE62373CB690062E4A9 /* FJPhotoDraftCell.m */; };
-		E77EBCEC2373CB6A0062E4A9 /* FJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE72373CB690062E4A9 /* FJPhotoCollectionViewCell.m */; };
-		E77EBCED2373CB6A0062E4A9 /* FJPhotoLibraryAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE82373CB690062E4A9 /* FJPhotoLibraryAlbumCell.m */; };
-		E77EBCEE2373CB6A0062E4A9 /* FJPhotoLibraryAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBEA2373CB690062E4A9 /* FJPhotoLibraryAlbumCell.xib */; };
-		E77EBCEF2373CB6A0062E4A9 /* FJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBEB2373CB690062E4A9 /* FJPhotoCollectionViewCell.xib */; };
-		E77EBCF02373CB6A0062E4A9 /* FJFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBEE2373CB690062E4A9 /* FJFilterManager.m */; };
-		E77EBCF12373CB6A0062E4A9 /* FJPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBEF2373CB690062E4A9 /* FJPhotoManager.m */; };
-		E77EBCF22373CB6A0062E4A9 /* FJImageTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBF42373CB690062E4A9 /* FJImageTagModel.m */; };
-		E77EBCF32373CB6A0062E4A9 /* FJTuningObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBF52373CB690062E4A9 /* FJTuningObject.m */; };
-		E77EBCF42373CB6A0062E4A9 /* FJPhotoLibrarySelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBFA2373CB690062E4A9 /* FJPhotoLibrarySelectionView.m */; };
-		E77EBCF52373CB6A0062E4A9 /* FJCropperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBFE2373CB690062E4A9 /* FJCropperView.xib */; };
-		E77EBCF62373CB6A0062E4A9 /* FJPhotoDraftEditPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC022373CB690062E4A9 /* FJPhotoDraftEditPopupView.xib */; };
-		E77EBCF72373CB6A0062E4A9 /* FJPhotoLibrarySelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC032373CB690062E4A9 /* FJPhotoLibrarySelectionView.xib */; };
-		E77EBCF82373CB6A0062E4A9 /* FJPhotoDraftBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC062373CB690062E4A9 /* FJPhotoDraftBottomView.xib */; };
-		E77EBCF92373CB6A0062E4A9 /* FJPhotoTagAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC072373CB690062E4A9 /* FJPhotoTagAlertView.xib */; };
-		E77EBCFA2373CB6A0062E4A9 /* FJPhotoEditTitleScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC082373CB690062E4A9 /* FJPhotoEditTitleScrollView.xib */; };
-		E77EBCFB2373CB6A0062E4A9 /* FJPhotoEditTuningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC092373CB690062E4A9 /* FJPhotoEditTuningView.xib */; };
+		E77EBCE32373CB6A0062E4A9 /* ZZStaticCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBD42373CB690062E4A9 /* ZZStaticCropperView.m */; };
+		E77EBCE42373CB6A0062E4A9 /* ZZFlexibleCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBD62373CB690062E4A9 /* ZZFlexibleCropperView.m */; };
+		E77EBCE72373CB6A0062E4A9 /* ZZPhotoSelectTagBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBDE2373CB690062E4A9 /* ZZPhotoSelectTagBaseViewController.m */; };
+		E77EBCE82373CB6A0062E4A9 /* ZZPhotoDraftHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE12373CB690062E4A9 /* ZZPhotoDraftHistoryViewController.m */; };
+		E77EBCE92373CB6A0062E4A9 /* ZZPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE22373CB690062E4A9 /* ZZPhotoEditViewController.m */; };
+		E77EBCEA2373CB6A0062E4A9 /* ZZPhotoDraftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBE52373CB690062E4A9 /* ZZPhotoDraftCell.xib */; };
+		E77EBCEB2373CB6A0062E4A9 /* ZZPhotoDraftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE62373CB690062E4A9 /* ZZPhotoDraftCell.m */; };
+		E77EBCEC2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE72373CB690062E4A9 /* ZZPhotoCollectionViewCell.m */; };
+		E77EBCED2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBE82373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.m */; };
+		E77EBCEE2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBEA2373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.xib */; };
+		E77EBCEF2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBEB2373CB690062E4A9 /* ZZPhotoCollectionViewCell.xib */; };
+		E77EBCF02373CB6A0062E4A9 /* ZZPhotoFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBEE2373CB690062E4A9 /* ZZPhotoFilterManager.m */; };
+		E77EBCF12373CB6A0062E4A9 /* ZZPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBEF2373CB690062E4A9 /* ZZPhotoManager.m */; };
+		E77EBCF22373CB6A0062E4A9 /* ZZPhotoTag.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBF42373CB690062E4A9 /* ZZPhotoTag.m */; };
+		E77EBCF32373CB6A0062E4A9 /* ZZPhotoTuning.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBF52373CB690062E4A9 /* ZZPhotoTuning.m */; };
+		E77EBCF42373CB6A0062E4A9 /* ZZPhotoLibrarySelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBBFA2373CB690062E4A9 /* ZZPhotoLibrarySelectionView.m */; };
+		E77EBCF52373CB6A0062E4A9 /* ZZPhotoCropperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBBFE2373CB690062E4A9 /* ZZPhotoCropperView.xib */; };
+		E77EBCF62373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC022373CB690062E4A9 /* ZZPhotoDraftEditPopupView.xib */; };
+		E77EBCF72373CB6A0062E4A9 /* ZZPhotoLibrarySelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC032373CB690062E4A9 /* ZZPhotoLibrarySelectionView.xib */; };
+		E77EBCF82373CB6A0062E4A9 /* ZZPhotoDraftBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC062373CB690062E4A9 /* ZZPhotoDraftBottomView.xib */; };
+		E77EBCF92373CB6A0062E4A9 /* ZZPhotoTagAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC072373CB690062E4A9 /* ZZPhotoTagAlertView.xib */; };
+		E77EBCFA2373CB6A0062E4A9 /* ZZPhotoEditTitleScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC082373CB690062E4A9 /* ZZPhotoEditTitleScrollView.xib */; };
+		E77EBCFB2373CB6A0062E4A9 /* ZZPhotoEditTuningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC092373CB690062E4A9 /* ZZPhotoEditTuningView.xib */; };
 		E77EBCFC2373CB6A0062E4A9 /* NSObject+Camera_Popup.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC0A2373CB690062E4A9 /* NSObject+Camera_Popup.m */; };
-		E77EBCFD2373CB6A0062E4A9 /* FJCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC0C2373CB690062E4A9 /* FJCropperView.m */; };
-		E77EBCFE2373CB6A0062E4A9 /* FJPhotoEditCropperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC0D2373CB690062E4A9 /* FJPhotoEditCropperView.xib */; };
-		E77EBCFF2373CB6A0062E4A9 /* FJTakePhotoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC0F2373CB690062E4A9 /* FJTakePhotoButton.xib */; };
-		E77EBD002373CB6A0062E4A9 /* FJPhotoEditFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC122373CB690062E4A9 /* FJPhotoEditFilterView.m */; };
-		E77EBD012373CB6A0062E4A9 /* FJFilterImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC142373CB690062E4A9 /* FJFilterImageView.xib */; };
-		E77EBD022373CB6A0062E4A9 /* FJPhotoEditTitleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC152373CB690062E4A9 /* FJPhotoEditTitleScrollView.m */; };
-		E77EBD032373CB6A0062E4A9 /* FJPhotoLibraryAlbumSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC162373CB690062E4A9 /* FJPhotoLibraryAlbumSelectionView.m */; };
-		E77EBD042373CB6A0062E4A9 /* FJPhotoDraftEditPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC172373CB690062E4A9 /* FJPhotoDraftEditPopupView.m */; };
-		E77EBD052373CB6A0062E4A9 /* FJPhotoEditFilterGenreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC192373CB690062E4A9 /* FJPhotoEditFilterGenreView.m */; };
-		E77EBD062373CB6A0062E4A9 /* FJPhotoEditToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC1A2373CB690062E4A9 /* FJPhotoEditToolbarView.xib */; };
-		E77EBD072373CB6A0062E4A9 /* FJPhotoLibraryNoAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC1B2373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.xib */; };
-		E77EBD082373CB6A0062E4A9 /* FJPhotoDraftBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1C2373CB690062E4A9 /* FJPhotoDraftBottomView.m */; };
-		E77EBD092373CB6A0062E4A9 /* FJPhotoEditCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1D2373CB690062E4A9 /* FJPhotoEditCropperView.m */; };
-		E77EBD0A2373CB6A0062E4A9 /* FJPhotoEditToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1E2373CB690062E4A9 /* FJPhotoEditToolbarView.m */; };
-		E77EBD0B2373CB6A0062E4A9 /* FJPhotoTagAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1F2373CB690062E4A9 /* FJPhotoTagAlertView.m */; };
-		E77EBD0C2373CB6A0062E4A9 /* FJPhotoEditTuningValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC202373CB690062E4A9 /* FJPhotoEditTuningValueView.m */; };
-		E77EBD0D2373CB6A0062E4A9 /* FJFilterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC212373CB690062E4A9 /* FJFilterImageView.m */; };
-		E77EBD0E2373CB6A0062E4A9 /* FJPhotoEditTuningView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC222373CB690062E4A9 /* FJPhotoEditTuningView.m */; };
-		E77EBD0F2373CB6A0062E4A9 /* FJTakePhotoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC242373CB690062E4A9 /* FJTakePhotoButton.m */; };
-		E77EBD102373CB6A0062E4A9 /* FJPhotoEditTuningValueView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC262373CB690062E4A9 /* FJPhotoEditTuningValueView.xib */; };
-		E77EBD112373CB6A0062E4A9 /* FJPhotoLibraryNoAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC272373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.m */; };
-		E77EBD122373CB6A0062E4A9 /* FJPhotoImageTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC292373CB690062E4A9 /* FJPhotoImageTagView.m */; };
-		E77EBD132373CB6A0062E4A9 /* FJPhotoEditFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC2A2373CB690062E4A9 /* FJPhotoEditFilterView.xib */; };
-		E77EBD142373CB6A0062E4A9 /* FJPhotoImageTagPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC2B2373CB690062E4A9 /* FJPhotoImageTagPointView.m */; };
-		E77EBD152373CB6A0062E4A9 /* FJPhotoImageTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC2C2373CB690062E4A9 /* FJPhotoImageTagView.xib */; };
+		E77EBCFD2373CB6A0062E4A9 /* ZZPhotoCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC0C2373CB690062E4A9 /* ZZPhotoCropperView.m */; };
+		E77EBCFE2373CB6A0062E4A9 /* ZZPhotoEditCropperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC0D2373CB690062E4A9 /* ZZPhotoEditCropperView.xib */; };
+		E77EBCFF2373CB6A0062E4A9 /* ZZTakePhotoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC0F2373CB690062E4A9 /* ZZTakePhotoButton.xib */; };
+		E77EBD002373CB6A0062E4A9 /* ZZPhotoEditFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC122373CB690062E4A9 /* ZZPhotoEditFilterView.m */; };
+		E77EBD012373CB6A0062E4A9 /* ZZFilterImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC142373CB690062E4A9 /* ZZFilterImageView.xib */; };
+		E77EBD022373CB6A0062E4A9 /* ZZPhotoEditTitleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC152373CB690062E4A9 /* ZZPhotoEditTitleScrollView.m */; };
+		E77EBD032373CB6A0062E4A9 /* ZZPhotoLibraryAlbumSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC162373CB690062E4A9 /* ZZPhotoLibraryAlbumSelectionView.m */; };
+		E77EBD042373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC172373CB690062E4A9 /* ZZPhotoDraftEditPopupView.m */; };
+		E77EBD052373CB6A0062E4A9 /* ZZPhotoEditFilterGenreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC192373CB690062E4A9 /* ZZPhotoEditFilterGenreView.m */; };
+		E77EBD062373CB6A0062E4A9 /* ZZPhotoEditToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC1A2373CB690062E4A9 /* ZZPhotoEditToolbarView.xib */; };
+		E77EBD072373CB6A0062E4A9 /* ZZPhotoLibraryNoAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC1B2373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.xib */; };
+		E77EBD082373CB6A0062E4A9 /* ZZPhotoDraftBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1C2373CB690062E4A9 /* ZZPhotoDraftBottomView.m */; };
+		E77EBD092373CB6A0062E4A9 /* ZZPhotoEditCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1D2373CB690062E4A9 /* ZZPhotoEditCropperView.m */; };
+		E77EBD0A2373CB6A0062E4A9 /* ZZPhotoEditToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1E2373CB690062E4A9 /* ZZPhotoEditToolbarView.m */; };
+		E77EBD0B2373CB6A0062E4A9 /* ZZPhotoTagAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC1F2373CB690062E4A9 /* ZZPhotoTagAlertView.m */; };
+		E77EBD0C2373CB6A0062E4A9 /* ZZPhotoEditTuningValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC202373CB690062E4A9 /* ZZPhotoEditTuningValueView.m */; };
+		E77EBD0D2373CB6A0062E4A9 /* ZZFilterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC212373CB690062E4A9 /* ZZFilterImageView.m */; };
+		E77EBD0E2373CB6A0062E4A9 /* ZZPhotoEditTuningView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC222373CB690062E4A9 /* ZZPhotoEditTuningView.m */; };
+		E77EBD0F2373CB6A0062E4A9 /* ZZTakePhotoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC242373CB690062E4A9 /* ZZTakePhotoButton.m */; };
+		E77EBD102373CB6A0062E4A9 /* ZZPhotoEditTuningValueView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC262373CB690062E4A9 /* ZZPhotoEditTuningValueView.xib */; };
+		E77EBD112373CB6A0062E4A9 /* ZZPhotoLibraryNoAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC272373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.m */; };
+		E77EBD122373CB6A0062E4A9 /* ZZPhotoImageTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC292373CB690062E4A9 /* ZZPhotoImageTagView.m */; };
+		E77EBD132373CB6A0062E4A9 /* ZZPhotoEditFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC2A2373CB690062E4A9 /* ZZPhotoEditFilterView.xib */; };
+		E77EBD142373CB6A0062E4A9 /* ZZPhotoImageTagPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC2B2373CB690062E4A9 /* ZZPhotoImageTagPointView.m */; };
+		E77EBD152373CB6A0062E4A9 /* ZZPhotoImageTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC2C2373CB690062E4A9 /* ZZPhotoImageTagView.xib */; };
 		E77EBD162373CB6A0062E4A9 /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC2E2373CB690062E4A9 /* PHAsset+Utility.m */; };
 		E77EBD172373CB6A0062E4A9 /* PHAsset+QuickEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC312373CB690062E4A9 /* PHAsset+QuickEdit.m */; };
 		E77EBD182373CB6A0062E4A9 /* ic_light_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC342373CB690062E4A9 /* ic_light_on@2x.png */; };
@@ -283,23 +282,19 @@
 		E77EBD2F2373CB6A0062E4A9 /* btn_camera_complete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC4B2373CB690062E4A9 /* btn_camera_complete@2x.png */; };
 		E77EBD302373CB6A0062E4A9 /* ic_torch_off_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC4C2373CB690062E4A9 /* ic_torch_off_2@3x.png */; };
 		E77EBD312373CB6A0062E4A9 /* ic_auto_focus_exposure@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC4D2373CB690062E4A9 /* ic_auto_focus_exposure@3x.png */; };
-		E77EBD322373CB6A0062E4A9 /* FJImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC4F2373CB690062E4A9 /* FJImagePickerController.m */; };
-		E77EBD332373CB6A0062E4A9 /* FJAVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC522373CB690062E4A9 /* FJAVCaptureViewController.m */; };
-		E77EBD342373CB6A0062E4A9 /* FJImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC532373CB690062E4A9 /* FJImagePreviewController.m */; };
-		E77EBD352373CB6A0062E4A9 /* FJAllMediaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC562373CB690062E4A9 /* FJAllMediaPreviewViewController.m */; };
-		E77EBD362373CB6A0062E4A9 /* FJCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC582373CB690062E4A9 /* FJCameraManager.m */; };
-		E77EBD372373CB6A0062E4A9 /* FJMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC592373CB690062E4A9 /* FJMotionManager.m */; };
-		E77EBD382373CB6A0062E4A9 /* FJMovieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC5D2373CB690062E4A9 /* FJMovieManager.m */; };
-		E77EBD392373CB6A0062E4A9 /* FJMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC612373CB690062E4A9 /* FJMediaObject.m */; };
-		E77EBD3A2373CB6A0062E4A9 /* FJCaptureConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC622373CB690062E4A9 /* FJCaptureConfig.m */; };
-		E77EBD3B2373CB6A0062E4A9 /* FJVideoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC642373CB690062E4A9 /* FJVideoPreview.m */; };
-		E77EBD3C2373CB6A0062E4A9 /* FJCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC662373CB690062E4A9 /* FJCameraView.m */; };
-		E77EBD3D2373CB6A0062E4A9 /* FJTakePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC672373CB690062E4A9 /* FJTakePhotoView.xib */; };
-		E77EBD3E2373CB6A0062E4A9 /* FJTakePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC6A2373CB6A0062E4A9 /* FJTakePhotoView.m */; };
+		E77EBD332373CB6A0062E4A9 /* ZZAVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC522373CB690062E4A9 /* ZZAVCaptureViewController.m */; };
+		E77EBD342373CB6A0062E4A9 /* ZZImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC532373CB690062E4A9 /* ZZImagePreviewController.m */; };
+		E77EBD352373CB6A0062E4A9 /* ZZAllMediaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC562373CB690062E4A9 /* ZZAllMediaPreviewViewController.m */; };
+		E77EBD362373CB6A0062E4A9 /* ZZCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC582373CB690062E4A9 /* ZZCameraManager.m */; };
+		E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC592373CB690062E4A9 /* ZZMotionManager.m */; };
+		E77EBD382373CB6A0062E4A9 /* ZZMovieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC5D2373CB690062E4A9 /* ZZMovieManager.m */; };
+		E77EBD392373CB6A0062E4A9 /* ZZMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC612373CB690062E4A9 /* ZZMediaObject.m */; };
+		E77EBD3A2373CB6A0062E4A9 /* ZZCaptureConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC622373CB690062E4A9 /* ZZCaptureConfig.m */; };
+		E77EBD3B2373CB6A0062E4A9 /* ZZVideoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC642373CB690062E4A9 /* ZZVideoPreview.m */; };
+		E77EBD3C2373CB6A0062E4A9 /* ZZCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC662373CB690062E4A9 /* ZZCameraView.m */; };
+		E77EBD3D2373CB6A0062E4A9 /* ZZTakePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77EBC672373CB690062E4A9 /* ZZTakePhotoView.xib */; };
+		E77EBD3E2373CB6A0062E4A9 /* ZZTakePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC6A2373CB6A0062E4A9 /* ZZTakePhotoView.m */; };
 		E77EBD3F2373CB6A0062E4A9 /* NSURL+PreviewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC6E2373CB6A0062E4A9 /* NSURL+PreviewImage.m */; };
-		E77EBD402373CB6A0062E4A9 /* UIView+FJHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC6F2373CB6A0062E4A9 /* UIView+FJHUD.m */; };
-		E77EBD412373CB6A0062E4A9 /* UIView+FJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC702373CB6A0062E4A9 /* UIView+FJAdditions.m */; };
-		E77EBD422373CB6A0062E4A9 /* FJSaveMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = E77EBC712373CB6A0062E4A9 /* FJSaveMedia.m */; };
 		E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E77FA4B022EFE02E005DF522 /* ZZStorage.m */; };
 		E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */ = {isa = PBXBuildFile; fileRef = E7814E2222DC707E00C2CE44 /* NativePack.js */; };
 		E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E788654022B1E57C00B20F3E /* NSArray+ZZKit.m */; };
@@ -311,6 +306,7 @@
 		E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788655D22B21A1600B20F3E /* ZZWidgetTimerView.m */; };
 		E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656322B21A8A00B20F3E /* ZZWidgetRippleView.m */; };
 		E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */; };
+		E789683823D5D5DE00033752 /* ZZPhotoLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E789683623D5D5DE00033752 /* ZZPhotoLibraryViewController.m */; };
 		E78E766222C3626300D1EF5A /* cn.json in Resources */ = {isa = PBXBuildFile; fileRef = E78E766122C3626200D1EF5A /* cn.json */; };
 		E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */; };
 		E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E766A22C3630400D1EF5A /* ZZCountryModel.m */; };
@@ -331,6 +327,7 @@
 		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
 		E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */; };
 		E7C548DC2313A63800536FD3 /* TestWebImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C548DB2313A63800536FD3 /* TestWebImageVC.m */; };
+		E7C5B63023E4730700E18047 /* NSArray+FetchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B62F23E4730700E18047 /* NSArray+FetchImage.m */; };
 		E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */; };
 		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
 		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
@@ -367,6 +364,9 @@
 		E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */; };
 		E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */; };
 		E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */; };
+		E7DEA0EA23D6CBA400964600 /* ZZDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DEA0E923D6CBA400964600 /* ZZDraft.m */; };
+		E7DEA0ED23D6CBAF00964600 /* ZZPhotoAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DEA0EC23D6CBAF00964600 /* ZZPhotoAsset.m */; };
+		E7DEA0F023D6FC6F00964600 /* ZZPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DEA0EF23D6FC6F00964600 /* ZZPhotoFilter.m */; };
 		E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0178F22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m */; };
 		E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */; };
 		E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E0179922AE24AE00C24EF2 /* TestNotificationVC.m */; };
@@ -531,6 +531,8 @@
 		E7751BD522F4413800ECD06D /* ImageClCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageClCell.m; sourceTree = "<group>"; };
 		E7751BD622F4413800ECD06D /* ImageClCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageClCell.h; sourceTree = "<group>"; };
 		E7751BDA22F441DE00ECD06D /* NetImagesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetImagesCollectionViewController.m; sourceTree = "<group>"; };
+		E777A35D23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibraryConfig.h; sourceTree = "<group>"; };
+		E777A35E23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibraryConfig.m; sourceTree = "<group>"; };
 		E77ADD3C22BB3B990015DB1B /* ZZTableView+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZTableView+ZZKit.h"; sourceTree = "<group>"; };
 		E77ADD3D22BB3B990015DB1B /* ZZTableView+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZZTableView+ZZKit.m"; sourceTree = "<group>"; };
 		E77ADD4022BBABB90015DB1B /* CalcMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcMarker.h; sourceTree = "<group>"; };
@@ -541,7 +543,6 @@
 		E77ADD4522BBABBA0015DB1B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		E77ADD4622BBABBA0015DB1B /* CalcMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcMarker.m; sourceTree = "<group>"; };
 		E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWrapNumber.m; sourceTree = "<group>"; };
-		E77EBB612373CB690062E4A9 /* FJCameraCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCameraCommonHeader.h; sourceTree = "<group>"; };
 		E77EBB642373CB690062E4A9 /* ic_4_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_4_5@2x.png"; sourceTree = "<group>"; };
 		E77EBB652373CB690062E4A9 /* ic_photo_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_photo_unselected@3x.png"; sourceTree = "<group>"; };
 		E77EBB662373CB690062E4A9 /* ic_edit_tuning_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_edit_tuning_highlighted@3x.png"; sourceTree = "<group>"; };
@@ -652,91 +653,86 @@
 		E77EBBCF2373CB690062E4A9 /* ic_3_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_3_4@2x.png"; sourceTree = "<group>"; };
 		E77EBBD02373CB690062E4A9 /* ic_edit_cropper_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_edit_cropper_highlighted@3x.png"; sourceTree = "<group>"; };
 		E77EBBD12373CB690062E4A9 /* ic_logo_tag_euro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_logo_tag_euro@3x.png"; sourceTree = "<group>"; };
-		E77EBBD22373CB690062E4A9 /* FJPhotoEditCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditCommonHeader.h; sourceTree = "<group>"; };
-		E77EBBD42373CB690062E4A9 /* StaticScaleCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticScaleCropView.m; sourceTree = "<group>"; };
-		E77EBBD52373CB690062E4A9 /* TKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageView.h; sourceTree = "<group>"; };
-		E77EBBD62373CB690062E4A9 /* TKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageView.m; sourceTree = "<group>"; };
-		E77EBBD72373CB690062E4A9 /* StaticScaleCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticScaleCropView.h; sourceTree = "<group>"; };
-		E77EBBD92373CB690062E4A9 /* FJPhotoLibraryCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibraryCropperViewController.m; sourceTree = "<group>"; };
-		E77EBBDA2373CB690062E4A9 /* FJPhotoUserTagBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoUserTagBaseViewController.h; sourceTree = "<group>"; };
-		E77EBBDB2373CB690062E4A9 /* FJPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditViewController.h; sourceTree = "<group>"; };
-		E77EBBDC2373CB690062E4A9 /* FJPhotoDraftHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoDraftHistoryViewController.h; sourceTree = "<group>"; };
-		E77EBBDD2373CB690062E4A9 /* FJPhotoLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibraryViewController.m; sourceTree = "<group>"; };
-		E77EBBDE2373CB690062E4A9 /* FJPhotoUserTagBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoUserTagBaseViewController.m; sourceTree = "<group>"; };
-		E77EBBDF2373CB690062E4A9 /* FJPhotoLibraryCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibraryCropperViewController.h; sourceTree = "<group>"; };
-		E77EBBE02373CB690062E4A9 /* FJPhotoLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibraryViewController.h; sourceTree = "<group>"; };
-		E77EBBE12373CB690062E4A9 /* FJPhotoDraftHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoDraftHistoryViewController.m; sourceTree = "<group>"; };
-		E77EBBE22373CB690062E4A9 /* FJPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditViewController.m; sourceTree = "<group>"; };
-		E77EBBE42373CB690062E4A9 /* FJPhotoLibraryAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibraryAlbumCell.h; sourceTree = "<group>"; };
-		E77EBBE52373CB690062E4A9 /* FJPhotoDraftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoDraftCell.xib; sourceTree = "<group>"; };
-		E77EBBE62373CB690062E4A9 /* FJPhotoDraftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoDraftCell.m; sourceTree = "<group>"; };
-		E77EBBE72373CB690062E4A9 /* FJPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoCollectionViewCell.m; sourceTree = "<group>"; };
-		E77EBBE82373CB690062E4A9 /* FJPhotoLibraryAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibraryAlbumCell.m; sourceTree = "<group>"; };
-		E77EBBE92373CB690062E4A9 /* FJPhotoDraftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoDraftCell.h; sourceTree = "<group>"; };
-		E77EBBEA2373CB690062E4A9 /* FJPhotoLibraryAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoLibraryAlbumCell.xib; sourceTree = "<group>"; };
-		E77EBBEB2373CB690062E4A9 /* FJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
-		E77EBBEC2373CB690062E4A9 /* FJPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoCollectionViewCell.h; sourceTree = "<group>"; };
-		E77EBBEE2373CB690062E4A9 /* FJFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFilterManager.m; sourceTree = "<group>"; };
-		E77EBBEF2373CB690062E4A9 /* FJPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoManager.m; sourceTree = "<group>"; };
-		E77EBBF02373CB690062E4A9 /* FJFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFilterManager.h; sourceTree = "<group>"; };
-		E77EBBF12373CB690062E4A9 /* FJPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoManager.h; sourceTree = "<group>"; };
-		E77EBBF32373CB690062E4A9 /* FJTuningObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTuningObject.h; sourceTree = "<group>"; };
-		E77EBBF42373CB690062E4A9 /* FJImageTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJImageTagModel.m; sourceTree = "<group>"; };
-		E77EBBF52373CB690062E4A9 /* FJTuningObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTuningObject.m; sourceTree = "<group>"; };
-		E77EBBF62373CB690062E4A9 /* FJImageTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJImageTagModel.h; sourceTree = "<group>"; };
-		E77EBBF82373CB690062E4A9 /* FJPhotoDraftBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoDraftBottomView.h; sourceTree = "<group>"; };
-		E77EBBF92373CB690062E4A9 /* FJPhotoEditCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditCropperView.h; sourceTree = "<group>"; };
-		E77EBBFA2373CB690062E4A9 /* FJPhotoLibrarySelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibrarySelectionView.m; sourceTree = "<group>"; };
-		E77EBBFB2373CB690062E4A9 /* FJPhotoEditFilterGenreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditFilterGenreView.h; sourceTree = "<group>"; };
-		E77EBBFC2373CB690062E4A9 /* FJPhotoDraftEditPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoDraftEditPopupView.h; sourceTree = "<group>"; };
-		E77EBBFD2373CB690062E4A9 /* FJPhotoLibraryAlbumSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibraryAlbumSelectionView.h; sourceTree = "<group>"; };
-		E77EBBFE2373CB690062E4A9 /* FJCropperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJCropperView.xib; sourceTree = "<group>"; };
-		E77EBBFF2373CB690062E4A9 /* FJPhotoEditTitleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditTitleScrollView.h; sourceTree = "<group>"; };
-		E77EBC002373CB690062E4A9 /* FJFilterImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFilterImageView.h; sourceTree = "<group>"; };
-		E77EBC012373CB690062E4A9 /* FJPhotoEditTuningValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditTuningValueView.h; sourceTree = "<group>"; };
-		E77EBC022373CB690062E4A9 /* FJPhotoDraftEditPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoDraftEditPopupView.xib; sourceTree = "<group>"; };
-		E77EBC032373CB690062E4A9 /* FJPhotoLibrarySelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoLibrarySelectionView.xib; sourceTree = "<group>"; };
-		E77EBC042373CB690062E4A9 /* FJPhotoTagAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoTagAlertView.h; sourceTree = "<group>"; };
-		E77EBC052373CB690062E4A9 /* FJPhotoEditToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditToolbarView.h; sourceTree = "<group>"; };
-		E77EBC062373CB690062E4A9 /* FJPhotoDraftBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoDraftBottomView.xib; sourceTree = "<group>"; };
-		E77EBC072373CB690062E4A9 /* FJPhotoTagAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoTagAlertView.xib; sourceTree = "<group>"; };
-		E77EBC082373CB690062E4A9 /* FJPhotoEditTitleScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditTitleScrollView.xib; sourceTree = "<group>"; };
-		E77EBC092373CB690062E4A9 /* FJPhotoEditTuningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditTuningView.xib; sourceTree = "<group>"; };
+		E77EBBD42373CB690062E4A9 /* ZZStaticCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZStaticCropperView.m; sourceTree = "<group>"; };
+		E77EBBD52373CB690062E4A9 /* ZZFlexibleCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFlexibleCropperView.h; sourceTree = "<group>"; };
+		E77EBBD62373CB690062E4A9 /* ZZFlexibleCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFlexibleCropperView.m; sourceTree = "<group>"; };
+		E77EBBD72373CB690062E4A9 /* ZZStaticCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZStaticCropperView.h; sourceTree = "<group>"; };
+		E77EBBDA2373CB690062E4A9 /* ZZPhotoSelectTagBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoSelectTagBaseViewController.h; sourceTree = "<group>"; };
+		E77EBBDB2373CB690062E4A9 /* ZZPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditViewController.h; sourceTree = "<group>"; };
+		E77EBBDC2373CB690062E4A9 /* ZZPhotoDraftHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDraftHistoryViewController.h; sourceTree = "<group>"; };
+		E77EBBDE2373CB690062E4A9 /* ZZPhotoSelectTagBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoSelectTagBaseViewController.m; sourceTree = "<group>"; };
+		E77EBBE12373CB690062E4A9 /* ZZPhotoDraftHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDraftHistoryViewController.m; sourceTree = "<group>"; };
+		E77EBBE22373CB690062E4A9 /* ZZPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditViewController.m; sourceTree = "<group>"; };
+		E77EBBE42373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibraryAlbumCell.h; sourceTree = "<group>"; };
+		E77EBBE52373CB690062E4A9 /* ZZPhotoDraftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoDraftCell.xib; sourceTree = "<group>"; };
+		E77EBBE62373CB690062E4A9 /* ZZPhotoDraftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDraftCell.m; sourceTree = "<group>"; };
+		E77EBBE72373CB690062E4A9 /* ZZPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		E77EBBE82373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibraryAlbumCell.m; sourceTree = "<group>"; };
+		E77EBBE92373CB690062E4A9 /* ZZPhotoDraftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDraftCell.h; sourceTree = "<group>"; };
+		E77EBBEA2373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoLibraryAlbumCell.xib; sourceTree = "<group>"; };
+		E77EBBEB2373CB690062E4A9 /* ZZPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		E77EBBEC2373CB690062E4A9 /* ZZPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		E77EBBEE2373CB690062E4A9 /* ZZPhotoFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoFilterManager.m; sourceTree = "<group>"; };
+		E77EBBEF2373CB690062E4A9 /* ZZPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoManager.m; sourceTree = "<group>"; };
+		E77EBBF02373CB690062E4A9 /* ZZPhotoFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoFilterManager.h; sourceTree = "<group>"; };
+		E77EBBF12373CB690062E4A9 /* ZZPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoManager.h; sourceTree = "<group>"; };
+		E77EBBF32373CB690062E4A9 /* ZZPhotoTuning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoTuning.h; sourceTree = "<group>"; };
+		E77EBBF42373CB690062E4A9 /* ZZPhotoTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoTag.m; sourceTree = "<group>"; };
+		E77EBBF52373CB690062E4A9 /* ZZPhotoTuning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoTuning.m; sourceTree = "<group>"; };
+		E77EBBF62373CB690062E4A9 /* ZZPhotoTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoTag.h; sourceTree = "<group>"; };
+		E77EBBF82373CB690062E4A9 /* ZZPhotoDraftBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDraftBottomView.h; sourceTree = "<group>"; };
+		E77EBBF92373CB690062E4A9 /* ZZPhotoEditCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditCropperView.h; sourceTree = "<group>"; };
+		E77EBBFA2373CB690062E4A9 /* ZZPhotoLibrarySelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibrarySelectionView.m; sourceTree = "<group>"; };
+		E77EBBFB2373CB690062E4A9 /* ZZPhotoEditFilterGenreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditFilterGenreView.h; sourceTree = "<group>"; };
+		E77EBBFC2373CB690062E4A9 /* ZZPhotoDraftEditPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDraftEditPopupView.h; sourceTree = "<group>"; };
+		E77EBBFD2373CB690062E4A9 /* ZZPhotoLibraryAlbumSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibraryAlbumSelectionView.h; sourceTree = "<group>"; };
+		E77EBBFE2373CB690062E4A9 /* ZZPhotoCropperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoCropperView.xib; sourceTree = "<group>"; };
+		E77EBBFF2373CB690062E4A9 /* ZZPhotoEditTitleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditTitleScrollView.h; sourceTree = "<group>"; };
+		E77EBC002373CB690062E4A9 /* ZZFilterImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFilterImageView.h; sourceTree = "<group>"; };
+		E77EBC012373CB690062E4A9 /* ZZPhotoEditTuningValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditTuningValueView.h; sourceTree = "<group>"; };
+		E77EBC022373CB690062E4A9 /* ZZPhotoDraftEditPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoDraftEditPopupView.xib; sourceTree = "<group>"; };
+		E77EBC032373CB690062E4A9 /* ZZPhotoLibrarySelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoLibrarySelectionView.xib; sourceTree = "<group>"; };
+		E77EBC042373CB690062E4A9 /* ZZPhotoTagAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoTagAlertView.h; sourceTree = "<group>"; };
+		E77EBC052373CB690062E4A9 /* ZZPhotoEditToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditToolbarView.h; sourceTree = "<group>"; };
+		E77EBC062373CB690062E4A9 /* ZZPhotoDraftBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoDraftBottomView.xib; sourceTree = "<group>"; };
+		E77EBC072373CB690062E4A9 /* ZZPhotoTagAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoTagAlertView.xib; sourceTree = "<group>"; };
+		E77EBC082373CB690062E4A9 /* ZZPhotoEditTitleScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditTitleScrollView.xib; sourceTree = "<group>"; };
+		E77EBC092373CB690062E4A9 /* ZZPhotoEditTuningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditTuningView.xib; sourceTree = "<group>"; };
 		E77EBC0A2373CB690062E4A9 /* NSObject+Camera_Popup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Camera_Popup.m"; sourceTree = "<group>"; };
-		E77EBC0B2373CB690062E4A9 /* FJTakePhotoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTakePhotoButton.h; sourceTree = "<group>"; };
-		E77EBC0C2373CB690062E4A9 /* FJCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCropperView.m; sourceTree = "<group>"; };
-		E77EBC0D2373CB690062E4A9 /* FJPhotoEditCropperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditCropperView.xib; sourceTree = "<group>"; };
-		E77EBC0E2373CB690062E4A9 /* FJPhotoEditTuningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditTuningView.h; sourceTree = "<group>"; };
-		E77EBC0F2373CB690062E4A9 /* FJTakePhotoButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJTakePhotoButton.xib; sourceTree = "<group>"; };
-		E77EBC102373CB690062E4A9 /* FJPhotoImageTagPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoImageTagPointView.h; sourceTree = "<group>"; };
-		E77EBC112373CB690062E4A9 /* FJPhotoImageTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoImageTagView.h; sourceTree = "<group>"; };
-		E77EBC122373CB690062E4A9 /* FJPhotoEditFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditFilterView.m; sourceTree = "<group>"; };
-		E77EBC132373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibraryNoAlbumView.h; sourceTree = "<group>"; };
-		E77EBC142373CB690062E4A9 /* FJFilterImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJFilterImageView.xib; sourceTree = "<group>"; };
-		E77EBC152373CB690062E4A9 /* FJPhotoEditTitleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditTitleScrollView.m; sourceTree = "<group>"; };
-		E77EBC162373CB690062E4A9 /* FJPhotoLibraryAlbumSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibraryAlbumSelectionView.m; sourceTree = "<group>"; };
-		E77EBC172373CB690062E4A9 /* FJPhotoDraftEditPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoDraftEditPopupView.m; sourceTree = "<group>"; };
-		E77EBC182373CB690062E4A9 /* FJPhotoLibrarySelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoLibrarySelectionView.h; sourceTree = "<group>"; };
-		E77EBC192373CB690062E4A9 /* FJPhotoEditFilterGenreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditFilterGenreView.m; sourceTree = "<group>"; };
-		E77EBC1A2373CB690062E4A9 /* FJPhotoEditToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditToolbarView.xib; sourceTree = "<group>"; };
-		E77EBC1B2373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoLibraryNoAlbumView.xib; sourceTree = "<group>"; };
-		E77EBC1C2373CB690062E4A9 /* FJPhotoDraftBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoDraftBottomView.m; sourceTree = "<group>"; };
-		E77EBC1D2373CB690062E4A9 /* FJPhotoEditCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditCropperView.m; sourceTree = "<group>"; };
-		E77EBC1E2373CB690062E4A9 /* FJPhotoEditToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditToolbarView.m; sourceTree = "<group>"; };
-		E77EBC1F2373CB690062E4A9 /* FJPhotoTagAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoTagAlertView.m; sourceTree = "<group>"; };
-		E77EBC202373CB690062E4A9 /* FJPhotoEditTuningValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditTuningValueView.m; sourceTree = "<group>"; };
-		E77EBC212373CB690062E4A9 /* FJFilterImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFilterImageView.m; sourceTree = "<group>"; };
-		E77EBC222373CB690062E4A9 /* FJPhotoEditTuningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoEditTuningView.m; sourceTree = "<group>"; };
-		E77EBC232373CB690062E4A9 /* FJCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCropperView.h; sourceTree = "<group>"; };
-		E77EBC242373CB690062E4A9 /* FJTakePhotoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTakePhotoButton.m; sourceTree = "<group>"; };
+		E77EBC0B2373CB690062E4A9 /* ZZTakePhotoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTakePhotoButton.h; sourceTree = "<group>"; };
+		E77EBC0C2373CB690062E4A9 /* ZZPhotoCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoCropperView.m; sourceTree = "<group>"; };
+		E77EBC0D2373CB690062E4A9 /* ZZPhotoEditCropperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditCropperView.xib; sourceTree = "<group>"; };
+		E77EBC0E2373CB690062E4A9 /* ZZPhotoEditTuningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditTuningView.h; sourceTree = "<group>"; };
+		E77EBC0F2373CB690062E4A9 /* ZZTakePhotoButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZTakePhotoButton.xib; sourceTree = "<group>"; };
+		E77EBC102373CB690062E4A9 /* ZZPhotoImageTagPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoImageTagPointView.h; sourceTree = "<group>"; };
+		E77EBC112373CB690062E4A9 /* ZZPhotoImageTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoImageTagView.h; sourceTree = "<group>"; };
+		E77EBC122373CB690062E4A9 /* ZZPhotoEditFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditFilterView.m; sourceTree = "<group>"; };
+		E77EBC132373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibraryNoAlbumView.h; sourceTree = "<group>"; };
+		E77EBC142373CB690062E4A9 /* ZZFilterImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZFilterImageView.xib; sourceTree = "<group>"; };
+		E77EBC152373CB690062E4A9 /* ZZPhotoEditTitleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditTitleScrollView.m; sourceTree = "<group>"; };
+		E77EBC162373CB690062E4A9 /* ZZPhotoLibraryAlbumSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibraryAlbumSelectionView.m; sourceTree = "<group>"; };
+		E77EBC172373CB690062E4A9 /* ZZPhotoDraftEditPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDraftEditPopupView.m; sourceTree = "<group>"; };
+		E77EBC182373CB690062E4A9 /* ZZPhotoLibrarySelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibrarySelectionView.h; sourceTree = "<group>"; };
+		E77EBC192373CB690062E4A9 /* ZZPhotoEditFilterGenreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditFilterGenreView.m; sourceTree = "<group>"; };
+		E77EBC1A2373CB690062E4A9 /* ZZPhotoEditToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditToolbarView.xib; sourceTree = "<group>"; };
+		E77EBC1B2373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoLibraryNoAlbumView.xib; sourceTree = "<group>"; };
+		E77EBC1C2373CB690062E4A9 /* ZZPhotoDraftBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDraftBottomView.m; sourceTree = "<group>"; };
+		E77EBC1D2373CB690062E4A9 /* ZZPhotoEditCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditCropperView.m; sourceTree = "<group>"; };
+		E77EBC1E2373CB690062E4A9 /* ZZPhotoEditToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditToolbarView.m; sourceTree = "<group>"; };
+		E77EBC1F2373CB690062E4A9 /* ZZPhotoTagAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoTagAlertView.m; sourceTree = "<group>"; };
+		E77EBC202373CB690062E4A9 /* ZZPhotoEditTuningValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditTuningValueView.m; sourceTree = "<group>"; };
+		E77EBC212373CB690062E4A9 /* ZZFilterImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFilterImageView.m; sourceTree = "<group>"; };
+		E77EBC222373CB690062E4A9 /* ZZPhotoEditTuningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoEditTuningView.m; sourceTree = "<group>"; };
+		E77EBC232373CB690062E4A9 /* ZZPhotoCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoCropperView.h; sourceTree = "<group>"; };
+		E77EBC242373CB690062E4A9 /* ZZTakePhotoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTakePhotoButton.m; sourceTree = "<group>"; };
 		E77EBC252373CB690062E4A9 /* NSObject+Camera_Popup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Camera_Popup.h"; sourceTree = "<group>"; };
-		E77EBC262373CB690062E4A9 /* FJPhotoEditTuningValueView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditTuningValueView.xib; sourceTree = "<group>"; };
-		E77EBC272373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoLibraryNoAlbumView.m; sourceTree = "<group>"; };
-		E77EBC282373CB690062E4A9 /* FJPhotoEditFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJPhotoEditFilterView.h; sourceTree = "<group>"; };
-		E77EBC292373CB690062E4A9 /* FJPhotoImageTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoImageTagView.m; sourceTree = "<group>"; };
-		E77EBC2A2373CB690062E4A9 /* FJPhotoEditFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoEditFilterView.xib; sourceTree = "<group>"; };
-		E77EBC2B2373CB690062E4A9 /* FJPhotoImageTagPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJPhotoImageTagPointView.m; sourceTree = "<group>"; };
-		E77EBC2C2373CB690062E4A9 /* FJPhotoImageTagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJPhotoImageTagView.xib; sourceTree = "<group>"; };
+		E77EBC262373CB690062E4A9 /* ZZPhotoEditTuningValueView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditTuningValueView.xib; sourceTree = "<group>"; };
+		E77EBC272373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibraryNoAlbumView.m; sourceTree = "<group>"; };
+		E77EBC282373CB690062E4A9 /* ZZPhotoEditFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoEditFilterView.h; sourceTree = "<group>"; };
+		E77EBC292373CB690062E4A9 /* ZZPhotoImageTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoImageTagView.m; sourceTree = "<group>"; };
+		E77EBC2A2373CB690062E4A9 /* ZZPhotoEditFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoEditFilterView.xib; sourceTree = "<group>"; };
+		E77EBC2B2373CB690062E4A9 /* ZZPhotoImageTagPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoImageTagPointView.m; sourceTree = "<group>"; };
+		E77EBC2C2373CB690062E4A9 /* ZZPhotoImageTagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZPhotoImageTagView.xib; sourceTree = "<group>"; };
 		E77EBC2E2373CB690062E4A9 /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
 		E77EBC2F2373CB690062E4A9 /* PHAsset+QuickEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+QuickEdit.h"; sourceTree = "<group>"; };
 		E77EBC302373CB690062E4A9 /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Utility.h"; sourceTree = "<group>"; };
@@ -767,40 +763,31 @@
 		E77EBC4B2373CB690062E4A9 /* btn_camera_complete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_camera_complete@2x.png"; sourceTree = "<group>"; };
 		E77EBC4C2373CB690062E4A9 /* ic_torch_off_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_torch_off_2@3x.png"; sourceTree = "<group>"; };
 		E77EBC4D2373CB690062E4A9 /* ic_auto_focus_exposure@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_auto_focus_exposure@3x.png"; sourceTree = "<group>"; };
-		E77EBC4F2373CB690062E4A9 /* FJImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJImagePickerController.m; sourceTree = "<group>"; };
-		E77EBC502373CB690062E4A9 /* FJImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJImagePreviewController.h; sourceTree = "<group>"; };
-		E77EBC512373CB690062E4A9 /* FJAllMediaPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJAllMediaPreviewViewController.h; sourceTree = "<group>"; };
-		E77EBC522373CB690062E4A9 /* FJAVCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJAVCaptureViewController.m; sourceTree = "<group>"; };
-		E77EBC532373CB690062E4A9 /* FJImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJImagePreviewController.m; sourceTree = "<group>"; };
-		E77EBC542373CB690062E4A9 /* FJImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJImagePickerController.h; sourceTree = "<group>"; };
-		E77EBC552373CB690062E4A9 /* FJAVCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJAVCaptureViewController.h; sourceTree = "<group>"; };
-		E77EBC562373CB690062E4A9 /* FJAllMediaPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJAllMediaPreviewViewController.m; sourceTree = "<group>"; };
-		E77EBC582373CB690062E4A9 /* FJCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCameraManager.m; sourceTree = "<group>"; };
-		E77EBC592373CB690062E4A9 /* FJMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJMotionManager.m; sourceTree = "<group>"; };
-		E77EBC5A2373CB690062E4A9 /* FJMovieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJMovieManager.h; sourceTree = "<group>"; };
-		E77EBC5B2373CB690062E4A9 /* FJMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJMotionManager.h; sourceTree = "<group>"; };
-		E77EBC5C2373CB690062E4A9 /* FJCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCameraManager.h; sourceTree = "<group>"; };
-		E77EBC5D2373CB690062E4A9 /* FJMovieManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJMovieManager.m; sourceTree = "<group>"; };
-		E77EBC5F2373CB690062E4A9 /* FJMediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJMediaObject.h; sourceTree = "<group>"; };
-		E77EBC602373CB690062E4A9 /* FJCaptureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCaptureConfig.h; sourceTree = "<group>"; };
-		E77EBC612373CB690062E4A9 /* FJMediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJMediaObject.m; sourceTree = "<group>"; };
-		E77EBC622373CB690062E4A9 /* FJCaptureConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCaptureConfig.m; sourceTree = "<group>"; };
-		E77EBC642373CB690062E4A9 /* FJVideoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJVideoPreview.m; sourceTree = "<group>"; };
-		E77EBC652373CB690062E4A9 /* FJTakePhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTakePhotoView.h; sourceTree = "<group>"; };
-		E77EBC662373CB690062E4A9 /* FJCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCameraView.m; sourceTree = "<group>"; };
-		E77EBC672373CB690062E4A9 /* FJTakePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJTakePhotoView.xib; sourceTree = "<group>"; };
-		E77EBC682373CB6A0062E4A9 /* FJVideoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJVideoPreview.h; sourceTree = "<group>"; };
-		E77EBC692373CB6A0062E4A9 /* FJCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCameraView.h; sourceTree = "<group>"; };
-		E77EBC6A2373CB6A0062E4A9 /* FJTakePhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTakePhotoView.m; sourceTree = "<group>"; };
-		E77EBC6C2373CB6A0062E4A9 /* FJSaveMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJSaveMedia.h; sourceTree = "<group>"; };
-		E77EBC6D2373CB6A0062E4A9 /* UIView+FJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FJAdditions.h"; sourceTree = "<group>"; };
+		E77EBC502373CB690062E4A9 /* ZZImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZImagePreviewController.h; sourceTree = "<group>"; };
+		E77EBC512373CB690062E4A9 /* ZZAllMediaPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAllMediaPreviewViewController.h; sourceTree = "<group>"; };
+		E77EBC522373CB690062E4A9 /* ZZAVCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAVCaptureViewController.m; sourceTree = "<group>"; };
+		E77EBC532373CB690062E4A9 /* ZZImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZImagePreviewController.m; sourceTree = "<group>"; };
+		E77EBC552373CB690062E4A9 /* ZZAVCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAVCaptureViewController.h; sourceTree = "<group>"; };
+		E77EBC562373CB690062E4A9 /* ZZAllMediaPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAllMediaPreviewViewController.m; sourceTree = "<group>"; };
+		E77EBC582373CB690062E4A9 /* ZZCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraManager.m; sourceTree = "<group>"; };
+		E77EBC592373CB690062E4A9 /* ZZMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMotionManager.m; sourceTree = "<group>"; };
+		E77EBC5A2373CB690062E4A9 /* ZZMovieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMovieManager.h; sourceTree = "<group>"; };
+		E77EBC5B2373CB690062E4A9 /* ZZMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMotionManager.h; sourceTree = "<group>"; };
+		E77EBC5C2373CB690062E4A9 /* ZZCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraManager.h; sourceTree = "<group>"; };
+		E77EBC5D2373CB690062E4A9 /* ZZMovieManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMovieManager.m; sourceTree = "<group>"; };
+		E77EBC5F2373CB690062E4A9 /* ZZMediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMediaObject.h; sourceTree = "<group>"; };
+		E77EBC602373CB690062E4A9 /* ZZCaptureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCaptureConfig.h; sourceTree = "<group>"; };
+		E77EBC612373CB690062E4A9 /* ZZMediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMediaObject.m; sourceTree = "<group>"; };
+		E77EBC622373CB690062E4A9 /* ZZCaptureConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCaptureConfig.m; sourceTree = "<group>"; };
+		E77EBC642373CB690062E4A9 /* ZZVideoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZVideoPreview.m; sourceTree = "<group>"; };
+		E77EBC652373CB690062E4A9 /* ZZTakePhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTakePhotoView.h; sourceTree = "<group>"; };
+		E77EBC662373CB690062E4A9 /* ZZCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraView.m; sourceTree = "<group>"; };
+		E77EBC672373CB690062E4A9 /* ZZTakePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZTakePhotoView.xib; sourceTree = "<group>"; };
+		E77EBC682373CB6A0062E4A9 /* ZZVideoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZVideoPreview.h; sourceTree = "<group>"; };
+		E77EBC692373CB6A0062E4A9 /* ZZCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraView.h; sourceTree = "<group>"; };
+		E77EBC6A2373CB6A0062E4A9 /* ZZTakePhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTakePhotoView.m; sourceTree = "<group>"; };
 		E77EBC6E2373CB6A0062E4A9 /* NSURL+PreviewImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+PreviewImage.m"; sourceTree = "<group>"; };
-		E77EBC6F2373CB6A0062E4A9 /* UIView+FJHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FJHUD.m"; sourceTree = "<group>"; };
-		E77EBC702373CB6A0062E4A9 /* UIView+FJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FJAdditions.m"; sourceTree = "<group>"; };
-		E77EBC712373CB6A0062E4A9 /* FJSaveMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJSaveMedia.m; sourceTree = "<group>"; };
 		E77EBC722373CB6A0062E4A9 /* NSURL+PreviewImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+PreviewImage.h"; sourceTree = "<group>"; };
-		E77EBC732373CB6A0062E4A9 /* UIView+FJHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FJHUD.h"; sourceTree = "<group>"; };
-		E77EBC742373CB6A0062E4A9 /* FJAVCatpureCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJAVCatpureCommonHeader.h; sourceTree = "<group>"; };
 		E77FA4AF22EFE02E005DF522 /* ZZStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZStorage.h; sourceTree = "<group>"; };
 		E77FA4B022EFE02E005DF522 /* ZZStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZStorage.m; sourceTree = "<group>"; };
 		E7814E2222DC707E00C2CE44 /* NativePack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = NativePack.js; sourceTree = "<group>"; };
@@ -822,6 +809,8 @@
 		E788656322B21A8A00B20F3E /* ZZWidgetRippleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetRippleView.m; sourceTree = "<group>"; };
 		E788656C22B21B3B00B20F3E /* ZZWidgetDropSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetDropSheetView.h; sourceTree = "<group>"; };
 		E788656D22B21B3B00B20F3E /* ZZWidgetDropSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetDropSheetView.m; sourceTree = "<group>"; };
+		E789683623D5D5DE00033752 /* ZZPhotoLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoLibraryViewController.m; sourceTree = "<group>"; };
+		E789683723D5D5DE00033752 /* ZZPhotoLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoLibraryViewController.h; sourceTree = "<group>"; };
 		E78E766122C3626200D1EF5A /* cn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cn.json; sourceTree = "<group>"; };
 		E78E766622C362D300D1EF5A /* ZZCNRegionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCNRegionModel.h; sourceTree = "<group>"; };
 		E78E766722C362D300D1EF5A /* ZZCNRegionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCNRegionModel.m; sourceTree = "<group>"; };
@@ -854,6 +843,8 @@
 		E7C3166A22A66830002E4130 /* UIControl+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZZKit_Blocks.m"; sourceTree = "<group>"; };
 		E7C548DA2313A63800536FD3 /* TestWebImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWebImageVC.h; sourceTree = "<group>"; };
 		E7C548DB2313A63800536FD3 /* TestWebImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWebImageVC.m; sourceTree = "<group>"; };
+		E7C5B62E23E4730700E18047 /* NSArray+FetchImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+FetchImage.h"; sourceTree = "<group>"; };
+		E7C5B62F23E4730700E18047 /* NSArray+FetchImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FetchImage.m"; sourceTree = "<group>"; };
 		E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTagViewVC.h; sourceTree = "<group>"; };
 		E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTagViewVC.m; sourceTree = "<group>"; };
 		E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTagViewVC.xib; sourceTree = "<group>"; };
@@ -915,6 +906,12 @@
 		E7DC5C56229D1A9400ED8733 /* NSDate+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZZKit.m"; sourceTree = "<group>"; };
 		E7DC5C58229D3F9000ED8733 /* UIFont+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZZKit.h"; sourceTree = "<group>"; };
 		E7DC5C59229D3F9000ED8733 /* UIFont+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZZKit.m"; sourceTree = "<group>"; };
+		E7DEA0E823D6CBA400964600 /* ZZDraft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDraft.h; sourceTree = "<group>"; };
+		E7DEA0E923D6CBA400964600 /* ZZDraft.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDraft.m; sourceTree = "<group>"; };
+		E7DEA0EB23D6CBAF00964600 /* ZZPhotoAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZPhotoAsset.h; sourceTree = "<group>"; };
+		E7DEA0EC23D6CBAF00964600 /* ZZPhotoAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoAsset.m; sourceTree = "<group>"; };
+		E7DEA0EE23D6FC6F00964600 /* ZZPhotoFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZPhotoFilter.h; sourceTree = "<group>"; };
+		E7DEA0EF23D6FC6F00964600 /* ZZPhotoFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoFilter.m; sourceTree = "<group>"; };
 		E7E0178E22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+ZZKit_Keyboard.h"; sourceTree = "<group>"; };
 		E7E0178F22AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+ZZKit_Keyboard.m"; sourceTree = "<group>"; };
 		E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZZKit_Notification.h"; sourceTree = "<group>"; };
@@ -1045,8 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				E77EBB632373CB690062E4A9 /* Images */,
-				E77EBBD22373CB690062E4A9 /* FJPhotoEditCommonHeader.h */,
-				E77EBBD32373CB690062E4A9 /* 3rd */,
+				E77EBBD32373CB690062E4A9 /* Cropper */,
 				E77EBBD82373CB690062E4A9 /* Controller */,
 				E77EBBE32373CB690062E4A9 /* Cell */,
 				E77EBBED2373CB690062E4A9 /* Manager */,
@@ -1174,30 +1170,28 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		E77EBBD32373CB690062E4A9 /* 3rd */ = {
+		E77EBBD32373CB690062E4A9 /* Cropper */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBD42373CB690062E4A9 /* StaticScaleCropView.m */,
-				E77EBBD52373CB690062E4A9 /* TKImageView.h */,
-				E77EBBD62373CB690062E4A9 /* TKImageView.m */,
-				E77EBBD72373CB690062E4A9 /* StaticScaleCropView.h */,
+				E77EBBD72373CB690062E4A9 /* ZZStaticCropperView.h */,
+				E77EBBD42373CB690062E4A9 /* ZZStaticCropperView.m */,
+				E77EBBD52373CB690062E4A9 /* ZZFlexibleCropperView.h */,
+				E77EBBD62373CB690062E4A9 /* ZZFlexibleCropperView.m */,
 			);
-			path = 3rd;
+			path = Cropper;
 			sourceTree = "<group>";
 		};
 		E77EBBD82373CB690062E4A9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBD92373CB690062E4A9 /* FJPhotoLibraryCropperViewController.m */,
-				E77EBBDA2373CB690062E4A9 /* FJPhotoUserTagBaseViewController.h */,
-				E77EBBDB2373CB690062E4A9 /* FJPhotoEditViewController.h */,
-				E77EBBDC2373CB690062E4A9 /* FJPhotoDraftHistoryViewController.h */,
-				E77EBBDD2373CB690062E4A9 /* FJPhotoLibraryViewController.m */,
-				E77EBBDE2373CB690062E4A9 /* FJPhotoUserTagBaseViewController.m */,
-				E77EBBDF2373CB690062E4A9 /* FJPhotoLibraryCropperViewController.h */,
-				E77EBBE02373CB690062E4A9 /* FJPhotoLibraryViewController.h */,
-				E77EBBE12373CB690062E4A9 /* FJPhotoDraftHistoryViewController.m */,
-				E77EBBE22373CB690062E4A9 /* FJPhotoEditViewController.m */,
+				E789683723D5D5DE00033752 /* ZZPhotoLibraryViewController.h */,
+				E789683623D5D5DE00033752 /* ZZPhotoLibraryViewController.m */,
+				E77EBBDB2373CB690062E4A9 /* ZZPhotoEditViewController.h */,
+				E77EBBE22373CB690062E4A9 /* ZZPhotoEditViewController.m */,
+				E77EBBDA2373CB690062E4A9 /* ZZPhotoSelectTagBaseViewController.h */,
+				E77EBBDE2373CB690062E4A9 /* ZZPhotoSelectTagBaseViewController.m */,
+				E77EBBDC2373CB690062E4A9 /* ZZPhotoDraftHistoryViewController.h */,
+				E77EBBE12373CB690062E4A9 /* ZZPhotoDraftHistoryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1205,15 +1199,15 @@
 		E77EBBE32373CB690062E4A9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBE42373CB690062E4A9 /* FJPhotoLibraryAlbumCell.h */,
-				E77EBBE52373CB690062E4A9 /* FJPhotoDraftCell.xib */,
-				E77EBBE62373CB690062E4A9 /* FJPhotoDraftCell.m */,
-				E77EBBE72373CB690062E4A9 /* FJPhotoCollectionViewCell.m */,
-				E77EBBE82373CB690062E4A9 /* FJPhotoLibraryAlbumCell.m */,
-				E77EBBE92373CB690062E4A9 /* FJPhotoDraftCell.h */,
-				E77EBBEA2373CB690062E4A9 /* FJPhotoLibraryAlbumCell.xib */,
-				E77EBBEB2373CB690062E4A9 /* FJPhotoCollectionViewCell.xib */,
-				E77EBBEC2373CB690062E4A9 /* FJPhotoCollectionViewCell.h */,
+				E77EBBE92373CB690062E4A9 /* ZZPhotoDraftCell.h */,
+				E77EBBE62373CB690062E4A9 /* ZZPhotoDraftCell.m */,
+				E77EBBE52373CB690062E4A9 /* ZZPhotoDraftCell.xib */,
+				E77EBBE42373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.h */,
+				E77EBBE82373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.m */,
+				E77EBBEA2373CB690062E4A9 /* ZZPhotoLibraryAlbumCell.xib */,
+				E77EBBEC2373CB690062E4A9 /* ZZPhotoCollectionViewCell.h */,
+				E77EBBE72373CB690062E4A9 /* ZZPhotoCollectionViewCell.m */,
+				E77EBBEB2373CB690062E4A9 /* ZZPhotoCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1221,10 +1215,10 @@
 		E77EBBED2373CB690062E4A9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBEE2373CB690062E4A9 /* FJFilterManager.m */,
-				E77EBBEF2373CB690062E4A9 /* FJPhotoManager.m */,
-				E77EBBF02373CB690062E4A9 /* FJFilterManager.h */,
-				E77EBBF12373CB690062E4A9 /* FJPhotoManager.h */,
+				E77EBBF12373CB690062E4A9 /* ZZPhotoManager.h */,
+				E77EBBEF2373CB690062E4A9 /* ZZPhotoManager.m */,
+				E77EBBF02373CB690062E4A9 /* ZZPhotoFilterManager.h */,
+				E77EBBEE2373CB690062E4A9 /* ZZPhotoFilterManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1232,10 +1226,18 @@
 		E77EBBF22373CB690062E4A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBF32373CB690062E4A9 /* FJTuningObject.h */,
-				E77EBBF42373CB690062E4A9 /* FJImageTagModel.m */,
-				E77EBBF52373CB690062E4A9 /* FJTuningObject.m */,
-				E77EBBF62373CB690062E4A9 /* FJImageTagModel.h */,
+				E777A35D23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.h */,
+				E777A35E23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m */,
+				E7DEA0E823D6CBA400964600 /* ZZDraft.h */,
+				E7DEA0E923D6CBA400964600 /* ZZDraft.m */,
+				E7DEA0EB23D6CBAF00964600 /* ZZPhotoAsset.h */,
+				E7DEA0EC23D6CBAF00964600 /* ZZPhotoAsset.m */,
+				E77EBBF32373CB690062E4A9 /* ZZPhotoTuning.h */,
+				E77EBBF52373CB690062E4A9 /* ZZPhotoTuning.m */,
+				E77EBBF62373CB690062E4A9 /* ZZPhotoTag.h */,
+				E77EBBF42373CB690062E4A9 /* ZZPhotoTag.m */,
+				E7DEA0EE23D6FC6F00964600 /* ZZPhotoFilter.h */,
+				E7DEA0EF23D6FC6F00964600 /* ZZPhotoFilter.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1243,59 +1245,55 @@
 		E77EBBF72373CB690062E4A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBBF82373CB690062E4A9 /* FJPhotoDraftBottomView.h */,
-				E77EBBF92373CB690062E4A9 /* FJPhotoEditCropperView.h */,
-				E77EBBFA2373CB690062E4A9 /* FJPhotoLibrarySelectionView.m */,
-				E77EBBFB2373CB690062E4A9 /* FJPhotoEditFilterGenreView.h */,
-				E77EBBFC2373CB690062E4A9 /* FJPhotoDraftEditPopupView.h */,
-				E77EBBFD2373CB690062E4A9 /* FJPhotoLibraryAlbumSelectionView.h */,
-				E77EBBFE2373CB690062E4A9 /* FJCropperView.xib */,
-				E77EBBFF2373CB690062E4A9 /* FJPhotoEditTitleScrollView.h */,
-				E77EBC002373CB690062E4A9 /* FJFilterImageView.h */,
-				E77EBC012373CB690062E4A9 /* FJPhotoEditTuningValueView.h */,
-				E77EBC022373CB690062E4A9 /* FJPhotoDraftEditPopupView.xib */,
-				E77EBC032373CB690062E4A9 /* FJPhotoLibrarySelectionView.xib */,
-				E77EBC042373CB690062E4A9 /* FJPhotoTagAlertView.h */,
-				E77EBC052373CB690062E4A9 /* FJPhotoEditToolbarView.h */,
-				E77EBC062373CB690062E4A9 /* FJPhotoDraftBottomView.xib */,
-				E77EBC072373CB690062E4A9 /* FJPhotoTagAlertView.xib */,
-				E77EBC082373CB690062E4A9 /* FJPhotoEditTitleScrollView.xib */,
-				E77EBC092373CB690062E4A9 /* FJPhotoEditTuningView.xib */,
-				E77EBC0A2373CB690062E4A9 /* NSObject+Camera_Popup.m */,
-				E77EBC0B2373CB690062E4A9 /* FJTakePhotoButton.h */,
-				E77EBC0C2373CB690062E4A9 /* FJCropperView.m */,
-				E77EBC0D2373CB690062E4A9 /* FJPhotoEditCropperView.xib */,
-				E77EBC0E2373CB690062E4A9 /* FJPhotoEditTuningView.h */,
-				E77EBC0F2373CB690062E4A9 /* FJTakePhotoButton.xib */,
-				E77EBC102373CB690062E4A9 /* FJPhotoImageTagPointView.h */,
-				E77EBC112373CB690062E4A9 /* FJPhotoImageTagView.h */,
-				E77EBC122373CB690062E4A9 /* FJPhotoEditFilterView.m */,
-				E77EBC132373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.h */,
-				E77EBC142373CB690062E4A9 /* FJFilterImageView.xib */,
-				E77EBC152373CB690062E4A9 /* FJPhotoEditTitleScrollView.m */,
-				E77EBC162373CB690062E4A9 /* FJPhotoLibraryAlbumSelectionView.m */,
-				E77EBC172373CB690062E4A9 /* FJPhotoDraftEditPopupView.m */,
-				E77EBC182373CB690062E4A9 /* FJPhotoLibrarySelectionView.h */,
-				E77EBC192373CB690062E4A9 /* FJPhotoEditFilterGenreView.m */,
-				E77EBC1A2373CB690062E4A9 /* FJPhotoEditToolbarView.xib */,
-				E77EBC1B2373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.xib */,
-				E77EBC1C2373CB690062E4A9 /* FJPhotoDraftBottomView.m */,
-				E77EBC1D2373CB690062E4A9 /* FJPhotoEditCropperView.m */,
-				E77EBC1E2373CB690062E4A9 /* FJPhotoEditToolbarView.m */,
-				E77EBC1F2373CB690062E4A9 /* FJPhotoTagAlertView.m */,
-				E77EBC202373CB690062E4A9 /* FJPhotoEditTuningValueView.m */,
-				E77EBC212373CB690062E4A9 /* FJFilterImageView.m */,
-				E77EBC222373CB690062E4A9 /* FJPhotoEditTuningView.m */,
-				E77EBC232373CB690062E4A9 /* FJCropperView.h */,
-				E77EBC242373CB690062E4A9 /* FJTakePhotoButton.m */,
-				E77EBC252373CB690062E4A9 /* NSObject+Camera_Popup.h */,
-				E77EBC262373CB690062E4A9 /* FJPhotoEditTuningValueView.xib */,
-				E77EBC272373CB690062E4A9 /* FJPhotoLibraryNoAlbumView.m */,
-				E77EBC282373CB690062E4A9 /* FJPhotoEditFilterView.h */,
-				E77EBC292373CB690062E4A9 /* FJPhotoImageTagView.m */,
-				E77EBC2A2373CB690062E4A9 /* FJPhotoEditFilterView.xib */,
-				E77EBC2B2373CB690062E4A9 /* FJPhotoImageTagPointView.m */,
-				E77EBC2C2373CB690062E4A9 /* FJPhotoImageTagView.xib */,
+				E7C5B62D23E457AA00E18047 /* PopupView */,
+				E77EBC232373CB690062E4A9 /* ZZPhotoCropperView.h */,
+				E77EBC0C2373CB690062E4A9 /* ZZPhotoCropperView.m */,
+				E77EBBFE2373CB690062E4A9 /* ZZPhotoCropperView.xib */,
+				E77EBC132373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.h */,
+				E77EBC272373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.m */,
+				E77EBC1B2373CB690062E4A9 /* ZZPhotoLibraryNoAlbumView.xib */,
+				E77EBC182373CB690062E4A9 /* ZZPhotoLibrarySelectionView.h */,
+				E77EBBFA2373CB690062E4A9 /* ZZPhotoLibrarySelectionView.m */,
+				E77EBC032373CB690062E4A9 /* ZZPhotoLibrarySelectionView.xib */,
+				E77EBBFD2373CB690062E4A9 /* ZZPhotoLibraryAlbumSelectionView.h */,
+				E77EBC162373CB690062E4A9 /* ZZPhotoLibraryAlbumSelectionView.m */,
+				E77EBC0B2373CB690062E4A9 /* ZZTakePhotoButton.h */,
+				E77EBC242373CB690062E4A9 /* ZZTakePhotoButton.m */,
+				E77EBC0F2373CB690062E4A9 /* ZZTakePhotoButton.xib */,
+				E77EBBFF2373CB690062E4A9 /* ZZPhotoEditTitleScrollView.h */,
+				E77EBC152373CB690062E4A9 /* ZZPhotoEditTitleScrollView.m */,
+				E77EBC082373CB690062E4A9 /* ZZPhotoEditTitleScrollView.xib */,
+				E77EBC052373CB690062E4A9 /* ZZPhotoEditToolbarView.h */,
+				E77EBC1E2373CB690062E4A9 /* ZZPhotoEditToolbarView.m */,
+				E77EBC1A2373CB690062E4A9 /* ZZPhotoEditToolbarView.xib */,
+				E77EBC002373CB690062E4A9 /* ZZFilterImageView.h */,
+				E77EBC212373CB690062E4A9 /* ZZFilterImageView.m */,
+				E77EBC142373CB690062E4A9 /* ZZFilterImageView.xib */,
+				E77EBC112373CB690062E4A9 /* ZZPhotoImageTagView.h */,
+				E77EBC292373CB690062E4A9 /* ZZPhotoImageTagView.m */,
+				E77EBC2C2373CB690062E4A9 /* ZZPhotoImageTagView.xib */,
+				E77EBC042373CB690062E4A9 /* ZZPhotoTagAlertView.h */,
+				E77EBC1F2373CB690062E4A9 /* ZZPhotoTagAlertView.m */,
+				E77EBC072373CB690062E4A9 /* ZZPhotoTagAlertView.xib */,
+				E77EBBF82373CB690062E4A9 /* ZZPhotoDraftBottomView.h */,
+				E77EBC1C2373CB690062E4A9 /* ZZPhotoDraftBottomView.m */,
+				E77EBC062373CB690062E4A9 /* ZZPhotoDraftBottomView.xib */,
+				E77EBBF92373CB690062E4A9 /* ZZPhotoEditCropperView.h */,
+				E77EBC1D2373CB690062E4A9 /* ZZPhotoEditCropperView.m */,
+				E77EBC0D2373CB690062E4A9 /* ZZPhotoEditCropperView.xib */,
+				E77EBC282373CB690062E4A9 /* ZZPhotoEditFilterView.h */,
+				E77EBC122373CB690062E4A9 /* ZZPhotoEditFilterView.m */,
+				E77EBC2A2373CB690062E4A9 /* ZZPhotoEditFilterView.xib */,
+				E77EBBFB2373CB690062E4A9 /* ZZPhotoEditFilterGenreView.h */,
+				E77EBC192373CB690062E4A9 /* ZZPhotoEditFilterGenreView.m */,
+				E77EBC012373CB690062E4A9 /* ZZPhotoEditTuningValueView.h */,
+				E77EBC202373CB690062E4A9 /* ZZPhotoEditTuningValueView.m */,
+				E77EBC262373CB690062E4A9 /* ZZPhotoEditTuningValueView.xib */,
+				E77EBC0E2373CB690062E4A9 /* ZZPhotoEditTuningView.h */,
+				E77EBC222373CB690062E4A9 /* ZZPhotoEditTuningView.m */,
+				E77EBC092373CB690062E4A9 /* ZZPhotoEditTuningView.xib */,
+				E77EBC102373CB690062E4A9 /* ZZPhotoImageTagPointView.h */,
+				E77EBC2B2373CB690062E4A9 /* ZZPhotoImageTagPointView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1303,10 +1301,12 @@
 		E77EBC2D2373CB690062E4A9 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E77EBC302373CB690062E4A9 /* PHAsset+Utility.h */,
 				E77EBC2E2373CB690062E4A9 /* PHAsset+Utility.m */,
 				E77EBC2F2373CB690062E4A9 /* PHAsset+QuickEdit.h */,
-				E77EBC302373CB690062E4A9 /* PHAsset+Utility.h */,
 				E77EBC312373CB690062E4A9 /* PHAsset+QuickEdit.m */,
+				E7C5B62E23E4730700E18047 /* NSArray+FetchImage.h */,
+				E7C5B62F23E4730700E18047 /* NSArray+FetchImage.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1320,7 +1320,6 @@
 				E77EBC5E2373CB690062E4A9 /* Model */,
 				E77EBC632373CB690062E4A9 /* View */,
 				E77EBC6B2373CB6A0062E4A9 /* Utility */,
-				E77EBC742373CB6A0062E4A9 /* FJAVCatpureCommonHeader.h */,
 			);
 			path = AVCapture;
 			sourceTree = "<group>";
@@ -1361,14 +1360,12 @@
 		E77EBC4E2373CB690062E4A9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBC4F2373CB690062E4A9 /* FJImagePickerController.m */,
-				E77EBC502373CB690062E4A9 /* FJImagePreviewController.h */,
-				E77EBC512373CB690062E4A9 /* FJAllMediaPreviewViewController.h */,
-				E77EBC522373CB690062E4A9 /* FJAVCaptureViewController.m */,
-				E77EBC532373CB690062E4A9 /* FJImagePreviewController.m */,
-				E77EBC542373CB690062E4A9 /* FJImagePickerController.h */,
-				E77EBC552373CB690062E4A9 /* FJAVCaptureViewController.h */,
-				E77EBC562373CB690062E4A9 /* FJAllMediaPreviewViewController.m */,
+				E77EBC502373CB690062E4A9 /* ZZImagePreviewController.h */,
+				E77EBC532373CB690062E4A9 /* ZZImagePreviewController.m */,
+				E77EBC552373CB690062E4A9 /* ZZAVCaptureViewController.h */,
+				E77EBC522373CB690062E4A9 /* ZZAVCaptureViewController.m */,
+				E77EBC512373CB690062E4A9 /* ZZAllMediaPreviewViewController.h */,
+				E77EBC562373CB690062E4A9 /* ZZAllMediaPreviewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1376,12 +1373,12 @@
 		E77EBC572373CB690062E4A9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBC582373CB690062E4A9 /* FJCameraManager.m */,
-				E77EBC592373CB690062E4A9 /* FJMotionManager.m */,
-				E77EBC5A2373CB690062E4A9 /* FJMovieManager.h */,
-				E77EBC5B2373CB690062E4A9 /* FJMotionManager.h */,
-				E77EBC5C2373CB690062E4A9 /* FJCameraManager.h */,
-				E77EBC5D2373CB690062E4A9 /* FJMovieManager.m */,
+				E77EBC5C2373CB690062E4A9 /* ZZCameraManager.h */,
+				E77EBC582373CB690062E4A9 /* ZZCameraManager.m */,
+				E77EBC5A2373CB690062E4A9 /* ZZMovieManager.h */,
+				E77EBC5D2373CB690062E4A9 /* ZZMovieManager.m */,
+				E77EBC5B2373CB690062E4A9 /* ZZMotionManager.h */,
+				E77EBC592373CB690062E4A9 /* ZZMotionManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1389,10 +1386,10 @@
 		E77EBC5E2373CB690062E4A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBC5F2373CB690062E4A9 /* FJMediaObject.h */,
-				E77EBC602373CB690062E4A9 /* FJCaptureConfig.h */,
-				E77EBC612373CB690062E4A9 /* FJMediaObject.m */,
-				E77EBC622373CB690062E4A9 /* FJCaptureConfig.m */,
+				E77EBC5F2373CB690062E4A9 /* ZZMediaObject.h */,
+				E77EBC612373CB690062E4A9 /* ZZMediaObject.m */,
+				E77EBC602373CB690062E4A9 /* ZZCaptureConfig.h */,
+				E77EBC622373CB690062E4A9 /* ZZCaptureConfig.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1400,13 +1397,13 @@
 		E77EBC632373CB690062E4A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBC642373CB690062E4A9 /* FJVideoPreview.m */,
-				E77EBC652373CB690062E4A9 /* FJTakePhotoView.h */,
-				E77EBC662373CB690062E4A9 /* FJCameraView.m */,
-				E77EBC672373CB690062E4A9 /* FJTakePhotoView.xib */,
-				E77EBC682373CB6A0062E4A9 /* FJVideoPreview.h */,
-				E77EBC692373CB6A0062E4A9 /* FJCameraView.h */,
-				E77EBC6A2373CB6A0062E4A9 /* FJTakePhotoView.m */,
+				E77EBC652373CB690062E4A9 /* ZZTakePhotoView.h */,
+				E77EBC6A2373CB6A0062E4A9 /* ZZTakePhotoView.m */,
+				E77EBC672373CB690062E4A9 /* ZZTakePhotoView.xib */,
+				E77EBC682373CB6A0062E4A9 /* ZZVideoPreview.h */,
+				E77EBC642373CB690062E4A9 /* ZZVideoPreview.m */,
+				E77EBC692373CB6A0062E4A9 /* ZZCameraView.h */,
+				E77EBC662373CB690062E4A9 /* ZZCameraView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1414,14 +1411,8 @@
 		E77EBC6B2373CB6A0062E4A9 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				E77EBC6C2373CB6A0062E4A9 /* FJSaveMedia.h */,
-				E77EBC6D2373CB6A0062E4A9 /* UIView+FJAdditions.h */,
-				E77EBC6E2373CB6A0062E4A9 /* NSURL+PreviewImage.m */,
-				E77EBC6F2373CB6A0062E4A9 /* UIView+FJHUD.m */,
-				E77EBC702373CB6A0062E4A9 /* UIView+FJAdditions.m */,
-				E77EBC712373CB6A0062E4A9 /* FJSaveMedia.m */,
 				E77EBC722373CB6A0062E4A9 /* NSURL+PreviewImage.h */,
-				E77EBC732373CB6A0062E4A9 /* UIView+FJHUD.h */,
+				E77EBC6E2373CB6A0062E4A9 /* NSURL+PreviewImage.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1516,6 +1507,18 @@
 				E7F2151322ED8D3E007C587B /* ZZCityController.m */,
 			);
 			path = ZZCountryController;
+			sourceTree = "<group>";
+		};
+		E7C5B62D23E457AA00E18047 /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				E77EBC252373CB690062E4A9 /* NSObject+Camera_Popup.h */,
+				E77EBC0A2373CB690062E4A9 /* NSObject+Camera_Popup.m */,
+				E77EBBFC2373CB690062E4A9 /* ZZPhotoDraftEditPopupView.h */,
+				E77EBC172373CB690062E4A9 /* ZZPhotoDraftEditPopupView.m */,
+				E77EBC022373CB690062E4A9 /* ZZPhotoDraftEditPopupView.xib */,
+			);
+			path = PopupView;
 			sourceTree = "<group>";
 		};
 		E7CE245F2328957E00F7C8FE /* TestCollectionView */ = {
@@ -1825,7 +1828,6 @@
 			children = (
 				E77EBB622373CB690062E4A9 /* PhotoEdit */,
 				E77EBC322373CB690062E4A9 /* AVCapture */,
-				E77EBB612373CB690062E4A9 /* FJCameraCommonHeader.h */,
 			);
 			path = ZZCamera;
 			sourceTree = "<group>";
@@ -1905,10 +1907,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E77EBD2C2373CB6A0062E4A9 /* btn_camera_complete@3x.png in Resources */,
-				E77EBCEA2373CB6A0062E4A9 /* FJPhotoDraftCell.xib in Resources */,
-				E77EBD062373CB6A0062E4A9 /* FJPhotoEditToolbarView.xib in Resources */,
+				E77EBCEA2373CB6A0062E4A9 /* ZZPhotoDraftCell.xib in Resources */,
+				E77EBD062373CB6A0062E4A9 /* ZZPhotoEditToolbarView.xib in Resources */,
 				E744128B22F2BABE00773562 /* lottie_toast_success.json in Resources */,
-				E77EBCFB2373CB6A0062E4A9 /* FJPhotoEditTuningView.xib in Resources */,
+				E77EBCFB2373CB6A0062E4A9 /* ZZPhotoEditTuningView.xib in Resources */,
 				E77EBD2B2373CB6A0062E4A9 /* ic_torch_off_2@2x.png in Resources */,
 				E759CDE622CC849B001EC3AE /* test.html in Resources */,
 				E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */,
@@ -1942,7 +1944,7 @@
 				E77EBCCA2373CB6A0062E4A9 /* ic_edit_cropper_highlighted@2x.png in Resources */,
 				E7D7C1AF22F91171002890A8 /* TestPopupView.xib in Resources */,
 				E77EBCCC2373CB6A0062E4A9 /* ic_photolibrary_up@2x.png in Resources */,
-				E77EBCF92373CB6A0062E4A9 /* FJPhotoTagAlertView.xib in Resources */,
+				E77EBCF92373CB6A0062E4A9 /* ZZPhotoTagAlertView.xib in Resources */,
 				E77EBC902373CB6A0062E4A9 /* ic_edit_tag@2x.png in Resources */,
 				E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */,
 				E70C72F022A36C0000341A2B /* TestZZDispatchQueueVC.xib in Resources */,
@@ -1956,7 +1958,7 @@
 				E7751BCC22F42DDB00ECD06D /* ZZWidgetMaskView.bundle in Resources */,
 				E744128822F2BABE00773562 /* lottie_toast_error.json in Resources */,
 				E77EBD2E2373CB6A0062E4A9 /* ic_torch_on_2@3x.png in Resources */,
-				E77EBCEE2373CB6A0062E4A9 /* FJPhotoLibraryAlbumCell.xib in Resources */,
+				E77EBCEE2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.xib in Resources */,
 				E77EBCD22373CB6A0062E4A9 /* ic_edit_filter_highlighted@2x.png in Resources */,
 				E7F5B88222F182D7001F0C80 /* ic_nav_close@3x.png in Resources */,
 				E77EBCD02373CB6A0062E4A9 /* ic_back@2x.png in Resources */,
@@ -1968,7 +1970,7 @@
 				E77EBD182373CB6A0062E4A9 /* ic_light_on@2x.png in Resources */,
 				E77EBC922373CB6A0062E4A9 /* ic_photo_no_found@2x.png in Resources */,
 				E77EBC972373CB6A0062E4A9 /* ic_photolibrary_down@3x.png in Resources */,
-				E77EBCFF2373CB6A0062E4A9 /* FJTakePhotoButton.xib in Resources */,
+				E77EBCFF2373CB6A0062E4A9 /* ZZTakePhotoButton.xib in Resources */,
 				E77EBD212373CB6A0062E4A9 /* ic_torch_on@2x.png in Resources */,
 				E77EBC992373CB6A0062E4A9 /* ic_edit_ok@2x.png in Resources */,
 				E77EBCCE2373CB6A0062E4A9 /* ic_logo_tag_dollar@3x.png in Resources */,
@@ -1978,7 +1980,7 @@
 				E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */,
 				E7DC5C2D229CD69700ED8733 /* ZZKit.podspec in Resources */,
 				E77EBCCB2373CB6A0062E4A9 /* ic_3_4@3x.png in Resources */,
-				E77EBD072373CB6A0062E4A9 /* FJPhotoLibraryNoAlbumView.xib in Resources */,
+				E77EBD072373CB6A0062E4A9 /* ZZPhotoLibraryNoAlbumView.xib in Resources */,
 				E77EBC9F2373CB6A0062E4A9 /* ic_delete@2x.png in Resources */,
 				E77EBCB92373CB6A0062E4A9 /* ic_edit_light@2x.png in Resources */,
 				E77EBC812373CB6A0062E4A9 /* ic_edit_tuning@3x.png in Resources */,
@@ -2006,16 +2008,16 @@
 				E77EBCC62373CB6A0062E4A9 /* ic_album_unselected@2x.png in Resources */,
 				E77EBCA62373CB6A0062E4A9 /* ic_edit_halation@2x.png in Resources */,
 				E77EBD232373CB6A0062E4A9 /* ic_light_off@3x.png in Resources */,
-				E77EBD132373CB6A0062E4A9 /* FJPhotoEditFilterView.xib in Resources */,
+				E77EBD132373CB6A0062E4A9 /* ZZPhotoEditFilterView.xib in Resources */,
 				E78E767622C3642500D1EF5A /* countrys.json in Resources */,
 				E77EBCC32373CB6A0062E4A9 /* ic_edit_halation@3x.png in Resources */,
 				E77EBD312373CB6A0062E4A9 /* ic_auto_focus_exposure@3x.png in Resources */,
 				E77EBCAE2373CB6A0062E4A9 /* ic_pop_left@2x.png in Resources */,
 				E77EBC882373CB6A0062E4A9 /* ic_operation_more@3x.png in Resources */,
 				E76B8B682313E4C3001E4C34 /* TestImageTableViewCell.xib in Resources */,
-				E77EBCFE2373CB6A0062E4A9 /* FJPhotoEditCropperView.xib in Resources */,
+				E77EBCFE2373CB6A0062E4A9 /* ZZPhotoEditCropperView.xib in Resources */,
 				E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */,
-				E77EBCFA2373CB6A0062E4A9 /* FJPhotoEditTitleScrollView.xib in Resources */,
+				E77EBCFA2373CB6A0062E4A9 /* ZZPhotoEditTitleScrollView.xib in Resources */,
 				E79318DB22B4E7CD00077FDE /* TestCell.xib in Resources */,
 				E70C400B22C0D6ED0047A1C0 /* TestCollectionViewCell.xib in Resources */,
 				E7CE246C232899AD00F7C8FE /* BasicFooterView.xib in Resources */,
@@ -2030,11 +2032,11 @@
 				E77EBCA72373CB6A0062E4A9 /* ic_logo_edit@3x.png in Resources */,
 				E77EBD272373CB6A0062E4A9 /* ic_video_logo@3x.png in Resources */,
 				E77EBD1B2373CB6A0062E4A9 /* nav_back_w@3x.png in Resources */,
-				E77EBD3D2373CB6A0062E4A9 /* FJTakePhotoView.xib in Resources */,
+				E77EBD3D2373CB6A0062E4A9 /* ZZTakePhotoView.xib in Resources */,
 				E77EBCB42373CB6A0062E4A9 /* ic_photolibrary_take@3x.png in Resources */,
 				E77EBD1C2373CB6A0062E4A9 /* nav_back_w@2x.png in Resources */,
 				E77EBCB32373CB6A0062E4A9 /* ic_logo_tag_brand@3x.png in Resources */,
-				E77EBD102373CB6A0062E4A9 /* FJPhotoEditTuningValueView.xib in Resources */,
+				E77EBD102373CB6A0062E4A9 /* ZZPhotoEditTuningValueView.xib in Resources */,
 				E77EBC8B2373CB6A0062E4A9 /* ic_photo_unselected@2x.png in Resources */,
 				E760BED622F9783400944380 /* icon_right_arrow@3x.png in Resources */,
 				E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */,
@@ -2048,17 +2050,17 @@
 				E77EBC7C2373CB6A0062E4A9 /* ic_edit_filter@3x.png in Resources */,
 				E70C401022C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib in Resources */,
 				E7F5B88022F182D7001F0C80 /* ic_nav_back@3x.png in Resources */,
-				E77EBD152373CB6A0062E4A9 /* FJPhotoImageTagView.xib in Resources */,
-				E77EBCF62373CB6A0062E4A9 /* FJPhotoDraftEditPopupView.xib in Resources */,
+				E77EBD152373CB6A0062E4A9 /* ZZPhotoImageTagView.xib in Resources */,
+				E77EBCF62373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.xib in Resources */,
 				E77EBCA12373CB6A0062E4A9 /* ic_arrow_down@2x.png in Resources */,
-				E77EBCF52373CB6A0062E4A9 /* FJCropperView.xib in Resources */,
+				E77EBCF52373CB6A0062E4A9 /* ZZPhotoCropperView.xib in Resources */,
 				E7F5B88122F182D7001F0C80 /* ic_nav_back@2x.png in Resources */,
 				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E77EBCE22373CB6A0062E4A9 /* ic_logo_tag_euro@3x.png in Resources */,
 				E77EBCD92373CB6A0062E4A9 /* ic_edit_filter_highlighted@3x.png in Resources */,
 				E77EBCD12373CB6A0062E4A9 /* ic_edit_close@2x.png in Resources */,
 				E77EBC8D2373CB6A0062E4A9 /* ic_photolibrary_compress@3x.png in Resources */,
-				E77EBCF82373CB6A0062E4A9 /* FJPhotoDraftBottomView.xib in Resources */,
+				E77EBCF82373CB6A0062E4A9 /* ZZPhotoDraftBottomView.xib in Resources */,
 				E77EBCA92373CB6A0062E4A9 /* ic_tag_garbage@3x.png in Resources */,
 				E77EBCAF2373CB6A0062E4A9 /* ic_pagecontrol_unselected@3x.png in Resources */,
 				E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */,
@@ -2071,7 +2073,7 @@
 				E77EBCAA2373CB6A0062E4A9 /* ic_pop_right@3x.png in Resources */,
 				E77EBC9B2373CB6A0062E4A9 /* ic_photo_no_found@3x.png in Resources */,
 				E77EBCAB2373CB6A0062E4A9 /* ic_5_4@2x.png in Resources */,
-				E77EBCF72373CB6A0062E4A9 /* FJPhotoLibrarySelectionView.xib in Resources */,
+				E77EBCF72373CB6A0062E4A9 /* ZZPhotoLibrarySelectionView.xib in Resources */,
 				E77EBCD72373CB6A0062E4A9 /* ic_photo_selected@3x.png in Resources */,
 				E77EBC7B2373CB6A0062E4A9 /* ic_pagecontrol_selected@3x.png in Resources */,
 				E760E8F62373E4F3004C752F /* TestCameraVC.xib in Resources */,
@@ -2088,7 +2090,7 @@
 				E77EBCDC2373CB6A0062E4A9 /* ic_logo_tag_dollar@2x.png in Resources */,
 				E77EBCA22373CB6A0062E4A9 /* ic_1_1@3x.png in Resources */,
 				E77EBC7D2373CB6A0062E4A9 /* ic_photolibrary_take_orange@2x.png in Resources */,
-				E77EBCEF2373CB6A0062E4A9 /* FJPhotoCollectionViewCell.xib in Resources */,
+				E77EBCEF2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.xib in Resources */,
 				E77EBCB22373CB6A0062E4A9 /* ic_edit_tag_highlighted@2x.png in Resources */,
 				E77EBCB52373CB6A0062E4A9 /* ic_5_4_highlighted@3x.png in Resources */,
 				E760BEE822F9797000944380 /* ZZNetworkErrorDescViewController.xib in Resources */,
@@ -2098,7 +2100,7 @@
 				E77EBD302373CB6A0062E4A9 /* ic_torch_off_2@3x.png in Resources */,
 				E77EBCB62373CB6A0062E4A9 /* ic_logo_tag_brand@2x.png in Resources */,
 				E77EBC762373CB6A0062E4A9 /* ic_photo_unselected@3x.png in Resources */,
-				E77EBD012373CB6A0062E4A9 /* FJFilterImageView.xib in Resources */,
+				E77EBD012373CB6A0062E4A9 /* ZZFilterImageView.xib in Resources */,
 				E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */,
 				E767600222AFB2060044B9AD /* test.bundle in Resources */,
 				E77EBC962373CB6A0062E4A9 /* ic_photolibrary_down@2x.png in Resources */,
@@ -2175,33 +2177,34 @@
 				E7D758532303B9FD008FE69F /* ZZPingTester.m in Sources */,
 				E767601022B099D20044B9AD /* UITabBar+ZZKit.m in Sources */,
 				E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */,
-				E77EBD112373CB6A0062E4A9 /* FJPhotoLibraryNoAlbumView.m in Sources */,
-				E77EBD0C2373CB6A0062E4A9 /* FJPhotoEditTuningValueView.m in Sources */,
-				E77EBD342373CB6A0062E4A9 /* FJImagePreviewController.m in Sources */,
+				E77EBD112373CB6A0062E4A9 /* ZZPhotoLibraryNoAlbumView.m in Sources */,
+				E77EBD0C2373CB6A0062E4A9 /* ZZPhotoEditTuningValueView.m in Sources */,
+				E77EBD342373CB6A0062E4A9 /* ZZImagePreviewController.m in Sources */,
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
-				E77EBD0D2373CB6A0062E4A9 /* FJFilterImageView.m in Sources */,
+				E77EBD0D2373CB6A0062E4A9 /* ZZFilterImageView.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7751BDB22F441DE00ECD06D /* NetImagesCollectionViewController.m in Sources */,
-				E77EBD392373CB6A0062E4A9 /* FJMediaObject.m in Sources */,
-				E77EBCF32373CB6A0062E4A9 /* FJTuningObject.m in Sources */,
+				E77EBD392373CB6A0062E4A9 /* ZZMediaObject.m in Sources */,
+				E77EBCF32373CB6A0062E4A9 /* ZZPhotoTuning.m in Sources */,
 				E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
 				E767600522AFBF220044B9AD /* ZZTimer.m in Sources */,
-				E77EBCE92373CB6A0062E4A9 /* FJPhotoEditViewController.m in Sources */,
+				E77EBCE92373CB6A0062E4A9 /* ZZPhotoEditViewController.m in Sources */,
 				E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */,
-				E77EBD372373CB6A0062E4A9 /* FJMotionManager.m in Sources */,
+				E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
-				E77EBD382373CB6A0062E4A9 /* FJMovieManager.m in Sources */,
+				E77EBD382373CB6A0062E4A9 /* ZZMovieManager.m in Sources */,
 				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
 				E760BEEB22F9A1EA00944380 /* ZZWidgetTagView.m in Sources */,
-				E77EBD0B2373CB6A0062E4A9 /* FJPhotoTagAlertView.m in Sources */,
-				E77EBD0E2373CB6A0062E4A9 /* FJPhotoEditTuningView.m in Sources */,
-				E77EBD0F2373CB6A0062E4A9 /* FJTakePhotoButton.m in Sources */,
+				E77EBD0B2373CB6A0062E4A9 /* ZZPhotoTagAlertView.m in Sources */,
+				E7DEA0EA23D6CBA400964600 /* ZZDraft.m in Sources */,
+				E77EBD0E2373CB6A0062E4A9 /* ZZPhotoEditTuningView.m in Sources */,
+				E77EBD0F2373CB6A0062E4A9 /* ZZTakePhotoButton.m in Sources */,
 				E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */,
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
@@ -2211,53 +2214,54 @@
 				E767601C22B0DC470044B9AD /* ZZTabBarController.m in Sources */,
 				E77EBD162373CB6A0062E4A9 /* PHAsset+Utility.m in Sources */,
 				E7DC5C3A229CDD9D00ED8733 /* ZZLRUCache.m in Sources */,
-				E77EBCF42373CB6A0062E4A9 /* FJPhotoLibrarySelectionView.m in Sources */,
+				E77EBCF42373CB6A0062E4A9 /* ZZPhotoLibrarySelectionView.m in Sources */,
 				E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */,
-				E77EBD122373CB6A0062E4A9 /* FJPhotoImageTagView.m in Sources */,
+				E77EBD122373CB6A0062E4A9 /* ZZPhotoImageTagView.m in Sources */,
+				E7C5B63023E4730700E18047 /* NSArray+FetchImage.m in Sources */,
 				E7751BD822F4413900ECD06D /* NetImagesBannerViewController.m in Sources */,
 				E78E766B22C3630400D1EF5A /* ZZCountryModel.m in Sources */,
 				E70CB66923C89EF00085496B /* UITextField+ZZKit.m in Sources */,
 				E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */,
 				E77EBD3F2373CB6A0062E4A9 /* NSURL+PreviewImage.m in Sources */,
-				E77EBD002373CB6A0062E4A9 /* FJPhotoEditFilterView.m in Sources */,
+				E77EBD002373CB6A0062E4A9 /* ZZPhotoEditFilterView.m in Sources */,
 				E788656422B21A8A00B20F3E /* ZZWidgetRippleView.m in Sources */,
 				E77ADD3E22BB3B990015DB1B /* ZZTableView+ZZKit.m in Sources */,
 				E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */,
 				E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */,
 				E7D7C1AD22F9114F002890A8 /* TestPopupView.m in Sources */,
-				E77EBD3E2373CB6A0062E4A9 /* FJTakePhotoView.m in Sources */,
+				E77EBD3E2373CB6A0062E4A9 /* ZZTakePhotoView.m in Sources */,
 				E7D758522303B9FD008FE69F /* SimplePing.m in Sources */,
 				E72DFBBB22B156800099A8C4 /* UITabBarController+ZZKit.m in Sources */,
-				E77EBD362373CB6A0062E4A9 /* FJCameraManager.m in Sources */,
+				E77EBD362373CB6A0062E4A9 /* ZZCameraManager.m in Sources */,
 				E760BECC22F970FC00944380 /* UIViewController+ZZTrace.m in Sources */,
-				E77EBD0A2373CB6A0062E4A9 /* FJPhotoEditToolbarView.m in Sources */,
+				E77EBD0A2373CB6A0062E4A9 /* ZZPhotoEditToolbarView.m in Sources */,
 				E7751BC422F3D39800ECD06D /* ZZWidgetSpinnerView.m in Sources */,
 				E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */,
 				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
-				E77EBD082373CB6A0062E4A9 /* FJPhotoDraftBottomView.m in Sources */,
+				E77EBD082373CB6A0062E4A9 /* ZZPhotoDraftBottomView.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,
 				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
 				E7F5B88522F1BA75001F0C80 /* UIView+ZZKit_HUD.m in Sources */,
 				E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */,
-				E77EBD142373CB6A0062E4A9 /* FJPhotoImageTagPointView.m in Sources */,
-				E77EBCF12373CB6A0062E4A9 /* FJPhotoManager.m in Sources */,
+				E77EBD142373CB6A0062E4A9 /* ZZPhotoImageTagPointView.m in Sources */,
+				E77EBCF12373CB6A0062E4A9 /* ZZPhotoManager.m in Sources */,
 				E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */,
 				E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */,
 				E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */,
 				E7751BCF22F435FC00ECD06D /* ZZWidgetImageBrowser.m in Sources */,
-				E77EBCEC2373CB6A0062E4A9 /* FJPhotoCollectionViewCell.m in Sources */,
+				E77EBCEC2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.m in Sources */,
 				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
 				E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
-				E77EBCED2373CB6A0062E4A9 /* FJPhotoLibraryAlbumCell.m in Sources */,
+				E77EBCED2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.m in Sources */,
 				E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */,
 				E767601722B0AA120044B9AD /* TestUIVC.m in Sources */,
+				E789683823D5D5DE00033752 /* ZZPhotoLibraryViewController.m in Sources */,
 				E78E766822C362D300D1EF5A /* ZZCNRegionModel.m in Sources */,
 				E788654E22B2055900B20F3E /* ZZTrace.m in Sources */,
 				E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */,
 				E7A45D3D22B3D16900AA1EBF /* TestZZTableViewVC.m in Sources */,
-				E77EBCE42373CB6A0062E4A9 /* TKImageView.m in Sources */,
-				E77EBD402373CB6A0062E4A9 /* UIView+FJHUD.m in Sources */,
+				E77EBCE42373CB6A0062E4A9 /* ZZFlexibleCropperView.m in Sources */,
 				E7751BC722F416DD00ECD06D /* ZZWidgetPinCodeView.m in Sources */,
 				E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */,
 				E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */,
@@ -2266,7 +2270,7 @@
 				E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
 				E7751BD722F4413900ECD06D /* BannerClCell.m in Sources */,
-				E77EBD3C2373CB6A0062E4A9 /* FJCameraView.m in Sources */,
+				E77EBD3C2373CB6A0062E4A9 /* ZZCameraView.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
 				E7DC5C26229CCC8700ED8733 /* main.m in Sources */,
 				E79318DA22B4E7CD00077FDE /* TestCell.m in Sources */,
@@ -2279,36 +2283,36 @@
 				E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */,
 				E760E8F52373E4F3004C752F /* TestCameraVC.m in Sources */,
 				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
-				E77EBD3B2373CB6A0062E4A9 /* FJVideoPreview.m in Sources */,
-				E77EBD042373CB6A0062E4A9 /* FJPhotoDraftEditPopupView.m in Sources */,
-				E77EBD052373CB6A0062E4A9 /* FJPhotoEditFilterGenreView.m in Sources */,
+				E77EBD3B2373CB6A0062E4A9 /* ZZVideoPreview.m in Sources */,
+				E77EBD042373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.m in Sources */,
+				E77EBD052373CB6A0062E4A9 /* ZZPhotoEditFilterGenreView.m in Sources */,
 				E77EBCFC2373CB6A0062E4A9 /* NSObject+Camera_Popup.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
-				E77EBD092373CB6A0062E4A9 /* FJPhotoEditCropperView.m in Sources */,
+				E77EBD092373CB6A0062E4A9 /* ZZPhotoEditCropperView.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
 				E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */,
 				E7DC5C31229CD6BC00ED8733 /* ZZKit.m in Sources */,
-				E77EBCE62373CB6A0062E4A9 /* FJPhotoLibraryViewController.m in Sources */,
-				E77EBD032373CB6A0062E4A9 /* FJPhotoLibraryAlbumSelectionView.m in Sources */,
+				E7DEA0ED23D6CBAF00964600 /* ZZPhotoAsset.m in Sources */,
+				E77EBD032373CB6A0062E4A9 /* ZZPhotoLibraryAlbumSelectionView.m in Sources */,
 				E78E767122C3633E00D1EF5A /* ZZCNRegionController.m in Sources */,
-				E77EBCEB2373CB6A0062E4A9 /* FJPhotoDraftCell.m in Sources */,
+				E77EBCEB2373CB6A0062E4A9 /* ZZPhotoDraftCell.m in Sources */,
 				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
 				E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
-				E77EBCE82373CB6A0062E4A9 /* FJPhotoDraftHistoryViewController.m in Sources */,
+				E77EBCE82373CB6A0062E4A9 /* ZZPhotoDraftHistoryViewController.m in Sources */,
+				E7DEA0F023D6FC6F00964600 /* ZZPhotoFilter.m in Sources */,
 				E7CE246B232899AD00F7C8FE /* BasicFooterView.m in Sources */,
 				E767602822B0F8600044B9AD /* UIButton+ZZKit.m in Sources */,
-				E77EBD352373CB6A0062E4A9 /* FJAllMediaPreviewViewController.m in Sources */,
+				E77EBD352373CB6A0062E4A9 /* ZZAllMediaPreviewViewController.m in Sources */,
 				E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */,
 				E788655822B218C600B20F3E /* ZZReachability.m in Sources */,
 				E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */,
-				E77EBCE52373CB6A0062E4A9 /* FJPhotoLibraryCropperViewController.m in Sources */,
 				E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */,
-				E77EBCE32373CB6A0062E4A9 /* StaticScaleCropView.m in Sources */,
+				E77EBCE32373CB6A0062E4A9 /* ZZStaticCropperView.m in Sources */,
 				E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */,
 				E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */,
 				E7CE24742328D1CD00F7C8FE /* TestCollectionCardVC.m in Sources */,
-				E77EBD022373CB6A0062E4A9 /* FJPhotoEditTitleScrollView.m in Sources */,
+				E77EBD022373CB6A0062E4A9 /* ZZPhotoEditTitleScrollView.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
 				E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */,
@@ -2319,21 +2323,19 @@
 				E76B8B672313E4C3001E4C34 /* TestImageTableViewCell.m in Sources */,
 				E7CE2470232899C100F7C8FE /* BasicCollectionViewCell.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
-				E77EBCE72373CB6A0062E4A9 /* FJPhotoUserTagBaseViewController.m in Sources */,
-				E77EBCFD2373CB6A0062E4A9 /* FJCropperView.m in Sources */,
+				E77EBCE72373CB6A0062E4A9 /* ZZPhotoSelectTagBaseViewController.m in Sources */,
+				E77EBCFD2373CB6A0062E4A9 /* ZZPhotoCropperView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
+				E777A35F23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m in Sources */,
 				E77EBD172373CB6A0062E4A9 /* PHAsset+QuickEdit.m in Sources */,
 				E7751BD922F4413900ECD06D /* ImageClCell.m in Sources */,
-				E77EBD332373CB6A0062E4A9 /* FJAVCaptureViewController.m in Sources */,
+				E77EBD332373CB6A0062E4A9 /* ZZAVCaptureViewController.m in Sources */,
 				E788654122B1E57C00B20F3E /* NSArray+ZZKit.m in Sources */,
 				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */,
-				E77EBCF22373CB6A0062E4A9 /* FJImageTagModel.m in Sources */,
-				E77EBD412373CB6A0062E4A9 /* UIView+FJAdditions.m in Sources */,
-				E77EBCF02373CB6A0062E4A9 /* FJFilterManager.m in Sources */,
-				E77EBD3A2373CB6A0062E4A9 /* FJCaptureConfig.m in Sources */,
-				E77EBD322373CB6A0062E4A9 /* FJImagePickerController.m in Sources */,
-				E77EBD422373CB6A0062E4A9 /* FJSaveMedia.m in Sources */,
+				E77EBCF22373CB6A0062E4A9 /* ZZPhotoTag.m in Sources */,
+				E77EBCF02373CB6A0062E4A9 /* ZZPhotoFilterManager.m in Sources */,
+				E77EBD3A2373CB6A0062E4A9 /* ZZCaptureConfig.m in Sources */,
 				E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */,
 				E7AA9515229E3759003964B8 /* TestFontVC.m in Sources */,
 			);

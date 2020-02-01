@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZZPhotoEditToolbarView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑这张照片可以获得更多赞哦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtG-lX-pAQ">
+                    <rect key="frame" x="0.0" y="55" width="375" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="YIY-h0-DAg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                    <color key="textColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKO-5P-Z4x">
+                    <rect key="frame" x="0.0" y="119" width="375" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxs-Dm-Cvx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="m9I-3o-HfO"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueh-gh-Os3">
+                            <rect key="frame" x="0.0" y="0.5" width="94" height="47.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_edit_filter.png" highlightedImage="ic_edit_filter_highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="lEy-zT-4oL">
+                                    <rect key="frame" x="35" y="4" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="滤镜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-Ep-k9t">
+                                    <rect key="frame" x="36.5" y="31" width="20.5" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" red="0.30980392159999998" green="0.30980392159999998" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZu-Re-V4S">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="_tapFilter:" destination="iN0-l3-epB" eventType="touchUpInside" id="3yW-kl-amz"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-4W-y2r">
+                            <rect key="frame" x="94" y="0.5" width="93.5" height="47.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_edit_cropper.png" highlightedImage="ic_edit_cropper_highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gjn-nL-VPV">
+                                    <rect key="frame" x="34.5" y="4" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="裁切" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-E9-Obs">
+                                    <rect key="frame" x="36.5" y="31" width="20.5" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" red="0.30980392159999998" green="0.30980392159999998" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-5S-6iG">
+                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="_tapCropper:" destination="iN0-l3-epB" eventType="touchUpInside" id="MEe-kr-xYa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WF3-l7-wNX">
+                            <rect key="frame" x="187" y="0.0" width="94" height="47.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_edit_tuning.png" highlightedImage="ic_edit_tuning_highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="95H-eZ-8zd">
+                                    <rect key="frame" x="35" y="4" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="调整" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGk-aY-TgT">
+                                    <rect key="frame" x="36.5" y="31" width="20.5" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" red="0.30980392159999998" green="0.30980392159999998" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeU-Z2-uQH">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="_tapTuning:" destination="iN0-l3-epB" eventType="touchUpInside" id="K1l-T2-eaW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FiH-ws-sdZ">
+                            <rect key="frame" x="281.5" y="0.5" width="93.5" height="47.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_edit_tag.png" highlightedImage="ic_edit_tag_highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="1MM-YQ-94Z">
+                                    <rect key="frame" x="34.5" y="4" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标签" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETo-o6-zlv">
+                                    <rect key="frame" x="36.5" y="31" width="20.5" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" red="0.30980392159999998" green="0.30980392159999998" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqI-nA-IcD">
+                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="_tapTag:" destination="iN0-l3-epB" eventType="touchUpInside" id="aOe-1H-x4f"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Hxs-Dm-Cvx" firstAttribute="leading" secondItem="AKO-5P-Z4x" secondAttribute="leading" id="Qdj-AA-xgD"/>
+                        <constraint firstItem="Hxs-Dm-Cvx" firstAttribute="top" secondItem="AKO-5P-Z4x" secondAttribute="top" id="RvA-OZ-LJR"/>
+                        <constraint firstAttribute="height" constant="48" id="Tfa-Dw-Ieb"/>
+                        <constraint firstAttribute="trailing" secondItem="Hxs-Dm-Cvx" secondAttribute="trailing" id="nci-CR-zgC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AKO-5P-Z4x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Daz-W7-pQd"/>
+                <constraint firstAttribute="trailing" secondItem="AKO-5P-Z4x" secondAttribute="trailing" id="IIO-Xj-adh"/>
+                <constraint firstItem="FtG-lX-pAQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Mo3-lv-NNx"/>
+                <constraint firstAttribute="bottom" secondItem="AKO-5P-Z4x" secondAttribute="bottom" id="TMp-g3-5tJ"/>
+                <constraint firstItem="FtG-lX-pAQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="55" id="gKX-GU-9dQ"/>
+                <constraint firstAttribute="trailing" secondItem="FtG-lX-pAQ" secondAttribute="trailing" id="o9t-Zu-DHy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cropperButton" destination="MdD-5S-6iG" id="fUw-rQ-RyB"/>
+                <outlet property="cropperImageView" destination="Gjn-nL-VPV" id="1tf-oM-Seb"/>
+                <outlet property="cropperLabel" destination="a4c-E9-Obs" id="dei-rx-1TO"/>
+                <outlet property="cropperView" destination="N0W-4W-y2r" id="VDd-HB-4Ep"/>
+                <outlet property="filterButton" destination="JZu-Re-V4S" id="zlh-bB-ExM"/>
+                <outlet property="filterImageView" destination="lEy-zT-4oL" id="ZO5-dS-9Zc"/>
+                <outlet property="filterLabel" destination="Bdg-Ep-k9t" id="EtX-6r-nfc"/>
+                <outlet property="filterView" destination="ueh-gh-Os3" id="wjc-cR-VGa"/>
+                <outlet property="tagButton" destination="mqI-nA-IcD" id="JgG-C1-gT8"/>
+                <outlet property="tagImageView" destination="1MM-YQ-94Z" id="Fn0-rQ-xyd"/>
+                <outlet property="tagLabel" destination="ETo-o6-zlv" id="HOf-S9-0uU"/>
+                <outlet property="tagView" destination="FiH-ws-sdZ" id="VmD-Si-ZnJ"/>
+                <outlet property="tuningButton" destination="YeU-Z2-uQH" id="0Kj-hB-TXz"/>
+                <outlet property="tuningImageView" destination="95H-eZ-8zd" id="ico-6o-rvF"/>
+                <outlet property="tuningLabel" destination="yGk-aY-TgT" id="v4h-zG-hwG"/>
+                <outlet property="tuningView" destination="WF3-l7-wNX" id="Cvm-Bj-LRg"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_edit_cropper.png" width="24" height="24"/>
+        <image name="ic_edit_cropper_highlighted.png" width="24" height="24"/>
+        <image name="ic_edit_filter.png" width="24" height="24"/>
+        <image name="ic_edit_filter_highlighted.png" width="24" height="24"/>
+        <image name="ic_edit_tag.png" width="24" height="24"/>
+        <image name="ic_edit_tag_highlighted.png" width="24" height="24"/>
+        <image name="ic_edit_tuning.png" width="24" height="24"/>
+        <image name="ic_edit_tuning_highlighted.png" width="24" height="24"/>
+    </resources>
+</document>

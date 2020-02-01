@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,23 +38,11 @@
                         <action selector="tapAVCapture:" destination="-1" eventType="touchUpInside" id="fSm-Pb-xlX"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0T-9G-GKq">
-                    <rect key="frame" x="192" y="160" width="30" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="DIe-L0-tg9"/>
-                    </constraints>
-                    <state key="normal" title="INS"/>
-                    <connections>
-                        <action selector="tapINSPhotoLibrary:" destination="-1" eventType="touchUpInside" id="a7D-Vo-Hgd"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="yTl-Vu-l0q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="B2n-XJ-qBM"/>
-                <constraint firstItem="5hh-LG-5JW" firstAttribute="top" secondItem="m0T-9G-GKq" secondAttribute="bottom" constant="16" id="Brw-gg-nw3"/>
-                <constraint firstItem="m0T-9G-GKq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a8E-qi-lcz"/>
-                <constraint firstItem="m0T-9G-GKq" firstAttribute="top" secondItem="yTl-Vu-l0q" secondAttribute="bottom" constant="16" id="hdt-uO-o81"/>
+                <constraint firstItem="5hh-LG-5JW" firstAttribute="top" secondItem="yTl-Vu-l0q" secondAttribute="bottom" constant="72" id="HNy-nV-heL"/>
                 <constraint firstItem="yTl-Vu-l0q" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="60" id="oeA-t7-dYX"/>
                 <constraint firstItem="5hh-LG-5JW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uWT-CG-lnf"/>
             </constraints>

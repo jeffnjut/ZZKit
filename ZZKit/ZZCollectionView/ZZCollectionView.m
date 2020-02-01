@@ -407,6 +407,19 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    __weak ZZCollectionView *weakSelf = self;
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+    ZZCollectionViewCellDataSource *data = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+    ZZCollectionViewCell *cell = (ZZCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (data != nil && cell != nil) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, indexPath.section, indexPath.row, ZZCollectionViewCellActionTapped, data, cell);
+        });
+    }
+}
+
 #pragma mark - ZZCollectionViewFlowLayoutDelegate
 
 // Required

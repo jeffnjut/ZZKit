@@ -13,7 +13,7 @@
 /**
  * 同步获取固定尺寸的图片
  */
-- (UIImage *)fj_imageSyncTargetSize:(CGSize)size fast:(BOOL)fast iCloudAsyncDownload:(BOOL)iCloudAsyncDownload {
+- (UIImage *)zz_imageSyncTargetSize:(CGSize)size fast:(BOOL)fast iCloudAsyncDownload:(BOOL)iCloudAsyncDownload {
     
     __block PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -54,7 +54,7 @@
 /**
  * 异步获取固定尺寸的图片
  */
-- (void)fj_imageAsyncTargetSize:(CGSize)size fast:(BOOL)fast iCloud:(BOOL)iCloud progress:(PHAssetImageProgressHandler)progress result:(void(^)(UIImage * image))result {
+- (void)zz_imageAsyncTargetSize:(CGSize)size fast:(BOOL)fast iCloud:(BOOL)iCloud progress:(PHAssetImageProgressHandler)progress result:(void(^)(UIImage * image))result {
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
@@ -80,7 +80,7 @@
 /**
  * 同步获取固定倍数尺寸的图片
  */
-- (UIImage *)fj_imageSyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast {
+- (UIImage *)zz_imageSyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast {
     
     CGSize targetSize = CGSizeZero;
     if ((CGFloat)self.pixelHeight / (CGFloat)self.pixelWidth > size.height / size.width) {
@@ -88,13 +88,13 @@
     }else {
         targetSize = CGSizeMake(size.width * multiples, size.width * ((CGFloat)self.pixelHeight / (CGFloat)self.pixelWidth) * multiples);
     }
-    return [self fj_imageSyncTargetSize:targetSize fast:fast iCloudAsyncDownload:YES];
+    return [self zz_imageSyncTargetSize:targetSize fast:fast iCloudAsyncDownload:YES];
 }
 
 /**
  * 异步获取固定倍数尺寸的图片
  */
-- (void)fj_imageASyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast result:(void(^)(UIImage * image))result {
+- (void)zz_imageASyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast result:(void(^)(UIImage * image))result {
     
     CGSize targetSize = CGSizeZero;
     if ((CGFloat)self.pixelHeight / (CGFloat)self.pixelWidth > size.height / size.width) {
@@ -102,13 +102,13 @@
     }else {
         targetSize = CGSizeMake(size.width * multiples, size.width * ((CGFloat)self.pixelHeight / (CGFloat)self.pixelWidth) * multiples);
     }
-    [self fj_imageAsyncTargetSize:targetSize fast:fast iCloud:YES progress:nil result:result];
+    [self zz_imageAsyncTargetSize:targetSize fast:fast iCloud:YES progress:nil result:result];
 }
 
 /**
  *  是否是iCloud图片
  */
-- (BOOL)fj_isCloudImage {
+- (BOOL)zz_isCloudImage {
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
