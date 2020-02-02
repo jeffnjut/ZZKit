@@ -132,10 +132,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void(^userSelectDraftBlock)(UINavigationController *navigationController, ZZDraft *draft, BOOL pictureRemoved);
 
 // 用户相册浏览 Next Block (PohotoLibrary Controller)
-@property (nonatomic, copy) void(^userNextBlock)(void);
+@property (nonatomic, copy, nullable) void(^userPhotoLibraryNextBlock)(UINavigationController *navigationController, NSArray<ZZPhotoAsset *> *photoQueue);
 
 // 用户编辑图片 Next Block (Edit Controller)
-@property (nonatomic, copy) void(^userEditNextBlock)(UINavigationController *navigationController, NSArray<ZZPhotoAsset *> *photoQueue);
+@property (nonatomic, copy, nullable) void(^userPhotoEditNextBlock)(UINavigationController *navigationController, NSArray<ZZPhotoAsset *> *photoQueue);
 
 // 用户编辑图片 选择标签 Block (Edit Controller)
 @property (nonatomic, copy) __kindof ZZPhotoSelectTagBaseViewController *(^userEditSelectTagBlock)(ZZPhotoEditViewController *controller);

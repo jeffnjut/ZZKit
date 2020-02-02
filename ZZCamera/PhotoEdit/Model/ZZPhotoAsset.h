@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "ZZPhotoTuning.h"
 #import "ZZPhotoTag.h"
+#import "NSArray+FetchImage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

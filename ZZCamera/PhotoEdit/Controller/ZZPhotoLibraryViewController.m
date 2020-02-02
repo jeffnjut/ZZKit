@@ -202,7 +202,7 @@
         if (ZZPhotoManager.shared.config.userNoPhotoLibraryPermissionBlock != nil) {
             ZZPhotoManager.shared.config.userNoPhotoLibraryPermissionBlock();
         }else {
-            ZZAlertModel *alert = [ZZAlertModel zz_alertModel:@"去开启" action:^{
+            ZZAlertModel *alert = [ZZAlertModel zz_alertModel:@"开启" action:^{
                 if (@available(iOS 10.0, *)) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@""} completionHandler:^(BOOL success){}];
                 } else {
@@ -212,7 +212,7 @@
             ZZAlertModel *cancel = [ZZAlertModel zz_alertModel:@"取消" action:^{
                 [weakSelf zz_dismiss];
             }];
-            [weakSelf zz_alertView:@"打开相册权限" message:@"打开相册权限后，才能浏览相册哦" cancel:NO item:alert,cancel, nil];
+            [self zz_alertView:@"" message:@"需要在「设置」中开启相册权限后，才能浏览相册哦" cancel:NO item:alert, cancel, nil];
         }
         return;
     }
@@ -858,8 +858,8 @@
 // 点击下一步
 - (void)_tapNext:(UIButton *)sender {
     
-    if (ZZPhotoManager.shared.config.userNextBlock != nil) {
-        ZZPhotoManager.shared.config.userNextBlock();
+    if (ZZPhotoManager.shared.config.userPhotoLibraryNextBlock != nil) {
+        ZZPhotoManager.shared.config.userPhotoLibraryNextBlock(self.navigationController, ZZPhotoManager.shared.photoQueue);
     }else {
         // 推出 ZZPhotoEditViewController
         ZZPhotoEditViewController *editVC = [[ZZPhotoEditViewController alloc] init];
@@ -870,23 +870,26 @@
 // 打开相机
 - (void)_openCamera {
     
+    ZZ_WEAK_SELF
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (status == AVAuthorizationStatusDenied || status == AVAuthorizationStatusRestricted) {
         if (ZZPhotoManager.shared.config.userNoCameraPermissionBlock != nil) {
             ZZPhotoManager.shared.config.userNoCameraPermissionBlock();
         }else {
-            ZZAlertModel *alert = [ZZAlertModel zz_alertModel:@"去开启" action:^{
+            ZZAlertModel *alert = [ZZAlertModel zz_alertModel:@"开启" action:^{
                 if (@available(iOS 10.0, *)) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@""} completionHandler:^(BOOL success){}];
                 } else {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                 }
             }];
-            [self zz_alertView:@"打开相机权限" message:@"打开相机权限后，才能拍照哦" cancel:YES item:alert, nil];
+            ZZAlertModel *cancel = [ZZAlertModel zz_alertModel:@"取消" action:^{
+                [weakSelf zz_dismiss];
+            }];
+            [self zz_alertView:@"" message:@"需要在「设置」中开启相机权限后，才能拍照哦" cancel:NO item:alert, cancel, nil];
         }
         return;
     }
-    ZZ_WEAK_SELF
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         if (granted) {
             dispatch_async(dispatch_get_main_queue(), ^{
