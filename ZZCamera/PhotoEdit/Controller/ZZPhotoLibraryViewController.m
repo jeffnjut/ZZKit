@@ -546,6 +546,24 @@
             if ([self _tick:cellData section:section item:item tick:NO] == NO) {
                 return NO;
             }
+        }else {
+            /// + Highlighted
+            ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
+            for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
+                if ([data isEqual:ds]) {
+                    data.isHighlighted = YES;
+                }else {
+                    data.isHighlighted = NO;
+                }
+            }
+            ZZPhotoCollectionViewCell *cell = (ZZPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:section]];
+            for (ZZPhotoCollectionViewCell *_cell in [self.collectionView visibleCells]) {
+                if ([_cell isEqual:cell]) {
+                    [_cell updateHighlighted:YES];
+                }else {
+                    [_cell updateHighlighted:NO];
+                }
+            }
         }
     }else if (ds.isHighlighted) {
         if (enableTick) {
