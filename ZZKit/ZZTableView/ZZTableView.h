@@ -111,8 +111,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTableView : UITableView
 
+@property (nonatomic, assign) BOOL reusable;
+
 // 数据源
-@property(nonatomic, strong, readonly) NSMutableArray *zzDataSource;
+@property (nonatomic, strong, readonly) NSMutableArray *zzDataSource;
 
 /**
  *  ZZTableViewCellEditingStyleNone                     editing = YES, UITableViewCellEditingStyleNone

@@ -124,6 +124,7 @@
         _zzDataSource = [[NSMutableArray alloc] init];
         _zzTableViewSectionIndexTitleHeight = 0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.reusable = YES;
     }
     return self;
 }
@@ -135,6 +136,7 @@
         _zzDataSource = [[NSMutableArray alloc] init];
         _zzTableViewSectionIndexTitleHeight = 0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.reusable = YES;
     }
     return self;
 }
@@ -349,17 +351,32 @@
     }
     NSString *cellClassName = [NSString stringWithUTF8String:object_getClassName(cellData)];
     cellClassName = [cellClassName stringByReplacingOccurrencesOfString:@"DataSource" withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, cellClassName.length)];
-    ZZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
-    if (!cell) {
-        NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
-        if ([bundle pathForResource:cellClassName ofType:@"nib"] == nil) {
-            [tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellClassName];
-            cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
-        }else {
-            [tableView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellReuseIdentifier:cellClassName];
-            cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+    
+    ZZTableViewCell *cell = nil;
+    if (self.reusable) {
+        cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+        if (!cell) {
+            NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
+            if ([bundle pathForResource:cellClassName ofType:@"nib"] == nil) {
+                [tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellClassName];
+                cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+            }else {
+                [tableView registerNib:[UINib nibWithNibName:cellClassName bundle:bundle] forCellReuseIdentifier:cellClassName];
+                cell = [tableView dequeueReusableCellWithIdentifier:cellClassName];
+            }
+        }
+    }else {
+        cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (!cell) {
+            NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
+            if ([bundle pathForResource:cellClassName ofType:@"nib"] == nil) {
+                cell = [[NSClassFromString(cellClassName) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellClassName];
+            }else {
+                cell = [[bundle loadNibNamed:cellClassName owner:nil options:nil] lastObject];
+            }
         }
     }
+    
     if (cellData.zzAllowEditing == NO) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else{
