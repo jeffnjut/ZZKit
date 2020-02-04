@@ -619,12 +619,14 @@
                     [strongSelf zz_removeDataSourceObjectAtIndex:indexPath.row];
                 }
                 [strongSelf zz_refresh];
-                strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, indexPath.section, indexPath.row, ZZTableViewCellActionInsert, cellData, cell, nil, nil);
+                strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, indexPath.section, indexPath.row, ZZTableViewCellActionDelete, cellData, cell, nil, nil);
             };
             if (cellData.zzDeletionConfirmBlock != nil) {
                 cellData.zzDeletionConfirmBlock(_deleteAction);
             }else if (self.zzDeletionConfirmBlock != nil) {
                 self.zzDeletionConfirmBlock(_deleteAction);
+            }else {
+                _deleteAction();
             }
         }
     }
