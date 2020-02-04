@@ -453,7 +453,7 @@
             }
             
             // 添加TagView
-            if (model.imageTags.count == 0) {
+            if ((ZZPhotoManager.shared.config.mode & ZZPhotoEditModeTag) && model.imageTags.count == 0) {
                 // 添加提示标签语：添加说明标签可以被更多人看见
                 ZZPhotoTag *hintTagModel = [[ZZPhotoTag alloc] init];
                 hintTagModel.isHint = YES;
