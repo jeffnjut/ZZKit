@@ -85,6 +85,7 @@
         _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         _imagePickerController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
         _imagePickerController.allowsEditing = NO;
+        _imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
     return _imagePickerController;
 }
