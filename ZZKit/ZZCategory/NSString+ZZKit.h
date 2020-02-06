@@ -308,12 +308,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)zz_uuidOpenUDID;
 
-#pragma mark - UUID
+#pragma mark - Error
 
 /**
  *  Error - 转Error
  */
 - (NSError *)zz_error;
+
+#pragma mark - 计算
+
+/**
+ *  浮点数加法
+ */
+- (NSString *)zz_addFloat:(nullable NSString *)anotherStr;
 
 @end
 

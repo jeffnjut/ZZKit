@@ -890,7 +890,7 @@
     return [OpenUDID value];
 }
 
-#pragma mark - UUID
+#pragma mark - Error
 
 /**
  *  Error - 转Error
@@ -898,6 +898,35 @@
 - (NSError *)zz_error {
     
     return [NSError errorWithDomain:self code:-1 userInfo:nil];
+}
+
+#pragma mark - 计算
+
+/**
+ *  浮点数加法
+ */
+- (NSString *)zz_addFloat:(nullable NSString *)anotherStr {
+    
+    double v = [self doubleValue] + [anotherStr doubleValue];
+    return [NSString zz_decimalString:v decimalPlaces:2];
+}
+
+/**
+ *  浮点数小数点控制(TODO)
+ */
++ (NSString *)zz_decimalString:(double)value decimalPlaces:(int)decimalPlaces {
+    
+    NSString *a = nil;
+    a = [NSString stringWithFormat:@"%.2f", value];
+    if ([a substringFromIndex:a.length - 1].intValue != 0) {
+        return a;
+    }
+    a = [NSString stringWithFormat:@"%.1f", value];
+    if ([a substringFromIndex:a.length - 1].intValue != 0) {
+        return a;
+    }
+    return [NSString stringWithFormat:@"%d", (int)value];
+    
 }
 
 @end
