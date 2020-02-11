@@ -296,6 +296,11 @@
             make.bottom.equalTo(weakSelf).offset(-48.0);
         }];
     }
+    
+    if (self.cropperVerticalExtemeRatio == 1.0 && self.cropperHorizontalExtemeRatio == 1.0) {
+        [self.expandButton removeFromSuperview];
+        [self.expandImageView removeFromSuperview];
+    }
 }
 
 - (void)_tapHint:(UITapGestureRecognizer *)tap {

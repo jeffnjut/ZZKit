@@ -539,6 +539,10 @@
 // 预览或者勾选照片（NO:勾选不成功，比如iCloud下载中，YES:勾选成功）
 - (BOOL)_previewOrTick:(ZZPhotoCollectionViewCellDataSource **)cellData section:(NSInteger)section item:(NSInteger)item enableTick:(BOOL)enableTick {
     
+    if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
+        enableTick = YES;
+    }
+    
     ZZPhotoCollectionViewCellDataSource *ds = *cellData;
     if (ds.isTicked) {
         if (enableTick) {
@@ -636,10 +640,34 @@
         if (ZZPhotoManager.shared.photoQueue.count == ZZPhotoManager.shared.config.maxSelectionCount) {
             if (ZZPhotoManager.shared.config.userOverLimitationBlock != nil) {
                 ZZPhotoManager.shared.config.userOverLimitationBlock(self);
+                return NO;
             }else {
-                [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
+                if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
+                    
+                    // 清除所有
+                    [ZZPhotoManager.shared.photoQueue removeAllObjects];
+                    // 选中图片
+                    ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
+                    // 添加数据
+                    [ZZPhotoManager.shared addPhotoDistinct:model];
+                    
+                    ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
+                    for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
+                        if ([data isEqual:ds]) {
+                            data.isTicked = YES;
+                            data.isHighlighted = YES;
+                        }else {
+                            data.isTicked = NO;
+                            data.isHighlighted = NO;
+                        }
+                    }
+                    return YES;
+                    
+                }else {
+                    [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
+                    return NO;
+                }
             }
-            return NO;
         }
         
         // 选中图片
