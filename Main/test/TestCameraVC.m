@@ -45,7 +45,7 @@
             return nil;
         };
         
-        config.userEditNextBlock = ^(UINavigationController * _Nonnull navigationController, NSArray<ZZPhotoAsset *> * _Nonnull photoQueue) {
+        config.userPhotoEditNextBlock = ^(UINavigationController * _Nonnull navigationController, NSArray<ZZPhotoAsset *> * _Nonnull photoQueue) {
             NSLog(@"%@", photoQueue);
             
             NSArray *arr = photoQueue.zz_images;
@@ -58,8 +58,8 @@
 
 - (IBAction)tapAVCapture:(id)sender {
     
-    FJAVInputSettingConfig *inputConfig = [[FJAVInputSettingConfig alloc] init];
-    ZZAVCaptureViewController *avCaptureVC = [[ZZAVCaptureViewController alloc] initWithAVInputSettingConfig:inputConfig outputExtension:FJAVFileTypeMP4];
+    ZZAVInputSettingConfig *inputConfig = [[ZZAVInputSettingConfig alloc] init];
+    ZZAVCaptureViewController *avCaptureVC = [[ZZAVCaptureViewController alloc] initWithAVInputSettingConfig:inputConfig outputExtension:ZZAVFileTypeMP4];
     ZZCaptureConfig *config = [[ZZCaptureConfig alloc] init];
     config.enableSwitch = YES;
     config.enableLightSupplement = YES;
@@ -69,7 +69,7 @@
     config.widgetUsingImageBottomView = YES;
     config.enablePreviewAll = YES;
     config.enableConfirmPreview = NO;
-    config.captureType = FJCaptureTypeAll;
+    config.captureType = ZZCaptureTypeAll;
     avCaptureVC.config = config;
     avCaptureVC.mediasTakenBlock = ^(NSArray *medias) {
         NSLog(@"mediasTakenBlock callback");

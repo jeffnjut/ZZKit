@@ -62,7 +62,7 @@
 
 @property (nonatomic, strong, readonly) ZZVideoPreview *previewView;
 
-@property (nonatomic, assign, readonly) FJCaptureType captureType;
+@property (nonatomic, assign, readonly) ZZCaptureType captureType;
 
 @property (nonatomic, strong) ZZCaptureConfig *config;
 

@@ -15,7 +15,7 @@
 @interface ZZAVCaptureViewController : UIViewController
 
 // 自定义初始化
-- (instancetype)initWithAVInputSettingConfig:(FJAVInputSettingConfig *)inputSettingConfig outputExtension:(FJAVFileType)outputExtension;
+- (instancetype)initWithAVInputSettingConfig:(ZZAVInputSettingConfig *)inputSettingConfig outputExtension:(ZZAVFileType)outputExtension;
 
 // Media
 @property (nonatomic, strong, readonly) NSMutableArray *medias;

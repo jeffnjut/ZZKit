@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, FJCaptureType) {
+typedef NS_ENUM(NSInteger, ZZCaptureType) {
     
-    FJCaptureTypePhoto = 0x0001,
-    FJCaptureTypeVidio = 0x0002,
-    FJCaptureTypeAll   = FJCaptureTypePhoto | FJCaptureTypeVidio
+    ZZCaptureTypePhoto = 0x0001,
+    ZZCaptureTypeVidio = 0x0002,
+    ZZCaptureTypeAll   = ZZCaptureTypePhoto | ZZCaptureTypeVidio
 };
 
 @interface ZZCaptureConfig : NSObject
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, FJCaptureType) {
 // 支持手动聚焦/曝光
 @property (nonatomic, assign) BOOL enableManualTapFocusAndExposure;
 // 支持拍摄模式
-@property (nonatomic, assign) FJCaptureType captureType;
+@property (nonatomic, assign) ZZCaptureType captureType;
 // Preview全屏
 @property (nonatomic, assign) BOOL capturePreviewFullScreen;
 // Top Bar 背景颜色

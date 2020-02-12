@@ -13,7 +13,7 @@
 #import "ZZMacro.h"
 #import "NSObject+ZZKit_Notification.h"
 
-@interface FJMediaView : UIView
+@interface ZZMediaView : UIView
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *mediaTypeImageView;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation FJMediaView
+@implementation ZZMediaView
 
 - (instancetype)initWithFrame:(CGRect)frame isVideo:(BOOL)isVideo tapBlock:(void(^)(void))tapBlock {
     self = [super initWithFrame:frame];
@@ -33,7 +33,7 @@
         self.mediaTypeImageView = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width - 64.0) / 2.0, (frame.size.height - 64.0) / 2.0, 64.0, 64.0)];
         self.mediaTypeImageView.contentMode = UIViewContentModeScaleAspectFit;
         if (isVideo) {
-            self.mediaTypeImageView.image = @"FJMediaView.ic_video_logo".zz_image;
+            self.mediaTypeImageView.image = @"ZZMediaView.ic_video_logo".zz_image;
             self.tapBlock = tapBlock;
         }
         [self addSubview:self.mediaTypeImageView];
@@ -149,14 +149,14 @@
 - (void)_refresh {
     
     ZZ_WEAK_SELF
-    for (FJMediaView *mediaView in self.scrollView.subviews) {
-        if ([mediaView isKindOfClass:[FJMediaView class]]) {
+    for (ZZMediaView *mediaView in self.scrollView.subviews) {
+        if ([mediaView isKindOfClass:[ZZMediaView class]]) {
             [mediaView removeFromSuperview];
         }
     }
     for (int i = 0; i < self.medias.count; i++) {
         __block ZZMediaObject *media = [self.medias objectAtIndex:i];
-        FJMediaView *mediaView = [[FJMediaView alloc] initWithFrame:CGRectMake(i * self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height) isVideo:media.isVideo tapBlock:^{
+        ZZMediaView *mediaView = [[ZZMediaView alloc] initWithFrame:CGRectMake(i * self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height) isVideo:media.isVideo tapBlock:^{
             weakSelf.player.contentURL = media.videoURL;
             weakSelf.player.view.hidden = NO;
             [weakSelf.view bringSubviewToFront:weakSelf.player.view];
@@ -194,7 +194,7 @@
     if (media == nil) {
         return;
     }
-    // FJMediaView *mediaView = (FJMediaView *)[self.scrollView viewWithTag:(1000 + self.page)];
+    // ZZMediaView *mediaView = (ZZMediaView *)[self.scrollView viewWithTag:(1000 + self.page)];
     if (media.isVideo) {
         
     }else {

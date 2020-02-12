@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#pragma mark - FJProgressView
+#pragma mark - ZZWidgetProgressView
 
 @interface ZZWidgetProgressView : UIView
 

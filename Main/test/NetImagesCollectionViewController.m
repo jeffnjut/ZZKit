@@ -1,6 +1,6 @@
 //
 //  NetImagesCollectionViewController.m
-//  FJImageBrowserDemo
+//  ZZImageBrowserDemo
 //
 //  Created by Jeff on 2017/8/2.
 //  Copyright © 2017年 Jeff. All rights reserved.
@@ -93,7 +93,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    //利用FJImageBrowser显示网络图片
+    //利用ZZImageBrowser显示网络图片
     [[ZZWidgetImageBrowser shareInstanse] zz_showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
 }
 

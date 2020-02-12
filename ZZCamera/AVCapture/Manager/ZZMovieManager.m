@@ -10,7 +10,7 @@
 #import "ZZStorage.h"
 #import "ZZMacro.h"
 
-@implementation FJAVInputSettingConfig
+@implementation ZZAVInputSettingConfig
 
 - (instancetype)init
 {
@@ -48,8 +48,8 @@
     AVAssetWriterInput *_movieAudioInput;
     AVAssetWriterInput *_movieVideoInput;
     
-    FJAVFileType       _exportAVFileType;
-    FJAVInputSettingConfig *_inputSettingConfig;
+    ZZAVFileType       _exportAVFileType;
+    ZZAVInputSettingConfig *_inputSettingConfig;
 }
 
 @property (nonatomic, strong) NSURL *movieURL;
@@ -63,12 +63,12 @@
     long long date = [[NSDate date] timeIntervalSince1970];
     NSString *extension = nil;
     switch (_exportAVFileType) {
-        case FJAVFileTypeMOV:
+        case ZZAVFileTypeMOV:
         {
             extension = @".mov";
             break;
         }
-        case FJAVFileTypeMP4:
+        case ZZAVFileTypeMP4:
         {
             extension = @".mp4";
             break;
@@ -85,7 +85,7 @@
     @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Use -initWithAVFileType:" userInfo:nil];
 }
 
-- (instancetype)initWithAVFileType:(FJAVFileType)type inputSettingConfig:(FJAVInputSettingConfig *)inputSettingConfig {
+- (instancetype)initWithAVFileType:(ZZAVFileType)type inputSettingConfig:(ZZAVInputSettingConfig *)inputSettingConfig {
     
     self = [super init];
     if (self) {
@@ -106,12 +106,12 @@
         if (!self->_movieWriter) {
             AVFileType exportAVFileType;
             switch (self->_exportAVFileType) {
-                case FJAVFileTypeMOV:
+                case ZZAVFileTypeMOV:
                 {
                     exportAVFileType = AVFileTypeQuickTimeMovie;
                     break;
                 }
-                case FJAVFileTypeMP4:
+                case ZZAVFileTypeMP4:
                 {
                     exportAVFileType = AVFileTypeMPEG4;
                     break;

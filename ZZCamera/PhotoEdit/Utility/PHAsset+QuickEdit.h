@@ -10,8 +10,8 @@
 #import "PHAsset+Utility.h"
 
 // 用于ZZPhotoEditViewController
-#define FJCAMERA_IMAGE_WIDTH  (800.0)
-#define FJCAMERA_IMAGE_HEIGHT (1000.0)
+#define ZZCAMERA_IMAGE_WIDTH  (800.0)
+#define ZZCAMERA_IMAGE_HEIGHT (1000.0)
 
 @interface PHAsset (QuickEdit)
 

@@ -12,7 +12,7 @@
 @interface ZZPhotoImageTagPointView ()
 
 @property (nonatomic, strong) UIView *centerView;
-@property (nonatomic, strong) FJPulseLayer *pulseLayer;
+@property (nonatomic, strong) ZZPulseLayer *pulseLayer;
 
 @end
 
@@ -44,7 +44,7 @@
     _centerView.backgroundColor = [UIColor whiteColor];
     [_centerView zz_round];
     [self addSubview:_centerView];
-    _pulseLayer = [[FJPulseLayer alloc] init];
+    _pulseLayer = [[ZZPulseLayer alloc] init];
     _pulseLayer.fromValueForRadius = 0.35;
     _pulseLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     [self.layer addSublayer:_pulseLayer];
@@ -62,14 +62,14 @@
 
 @end
 
-@interface FJPulseLayer ()
+@interface ZZPulseLayer ()
 
 @property (nonatomic, strong) CALayer *targetLayer;
 @property (nonatomic, strong) CAAnimationGroup *animationGroup;
 
 @end
 
-@implementation FJPulseLayer
+@implementation ZZPulseLayer
 
 @dynamic repeatCount;
 

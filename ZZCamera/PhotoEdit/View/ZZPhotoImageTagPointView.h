@@ -17,7 +17,7 @@
 
 
 // 脉冲 闪烁
-@interface FJPulseLayer : CAReplicatorLayer
+@interface ZZPulseLayer : CAReplicatorLayer
 
 /**
  *  缩放动画开始的半径值

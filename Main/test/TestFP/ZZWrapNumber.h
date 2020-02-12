@@ -1,5 +1,5 @@
 //
-//  FJWrapNumber.h
+//  ZZWrapNumber.h
 //  test
 //
 //  Created by Fu Jie on 2019/1/4.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FJWrapNumber : NSObject
+@interface ZZWrapNumber : NSObject
 
 
 

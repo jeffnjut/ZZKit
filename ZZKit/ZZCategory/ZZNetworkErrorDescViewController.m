@@ -1,6 +1,6 @@
 //
 //  ZZNetworkErrorDescViewController.m
-//  FJErrorReloader
+//  ZZErrorReloader
 //
 //  Created by WWHT on 2017/5/13.
 //  Copyright © 2017年 Jeff. All rights reserved.
@@ -26,7 +26,8 @@
     self = [super init];
     if (self) {
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        self.view = [[bundle loadNibNamed:@"FJIllustratorViewController" owner:self options:nil] lastObject];
+        // TODO
+        self.view = [[bundle loadNibNamed:@"ZZNetworkErrorDescViewController" owner:self options:nil] lastObject];
         self.navigationItem.title = @"没有网络";
         
         self.textView.delegate = self;

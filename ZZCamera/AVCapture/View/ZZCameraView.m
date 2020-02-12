@@ -17,7 +17,7 @@
 @interface ZZCameraView()
 
 // 1：拍照 2：视频
-@property (nonatomic, assign) FJCaptureType captureType;
+@property (nonatomic, assign) ZZCaptureType captureType;
 @property (nonatomic, strong) ZZVideoPreview *previewView;
 @property (nonatomic, strong) ZZTakePhotoView *takeView;
 @property (nonatomic, strong) UIView *topView;      // 上面的bar
@@ -60,7 +60,7 @@
     // NSAssert(frame.size.height > 164 || frame.size.width > 374, @"相机视图的高不小于164，宽不小于375");
     self = [super initWithFrame:frame];
     if (self) {
-        _captureType = FJCaptureTypePhoto;
+        _captureType = ZZCaptureTypePhoto;
         [self _buildUI:config];
     }
     return self;
@@ -220,13 +220,13 @@
         UILabel *labelHint = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bottomView.zzWidth, self.config.hintHeight)];
         NSString *hint = nil;
         int type = 0;
-        if (self.config.captureType == FJCaptureTypeAll) {
+        if (self.config.captureType == ZZCaptureTypeAll) {
             hint = @"轻触拍照，长按摄像";
             type = 3;
-        }else if (self.config.captureType == FJCaptureTypePhoto) {
+        }else if (self.config.captureType == ZZCaptureTypePhoto) {
             hint = @"轻触拍照";
             type = 1;
-        }else if (self.config.captureType == FJCaptureTypeVidio) {
+        }else if (self.config.captureType == ZZCaptureTypeVidio) {
             hint = @"长按摄像";
             type = 2;
         }
@@ -512,11 +512,11 @@
 // 拍照、视频
 - (void)_takePicture:(UIButton *)btn {
     
-    if (self.captureType == FJCaptureTypePhoto) {
+    if (self.captureType == ZZCaptureTypePhoto) {
         if ([_delegate respondsToSelector:@selector(takePhotoAction:)]) {
             [_delegate takePhotoAction:self];
         }
-    } else if(self.captureType == FJCaptureTypeVidio) {
+    } else if(self.captureType == ZZCaptureTypeVidio) {
         if (btn.selected == YES) {
             // 结束
             btn.selected = NO;
@@ -547,11 +547,11 @@
 - (void)_changeType:(UIButton *)btn {
     
     btn.selected = !btn.selected;
-    if (self.captureType == FJCaptureTypePhoto) {
-        self.captureType = FJCaptureTypeVidio;
+    if (self.captureType == ZZCaptureTypePhoto) {
+        self.captureType = ZZCaptureTypeVidio;
         [_photoBtn setTitle:@"开始" forState:UIControlStateNormal];
-    }else if (self.captureType == FJCaptureTypeVidio) {
-        self.captureType = FJCaptureTypePhoto;
+    }else if (self.captureType == ZZCaptureTypeVidio) {
+        self.captureType = ZZCaptureTypePhoto;
         [_photoBtn setTitle:@"拍照" forState:UIControlStateNormal];
     }
 }

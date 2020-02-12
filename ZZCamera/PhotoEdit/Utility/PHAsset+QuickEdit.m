@@ -16,9 +16,9 @@
 - (UIImage *)getSmallTargetImage {
     
     if (@available(iOS 13.0, *)) {
-        return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:0.2 fast:NO];
+        return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:0.2 fast:NO];
     }
-    return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:0.2 fast:YES];
+    return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:0.2 fast:YES];
 }
 
 /**
@@ -27,9 +27,9 @@
 - (UIImage *)getGeneralTargetImage {
     
     if (@available(iOS 13.0, *)) {
-        return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:2.0 fast:NO];
+        return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:2.0 fast:NO];
     }
-    return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:2.0 fast:YES];
+    return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:2.0 fast:YES];
 }
 
 /**
@@ -38,9 +38,9 @@
 - (UIImage *)getLargeTargetImage {
     
     if (@available(iOS 13.0, *)) {
-        return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:3.0 fast:NO];
+        return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:3.0 fast:NO];
     }
-    return [self zz_imageSyncTargetSize:CGSizeMake(FJCAMERA_IMAGE_WIDTH, FJCAMERA_IMAGE_HEIGHT) multiples:3.0 fast:YES];
+    return [self zz_imageSyncTargetSize:CGSizeMake(ZZCAMERA_IMAGE_WIDTH, ZZCAMERA_IMAGE_HEIGHT) multiples:3.0 fast:YES];
 }
 
 @end

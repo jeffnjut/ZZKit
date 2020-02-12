@@ -94,7 +94,7 @@
 		E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */; };
 		E77ADD4922BBABBA0015DB1B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4222BBABBA0015DB1B /* Calculator.m */; };
 		E77ADD4A22BBABBA0015DB1B /* CalcMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4622BBABBA0015DB1B /* CalcMarker.m */; };
-		E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */; };
+		E77ADD4B22BBABBA0015DB1B /* ZZWrapNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E77ADD4722BBABBA0015DB1B /* ZZWrapNumber.m */; };
 		E77EBC752373CB6A0062E4A9 /* ic_4_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBB642373CB690062E4A9 /* ic_4_5@2x.png */; };
 		E77EBC762373CB6A0062E4A9 /* ic_photo_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBB652373CB690062E4A9 /* ic_photo_unselected@3x.png */; };
 		E77EBC772373CB6A0062E4A9 /* ic_edit_tuning_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E77EBB662373CB690062E4A9 /* ic_edit_tuning_highlighted@3x.png */; };
@@ -322,6 +322,7 @@
 		E7AA951A229E92B7003964B8 /* TestGCDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AA9518229E92B7003964B8 /* TestGCDVC.m */; };
 		E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AA9519229E92B7003964B8 /* TestGCDVC.xib */; };
 		E7B301D322D88EC400BECE2E /* ImgAddClickEvent.js in Resources */ = {isa = PBXBuildFile; fileRef = E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */; };
+		E7B3AC8623F3C71600D93917 /* WKWebView+HideToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3AC8523F3C71600D93917 /* WKWebView+HideToolbar.m */; };
 		E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */; };
 		E7C3166722A64F80002E4130 /* TestUIResponderBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3166522A64F80002E4130 /* TestUIResponderBlockVC.m */; };
 		E7C3166822A64F80002E4130 /* TestUIResponderBlockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C3166622A64F80002E4130 /* TestUIResponderBlockVC.xib */; };
@@ -539,10 +540,10 @@
 		E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Calc.m"; sourceTree = "<group>"; };
 		E77ADD4222BBABBA0015DB1B /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		E77ADD4322BBABBA0015DB1B /* NSObject+Calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Calc.h"; sourceTree = "<group>"; };
-		E77ADD4422BBABBA0015DB1B /* FJWrapNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWrapNumber.h; sourceTree = "<group>"; };
+		E77ADD4422BBABBA0015DB1B /* ZZWrapNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWrapNumber.h; sourceTree = "<group>"; };
 		E77ADD4522BBABBA0015DB1B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		E77ADD4622BBABBA0015DB1B /* CalcMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcMarker.m; sourceTree = "<group>"; };
-		E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWrapNumber.m; sourceTree = "<group>"; };
+		E77ADD4722BBABBA0015DB1B /* ZZWrapNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWrapNumber.m; sourceTree = "<group>"; };
 		E77EBB642373CB690062E4A9 /* ic_4_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_4_5@2x.png"; sourceTree = "<group>"; };
 		E77EBB652373CB690062E4A9 /* ic_photo_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_photo_unselected@3x.png"; sourceTree = "<group>"; };
 		E77EBB662373CB690062E4A9 /* ic_edit_tuning_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_edit_tuning_highlighted@3x.png"; sourceTree = "<group>"; };
@@ -834,6 +835,8 @@
 		E7AA9518229E92B7003964B8 /* TestGCDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGCDVC.m; sourceTree = "<group>"; };
 		E7AA9519229E92B7003964B8 /* TestGCDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGCDVC.xib; sourceTree = "<group>"; };
 		E7B301D222D88EC400BECE2E /* ImgAddClickEvent.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ImgAddClickEvent.js; sourceTree = "<group>"; };
+		E7B3AC8423F3C71600D93917 /* WKWebView+HideToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+HideToolbar.h"; sourceTree = "<group>"; };
+		E7B3AC8523F3C71600D93917 /* WKWebView+HideToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+HideToolbar.m"; sourceTree = "<group>"; };
 		E7C3166122A64F07002E4130 /* UIView+ZZKit_Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZZKit_Blocks.h"; sourceTree = "<group>"; };
 		E7C3166222A64F07002E4130 /* UIView+ZZKit_Blocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZZKit_Blocks.m"; sourceTree = "<group>"; };
 		E7C3166422A64F80002E4130 /* TestUIResponderBlockVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIResponderBlockVC.h; sourceTree = "<group>"; };
@@ -1015,6 +1018,8 @@
 				E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */,
 				E72DFBC122B1601A0099A8C4 /* ZZWebView.h */,
 				E72DFBC222B1601A0099A8C4 /* ZZWebView.m */,
+				E7B3AC8423F3C71600D93917 /* WKWebView+HideToolbar.h */,
+				E7B3AC8523F3C71600D93917 /* WKWebView+HideToolbar.m */,
 				E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */,
 				E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */,
 				E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */,
@@ -1030,8 +1035,8 @@
 				E77ADD4622BBABBA0015DB1B /* CalcMarker.m */,
 				E77ADD4522BBABBA0015DB1B /* Calculator.h */,
 				E77ADD4222BBABBA0015DB1B /* Calculator.m */,
-				E77ADD4422BBABBA0015DB1B /* FJWrapNumber.h */,
-				E77ADD4722BBABBA0015DB1B /* FJWrapNumber.m */,
+				E77ADD4422BBABBA0015DB1B /* ZZWrapNumber.h */,
+				E77ADD4722BBABBA0015DB1B /* ZZWrapNumber.m */,
 				E77ADD4322BBABBA0015DB1B /* NSObject+Calc.h */,
 				E77ADD4122BBABB90015DB1B /* NSObject+Calc.m */,
 			);
@@ -2197,7 +2202,7 @@
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
 				E77EBD382373CB6A0062E4A9 /* ZZMovieManager.m in Sources */,
-				E77ADD4B22BBABBA0015DB1B /* FJWrapNumber.m in Sources */,
+				E77ADD4B22BBABBA0015DB1B /* ZZWrapNumber.m in Sources */,
 				E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */,
 				E72D830422B32F9E004B9CA6 /* ZZTableView.m in Sources */,
 				E760BEEB22F9A1EA00944380 /* ZZWidgetTagView.m in Sources */,
@@ -2334,6 +2339,7 @@
 				E7C3166322A64F07002E4130 /* UIView+ZZKit_Blocks.m in Sources */,
 				E767602522B0E3F30044B9AD /* UIViewController+ZZKit.m in Sources */,
 				E77EBCF22373CB6A0062E4A9 /* ZZPhotoTag.m in Sources */,
+				E7B3AC8623F3C71600D93917 /* WKWebView+HideToolbar.m in Sources */,
 				E77EBCF02373CB6A0062E4A9 /* ZZPhotoFilterManager.m in Sources */,
 				E77EBD3A2373CB6A0062E4A9 /* ZZCaptureConfig.m in Sources */,
 				E72DFBB822B155BF0099A8C4 /* CALayer+ZZKit.m in Sources */,
@@ -2482,7 +2488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2503,7 +2509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9YHHLB2CQ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Main/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

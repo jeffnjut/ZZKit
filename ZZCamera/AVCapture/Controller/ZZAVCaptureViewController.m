@@ -68,7 +68,7 @@
     
     self = [super init];
     if (self) {
-        _movieManager  = [[ZZMovieManager alloc] initWithAVFileType:FJAVFileTypeMP4 inputSettingConfig:nil];
+        _movieManager  = [[ZZMovieManager alloc] initWithAVFileType:ZZAVFileTypeMP4 inputSettingConfig:nil];
         _motionManager = [[ZZMotionManager alloc] init];
         _cameraManager = [[ZZCameraManager alloc] init];
     }
@@ -76,7 +76,7 @@
 }
 
 // 自定义初始化
-- (instancetype)initWithAVInputSettingConfig:(FJAVInputSettingConfig *)inputSettingConfig outputExtension:(FJAVFileType)outputExtension {
+- (instancetype)initWithAVInputSettingConfig:(ZZAVInputSettingConfig *)inputSettingConfig outputExtension:(ZZAVFileType)outputExtension {
     
     self = [super init];
     if (self) {

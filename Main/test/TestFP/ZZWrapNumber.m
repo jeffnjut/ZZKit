@@ -1,41 +1,41 @@
 //
-//  FJWrapNumber.m
+//  ZZWrapNumber.m
 //  test
 //
 //  Created by Fu Jie on 2019/1/4.
 //  Copyright © 2019 Fu Jie. All rights reserved.
 //
 
-#import "FJWrapNumber.h"
+#import "ZZWrapNumber.h"
 
-@interface FJWrapNumber ()
+@interface ZZWrapNumber ()
 
 @property (nonatomic, assign) float value;
 
 @end
 
-@implementation FJWrapNumber
+@implementation ZZWrapNumber
 
-+ (FJWrapNumber *)numberWithString:(NSString *)str {
++ (ZZWrapNumber *)numberWithString:(NSString *)str {
     
-    FJWrapNumber *number = [[FJWrapNumber alloc] init];
+    ZZWrapNumber *number = [[ZZWrapNumber alloc] init];
     number.value = [str floatValue];
     return number;
 }
 
-- (FJWrapNumber * (^)(float value))add {
+- (ZZWrapNumber * (^)(float value))add {
     
     __weak typeof(self) weakSelf = self;
-    return ^FJWrapNumber *(float value) {
+    return ^ZZWrapNumber *(float value) {
         weakSelf.value += value;
         return weakSelf;
     };
 }
 
-- (FJWrapNumber * (^)(float value))delete {
+- (ZZWrapNumber * (^)(float value))delete {
     
     __weak typeof(self) weakSelf = self;
-    return ^FJWrapNumber *(float value) {
+    return ^ZZWrapNumber *(float value) {
         weakSelf.value -= value;
         return weakSelf;
     };

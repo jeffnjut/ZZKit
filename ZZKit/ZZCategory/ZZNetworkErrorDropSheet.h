@@ -1,6 +1,6 @@
 //
 //  ZZNetworkErrorDropSheet.h
-//  FJErrorReloader
+//  ZZErrorReloader
 //
 //  Created by WWHT on 2017/5/13.
 //  Copyright © 2017年 Jeff. All rights reserved.

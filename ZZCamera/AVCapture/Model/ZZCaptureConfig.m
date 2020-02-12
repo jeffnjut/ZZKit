@@ -38,7 +38,7 @@
         // 支持手动聚焦/曝光
         self.enableManualTapFocusAndExposure = YES;
         // 支持拍摄模式
-        self.captureType = FJCaptureTypeAll;
+        self.captureType = ZZCaptureTypeAll;
         // Preview全屏
         self.capturePreviewFullScreen = YES;
         // Top Bar 背景颜色

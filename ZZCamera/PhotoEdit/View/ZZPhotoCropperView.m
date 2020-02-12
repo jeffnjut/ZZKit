@@ -21,11 +21,11 @@
 #define K_HEIGHT      100.0
 #define K_PDD_WIDTH   20.0
 
-@interface FJGridLabel : UILabel
+@interface ZZGridLabel : UILabel
 
 @end
 
-@implementation FJGridLabel
+@implementation ZZGridLabel
 
 - (void)drawRect:(CGRect)rect {
     // ZZLog(@"rect : %f %f %f %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
@@ -58,7 +58,7 @@
 
 @end
 
-@interface FJImageScrollView : UIScrollView
+@interface ZZImageScrollView : UIScrollView
 
 @property (nonatomic, strong) UIImageView *imageView;
 
@@ -66,12 +66,12 @@
 
 @end
 
-@implementation FJImageScrollView
+@implementation ZZImageScrollView
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSAssert(NO, @"FJImageScrollView : Please Use - initWithFrame:");
+        NSAssert(NO, @"ZZImageScrollView : Please Use - initWithFrame:");
     }
     return self;
 }
@@ -105,13 +105,13 @@
 @interface ZZPhotoCropperView () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *scrollViews;
-@property (nonatomic, strong) FJImageScrollView *currentScrollView;
+@property (nonatomic, strong) ZZImageScrollView *currentScrollView;
 @property (nonatomic, weak) IBOutlet UIView *toolView;
 @property (nonatomic, weak) IBOutlet UIImageView *expandImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *updownImageView;
 @property (nonatomic, weak) IBOutlet UIButton *expandButton;
 @property (nonatomic, weak) IBOutlet UIButton *updownButton;
-@property (nonatomic, strong) FJGridLabel *gridView;
+@property (nonatomic, strong) ZZGridLabel *gridView;
 
 @property (nonatomic, assign) CGFloat cropperHorizontalExtemeRatio;
 @property (nonatomic, assign) CGFloat cropperVerticalExtemeRatio;
@@ -133,10 +133,10 @@
 
 @implementation ZZPhotoCropperView
 
-- (FJGridLabel *)gridView {
+- (ZZGridLabel *)gridView {
     
     if (_gridView == nil) {
-        _gridView = [[FJGridLabel alloc] init];
+        _gridView = [[ZZGridLabel alloc] init];
         [self addSubview:_gridView];
         if (self.isDebug) {
             _gridView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
@@ -180,13 +180,13 @@
 // 更新图片(返回NO表示iCoud图片下载中)
 - (BOOL)updateModel:(ZZPhotoAsset *)model {
     
-    FJImageScrollView *imageScrollView = nil;
+    ZZImageScrollView *imageScrollView = nil;
     UIImage *image = [model.asset getGeneralTargetImage];
     if (image == nil) {
         [self zz_toast:@"iCloud照片正在下载中"];
         return NO;
     }
-    for (FJImageScrollView *scrollView in self.scrollViews) {
+    for (ZZImageScrollView *scrollView in self.scrollViews) {
         if (scrollView.photoModel == nil) {
             // ScrollView的photoModel为空，第一次渲染照片
             scrollView.hidden = NO;
@@ -243,7 +243,7 @@
 - (void)_buildNewImageScrollView {
     
     // ScrollView
-    self.currentScrollView = [[FJImageScrollView alloc] initWithFrame:self.bounds];
+    self.currentScrollView = [[ZZImageScrollView alloc] initWithFrame:self.bounds];
     [self.scrollViews addObject:self.currentScrollView];
     self.currentScrollView.delegate = self;
     [self addSubview:self.currentScrollView];
@@ -259,11 +259,11 @@
     [self bringSubviewToFront:self.toolView];
     
     // Hint
-    NSString *lastVersion = [ZZStorage zz_plistFetch:@"FJCameraUpdateVersion"];
+    NSString *lastVersion = [ZZStorage zz_plistFetch:@"ZZCameraUpdateVersion"];
     NSString *version = ZZ_APP_VERSION;
     if (lastVersion == nil || ![lastVersion isEqualToString:version]) {
         
-        [ZZStorage zz_plistSave:version forKey:@"FJCameraUpdateVersion"];
+        [ZZStorage zz_plistSave:version forKey:@"ZZCameraUpdateVersion"];
         
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.tag = 1000;

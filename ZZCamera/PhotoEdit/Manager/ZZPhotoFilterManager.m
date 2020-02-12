@@ -236,7 +236,7 @@ static bool isFirstAccess = YES;
         CIFilter *preFilter = [uniqueArray objectAtIndex:i-1];
         if (preFilter.outputImage == nil) {
             NSString *debugStr = [NSString stringWithFormat:@"Context:%@\nprefilter:%@\nfilterinputKeys:%@",_context,preFilter,preFilter];
-            [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_FJCamera_getImageCombine:"];
+            [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_ZZCamera_getImageCombine:"];
         }
         NSAssert(preFilter.outputImage != nil, @"前序滤镜outputImage输出不能为nil");
         [filter setValue:preFilter.outputImage forKey:kCIInputImageKey];
@@ -248,7 +248,7 @@ static bool isFirstAccess = YES;
     CGImageRelease(ref);
     if (filterImage == nil) {
         NSString *debugStr = [NSString stringWithFormat:@"Context:%@\nfilters:%@\nCGImageRef:%@",_context,filters,ref];
-        [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_FJCamera_getImageCombine:"];
+        [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_ZZCamera_getImageCombine:"];
     }
     return filterImage;
 }
@@ -275,7 +275,7 @@ static bool isFirstAccess = YES;
     }
     if (retImage == nil) {
         NSString *debugStr = [NSString stringWithFormat:@"Context:%@\nfilter1:%@\nfilter2:%@\nfilter3:%@\nfilter4:%@\n",_context,filter1,filter2,filter3,filter4];
-        [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_FJCamera_getImage:tuningObject:appendFilterType"];
+        [ZZStorage zz_plistSave:debugStr forKey:@"DebugStr_ZZCamera_getImage:tuningObject:appendFilterType"];
         retImage = image;
     }
     return retImage;

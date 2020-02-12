@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-typedef NS_ENUM(NSInteger, FJAVFileType) {
-    FJAVFileTypeMP4,   // MPEG4
-    FJAVFileTypeMOV    // QuickMovie
+typedef NS_ENUM(NSInteger, ZZAVFileType) {
+    ZZAVFileTypeMP4,   // MPEG4
+    ZZAVFileTypeMOV    // QuickMovie
 };
 
-@interface FJAVInputSettingConfig : NSObject
+@interface ZZAVInputSettingConfig : NSObject
 
 /// 视频写入参数
 // 视频编码格式
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, FJAVFileType) {
 
 @property(nonatomic, strong) AVCaptureDevice *currentDevice;
 
-- (instancetype)initWithAVFileType:(FJAVFileType)type inputSettingConfig:(FJAVInputSettingConfig *)inputSettingConfig;
+- (instancetype)initWithAVFileType:(ZZAVFileType)type inputSettingConfig:(ZZAVInputSettingConfig *)inputSettingConfig;
 
 - (void)start:(void(^)(NSError *error))handle;
 
