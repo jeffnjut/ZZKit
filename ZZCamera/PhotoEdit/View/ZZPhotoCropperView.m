@@ -242,6 +242,7 @@
 // 新建
 - (void)_buildNewImageScrollView {
     
+    __weak typeof(self) weakSelf = self;
     // ScrollView
     self.currentScrollView = [[ZZImageScrollView alloc] initWithFrame:self.bounds];
     [self.scrollViews addObject:self.currentScrollView];
@@ -258,13 +259,12 @@
     [self bringSubviewToFront:self.currentScrollView];
     [self bringSubviewToFront:self.toolView];
     
-    // Hint
-    NSString *lastVersion = [ZZStorage zz_plistFetch:@"ZZCameraUpdateVersion"];
+    // Hint Left
+    NSString *lastVersion = [ZZStorage zz_plistFetch:@"ZZCameraUpdateLeftVersion"];
     NSString *version = ZZ_APP_VERSION;
-    if (lastVersion == nil || ![lastVersion isEqualToString:version]) {
+    if ((lastVersion == nil || ![lastVersion isEqualToString:version]) && (self.cropperHorizontalExtemeRatio != 1.0 || self.cropperVerticalExtemeRatio != 1.0)) {
         
-        [ZZStorage zz_plistSave:version forKey:@"ZZCameraUpdateVersion"];
-        
+        [ZZStorage zz_plistSave:version forKey:@"ZZCameraUpdateLeftVersion"];
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.tag = 1000;
         [imageView setUserInteractionEnabled:YES];
@@ -273,18 +273,24 @@
         imageView.backgroundColor = [UIColor clearColor];
         imageView.image = @"ZZPhotoCropperView.ic_pop_left".zz_image;
         [self addSubview:imageView];
-        __weak typeof(self) weakSelf = self;
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(@170.0);
             make.height.equalTo(@36.0);
             make.left.equalTo(weakSelf).offset(10.0);
             make.bottom.equalTo(weakSelf).offset(-48.0);
         }];
+    }
+    
+    // Hint Right
+    lastVersion = [ZZStorage zz_plistFetch:@"ZZCameraUpdateRightVersion"];
+    version = ZZ_APP_VERSION;
+    if (lastVersion == nil || ![lastVersion isEqualToString:version]) {
         
-        imageView = [[UIImageView alloc] init];
+        [ZZStorage zz_plistSave:version forKey:@"ZZCameraUpdateRightVersion"];
+        UIImageView *imageView = [[UIImageView alloc] init];
         imageView.tag = 2000;
         [imageView setUserInteractionEnabled:YES];
-        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapHint:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapHint:)];
         [imageView addGestureRecognizer:tap];
         imageView.backgroundColor = [UIColor clearColor];
         imageView.image = @"ZZPhotoCropperView.ic_pop_right".zz_image;
