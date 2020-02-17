@@ -52,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)zz_windowRootViewControllerLoaded;
 
+/**
+ * 获取第一响应者
+ */
+- (__kindof UIView *)zz_firstResponder;
+
 @end
 
 NS_ASSUME_NONNULL_END

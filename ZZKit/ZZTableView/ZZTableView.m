@@ -264,6 +264,14 @@
  */
 - (void)zz_refresh {
     
+    [self zz_refresh:YES];
+}
+
+/**
+ *  TableView安全加载刷新Data(Scrollable)
+ */
+- (void)zz_refresh:(BOOL)scrollable {
+    
     pthread_mutex_lock(&_lock);
     if ([_zzDataSource zz_arrayContainsClassType:[ZZTableSectionObject class]]) {
         _sectionEnabled = YES;
@@ -283,7 +291,7 @@
         }
     }
     [self reloadData];
-    self.scrollEnabled = YES;
+    self.scrollEnabled = scrollable;
     pthread_mutex_unlock(&_lock);
 }
 

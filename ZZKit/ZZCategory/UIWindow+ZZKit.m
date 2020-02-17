@@ -148,4 +148,15 @@
     return YES;
 }
 
+/**
+ * 获取第一响应者
+ */
+- (__kindof UIView *)zz_firstResponder {
+    
+    UIView *firstResponder = [self performSelector:@selector(firstResponder)];
+    return firstResponder;
+}
+
+
+
 @end

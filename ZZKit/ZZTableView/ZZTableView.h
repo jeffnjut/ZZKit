@@ -185,14 +185,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_refresh;
 
+/**
+ *  TableView安全加载刷新Data(Scrollable)
+ */
+- (void)zz_refresh:(BOOL)scrollable;
+
 @end
 
 #pragma mark - ZZTableSectionObject类
 
 @interface ZZTableSectionObject : NSObject
 
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzHeaderDataSource;
-@property (nonatomic, strong) ZZTableViewHeaderFooterViewDataSource *zzFooterDataSource;
+@property (nonatomic, strong) __kindof ZZTableViewHeaderFooterViewDataSource *zzHeaderDataSource;
+@property (nonatomic, strong) __kindof ZZTableViewHeaderFooterViewDataSource *zzFooterDataSource;
 @property (nonatomic, strong) NSMutableArray<ZZTableViewCellDataSource *> *zzCellDataSource;
 
 @end
