@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL zzDisablePopGesture;
 
-@property (nonatomic, copy) BOOL(^zzPopGestureBlock)(__weak ZZNavigationController *zzNavigationController);
+@property (nonatomic, copy, nullable) BOOL(^zzPopGestureBlock)(__weak ZZNavigationController *zzNavigationController);
 
 @end
 
