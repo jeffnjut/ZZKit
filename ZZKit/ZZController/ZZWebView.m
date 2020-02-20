@@ -342,6 +342,9 @@
 + (nonnull __kindof ZZWebView *)zz_quickAdd:(nullable UIView *)onView frame:(CGRect)frame progressBarTintColor:(nullable UIColor *)progressBarTintColor constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock {
     
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.preferences = [[WKPreferences alloc] init];
+    configuration.preferences.javaScriptEnabled = YES;
+    configuration.preferences.javaScriptCanOpenWindowsAutomatically = YES;
     WKUserContentController *controller = [[WKUserContentController alloc] init];
     configuration.userContentController = controller;
     ZZWebView *zzWebView = [[ZZWebView alloc] initWithFrame:frame configuration:configuration];
@@ -552,6 +555,13 @@
     }
 }
 
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    
+    if(navigationAction.targetFrame == nil || !navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
 
 
 #pragma mark - WKScriptMessageHandler
