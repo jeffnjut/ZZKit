@@ -59,4 +59,16 @@
     self.titleLabel.textAlignment = textAlignment;
 }
 
+/**
+ *  防止重复点击
+ */
+- (void)zz_preventFromDoubleClick {
+    
+    [self setUserInteractionEnabled:NO];
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf setUserInteractionEnabled:YES];
+    });
+}
+
 @end
