@@ -193,7 +193,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     [self zz_navigationBarHidden:NO];
-    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#E6E6E6".zz_color];
+    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#F5F5F5".zz_color];
     if (ZZPhotoManager.shared.config.editPhotoIndex == nil) {
         [self zz_navigationAddLeftBarButton:@"ZZPhotoEditViewController.ic_back".zz_image action:^{
             [weakSelf zz_dismiss];

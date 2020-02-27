@@ -207,7 +207,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     [self zz_navigationBarHidden:NO];
-    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#E6E6E6".zz_color];
+    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#F5F5F5".zz_color];
     [self zz_navigationRemoveLeftBarButtons];
     [self zz_navigationAddLeftBarCustomView:self.leftButton action:nil];
     [self.leftButton.button addTarget:self action:@selector(_leftButtonAction) forControlEvents:UIControlEventTouchUpInside];

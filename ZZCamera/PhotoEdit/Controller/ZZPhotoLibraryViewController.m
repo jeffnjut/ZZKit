@@ -177,7 +177,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = @"#F5F5F5".zz_color;
     [self zz_navigationBarHidden:NO];
-    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#E6E6E6".zz_color];
+    [self zz_navigationBarStyle:[UIColor whiteColor] translucent:NO bottomLineColor:@"#F5F5F5".zz_color];
     [self zz_navigationAddLeftBarButton:@"ZZPhotoLibraryViewController.ic_back".zz_image action:^{
         [weakSelf zz_dismiss];
     }];
@@ -481,7 +481,18 @@
                 if (ZZPhotoManager.shared.config.userOverLimitationBlock != nil) {
                     ZZPhotoManager.shared.config.userOverLimitationBlock(self);
                 }else {
-                    [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
+                    if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                            ZZCollectionSectionObject *sectionObject = [weakSelf.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
+                            ZZPhotoCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:0];
+                            if (ds) {
+                                [weakSelf _previewOrTick:&ds section:0 item:0 enableTick:YES];
+                            }
+                        });
+                    }else {
+                        [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
+                    }
                 }
                 ds.isTicked = NO;
             }else {
