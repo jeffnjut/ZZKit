@@ -7,6 +7,7 @@
 //
 
 #import "ZZNavigationController.h"
+#import "ZZDevice.h"
 
 @interface ZZNavigationController () <UIGestureRecognizerDelegate>
 
@@ -46,7 +47,7 @@
     [super pushViewController:viewController animated:animated];
     
     // 适配iPhoneX，修改tabBar的frame
-    if ([[UIScreen mainScreen] bounds].size.width == 375 && [[UIScreen mainScreen] bounds].size.height == 812) {
+    if (ZZ_DEVICE_IS_IPHONE_X_ALL) {
         CGRect frame = self.tabBarController.tabBar.frame;
         frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
         self.tabBarController.tabBar.frame = frame;
