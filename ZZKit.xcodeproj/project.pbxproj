@@ -43,6 +43,7 @@
 		E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */; };
 		E759CDE622CC849B001EC3AE /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE522CC849B001EC3AE /* test.html */; };
 		E759CDE822CE1FEB001EC3AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE722CE1FEB001EC3AE /* test.js */; };
+		E75F1666240CAEC800EC152A /* UINavigationController+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E75F1665240CAEC800EC152A /* UINavigationController+ZZKit.m */; };
 		E760BECC22F970FC00944380 /* UIViewController+ZZTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = E760BECB22F970FC00944380 /* UIViewController+ZZTrace.m */; };
 		E760BED322F9783400944380 /* icon_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BECD22F9783300944380 /* icon_right_arrow@2x.png */; };
 		E760BED422F9783400944380 /* icon_wifi_connect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E760BECE22F9783400944380 /* icon_wifi_connect@2x.png */; };
@@ -454,6 +455,8 @@
 		E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZWebView.xib; sourceTree = "<group>"; };
 		E759CDE522CC849B001EC3AE /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		E759CDE722CE1FEB001EC3AE /* test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		E75F1664240CAEC800EC152A /* UINavigationController+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZZKit.h"; sourceTree = "<group>"; };
+		E75F1665240CAEC800EC152A /* UINavigationController+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ZZKit.m"; sourceTree = "<group>"; };
 		E760BECA22F970FC00944380 /* UIViewController+ZZTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZZTrace.h"; sourceTree = "<group>"; };
 		E760BECB22F970FC00944380 /* UIViewController+ZZTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZZTrace.m"; sourceTree = "<group>"; };
 		E760BECD22F9783300944380 /* icon_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@2x.png"; sourceTree = "<group>"; };
@@ -1696,6 +1699,8 @@
 				E788654922B2008D00B20F3E /* UIImageView+ZZKit.m */,
 				E70CB66723C89EF00085496B /* UITextField+ZZKit.h */,
 				E70CB66823C89EF00085496B /* UITextField+ZZKit.m */,
+				E75F1664240CAEC800EC152A /* UINavigationController+ZZKit.h */,
+				E75F1665240CAEC800EC152A /* UINavigationController+ZZKit.m */,
 			);
 			path = ZZCategory;
 			sourceTree = "<group>";
@@ -2178,6 +2183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75F1666240CAEC800EC152A /* UINavigationController+ZZKit.m in Sources */,
 				E767602B22B0FEC60044B9AD /* UIWindow+ZZKit.m in Sources */,
 				E7D758532303B9FD008FE69F /* ZZPingTester.m in Sources */,
 				E767601022B099D20044B9AD /* UITabBar+ZZKit.m in Sources */,

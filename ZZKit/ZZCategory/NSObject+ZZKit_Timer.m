@@ -43,6 +43,9 @@
  */
 - (void)zz_startCountdown:(NSUInteger)countdown interval:(NSUInteger)interval callback:(nullable ZZTimerBlock)callback {
     
+    
+    [self zz_removeCountdown];
+    
     ZZTimer *_timer = objc_getAssociatedObject(self, "_ZZTimer");
     if (!_timer) {
         _timer = [[ZZTimer alloc] initWithOwner:self countdown:countdown interval:interval callback:callback];
@@ -91,8 +94,10 @@
  */
 - (void)zz_removeCountdown {
     
-    [self._zzTimer zz_stop];
-    objc_setAssociatedObject(self, "_ZZTimer", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (self._zzTimer) {
+        [self._zzTimer zz_remove];
+        objc_setAssociatedObject(self, "_ZZTimer", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 #pragma mark - Private

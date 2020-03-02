@@ -188,6 +188,22 @@
 }
 
 /**
+ *  停止并删除回调倒计时
+ */
+- (void)zz_remove {
+    
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
+    self->_countdown = 0;
+    self->_interval = 0;
+    _status = ZZTimerStatusStopped;
+    [self _setCurrentDays:0 hours:0 minutes:0 seconds:0];
+    _block = nil;
+}
+
+/**
  *  暂停倒计时
  */
 - (void)zz_suspend {

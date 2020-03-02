@@ -75,6 +75,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_stop;
 
 /**
+ *  停止并删除回调倒计时
+ */
+- (void)zz_remove;
+
+/**
  *  暂停倒计时
  */
 - (void)zz_suspend;
