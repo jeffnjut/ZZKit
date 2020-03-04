@@ -132,7 +132,6 @@
     if (left) {
         if ([self.navigationItem.leftBarButtonItems count] > 0) {
             NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.leftBarButtonItems];
-            [arr addObject:marginLeft];
             [arr addObject:barButton];
             [arr addObject:marginRight];
             self.navigationItem.leftBarButtonItems = nil;
@@ -146,7 +145,6 @@
             NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
             [arr addObject:marginLeft];
             [arr addObject:barButton];
-            [arr addObject:marginRight];
             self.navigationItem.rightBarButtonItems = nil;
             self.navigationItem.rightBarButtonItems = arr;
         }else {

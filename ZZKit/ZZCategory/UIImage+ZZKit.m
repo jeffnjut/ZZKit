@@ -555,7 +555,7 @@
 /**
  *  生成带图片的二维码
  */
-+ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width icon:(UIImage *)icon iconWidth:(CGFloat)iconWidth {
++ (UIImage *)zz_imageQR:(nonnull NSString *)text width:(CGFloat)width icon:(nullable UIImage *)icon iconWidth:(CGFloat)iconWidth {
     
     // 生成二维码
     UIImage *codeImage = [UIImage zz_imageQR:text width:width];

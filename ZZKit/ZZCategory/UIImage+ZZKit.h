@@ -180,7 +180,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  生成带图片的二维码
  */
-+ (UIImage *)zz_imageQR:(NSString *)text width:(CGFloat)width icon:(UIImage *)icon iconWidth:(CGFloat)iconWidth;
++ (UIImage *)zz_imageQR:(nonnull NSString *)text width:(CGFloat)width icon:(nullable UIImage *)icon iconWidth:(CGFloat)iconWidth;
 
 #pragma mark - 水印
 
