@@ -156,7 +156,7 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 @property (nonatomic, strong) __kindof ZZCollectionViewCellDataSource *zzData;
 
 // 用户自定义点击Block
-@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZCollectionViewCellDataSource * _Nonnull data, __kindof ZZCollectionViewCell * _Nonnull cell);
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZCollectionViewCell * _Nonnull cell);
 
 @end
 

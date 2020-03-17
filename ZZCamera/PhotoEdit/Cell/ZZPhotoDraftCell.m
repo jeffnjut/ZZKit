@@ -134,14 +134,14 @@
     [self updateSelected:!checked];
     ZZPhotoDraftCellDataSource *ds = self.zzData;
     ds.action = 0;
-    self.zzTapBlock == nil ? : self.zzTapBlock(ds, self);
+    self.zzTapBlock == nil ? : self.zzTapBlock(self);
 }
 
 - (void)_longPress {
     
     ZZPhotoDraftCellDataSource *ds = self.zzData;
     ds.action = 1;
-    self.zzTapBlock == nil ? : self.zzTapBlock(ds, self);
+    self.zzTapBlock == nil ? : self.zzTapBlock(self);
 }
 
 @end

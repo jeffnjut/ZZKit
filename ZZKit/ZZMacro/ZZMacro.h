@@ -24,9 +24,8 @@
 // String Helper
 #pragma mark - String Helper
 
-#define ZZ_STR_NULL_OR_EMPTY(str)             (str == nil || ((NSString *)str).length == 0)
-#define ZZ_STR_NULL_OR_EMPTY_TRIMSPACE(str)   (str == nil || ((NSString *)str).length == 0 || [((NSString *)str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0)
-#define ZZ_STR_FORMAT_OBJECT(object)          (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])
+#define ZZ_STR_NULL_OR_EMPTY(str)             (str == nil || ![str isKindOfClass:[NSString class]] || ((NSString *)str).length == 0)
+#define ZZ_STR_NULL_OR_EMPTY_TRIMSPACE(str)   (str == nil || ![str isKindOfClass:[NSString class]] || ((NSString *)str).length == 0 || [((NSString *)str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0)
 #define ZZ_STR_FORMAT_INTEGER(num)            [NSString stringWithFormat:@"%ld",(long)(num)]
 #define ZZ_STR_FORMAT_FLOAT_0_DECIMAL(num)    [NSString stringWithFormat:@"%f",num]
 #define ZZ_STR_FORMAT_FLOAT_1_DECIMAL(num)    [NSString stringWithFormat:@"%.1f",num]
@@ -42,14 +41,14 @@
 
 // Object Helper
 #define ZZ_OBJECT_NIL_TO_EMPTY(object)        (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])
-#define ZZ_OBJECT_ZERO(object)                (object == nil ? NO : object.intValue == 0)
+#define ZZ_OBJECT_ZERO(object)                (object == nil ? NO : ([object respondsToSelector:@selector(intValue)] ? object.intValue == 0 : NO))
 #define ZZ_OBJECT_IS_KIND(object, class)      [object isKindOfClass:class]
 #define ZZ_OBJECT_IS_MEMBER(object, class)    [object isMemberOfClass:class]
 
 // Resouce Loading Helper
 #pragma mark - Resouce Loading Helper
 
-#define ZZ_LOAD_NIB(x)    [[[NSBundle bundleForClass:NSClassFromString(x)] loadNibNamed:x owner:nil options:nil] objectAtIndex:0]
+#define ZZ_LOAD_NIB(x)    ([[NSBundle bundleForClass:NSClassFromString(x)] loadNibNamed:x owner:nil options:nil].count > 0 ? [[[NSBundle bundleForClass:NSClassFromString(x)] loadNibNamed:x owner:nil options:nil] objectAtIndex:0] : nil)
 
 // Log Helper
 #pragma mark - Log Helper

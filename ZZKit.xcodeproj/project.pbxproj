@@ -387,6 +387,7 @@
 		E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151622ED8E13007C587B /* TestCountryVC.m */; };
 		E7F2151922ED8E13007C587B /* TestCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F2151722ED8E13007C587B /* TestCountryVC.xib */; };
 		E7F2151D22EDAC14007C587B /* ZZLBSRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */; };
+		E7F4C0F9242087FF00017958 /* ZZWidgetSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F4C0F8242087FF00017958 /* ZZWidgetSwitch.m */; };
 		E7F5B87F22F182D7001F0C80 /* ic_nav_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */; };
 		E7F5B88022F182D7001F0C80 /* ic_nav_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */; };
 		E7F5B88122F182D7001F0C80 /* ic_nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */; };
@@ -946,6 +947,8 @@
 		E7F2151722ED8E13007C587B /* TestCountryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCountryVC.xib; sourceTree = "<group>"; };
 		E7F2151B22EDAC14007C587B /* ZZLBSRectangle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSRectangle.h; sourceTree = "<group>"; };
 		E7F2151C22EDAC14007C587B /* ZZLBSRectangle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLBSRectangle.m; sourceTree = "<group>"; };
+		E7F4C0F7242087FF00017958 /* ZZWidgetSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWidgetSwitch.h; sourceTree = "<group>"; };
+		E7F4C0F8242087FF00017958 /* ZZWidgetSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetSwitch.m; sourceTree = "<group>"; };
 		E7F5B87B22F182D7001F0C80 /* ic_nav_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_close@2x.png"; sourceTree = "<group>"; };
 		E7F5B87C22F182D7001F0C80 /* ic_nav_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_back@3x.png"; sourceTree = "<group>"; };
 		E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_nav_back@2x.png"; sourceTree = "<group>"; };
@@ -1471,6 +1474,8 @@
 				E7751BCE22F435FC00ECD06D /* ZZWidgetImageBrowser.m */,
 				E760BEE922F9A1EA00944380 /* ZZWidgetTagView.h */,
 				E760BEEA22F9A1EA00944380 /* ZZWidgetTagView.m */,
+				E7F4C0F7242087FF00017958 /* ZZWidgetSwitch.h */,
+				E7F4C0F8242087FF00017958 /* ZZWidgetSwitch.m */,
 			);
 			path = ZZWidget;
 			sourceTree = "<group>";
@@ -2308,6 +2313,7 @@
 				E78E767122C3633E00D1EF5A /* ZZCNRegionController.m in Sources */,
 				E77EBCEB2373CB6A0062E4A9 /* ZZPhotoDraftCell.m in Sources */,
 				E7675FFA22AF45DB0044B9AD /* ZZDevice.m in Sources */,
+				E7F4C0F9242087FF00017958 /* ZZWidgetSwitch.m in Sources */,
 				E788654A22B2008D00B20F3E /* UIImageView+ZZKit.m in Sources */,
 				E7E017A322AE6F2F00C24EF2 /* TestKeyboardAccessoryView.m in Sources */,
 				E77EBCE82373CB6A0062E4A9 /* ZZPhotoDraftHistoryViewController.m in Sources */,

@@ -394,13 +394,13 @@
     }
     cell.zzData = ds;
     __weak ZZCollectionView *weakSelf = self;
-    cell.zzTapBlock = ^(__kindof ZZCollectionViewCellDataSource * _Nonnull data, __kindof ZZCollectionViewCell * _Nonnull cell) {
+    cell.zzTapBlock = ^(__kindof ZZCollectionViewCell * _Nonnull cell) {
         __strong ZZCollectionView *strongSelf = weakSelf;
-        if (data != nil && cell != nil) {
+        if (cell != nil && cell.zzData != nil) {
             __block NSIndexPath *_indexPath = [strongSelf indexPathForCell:cell];
             __weak typeof(strongSelf) weakSelf = strongSelf;
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, _indexPath.section, _indexPath.row, ZZCollectionViewCellActionCustomTapped, data, cell);
+                weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, _indexPath.section, _indexPath.row, ZZCollectionViewCellActionCustomTapped, cell.zzData, cell);
             });
         }
     };

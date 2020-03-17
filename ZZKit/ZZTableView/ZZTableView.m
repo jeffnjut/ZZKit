@@ -404,12 +404,12 @@
     cell.zzData = cellData;
     if (cell.zzTapBlock == nil) {
         __weak ZZTableView *weakSelf = self;
-        cell.zzTapBlock = ^(__kindof ZZTableViewCellDataSource * _Nonnull data, __kindof ZZTableViewCell * _Nonnull cell) {
+        cell.zzTapBlock = ^(__kindof ZZTableViewCell * _Nonnull cell) {
             __strong ZZTableView *strongSelf = weakSelf;
-            if (data != nil && cell != nil) {
+            if (cell != nil && cell.zzData != nil) {
                 NSIndexPath *_indexPath = [strongSelf indexPathForCell:cell];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, _indexPath.section, _indexPath.row, ZZTableViewCellActionCustomTapped, data, cell, nil, nil);
+                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, _indexPath.section, _indexPath.row, ZZTableViewCellActionCustomTapped, cell.zzData, cell, nil, nil);
                 });
             }
         };
@@ -440,17 +440,17 @@
             headerView.zzData = headerData;
             if (headerView.zzTapBlock == nil) {
                 __weak ZZTableView *weakSelf = self;
-                headerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view) {
+                headerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterView * _Nonnull view) {
                     __strong ZZTableView *strongSelf = weakSelf;
-                    if (strongSelf.sectionEnabled && data != nil && view != nil) {
+                    if (strongSelf.sectionEnabled && view != nil && view.zzData != nil) {
                         for (NSUInteger i = 0; i < strongSelf.zzDataSource.count; i++) {
                             ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:i];
                             if (sectionObject.zzHeaderDataSource == nil) {
                                 continue;
                             }
-                            if (sectionObject.zzHeaderDataSource == data) {
+                            if (sectionObject.zzHeaderDataSource == view.zzData) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, i, NSUIntegerMax, ZZTableViewCellActionCustomTapped, nil, nil, data, view);
+                                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, i, NSUIntegerMax, ZZTableViewCellActionCustomTapped, nil, nil, view.zzData, view);
                                 });
                                 break;
                             }
@@ -487,17 +487,17 @@
             footerView.zzData = footerData;
             if (footerView.zzTapBlock == nil) {
                 __weak ZZTableView *weakSelf = self;
-                footerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view) {
+                footerView.zzTapBlock = ^(__kindof ZZTableViewHeaderFooterView * _Nonnull view) {
                     __strong ZZTableView *strongSelf = weakSelf;
-                    if (strongSelf.sectionEnabled && data != nil && view != nil) {
+                    if (strongSelf.sectionEnabled && view != nil && view.zzData != nil) {
                         for (NSUInteger i = 0; i < strongSelf.zzDataSource.count; i++) {
                             ZZTableSectionObject *sectionObject = [strongSelf.zzDataSource zz_arrayObjectAtIndex:i];
                             if (sectionObject.zzFooterDataSource == nil) {
                                 continue;
                             }
-                            if (sectionObject.zzFooterDataSource == data) {
+                            if (sectionObject.zzFooterDataSource == view.zzData) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, i, NSUIntegerMax, ZZTableViewCellActionCustomTapped, nil, nil, data, view);
+                                    strongSelf.zzActionBlock == nil ? : strongSelf.zzActionBlock(strongSelf, i, NSUIntegerMax, ZZTableViewCellActionCustomTapped, nil, nil, view.zzData, view);
                                 });
                                 break;
                             }

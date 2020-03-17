@@ -92,7 +92,7 @@
 
 - (IBAction)_tapSelect:(id)sender {
     
-    self.zzTapBlock == nil ? : self.zzTapBlock(self.zzData, self);
+    self.zzTapBlock == nil ? : self.zzTapBlock(self);
 }
 
 @end

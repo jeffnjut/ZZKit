@@ -38,7 +38,7 @@
 
 - (IBAction)_tap:(id)sender {
     
-    self.zzTapBlock == nil ? : self.zzTapBlock(self.zzData, self);
+    self.zzTapBlock == nil ? : self.zzTapBlock(self);
 }
 
 @end

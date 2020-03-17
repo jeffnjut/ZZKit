@@ -29,6 +29,7 @@
 #import "ZZWidgetMaskView.h"
 #import "TestPopupView.h"
 #import "UIViewController+ZZKit_ErrorPlaceholder.h"
+#import "ZZWidgetSwitch.h"
 
 @interface TestObject : NSObject
 
@@ -143,6 +144,19 @@
     [queue addPromptMaskView:mask1];
     [queue addPromptMaskView:mask2];
     [queue showMasksInView:self.view];
+    
+    ZZWidgetSwitch *swicthView = [ZZWidgetSwitch create:CGRectMake(16, 300, 32.0, 20)
+                                                   isOn:NO
+                                     offBackgroundColor:@"#D8D8D8".zz_color
+                                      onBackgroundColor:@"#FF7A00".zz_color
+                                             roundColor:@"#FFFFFF".zz_color
+                                roundToBackgroundMargin:2.0
+                                              animation:NO
+                                      beforeSwitchBlock:nil
+                                            switchBlock:^(BOOL isOn) {
+        NSLog(@"%d", isOn);
+    }];
+    [self.view addSubview:swicthView];
 }
 
 - (IBAction)_tapZZTabbarController:(id)sender {

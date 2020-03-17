@@ -25,7 +25,7 @@
     ZZ_WEAK_SELF
     [self.label zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         
-        weakSelf.zzTapBlock(weakSelf.zzData, weakSelf);
+        weakSelf.zzTapBlock(weakSelf);
         
     }];
 }

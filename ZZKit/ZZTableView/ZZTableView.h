@@ -210,7 +210,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) __kindof ZZTableViewCellDataSource *zzData;
 
 // 用户自定义点击Block
-@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewCellDataSource * _Nonnull data, __kindof ZZTableViewCell * _Nonnull cell);
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewCell * _Nonnull cell);
 
 // Cell 多选选中Selected状态图标
 @property (nonatomic, strong) UIImage *zzSelectedImage;
@@ -252,7 +252,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) __kindof ZZTableViewHeaderFooterViewDataSource *zzData;
 
 // 用户自定义点击Block
-@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewHeaderFooterViewDataSource * _Nonnull data, __kindof ZZTableViewHeaderFooterView * _Nonnull view);
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZTableViewHeaderFooterView * _Nonnull view);
 
 @end
 
