@@ -21,6 +21,7 @@
 		E70CB66923C89EF00085496B /* UITextField+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E70CB66823C89EF00085496B /* UITextField+ZZKit.m */; };
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
+		E71998D82421295900645C7A /* PracticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71998D72421295900645C7A /* PracticeVC.m */; };
 		E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */; };
 		E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500522EEAB8D00040AD2 /* ZZLBSNavigation.m */; };
 		E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */; };
@@ -349,7 +350,7 @@
 		E7D7C1AD22F9114F002890A8 /* TestPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D7C1AC22F9114F002890A8 /* TestPopupView.m */; };
 		E7D7C1AF22F91171002890A8 /* TestPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D7C1AE22F91171002890A8 /* TestPopupView.xib */; };
 		E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C17229CCC8600ED8733 /* AppDelegate.m */; };
-		E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C1A229CCC8600ED8733 /* ViewController.m */; };
+		E7DC5C1B229CCC8600ED8733 /* TestZZKitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C1A229CCC8600ED8733 /* TestZZKitVC.m */; };
 		E7DC5C1E229CCC8600ED8733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1C229CCC8600ED8733 /* Main.storyboard */; };
 		E7DC5C20229CCC8700ED8733 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */; };
 		E7DC5C23229CCC8700ED8733 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C21229CCC8700ED8733 /* LaunchScreen.storyboard */; };
@@ -423,6 +424,8 @@
 		E715E12122A6767A00228722 /* TestUIimageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIimageVC.h; sourceTree = "<group>"; };
 		E715E12222A6767A00228722 /* TestUIimageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIimageVC.m; sourceTree = "<group>"; };
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
+		E71998D62421295900645C7A /* PracticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PracticeVC.h; sourceTree = "<group>"; };
+		E71998D72421295900645C7A /* PracticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PracticeVC.m; sourceTree = "<group>"; };
 		E72D500122EE8FAB00040AD2 /* ZZLocationCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLocationCoordinate.h; sourceTree = "<group>"; };
 		E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLocationCoordinate.m; sourceTree = "<group>"; };
 		E72D500422EEAB8D00040AD2 /* ZZLBSNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSNavigation.h; sourceTree = "<group>"; };
@@ -884,8 +887,8 @@
 		E7DC5C13229CCC8600ED8733 /* ZZKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DC5C16229CCC8600ED8733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7DC5C17229CCC8600ED8733 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E7DC5C19229CCC8600ED8733 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E7DC5C1A229CCC8600ED8733 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E7DC5C19229CCC8600ED8733 /* TestZZKitVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZKitVC.h; sourceTree = "<group>"; };
+		E7DC5C1A229CCC8600ED8733 /* TestZZKitVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZKitVC.m; sourceTree = "<group>"; };
 		E7DC5C1D229CCC8600ED8733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7DC5C22229CCC8700ED8733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1000,6 +1003,21 @@
 				E70C72EA22A369EA00341A2B /* ZZDispatchQueue.m */,
 			);
 			path = ZZDispatchQueue;
+			sourceTree = "<group>";
+		};
+		E71998D52421293F00645C7A /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				E71998D924212B4600645C7A /* Runloop */,
+			);
+			path = Practice;
+			sourceTree = "<group>";
+		};
+		E71998D924212B4600645C7A /* Runloop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Runloop;
 			sourceTree = "<group>";
 		};
 		E7675FF622AF44F00044B9AD /* ZZMacro */ = {
@@ -1578,11 +1596,14 @@
 		E7DC5C15229CCC8600ED8733 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E7DC5C3C229CDE6600ED8733 /* test */,
+				E71998D52421293F00645C7A /* Practice */,
+				E7DC5C3C229CDE6600ED8733 /* TestZZKit */,
 				E7DC5C16229CCC8600ED8733 /* AppDelegate.h */,
 				E7DC5C17229CCC8600ED8733 /* AppDelegate.m */,
-				E7DC5C19229CCC8600ED8733 /* ViewController.h */,
-				E7DC5C1A229CCC8600ED8733 /* ViewController.m */,
+				E7DC5C19229CCC8600ED8733 /* TestZZKitVC.h */,
+				E7DC5C1A229CCC8600ED8733 /* TestZZKitVC.m */,
+				E71998D62421295900645C7A /* PracticeVC.h */,
+				E71998D72421295900645C7A /* PracticeVC.m */,
 				E7DC5C1C229CCC8600ED8733 /* Main.storyboard */,
 				E7DC5C1F229CCC8700ED8733 /* Assets.xcassets */,
 				E7DC5C21229CCC8700ED8733 /* LaunchScreen.storyboard */,
@@ -1739,7 +1760,7 @@
 			path = ZZCache;
 			sourceTree = "<group>";
 		};
-		E7DC5C3C229CDE6600ED8733 /* test */ = {
+		E7DC5C3C229CDE6600ED8733 /* TestZZKit */ = {
 			isa = PBXGroup;
 			children = (
 				E767600122AFB2060044B9AD /* test.bundle */,
@@ -1835,7 +1856,7 @@
 				E760E8F32373E4F3004C752F /* TestCameraVC.m */,
 				E760E8F42373E4F3004C752F /* TestCameraVC.xib */,
 			);
-			path = test;
+			path = TestZZKit;
 			sourceTree = "<group>";
 		};
 		E7DC5C42229CE2D600ED8733 /* ZZCamera */ = {
@@ -2256,7 +2277,7 @@
 				E70C400F22C0EEAC0047A1C0 /* TestHeadCollectionViewCell.m in Sources */,
 				E77EBD082373CB6A0062E4A9 /* ZZPhotoDraftBottomView.m in Sources */,
 				E767602222B0E1A10044B9AD /* NSObject+ZZKit_Image.m in Sources */,
-				E7DC5C1B229CCC8600ED8733 /* ViewController.m in Sources */,
+				E7DC5C1B229CCC8600ED8733 /* TestZZKitVC.m in Sources */,
 				E7F5B88522F1BA75001F0C80 /* UIView+ZZKit_HUD.m in Sources */,
 				E7675FFD22AF9DD10044B9AD /* NSAttributedString+ZZKit.m in Sources */,
 				E77EBD142373CB6A0062E4A9 /* ZZPhotoImageTagPointView.m in Sources */,
@@ -2299,6 +2320,7 @@
 				E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */,
 				E760E8F52373E4F3004C752F /* TestCameraVC.m in Sources */,
 				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
+				E71998D82421295900645C7A /* PracticeVC.m in Sources */,
 				E77EBD3B2373CB6A0062E4A9 /* ZZVideoPreview.m in Sources */,
 				E77EBD042373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.m in Sources */,
 				E77EBD052373CB6A0062E4A9 /* ZZPhotoEditFilterGenreView.m in Sources */,

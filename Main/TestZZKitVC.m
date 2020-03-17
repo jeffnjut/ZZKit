@@ -1,12 +1,12 @@
 //
-//  ViewController.m
+//  TestZZKitVC.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2019/5/28.
 //  Copyright © 2019 Jeff. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TestZZKitVC.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "TestFontVC.h"
 #import "TestGCDVC.h"
@@ -30,15 +30,16 @@
 #import "TestCollectionViewBasicVC.h"
 #import "TestCollectionCardVC.h"
 #import "TestCameraVC.h"
+#import "UIViewController+ZZKit.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TestZZKitVC () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
-@implementation ViewController
+@implementation TestZZKitVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,8 +104,7 @@
     
     Class cls = self.dataSource[indexPath.row][1];
     UIViewController *vc = [[cls alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController zz_push:vc animated:YES];
 }
-
 
 @end

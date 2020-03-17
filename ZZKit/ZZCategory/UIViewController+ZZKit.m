@@ -234,6 +234,7 @@
  *  Push Controller
  */
 - (void)zz_push:(nonnull UIViewController *)viewController animated:(BOOL)animated {
+    
     @synchronized (self) {
         if (![self _isLastPushOver:1.0]) {
             // Push间隔1秒
@@ -259,6 +260,7 @@
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            viewController.hidesBottomBarWhenPushed = YES;
             [navigationController pushViewController:viewController animated:animated];
         });
     }
