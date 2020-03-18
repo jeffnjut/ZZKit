@@ -338,6 +338,7 @@
  *  消失或者上一页[默认动画转场]
  */
 - (void)zz_dismiss {
+    
     [self zz_dismiss:YES];
 }
 
@@ -345,12 +346,13 @@
  *  消失或者上一页[Base]
  */
 - (void)zz_dismiss:(BOOL)animated {
+    
     __weak typeof(self) weakSelf = self;
     if ([self isKindOfClass:[UINavigationController class]]) {
         // UINavigationController
         UINavigationController *navigationController = (UINavigationController *)self;
         if ([navigationController.viewControllers count] > 1) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [(UINavigationController *)weakSelf popViewControllerAnimated:animated];
             });
         }else {
@@ -362,16 +364,16 @@
         // UIViewController
         if (self.navigationController != nil) {
             if ([self.navigationController.viewControllers count] > 1) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf.navigationController popViewControllerAnimated:animated];
                 });
             }else {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf.navigationController dismissViewControllerAnimated:animated completion:nil];
                 });
             }
         }else {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf dismissViewControllerAnimated:animated completion:nil];
             });
         }

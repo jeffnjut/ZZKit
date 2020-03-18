@@ -7,6 +7,7 @@
 //
 
 #import "PracticeVC.h"
+#import "NSString+ZZKit.h"
 
 @interface PracticeVC ()
 

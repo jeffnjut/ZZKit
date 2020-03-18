@@ -8,6 +8,85 @@
 
 #import <UIKit/UIKit.h>
 
+// 非负整数
+#define ZZ_PREDICATE_NON_NEGATIVE_INTEGER                 @"^\\d+$"
+// 非正整数
+#define ZZ_PREDICATE_NON_POSITIVE_INTEGER                 @"^((-\\d+)|(0+))$"
+// 正整数
+#define ZZ_PREDICATE_POSITIVE_INTEGER                     @"^[0-9]*[1-9][0-9]*$"
+// 负整数
+#define ZZ_PREDICATE_NEGATIVE_INTEGER                     @"^-[0-9]*[1-9][0-9]*$"
+// 整数
+#define ZZ_PREDICATE_INTEGER                              @"^-?\\d+$"
+// 非负浮点数
+#define ZZ_PREDICATE_NON_NEGATIVE_FLOAT                   @"^\\d+(\\.\\d+)?$"
+// 非正浮点数
+#define ZZ_PREDICATE_NON_POSITIVE_FLOAT                   @"^((-\\d+(\\.\\d+)?)|(0+(\\.0+)?))$"
+// 正浮点数
+#define ZZ_PREDICATE_POSITIVE_FLOAT                       @"^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$"
+// 负浮点数
+#define ZZ_PREDICATE_NEGATIVE_FLOAT                       @"^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$"
+// 浮点数
+#define ZZ_PREDICATE_FLOAT                                @"^(-?\\d+)(\\.\\d+)?$"
+// 26英文字符组成的字符串(不敏感大小写)
+#define ZZ_PREDICATE_26_LETTER_IGNORE_CASE                @"^[A-Za-z]+$"
+// 26英文字符组成的字符串(大写)
+#define ZZ_PREDICATE_26_LETTER_UPPER_CASE                 @"^[A-Z]+$"
+// 26英文字符组成的字符串(小写)
+#define ZZ_PREDICATE_26_LETTER_LOWER_CASE                 @"^[a-z]+$"
+// 26英文字符和数字组成的字符串(不敏感大小写)
+#define ZZ_PREDICATE_26_LETTER_AND_NUMBER                 @"^[A-Za-z0-9]+$"
+// 26英文字符、数字和下划线组成的字符串(不敏感大小写)
+#define ZZ_PREDICATE_26_LETTER_AND_NUMBER_AND_LINE        @"^[0-9a-zA-Z_]{1,}$"
+// 数字
+#define ZZ_PREDICATE_NUMBER                               @"^[0-9]*$"
+// N位数字
+#define ZZ_PREDICATE_NUMBER_BY_LENGTH(figure)             [NSString stringWithFormat:@"^\\d{%ld}$",figure]
+// 至少N位数组
+#define ZZ_PREDICATE_NUMBER_BY_LEAST_LENGTH(figure)       [NSString stringWithFormat:@"^\\d{%ld,}$",figure]
+// 最多N位数组
+#define ZZ_PREDICATE_NUMBER_BY_MOST_LENGTH(figure)        [NSString stringWithFormat:@"^\\d{,%ld}$",figure]
+// [M,N]位数组
+#define ZZ_PREDICATE_NUMBER_RANGE(fromFigure, toFigure)   [NSString stringWithFormat:@"^\\d{%ld,%ld}$",fromFigure,toFigure]
+// 邮箱
+#define ZZ_PREDICATE_EMAIL                                @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+// 电话（包括座机和手机）
+#define ZZ_PREDICATE_PHONE                                @"^(\\d+-)?(\\d{4}-?\\d{7}|\\d{3}-?\\d{8}|^\\d{7,8})(-\\d+)?$"
+// 国内座机电话
+#define ZZ_PREDICATE_FIX_LINE                             @"^((\\d{3}-|\\d{4}-)?(\\d{8}|\\d{7})?)$"
+// IP
+#define ZZ_PREDICATE_IP                                   @"^(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5]).(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5]).(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5]).(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])$"
+// 中文汉字
+#define ZZ_PREDICATE_CHINESE_TEXT                         @"^[\u4E00-\u9FA5]*$"
+// 双字节（包括汉字）
+#define ZZ_PREDICATE_DOUBLE_BYTE_TEXT                     @"[^\\x00-\\xff]$"
+// 空行
+#define ZZ_PREDICATE_BLANK                                @"^(\\n[\\s| ]*\\r)$"
+// URL
+#define ZZ_PREDICATE_URL                                  @"^[a-zA-z]+://(\\w+(-\\w+)*)(\\.(\\w+(-\\w+)*))*(\\?\\S*)?$"
+// 时间格式：年-月-日
+#define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_HYPEN            @"^(\\d{2}|d{4})-((0([1-9]{1}))|(1[1|2]))-(([0-2]([1-9]{1}))|(3[0|1]))$"
+// 时间格式：月/日/年
+#define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_SLASH            @"^((0([1-9]{1}))|(1[1|2]))/(([0-2]([1-9]{1}))|(3[0|1]))\\(\\d{2}|\\d{4})$"
+// HTML SYNTAX
+#define ZZ_PREDICATE_HTML_SYNTAX                          @"^(\\<(.*)>.*<\\\1>|<(.*) \\>\\)$"
+// QQ
+#define ZZ_PREDICATE_QQ                                   @"^[1-9]*[1-9][0-9]*$"
+// Special Characters
+#define ZZ_PREDICATE_SPECIAL_CHARACTERS                   @"^([~!/@#$%^&*()-_=+\\|[{}];:\'\",<.>/?]+)$"
+// 中国车牌
+#define ZZ_PREDICATE_CAR_PLATE_NUMBER                     @"^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\u4e00-\u9fa5]$"
+// 身份证
+#define ZZ_PREDICATE_ID_CARD                              @"^(\\d{14}|\\d{17})(\\d|[xX])$"
+// 银行卡
+#define ZZ_PREDICATE_BANK_CARD                            @"^(\\d{15,30})"
+// 用户名（字母开头，允许5-16字节，允许字母数字下划线）
+#define ZZ_PREDICATE_USERNAME                             @"^[a-zA-Z][a-zA-Z0-9_]{4,15}$"
+// 昵称
+#define ZZ_PREDICATE_NICKNAME                             @"([\u4e00-\u9fa5]{2,5})(&middot;[\u4e00-\u9fa5]{2,15})*"
+// 密码（以字母开头，长度在6~30 之间，只能包含字符、数字和下划线）
+#define ZZ_PREDICATE_PASSWORD                             @"^[a-zA-Z]\\w{6,30}$"
+
 typedef NS_ENUM(NSInteger, ZZStringTrimmingType) {
     ZZStringTrimmingTypeNone,                     // 不去除空格
     ZZStringTrimmingTypeDefault,                  // 默认（去除两端的空格）

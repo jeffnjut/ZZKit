@@ -34,8 +34,9 @@
         if ([self length] == 9) {
             NSString *colorHex = [self substringToIndex:7];
             NSString *alphaPercent = [self substringFromIndex:7];
-            float alpha = [alphaPercent floatValue] / 255.0;
-            return [UIColor zz_colorHexString:colorHex withAlpha:alpha];
+            unsigned int alpha = 0;
+            [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
+            return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
         }else if ([self length] == 7) {
             return [UIColor zz_colorHexString:self];
         }
@@ -43,8 +44,9 @@
         if ([self length] == 8) {
             NSString *colorHex = [NSString stringWithFormat:@"#%@",[self substringToIndex:6]];
             NSString *alphaPercent = [self substringFromIndex:6];
-            float alpha = [alphaPercent floatValue] / 255.0;
-            return [UIColor zz_colorHexString:colorHex withAlpha:alpha];
+            unsigned int alpha = 0;
+            [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
+            return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
         }else if ([self length] == 6) {
             return [UIColor zz_colorHexString:[NSString stringWithFormat:@"#%@",self]];
         }
@@ -120,6 +122,17 @@
     // 将NSData转为UIImage
     UIImage *decodedImage = [UIImage imageWithData:decodedData];
     return decodedImage;
+}
+
+#pragma mark - 正则、谓词
+
+/**
+ * 正则判断
+ */
+- (BOOL)zz_predicate:(nonnull NSString *)regex {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:self];
 }
 
 #pragma mark - 校验、比较、转换
