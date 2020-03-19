@@ -339,8 +339,6 @@
 		E7C5B63023E4730700E18047 /* NSArray+FetchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B62F23E4730700E18047 /* NSArray+FetchImage.m */; };
 		E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */; };
 		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
-		E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */; };
-		E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */; };
 		E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */; };
 		E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24642328999100F7C8FE /* BasicHeaderView.m */; };
 		E7CE24672328999100F7C8FE /* BasicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE24652328999100F7C8FE /* BasicHeaderView.xib */; };
@@ -872,9 +870,6 @@
 		E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTagViewVC.h; sourceTree = "<group>"; };
 		E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTagViewVC.m; sourceTree = "<group>"; };
 		E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTagViewVC.xib; sourceTree = "<group>"; };
-		E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunLoopVC.h; sourceTree = "<group>"; };
-		E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunLoopVC.m; sourceTree = "<group>"; };
-		E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunLoopVC.xib; sourceTree = "<group>"; };
 		E7CE24602328962200F7C8FE /* TestCollectionViewBasicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewBasicVC.h; sourceTree = "<group>"; };
 		E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCollectionViewBasicVC.m; sourceTree = "<group>"; };
 		E7CE24632328999100F7C8FE /* BasicHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicHeaderView.h; sourceTree = "<group>"; };
@@ -1805,9 +1800,6 @@
 				E7AA9517229E92B7003964B8 /* TestGCDVC.h */,
 				E7AA9518229E92B7003964B8 /* TestGCDVC.m */,
 				E7AA9519229E92B7003964B8 /* TestGCDVC.xib */,
-				E7CC8878229FB26100C8E744 /* TestRunLoopVC.h */,
-				E7CC8879229FB26100C8E744 /* TestRunLoopVC.m */,
-				E7CC887A229FB26100C8E744 /* TestRunLoopVC.xib */,
 				E7D4606122A02A6C00CF4F14 /* TestOperationQueueVC.h */,
 				E7D4606222A02A6C00CF4F14 /* TestOperationQueueVC.m */,
 				E7D4606322A02A6C00CF4F14 /* TestOperationQueueVC.xib */,
@@ -2191,7 +2183,6 @@
 				E77EBCDE2373CB6A0062E4A9 /* ic_photo_draft_unselected@3x.png in Resources */,
 				E7CE24672328999100F7C8FE /* BasicHeaderView.xib in Resources */,
 				E77EBC772373CB6A0062E4A9 /* ic_edit_tuning_highlighted@3x.png in Resources */,
-				E7CC887C229FB26100C8E744 /* TestRunLoopVC.xib in Resources */,
 				E77EBCC72373CB6A0062E4A9 /* ic_1_1@2x.png in Resources */,
 				E77EBCD82373CB6A0062E4A9 /* ic_logo_tag_topic@3x.png in Resources */,
 				E77EBD1A2373CB6A0062E4A9 /* btn_camera_back@2x.png in Resources */,
@@ -2321,7 +2312,6 @@
 				E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */,
 				E7751BCF22F435FC00ECD06D /* ZZWidgetImageBrowser.m in Sources */,
 				E77EBCEC2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.m in Sources */,
-				E7CC887B229FB26100C8E744 /* TestRunLoopVC.m in Sources */,
 				E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E77EBCED2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.m in Sources */,

@@ -10,7 +10,6 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "TestFontVC.h"
 #import "TestGCDVC.h"
-#import "TestRunLoopVC.h"
 #import "TestOperationQueueVC.h"
 #import "TestZZDispatchQueueVC.h"
 #import "TestUIResponderBlockVC.h"
@@ -54,7 +53,6 @@
     self.dataSource = @[@[@"测试相册相机", [TestCameraVC class]],
                         @[@"测试字体", [TestFontVC class]],
                         @[@"测试GCD", [TestGCDVC class]],
-                        @[@"测试RunLoop", [TestRunLoopVC class]],
                         @[@"测试NSOperationQueue", [TestOperationQueueVC class]],
                         @[@"测试ZZDispatchQueue", [TestZZDispatchQueueVC class]],
                         @[@"测试UIResponder点击", [TestUIResponderBlockVC class]],
