@@ -32,6 +32,12 @@
 		E72DFBC022B15F420099A8C4 /* ZZSafariController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBBF22B15F420099A8C4 /* ZZSafariController.m */; };
 		E72DFBC322B1601A0099A8C4 /* ZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC222B1601A0099A8C4 /* ZZWebView.m */; };
 		E72DFBC622B1603E0099A8C4 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */; };
+		E733AD7A2423BE9400045480 /* TestPredicateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E733AD782423BE9400045480 /* TestPredicateVC.m */; };
+		E733AD7B2423BE9400045480 /* TestPredicateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E733AD792423BE9400045480 /* TestPredicateVC.xib */; };
+		E733AD7D2423BEC700045480 /* Predicate.md in Resources */ = {isa = PBXBuildFile; fileRef = E733AD7C2423BEC700045480 /* Predicate.md */; };
+		E733AD812423BEEA00045480 /* TestRunloopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E733AD7F2423BEEA00045480 /* TestRunloopVC.m */; };
+		E733AD822423BEEA00045480 /* TestRunloopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E733AD802423BEEA00045480 /* TestRunloopVC.xib */; };
+		E733AD842423BEFB00045480 /* Runloop.md in Resources */ = {isa = PBXBuildFile; fileRef = E733AD832423BEFB00045480 /* Runloop.md */; };
 		E744127D22F286A800773562 /* gif_loading_bull.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744127C22F286A800773562 /* gif_loading_bull.gif */; };
 		E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744128022F2B33000773562 /* gif_loading_rotataion.gif */; };
 		E744128322F2B6C900773562 /* gif_loading_shopping.gif in Resources */ = {isa = PBXBuildFile; fileRef = E744128222F2B6C800773562 /* gif_loading_shopping.gif */; };
@@ -445,6 +451,14 @@
 		E72DFBC222B1601A0099A8C4 /* ZZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebView.m; sourceTree = "<group>"; };
 		E72DFBC422B1603E0099A8C4 /* ZZWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
 		E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
+		E733AD772423BE9400045480 /* TestPredicateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestPredicateVC.h; sourceTree = "<group>"; };
+		E733AD782423BE9400045480 /* TestPredicateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPredicateVC.m; sourceTree = "<group>"; };
+		E733AD792423BE9400045480 /* TestPredicateVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestPredicateVC.xib; sourceTree = "<group>"; };
+		E733AD7C2423BEC700045480 /* Predicate.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Predicate.md; sourceTree = "<group>"; };
+		E733AD7E2423BEEA00045480 /* TestRunloopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRunloopVC.h; sourceTree = "<group>"; };
+		E733AD7F2423BEEA00045480 /* TestRunloopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRunloopVC.m; sourceTree = "<group>"; };
+		E733AD802423BEEA00045480 /* TestRunloopVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestRunloopVC.xib; sourceTree = "<group>"; };
+		E733AD832423BEFB00045480 /* Runloop.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Runloop.md; sourceTree = "<group>"; };
 		E744127C22F286A800773562 /* gif_loading_bull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_bull.gif; sourceTree = "<group>"; };
 		E744128022F2B33000773562 /* gif_loading_rotataion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_rotataion.gif; sourceTree = "<group>"; };
 		E744128222F2B6C800773562 /* gif_loading_shopping.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_loading_shopping.gif; sourceTree = "<group>"; };
@@ -1008,6 +1022,7 @@
 		E71998D52421293F00645C7A /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				E733AD762423BE5A00045480 /* Predicate */,
 				E71998D924212B4600645C7A /* Runloop */,
 			);
 			path = Practice;
@@ -1016,8 +1031,23 @@
 		E71998D924212B4600645C7A /* Runloop */ = {
 			isa = PBXGroup;
 			children = (
+				E733AD832423BEFB00045480 /* Runloop.md */,
+				E733AD7E2423BEEA00045480 /* TestRunloopVC.h */,
+				E733AD7F2423BEEA00045480 /* TestRunloopVC.m */,
+				E733AD802423BEEA00045480 /* TestRunloopVC.xib */,
 			);
 			path = Runloop;
+			sourceTree = "<group>";
+		};
+		E733AD762423BE5A00045480 /* Predicate */ = {
+			isa = PBXGroup;
+			children = (
+				E733AD7C2423BEC700045480 /* Predicate.md */,
+				E733AD772423BE9400045480 /* TestPredicateVC.h */,
+				E733AD782423BE9400045480 /* TestPredicateVC.m */,
+				E733AD792423BE9400045480 /* TestPredicateVC.xib */,
+			);
+			path = Predicate;
 			sourceTree = "<group>";
 		};
 		E7675FF622AF44F00044B9AD /* ZZMacro */ = {
@@ -2008,6 +2038,7 @@
 				E77EBC972373CB6A0062E4A9 /* ic_photolibrary_down@3x.png in Resources */,
 				E77EBCFF2373CB6A0062E4A9 /* ZZTakePhotoButton.xib in Resources */,
 				E77EBD212373CB6A0062E4A9 /* ic_torch_on@2x.png in Resources */,
+				E733AD7B2423BE9400045480 /* TestPredicateVC.xib in Resources */,
 				E77EBC992373CB6A0062E4A9 /* ic_edit_ok@2x.png in Resources */,
 				E77EBCCE2373CB6A0062E4A9 /* ic_logo_tag_dollar@3x.png in Resources */,
 				E77EBCD32373CB6A0062E4A9 /* ic_logo_tag_topic@2x.png in Resources */,
@@ -2026,6 +2057,7 @@
 				E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */,
 				E77EBC7A2373CB6A0062E4A9 /* ic_edit_contrast@2x.png in Resources */,
 				E77EBC8C2373CB6A0062E4A9 /* ic_4_5@3x.png in Resources */,
+				E733AD7D2423BEC700045480 /* Predicate.md in Resources */,
 				E77EBCC12373CB6A0062E4A9 /* ic_edit_saturation@3x.png in Resources */,
 				E77EBD2A2373CB6A0062E4A9 /* ic_auto_focus_exposure@2x.png in Resources */,
 				E77EBC872373CB6A0062E4A9 /* ic_pagecontrol_selected@2x.png in Resources */,
@@ -2036,6 +2068,7 @@
 				E77EBCC92373CB6A0062E4A9 /* ic_logo_tag_euro@2x.png in Resources */,
 				E760BEE522F9797000944380 /* ZZNetworkErrorDropSheet.xib in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
+				E733AD822423BEEA00045480 /* TestRunloopVC.xib in Resources */,
 				E77EBCDA2373CB6A0062E4A9 /* ic_back@3x.png in Resources */,
 				E7814E2322DC707E00C2CE44 /* NativePack.js in Resources */,
 				E77EBC852373CB6A0062E4A9 /* ic_edit_filter@2x.png in Resources */,
@@ -2132,6 +2165,7 @@
 				E760BEE822F9797000944380 /* ZZNetworkErrorDescViewController.xib in Resources */,
 				E77EBC8A2373CB6A0062E4A9 /* ic_edit_tuning_highlighted@2x.png in Resources */,
 				E77EBCBD2373CB6A0062E4A9 /* ic_5_4@3x.png in Resources */,
+				E733AD842423BEFB00045480 /* Runloop.md in Resources */,
 				E7AA951B229E92B7003964B8 /* TestGCDVC.xib in Resources */,
 				E77EBD302373CB6A0062E4A9 /* ic_torch_off_2@3x.png in Resources */,
 				E77EBCB62373CB6A0062E4A9 /* ic_logo_tag_brand@2x.png in Resources */,
@@ -2317,6 +2351,7 @@
 				E70C3FFC22C09F8C0047A1C0 /* ZZCollectionView.m in Sources */,
 				E78E767422C3635100D1EF5A /* ZZCountryController.m in Sources */,
 				E7E0179B22AE24AE00C24EF2 /* TestNotificationVC.m in Sources */,
+				E733AD812423BEEA00045480 /* TestRunloopVC.m in Sources */,
 				E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */,
 				E760E8F52373E4F3004C752F /* TestCameraVC.m in Sources */,
 				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
@@ -2363,6 +2398,7 @@
 				E7CE2470232899C100F7C8FE /* BasicCollectionViewCell.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
 				E77EBCE72373CB6A0062E4A9 /* ZZPhotoSelectTagBaseViewController.m in Sources */,
+				E733AD7A2423BE9400045480 /* TestPredicateVC.m in Sources */,
 				E77EBCFD2373CB6A0062E4A9 /* ZZPhotoCropperView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E777A35F23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m in Sources */,
