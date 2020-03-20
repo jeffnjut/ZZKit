@@ -126,6 +126,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIImage *)zz_base64toImage;
 
+#pragma mark - 正则、谓词
+
+/**
+ * 正则判断
+ */
+- (BOOL)zz_predicate:(nonnull NSString *)regex;
+
 #pragma mark - 校验、比较、转换
 
 /**
