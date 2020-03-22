@@ -41,13 +41,13 @@
 // 数字
 #define ZZ_PREDICATE_NUMBER                               @"^[0-9]*$"
 // N位数字
-#define ZZ_PREDICATE_NUMBER_BY_LENGTH(figure)             [NSString stringWithFormat:@"^\\d{%ld}$",figure]
+#define ZZ_PREDICATE_NUMBER_BY_LENGTH(figure)             [NSString stringWithFormat:@"^\\d{%d}$",figure]
 // 至少N位数组
-#define ZZ_PREDICATE_NUMBER_BY_LEAST_LENGTH(figure)       [NSString stringWithFormat:@"^\\d{%ld,}$",figure]
+#define ZZ_PREDICATE_NUMBER_BY_LEAST_LENGTH(figure)       [NSString stringWithFormat:@"^\\d{%d,}$",figure]
 // 最多N位数组
-#define ZZ_PREDICATE_NUMBER_BY_MOST_LENGTH(figure)        [NSString stringWithFormat:@"^\\d{,%ld}$",figure]
+#define ZZ_PREDICATE_NUMBER_BY_MOST_LENGTH(figure)        [NSString stringWithFormat:@"^\\d{,%d}$",figure]
 // [M,N]位数组
-#define ZZ_PREDICATE_NUMBER_RANGE(fromFigure, toFigure)   [NSString stringWithFormat:@"^\\d{%ld,%ld}$",fromFigure,toFigure]
+#define ZZ_PREDICATE_NUMBER_RANGE(fromFigure, toFigure)   [NSString stringWithFormat:@"^\\d{%d,%d}$",fromFigure,toFigure]
 // 邮箱
 #define ZZ_PREDICATE_EMAIL                                @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 // 电话（包括座机和手机）
@@ -68,8 +68,8 @@
 #define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_HYPEN            @"^(\\d{2}|d{4})-((0([1-9]{1}))|(1[1|2]))-(([0-2]([1-9]{1}))|(3[0|1]))$"
 // 时间格式：月/日/年
 #define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_SLASH            @"^((0([1-9]{1}))|(1[1|2]))/(([0-2]([1-9]{1}))|(3[0|1]))\\(\\d{2}|\\d{4})$"
-// HTML SYNTAX
-#define ZZ_PREDICATE_HTML_SYNTAX                          @"^(\\<(.*)>.*<\\\1>|<(.*) \\>\\)$"
+// HTML SYNTAX（包含）
+#define ZZ_PREDICATE_HTML_SYNTAX                          @"(.*<*>[.\n]*</.*>.*|.*<.*/>.*)"
 // QQ
 #define ZZ_PREDICATE_QQ                                   @"^[1-9]*[1-9][0-9]*$"
 // Special Characters

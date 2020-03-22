@@ -339,6 +339,7 @@
 		E7C5B63023E4730700E18047 /* NSArray+FetchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B62F23E4730700E18047 /* NSArray+FetchImage.m */; };
 		E7CC0AC422FAEB3F0032E16D /* TestTagViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */; };
 		E7CC0AC522FAEB3F0032E16D /* TestTagViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */; };
+		E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD330824263D9E00DCA0AD /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */; };
 		E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE24642328999100F7C8FE /* BasicHeaderView.m */; };
 		E7CE24672328999100F7C8FE /* BasicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE24652328999100F7C8FE /* BasicHeaderView.xib */; };
@@ -870,6 +871,8 @@
 		E7CC0AC122FAEB3F0032E16D /* TestTagViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTagViewVC.h; sourceTree = "<group>"; };
 		E7CC0AC222FAEB3F0032E16D /* TestTagViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTagViewVC.m; sourceTree = "<group>"; };
 		E7CC0AC322FAEB3F0032E16D /* TestTagViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTagViewVC.xib; sourceTree = "<group>"; };
+		E7CD330824263D9E00DCA0AD /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		E7CD330924263D9E00DCA0AD /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		E7CE24602328962200F7C8FE /* TestCollectionViewBasicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewBasicVC.h; sourceTree = "<group>"; };
 		E7CE24612328962200F7C8FE /* TestCollectionViewBasicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCollectionViewBasicVC.m; sourceTree = "<group>"; };
 		E7CE24632328999100F7C8FE /* BasicHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicHeaderView.h; sourceTree = "<group>"; };
@@ -1577,6 +1580,23 @@
 			path = PopupView;
 			sourceTree = "<group>";
 		};
+		E7CD330624263D9E00DCA0AD /* ZZKit-3rd */ = {
+			isa = PBXGroup;
+			children = (
+				E7CD330724263D9E00DCA0AD /* OpenUDID */,
+			);
+			path = "ZZKit-3rd";
+			sourceTree = "<group>";
+		};
+		E7CD330724263D9E00DCA0AD /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				E7CD330824263D9E00DCA0AD /* OpenUDID.m */,
+				E7CD330924263D9E00DCA0AD /* OpenUDID.h */,
+			);
+			path = OpenUDID;
+			sourceTree = "<group>";
+		};
 		E7CE245F2328957E00F7C8FE /* TestCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1600,13 +1620,14 @@
 		E7DC5C0A229CCC8600ED8733 = {
 			isa = PBXGroup;
 			children = (
-				E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */,
-				E7DC5C42229CE2D600ED8733 /* ZZCamera */,
-				E7DC5C2E229CD6A500ED8733 /* ZZKit */,
 				E7DC5C15229CCC8600ED8733 /* Main */,
+				E7DC5C42229CE2D600ED8733 /* ZZCamera */,
+				E7CD330624263D9E00DCA0AD /* ZZKit-3rd */,
+				E7DC5C2E229CD6A500ED8733 /* ZZKit */,
+				E7DC5C2C229CD69700ED8733 /* ZZKit.podspec */,
+				C9C8E0306189878D899EC1FA /* Frameworks */,
 				E7DC5C14229CCC8600ED8733 /* Products */,
 				79E36189561E6CBFBE1F592D /* Pods */,
-				C9C8E0306189878D899EC1FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2255,6 +2276,7 @@
 				E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */,
 				E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
+				E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,

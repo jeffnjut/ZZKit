@@ -11,7 +11,7 @@
 #import "NSBundle+ZZKit.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import <AdSupport/AdSupport.h>
-#import <OpenUDID/OpenUDID.h>
+#import "OpenUDID.h"
 
 @interface _ZZImageTemporaryObject : NSObject
 

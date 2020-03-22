@@ -10,7 +10,6 @@ target "ZZKit" do
   pod 'SDWebImage', '~> 4.4.7'
   pod 'YYImage'
   pod 'YYModel'
-  pod 'OpenUDID'
   # pod 'AFNetworking'
   # pod 'BlocksKit'
   # pod 'MJRefresh'
