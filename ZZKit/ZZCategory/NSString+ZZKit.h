@@ -63,7 +63,7 @@
 // 空行
 #define ZZ_PREDICATE_BLANK                                @"^(\\n[\\s| ]*\\r)$"
 // URL
-#define ZZ_PREDICATE_URL                                  @"^[a-zA-z]+://(\\w+(-\\w+)*)(\\.(\\w+(-\\w+)*))*(\\?\\S*)?$"
+#define ZZ_PREDICATE_URL                                  @"[a-zA-z]+://[^\\s]*"
 // 时间格式：年-月-日
 #define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_HYPEN            @"^(\\d{2}|d{4})-((0([1-9]{1}))|(1[1|2]))-(([0-2]([1-9]{1}))|(3[0|1]))$"
 // 时间格式：月/日/年
@@ -132,6 +132,13 @@ NS_ASSUME_NONNULL_BEGIN
  * 正则判断
  */
 - (BOOL)zz_predicate:(nonnull NSString *)regex;
+
+#pragma mark - URL
+
+/**
+ * URL Encode
+ */
+- (NSString *)zz_url_encode;
 
 #pragma mark - 校验、比较、转换
 

@@ -132,7 +132,25 @@
 - (BOOL)zz_predicate:(nonnull NSString *)regex {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    return [predicate evaluateWithObject:self];
+    BOOL ret = NO;
+    @try {
+        ret = [predicate evaluateWithObject:self];
+    } @catch (NSException *exception) {
+        NSLog(@"Ex : %@", exception);
+    } @finally {
+        
+    }
+    return ret;
+}
+
+#pragma mark - URL
+
+/**
+ * URL Encode
+ */
+- (NSString *)zz_url_encode {
+    
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 #pragma mark - 校验、比较、转换

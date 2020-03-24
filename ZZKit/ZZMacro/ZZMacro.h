@@ -24,8 +24,8 @@
 // String Helper
 #pragma mark - String Helper
 
-#define ZZ_STR_NULL_OR_EMPTY(str)             (str == nil || ![str isKindOfClass:[NSString class]] || ((NSString *)str).length == 0)
-#define ZZ_STR_NULL_OR_EMPTY_TRIMSPACE(str)   (str == nil || ![str isKindOfClass:[NSString class]] || ((NSString *)str).length == 0 || [((NSString *)str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0)
+#define ZZ_STR_NULL_OR_EMPTY(str)             (str == nil || ([str isKindOfClass:[NSString class]] && ((NSString *)str).length == 0) || ([str isKindOfClass:[NSAttributedString class]] && ((NSAttributedString *)str).length == 0))
+#define ZZ_STR_NULL_OR_EMPTY_TRIMSPACE(str)   (str == nil || ([str isKindOfClass:[NSString class]] && [((NSString *)str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0) || ([str isKindOfClass:[NSAttributedString class]] && [((NSAttributedString *)str).string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0))
 #define ZZ_STR_FORMAT_INTEGER(num)            [NSString stringWithFormat:@"%ld",(long)(num)]
 #define ZZ_STR_FORMAT_FLOAT_0_DECIMAL(num)    [NSString stringWithFormat:@"%f",num]
 #define ZZ_STR_FORMAT_FLOAT_1_DECIMAL(num)    [NSString stringWithFormat:@"%.1f",num]
