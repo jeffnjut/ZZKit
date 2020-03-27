@@ -30,25 +30,27 @@
  */
 - (UIColor *)zz_color {
     
-    if ([self characterAtIndex:0] == '#') {
-        if ([self length] == 9) {
-            NSString *colorHex = [self substringToIndex:7];
-            NSString *alphaPercent = [self substringFromIndex:7];
-            unsigned int alpha = 0;
-            [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
-            return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
-        }else if ([self length] == 7) {
-            return [UIColor zz_colorHexString:self];
-        }
-    }else{
-        if ([self length] == 8) {
-            NSString *colorHex = [NSString stringWithFormat:@"#%@",[self substringToIndex:6]];
-            NSString *alphaPercent = [self substringFromIndex:6];
-            unsigned int alpha = 0;
-            [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
-            return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
-        }else if ([self length] == 6) {
-            return [UIColor zz_colorHexString:[NSString stringWithFormat:@"#%@",self]];
+    if ([self isKindOfClass:[NSString class]] && [self length] > 0) {
+        if ([self characterAtIndex:0] == '#') {
+            if ([self length] == 9) {
+                NSString *colorHex = [self substringToIndex:7];
+                NSString *alphaPercent = [self substringFromIndex:7];
+                unsigned int alpha = 0;
+                [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
+                return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
+            }else if ([self length] == 7) {
+                return [UIColor zz_colorHexString:self];
+            }
+        }else{
+            if ([self length] == 8) {
+                NSString *colorHex = [NSString stringWithFormat:@"#%@",[self substringToIndex:6]];
+                NSString *alphaPercent = [self substringFromIndex:6];
+                unsigned int alpha = 0;
+                [[NSScanner scannerWithString:alphaPercent] scanHexInt:&alpha];
+                return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
+            }else if ([self length] == 6) {
+                return [UIColor zz_colorHexString:[NSString stringWithFormat:@"#%@",self]];
+            }
         }
     }
     return nil;

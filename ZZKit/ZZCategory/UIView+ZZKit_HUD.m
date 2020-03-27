@@ -43,6 +43,8 @@
  */
 - (MBProgressHUD *)zz_startLoading:(nonnull NSData *)gifData backgroundColor:(nullable UIColor *)backgroundColor bezelViewColor:(nullable UIColor *)bezelViewColor gifViewColor:(nullable UIColor *)gifViewColor boderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor cornerRadius:(CGFloat)cornerRadius userInteractionEnabled:(BOOL)userInteractionEnabled {
     
+    [self endEditing:YES];
+    
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
     
@@ -510,6 +512,8 @@
     if ([self.window.subviews.lastObject isMemberOfClass:[popupView class]]) {
         return;
     }
+    
+    [self endEditing:YES];
 
     __weak typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
