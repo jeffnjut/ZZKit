@@ -15,22 +15,22 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  获取 KeyWindow
  */
-+ (UIWindow *)zz_window;
++ (UIWindow *)zz_keyWindow;
 
 /**
  *  获取 KeyWindow Actived UIViewController
  */
-+ (UIViewController *)zz_windowActivedViewController;
++ (UIViewController *)zz_keyWindowActivedViewController;
 
 /**
  *  获取 KeyWindow Presented ViewController
  */
-+ (UIViewController *)zz_windowPresentedViewController;
++ (UIViewController *)zz_keyWindowPresentedViewController;
 
 /**
  *  获取 KeyWindow 当前TopViewController
  */
-+ (UIViewController*)zz_windowTopViewController;
++ (UIViewController*)zz_keyWindowTopViewController;
 
 /**
  *  获取 Actived UIViewController

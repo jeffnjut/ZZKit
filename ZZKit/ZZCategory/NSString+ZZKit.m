@@ -32,7 +32,9 @@
     
     if ([self isKindOfClass:[NSString class]] && [self length] > 0) {
         if ([self characterAtIndex:0] == '#') {
+            
             if ([self length] == 9) {
+                
                 NSString *colorHex = [self substringToIndex:7];
                 NSString *alphaPercent = [self substringFromIndex:7];
                 unsigned int alpha = 0;
@@ -40,6 +42,14 @@
                 return [UIColor zz_colorHexString:colorHex withAlpha:(float)alpha / 255.0];
             }else if ([self length] == 7) {
                 return [UIColor zz_colorHexString:self];
+            }else if ([self length] == 4) {
+                return [UIColor zz_colorHexString:[NSString stringWithFormat:@"#%@%@%@%@%@%@",
+                        [self substringWithRange:NSMakeRange(1, 1)],
+                        [self substringWithRange:NSMakeRange(1, 1)],
+                        [self substringWithRange:NSMakeRange(2, 1)],
+                        [self substringWithRange:NSMakeRange(2, 1)],
+                        [self substringWithRange:NSMakeRange(3, 1)],
+                        [self substringWithRange:NSMakeRange(3, 1)]]];
             }
         }else{
             if ([self length] == 8) {

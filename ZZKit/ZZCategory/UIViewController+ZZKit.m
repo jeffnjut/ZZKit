@@ -589,6 +589,44 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+
+#pragma mark - 获取Top ViewController
+
+- (UIViewController *)zz_topViewController {
+    
+    if (self.presentedViewController) {
+        // Return presented view controller
+        return [self.presentedViewController zz_topViewController];
+    }else if ([self isKindOfClass:[UISplitViewController class]]) {
+        // Return right hand side
+        UISplitViewController *svc = (UISplitViewController *)self;
+        if (svc.viewControllers.count > 0) {
+            return [svc.viewControllers.lastObject zz_topViewController];
+        }else {
+            return self;
+        }
+    }else if ([self isKindOfClass:[UINavigationController class]]) {
+        // Return top view
+        UINavigationController *nav = (UINavigationController *)self;
+        if (nav.viewControllers.count > 0) {
+            return [nav.topViewController zz_topViewController];
+        }else {
+            return self;
+        }
+    }else if ([self isKindOfClass:[UITabBarController class]]) {
+        // Return visible view
+        UITabBarController *tabVC = (UITabBarController *)self;
+        if (tabVC.viewControllers.count > 0) {
+            return [tabVC.selectedViewController zz_topViewController];
+        }else {
+            return self;
+        }
+    }else {
+        // Unknown view controller type, return last child view controller
+        return self;
+    }
+}
+
 #pragma mark - Private
 
 /**

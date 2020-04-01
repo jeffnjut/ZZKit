@@ -79,12 +79,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  根据Class查找UIView
  */
-- (nullable __kindof UIView*)zz_findView:(nonnull Class)cls;
+- (nullable __kindof UIView *)zz_findView:(nonnull Class)cls;
 
 /**
  *  根据Class查找UIViewController
  */
-- (nullable __kindof UIViewController*)zz_findViewController:(nonnull Class)cls;
+- (nullable __kindof UIViewController *)zz_findViewController:(nonnull Class)cls;
 
 #pragma mark - Layer
 
@@ -125,22 +125,51 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  快速创建Button（常规）
  */
-- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock;
+- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle
+                             titleColor:(nullable UIColor *)titleColor
+                                   font:(nullable UIFont *)font
+                        backgroundColor:(nullable UIColor *)backgroundColor
+                                  frame:(CGRect)frame
+                        constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
+                     touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock;
 
 /**
  *  快速创建Button（完整）
  */
-- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle titleColor:(nullable UIColor *)titleColor font:(nullable UIFont *)font backgroundColor:(nullable UIColor *)backgroundColor borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock;
+- (nonnull UIButton *)zz_quickAddButton:(nullable NSString *)buttonTitle
+                             titleColor:(nullable UIColor *)titleColor
+                                   font:(nullable UIFont *)font
+                        backgroundColor:(nullable UIColor *)backgroundColor
+                            borderColor:(nullable UIColor *)borderColor
+                            borderWidth:(CGFloat)borderWidth
+                           cornerRadius:(CGFloat)cornerRadius
+                                  frame:(CGRect)frame
+                        constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock touchupInsideBlock:(nullable void(^)(UIButton *sender))touchupInsideBlock;
 
 /**
  *  快速创建Line
  */
-- (nonnull UIView *)zz_quickAddLine:(nullable UIColor *)color frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
+- (nonnull UIView *)zz_quickAddLine:(nullable UIColor *)color
+                              frame:(CGRect)frame
+                    constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 /**
  *  快速创建Label
  */
-- (nonnull UILabel *)zz_quickAddLabel:(nullable NSString *)text font:(nullable UIFont *)font textColor:(nullable UIColor *)textColor numberOfLines:(NSInteger)numberOfLines textAlignment:(NSTextAlignment)textAlignment perLineHeight:(CGFloat)perLineHeight kern:(CGFloat)kern space:(CGFloat)space lineBreakmode:(NSLineBreakMode)lineBreakmode attributedText:(nullable NSAttributedString *)attributedText needCalculateTextFrame:(BOOL)needCalculateTextFrame backgroundColor:(nullable UIColor *)backgroundColor frame:(CGRect)frame constraintBlock:(nullable BOOL(^)(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make))constraintBlock;
+- (nonnull UILabel *)zz_quickAddLabel:(nullable NSString *)text
+                                 font:(nullable UIFont *)font
+                            textColor:(nullable UIColor *)textColor
+                        numberOfLines:(NSInteger)numberOfLines
+                        textAlignment:(NSTextAlignment)textAlignment
+                        perLineHeight:(CGFloat)perLineHeight
+                                 kern:(CGFloat)kern
+                                space:(CGFloat)space
+                        lineBreakmode:(NSLineBreakMode)lineBreakmode
+                       attributedText:(nullable NSAttributedString *)attributedText
+               needCalculateTextFrame:(BOOL)needCalculateTextFrame
+                      backgroundColor:(nullable UIColor *)backgroundColor
+                                frame:(CGRect)frame
+                      constraintBlock:(nullable BOOL(^)(UIView * _Nonnull superView, CGSize renderedSize, MASConstraintMaker * _Nonnull make))constraintBlock;
 
 @end
 

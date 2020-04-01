@@ -7,13 +7,14 @@
 //
 
 #import "UIWindow+ZZKit.h"
+#import "UIViewController+ZZKit.h"
 
 @implementation UIWindow (ZZKit)
 
 /**
  *  获取 KeyWindow
  */
-+ (UIWindow *)zz_window {
++ (UIWindow *)zz_keyWindow {
     
     return [[UIApplication sharedApplication] keyWindow];
 }
@@ -21,7 +22,7 @@
 /**
  *  获取 KeyWindow Actived UIViewController
  */
-+ (UIViewController *)zz_windowActivedViewController {
++ (UIViewController *)zz_keyWindowActivedViewController {
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     return [window zz_activedViewController];
@@ -30,7 +31,7 @@
 /**
  *  获取 KeyWindow Presented ViewController
  */
-+ (UIViewController *)zz_windowPresentedViewController {
++ (UIViewController *)zz_keyWindowPresentedViewController {
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     return [window zz_presentedViewController];
@@ -39,7 +40,7 @@
 /**
  *  获取 KeyWindow 当前TopViewController
  */
-+ (UIViewController*)zz_windowTopViewController {
++ (UIViewController*)zz_keyWindowTopViewController {
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     return [window zz_topViewController];
@@ -48,20 +49,30 @@
 /**
  *  获取 Actived UIViewController
  */
-- (UIViewController *)zz_activedViewController {
+- (UIViewController *)zz_activedViewController  {
     
     UIViewController* activityViewController = nil;
-    if(self.windowLevel != UIWindowLevelNormal) {
-        return nil;
+    UIWindow *window = self;
+    if(window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows) {
+            if(tmpWin.windowLevel == UIWindowLevelNormal) {
+                window = tmpWin;
+                break;
+            }
+        }
     }
-    NSArray *viewsArray = [self subviews];
+    NSArray *viewsArray = [window subviews];
     if([viewsArray count] > 0) {
-        UIView *frontView = [viewsArray firstObject];
+        UIView *frontView = [viewsArray objectAtIndex:0];
+        
         id nextResponder = [frontView nextResponder];
+        
         if([nextResponder isKindOfClass:[UIViewController class]]) {
             activityViewController = nextResponder;
-        } else {
-            activityViewController = self.rootViewController;
+        }
+        else {
+            activityViewController = window.rootViewController;
         }
     }
     return activityViewController;
@@ -72,39 +83,46 @@
  */
 - (UIViewController *)zz_presentedViewController {
     
-    UIViewController* topVC = nil;
-    if(self.windowLevel != UIWindowLevelNormal) {
-        return nil;
+    UIViewController* presentedVC = nil;
+    UIWindow *window = self;
+    if(window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows) {
+            if(tmpWin.windowLevel == UIWindowLevelNormal) {
+                window = tmpWin;
+                break;
+            }
+        }
     }
-    topVC = self.rootViewController;
+    presentedVC = window.rootViewController;
     while (YES) {
-        if (topVC.presentedViewController) {
-            topVC = topVC.presentedViewController;
+        if (presentedVC.presentedViewController) {
+            presentedVC = presentedVC.presentedViewController;
         }else {
             break;
         }
     }
-    return topVC;
+    return presentedVC;
 }
 
 /**
  *  获取 TopViewController
  */
-- (UIViewController*)zz_topViewController {
+- (UIViewController *)zz_topViewController {
     
-    UIViewController *currentViewController = self.rootViewController;
-    while ([currentViewController presentedViewController]) {
-        currentViewController = [currentViewController presentedViewController];
+    UIViewController* rootVC = nil;
+    UIWindow *window = self;
+    if(window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows) {
+            if(tmpWin.windowLevel == UIWindowLevelNormal) {
+                window = tmpWin;
+                break;
+            }
+        }
     }
-    if ([currentViewController isKindOfClass:[UITabBarController class]]
-        && ((UITabBarController*)currentViewController).selectedViewController != nil ) {
-        currentViewController = ((UITabBarController*)currentViewController).selectedViewController;
-    }
-    while ([currentViewController isKindOfClass:[UINavigationController class]]
-           && [(UINavigationController*)currentViewController topViewController]) {
-        currentViewController = [(UINavigationController*)currentViewController topViewController];
-    }
-    return currentViewController;
+    rootVC = window.rootViewController;
+    return [rootVC zz_topViewController];
 }
 
 /**

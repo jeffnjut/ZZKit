@@ -173,6 +173,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_alert:(nullable NSString *)title message:(nullable NSString *)message items:(nonnull NSMutableArray *)items cancel:(BOOL)cancel cancelColor:(nullable UIColor *)cancelColor alertStyle:(UIAlertControllerStyle)alertStyle;
 
+#pragma mark - 获取Top ViewController
+
+- (UIViewController *)zz_topViewController;
+
 @end
 
 #pragma mark - ZZAlertModel

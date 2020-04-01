@@ -387,6 +387,7 @@
 		E7E18AF922F30F64007451B4 /* toast_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */; };
 		E7E18AFA22F30F64007451B4 /* toast_close_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */; };
 		E7E18AFB22F30F64007451B4 /* toast_close_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */; };
+		E7E9CE1B24333869008E0E25 /* WKWebView+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9CE1A24333869008E0E25 /* WKWebView+ZZKit.m */; };
 		E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F2150D22ED8AF9007C587B /* cncity.plist */; };
 		E7F2151122ED8CC4007C587B /* ZZCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151022ED8CC4007C587B /* ZZCityModel.m */; };
 		E7F2151422ED8D3E007C587B /* ZZCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2151322ED8D3E007C587B /* ZZCityController.m */; };
@@ -952,6 +953,8 @@
 		E7E18AF522F30F63007451B4 /* toast_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@2x.png"; sourceTree = "<group>"; };
 		E7E18AF622F30F63007451B4 /* toast_close_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_active@3x.png"; sourceTree = "<group>"; };
 		E7E18AF722F30F64007451B4 /* toast_close_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_close_normal@3x.png"; sourceTree = "<group>"; };
+		E7E9CE1924333869008E0E25 /* WKWebView+ZZKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+ZZKit.h"; sourceTree = "<group>"; };
+		E7E9CE1A24333869008E0E25 /* WKWebView+ZZKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+ZZKit.m"; sourceTree = "<group>"; };
 		E7F2150D22ED8AF9007C587B /* cncity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cncity.plist; sourceTree = "<group>"; };
 		E7F2150F22ED8CC4007C587B /* ZZCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCityModel.h; sourceTree = "<group>"; };
 		E7F2151022ED8CC4007C587B /* ZZCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCityModel.m; sourceTree = "<group>"; };
@@ -1070,6 +1073,8 @@
 				E72DFBC522B1603E0099A8C4 /* ZZWebViewController.m */,
 				E72DFBC122B1601A0099A8C4 /* ZZWebView.h */,
 				E72DFBC222B1601A0099A8C4 /* ZZWebView.m */,
+				E7E9CE1924333869008E0E25 /* WKWebView+ZZKit.h */,
+				E7E9CE1A24333869008E0E25 /* WKWebView+ZZKit.m */,
 				E7B3AC8423F3C71600D93917 /* WKWebView+HideToolbar.h */,
 				E7B3AC8523F3C71600D93917 /* WKWebView+HideToolbar.m */,
 				E7F5B87D22F182D7001F0C80 /* ic_nav_back@2x.png */,
@@ -2277,6 +2282,7 @@
 				E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */,
+				E7E9CE1B24333869008E0E25 /* WKWebView+ZZKit.m in Sources */,
 				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
