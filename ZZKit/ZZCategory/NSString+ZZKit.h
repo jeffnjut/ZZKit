@@ -63,7 +63,7 @@
 // 空行
 #define ZZ_PREDICATE_BLANK                                @"^(\\n[\\s| ]*\\r)$"
 // URL
-#define ZZ_PREDICATE_URL                                  @"[a-zA-z]+://[^\\s]*"
+#define ZZ_PREDICATE_URL                                  @"([a-zA-z]+://[^\\s]*)|(.*(\\.net|\\.cn|\\.com|\\.tw|\\.hk|\\.us|\\.jp|\\.ca|\\.fr|\\.uk|\\.es|\\.au|\\.ru|\\.de|\\.sg)$)"
 // 时间格式：年-月-日
 #define ZZ_PREDICATE_YEAR_MONTH_DAY_WITH_HYPEN            @"^(\\d{2}|d{4})-((0([1-9]{1}))|(1[1|2]))-(([0-2]([1-9]{1}))|(3[0|1]))$"
 // 时间格式：月/日/年
