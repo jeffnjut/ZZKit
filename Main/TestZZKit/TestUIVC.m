@@ -161,7 +161,7 @@
 
 - (IBAction)_tapZZTabbarController:(id)sender {
     
-    self.rootViewController = [UIWindow zz_window].rootViewController;
+    self.rootViewController = [UIWindow zz_keyWindow].rootViewController;
     
     ZZTabBarController *tabVC = [[ZZTabBarController alloc] init];
     UIViewController *vc1 = [UIViewController new];
@@ -176,13 +176,13 @@
     vc3.view.backgroundColor = [UIColor greenColor];
     [tabVC zz_addChildViewController:vc3 tabName:@"第三页" tabUnselectedImage:@"tab_offers".zz_image tabSelectedImage:@"tab_offers_selected".zz_image tabUnselectedTextAttrs:nil tabSelectedTextAttrs:nil imageEdgeInsets:UIEdgeInsetsZero textOffset:UIOffsetZero navigationControllerClass:nil];
     
-    [UIWindow zz_window].rootViewController = tabVC;
+    [UIWindow zz_keyWindow].rootViewController = tabVC;
     
     ZZ_WEAK_SELF
     [vc1.view zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
         dispatch_async(dispatch_get_main_queue(), ^{
             ZZ_STRONG_SELF
-            [UIWindow zz_window].rootViewController = strongSelf.rootViewController;
+            [UIWindow zz_keyWindow].rootViewController = strongSelf.rootViewController;
         });
     }];
     

@@ -366,7 +366,6 @@
 		E7DC5C3B229CDD9D00ED8733 /* ZZLinkedMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C39229CDD9D00ED8733 /* ZZLinkedMap.m */; };
 		E7DC5C40229CDE7600ED8733 /* TestZZLinkedMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */; };
 		E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */; };
-		E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */; };
 		E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */; };
 		E7DC5C51229D151D00ED8733 /* NSString+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C50229D151D00ED8733 /* NSString+ZZKit.m */; };
 		E7DC5C54229D197600ED8733 /* NSData+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DC5C53229D197600ED8733 /* NSData+ZZKit.m */; };
@@ -917,8 +916,6 @@
 		E7DC5C3D229CDE7600ED8733 /* TestZZLinkedMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZZLinkedMapVC.m; sourceTree = "<group>"; };
 		E7DC5C3E229CDE7600ED8733 /* TestZZLinkedMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestZZLinkedMapVC.h; sourceTree = "<group>"; };
 		E7DC5C3F229CDE7600ED8733 /* TestZZLinkedMapVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestZZLinkedMapVC.xib; sourceTree = "<group>"; };
-		E7DC5C46229CE35800ED8733 /* ZZKit+AppStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZKit+AppStore.h"; sourceTree = "<group>"; };
-		E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZZKit+AppStore.m"; sourceTree = "<group>"; };
 		E7DC5C4C229D127300ED8733 /* UIColor+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZZKit.h"; sourceTree = "<group>"; };
 		E7DC5C4D229D127300ED8733 /* UIColor+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZZKit.m"; sourceTree = "<group>"; };
 		E7DC5C4F229D151D00ED8733 /* NSString+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ZZKit.h"; sourceTree = "<group>"; };
@@ -1712,8 +1709,6 @@
 				E7E0179F22AE277D00C24EF2 /* ZZLock.m */,
 				E7E017A622AE751500C24EF2 /* ZZEnumCompare.h */,
 				E7E017A722AE751500C24EF2 /* ZZEnumCompare.m */,
-				E7DC5C46229CE35800ED8733 /* ZZKit+AppStore.h */,
-				E7DC5C47229CE35800ED8733 /* ZZKit+AppStore.m */,
 				E7E0179522AE033400C24EF2 /* NSObject+ZZKit_Notification.h */,
 				E7E0179622AE033400C24EF2 /* NSObject+ZZKit_Notification.m */,
 				E767600B22AFCBE10044B9AD /* NSObject+ZZKit_Timer.h */,
@@ -2283,7 +2278,6 @@
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */,
 				E7E9CE1B24333869008E0E25 /* WKWebView+ZZKit.m in Sources */,
-				E7DC5C48229CE35800ED8733 /* ZZKit+AppStore.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
 				E77EBD382373CB6A0062E4A9 /* ZZMovieManager.m in Sources */,

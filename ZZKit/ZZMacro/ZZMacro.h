@@ -97,4 +97,66 @@ pf_l = pf_d;
 #define ZZ_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define ZZ_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
+// AppStore
+
+#define _APPSTORE_DEFAULT_URL     @"itms-apps://appsto.re/cn/Geex4.i"
+#define _APPSTORE_URL(mk,id)      [NSString stringWithFormat:@"itms-apps://itunes.apple.com/%@/app/id%@?mt=8", mk, id]
+
+// 打开跳转到某个app（Url）
+#define ZZ_APPSTORE_REDIRECT_URL(url,result) {\
+    NSURL *URL = [NSURL URLWithString:url];\
+    if ([[UIApplication sharedApplication] canOpenURL:URL]) {\
+        if (@available(iOS 10.0, *)) {\
+            [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];\
+        }else {\
+            [[UIApplication sharedApplication] openURL:URL];\
+        }\
+        result == nil ? : result(YES);\
+    }else {\
+        result == nil ? : result(NO);\
+    }\
+}
+
+// 跳转到app store
+#define ZZ_APPSTORE_REDIRECT_DEFAULT ZZ_APPSTORE_REDIRECT_URL(_APPSTORE_DEFAULT_URL, ^(BOOL success){})
+
+// 跳转到某个app（AppleId、Region/Country Market）
+#define ZZ_APPSTORE_REDIRECT_REGION_RESULT(appID,region,result) {\
+    NSString *url = _APPSTORE_URL(region, appID);\
+NSLog(@"%@", url);\
+    void(^retryBlock)(BOOL success) = ^(BOOL success) {\
+        if (success == NO) {\
+            ZZ_APPSTORE_REDIRECT_URL(_APPSTORE_DEFAULT_URL, ^(BOOL success){})\
+        }\
+    };\
+    ZZ_APPSTORE_REDIRECT_URL(url,retryBlock)\
+}
+
+// 跳转到某个app（AppleId, 默认CN）
+#define ZZ_APPSTORE_REDIRECT_RESULT(appID,result) {\
+    NSString *region = nil;\
+    if (@available(iOS 10.0, *)) {\
+        region = [NSLocale currentLocale].countryCode;\
+    }\
+    if (region == nil) {\
+        region = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];\
+    }\
+    if (region == nil) {\
+        region = @"cn";\
+    }\
+    ZZ_APPSTORE_REDIRECT_REGION_RESULT(appID,region,result)\
+}
+
+// 是否安装了某个app
+#define ZZ_APP_INSTALLED(appScheme) (appScheme.length > 0 ? ([appScheme containsString:@"://"] ? /* 包含:// */ ([NSURL URLWithString:appScheme] ? [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:appScheme]] : NO ) : /* 没有包含:// */ ([NSURL URLWithString:[NSString stringWithFormat:@"%@://",appScheme]] ? [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://",appScheme]]] : NO )) : /* 空 */ NO)
+
+// 跳转至系统的Setting界面
+#define ZZ_APP_OPEN_SYSTEM_SETTING {\
+    if (@available(iOS 10.0, *)) {\
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@""} completionHandler:^(BOOL success){}];\
+    } else {\
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];\
+    }\
+}
+
 #endif /* ZZMacro_h */
