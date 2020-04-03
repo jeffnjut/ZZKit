@@ -12,6 +12,19 @@
 @implementation UIWindow (ZZKit)
 
 /**
+ * 键盘所在的Window
+ */
++ (UIWindow *)zz_remoteKeyboardWindow {
+    
+    for(UIView *window in [UIApplication sharedApplication].windows) {
+        if([window isKindOfClass:NSClassFromString(@"UIRemoteKeyboardWindow")]) {
+            return window;
+        }
+    }
+    return nil;
+}
+
+/**
  *  获取 KeyWindow
  */
 + (UIWindow *)zz_keyWindow {

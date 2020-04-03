@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIWindow (ZZKit)
 
 /**
+ * 键盘所在的Window
+ */
++ (UIWindow *)zz_remoteKeyboardWindow;
+
+/**
  *  获取 KeyWindow
  */
 + (UIWindow *)zz_keyWindow;
