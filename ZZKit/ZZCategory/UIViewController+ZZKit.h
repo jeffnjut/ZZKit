@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  消失或者上一页[Base]
  */
-- (void)zz_dismiss:(BOOL)animated;
+- (void)zz_dismiss:(NSTimeInterval)delay animated:(BOOL)animated;
 
 /**
  *  消失或者Root页[默认动画转场]
