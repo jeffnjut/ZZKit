@@ -165,6 +165,14 @@
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
+/**
+ * URL Decode
+ */
+- (NSString *)zz_url_decode {
+    
+    return [self stringByRemovingPercentEncoding];
+}
+
 #pragma mark - 校验、比较、转换
 
 /**

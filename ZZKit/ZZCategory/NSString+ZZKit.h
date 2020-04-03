@@ -140,6 +140,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)zz_url_encode;
 
+/**
+ * URL Decode
+ */
+- (NSString *)zz_url_decode;
+
 #pragma mark - 校验、比较、转换
 
 /**
