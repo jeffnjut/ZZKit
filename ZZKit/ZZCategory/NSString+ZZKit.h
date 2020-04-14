@@ -136,9 +136,14 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - URL
 
 /**
- * URL Encode
+ * URL Encode（URLQueryAllowedCharacterSet）
  */
 - (NSString *)zz_url_encode;
+
+/**
+ * URL Encode（All）
+ */
+- (NSString *)zz_url_encode_all;
 
 /**
  * URL Decode

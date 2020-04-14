@@ -102,7 +102,7 @@
             _nextBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         }
         [_nextBtn setTitleColor:@"#78787D".zz_color forState:UIControlStateNormal];
-        // [_nextBtn setUserInteractionEnabled:NO];
+        [_nextBtn setUserInteractionEnabled:NO];
         [_nextBtn addTarget:self action:@selector(_tapNext:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _nextBtn;
@@ -983,8 +983,10 @@
     
     if (ZZPhotoManager.shared.photoQueue.count > 0) {
         [self.nextBtn setTitleColor:@"#FF7725".zz_color forState:UIControlStateNormal];
+        [self.nextBtn setUserInteractionEnabled:YES];
     }else {
         [self.nextBtn setTitleColor:@"#78787D".zz_color forState:UIControlStateNormal];
+        [self.nextBtn setUserInteractionEnabled:NO];
     }
 }
 

@@ -158,11 +158,19 @@
 #pragma mark - URL
 
 /**
- * URL Encode
+ * URL Encode（URLQueryAllowedCharacterSet）
  */
 - (NSString *)zz_url_encode {
     
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+}
+
+/**
+ * URL Encode（All）
+ */
+- (NSString *)zz_url_encode_all {
+    
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"!*'();:@&=+$,/?%#[ ]"].invertedSet];
 }
 
 /**
@@ -171,6 +179,32 @@
 - (NSString *)zz_url_decode {
     
     return [self stringByRemovingPercentEncoding];
+}
+
+- (NSString *)_encode {
+    
+    return [self _encode:NSUTF8StringEncoding];
+}
+
+- (NSString *)_encode:(NSStringEncoding)encoding {
+
+    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                 (__bridge CFStringRef)self,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding));
+}
+
+- (NSString *)_decode {
+    
+    return [self _decode:NSUTF8StringEncoding];
+}
+
+- (NSString *)_decode:(NSStringEncoding)encoding {
+    return (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,
+                                                                                                 (__bridge CFStringRef)self,
+                                                                                                 CFSTR(""),
+                                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding));
 }
 
 #pragma mark - 校验、比较、转换
