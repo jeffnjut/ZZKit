@@ -245,8 +245,11 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
 // 消失动画后的后续Block
 @property (nullable, nonatomic, copy) void(^zzPopupActionBlock)(id value);
 
+// 点击取消的事件回调
+@property (nullable, nonatomic, copy) void(^zzPopupTapCloseBlock)(void);
+
 // 点击Blur空白处的事件回调
-@property (nonatomic, copy) void(^zzPopupTapBlurBlock)(void);
+@property (nullable, nonatomic, copy) void(^zzPopupTapBlurBlock)(void);
 
 // 父页面
 @property (nonatomic, weak) UIView *zzPopupParentView;

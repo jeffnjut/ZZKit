@@ -53,6 +53,10 @@
  */
 - (UIImage *)zz_image:(nonnull NSString *)imageName extension:(nullable NSString *)extension {
     
+    if (imageName == nil || imageName.length == 0) {
+        return nil;
+    }
+    
     UIImage *image = nil;
     NSBundle *bundle = self;
     int scale  = (int)[UIScreen mainScreen].scale;

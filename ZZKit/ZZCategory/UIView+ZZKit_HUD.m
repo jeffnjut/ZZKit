@@ -547,7 +547,7 @@
         if (userInteractionEnabled == YES) {
             [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
                 popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
-                popupView.zzPopupDisappearAnimationBlock(nil);
+                popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
             }];
         }
         popupView.zzPopupBlurView = blurView;
@@ -1197,6 +1197,7 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
 // 关闭PopupView
 - (IBAction)zz_tapClosePopupView:(nullable id)sender {
     
+    self.zzPopupTapCloseBlock == nil ? : self.zzPopupTapCloseBlock();
     self.zzPopupDisappearAnimationBlock == nil ? : self.zzPopupDisappearAnimationBlock(nil);
 }
 
