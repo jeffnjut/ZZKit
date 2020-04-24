@@ -20,13 +20,15 @@
 @interface ZZTableView () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 // 锁
-@property(nonatomic, assign) pthread_mutex_t lock;
+@property (nonatomic, assign) pthread_mutex_t lock;
 // 数据源
-@property(nonatomic, strong) NSMutableArray *zzDataSource;
+@property (nonatomic, strong) NSMutableArray *zzDataSource;
 // 是否Section数据
-@property(nonatomic, assign) BOOL sectionEnabled;
+@property (nonatomic, assign) BOOL sectionEnabled;
 // SuperView
-@property(nonatomic, weak) UIView *superView;
+@property (nonatomic, weak) UIView *superView;
+// ResuableCells
+@property (nonatomic, strong) NSMutableDictionary *resuableCells;
 
 @end
 
@@ -374,7 +376,14 @@
             }
         }
     }else {
-        cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        if (self.resuableCells == nil) {
+            self.resuableCells = [[NSMutableDictionary alloc] init];
+        }
+        NSString *indexPathKey = [NSString stringWithFormat:@"%d-%d", (int)indexPath.section, (int)indexPath.row];
+        cell = [self.resuableCells objectForKey:indexPathKey];
+        // cellForRowAtIndexPath:返回nil
+        // cell = [tableView cellForRowAtIndexPath:indexPath];
         if (!cell) {
             NSBundle *bundle = [NSBundle zz_resourceClass:[cellData class] bundleName:nil];
             if ([bundle pathForResource:cellClassName ofType:@"nib"] == nil) {
@@ -382,6 +391,7 @@
             }else {
                 cell = [[bundle loadNibNamed:cellClassName owner:nil options:nil] lastObject];
             }
+            [self.resuableCells setObject:cell forKey:indexPathKey];
         }
     }
     
