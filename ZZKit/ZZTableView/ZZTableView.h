@@ -242,6 +242,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 并且ZZTableView的zzDeletionConfirmBlock失效
 @property (nonatomic, strong) NSArray<NSDictionary<NSString *, id> *> *zzCustomSwipes;
 
+// Cell的zzData是否被重新赋值
+@property (nonatomic, assign) BOOL zzRenderingWhenCellVisible;
+
+// Cell的zzData是否渲染
+@property (nonatomic, assign) BOOL zzRendered;
+
 @end
 
 #pragma mark - ZZTableViewHeaderFooterView类

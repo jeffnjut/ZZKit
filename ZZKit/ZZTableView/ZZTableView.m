@@ -401,7 +401,12 @@
             cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         }
     }
-    cell.zzData = cellData;
+    if (cellData.zzRenderingWhenCellVisible == NO && cellData.zzRendered) {
+        
+    }else {
+        cell.zzData = cellData;
+        cellData.zzRendered = YES;
+    }
     if (cell.zzTapBlock == nil) {
         __weak ZZTableView *weakSelf = self;
         cell.zzTapBlock = ^(__kindof ZZTableViewCell * _Nonnull cell) {
@@ -918,6 +923,8 @@
         self.zzUsingSelectionStyleNone = YES;
         self.zzAllowEditing = YES;
         self.zzHeight = 0;
+        self.zzRenderingWhenCellVisible = YES;
+        self.zzRendered = NO;
     }
     return self;
 }
