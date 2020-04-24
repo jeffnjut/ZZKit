@@ -401,10 +401,11 @@
             cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         }
     }
-    if (cellData.zzRenderingWhenCellVisible == NO && cellData.zzRendered) {
+    if (cellData.zzRenderingWhenCellVisible == NO && cellData.zzRendered && cell.zzRenderedHash == [cellData hash]) {
         
     }else {
         cell.zzData = cellData;
+        cell.zzRenderedHash = [cellData hash];
         cellData.zzRendered = YES;
     }
     if (cell.zzTapBlock == nil) {

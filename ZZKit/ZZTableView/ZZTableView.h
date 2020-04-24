@@ -218,6 +218,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Cell 多选未选中Selected状态图标
 @property (nonatomic, strong) UIImage *zzUnselectedImage;
 
+// Cell的zzData当前渲染的hash
+@property (nonatomic, assign) NSUInteger zzRenderedHash;
+
 @end
 
 @interface ZZTableViewCellDataSource : NSObject
