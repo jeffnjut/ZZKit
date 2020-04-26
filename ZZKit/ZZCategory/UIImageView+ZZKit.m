@@ -63,14 +63,14 @@
         if ([URL isKindOfClass:[NSURL class]]) {
             _zzURL = URL;
             _zzKey = _zzURL.absoluteString;
-        }else if ([URL isKindOfClass:[NSString class]]) {
+        }else if ([URL isKindOfClass:[NSString class]] && ((NSString *)URL).length > 0) {
             _zzKey = URL;
             if (![_zzKey containsString:@"%"]) {
                 // 未Encode的URL，URL需要Encode
                 _zzKey = [_zzKey stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
             }
             _zzURL = [NSURL URLWithString:_zzKey];
-        }else if (URL == nil) {
+        }else {
             // 设置Placeholder背景颜色
             if (placeholderBackgroundColor) {
                 self.backgroundColor = placeholderBackgroundColor;
@@ -78,8 +78,6 @@
             self.contentMode = placeholderContentMode;
             self.image = placeholderImage;
             return;
-        }else {
-            NSAssert(NO, @"UIImageView : imageURL 参数不正确");
         }
         [self _setZzHash:_zzKey.hash];
         

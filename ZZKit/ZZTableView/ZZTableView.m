@@ -294,6 +294,7 @@
     }
     [self reloadData];
     self.scrollEnabled = scrollable;
+    [self.resuableCells removeAllObjects];
     pthread_mutex_unlock(&_lock);
 }
 
