@@ -509,14 +509,11 @@
  */
 - (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
 
-    if ([self.subviews.lastObject isMemberOfClass:[popupView class]]) {
-        return;
-    }
-    
     [self endEditing:YES];
 
     __weak typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf _popup:popupView blurColor:blurColor userInteractionEnabled:userInteractionEnabled springs:springs actionBlock:actionBlock];
     });
@@ -524,35 +521,43 @@
 
 - (void)_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
 
-    if (popupView == nil || popupView.zzPopupAppearAnimationBlock == nil || popupView.zzPopupDisappearAnimationBlock == nil) {
-        return;
-    }
-    popupView.zzPopupParentView = self;
-    popupView.zzPopupActionBlock = actionBlock;
-    if (springs.count == 1) {
-        popupView.zzPopupDuration = springs[0];
-    }
-    else if (springs.count == 3) {
-        popupView.zzPopupDuration = springs[0];
-        popupView.zzPopupSpringDampingRatio = springs[1];
-        popupView.zzPopupSpringVelocity = springs[2];
-    }
     
-    ZZPopupBlurView *blurView = nil;
-    if (blurColor != nil) {
-        blurView = [[ZZPopupBlurView alloc] init];
-        blurView.backgroundColor = blurColor;
-        blurView.frame = self.bounds;
-        [self addSubview:blurView];
-        if (userInteractionEnabled == YES) {
-            [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
-                popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
-                popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
-            }];
+    @synchronized (self) {
+        
+        if ([self.subviews.lastObject isKindOfClass:[ZZPopupView class]]) {
+            return;
         }
-        popupView.zzPopupBlurView = blurView;
+        
+        if (popupView == nil || popupView.zzPopupAppearAnimationBlock == nil || popupView.zzPopupDisappearAnimationBlock == nil) {
+            return;
+        }
+        popupView.zzPopupParentView = self;
+        popupView.zzPopupActionBlock = actionBlock;
+        if (springs.count == 1) {
+            popupView.zzPopupDuration = springs[0];
+        }
+        else if (springs.count == 3) {
+            popupView.zzPopupDuration = springs[0];
+            popupView.zzPopupSpringDampingRatio = springs[1];
+            popupView.zzPopupSpringVelocity = springs[2];
+        }
+        
+        ZZPopupBlurView *blurView = nil;
+        if (blurColor != nil) {
+            blurView = [[ZZPopupBlurView alloc] init];
+            blurView.backgroundColor = blurColor;
+            blurView.frame = self.bounds;
+            [self addSubview:blurView];
+            if (userInteractionEnabled == YES) {
+                [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                    popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
+                    popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
+                }];
+            }
+            popupView.zzPopupBlurView = blurView;
+        }
+        popupView.zzPopupAppearAnimationBlock();
     }
-    popupView.zzPopupAppearAnimationBlock();
 }
 
 @end
