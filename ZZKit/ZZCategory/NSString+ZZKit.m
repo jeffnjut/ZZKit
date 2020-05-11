@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import <AdSupport/AdSupport.h>
 #import "OpenUDID.h"
+#import "NSArray+ZZKit.h"
 
 @interface _ZZImageTemporaryObject : NSObject
 
@@ -407,43 +408,18 @@
         NSArray *rightArr = [right componentsSeparatedByString:@"."];
         int left = 0;
         int right = 0;
-        if ([leftArr count] == [rightArr count]) {
-            // 版本格式一致
-            for (int i = 0; i < [leftArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([leftArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([rightArr count] - i)));
-            }
+        int i = 0;
+        while (YES) {
             
-            if (left == right) {
-                return NO;
-            }else if (left < right) {
-                return NO;
-            }else {
+            if ([leftArr zz_arrayObjectAtIndex:i] == nil && [rightArr zz_arrayObjectAtIndex:i] == nil) {
+                break;
+            }
+            left = [[leftArr zz_arrayObjectAtIndex:i] intValue];
+            right = [[rightArr zz_arrayObjectAtIndex:i] intValue];
+            if (left > right) {
                 return YES;
             }
-        }else if ([leftArr count] < [rightArr count]) {
-            // 版本格式深度前者小于后者
-            for (int i = 0; i < [leftArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([leftArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([leftArr count] - i)));
-            }
-            if (left <= right) {
-                return NO;
-            }else {
-                return YES;
-            }
-            
-        }else{
-            // 版本格式深度前者大于后者
-            for (int i = 0; i < [rightArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([rightArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([rightArr count] - i)));
-            }
-            if (left >= right) {
-                return YES;
-            }else {
-                return NO;
-            }
+            i++;
         }
     }
     return NO;
@@ -463,43 +439,20 @@
         NSArray *rightArr = [right componentsSeparatedByString:@"."];
         int left = 0;
         int right = 0;
-        if ([leftArr count] == [rightArr count]) {
-            // 版本格式一致
-            for (int i = 0; i < [leftArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([leftArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([rightArr count] - i)));
-            }
+        int i = 0;
+        while (YES) {
             
-            if (left == right) {
+            if ([leftArr zz_arrayObjectAtIndex:i] == nil && [rightArr zz_arrayObjectAtIndex:i] == nil) {
+                break;
+            }
+            left = [[leftArr zz_arrayObjectAtIndex:i] intValue];
+            right = [[rightArr zz_arrayObjectAtIndex:i] intValue];
+            if (left > right) {
                 return YES;
             }else if (left < right) {
                 return NO;
-            }else {
-                return YES;
             }
-        }else if ([leftArr count] < [rightArr count]) {
-            // 版本格式深度前者小于后者
-            for (int i = 0; i < [leftArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([leftArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([leftArr count] - i)));
-            }
-            if (left <= right) {
-                return NO;
-            }else {
-                return YES;
-            }
-            
-        }else{
-            // 版本格式深度前者大于后者
-            for (int i = 0; i < [rightArr count]; i++) {
-                left += ([leftArr[i] intValue] * pow(10, ([rightArr count] - i)));
-                right += ([rightArr[i] intValue] * pow(10, ([rightArr count] - i)));
-            }
-            if (left >= right) {
-                return YES;
-            }else {
-                return NO;
-            }
+            i++;
         }
     }
     return YES;
