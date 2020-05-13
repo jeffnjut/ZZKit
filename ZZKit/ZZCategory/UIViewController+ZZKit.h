@@ -25,9 +25,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_navigationAddLeftBarButton:(nonnull UIImage *)image action:(nullable void(^)(void))action;
 
 /**
+ *  增加图片类型导航按钮（左，Margin）
+ */
+- (void)zz_navigationAddLeftBarButton:(nonnull UIImage *)image margin:(CGFloat)margin action:(nullable void(^)(void))action;
+
+/**
  *  增加图片类型导航按钮（右）
  */
 - (void)zz_navigationAddRightBarButton:(nonnull UIImage *)image action:(nullable void(^)(void))action;
+
+/**
+ *  增加图片类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarButton:(nonnull UIImage *)image margin:(CGFloat)margin action:(nullable void(^)(void))action;
+
 
 /**
  *  增加文本类型导航按钮（左）
@@ -35,19 +46,49 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_navigationAddLeftBarTextButton:(nonnull NSAttributedString *)text action:(nullable void(^)(void))action;
 
 /**
+ *  增加文本类型导航按钮（左，margin）
+ */
+- (void)zz_navigationAddLeftBarTextButton:(nonnull NSAttributedString *)text margin:(CGFloat)margin action:(nullable void(^)(void))action;
+
+/**
  *  增加文本类型导航按钮（右）
  */
 - (void)zz_navigationAddRightBarTextButton:(nonnull NSAttributedString *)text action:(nullable void(^)(void))action;
 
 /**
+ *  增加文本类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarTextButton:(nonnull NSAttributedString *)text margin:(CGFloat)margin action:(nullable void(^)(void))action;
+
+/**
  *  增加自定义类型导航按钮（左）
  */
-- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action;
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action;
+
+/**
+ *  增加自定义类型导航按钮（左，margin）
+ */
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action;
 
 /**
  *  增加自定义类型导航按钮（右）
  */
-- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action;
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action;
+
+/**
+ *  增加自定义类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action;
+
+/**
+ *  增加固定Space（左，margin）
+ */
+- (void)zz_navigationAddLeftMargin:(CGFloat)margin;
+
+/**
+ *  增加固定Space（右，margin）
+ */
+- (void)zz_navigationAddRightMargin:(CGFloat)margin;
 
 /**
  *  移除左侧导航按钮
@@ -62,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  增加UIBarButtonItem（Base）
  */
-- (void)zz_navigationAddBarButton:(BOOL)left object:(nonnull id)object size:(CGSize)size margin:(UIEdgeInsets)margin action:(void(^)(void))action;
+- (void)zz_navigationAddBarButton:(BOOL)left object:(nonnull id)object size:(CGSize)size margin:(CGFloat)margin action:(void(^)(void))action;
 
 /**
  *  导航条设置是否隐藏

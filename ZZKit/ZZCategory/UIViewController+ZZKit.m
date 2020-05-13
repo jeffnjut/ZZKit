@@ -23,42 +23,119 @@
  *  增加图片类型导航按钮（左）
  */
 - (void)zz_navigationAddLeftBarButton:(nonnull UIImage *)image action:(nullable void(^)(void))action {
-    [self zz_navigationAddBarButton:YES object:image size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:YES object:image size:CGSizeZero margin:0 action:action];
+}
+
+/**
+ *  增加图片类型导航按钮（左，Margin）
+ */
+- (void)zz_navigationAddLeftBarButton:(nonnull UIImage *)image margin:(CGFloat)margin action:(nullable void(^)(void))action {
+    [self zz_navigationAddBarButton:YES object:image size:CGSizeZero margin:margin action:action];
 }
 
 /**
  *  增加图片类型导航按钮（右）
  */
 - (void)zz_navigationAddRightBarButton:(nonnull UIImage *)image action:(nullable void(^)(void))action {
-    [self zz_navigationAddBarButton:NO object:image size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:NO object:image size:CGSizeZero margin:0 action:action];
 }
+
+/**
+ *  增加图片类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarButton:(nonnull UIImage *)image margin:(CGFloat)margin action:(nullable void(^)(void))action {
+    [self zz_navigationAddBarButton:NO object:image size:CGSizeZero margin:margin action:action];
+}
+
 
 /**
  *  增加文本类型导航按钮（左）
  */
 - (void)zz_navigationAddLeftBarTextButton:(nonnull NSAttributedString *)text action:(nullable void(^)(void))action {
-    [self zz_navigationAddBarButton:YES object:text size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:YES object:text size:CGSizeZero margin:0 action:action];
+}
+
+/**
+ *  增加文本类型导航按钮（左，margin）
+ */
+- (void)zz_navigationAddLeftBarTextButton:(nonnull NSAttributedString *)text margin:(CGFloat)margin action:(nullable void(^)(void))action {
+    [self zz_navigationAddBarButton:YES object:text size:CGSizeZero margin:margin action:action];
 }
 
 /**
  *  增加文本类型导航按钮（右）
  */
 - (void)zz_navigationAddRightBarTextButton:(nonnull NSAttributedString *)text action:(nullable void(^)(void))action {
-    [self zz_navigationAddBarButton:NO object:text size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:NO object:text size:CGSizeZero margin:0 action:action];
+}
+
+/**
+ *  增加文本类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarTextButton:(nonnull NSAttributedString *)text margin:(CGFloat)margin action:(nullable void(^)(void))action {
+    [self zz_navigationAddBarButton:NO object:text size:CGSizeZero margin:margin action:action];
 }
 
 /**
  *  增加自定义类型导航按钮（左）
  */
 - (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action {
-    [self zz_navigationAddBarButton:YES object:customeView size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:YES object:customeView size:CGSizeZero margin:0 action:action];
+}
+
+/**
+ *  增加自定义类型导航按钮（左，margin）
+ */
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action {
+    [self zz_navigationAddBarButton:YES object:customeView size:CGSizeZero margin:margin action:action];
 }
 
 /**
  *  增加自定义类型导航按钮（右）
  */
 - (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action {
-    [self zz_navigationAddBarButton:NO object:customeView size:CGSizeZero margin:UIEdgeInsetsZero action:action];
+    [self zz_navigationAddBarButton:NO object:customeView size:CGSizeZero margin:0 action:action];
+}
+
+/**
+ *  增加自定义类型导航按钮（右，margin）
+ */
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action {
+    [self zz_navigationAddBarButton:NO object:customeView size:CGSizeZero margin:margin action:action];
+}
+
+/**
+ *  增加固定Space（左，margin）
+ */
+- (void)zz_navigationAddLeftMargin:(CGFloat)margin {
+    
+    UIBarButtonItem *marginBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    marginBarItem.width = margin;
+    if (self.navigationItem.leftBarButtonItems.count > 0) {
+        NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.leftBarButtonItems];
+        [arr addObject:marginBarItem];
+        self.navigationItem.leftBarButtonItems = nil;
+        self.navigationItem.leftBarButtonItems = arr;
+    }else {
+        self.navigationItem.leftBarButtonItems = @[marginBarItem];
+    }
+}
+
+/**
+ *  增加固定Space（右，margin）
+ */
+- (void)zz_navigationAddRightMargin:(CGFloat)margin {
+    
+    UIBarButtonItem *marginBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    marginBarItem.width = margin;
+    if (self.navigationItem.rightBarButtonItems.count > 0) {
+        NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+        [arr addObject:marginBarItem];
+        self.navigationItem.rightBarButtonItems = nil;
+        self.navigationItem.rightBarButtonItems = arr;
+    }else {
+        self.navigationItem.rightBarButtonItems = @[marginBarItem];
+    }
 }
 
 /**
@@ -78,7 +155,7 @@
 /**
  *  增加UIBarButtonItem（Base）
  */
-- (void)zz_navigationAddBarButton:(BOOL)left object:(nonnull id)object size:(CGSize)size margin:(UIEdgeInsets)margin action:(void(^)(void))action {
+- (void)zz_navigationAddBarButton:(BOOL)left object:(nonnull id)object size:(CGSize)size margin:(CGFloat)margin action:(void(^)(void))action {
     id customView = nil;
     if ([object isKindOfClass:[UIImage class]]) {
         // 图片类型，图片保持 24 * 24
@@ -125,30 +202,28 @@
     }
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:customView];
-    UIBarButtonItem *marginLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *marginRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    marginLeft.width = margin.left;
-    marginRight.width = margin.right;
+    UIBarButtonItem *marginBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    marginBarItem.width = margin;
     if (left) {
         if ([self.navigationItem.leftBarButtonItems count] > 0) {
             NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.leftBarButtonItems];
+            [arr addObject:marginBarItem];
             [arr addObject:barButton];
-            [arr addObject:marginRight];
             self.navigationItem.leftBarButtonItems = nil;
             self.navigationItem.leftBarButtonItems = arr;
         }else{
-            self.navigationItem.leftBarButtonItems = @[marginLeft, barButton, marginRight];
+            self.navigationItem.leftBarButtonItems = @[marginBarItem, barButton];
         }
         
     }else{
         if ([self.navigationItem.rightBarButtonItems count] > 0) {
             NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
-            [arr addObject:marginLeft];
+            [arr addObject:marginBarItem];
             [arr addObject:barButton];
             self.navigationItem.rightBarButtonItems = nil;
             self.navigationItem.rightBarButtonItems = arr;
         }else {
-            self.navigationItem.rightBarButtonItems = @[marginLeft, barButton, marginRight];
+            self.navigationItem.rightBarButtonItems = @[marginBarItem, barButton];
         }
     }
 }
