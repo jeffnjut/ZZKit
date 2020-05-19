@@ -303,6 +303,17 @@
     });
 }
 
+/**
+ *  清除设置导航条的backgroundImage和shadowImage
+ */
+- (void)zz_navigationBarRemoveBackgroundAndShadowImage {
+    
+    @autoreleasepool {
+        [self.navigationController.navigationBar setBackgroundImage:nil forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:nil];
+    }
+}
+
 #pragma mark - Push、Present、Popup、Dismiss
 
 /**
@@ -718,7 +729,7 @@
         }
     }else {
         if (bottomLineColor == nil) {
-            [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+            [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
             [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         }else {
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];

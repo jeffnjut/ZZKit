@@ -130,6 +130,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_navigationBarTitle:(nonnull NSString *)title;
 
+/**
+ *  清除设置导航条的backgroundImage和shadowImage
+ */
+- (void)zz_navigationBarRemoveBackgroundAndShadowImage;
+
 #pragma mark - Push、Present、Popup、Dismiss
 
 /**
