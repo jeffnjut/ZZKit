@@ -9,7 +9,6 @@
 #import "UIView+ZZKit_HUD.h"
 #import "UIView+ZZKit_Blocks.h"
 #import <objc/runtime.h>
-#import <Lottie/Lottie.h>
 #import <Masonry/Masonry.h>
 #import <Typeset/Typeset.h>
 #import <SDWebImage/UIImage+GIF.h>
@@ -18,6 +17,7 @@
 #import "NSAttributedString+ZZKit.h"
 #import "ZZWidgetSpinnerView.h"
 #import "UIView+ZZKit.h"
+#import "LOTAnimationView.h"
 
 #pragma mark - UIView Category
 
@@ -192,7 +192,8 @@
     
     // 设置bezeView
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.color = [UIColor clearColor];
+    hud.margin = 0;
+    hud.minSize = contentViewSize;
     
     // 设置自定义View
     UIImage *image = [[UIColor colorWithRed:0.16 green:0.16 blue:0.16 alpha:0.7] zz_image:contentViewSize];

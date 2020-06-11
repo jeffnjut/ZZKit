@@ -564,8 +564,6 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return YES;
-    
     ZZTableViewCellDataSource *cellData = nil;
     if (_sectionEnabled) {
         cellData = [((ZZTableSectionObject *)_zzDataSource[indexPath.section]).zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
