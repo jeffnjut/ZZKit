@@ -219,7 +219,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage *zzUnselectedImage;
 
 // Cell的zzData当前渲染的hash
-@property (nonatomic, assign) NSUInteger zzRenderedHash;
+@property (nonatomic, copy) NSString *zzRenderedMD5;
 
 @end
 
@@ -244,9 +244,6 @@ NS_ASSUME_NONNULL_BEGIN
 // 当设置了ZZTableViewCell的zzCustomSwipes Block,将覆盖ZZTableView的zzCustomSwipes，
 // 并且ZZTableView的zzDeletionConfirmBlock失效
 @property (nonatomic, strong) NSArray<NSDictionary<NSString *, id> *> *zzCustomSwipes;
-
-// Cell的zzData是否被重新赋值
-@property (nonatomic, assign) BOOL zzRenderingWhenCellVisible;
 
 @end
 

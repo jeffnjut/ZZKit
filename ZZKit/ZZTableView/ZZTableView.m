@@ -7,6 +7,7 @@
 //
 
 #import "ZZTableView.h"
+#import <YYModel/YYModel.h>
 #import <pthread.h>
 #import "NSArray+ZZKit.h"
 #import "NSBundle+ZZKit.h"
@@ -412,12 +413,7 @@
             cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         }
     }
-    if (cellData.zzRenderingWhenCellVisible == NO && cell.zzRenderedHash == [cellData hash]) {
-        
-    }else {
-        cell.zzData = cellData;
-        cell.zzRenderedHash = [cellData hash];
-    }
+    cell.zzData = cellData;
     if (cell.zzTapBlock == nil) {
         __weak ZZTableView *weakSelf = self;
         cell.zzTapBlock = ^(__kindof ZZTableViewCell * _Nonnull cell) {
@@ -932,7 +928,6 @@
         self.zzUsingSelectionStyleNone = YES;
         self.zzAllowEditing = YES;
         self.zzHeight = 0;
-        self.zzRenderingWhenCellVisible = YES;
     }
     return self;
 }
