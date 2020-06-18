@@ -221,7 +221,7 @@
         {
             return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         }
-        case ZZStringTrimmingTypeWhiteSpaneAndNewline:
+        case ZZStringTrimmingTypeWhiteSpaceAndNewline:
         {
             return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         }

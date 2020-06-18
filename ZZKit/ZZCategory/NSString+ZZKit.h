@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, ZZStringTrimmingType) {
     ZZStringTrimmingTypeNone,                     // 不去除空格
     ZZStringTrimmingTypeDefault,                  // 默认（去除两端的空格）
     ZZStringTrimmingTypeWhiteSpace,               // 去除两端的空格
-    ZZStringTrimmingTypeWhiteSpaneAndNewline,     // 去除两端的空格和回车
+    ZZStringTrimmingTypeWhiteSpaceAndNewline,     // 去除两端的空格和回车
     ZZStringTrimmingTypeAllSpace                  // 去除所有的空格
 };
 
