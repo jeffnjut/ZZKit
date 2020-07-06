@@ -15,6 +15,7 @@
 #import "NSString+ZZKit.h"
 #import "UIImage+ZZKit.h"
 #import "ZZMacro.h"
+#import "UIView+ZZKit.h"
 
 #pragma mark - ZZTableView类
 
@@ -916,6 +917,15 @@
         }
     }
     [super setSelected:selected animated:animated];
+}
+
+- (void)reloadSelf {
+    
+    UITableView *tableView = [self zz_findView:[UITableView class]];
+    NSIndexPath *indexPath = [tableView indexPathForCell:self];
+    if (indexPath) {
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 @end

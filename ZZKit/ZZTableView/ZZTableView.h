@@ -221,6 +221,8 @@ NS_ASSUME_NONNULL_BEGIN
 // Cell的zzData当前渲染的hash
 @property (nonatomic, copy) NSString *zzRenderedMD5;
 
+- (void)reloadSelf;
+
 @end
 
 @interface ZZTableViewCellDataSource : NSObject
