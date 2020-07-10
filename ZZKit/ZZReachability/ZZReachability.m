@@ -46,103 +46,104 @@
  *  网络运营商
  */
 + (ZZCarrier *)zz_carrier {
-    
-    CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
-    CTCarrier *ctCarrier = [info subscriberCellularProvider];
-    // 国家码和网络码查询
-    // https://en.wikipedia.org/wiki/Mobile_country_code
-    ZZCarrier *carrier = [[ZZCarrier alloc] init];
-    carrier.mcc = [ctCarrier mobileCountryCode];
-    carrier.mnc = [ctCarrier mobileNetworkCode];
-    carrier.carrierName = [carrier carrierName];
-    carrier.isoCountryCode = [carrier isoCountryCode];
-    carrier.allowsVOIP = [carrier allowsVOIP];
-    carrier.radioAccessTechnology = info.currentRadioAccessTechnology;
-    if ([carrier.mcc isEqualToString:@"460"]) {
-        switch ([carrier.mnc intValue]) {
-            case 0:
-            case 2:
-            case 4:
-            case 7:
-            case 8:
-            {
-                carrier.carrierType = 1;
-                break;
+    @autoreleasepool {
+        CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
+        CTCarrier *ctCarrier = [info subscriberCellularProvider];
+        // 国家码和网络码查询
+        // https://en.wikipedia.org/wiki/Mobile_country_code
+        ZZCarrier *carrier = [[ZZCarrier alloc] init];
+        carrier.mcc = [[ctCarrier mobileCountryCode] copy];
+        carrier.mnc = [[ctCarrier mobileNetworkCode] copy];
+        carrier.carrierName = [[carrier carrierName] copy];
+        carrier.isoCountryCode = [[carrier isoCountryCode] copy];
+        carrier.allowsVOIP = [carrier allowsVOIP];
+        carrier.radioAccessTechnology = [info.currentRadioAccessTechnology copy];
+        if ([carrier.mcc isEqualToString:@"460"]) {
+            switch ([carrier.mnc intValue]) {
+                case 0:
+                case 2:
+                case 4:
+                case 7:
+                case 8:
+                {
+                    carrier.carrierType = 1;
+                    break;
+                }
+                case 1:
+                case 6:
+                case 9:
+                {
+                    carrier.carrierType = 2;
+                    break;
+                }
+                    break;
+                case 3:
+                case 5:
+                case 11:
+                {
+                    carrier.carrierType = 3;
+                    break;
+                }
+                case 20:
+                {
+                    carrier.carrierType = 4;
+                    break;
+                }
+                default:
+                    break;
             }
-            case 1:
-            case 6:
-            case 9:
-            {
-                carrier.carrierType = 2;
-                break;
-            }
-                break;
-            case 3:
-            case 5:
-            case 11:
-            {
-                carrier.carrierType = 3;
-                break;
-            }
-            case 20:
-            {
-                carrier.carrierType = 4;
-                break;
-            }
-            default:
-                break;
         }
+        if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyGPRS"]) {
+            
+            carrier.netconnType = @"GPRS";
+            carrier.radioAccessTechnologyType = 0;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyEdge"]) {
+            
+            carrier.netconnType = @"2.75G EDGE";
+            carrier.radioAccessTechnologyType = 1;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyWCDMA"]) {
+            
+            carrier.netconnType = @"3G";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyHSDPA"]) {
+            
+            carrier.netconnType = @"3.5G HSDPA";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyHSUPA"]) {
+            
+            carrier.netconnType = @"3.5G HSUPA";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMA1x"]) {
+            
+            carrier.netconnType = @"2G";
+            carrier.radioAccessTechnologyType = 1;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORev0"]) {
+            
+            carrier.netconnType = @"3G";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevA"]) {
+            
+            carrier.netconnType = @"3G";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevB"]) {
+            
+            carrier.netconnType = @"3G";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyeHRPD"]) {
+            
+            carrier.netconnType = @"HRPD";
+            carrier.radioAccessTechnologyType = 2;
+        }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyLTE"]) {
+            
+            carrier.netconnType = @"4G";
+            carrier.radioAccessTechnologyType = 3;
+        }else {
+            
+            carrier.netconnType = @"Unknown";
+            carrier.radioAccessTechnologyType = 0;
+        }
+        return carrier;
     }
-    if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyGPRS"]) {
-        
-        carrier.netconnType = @"GPRS";
-        carrier.radioAccessTechnologyType = 0;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyEdge"]) {
-        
-        carrier.netconnType = @"2.75G EDGE";
-        carrier.radioAccessTechnologyType = 1;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyWCDMA"]) {
-        
-        carrier.netconnType = @"3G";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyHSDPA"]) {
-        
-        carrier.netconnType = @"3.5G HSDPA";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyHSUPA"]) {
-        
-        carrier.netconnType = @"3.5G HSUPA";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMA1x"]) {
-        
-        carrier.netconnType = @"2G";
-        carrier.radioAccessTechnologyType = 1;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORev0"]) {
-        
-        carrier.netconnType = @"3G";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevA"]) {
-        
-        carrier.netconnType = @"3G";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevB"]) {
-        
-        carrier.netconnType = @"3G";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyeHRPD"]) {
-        
-        carrier.netconnType = @"HRPD";
-        carrier.radioAccessTechnologyType = 2;
-    }else if ([carrier.radioAccessTechnology isEqualToString:@"CTRadioAccessTechnologyLTE"]) {
-        
-        carrier.netconnType = @"4G";
-        carrier.radioAccessTechnologyType = 3;
-    }else {
-        
-        carrier.netconnType = @"Unknown";
-        carrier.radioAccessTechnologyType = 0;
-    }
-    return carrier;
 }
 
 @end
