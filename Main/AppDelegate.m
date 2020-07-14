@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ZZWebView.h"
+#import "NSString+ZZKit.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,6 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    
     return YES;
 }
 

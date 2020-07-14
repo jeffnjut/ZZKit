@@ -425,6 +425,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)zz_addFloat:(nullable NSString *)anotherStr;
 
+/**
+ * 随机生成用户昵称
+ */
+- (NSString *)zz_randomNickName;
+
 @end
 
 NS_ASSUME_NONNULL_END
