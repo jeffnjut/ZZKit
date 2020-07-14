@@ -56,8 +56,13 @@
     if (imageName == nil || imageName.length == 0) {
         return nil;
     }
-    
     UIImage *image = nil;
+    if (@available(iOS 13.0, *)) {
+        image = [UIImage imageNamed:imageName inBundle:NSBundle.mainBundle withConfiguration:nil];
+        if (image) {
+            return image;
+        }
+    }
     NSBundle *bundle = self;
     int scale  = (int)[UIScreen mainScreen].scale;
     NSArray *scales = nil;
