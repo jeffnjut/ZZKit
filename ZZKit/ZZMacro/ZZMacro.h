@@ -13,12 +13,12 @@
 #pragma mark - Block Helper
 
 #if NS_BLOCKS_AVAILABLE
-#define ZZ_BLOCK_CALL(b)                         (b == nil ? : b())
-#define ZZ_BLOCK_CALL_1P(b, p)                   (b == nil ? : b(p) )
-#define ZZ_BLOCK_CALL_2P(b, p1, p2)              (b == nil ? : b(p1, p2))
-#define ZZ_BLOCK_CALL_3P(b, p1, p2 , p3)         (b == nil ? : b(p1, p2, p3))
-#define ZZ_BLOCK_CALL_4P(b, p1, p2 , p3, p4)     (b == nil ? : b(p1, p2, p3, p4))
-#define ZZ_BLOCK_CALL_5P(b, p1, p2 , p3, p4, p5) (b == nil ? : b(p1, p2, p3, p4, p5))
+#define ZZ_BLOCK_CALL(b)                         (b == nil ? : b());
+#define ZZ_BLOCK_CALL_1P(b, p)                   (b == nil ? : b(p) );
+#define ZZ_BLOCK_CALL_2P(b, p1, p2)              (b == nil ? : b(p1, p2));
+#define ZZ_BLOCK_CALL_3P(b, p1, p2 , p3)         (b == nil ? : b(p1, p2, p3));
+#define ZZ_BLOCK_CALL_4P(b, p1, p2 , p3, p4)     (b == nil ? : b(p1, p2, p3, p4));
+#define ZZ_BLOCK_CALL_5P(b, p1, p2 , p3, p4, p5) (b == nil ? : b(p1, p2, p3, p4, p5));
 #endif
 
 // String Helper

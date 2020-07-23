@@ -919,7 +919,7 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void)reloadSelf {
+- (void)zz_reloadSelf {
     
     UITableView *tableView = [self zz_findView:[UITableView class]];
     NSIndexPath *indexPath = [tableView indexPathForCell:self];

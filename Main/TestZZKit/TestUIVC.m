@@ -61,6 +61,11 @@
 
 - (void)viewDidLoad {
     
+    
+    for (int i = 0; i < 2000; i++) {
+        NSLog(@"%@", [@"" zz_randomNickName]);
+    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
