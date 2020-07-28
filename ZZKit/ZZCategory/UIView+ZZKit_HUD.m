@@ -525,8 +525,19 @@
     
     @synchronized (self) {
         
-        if ([self.subviews.lastObject isKindOfClass:[ZZPopupView class]]) {
-            return;
+        if (self.subviews.count >= 1) {
+            int popCnt = 0;
+            for (ZZPopupView *subView in self.subviews) {
+                if ([subView isKindOfClass:[ZZPopupView class]]) {
+                    popCnt++;
+                }
+                if (popCnt > 1) {
+                    return;
+                }
+            }
+            if ([self.subviews.lastObject isKindOfClass:[ZZPopupView class]] && self.subviews.lastObject != popupView) {
+                return;
+            }
         }
         
         if (popupView == nil || popupView.zzPopupAppearAnimationBlock == nil || popupView.zzPopupDisappearAnimationBlock == nil) {
@@ -998,9 +1009,19 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     return self;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
+    
     self = [super init];
+    if (self) {
+        self.zzPopupAppearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzPopupDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    self = [super initWithFrame:frame];
     if (self) {
         self.zzPopupAppearAnimation = ZZPopupViewAnimationNoneCenter;
         self.zzPopupDisappearAnimation = ZZPopupViewAnimationNoneCenter;
@@ -1018,7 +1039,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
             // 没有动画Center
             self.zzPopupAppearAnimationBlock = ^{
                 weakSelf.center = CGPointMake(weakSelf.zzPopupParentView.frame.size.width / 2.0, weakSelf.zzPopupParentView.frame.size.height / 2.0);
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1028,7 +1051,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
             self.zzPopupAppearAnimationBlock = ^{
                 weakSelf.zzLeft = (weakSelf.zzPopupParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
                 weakSelf.zzTop = 0;
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1038,7 +1063,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
             self.zzPopupAppearAnimationBlock = ^{
                 weakSelf.zzLeft = (weakSelf.zzPopupParentView.frame.size.width - weakSelf.frame.size.width) / 2.0;
                 weakSelf.zzBottom = weakSelf.zzPopupParentView.frame.size.height;
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1062,7 +1089,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
 
                     }];
                 }
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1078,7 +1107,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
                 } completion:^(BOOL finished) {
                     
                 }];
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1094,7 +1125,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
                 } completion:^(BOOL finished) {
                     NSLog(@"%@", weakSelf);
                 }];
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1110,7 +1143,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
                 } completion:^(BOOL finished) {
                     
                 }];
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;
@@ -1126,7 +1161,9 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
                 } completion:^(BOOL finished) {
                     
                 }];
-                [weakSelf.zzPopupParentView addSubview:weakSelf];
+                if (weakSelf.zzPopupParentView.subviews.lastObject != weakSelf) {
+                    [weakSelf.zzPopupParentView addSubview:weakSelf];
+                }
             };
         }
             break;

@@ -63,22 +63,22 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  增加自定义类型导航按钮（左）
  */
-- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action;
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action;
 
 /**
  *  增加自定义类型导航按钮（左，margin）
  */
-- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action;
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(nullable void(^)(void))action;
 
 /**
  *  增加自定义类型导航按钮（右）
  */
-- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action;
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action;
 
 /**
  *  增加自定义类型导航按钮（右，margin）
  */
-- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action;
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(nullable void(^)(void))action;
 
 /**
  *  增加固定Space（左，margin）

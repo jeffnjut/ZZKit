@@ -79,28 +79,28 @@
 /**
  *  增加自定义类型导航按钮（左）
  */
-- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action {
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action {
     [self zz_navigationAddBarButton:YES object:customeView size:CGSizeZero margin:0 action:action];
 }
 
 /**
  *  增加自定义类型导航按钮（左，margin）
  */
-- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action {
+- (void)zz_navigationAddLeftBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(nullable void(^)(void))action {
     [self zz_navigationAddBarButton:YES object:customeView size:CGSizeZero margin:margin action:action];
 }
 
 /**
  *  增加自定义类型导航按钮（右）
  */
-- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(void(^)(void))action {
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView action:(nullable void(^)(void))action {
     [self zz_navigationAddBarButton:NO object:customeView size:CGSizeZero margin:0 action:action];
 }
 
 /**
  *  增加自定义类型导航按钮（右，margin）
  */
-- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(void(^)(void))action {
+- (void)zz_navigationAddRightBarCustomView:(nonnull UIView *)customeView margin:(CGFloat)margin action:(nullable void(^)(void))action {
     [self zz_navigationAddBarButton:NO object:customeView size:CGSizeZero margin:margin action:action];
 }
 
