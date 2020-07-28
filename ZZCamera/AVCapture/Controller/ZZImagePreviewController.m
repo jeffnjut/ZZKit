@@ -140,7 +140,7 @@
         // 保存视频
         [ZZCameraManager saveMovieToCameraRoll:_mediaObject.videoURL completionBlock:^(NSURL *mediaURL, NSError *error) {
             if (error) {
-                [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
                 return;
             }
             weakSelf.mediaObject.videoURL = mediaURL;
@@ -157,7 +157,7 @@
         // 保存图片
         [ZZCameraManager savePhotoToPhotoLibrary:_mediaObject.image completionBlock:^(UIImage *image, NSURL *imageURL, NSError *error) {
             if (error) {
-                [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
                 return;
             }
             weakSelf.mediaObject.image = image;

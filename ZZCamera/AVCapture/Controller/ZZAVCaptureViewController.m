@@ -104,7 +104,7 @@
         [self.cameraView.previewView setCaptureSessionsion:_session];
         [self startCaptureSession];
     }else{
-        [self.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+        [self.view zz_toast:error.domain toastType:ZZToastTypeError];
     }
 }
 
@@ -340,7 +340,7 @@
     ZZ_WEAK_SELF
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef _Nullable imageDataSampleBuffer, NSError * _Nullable error) {
         if (error) {
-            [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
             return;
         }
         __block NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
@@ -370,7 +370,7 @@
             [ZZCameraManager savePhotoToPhotoLibrary:image completionBlock:^(UIImage *image, NSURL *imageURL, NSError *error) {
                 
                 if (error) {
-                    [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                    [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
                     return;
                 }
                 ZZMediaObject *media = [ZZMediaObject new];
@@ -403,7 +403,7 @@
     _movieManager.currentOrientation = [self currentVideoOrientation];
     ZZ_WEAK_SELF
     [_movieManager start:^(NSError * _Nonnull error) {
-        if (error) [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+        if (error) [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
     }];
 }
 
@@ -414,7 +414,7 @@
     ZZ_WEAK_SELF
     [_movieManager stop:^(NSURL * _Nonnull url, NSError * _Nonnull error) {
         if (error) {
-            [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
         } else {
             if (weakSelf.config.enableConfirmPreview) {
                 ZZMediaObject *media = [ZZMediaObject new];
@@ -439,7 +439,7 @@
                 
                 [ZZCameraManager saveMovieToCameraRoll:url completionBlock:^(NSURL *mediaURL, NSError *error) {
                     if (error) {
-                        [weakSelf.view zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                        [weakSelf.view zz_toast:error.domain toastType:ZZToastTypeError];
                         return;
                     }
                     ZZMediaObject *media = [ZZMediaObject new];

@@ -479,7 +479,7 @@
         [self _runFocusAnimation:self.focusView point:point];
         ZZ_WEAK_SELF
         [_delegate focusAction:self point:[self.previewView captureDevicePointForPoint:point] handle:^(NSError *error) {
-            if (error) [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            if (error) [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
         }];
     }
 }
@@ -492,7 +492,7 @@
         [self _runFocusAnimation:self.exposureView point:point];
         ZZ_WEAK_SELF
         [_delegate exposAction:self point:[self.previewView captureDevicePointForPoint:point] handle:^(NSError *error) {
-            if (error) [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            if (error) [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
         }];
     }
 }
@@ -504,7 +504,7 @@
         [self _runResetAnimation];
         ZZ_WEAK_SELF
         [_delegate autoFocusAndExposureAction:self handle:^(NSError *error) {
-            if (error) [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            if (error) [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
         }];
     }
 }
@@ -562,7 +562,7 @@
     if ([_delegate respondsToSelector:@selector(swicthCameraAction:handle:)]) {
         ZZ_WEAK_SELF
         [_delegate swicthCameraAction:self handle:^(NSError *error) {
-            if (error) [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+            if (error) [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
         }];
     }
 }
@@ -574,7 +574,7 @@
         ZZ_WEAK_SELF
         [_delegate torchLightAction:self handle:^(NSError *error) {
             if (error) {
-                [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
             } else {
                 weakSelf.flashBtn.selected = NO;
                 weakSelf.torchBtn.selected = !weakSelf.torchBtn.selected;
@@ -590,7 +590,7 @@
         ZZ_WEAK_SELF
         [_delegate flashLightAction:self handle:^(NSError *error) {
             if (error) {
-                [weakSelf zz_toast:error.localizedDescription toastType:ZZToastTypeError];
+                [weakSelf zz_toast:error.domain toastType:ZZToastTypeError];
             } else {
                 weakSelf.flashBtn.selected = !weakSelf.flashBtn.selected;
                 weakSelf.torchBtn.selected = NO;
