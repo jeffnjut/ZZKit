@@ -10,6 +10,7 @@
 #import <pthread.h>
 #import "NSBundle+ZZKit.h"
 #import "NSArray+ZZKit.h"
+#import "UIView+ZZKit.h"
 
 #pragma mark - ZZCollectionViewFlowLayout
 
@@ -538,6 +539,15 @@
 #pragma mark - ZZCollectionViewCell
 
 @implementation ZZCollectionViewCell : UICollectionViewCell
+
+- (void)zz_reloadSelf {
+    
+    UICollectionView *collectionView = [self zz_findView:[UICollectionView class]];
+    NSIndexPath *indexPath = [collectionView indexPathForCell:self];
+    if (indexPath) {
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    }
+}
 
 @end
 

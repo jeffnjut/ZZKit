@@ -158,6 +158,8 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 // 用户自定义点击Block
 @property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZCollectionViewCell * _Nonnull cell);
 
+- (void)zz_reloadSelf;
+
 @end
 
 #pragma mark - ZZCollectionViewCellDataSource
