@@ -777,6 +777,20 @@
     
     [cell setSeparatorInset:UIEdgeInsetsZero];
     [cell setLayoutMargins:UIEdgeInsetsZero];
+    if ([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        if (self.zzLoadWillCompleteBlock != nil) {
+            self.zzLoadWillCompleteBlock();
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        if (self.zzLoadDidCompleteBlock != nil) {
+            self.zzLoadDidCompleteBlock();
+        }
+    }
 }
 
 #pragma mark - UIScrollView
