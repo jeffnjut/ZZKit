@@ -139,9 +139,6 @@ NS_ASSUME_NONNULL_BEGIN
 // Cell 响应事件Block
 @property (nonatomic, copy) ZZTableViewCellActionBlock zzActionBlock;
 
-// 首屏Cell即将全部加载完毕
-@property (nonatomic, copy) ZZTableViewVoidBlock zzLoadWillCompleteBlock;
-
 // 首屏Cell全部加载完毕
 @property (nonatomic, copy) ZZTableViewVoidBlock zzLoadDidCompleteBlock;
 

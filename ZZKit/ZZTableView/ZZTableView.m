@@ -31,6 +31,8 @@
 @property (nonatomic, weak) UIView *superView;
 // ResuableCells
 @property (nonatomic, strong) NSMutableDictionary *resuableCells;
+// Load Complete标记
+@property (nonatomic, assign) BOOL zzLoadCompleteFlag;
 
 @end
 
@@ -778,18 +780,18 @@
     [cell setSeparatorInset:UIEdgeInsetsZero];
     [cell setLayoutMargins:UIEdgeInsetsZero];
     if ([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
-        if (self.zzLoadWillCompleteBlock != nil) {
-            self.zzLoadWillCompleteBlock();
-        }
+        self.zzLoadCompleteFlag = YES;
+    }else {
+        self.zzLoadCompleteFlag = NO;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)layoutSubviews {
     
-    if ([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
-        if (self.zzLoadDidCompleteBlock != nil) {
-            self.zzLoadDidCompleteBlock();
-        }
+    [super layoutSubviews];
+    if (self.zzLoadCompleteFlag && self.zzLoadDidCompleteBlock != nil) {
+        self.zzLoadDidCompleteBlock();
+        self.zzLoadCompleteFlag = NO;
     }
 }
 
