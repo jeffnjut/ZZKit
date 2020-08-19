@@ -561,10 +561,13 @@
             blurView.frame = self.bounds;
             [self addSubview:blurView];
             if (userInteractionEnabled == YES) {
-                [blurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
-                    popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
-                    popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
-                }];
+                __weak typeof(blurView) weakBlurView = blurView;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [weakBlurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                        popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
+                        popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
+                    }];
+                });
             }
             popupView.zzPopupBlurView = blurView;
         }
