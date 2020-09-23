@@ -12,6 +12,7 @@
 #import "UIWindow+ZZKit.h"
 #import "NSString+ZZKit.h"
 #import "ZZEnumCompare.h"
+#import <ZZKit/UIViewController+ZZKit.h>
 
 @interface ZZWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 
@@ -522,36 +523,40 @@
     [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         completionHandler();
     }])];
-    
-    UIViewController *nextResponder = [self _responder:self.superview];
-    if (nextResponder) {
-        [nextResponder presentViewController:alertController animated:YES completion:nil];
+    UIViewController *controller = (UIViewController *)[self.superview nextResponder];
+    if ([controller isKindOfClass:[UIViewController class]]) {
+        [controller zz_present:alertController animated:YES completion:nil];
     }
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler {
     
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(NO);
+    }])];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }])];
+    UIViewController *controller = (UIViewController *)[self.superview nextResponder];
+    if ([controller isKindOfClass:[UIViewController class]]) {
+        [controller zz_present:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler {
     
-    id dict = [prompt zz_jsonToCocoaObject];
-    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
-        
-        NSDictionary *_dict = dict;
-        
-        NSString *type = [_dict objectForKey:@"type"];
-        if (type && [type isEqualToString:@"JSbridge"]) {
-            NSString *returnValue = @"";
-            NSString *functionName = [_dict objectForKey:@"functionName"];
-            // NSDictionary *args = [_dict objectForKey:@"arguments"];
-            if ([functionName isEqualToString:@"OC_Fun_05"]) {
-                returnValue = @"Fun:OC_Fun_05";
-            }else if ([functionName isEqualToString:@"OC_Fun_06"]) {
-                returnValue = @"Fun:OC_Fun_06";
-            }
-            completionHandler(@"test");
-        }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = defaultText;
+    }];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(alertController.textFields[0].text?:@"");
+    }])];
+    
+    UIViewController *controller = (UIViewController *)[self.superview nextResponder];
+    if ([controller isKindOfClass:[UIViewController class]]) {
+        [controller zz_present:alertController animated:YES completion:nil];
     }
 }
 

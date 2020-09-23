@@ -128,7 +128,7 @@ typedef NS_ENUM(NSInteger, SelfType) {
             default:
                 break;
         }
-    }else{
+    }else if (image != nil) {
         UIImage *_image = nil;
         switch (type) {
             case SelfTypeUIImageView:
