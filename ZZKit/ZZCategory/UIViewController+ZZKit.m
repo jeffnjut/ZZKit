@@ -425,7 +425,11 @@
  */
 - (void)zz_dismiss {
     
-    [self zz_dismiss:0 animated:YES];
+    if (@available(iOS 14.0, *)) {
+        [self zz_dismiss:0 animated:NO];
+    }else {
+        [self zz_dismiss:0 animated:YES];
+    }
 }
 
 /**
@@ -470,7 +474,12 @@
  *  消失或者Root页[默认动画转场]
  */
 - (void)zz_dismissRoot {
-    [self zz_dismissRoot:YES];
+    
+    if (@available(iOS 14.0, *)) {
+        [self zz_dismissRoot:NO];
+    }else {
+        [self zz_dismissRoot:YES];
+    }
 }
 
 /**
@@ -514,6 +523,7 @@
  *  消失或者Offset页[默认动画转场]
  */
 - (void)zz_dismissOffset:(NSUInteger)offset {
+    
     [self zz_dismissOffset:offset animated:YES];
 }
 
