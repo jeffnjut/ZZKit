@@ -10,21 +10,29 @@
 
 
 #pragma mark - 各类iPhone产品类型的屏幕宽、高
-
+// iPhone 4, iPhone 4s
 #define ZZ_DEVICE_IP4_WIDTH        (320.0)
 #define ZZ_DEVICE_IP4_HEIGHT       (480.0)
+
+// iPhone 5, iPhone 5c, iPhone 5s, iPhone se
 #define ZZ_DEVICE_IP5_WIDTH        (320.0)
 #define ZZ_DEVICE_IP5_HEIGHT       (568.0)
+
+// iPhone 6, iPhone 6s, iPhone 7, iPhone 8
 #define ZZ_DEVICE_IP6_WIDTH        (375.0)
 #define ZZ_DEVICE_IP6_HEIGHT       (667.0)
+
+// iPhone 6 plus, iPhone 6s plus, iPhone 7 plus, iPhone 8 plus
 #define ZZ_DEVICE_IP6P_WIDTH       (414.0)
 #define ZZ_DEVICE_IP6P_HEIGHT      (736.0)
+
+// iPhone x, iPhone xs, iPhone 12 mini, iPhone 12, iPhone 11 Pro, iPhone 12 pro
 #define ZZ_DEVICE_IPX_WIDTH        (375.0)
 #define ZZ_DEVICE_IPX_HEIGHT       (812.0)
+
+// iPhone xr, iPhone x max, iPhone xs max, iPhone 11, iPhone 11 pro max, iPhone 12 pro max
 #define ZZ_DEVICE_IPXMAX_WIDTH     (414.0)
 #define ZZ_DEVICE_IPXMAX_HEIGHT    (896.0)
-#define ZZ_DEVICE_IPXR_WIDTH       (414.0)
-#define ZZ_DEVICE_IPXR_HEIGHT      (896.0)
 
 
 #pragma mark - 判断iPhone类型
