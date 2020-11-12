@@ -43,7 +43,16 @@
 // Override [pushViewController:animated:]
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
-    if ([self.childViewControllers count] > 0) { viewController.hidesBottomBarWhenPushed = YES;}
+    if (self.childViewControllers.count > 0) {
+        
+        viewController.hidesBottomBarWhenPushed = YES;
+        
+        // 解决push多个控制器后，popToRootViewController TabBar消失
+        if (self.childViewControllers.count > 1) {
+            viewController.hidesBottomBarWhenPushed = NO;
+        }
+    }
+    
     [super pushViewController:viewController animated:animated];
     
     // 适配iPhoneX，修改tabBar的frame
