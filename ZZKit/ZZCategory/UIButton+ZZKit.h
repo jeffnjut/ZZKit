@@ -52,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_preventFromDoubleClick;
 
+/**
+ *  防止重复点击
+ */
+- (void)zz_preventFromDoubleClick:(NSTimeInterval)time;
+
 @end
 
 NS_ASSUME_NONNULL_END
