@@ -117,7 +117,11 @@
             }
         }];
     }else {
-        [self zz_removeLongPress];
+        for (UILongPressGestureRecognizer *longPressGesture in self.gestureRecognizers) {
+            if ([longPressGesture isKindOfClass:[UILongPressGestureRecognizer class]]) {
+                [self removeGestureRecognizer:longPressGesture];
+            }
+        }
     }
 }
 

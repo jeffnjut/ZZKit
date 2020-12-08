@@ -61,7 +61,9 @@
         for (int i = 0; i < [ZZPhotoFilterManager filterTypes].count; i++ ) {
             ZZPhotoFilterType type = [[[ZZPhotoFilterManager filterTypes] objectAtIndex:i] integerValue];
             UIImage *filteredSmallImage = [[ZZPhotoFilterManager shared] image:self.originalThumbImage filterType:type];
-            [_filterThumbImages addObject:filteredSmallImage];
+            if (filteredSmallImage) {
+                [_filterThumbImages addObject:filteredSmallImage];
+            }
         }
     }
     return _filterThumbImages;

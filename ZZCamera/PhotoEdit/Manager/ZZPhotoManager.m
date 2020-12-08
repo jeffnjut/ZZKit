@@ -285,31 +285,36 @@ static bool isFirstAccess = YES;
 - (void)loadDraftPhotosToAllPhotos:(nonnull ZZDraft *)draft completion:(nullable void(^)(void))completion {
     
     [self cleanPhotos];
-    for (int i = 0; i < draft.photos.count; i++) {
-        ZZDraftPhoto *savingPhotoModel = [draft.photos zz_arrayObjectAtIndex:i];
-        // 查找相册并赋值PHAsset（本地）
-        if (savingPhotoModel.assetIdentifier.length > 0) {
-            PHAsset *findedAsset = [self findByIdentifier:savingPhotoModel.assetIdentifier];
-            UIImage *originalImage = [findedAsset getGeneralTargetImage];
-            [self _addToAllPhotos:draft assetIdentifier:savingPhotoModel.assetIdentifier photoUrl:savingPhotoModel.photoUrl image:originalImage asset:findedAsset completion:completion];
+    if (draft.photos.count > 0) {
+        for (int i = 0; i < draft.photos.count; i++) {
+            ZZDraftPhoto *savingPhotoModel = [draft.photos zz_arrayObjectAtIndex:i];
+            // 查找相册并赋值PHAsset（本地）
+            if (savingPhotoModel.assetIdentifier.length > 0) {
+                PHAsset *findedAsset = [self findByIdentifier:savingPhotoModel.assetIdentifier];
+                UIImage *originalImage = [findedAsset getGeneralTargetImage];
+                [self _addToAllPhotos:draft assetIdentifier:savingPhotoModel.assetIdentifier photoUrl:savingPhotoModel.photoUrl image:originalImage asset:findedAsset completion:completion];
+            }
+            // 查找SD库(网络图片,异步加载)
+            else if (savingPhotoModel.photoUrl.length > 0) {
+                ZZ_WEAK_SELF
+                [self findByPhotoUrl:savingPhotoModel.photoUrl completion:^(NSData *imageData, UIImage *image, NSString *url) {
+                    if (image != nil) {
+                        // 成功
+                        [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:image asset:nil completion:completion];
+                    }else {
+                        // 失败
+                        [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:nil asset:nil completion:completion];
+                    }
+                }];
+            }
+            // 失败
+            else {
+                [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:nil image:nil asset:nil completion:completion];
+            }
         }
-        // 查找SD库(网络图片,异步加载)
-        else if (savingPhotoModel.photoUrl.length > 0) {
-            ZZ_WEAK_SELF
-            [self findByPhotoUrl:savingPhotoModel.photoUrl completion:^(NSData *imageData, UIImage *image, NSString *url) {
-                if (image != nil) {
-                    // 成功
-                    [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:image asset:nil completion:completion];
-                }else {
-                    // 失败
-                    [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:nil asset:nil completion:completion];
-                }
-            }];
-        }
-        // 失败
-        else {
-            [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:nil image:nil asset:nil completion:completion];
-        }
+    }else {
+        [self cleanPhotos];
+        completion == nil ? : completion();
     }
 }
 

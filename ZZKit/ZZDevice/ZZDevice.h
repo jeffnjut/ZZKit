@@ -77,6 +77,12 @@
 
 #define ZZ_DEVICE_TAB_SAFE_DELTA_X              (ZZ_DEVICE_IS_IPHONE_X_ALL ? 34.0 : 0)
 
+#pragma mark - 设备屏幕比例
+
+#define ZZ_DEVICE_RATE_IF_IP4     ((UIScreen.mainScreen.bounds.size.height / UIScreen.mainScreen.bounds.size.width) <= 1.5)
+#define ZZ_DEVICE_RATE_IF_IP6P    ((UIScreen.mainScreen.bounds.size.height / UIScreen.mainScreen.bounds.size.width) <= 2.0 && (UIScreen.mainScreen.bounds.size.height / UIScreen.mainScreen.bounds.size.width) > 1.5)
+#define ZZ_DEVICE_RATE_IF_IPXMAX  ((UIScreen.mainScreen.bounds.size.height / UIScreen.mainScreen.bounds.size.width) <= 3.0 && (UIScreen.mainScreen.bounds.size.height / UIScreen.mainScreen.bounds.size.width) > 2.0)
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZDevice : UIDevice

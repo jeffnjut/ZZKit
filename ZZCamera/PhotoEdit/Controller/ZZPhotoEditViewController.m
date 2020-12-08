@@ -679,7 +679,10 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    ZZPhotoManager.shared.currentPhoto = [ZZPhotoManager.shared.photoQueue objectAtIndex:self.index];
+    id currentPhoto = [ZZPhotoManager.shared.photoQueue zz_arrayObjectAtIndex:self.index];
+    if (currentPhoto) {
+        ZZPhotoManager.shared.currentPhoto = currentPhoto;
+    }
     if ([_toolbar getIndex] == 0) {
         [self.toolbar refreshFilterToolbar];
     }

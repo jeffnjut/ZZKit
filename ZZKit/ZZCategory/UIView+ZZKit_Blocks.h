@@ -18,19 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)zz_tapBlock:(void(^)(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender))block;
 
 /**
- *  删除通用的点击事件
- */
-- (void)zz_removeTap;
-
-/**
  *  设置通用的长按事件
  */
 - (void)zz_longPress:(NSTimeInterval)minimumPressDuration block:(void(^)(UILongPressGestureRecognizer * _Nonnull longPressGesture, __kindof UIView * _Nonnull sender))block;
-
-/**
- *  删除通用的长按事件
- */
-- (void)zz_removeLongPress;
 
 @end
 

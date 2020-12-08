@@ -648,7 +648,7 @@
     
     if (tick) {
         // 判断是否超出最大选择数量
-        if (ZZPhotoManager.shared.photoQueue.count == ZZPhotoManager.shared.config.maxSelectionCount) {
+        if (ZZPhotoManager.shared.photoQueue.count >= ZZPhotoManager.shared.config.maxSelectionCount) {
             if (ZZPhotoManager.shared.config.userOverLimitationBlock != nil) {
                 ZZPhotoManager.shared.config.userOverLimitationBlock(self);
                 return NO;
