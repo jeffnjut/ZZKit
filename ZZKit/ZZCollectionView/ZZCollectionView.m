@@ -71,7 +71,11 @@
                               scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock {
     
     ZWHCollectionViewFlowWaterfallLayout *flowLayout = [[ZWHCollectionViewFlowWaterfallLayout alloc] init];
-    flowLayout.sectionHeadersPinToVisibleBounds = YES;
+    if (@available(iOS 9.0, *)) {
+        flowLayout.sectionHeadersPinToVisibleBounds = YES;
+    } else {
+        // Fallback on earlier versions
+    }
     ZZCollectionView *collectionView = [[ZZCollectionView alloc] initWithFrame:frame collectionViewLayout:flowLayout];
     collectionView.delegate = collectionView;
     collectionView.dataSource = collectionView;
@@ -102,6 +106,7 @@
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head"];
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot"];
     collectionView.zzActionBlock = actionBlock;
+    collectionView.zzScrollBlock = scrollBlock;
     collectionView.backgroundColor = backgroundColor;
     return collectionView;
 }
@@ -266,7 +271,10 @@
                 break;
             }
             
-            BOOL canMove = [self beginInteractiveMovementForItemAtIndexPath:index];
+            BOOL canMove = NO;
+            if (@available(iOS 9.0, *)) {
+                canMove = [self beginInteractiveMovementForItemAtIndexPath:index];
+            }
             if (!canMove) {
                 break;
             }
@@ -274,17 +282,23 @@
             break;
         case UIGestureRecognizerStateChanged:
         {
-            [self updateInteractiveMovementTargetPosition:point];
+            if (@available(iOS 9.0, *)) {
+                [self updateInteractiveMovementTargetPosition:point];
+            }
         }
             break;
         case UIGestureRecognizerStateEnded:
         {
-            [self endInteractiveMovement];
+            if (@available(iOS 9.0, *)) {
+                [self endInteractiveMovement];
+            }
         }
             break;
         default:
         {
-            [self cancelInteractiveMovement];
+            if (@available(iOS 9.0, *)) {
+                [self cancelInteractiveMovement];
+            }
         }
             break;
     }
@@ -363,15 +377,17 @@
         NSString *headCellName = [[self class] getCellName:sectionObject.zzHeaderData];
         if (headCellName.length > 0) {
             ZZCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headCellName forIndexPath:indexPath];
-            view.zzData = sectionObject.zzHeaderData;
-            __weak ZZCollectionView *weakSelf = self;
-            view.zzTapBlock = ^(__kindof ZZCollectionReusableView * _Nonnull reusableView) {
-                if (reusableView != nil && reusableView.zzData != nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, 0, 0, ZZCollectionViewCellActionCustomTapped, nil, nil, reusableView.zzData, reusableView);
-                    });
-                }
-            };
+            if ([view respondsToSelector:@selector(setZzData:)]) {
+                view.zzData = sectionObject.zzHeaderData;
+                __weak ZZCollectionView *weakSelf = self;
+                view.zzTapBlock = ^(__kindof ZZCollectionReusableView * _Nonnull reusableView) {
+                    if (reusableView != nil && reusableView.zzData != nil) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, 0, 0, ZZCollectionViewCellActionCustomTapped, nil, nil, reusableView.zzData, reusableView);
+                        });
+                    }
+                };
+            }
             return view;
         }else {
             UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head" forIndexPath:indexPath];
@@ -382,7 +398,17 @@
         NSString *headCellName = [[self class] getCellName:sectionObject.zzFooterData];
         if (headCellName.length > 0) {
             ZZCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:headCellName forIndexPath:indexPath];
-            view.zzData = sectionObject.zzFooterData;
+            if ([view respondsToSelector:@selector(setZzData:)]) {
+                view.zzData = sectionObject.zzFooterData;
+                __weak ZZCollectionView *weakSelf = self;
+                view.zzTapBlock = ^(__kindof ZZCollectionReusableView * _Nonnull reusableView) {
+                    if (reusableView != nil && reusableView.zzData != nil) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            weakSelf.zzActionBlock == nil ? : weakSelf.zzActionBlock(weakSelf, 0, 0, ZZCollectionViewCellActionCustomTapped, nil, nil, reusableView.zzData, reusableView);
+                        });
+                    }
+                };
+            }
             return view;
         }else {
             UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot" forIndexPath:indexPath];
