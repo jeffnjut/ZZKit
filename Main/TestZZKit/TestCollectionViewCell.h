@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestCollectionViewCellDataSource : ZZCollectionViewCellDataSource
 
+@property (nonatomic, strong) UIColor *backgroundColor;
+
+@property (nonatomic, copy) NSString *text;
+
 @end
 
 NS_ASSUME_NONNULL_END

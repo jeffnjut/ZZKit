@@ -402,6 +402,9 @@
 		E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */; };
 		E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */; };
 		E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */; };
+		E7FFCBDC258AFEEC00734785 /* TestZZCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCBDA258AFEEC00734785 /* TestZZCollectionReusableView.m */; };
+		E7FFCBDD258AFEEC00734785 /* TestZZCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCBDB258AFEEC00734785 /* TestZZCollectionReusableView.xib */; };
+		E7FFCBE2258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCBE1258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -975,6 +978,11 @@
 		E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestWidgetVC.xib; sourceTree = "<group>"; };
 		E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetProgressView.m; sourceTree = "<group>"; };
 		E7F85F2322C2240E0018A217 /* ZZWidgetProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWidgetProgressView.h; sourceTree = "<group>"; };
+		E7FFCBD9258AFEEC00734785 /* TestZZCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestZZCollectionReusableView.h; path = Main/TestZZKit/TestZZCollectionReusableView.h; sourceTree = SOURCE_ROOT; };
+		E7FFCBDA258AFEEC00734785 /* TestZZCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestZZCollectionReusableView.m; path = Main/TestZZKit/TestZZCollectionReusableView.m; sourceTree = SOURCE_ROOT; };
+		E7FFCBDB258AFEEC00734785 /* TestZZCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestZZCollectionReusableView.xib; path = Main/TestZZKit/TestZZCollectionReusableView.xib; sourceTree = SOURCE_ROOT; };
+		E7FFCBE0258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWHCollectionViewFlowWaterfallLayout.h; sourceTree = "<group>"; };
+		E7FFCBE1258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWHCollectionViewFlowWaterfallLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1020,6 +1028,7 @@
 		E71998D52421293F00645C7A /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				E762F5B9258856740053343E /* Algorithm */,
 				E733AD762423BE5A00045480 /* Predicate */,
 				E71998D924212B4600645C7A /* Runloop */,
 			);
@@ -1046,6 +1055,37 @@
 				E733AD792423BE9400045480 /* TestPredicateVC.xib */,
 			);
 			path = Predicate;
+			sourceTree = "<group>";
+		};
+		E762F5B9258856740053343E /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				E762F5BA25885BBD0053343E /* 排序 */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		E762F5BA25885BBD0053343E /* 排序 */ = {
+			isa = PBXGroup;
+			children = (
+				E762F5BB25885BCF0053343E /* 比较排序 */,
+				E762F5BC25885BDD0053343E /* 非比较排序 */,
+			);
+			path = "排序";
+			sourceTree = "<group>";
+		};
+		E762F5BB25885BCF0053343E /* 比较排序 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "比较排序";
+			sourceTree = "<group>";
+		};
+		E762F5BC25885BDD0053343E /* 非比较排序 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "非比较排序";
 			sourceTree = "<group>";
 		};
 		E7675FF622AF44F00044B9AD /* ZZMacro */ = {
@@ -1542,6 +1582,8 @@
 		E788655B22B2199700B20F3E /* ZZCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E7FFCBE0258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.h */,
+				E7FFCBE1258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m */,
 				E70C3FFA22C09F8C0047A1C0 /* ZZCollectionView.h */,
 				E70C3FFB22C09F8C0047A1C0 /* ZZCollectionView.m */,
 			);
@@ -1675,7 +1717,6 @@
 				E70C72E822A3697F00341A2B /* ZZDispatchQueue */,
 				E7DC5C35229CD75600ED8733 /* ZZCache */,
 				E7DC5C34229CD71A00ED8733 /* ZZDevice */,
-				E7DC5C33229CD71000ED8733 /* ZZNetwork */,
 				E7DC5C32229CD6E300ED8733 /* ZZCategory */,
 				E7DC5C2F229CD6BC00ED8733 /* ZZKit.h */,
 				E7DC5C30229CD6BC00ED8733 /* ZZKit.m */,
@@ -1777,13 +1818,6 @@
 			path = ZZCategory;
 			sourceTree = "<group>";
 		};
-		E7DC5C33229CD71000ED8733 /* ZZNetwork */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZZNetwork;
-			sourceTree = "<group>";
-		};
 		E7DC5C34229CD71A00ED8733 /* ZZDevice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1860,6 +1894,9 @@
 				E70C400222C0D60C0047A1C0 /* TestZZCollectionViewVC.h */,
 				E70C400322C0D60C0047A1C0 /* TestZZCollectionViewVC.m */,
 				E70C400422C0D60C0047A1C0 /* TestZZCollectionViewVC.xib */,
+				E7FFCBD9258AFEEC00734785 /* TestZZCollectionReusableView.h */,
+				E7FFCBDA258AFEEC00734785 /* TestZZCollectionReusableView.m */,
+				E7FFCBDB258AFEEC00734785 /* TestZZCollectionReusableView.xib */,
 				E70C400722C0D6ED0047A1C0 /* TestCollectionViewCell.h */,
 				E70C400822C0D6ED0047A1C0 /* TestCollectionViewCell.m */,
 				E70C400922C0D6ED0047A1C0 /* TestCollectionViewCell.xib */,
@@ -2017,6 +2054,7 @@
 				E77EBCA02373CB6A0062E4A9 /* ic_photolibrary_compress@2x.png in Resources */,
 				E7E0179C22AE24AE00C24EF2 /* TestNotificationVC.xib in Resources */,
 				E760BED422F9783400944380 /* icon_wifi_connect@2x.png in Resources */,
+				E7FFCBDD258AFEEC00734785 /* TestZZCollectionReusableView.xib in Resources */,
 				E77EBC822373CB6A0062E4A9 /* ic_photolibrary_fullfill@2x.png in Resources */,
 				E77EBD222373CB6A0062E4A9 /* ic_switch@2x.png in Resources */,
 				E77EBCDF2373CB6A0062E4A9 /* ic_photolibrary_up@3x.png in Resources */,
@@ -2272,12 +2310,14 @@
 				E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
 				E767600522AFBF220044B9AD /* ZZTimer.m in Sources */,
+				E7FFCBE2258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m in Sources */,
 				E77EBCE92373CB6A0062E4A9 /* ZZPhotoEditViewController.m in Sources */,
 				E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */,
 				E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
 				E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */,
 				E7E9CE1B24333869008E0E25 /* WKWebView+ZZKit.m in Sources */,
+				E7FFCBDC258AFEEC00734785 /* TestZZCollectionReusableView.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
 				E77EBD382373CB6A0062E4A9 /* ZZMovieManager.m in Sources */,

@@ -10,7 +10,6 @@
 
 @interface TestCollectionViewCell()
 
-@property (nonatomic, weak) IBOutlet UIView *backgroundView;
 @property (nonatomic, weak) IBOutlet UILabel *label;
 
 @end
@@ -25,9 +24,9 @@
 - (void)setZzData:(__kindof ZZCollectionViewCellDataSource *)zzData {
     
     [super setZzData:zzData];
-    // ZZCollectionViewCellDataSource *ds = zzData;
-    self.backgroundColor = [UIColor colorWithRed:(arc4random() % 255 / 255.0) green:(arc4random() % 255 / 255.0) blue:(arc4random() % 255 / 255.0) alpha:1.0];
-    self.label.text = [NSString stringWithFormat:@"%u", arc4random() % 10000];
+    TestCollectionViewCellDataSource *ds = zzData;
+    self.backgroundColor = ds.backgroundColor;
+    self.label.text = ds.text;
 }
 
 @end
@@ -38,7 +37,7 @@
 {
     self = [super init];
     if (self) {
-        self.zzSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 200 + arc4random() % 100);
+        self.zzHeight = 200 + arc4random() % 200;
     }
     return self;
 }

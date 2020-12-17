@@ -12,7 +12,7 @@
 #import "UIWindow+ZZKit.h"
 #import "NSString+ZZKit.h"
 #import "ZZEnumCompare.h"
-#import <ZZKit/UIViewController+ZZKit.h>
+#import "UIViewController+ZZKit.h"
 
 @interface ZZWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 

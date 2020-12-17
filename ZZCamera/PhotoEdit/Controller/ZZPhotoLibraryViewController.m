@@ -310,8 +310,13 @@
         _collectionView = [ZZCollectionView zz_quickAdd:[UIColor whiteColor] onView:self.view frame:frame registerCellsBlock:^NSArray * _Nonnull{
             
             return @[[ZZPhotoCollectionViewCell class]];
-        } constraintBlock:nil actionBlock:^(ZZCollectionView *__weak  _Nonnull collectionView, NSInteger section, NSInteger row, ZZCollectionViewCellAction action, __kindof ZZCollectionViewCellDataSource * _Nullable cellData, __kindof ZZCollectionViewCell * _Nullable cell) {
+        } registerHeadersBlock:^NSArray * _Nonnull{
             
+            return nil;
+        } registerFootersBlock:^NSArray * _Nonnull{
+            
+            return nil;
+        } constraintBlock:nil actionBlock:^(ZZCollectionView * _Nonnull __weak collectionView, NSInteger section, NSInteger row, ZZCollectionViewCellAction action, __kindof ZZCollectionViewCellDataSource * _Nullable cellData, __kindof ZZCollectionViewCell * _Nullable cell, __kindof ZZCollectionReusableViewDataSource * _Nullable reusableViewData, __kindof ZZCollectionReusableView * _Nullable reusableView) {
             if ([cellData isKindOfClass:[ZZPhotoCollectionViewCellDataSource class]]) {
                 ZZPhotoCollectionViewCellDataSource *ds = (ZZPhotoCollectionViewCellDataSource *)cellData;
                 if (ds.isCameraPlaceholer) {
@@ -334,6 +339,8 @@
                     }
                 }
             }
+        } scrollBlock:^(ZZCollectionView * _Nonnull __weak collectionView, ZZCollectionViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
+            
         }];
         
         if (ZZPhotoManager.shared.config.cameraButtonType == ZZPhotoLibraryCameraButtonTypeBottom) {

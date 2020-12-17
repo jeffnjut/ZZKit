@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ZZCollectionView, ZZCollectionSectionObject, ZZCollectionViewCell, ZZCollectionViewCellDataSource;
+@class ZZCollectionView, ZZCollectionSectionObject, ZZCollectionViewCell, ZZCollectionViewCellDataSource, ZZCollectionReusableView, ZZCollectionReusableViewDataSource;
 
 #pragma mark - 类型定义
 
@@ -47,7 +47,9 @@ typedef void (^ZZCollectionViewCellActionBlock)(__weak ZZCollectionView * _Nonnu
                                                 NSInteger row,
                                                 ZZCollectionViewCellAction action,
                                                 __kindof ZZCollectionViewCellDataSource * _Nullable cellData,
-                                                __kindof ZZCollectionViewCell * _Nullable cell);
+                                                __kindof ZZCollectionViewCell * _Nullable cell,
+                                                __kindof ZZCollectionReusableViewDataSource * _Nullable reusableViewData,
+                                                __kindof ZZCollectionReusableView * _Nullable reusableView);
 
 // CollectionView的滚动定义
 typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Nonnull collectionView,
@@ -55,45 +57,6 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
                                                   CGPoint velocity,
                                                   CGPoint targetContentOffset,
                                                   BOOL decelerate);
-
-#pragma mark - ZZCollectionViewFlowLayoutDelegate
-
-@protocol ZZCollectionViewFlowLayoutDelegate <NSObject>
-
-@optional
-
-// 行间距
-- (CGFloat)zz_minimumLineSpacingForSectionAtIndex:(NSInteger)section;
-
-// 列间距
-- (CGFloat)zz_minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
-
-// SectionInset
-- (UIEdgeInsets)zz_contentInsetOfSectionAtIndex:(NSInteger)section;
-
-@required
-
-// Section的数量
-- (NSInteger)zz_numberOfSection;
-
-// Cell的大小
-- (CGSize)zz_sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
-
-// 每个Section对应的列数
-- (NSInteger)zz_numberOfColumnInSectionAtIndex:(NSInteger)section;
-
-@end
-
-#pragma mark - ZZCollectionViewFlowLayout
-
-@interface ZZCollectionViewFlowLayout : UICollectionViewLayout
-
-@property (nonatomic, weak) id<ZZCollectionViewFlowLayoutDelegate> zzFlowLayoutDelegate;
-
-// 代替原生UICollectionView.contentInset属性
-@property (nonatomic, assign) UIEdgeInsets zzContentInset;
-
-@end
 
 #pragma mark - ZZCollectionView
 
@@ -108,13 +71,21 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 // CollectionView滚动事件Block
 @property (nonatomic, copy) ZZCollectionViewScrollActionBlock zzScrollBlock;
 
-// FlowLayout
-@property (nonatomic, strong, readonly) ZZCollectionViewFlowLayout *zzLayout;
+// CollectionView是否可以拖拽移动
+@property (nonatomic, assign) BOOL zzDraggable;
 
 /**
  *  创建ZZCollectionView的方法
  */
-+ (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(ZZCollectionViewCellActionBlock)actionBlock;
++ (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
+                                   onView:(nullable UIView *)onView
+                                    frame:(CGRect)frame
+                       registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
+                     registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
+                     registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
+                          constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
+                              actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
+                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock;
 
 /**
  *  一组安全的操作datasource的方法
@@ -146,6 +117,12 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 @property (nonatomic, assign) CGFloat zzMinimumLineSpacing;
 @property (nonatomic, strong) NSMutableArray<ZZCollectionViewCellDataSource *> *zzCellDataSource;
 
+// Header View
+@property (nonatomic, strong) ZZCollectionReusableViewDataSource *zzHeaderData;
+
+// Footer View
+@property (nonatomic, strong) ZZCollectionReusableViewDataSource *zzFooterData;
+
 @end
 
 #pragma mark - ZZCollectionViewCell
@@ -167,7 +144,32 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 @interface ZZCollectionViewCellDataSource : NSObject
 
 // 高度
+@property (nonatomic, assign) CGFloat zzHeight;
+
+// Old
 @property (nonatomic, assign) CGSize zzSize;
+
+
+@end
+
+#pragma mark - ZZCollectionReusableView
+
+@interface ZZCollectionReusableView : UICollectionReusableView
+
+// 数据
+@property (nonatomic, strong) __kindof ZZCollectionReusableViewDataSource *zzData;
+
+// 用户自定义点击Block
+@property (nonatomic, copy) void(^zzTapBlock)(__kindof ZZCollectionReusableView * _Nonnull reusableView);
+
+@end
+
+#pragma mark - ZZCollectionReusableViewDataSource
+
+@interface ZZCollectionReusableViewDataSource : NSObject
+
+// 高度
+@property (nonatomic, assign) CGFloat zzHeight;
 
 @end
 

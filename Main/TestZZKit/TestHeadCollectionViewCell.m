@@ -33,7 +33,13 @@
 - (void)setZzData:(__kindof ZZCollectionViewCellDataSource *)zzData {
     
     [super setZzData:zzData];
-    self.backgroundColor = [UIColor blackColor];
+    self.layer.borderColor = UIColor.blackColor.CGColor;
+    self.layer.borderWidth = 1.0;
+}
+
+- (IBAction)tap:(id)sender {
+    
+    self.zzTapBlock == nil ? : self.zzTapBlock(self);
 }
 
 @end
@@ -44,7 +50,7 @@
 {
     self = [super init];
     if (self) {
-        self.zzSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 188.0);
+        self.zzHeight = 188.0;
     }
     return self;
 }
