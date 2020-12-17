@@ -464,7 +464,7 @@
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, ds.zzSize.height);
+        return CGSizeMake((self.frame.size.width - sectionObject.zzEdgeInsets.left - sectionObject.zzEdgeInsets.right - (sectionObject.zzColumns - 1) * sectionObject.zzMinimumInteritemSpacing) / sectionObject.zzColumns, ds.zzSize.height);
     }else {
         return CGSizeMake(ds.zzSize.width, self.frame.size.height - sectionObject.zzEdgeInsets.top - sectionObject.zzEdgeInsets.bottom);
     }
@@ -493,9 +493,9 @@
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
         if (sectionObject.zzHeaderData) {
-            return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzHeaderData.zzSize.height);
+            return CGSizeMake(self.frame.size.width, sectionObject.zzHeaderData.zzSize.height);
         }
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
+        return CGSizeMake(self.frame.size.width, 0.01);
     }else {
         if (sectionObject.zzHeaderData) {
             return CGSizeMake(sectionObject.zzHeaderData.zzSize.width, self.frame.size.height);
@@ -509,9 +509,9 @@
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
         if (sectionObject.zzFooterData) {
-            return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzFooterData.zzSize.height);
+            return CGSizeMake(self.frame.size.width, sectionObject.zzFooterData.zzSize.height);
         }
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
+        return CGSizeMake(self.frame.size.width, 0.01);
     }else {
         if (sectionObject.zzFooterData) {
             return CGSizeMake(sectionObject.zzFooterData.zzSize.width, self.frame.size.height);
