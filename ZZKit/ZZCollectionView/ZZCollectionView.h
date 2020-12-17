@@ -80,6 +80,19 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 + (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
                                    onView:(nullable UIView *)onView
                                     frame:(CGRect)frame
+                       registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
+                     registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
+                     registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
+                          constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
+                              actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
+                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock;
+
+/**
+ *  创建ZZCollectionView的方法
+ */
++ (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
+                                   onView:(nullable UIView *)onView
+                                    frame:(CGRect)frame
                           scrollDirection:(UICollectionViewScrollDirection)scrollDirection
                        registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
                      registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock

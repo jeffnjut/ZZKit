@@ -65,6 +65,31 @@
 + (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
                                    onView:(nullable UIView *)onView
                                     frame:(CGRect)frame
+                       registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
+                     registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
+                     registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
+                          constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
+                              actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
+                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock {
+    
+    return [[self class] zz_quickAdd:backgroundColor
+                              onView:onView
+                               frame:frame
+                     scrollDirection:UICollectionViewScrollDirectionVertical
+                  registerCellsBlock:registerCellsBlock
+                registerHeadersBlock:registerHeadersBlock
+                registerFootersBlock:registerFootersBlock
+                     constraintBlock:constraintBlock
+                         actionBlock:actionBlock
+                         scrollBlock:scrollBlock];
+}
+
+/**
+ *  创建ZZCollectionView的方法
+ */
++ (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
+                                   onView:(nullable UIView *)onView
+                                    frame:(CGRect)frame
                           scrollDirection:(UICollectionViewScrollDirection)scrollDirection
                        registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
                      registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
@@ -438,7 +463,7 @@
     
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
-    if (self.collectionViewLayout == UICollectionViewScrollDirectionVertical) {
+    if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
         return CGSizeMake(UIScreen.mainScreen.bounds.size.width, ds.zzSize.height);
     }else {
         return CGSizeMake(ds.zzSize.width, self.frame.size.height - sectionObject.zzEdgeInsets.top - sectionObject.zzEdgeInsets.bottom);
