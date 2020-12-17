@@ -34,7 +34,7 @@
 {
     self = [super init];
     if (self) {
-        self.zzHeight = 80.0;
+        self.zzSize = CGSizeMake(120.0, 80.0);
     }
     return self;
 }

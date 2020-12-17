@@ -23,6 +23,8 @@
 @property (nonatomic, weak) UIView *superView;
 // LongGesture
 @property (nonatomic, strong) UILongPressGestureRecognizer *longGesture;
+// 垂直/水平滚动
+@property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
 
 @end
 
@@ -63,6 +65,7 @@
 + (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
                                    onView:(nullable UIView *)onView
                                     frame:(CGRect)frame
+                          scrollDirection:(UICollectionViewScrollDirection)scrollDirection
                        registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
                      registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
                      registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
@@ -70,13 +73,18 @@
                               actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
                               scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock {
     
-    ZWHCollectionViewFlowWaterfallLayout *flowLayout = [[ZWHCollectionViewFlowWaterfallLayout alloc] init];
+    UICollectionViewFlowLayout *flowLayout = nil;
+    if (scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    }else {
+        flowLayout = [[ZWHCollectionViewFlowWaterfallLayout alloc] init];
+    }
     if (@available(iOS 9.0, *)) {
         flowLayout.sectionHeadersPinToVisibleBounds = YES;
-    } else {
-        // Fallback on earlier versions
     }
     ZZCollectionView *collectionView = [[ZZCollectionView alloc] initWithFrame:frame collectionViewLayout:flowLayout];
+    collectionView.scrollDirection = scrollDirection;
     collectionView.delegate = collectionView;
     collectionView.dataSource = collectionView;
     collectionView.superView = onView;
@@ -102,7 +110,7 @@
         NSArray *array = registerFootersBlock();
         [[self class] registerWidgets:array collectionView:collectionView type:3];
     }
-    // TODO
+    // Default 0.01 Header & Footer
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head"];
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot"];
     collectionView.zzActionBlock = actionBlock;
@@ -430,10 +438,11 @@
     
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
-    if (ds.zzHeight > 0) {
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, ds.zzHeight);
+    if (self.collectionViewLayout == UICollectionViewScrollDirectionVertical) {
+        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, ds.zzSize.height);
+    }else {
+        return CGSizeMake(ds.zzSize.width, self.frame.size.height - sectionObject.zzEdgeInsets.top - sectionObject.zzEdgeInsets.bottom);
     }
-    return ds.zzSize;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -457,19 +466,33 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
-    if (sectionObject.zzHeaderData) {
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzHeaderData.zzHeight);
+    if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+        if (sectionObject.zzHeaderData) {
+            return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzHeaderData.zzSize.height);
+        }
+        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
+    }else {
+        if (sectionObject.zzHeaderData) {
+            return CGSizeMake(sectionObject.zzHeaderData.zzSize.width, self.frame.size.height);
+        }
+        return CGSizeMake(0.01, self.frame.size.height);
     }
-    return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
     ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
-    if (sectionObject.zzFooterData) {
-        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzFooterData.zzHeight);
+    if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+        if (sectionObject.zzFooterData) {
+            return CGSizeMake(UIScreen.mainScreen.bounds.size.width, sectionObject.zzFooterData.zzSize.height);
+        }
+        return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
+    }else {
+        if (sectionObject.zzFooterData) {
+            return CGSizeMake(sectionObject.zzFooterData.zzSize.width, self.frame.size.height);
+        }
+        return CGSizeMake(0.01, self.frame.size.height);
     }
-    return CGSizeMake(UIScreen.mainScreen.bounds.size.width, 0.01);
 }
 
 #pragma mark - UIScrollView

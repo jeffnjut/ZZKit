@@ -21,8 +21,8 @@
 
 @implementation ZWHCollectionViewFlowWaterfallLayout
 
-- (instancetype)init
-{
+- (instancetype)init {
+    
     self = [super init];
     if (self) {
         [self makeUI];
@@ -31,24 +31,27 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
+    
     if (self = [super initWithCoder:aDecoder]) {
         [self makeUI];
     }
     return self;
 }
 
--(void)makeUI{
-    _columnCount = 2;
+-(void)makeUI {
     
+    _columnCount = 1;
 }
--(void)setColumnCount:(NSInteger)columnCount{
+
+-(void)setColumnCount:(NSInteger)columnCount {
+    
     _columnCount = columnCount;
 }
 
 //自定义layout需要重写这些方法
--(void)prepareLayout{
-    [super prepareLayout];
+-(void)prepareLayout {
     
+    [super prepareLayout];
     [self.attributesHeaderArray removeAllObjects];
     [self.attributesSectionArray removeAllObjects];
     [self.attributesFooterArray removeAllObjects];
@@ -101,7 +104,6 @@
             footerReferenceSize = [self.delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:section];
         }
         
-        
         /*
          * Section header
          */
@@ -111,7 +113,6 @@
             [self.attributesHeaderArray addObject:headerAttributs];
             top = CGRectGetMaxY(headerAttributs.frame);
         }
-        
         
         //添加区的顶部内间距
         for (NSInteger i = 0; i < columnCount; i++) {
@@ -155,7 +156,6 @@
         
         [self.attributesSectionArray addObject:attributesArray];
         
-        
         /*
          * 4. Section footer
          */
@@ -178,12 +178,12 @@
         for (NSInteger i = 0; i < columnCount; i++) {
             self.sectionColumnHeightArray[section][i] = @(top + sectionInset.top);
         }
-        
     }
-    
 }
+
 #pragma mark 查找最长
 - (NSUInteger)longestColumnIndexInSection:(NSInteger)section {
+    
     __block NSUInteger index = 0;
     __block CGFloat longestHeight = 0;
     
@@ -194,11 +194,12 @@
             index = idx;
         }
     }];
-    
     return index;
 }
+
 #pragma mark 查找最短
 - (NSUInteger)shortestColumnIndexInSection:(NSInteger)section {
+    
     __block NSUInteger index = 0;
     __block CGFloat shortestHeight = MAXFLOAT;
     
@@ -209,13 +210,11 @@
             index = idx;
         }
     }];
-    
     return index;
 }
 
-
-//返回collectionView的内容的尺寸
--(CGSize)collectionViewContentSize{
+// 返回collectionView的内容的尺寸
+-(CGSize)collectionViewContentSize {
     
     NSInteger numberOfSections = [self.collectionView numberOfSections];
     if (numberOfSections == 0) {
@@ -232,11 +231,11 @@
     return CGSizeMake(self.collectionView.frame.size.width, maxColH + self.sectionInset.bottom);
 }
 
-//- 作用：
+// - 作用：
 // - 这个方法的返回值是个数组
 // - 这个数组中存放的都是UICollectionViewLayoutAttributes对象
 // - UICollectionViewLayoutAttributes对象决定了cell的排布方式（frame等）
-- (NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
+- (NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     
     NSMutableArray<UICollectionViewLayoutAttributes *> *layoutAttributesArray = [NSMutableArray array];
     [self.attributesHeaderArray enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -328,7 +327,6 @@
                 }
             }];
             
-            
             //内间距
             UIEdgeInsets sectionInset;
             if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
@@ -349,7 +347,6 @@
             rect.origin = origin;
             obj.zIndex = 1024;
             obj.frame = rect;
-            
             
         }else if ([obj.representedElementKind isEqualToString:UICollectionElementKindSectionFooter] && self.sectionFootersPinToVisibleBounds){
             NSInteger section = obj.indexPath.section;
@@ -390,14 +387,13 @@
             obj.zIndex = 1024;
             obj.frame = rect;
         }
-        
     }];
-    
     return layoutAttributesArray;
 }
+
 ////自定义cell布局的时候重写
 ////返回对应于indexPath的位置的cell的布局属性,返回指定indexPath的item的布局信息。子类必须重载该方法,该方法只能为cell提供布局信息，不能为补充视图和装饰视图提供。
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section < self.attributesSectionArray.count) {
         if (indexPath.item < self.attributesSectionArray[indexPath.section].count) {
@@ -405,10 +401,11 @@
         }
     }
     return nil;
-    
 }
+
 ////自定义SupplementaryView的时候重写
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    
     UICollectionViewLayoutAttributes *attribute = nil;
     if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
         if (self.attributesHeaderArray.count>0) {
@@ -421,39 +418,48 @@
     }
     return attribute;
 }
+
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    
     [self invalidateLayout];
     return YES;
 }
 
-
 // 列数
 - (NSInteger)columnCountForSection:(NSInteger)section {
+    
     if ([self.delegate respondsToSelector:@selector(collectionView:layout:columnNumberAtSection:)]) {
         self.columnCount = [self.delegate collectionView:self.collectionView layout:self columnNumberAtSection:section];
     }
     return self.columnCount;
 }
 
--(NSMutableArray<UICollectionViewLayoutAttributes *> *)attributesHeaderArray{
-    if (_attributesHeaderArray==nil) {
+-(NSMutableArray<UICollectionViewLayoutAttributes *> *)attributesHeaderArray {
+    
+    if (_attributesHeaderArray == nil) {
         _attributesHeaderArray = [NSMutableArray array];
     }
     return _attributesHeaderArray;
 }
--(NSMutableArray<NSArray<UICollectionViewLayoutAttributes *> *> *)attributesSectionArray{
-    if (_attributesSectionArray==nil) {
+
+-(NSMutableArray<NSArray<UICollectionViewLayoutAttributes *> *> *)attributesSectionArray {
+    
+    if (_attributesSectionArray == nil) {
         _attributesSectionArray = [NSMutableArray array];
     }
     return _attributesSectionArray;
 }
--(NSMutableArray<UICollectionViewLayoutAttributes *> *)attributesFooterArray{
-    if (_attributesFooterArray==nil) {
+
+-(NSMutableArray<UICollectionViewLayoutAttributes *> *)attributesFooterArray {
+    
+    if (_attributesFooterArray == nil) {
         _attributesFooterArray = [NSMutableArray array];
     }
     return _attributesFooterArray;
 }
--(NSMutableArray *)sectionColumnHeightArray{
+
+-(NSMutableArray *)sectionColumnHeightArray {
+    
     if (_sectionColumnHeightArray == nil) {
         _sectionColumnHeightArray = [NSMutableArray array];
     }

@@ -307,7 +307,7 @@
             frame = CGRectMake(0, 0, ZZDevice.zz_screenWidth, ZZDevice.zz_screenHeight - ZZ_DEVICE_NAVIGATION_TOP_HEIGHT);
         }
         
-        _collectionView = [ZZCollectionView zz_quickAdd:[UIColor whiteColor] onView:self.view frame:frame registerCellsBlock:^NSArray * _Nonnull{
+        _collectionView = [ZZCollectionView zz_quickAdd:[UIColor whiteColor] onView:self.view frame:frame scrollDirection:UICollectionViewScrollDirectionVertical registerCellsBlock:^NSArray * _Nonnull{
             
             return @[[ZZPhotoCollectionViewCell class]];
         } registerHeadersBlock:^NSArray * _Nonnull{

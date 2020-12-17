@@ -80,6 +80,7 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 + (nonnull ZZCollectionView *)zz_quickAdd:(nullable UIColor *)backgroundColor
                                    onView:(nullable UIView *)onView
                                     frame:(CGRect)frame
+                          scrollDirection:(UICollectionViewScrollDirection)scrollDirection
                        registerCellsBlock:(nullable NSArray *(^)(void))registerCellsBlock
                      registerHeadersBlock:(nullable NSArray *(^)(void))registerHeadersBlock
                      registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
@@ -143,9 +144,6 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 
 @interface ZZCollectionViewCellDataSource : NSObject
 
-// 高度
-@property (nonatomic, assign) CGFloat zzHeight;
-
 // Old
 @property (nonatomic, assign) CGSize zzSize;
 
@@ -169,7 +167,7 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 @interface ZZCollectionReusableViewDataSource : NSObject
 
 // 高度
-@property (nonatomic, assign) CGFloat zzHeight;
+@property (nonatomic, assign) CGSize zzSize;
 
 @end
 

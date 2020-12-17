@@ -37,7 +37,7 @@
 {
     self = [super init];
     if (self) {
-        self.zzHeight = 200 + arc4random() % 200;
+        self.zzSize = CGSizeMake(200 + arc4random() % 200, 200 + arc4random() % 200);
     }
     return self;
 }
