@@ -81,16 +81,10 @@
  */
 + (UIColor *)zz_colorGradient:(CGSize)size direction:(ZZColorGradientDirection)direction startColor:(nonnull UIColor *)startcolor endColor:(nonnull UIColor *)endColor {
     
-    if (CGSizeEqualToSize(size, CGSizeZero) || !startcolor || !endColor) {
-        return nil;
-    }
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
     CGPoint startPoint = CGPointZero;
     if (direction == ZZColorGradientDirectionDiagonalDownwards) {
         startPoint = CGPointMake(0.0, 1.0);
     }
-    gradientLayer.startPoint = startPoint;
     CGPoint endPoint = CGPointZero;
     switch (direction) {
         case ZZColorGradientDirectionHorizontal:
@@ -105,9 +99,21 @@
         case ZZColorGradientDirectionDiagonalDownwards:
             endPoint = CGPointMake(1.0, 0.0);
             break;
-        default:
-            break;
     }
+    return [UIColor zz_colorGradient:size startPoint:startPoint endPoint:endPoint startColor:startcolor endColor:endColor];
+}
+
+/**
+ * 渐变颜色
+ */
++ (UIColor *)zz_colorGradient:(CGSize)size startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint startColor:(nonnull UIColor *)startcolor endColor:(nonnull UIColor *)endColor {
+    
+    if (CGSizeEqualToSize(size, CGSizeZero) || !startcolor || !endColor) {
+        return nil;
+    }
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    gradientLayer.startPoint = startPoint;
     gradientLayer.endPoint = endPoint;
     gradientLayer.colors = @[(__bridge id)startcolor.CGColor, (__bridge id)endColor.CGColor];
     UIGraphicsBeginImageContext(size);

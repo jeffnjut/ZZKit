@@ -35,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)zz_colorGradient:(CGSize)size direction:(ZZColorGradientDirection)direction startColor:(nonnull UIColor *)startcolor endColor:(nonnull UIColor *)endColor;
 
 /**
+ * 渐变颜色
+ */
++ (UIColor *)zz_colorGradient:(CGSize)size startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint startColor:(nonnull UIColor *)startcolor endColor:(nonnull UIColor *)endColor;
+
+/**
  * 颜色是否相同
  */
 - (BOOL)zz_colorIsEqual:(nonnull UIColor *)anotherColor;
