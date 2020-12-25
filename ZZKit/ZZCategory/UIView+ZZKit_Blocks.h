@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  设置通用的点击事件
  */
-- (void)zz_tapBlock:(void(^)(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender))block;
+- (void)zz_tapBlock:(nullable void(^)(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender))block;
 
 /**
  *  设置通用的长按事件
  */
-- (void)zz_longPress:(NSTimeInterval)minimumPressDuration block:(void(^)(UILongPressGestureRecognizer * _Nonnull longPressGesture, __kindof UIView * _Nonnull sender))block;
+- (void)zz_longPress:(NSTimeInterval)minimumPressDuration block:(nullable void(^)(UILongPressGestureRecognizer * _Nonnull longPressGesture, __kindof UIView * _Nonnull sender))block;
 
 @end
 
