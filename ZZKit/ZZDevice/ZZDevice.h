@@ -11,28 +11,36 @@
 
 #pragma mark - 各类iPhone产品类型的屏幕宽、高
 // iPhone 4, iPhone 4s
-#define ZZ_DEVICE_IP4_WIDTH        (320.0)
-#define ZZ_DEVICE_IP4_HEIGHT       (480.0)
+#define ZZ_DEVICE_IP4_WIDTH         (320.0)
+#define ZZ_DEVICE_IP4_HEIGHT        (480.0)
 
 // iPhone 5, iPhone 5c, iPhone 5s, iPhone se
-#define ZZ_DEVICE_IP5_WIDTH        (320.0)
-#define ZZ_DEVICE_IP5_HEIGHT       (568.0)
+#define ZZ_DEVICE_IP5_WIDTH         (320.0)
+#define ZZ_DEVICE_IP5_HEIGHT        (568.0)
 
 // iPhone 6, iPhone 6s, iPhone 7, iPhone 8
-#define ZZ_DEVICE_IP6_WIDTH        (375.0)
-#define ZZ_DEVICE_IP6_HEIGHT       (667.0)
+#define ZZ_DEVICE_IP6_WIDTH         (375.0)
+#define ZZ_DEVICE_IP6_HEIGHT        (667.0)
 
 // iPhone 6 plus, iPhone 6s plus, iPhone 7 plus, iPhone 8 plus
-#define ZZ_DEVICE_IP6P_WIDTH       (414.0)
-#define ZZ_DEVICE_IP6P_HEIGHT      (736.0)
+#define ZZ_DEVICE_IP6P_WIDTH        (414.0)
+#define ZZ_DEVICE_IP6P_HEIGHT       (736.0)
 
-// iPhone x, iPhone xs, iPhone 12 mini, iPhone 12, iPhone 11 Pro, iPhone 12 pro
-#define ZZ_DEVICE_IPX_WIDTH        (375.0)
-#define ZZ_DEVICE_IPX_HEIGHT       (812.0)
+// iPhone x, iPhone xs, iPhone 12 mini, iPhone 11 Pro,
+#define ZZ_DEVICE_IPX_WIDTH         (375.0)
+#define ZZ_DEVICE_IPX_HEIGHT        (812.0)
 
-// iPhone xr, iPhone x max, iPhone xs max, iPhone 11, iPhone 11 pro max, iPhone 12 pro max
-#define ZZ_DEVICE_IPXMAX_WIDTH     (414.0)
-#define ZZ_DEVICE_IPXMAX_HEIGHT    (896.0)
+// iPhone xr, iPhone x max, iPhone xs max, iPhone 11, iPhone 11 pro max
+#define ZZ_DEVICE_IPXMAX_WIDTH      (414.0)
+#define ZZ_DEVICE_IPXMAX_HEIGHT     (896.0)
+
+// iPhone 12, iPhone 12 pro
+#define ZZ_DEVICE_IP12_WIDTH        (390.0)
+#define ZZ_DEVICE_IP12_HEIGHT       (844.0)
+
+// iPhone 12 pro max
+#define ZZ_DEVICE_IP12PROMAX_WIDTH  (428.0)
+#define ZZ_DEVICE_IP12PROMAX_HEIGHT (926.0)
 
 
 #pragma mark - 判断iPhone类型
@@ -41,22 +49,28 @@
 #define ZZ_DEVICE_IS_IPAD_ALL           ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 // 是否是iPhone
 #define ZZ_DEVICE_IS_IPHONE_ALL         ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-// iPhone 4、4s
+// 4、4s
 #define ZZ_DEVICE_IS_IPHONE_4           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone 5、5C、5S、5SE
+// 5、5c、5s、5se
 #define ZZ_DEVICE_IS_IPHONE_5           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone 6、6S、7、8
+// 6、6s、7、8
 #define ZZ_DEVICE_IS_IPHONE_6           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone 6 Plus、6S Plus、7 Plus、8Plus
-#define ZZ_DEVICE_IS_IPHONE_6_PLUS      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone X、Xs、11 Pro
+// 6Plus、6splus、7plus、8plus
+#define ZZ_DEVICE_IS_IPHONE_6plus      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// X、Xs、11pro
 #define ZZ_DEVICE_IS_IPHONE_X           ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone X-Max、11 Pro-Max
-#define ZZ_DEVICE_IS_IPHONE_XMAX        ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)&& !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone XR、11
-#define ZZ_DEVICE_IS_IPHONE_XR          ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
-// iPhone X 刘海屏系列
-#define ZZ_DEVICE_IS_IPHONE_X_ALL       (ZZ_DEVICE_IS_IPHONE_X || ZZ_DEVICE_IS_IPHONE_XMAX || ZZ_DEVICE_IS_IPHONE_XR)
+// Xmax、11promax
+#define ZZ_DEVICE_IS_IPHONE_Xmax        ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)&& !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// Xr、11
+#define ZZ_DEVICE_IS_IPHONE_Xr          ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// 12、12Pro
+#define ZZ_DEVICE_IS_IPHONE_12          ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1170, 2532), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// 12Promax
+#define ZZ_DEVICE_IS_IPHONE_12promax    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1284, 2778), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// 12mini
+#define ZZ_DEVICE_IS_IPHONE_12mini      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1080, 2340), [[UIScreen mainScreen] currentMode].size) && !ZZ_DEVICE_IS_IPAD_ALL : NO)
+// 刘海屏系列
+#define ZZ_DEVICE_IS_IPHONE_X_ALL       ((([UIScreen instanceMethodForSelector:@selector(currentMode)] == NO) || (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) ? NO : CGSizeEqualToSize(CGSizeMake(1125, 2436), UIScreen.mainScreen.currentMode.size) || CGSizeEqualToSize(CGSizeMake(1242, 2688), UIScreen.mainScreen.currentMode.size)  || CGSizeEqualToSize(CGSizeMake(828, 1792), UIScreen.mainScreen.currentMode.size) || CGSizeEqualToSize(CGSizeMake(1170, 2532), UIScreen.mainScreen.currentMode.size) || CGSizeEqualToSize(CGSizeMake(1284, 2778), UIScreen.mainScreen.currentMode.size) || CGSizeEqualToSize(CGSizeMake(1080, 2340), UIScreen.mainScreen.currentMode.size))
 
 
 #pragma mark - 设备UI组件常用常量

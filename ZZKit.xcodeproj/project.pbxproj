@@ -22,6 +22,21 @@
 		E715E12422A6767A00228722 /* TestUIimageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E715E12222A6767A00228722 /* TestUIimageVC.m */; };
 		E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E715E12322A6767A00228722 /* TestUIimageVC.xib */; };
 		E71998D82421295900645C7A /* PracticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71998D72421295900645C7A /* PracticeVC.m */; };
+		E72A586525A6BC240046A881 /* ListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A586425A6BC240046A881 /* ListVC.m */; };
+		E72A586925A6BC330046A881 /* ComplexListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A586825A6BC330046A881 /* ComplexListVC.m */; };
+		E72A586E25A6D48B0046A881 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A586C25A6D48B0046A881 /* ListCell.m */; };
+		E72A586F25A6D48B0046A881 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A586D25A6D48B0046A881 /* ListCell.xib */; };
+		E72A587B25A6DEC00046A881 /* BannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A587925A6DEC00046A881 /* BannerCell.m */; };
+		E72A587C25A6DEC00046A881 /* BannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A587A25A6DEC00046A881 /* BannerCell.xib */; };
+		E72A588125A6DEE70046A881 /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A587F25A6DEE70046A881 /* IconCell.m */; };
+		E72A588225A6DEE70046A881 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A588025A6DEE70046A881 /* IconCell.xib */; };
+		E72A588725A6DEFB0046A881 /* HowtoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A588525A6DEFB0046A881 /* HowtoCell.m */; };
+		E72A588825A6DEFB0046A881 /* HowtoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A588625A6DEFB0046A881 /* HowtoCell.xib */; };
+		E72A588D25A6DF090046A881 /* SelectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A588B25A6DF090046A881 /* SelectedCell.m */; };
+		E72A588E25A6DF090046A881 /* SelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A588C25A6DF090046A881 /* SelectedCell.xib */; };
+		E72A589D25A6F4D10046A881 /* SubVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A589C25A6F4D10046A881 /* SubVC.m */; };
+		E72A58AA25A723CB0046A881 /* InnerScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A58A825A723CB0046A881 /* InnerScrollCell.m */; };
+		E72A58AB25A723CB0046A881 /* InnerScrollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72A58A925A723CB0046A881 /* InnerScrollCell.xib */; };
 		E72D500322EE8FAB00040AD2 /* ZZLocationCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */; };
 		E72D500622EEAB8D00040AD2 /* ZZLBSNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500522EEAB8D00040AD2 /* ZZLBSNavigation.m */; };
 		E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */; };
@@ -46,6 +61,8 @@
 		E744128A22F2BABE00773562 /* lottie_toast_sign.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128622F2BABE00773562 /* lottie_toast_sign.json */; };
 		E744128B22F2BABE00773562 /* lottie_toast_success.json in Resources */ = {isa = PBXBuildFile; fileRef = E744128722F2BABE00773562 /* lottie_toast_success.json */; };
 		E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E756192C22A52558000C0ABA /* UIImage+ZZKit.m */; };
+		E75778D825A45E6100178E97 /* ComplexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E75778D725A45E6100178E97 /* ComplexVC.m */; };
+		E75778DD25A45FC400178E97 /* ZZSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E75778DC25A45FC400178E97 /* ZZSegmentView.m */; };
 		E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E759CDE122CC59B4001EC3AE /* TestZZWebView.m */; };
 		E759CDE422CC59B4001EC3AE /* TestZZWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */; };
 		E759CDE622CC849B001EC3AE /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = E759CDE522CC849B001EC3AE /* test.html */; };
@@ -434,6 +451,30 @@
 		E715E12322A6767A00228722 /* TestUIimageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUIimageVC.xib; sourceTree = "<group>"; };
 		E71998D62421295900645C7A /* PracticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PracticeVC.h; sourceTree = "<group>"; };
 		E71998D72421295900645C7A /* PracticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PracticeVC.m; sourceTree = "<group>"; };
+		E72A586325A6BC240046A881 /* ListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListVC.h; sourceTree = "<group>"; };
+		E72A586425A6BC240046A881 /* ListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListVC.m; sourceTree = "<group>"; };
+		E72A586725A6BC330046A881 /* ComplexListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplexListVC.h; sourceTree = "<group>"; };
+		E72A586825A6BC330046A881 /* ComplexListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplexListVC.m; sourceTree = "<group>"; };
+		E72A586B25A6D48B0046A881 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		E72A586C25A6D48B0046A881 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		E72A586D25A6D48B0046A881 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		E72A587825A6DEC00046A881 /* BannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerCell.h; sourceTree = "<group>"; };
+		E72A587925A6DEC00046A881 /* BannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerCell.m; sourceTree = "<group>"; };
+		E72A587A25A6DEC00046A881 /* BannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCell.xib; sourceTree = "<group>"; };
+		E72A587E25A6DEE70046A881 /* IconCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
+		E72A587F25A6DEE70046A881 /* IconCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IconCell.m; sourceTree = "<group>"; };
+		E72A588025A6DEE70046A881 /* IconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
+		E72A588425A6DEFB0046A881 /* HowtoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowtoCell.h; sourceTree = "<group>"; };
+		E72A588525A6DEFB0046A881 /* HowtoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HowtoCell.m; sourceTree = "<group>"; };
+		E72A588625A6DEFB0046A881 /* HowtoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowtoCell.xib; sourceTree = "<group>"; };
+		E72A588A25A6DF090046A881 /* SelectedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedCell.h; sourceTree = "<group>"; };
+		E72A588B25A6DF090046A881 /* SelectedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedCell.m; sourceTree = "<group>"; };
+		E72A588C25A6DF090046A881 /* SelectedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedCell.xib; sourceTree = "<group>"; };
+		E72A589B25A6F4D10046A881 /* SubVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubVC.h; sourceTree = "<group>"; };
+		E72A589C25A6F4D10046A881 /* SubVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubVC.m; sourceTree = "<group>"; };
+		E72A58A725A723CB0046A881 /* InnerScrollCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InnerScrollCell.h; sourceTree = "<group>"; };
+		E72A58A825A723CB0046A881 /* InnerScrollCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InnerScrollCell.m; sourceTree = "<group>"; };
+		E72A58A925A723CB0046A881 /* InnerScrollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InnerScrollCell.xib; sourceTree = "<group>"; };
 		E72D500122EE8FAB00040AD2 /* ZZLocationCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLocationCoordinate.h; sourceTree = "<group>"; };
 		E72D500222EE8FAB00040AD2 /* ZZLocationCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLocationCoordinate.m; sourceTree = "<group>"; };
 		E72D500422EEAB8D00040AD2 /* ZZLBSNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLBSNavigation.h; sourceTree = "<group>"; };
@@ -470,6 +511,10 @@
 		E744128722F2BABE00773562 /* lottie_toast_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_toast_success.json; sourceTree = "<group>"; };
 		E756192B22A52558000C0ABA /* UIImage+ZZKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZZKit.h"; sourceTree = "<group>"; };
 		E756192C22A52558000C0ABA /* UIImage+ZZKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZZKit.m"; sourceTree = "<group>"; };
+		E75778D625A45E6100178E97 /* ComplexVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplexVC.h; sourceTree = "<group>"; };
+		E75778D725A45E6100178E97 /* ComplexVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplexVC.m; sourceTree = "<group>"; };
+		E75778DB25A45FC400178E97 /* ZZSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZSegmentView.h; sourceTree = "<group>"; };
+		E75778DC25A45FC400178E97 /* ZZSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZSegmentView.m; sourceTree = "<group>"; };
 		E759CDE022CC59B4001EC3AE /* TestZZWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestZZWebView.h; sourceTree = "<group>"; };
 		E759CDE122CC59B4001EC3AE /* TestZZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestZZWebView.m; sourceTree = "<group>"; };
 		E759CDE222CC59B4001EC3AE /* TestZZWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestZZWebView.xib; sourceTree = "<group>"; };
@@ -1055,6 +1100,41 @@
 				E733AD792423BE9400045480 /* TestPredicateVC.xib */,
 			);
 			path = Predicate;
+			sourceTree = "<group>";
+		};
+		E75778D525A45E3B00178E97 /* Complex */ = {
+			isa = PBXGroup;
+			children = (
+				E75778DB25A45FC400178E97 /* ZZSegmentView.h */,
+				E75778DC25A45FC400178E97 /* ZZSegmentView.m */,
+				E75778D625A45E6100178E97 /* ComplexVC.h */,
+				E75778D725A45E6100178E97 /* ComplexVC.m */,
+				E72A589B25A6F4D10046A881 /* SubVC.h */,
+				E72A589C25A6F4D10046A881 /* SubVC.m */,
+				E72A586325A6BC240046A881 /* ListVC.h */,
+				E72A586425A6BC240046A881 /* ListVC.m */,
+				E72A586725A6BC330046A881 /* ComplexListVC.h */,
+				E72A586825A6BC330046A881 /* ComplexListVC.m */,
+				E72A586B25A6D48B0046A881 /* ListCell.h */,
+				E72A586C25A6D48B0046A881 /* ListCell.m */,
+				E72A586D25A6D48B0046A881 /* ListCell.xib */,
+				E72A587825A6DEC00046A881 /* BannerCell.h */,
+				E72A587925A6DEC00046A881 /* BannerCell.m */,
+				E72A587A25A6DEC00046A881 /* BannerCell.xib */,
+				E72A587E25A6DEE70046A881 /* IconCell.h */,
+				E72A587F25A6DEE70046A881 /* IconCell.m */,
+				E72A588025A6DEE70046A881 /* IconCell.xib */,
+				E72A588425A6DEFB0046A881 /* HowtoCell.h */,
+				E72A588525A6DEFB0046A881 /* HowtoCell.m */,
+				E72A588625A6DEFB0046A881 /* HowtoCell.xib */,
+				E72A588A25A6DF090046A881 /* SelectedCell.h */,
+				E72A588B25A6DF090046A881 /* SelectedCell.m */,
+				E72A588C25A6DF090046A881 /* SelectedCell.xib */,
+				E72A58A725A723CB0046A881 /* InnerScrollCell.h */,
+				E72A58A825A723CB0046A881 /* InnerScrollCell.m */,
+				E72A58A925A723CB0046A881 /* InnerScrollCell.xib */,
+			);
+			path = Complex;
 			sourceTree = "<group>";
 		};
 		E762F5B9258856740053343E /* Algorithm */ = {
@@ -1686,6 +1766,7 @@
 		E7DC5C15229CCC8600ED8733 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E75778D525A45E3B00178E97 /* Complex */,
 				E71998D52421293F00645C7A /* Practice */,
 				E7DC5C3C229CDE6600ED8733 /* TestZZKit */,
 				E7DC5C16229CCC8600ED8733 /* AppDelegate.h */,
@@ -2040,6 +2121,7 @@
 				E77EBC7F2373CB6A0062E4A9 /* ic_4_5_highlighted@3x.png in Resources */,
 				E77EBCC02373CB6A0062E4A9 /* ic_tag_garbage@2x.png in Resources */,
 				E77EBCC52373CB6A0062E4A9 /* ic_1_1_highlighted@3x.png in Resources */,
+				E72A588E25A6DF090046A881 /* SelectedCell.xib in Resources */,
 				E7F2150E22ED8AF9007C587B /* cncity.plist in Resources */,
 				E77EBCB02373CB6A0062E4A9 /* ic_edit_light@3x.png in Resources */,
 				E7D4606522A02A6C00CF4F14 /* TestOperationQueueVC.xib in Resources */,
@@ -2105,6 +2187,7 @@
 				E77EBC9C2373CB6A0062E4A9 /* ic_4_3_highlighted@3x.png in Resources */,
 				E77EBC862373CB6A0062E4A9 /* ic_edit_contrast@3x.png in Resources */,
 				E77EBC8F2373CB6A0062E4A9 /* ic_3_4_highlighted@3x.png in Resources */,
+				E72A588825A6DEFB0046A881 /* HowtoCell.xib in Resources */,
 				E744128122F2B33100773562 /* gif_loading_rotataion.gif in Resources */,
 				E77EBC7A2373CB6A0062E4A9 /* ic_edit_contrast@2x.png in Resources */,
 				E77EBC8C2373CB6A0062E4A9 /* ic_4_5@3x.png in Resources */,
@@ -2116,6 +2199,7 @@
 				E77EBCBE2373CB6A0062E4A9 /* ic_logo_tag_rmb@2x.png in Resources */,
 				E77EBC9A2373CB6A0062E4A9 /* ic_4_3@3x.png in Resources */,
 				E77EBCB12373CB6A0062E4A9 /* ic_5_4_highlighted@2x.png in Resources */,
+				E72A587C25A6DEC00046A881 /* BannerCell.xib in Resources */,
 				E77EBCC92373CB6A0062E4A9 /* ic_logo_tag_euro@2x.png in Resources */,
 				E760BEE522F9797000944380 /* ZZNetworkErrorDropSheet.xib in Resources */,
 				E715E12522A6767A00228722 /* TestUIimageVC.xib in Resources */,
@@ -2146,6 +2230,7 @@
 				E7DC5C41229CDE7600ED8733 /* TestZZLinkedMapVC.xib in Resources */,
 				E77EBCE12373CB6A0062E4A9 /* ic_edit_cropper_highlighted@3x.png in Resources */,
 				E77EBD282373CB6A0062E4A9 /* ic_light_off@2x.png in Resources */,
+				E72A58AB25A723CB0046A881 /* InnerScrollCell.xib in Resources */,
 				E759CDE822CE1FEB001EC3AE /* test.js in Resources */,
 				E77EBD2D2373CB6A0062E4A9 /* ic_torch_on_2@2x.png in Resources */,
 				E77EBD202373CB6A0062E4A9 /* ic_torch_on@3x.png in Resources */,
@@ -2169,12 +2254,14 @@
 				E77EBC782373CB6A0062E4A9 /* ic_photolibrary_draft@2x.png in Resources */,
 				E77EBC7C2373CB6A0062E4A9 /* ic_edit_filter@3x.png in Resources */,
 				E70C401022C0EEAC0047A1C0 /* TestHeadCollectionViewCell.xib in Resources */,
+				E72A588225A6DEE70046A881 /* IconCell.xib in Resources */,
 				E7F5B88022F182D7001F0C80 /* ic_nav_back@3x.png in Resources */,
 				E77EBD152373CB6A0062E4A9 /* ZZPhotoImageTagView.xib in Resources */,
 				E77EBCF62373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.xib in Resources */,
 				E77EBCA12373CB6A0062E4A9 /* ic_arrow_down@2x.png in Resources */,
 				E77EBCF52373CB6A0062E4A9 /* ZZPhotoCropperView.xib in Resources */,
 				E7F5B88122F182D7001F0C80 /* ic_nav_back@2x.png in Resources */,
+				E72A586F25A6D48B0046A881 /* ListCell.xib in Resources */,
 				E767600A22AFC4DE0044B9AD /* TestTimerVC.xib in Resources */,
 				E77EBCE22373CB6A0062E4A9 /* ic_logo_tag_euro@3x.png in Resources */,
 				E77EBCD92373CB6A0062E4A9 /* ic_edit_filter_highlighted@3x.png in Resources */,
@@ -2300,12 +2387,14 @@
 				E70C400A22C0D6ED0047A1C0 /* TestCollectionViewCell.m in Sources */,
 				E77EBD112373CB6A0062E4A9 /* ZZPhotoLibraryNoAlbumView.m in Sources */,
 				E77EBD0C2373CB6A0062E4A9 /* ZZPhotoEditTuningValueView.m in Sources */,
+				E72A58AA25A723CB0046A881 /* InnerScrollCell.m in Sources */,
 				E77EBD342373CB6A0062E4A9 /* ZZImagePreviewController.m in Sources */,
 				E7D4606422A02A6C00CF4F14 /* TestOperationQueueVC.m in Sources */,
 				E77EBD0D2373CB6A0062E4A9 /* ZZFilterImageView.m in Sources */,
 				E7DC5C4E229D127300ED8733 /* UIColor+ZZKit.m in Sources */,
 				E7751BDB22F441DE00ECD06D /* NetImagesCollectionViewController.m in Sources */,
 				E77EBD392373CB6A0062E4A9 /* ZZMediaObject.m in Sources */,
+				E72A589D25A6F4D10046A881 /* SubVC.m in Sources */,
 				E77EBCF32373CB6A0062E4A9 /* ZZPhotoTuning.m in Sources */,
 				E77FA4B122EFE02E005DF522 /* ZZStorage.m in Sources */,
 				E7C3166B22A66830002E4130 /* UIControl+ZZKit_Blocks.m in Sources */,
@@ -2315,8 +2404,10 @@
 				E7E0179022AE009500C24EF2 /* UIResponder+ZZKit_Keyboard.m in Sources */,
 				E77EBD372373CB6A0062E4A9 /* ZZMotionManager.m in Sources */,
 				E7E017A022AE277D00C24EF2 /* ZZLock.m in Sources */,
+				E72A588D25A6DF090046A881 /* SelectedCell.m in Sources */,
 				E7CD330A24263D9E00DCA0AD /* OpenUDID.m in Sources */,
 				E7E9CE1B24333869008E0E25 /* WKWebView+ZZKit.m in Sources */,
+				E72A586525A6BC240046A881 /* ListVC.m in Sources */,
 				E7FFCBDC258AFEEC00734785 /* TestZZCollectionReusableView.m in Sources */,
 				E760BEDE22F9791B00944380 /* UIViewController+ZZKit_ErrorPlaceholder.m in Sources */,
 				E72D500C22EEDAD200040AD2 /* ZZLBSBackgroundTask.m in Sources */,
@@ -2330,6 +2421,7 @@
 				E77EBD0E2373CB6A0062E4A9 /* ZZPhotoEditTuningView.m in Sources */,
 				E77EBD0F2373CB6A0062E4A9 /* ZZTakePhotoButton.m in Sources */,
 				E788655E22B21A1600B20F3E /* ZZWidgetTimerView.m in Sources */,
+				E72A588125A6DEE70046A881 /* IconCell.m in Sources */,
 				E767600922AFC4DE0044B9AD /* TestTimerVC.m in Sources */,
 				E767601F22B0DC5B0044B9AD /* ZZNavigationController.m in Sources */,
 				E70C72EB22A369EA00341A2B /* ZZDispatchQueue.m in Sources */,
@@ -2374,6 +2466,7 @@
 				E788656E22B21B3B00B20F3E /* ZZWidgetDropSheetView.m in Sources */,
 				E7751BCF22F435FC00ECD06D /* ZZWidgetImageBrowser.m in Sources */,
 				E77EBCEC2373CB6A0062E4A9 /* ZZPhotoCollectionViewCell.m in Sources */,
+				E75778D825A45E6100178E97 /* ComplexVC.m in Sources */,
 				E77ADD4822BBABBA0015DB1B /* NSObject+Calc.m in Sources */,
 				E7DC5C5A229D3F9000ED8733 /* UIFont+ZZKit.m in Sources */,
 				E77EBCED2373CB6A0062E4A9 /* ZZPhotoLibraryAlbumCell.m in Sources */,
@@ -2392,6 +2485,7 @@
 				E767600D22AFCBE10044B9AD /* NSObject+ZZKit_Timer.m in Sources */,
 				E770C7A822BB2F5F00625C85 /* TestHeaderView.m in Sources */,
 				E7DC5C57229D1A9400ED8733 /* NSDate+ZZKit.m in Sources */,
+				E72A586E25A6D48B0046A881 /* ListCell.m in Sources */,
 				E7751BD722F4413900ECD06D /* BannerClCell.m in Sources */,
 				E77EBD3C2373CB6A0062E4A9 /* ZZCameraView.m in Sources */,
 				E7E017A822AE751500C24EF2 /* ZZEnumCompare.m in Sources */,
@@ -2408,11 +2502,13 @@
 				E760E8F52373E4F3004C752F /* TestCameraVC.m in Sources */,
 				E7F2151822ED8E13007C587B /* TestCountryVC.m in Sources */,
 				E71998D82421295900645C7A /* PracticeVC.m in Sources */,
+				E72A587B25A6DEC00046A881 /* BannerCell.m in Sources */,
 				E77EBD3B2373CB6A0062E4A9 /* ZZVideoPreview.m in Sources */,
 				E77EBD042373CB6A0062E4A9 /* ZZPhotoDraftEditPopupView.m in Sources */,
 				E77EBD052373CB6A0062E4A9 /* ZZPhotoEditFilterGenreView.m in Sources */,
 				E77EBCFC2373CB6A0062E4A9 /* NSObject+Camera_Popup.m in Sources */,
 				E756192D22A52558000C0ABA /* UIImage+ZZKit.m in Sources */,
+				E72A586925A6BC330046A881 /* ComplexListVC.m in Sources */,
 				E77EBD092373CB6A0062E4A9 /* ZZPhotoEditCropperView.m in Sources */,
 				E788654422B1E59200B20F3E /* NSMutableArray+ZZKit.m in Sources */,
 				E7CE24662328999100F7C8FE /* BasicHeaderView.m in Sources */,
@@ -2441,6 +2537,7 @@
 				E77EBD022373CB6A0062E4A9 /* ZZPhotoEditTitleScrollView.m in Sources */,
 				E70C72EF22A36C0000341A2B /* TestZZDispatchQueueVC.m in Sources */,
 				E788654722B1E5B200B20F3E /* NSDictionary+ZZKit.m in Sources */,
+				E72A588725A6DEFB0046A881 /* HowtoCell.m in Sources */,
 				E7CE24622328962200F7C8FE /* TestCollectionViewBasicVC.m in Sources */,
 				E760BEE722F9797000944380 /* ZZNetworkErrorDescViewController.m in Sources */,
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
@@ -2452,6 +2549,7 @@
 				E77EBCE72373CB6A0062E4A9 /* ZZPhotoSelectTagBaseViewController.m in Sources */,
 				E733AD7A2423BE9400045480 /* TestPredicateVC.m in Sources */,
 				E77EBCFD2373CB6A0062E4A9 /* ZZPhotoCropperView.m in Sources */,
+				E75778DD25A45FC400178E97 /* ZZSegmentView.m in Sources */,
 				E7E0179722AE033400C24EF2 /* NSObject+ZZKit_Notification.m in Sources */,
 				E777A35F23D7ECA9009BA0DA /* ZZPhotoLibraryConfig.m in Sources */,
 				E77EBD172373CB6A0062E4A9 /* PHAsset+QuickEdit.m in Sources */,

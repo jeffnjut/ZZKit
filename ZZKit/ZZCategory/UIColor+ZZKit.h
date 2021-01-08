@@ -74,6 +74,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nonnull UIImage *)zz_image:(CGSize)size;
 
+/**
+ *  随机颜色
+ */
++ (UIColor *)zz_randomColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

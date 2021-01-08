@@ -222,14 +222,20 @@
     return image;
 }
 
-#pragma mark - Private
-
 /**
  * 获取ColorSpaceModel
  */
 - (CGColorSpaceModel)_colorSpaceModel {
     
     return CGColorSpaceGetModel(CGColorGetColorSpace(self.CGColor));
+}
+
+/**
+ *  随机颜色
+ */
++ (UIColor *)zz_randomColor {
+    
+    return [UIColor colorWithRed:(arc4random()%255 / 255.0) green:(arc4random()%255 / 255.0) blue:(arc4random()%255 / 255.0) alpha:1.0];
 }
 
 @end

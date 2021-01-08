@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Oq-V6-njj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Oq-V6-njj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,8 +33,8 @@
                     <view key="view" contentMode="scaleToFill" id="ZlJ-vg-bdK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Itr-rD-2Vl"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="lSN-e0-Ahb"/>
                 </viewController>
@@ -53,6 +54,7 @@
                     <connections>
                         <segue destination="AZd-ya-cud" kind="relationship" relationship="viewControllers" id="UIe-J9-37A"/>
                         <segue destination="Mhw-6p-CdA" kind="relationship" relationship="viewControllers" id="Xlt-Jp-3RX"/>
+                        <segue destination="Vhw-VW-9Pq" kind="relationship" relationship="viewControllers" id="9TR-AC-BoU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4C-AX-h1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -76,6 +78,22 @@
             </objects>
             <point key="canvasLocation" x="993" y="817"/>
         </scene>
+        <!--Complex-->
+        <scene sceneID="IJf-h0-AMx">
+            <objects>
+                <viewController id="Vhw-VW-9Pq" customClass="ComplexVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="epJ-ZH-umf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="157-EI-h71"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Complex" id="nrS-m3-ont"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfi-gu-w3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="1529"/>
+        </scene>
         <!--PracticeVC-->
         <scene sceneID="DqP-na-0Jd">
             <objects>
@@ -83,8 +101,8 @@
                     <view key="view" contentMode="scaleToFill" id="Qgy-wc-c2K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mBg-2b-tBl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="JhF-70-RnB"/>
                 </viewController>
@@ -93,4 +111,9 @@
             <point key="canvasLocation" x="1874" y="817"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
