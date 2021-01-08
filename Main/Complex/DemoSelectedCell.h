@@ -1,5 +1,5 @@
 //
-//  BannerCell.h
+//  DemoSelectedCell.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZZTableView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BannerCell : ZZTableViewCell
+@interface DemoSelectedCell : ZZTableViewCell
 
 @end
 
-@interface BannerCellDataSource : ZZTableViewCellDataSource
+@interface DemoSelectedCellDataSource : ZZTableViewCellDataSource
 
 @end
 

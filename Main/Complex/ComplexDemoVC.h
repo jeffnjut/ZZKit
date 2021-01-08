@@ -1,5 +1,5 @@
 //
-//  ComplexVC.h
+//  ComplexDemoVC.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/5.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ComplexVC : UIViewController
+@interface ComplexDemoVC : UIViewController
 
 @end
 

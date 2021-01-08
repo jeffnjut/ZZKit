@@ -1,24 +1,20 @@
 //
-//  ComplexListVC.m
+//  ComplexChildListVC.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "ComplexListVC.h"
-#import "ZZTableView.h"
-#import "ListCell.h"
-#import "BannerCell.h"
-#import "IconCell.h"
-#import "HowtoCell.h"
-#import "SelectedCell.h"
+#import "ComplexChildListVC.h"
+#import "DemoListCell.h"
+#import "DemoBannerCell.h"
+#import "DemoIconCell.h"
+#import "DemoHowtoCell.h"
+#import "DemoSelectedCell.h"
 #import "InnerScrollCell.h"
-#import "NSString+ZZKit.h"
-#import "ZZMacro.h"
-#import "ZZDevice.h"
 
-@interface ComplexListVC ()
+@interface ComplexChildListVC ()
 
 @property (nonatomic, strong) ZZTableView *tableView;
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -29,7 +25,7 @@
 
 @end
 
-@implementation ComplexListVC
+@implementation ComplexChildListVC
 
 - (void)viewDidLayoutSubviews {
     
@@ -60,6 +56,11 @@
                               constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     } actionBlock:^(ZZTableView * _Nonnull __weak tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action, __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView) {
+        
+        if ([cellData isKindOfClass:[DemoBannerCellDataSource class]]) {
+            DemoBannerCellDataSource *ds = cellData;
+            [weakSelf.view zz_toast:[NSString stringWithFormat:@"选中第%d张", (int)ds.selectedIndex + 1]];
+        }
         
     } scrollBlock:^(ZZTableView * _Nonnull __weak tableView, ZZTableViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
         
@@ -121,16 +122,16 @@
     
     ZZTableSectionObject *section = [[ZZTableSectionObject alloc] init];
     [self.tableView zz_addDataSource:section];
-    BannerCellDataSource *banner = [[BannerCellDataSource alloc] init];
+    DemoBannerCellDataSource *banner = [[DemoBannerCellDataSource alloc] init];
     [section.zzCellDataSource addObject:banner];
     
-    IconCellDataSource *icons = [[IconCellDataSource alloc] init];
+    DemoIconCellDataSource *icons = [[DemoIconCellDataSource alloc] init];
     [section.zzCellDataSource addObject:icons];
     
-    HowtoCellDataSource *howto = [[HowtoCellDataSource alloc] init];
+    DemoHowtoCellDataSource *howto = [[DemoHowtoCellDataSource alloc] init];
     [section.zzCellDataSource addObject:howto];
     
-    SelectedCellDataSource *selected = [[SelectedCellDataSource alloc] init];
+    DemoSelectedCellDataSource *selected = [[DemoSelectedCellDataSource alloc] init];
     [section.zzCellDataSource addObject:selected];
     
     section = [[ZZTableSectionObject alloc] init];

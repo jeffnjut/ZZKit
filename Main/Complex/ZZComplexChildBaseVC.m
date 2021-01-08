@@ -1,18 +1,18 @@
 //
-//  SubVC.m
+//  ZZComplexChildBaseVC.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "SubVC.h"
+#import "ZZComplexChildBaseVC.h"
 
-@interface SubVC ()
+@interface ZZComplexChildBaseVC ()
 
 @end
 
-@implementation SubVC
+@implementation ZZComplexChildBaseVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

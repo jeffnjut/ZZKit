@@ -1,5 +1,5 @@
 //
-//  ComplexListVC.h
+//  DemoHowtoCell.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ComplexListVC : SubVC
+@interface DemoHowtoCell : ZZTableViewCell
 
-@property (nonatomic, copy) NSString *id;
+@end
+
+@interface DemoHowtoCellDataSource : ZZTableViewCellDataSource
 
 @end
 

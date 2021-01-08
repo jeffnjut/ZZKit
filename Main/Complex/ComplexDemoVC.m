@@ -1,22 +1,17 @@
 //
-//  ComplexVC.m
+//  ComplexDemoVC.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/5.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "ComplexVC.h"
-#import "ZZDevice.h"
+#import "ComplexDemoVC.h"
 #import "ZZSegmentView.h"
-#import "UIView+ZZKit.h"
-#import "ListVC.h"
-#import "ComplexListVC.h"
-#import "UIColor+ZZKit.h"
-#import "NSString+ZZKit.h"
-#import "NSArray+ZZKit.h"
+#import "ChildListVC.h"
+#import "ComplexChildListVC.h"
 
-@interface ComplexVC () <UIScrollViewDelegate>
+@interface ComplexDemoVC () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) UIView *segmentBgView;
@@ -25,7 +20,7 @@
 
 @end
 
-@implementation ComplexVC
+@implementation ComplexDemoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,12 +30,11 @@
 - (void)_buildUI {
     
     // 网络
-    
-    ListVC *vc1 = [[ListVC alloc] init];
-    ComplexListVC *vc2 = [[ComplexListVC alloc] init];
-    ListVC *vc3 = [[ListVC alloc] init];
-    ListVC *vc4 = [[ListVC alloc] init];
-    ListVC *vc5 = [[ListVC alloc] init];
+    ChildListVC *vc1 = [[ChildListVC alloc] init];
+    ComplexChildListVC *vc2 = [[ComplexChildListVC alloc] init];
+    ChildListVC *vc3 = [[ChildListVC alloc] init];
+    ChildListVC *vc4 = [[ChildListVC alloc] init];
+    ChildListVC *vc5 = [[ChildListVC alloc] init];
     vc1.id = @"1";
     vc2.id = @"2";
     vc2.headViewHeight = ZZ_DEVICE_NAVIGATION_TOP_HEIGHT;
@@ -83,7 +77,7 @@
     [self.view bringSubviewToFront:self.segmentBgView];
     [self.view bringSubviewToFront:self.headView];
     
-    SubVC *vc = [vcs zz_arrayObjectAtIndex:1];
+    ZZComplexChildBaseVC *vc = [vcs zz_arrayObjectAtIndex:1];
     if ([vc respondsToSelector:@selector(hiddenSegmentView)]) {
         vc.hiddenSegmentView = self.segmentBgView;
     }

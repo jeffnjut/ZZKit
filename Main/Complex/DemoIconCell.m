@@ -1,14 +1,14 @@
 //
-//  HowtoCell.m
+//  DemoIconCell.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "HowtoCell.h"
+#import "DemoIconCell.h"
 
-@implementation HowtoCell
+@implementation DemoIconCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -23,13 +23,13 @@
 
 @end
 
-@implementation HowtoCellDataSource
+@implementation DemoIconCellDataSource
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.zzHeight = 150.0;
+        self.zzHeight = 300.0;
     }
     return self;
 }

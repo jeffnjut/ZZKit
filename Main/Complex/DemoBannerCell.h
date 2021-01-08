@@ -1,5 +1,5 @@
 //
-//  IconCell.h
+//  DemoBannerCell.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZZTableView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IconCell : ZZTableViewCell
+@interface DemoBannerCell : ZZTableViewCell
 
 @end
 
-@interface IconCellDataSource : ZZTableViewCellDataSource
+@interface DemoBannerCellDataSource : ZZTableViewCellDataSource
+
+@property (nonatomic, assign) NSUInteger selectedIndex;
 
 @end
 

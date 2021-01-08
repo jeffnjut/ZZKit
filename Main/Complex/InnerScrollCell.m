@@ -8,9 +8,7 @@
 
 #import "InnerScrollCell.h"
 #import "ZZSegmentView.h"
-#import "ListVC.h"
-#import "ZZDevice.h"
-#import "NSArray+ZZKit.h"
+#import "ChildListVC.h"
 
 @interface InnerScrollCell() <UIScrollViewDelegate>
 
@@ -60,7 +58,7 @@
         
         for (int i = 0; i < ds.titles.count; i++) {
             NSString *title = [ds.titles zz_arrayObjectAtIndex:i];
-            ListVC *vc = [[ListVC alloc] init];
+            ChildListVC *vc = [[ChildListVC alloc] init];
             vc.id = title;
             [_scrollView addSubview:vc.view];
             vc.view.frame = CGRectMake(_scrollView.frame.size.width * i, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);

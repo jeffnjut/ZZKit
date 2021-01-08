@@ -1,15 +1,14 @@
 //
-//  ListCell.m
+//  DemoHowtoCell.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "ListCell.h"
-#import "UIColor+ZZKit.h"
+#import "DemoHowtoCell.h"
 
-@implementation ListCell
+@implementation DemoHowtoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -22,21 +21,15 @@
     // Configure the view for the selected state
 }
 
-- (void)setZzData:(__kindof ZZTableViewCellDataSource *)zzData {
-    
-    [super setZzData:zzData];
-    self.contentView.backgroundColor = [UIColor  zz_randomColor];
-}
-
 @end
 
-@implementation ListCellDataSource
+@implementation DemoHowtoCellDataSource
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.zzHeight = 200.0;
+        self.zzHeight = 150.0;
     }
     return self;
 }

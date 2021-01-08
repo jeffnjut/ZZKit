@@ -1,5 +1,5 @@
 //
-//  SubVC.h
+//  ZZComplexChildBaseVC.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SubVC : UIViewController
+@interface ZZComplexChildBaseVC : UIViewController
 
 @property (nonatomic, assign) CGFloat headViewHeight;
 @property (nonatomic, weak) UIView *hiddenSegmentView;

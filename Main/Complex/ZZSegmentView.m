@@ -7,8 +7,6 @@
 //
 
 #import "ZZSegmentView.h"
-#import "UIView+ZZKit.h"
-#import "NSArray+ZZKit.h"
 
 #define IndicatorW (18.0)
 #define IndicatorH (6.0)

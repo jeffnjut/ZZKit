@@ -68,7 +68,7 @@
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, w, 150.0) collectionViewLayout:flowLayout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        [_collectionView registerClass:[BannerClCell class] forCellWithReuseIdentifier:@"BannerCell"];
+        [_collectionView registerClass:[BannerClCell class] forCellWithReuseIdentifier:@"DemoBannerCell"];
         [self.view addSubview:_collectionView];
         _collectionView.clipsToBounds = YES;
         _collectionView.pagingEnabled = YES;
@@ -91,7 +91,7 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* cellId = @"BannerCell";
+    static NSString* cellId = @"DemoBannerCell";
     BannerClCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     cell.layer.borderWidth = 1.0f;
     float r = arc4random() % 255 / 255.0;

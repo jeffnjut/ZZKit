@@ -1,5 +1,5 @@
 //
-//  HowtoCell.h
+//  ChildListVC.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZZTableView.h"
+#import "ZZComplexChildBaseVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HowtoCell : ZZTableViewCell
+@interface ChildListVC : ZZComplexChildBaseVC
 
-@end
+@property (nonatomic, copy) NSString *id;
 
-@interface HowtoCellDataSource : ZZTableViewCellDataSource
 
 @end
 

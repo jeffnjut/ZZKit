@@ -1,14 +1,14 @@
 //
-//  SelectedCell.m
+//  DemoSelectedCell.m
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
 //  Copyright © 2021 Jeff. All rights reserved.
 //
 
-#import "SelectedCell.h"
+#import "DemoSelectedCell.h"
 
-@implementation SelectedCell
+@implementation DemoSelectedCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation SelectedCellDataSource
+@implementation DemoSelectedCellDataSource
 
 - (instancetype)init
 {

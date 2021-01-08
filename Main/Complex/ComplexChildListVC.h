@@ -1,5 +1,5 @@
 //
-//  ListVC.h
+//  ComplexChildListVC.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubVC.h"
+#import "ZZComplexChildBaseVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListVC : SubVC
+@interface ComplexChildListVC : ZZComplexChildBaseVC
 
 @property (nonatomic, copy) NSString *id;
-
 
 @end
 

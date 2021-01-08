@@ -1,5 +1,5 @@
 //
-//  ListCell.h
+//  DemoIconCell.h
 //  ZZKit
 //
 //  Created by Fu Jie on 2021/1/7.
@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZZTableView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListCell : ZZTableViewCell
+@interface DemoIconCell : ZZTableViewCell
 
 @end
 
-@interface ListCellDataSource : ZZTableViewCellDataSource
+@interface DemoIconCellDataSource : ZZTableViewCellDataSource
 
 @end
 
