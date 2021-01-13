@@ -112,6 +112,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTableView : UITableView
 
+// 名称
+@property (nonatomic, copy) NSString *name;
+
+// 复用
 @property (nonatomic, assign) BOOL reusable;
 
 // 数据源
@@ -169,7 +173,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  创建ZZTableView的方法（全）
  */
-+ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock;
++ (nonnull __kindof ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock;
 
 /**
  *  一组安全的操作datasource的方法

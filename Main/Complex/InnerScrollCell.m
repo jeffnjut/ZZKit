@@ -60,6 +60,7 @@
             NSString *title = [ds.titles zz_arrayObjectAtIndex:i];
             ChildListVC *vc = [[ChildListVC alloc] init];
             vc.id = title;
+            vc.tableName = @"inner";
             [_scrollView addSubview:vc.view];
             vc.view.frame = CGRectMake(_scrollView.frame.size.width * i, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
         }

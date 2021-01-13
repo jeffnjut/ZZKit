@@ -135,6 +135,7 @@
         _zzTableViewSectionIndexTitleHeight = 0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.reusable = YES;
+        self.name = @"";
     }
     return self;
 }
@@ -147,6 +148,7 @@
         _zzTableViewSectionIndexTitleHeight = 0;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.reusable = YES;
+        self.name = @"";
     }
     return self;
 }
@@ -162,7 +164,7 @@
 /**
  *  创建ZZTableView的方法（全）
  */
-+ (nonnull ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock {
++ (nonnull __kindof ZZTableView *)zz_quickAdd:(ZZTableViewCellEditingStyle)editingStyle backgroundColor:(nullable UIColor *)backgroundColor onView:(nullable UIView *)onView frame:(CGRect)frame constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock actionBlock:(nullable ZZTableViewCellActionBlock)actionBlock scrollBlock:(nullable ZZTableViewScrollActionBlock)scrollBlock {
     
     ZZTableView *tableView = [[ZZTableView alloc] initWithFrame:frame];
     tableView.backgroundColor = backgroundColor;

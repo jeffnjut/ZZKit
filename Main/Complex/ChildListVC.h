@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ChildListVC : ZZComplexChildBaseVC
 
 @property (nonatomic, copy) NSString *id;
-
+@property (nonatomic, copy) NSString *tableName;
+@property (nonatomic, strong, readonly) ZZTableView *tableView;
+ 
 
 @end
 

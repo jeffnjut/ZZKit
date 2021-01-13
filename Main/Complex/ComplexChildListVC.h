@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZComplexChildBaseVC.h"
+#import "InnerScrollCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ComplexChildListVC : ZZComplexChildBaseVC
 
 @property (nonatomic, copy) NSString *id;
+@property (nonatomic, strong, readonly) ZZTableView *tableView;
+@property (nonatomic, weak, readonly) InnerScrollCell *innerScrollCell;
 
 @end
 

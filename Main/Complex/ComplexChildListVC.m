@@ -12,15 +12,14 @@
 #import "DemoIconCell.h"
 #import "DemoHowtoCell.h"
 #import "DemoSelectedCell.h"
-#import "InnerScrollCell.h"
 
 @interface ComplexChildListVC ()
 
 @property (nonatomic, strong) ZZTableView *tableView;
-@property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, weak) InnerScrollCell *innerScrollCell;
-@property (nonatomic, assign) CGFloat scrollViewOrignalY;
-@property (nonatomic, assign) CGFloat scrollViewOrignalH;
+@property (nonatomic, weak) UIScrollView *superScrollView;
+@property (nonatomic, assign) CGFloat superScrollViewOrignalY;
+@property (nonatomic, assign) CGFloat superScrollViewOrignalH;
 @property (nonatomic, assign) CGFloat hiddenSegmentViewOriginalY;
 
 @end
@@ -36,9 +35,9 @@
             if (weakSelf.hiddenSegmentView && weakSelf.hiddenSegmentViewOriginalY == 0) {
                 weakSelf.hiddenSegmentViewOriginalY = weakSelf.hiddenSegmentView.frame.origin.y;
                 if ([weakSelf.view.superview isKindOfClass:[UIScrollView class]]) {
-                    weakSelf.scrollView = (UIScrollView *)weakSelf.view.superview;
-                    weakSelf.scrollViewOrignalY = weakSelf.scrollView.frame.origin.y;
-                    weakSelf.scrollViewOrignalH = weakSelf.scrollView.frame.size.height;
+                    weakSelf.superScrollView = (UIScrollView *)weakSelf.view.superview;
+                    weakSelf.superScrollViewOrignalY = weakSelf.superScrollView.frame.origin.y;
+                    weakSelf.superScrollViewOrignalH = weakSelf.superScrollView.frame.size.height;
                 }
             }
         });
@@ -70,30 +69,29 @@
                                                           weakSelf.hiddenSegmentViewOriginalY - tableView.contentOffset.y,
                                                           weakSelf.hiddenSegmentView.frame.size.width,
                                                           weakSelf.hiddenSegmentView.frame.size.height);
-                weakSelf.scrollView.frame = CGRectMake(weakSelf.scrollView.frame.origin.x,
-                                                       weakSelf.scrollViewOrignalY - tableView.contentOffset.y,
-                                                       weakSelf.scrollView.frame.size.width,
-                                                       weakSelf.scrollViewOrignalH + tableView.contentOffset.y);
+                weakSelf.superScrollView.frame = CGRectMake(weakSelf.superScrollView.frame.origin.x,
+                                                       weakSelf.superScrollViewOrignalY - tableView.contentOffset.y,
+                                                       weakSelf.superScrollView.frame.size.width,
+                                                       weakSelf.superScrollViewOrignalH + tableView.contentOffset.y);
                 
             }else if (tableView.contentOffset.y < 0) {
                 weakSelf.hiddenSegmentView.frame = CGRectMake(weakSelf.hiddenSegmentView.frame.origin.x,
-                                                          weakSelf.hiddenSegmentViewOriginalY,
-                                                          weakSelf.hiddenSegmentView.frame.size.width,
-                                                          weakSelf.hiddenSegmentView.frame.size.height);
-                weakSelf.scrollView.frame = CGRectMake(weakSelf.scrollView.frame.origin.x,
-                                                       weakSelf.scrollViewOrignalY,
-                                                       weakSelf.scrollView.frame.size.width,
-                                                       weakSelf.scrollViewOrignalH);
+                                                              weakSelf.hiddenSegmentViewOriginalY,
+                                                              weakSelf.hiddenSegmentView.frame.size.width,
+                                                              weakSelf.hiddenSegmentView.frame.size.height);
+                weakSelf.superScrollView.frame = CGRectMake(weakSelf.superScrollView.frame.origin.x,
+                                                            weakSelf.superScrollViewOrignalY,
+                                                            weakSelf.superScrollView.frame.size.width,
+                                                            weakSelf.superScrollViewOrignalH);
             }else {
-                
                 weakSelf.hiddenSegmentView.frame = CGRectMake(weakSelf.hiddenSegmentView.frame.origin.x,
-                                                          weakSelf.hiddenSegmentViewOriginalY - weakSelf.hiddenSegmentView.frame.size.height,
-                                                          weakSelf.hiddenSegmentView.frame.size.width,
-                                                          weakSelf.hiddenSegmentView.frame.size.height);
-                weakSelf.scrollView.frame = CGRectMake(weakSelf.scrollView.frame.origin.x,
-                                                       weakSelf.scrollViewOrignalY - weakSelf.hiddenSegmentView.frame.size.height,
-                                                       weakSelf.scrollView.frame.size.width,
-                                                       weakSelf.scrollViewOrignalH + weakSelf.hiddenSegmentView.frame.size.height);
+                                                              weakSelf.hiddenSegmentViewOriginalY - weakSelf.hiddenSegmentView.frame.size.height,
+                                                              weakSelf.hiddenSegmentView.frame.size.width,
+                                                              weakSelf.hiddenSegmentView.frame.size.height);
+                weakSelf.superScrollView.frame = CGRectMake(weakSelf.superScrollView.frame.origin.x,
+                                                            weakSelf.superScrollViewOrignalY - weakSelf.hiddenSegmentView.frame.size.height,
+                                                            weakSelf.superScrollView.frame.size.width,
+                                                            weakSelf.superScrollViewOrignalH + weakSelf.hiddenSegmentView.frame.size.height);
             }
         }
         
@@ -111,6 +109,7 @@
             NSLog(@"%f  %f", self.innerScrollCell.frame.origin.y, tableView.contentOffset.y);
             if (tableView.contentOffset.y >= self.innerScrollCell.frame.origin.y) {
                 tableView.contentOffset = CGPointMake(0, self.innerScrollCell.frame.origin.y);
+                [weakSelf.innerScrollCell setUserInteractionEnabled:YES];
             }
         }
         
