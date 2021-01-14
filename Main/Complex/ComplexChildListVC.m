@@ -142,12 +142,6 @@
 #pragma mark - ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *_Nullable)scrollView {
     
-    if (self.innerScrollCell.visibleScrollView.contentOffset.y == 0 && self.tableView.contentOffset.y == self.innerScrollCell.frame.origin.y) {
-        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(YES);
-    }else {
-        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(NO);
-    }
-    
     NSLog(@"ScrollView %f", scrollView.contentOffset.y);
     // NSLog(@"%f  %f", self.innerScrollCell.frame.origin.y, scrollView.contentOffset.y);
     if (self.innerScrollCell) {
@@ -165,12 +159,6 @@
 #pragma mark - ChildSubScrollViewDelegate
 
 - (void)subScrollViewDidScroll:(UIScrollView *_Nullable)scrollView {
-    
-    if (self.innerScrollCell.visibleScrollView.contentOffset.y == 0 && self.tableView.contentOffset.y == self.innerScrollCell.frame.origin.y) {
-        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(YES);
-    }else {
-        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(NO);
-    }
     
     if (scrollView.contentOffset.y < 0) {
         scrollView.contentOffset = CGPointZero;
