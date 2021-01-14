@@ -33,6 +33,41 @@
     [self zz_load:URL placeholderImage:placeholderImage placeholderBackgroundColor:backgroundColor finishedBackgroundColor:backgroundColor placeholderContentMode:contentMode finishedContentMode:contentMode fadeIn:YES completion:completion];
 }
 
+- (____ZZKitVoid____)zz_load:(nonnull id)URL
+                   placeholderImage:(nullable UIImage *)placeholderImage
+         placeholderBackgroundColor:(nullable UIColor *)placeholderBackgroundColor
+            finishedBackgroundColor:(nullable UIColor *)finishedBackgroundColor
+             placeholderContentMode:(UIViewContentMode)placeholderContentMode
+                finishedContentMode:(UIViewContentMode)finishedContentMode
+                             fadeIn:(BOOL)fadeIn
+                         completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+    
+    if ([[NSThread currentThread] isMainThread]) {
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            [weakSelf _inner_zz_load:URL
+                    placeholderImage:placeholderImage
+          placeholderBackgroundColor:placeholderBackgroundColor
+             finishedBackgroundColor:finishedBackgroundColor
+              placeholderContentMode:placeholderContentMode
+                 finishedContentMode:finishedContentMode
+                              fadeIn:fadeIn
+                          completion:completion];
+            
+        });
+    }else {
+        [self _inner_zz_load:URL
+            placeholderImage:placeholderImage
+  placeholderBackgroundColor:placeholderBackgroundColor
+     finishedBackgroundColor:finishedBackgroundColor
+      placeholderContentMode:placeholderContentMode
+         finishedContentMode:finishedContentMode
+                      fadeIn:fadeIn
+                  completion:completion];
+    }
+}
+
 /**
  * 加载图片
  * URL                        imageURL : NSString / NSURL
@@ -44,17 +79,17 @@
  * fadeIn                     是否淡入显示
  * completion                 加载完图片的回调Block
  */
-- (____ZZKitVoid____)zz_load:(nonnull id)URL
-            placeholderImage:(nullable UIImage *)placeholderImage
-  placeholderBackgroundColor:(nullable UIColor *)placeholderBackgroundColor
-     finishedBackgroundColor:(nullable UIColor *)finishedBackgroundColor
-      placeholderContentMode:(UIViewContentMode)placeholderContentMode
-         finishedContentMode:(UIViewContentMode)finishedContentMode
-                      fadeIn:(BOOL)fadeIn
-                  completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+- (____ZZKitVoid____)_inner_zz_load:(nonnull id)URL
+                   placeholderImage:(nullable UIImage *)placeholderImage
+         placeholderBackgroundColor:(nullable UIColor *)placeholderBackgroundColor
+            finishedBackgroundColor:(nullable UIColor *)finishedBackgroundColor
+             placeholderContentMode:(UIViewContentMode)placeholderContentMode
+                finishedContentMode:(UIViewContentMode)finishedContentMode
+                             fadeIn:(BOOL)fadeIn
+                         completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
     @synchronized (self) {
-        
+    
         __weak typeof(self) weakSelf = self;
         
         // 处理URL Encode
@@ -72,53 +107,66 @@
             _zzURL = [NSURL URLWithString:_zzKey];
         }else {
             // 设置Placeholder背景颜色
-            if (placeholderBackgroundColor) {
-                self.backgroundColor = placeholderBackgroundColor;
-            }
-            self.contentMode = placeholderContentMode;
-            self.image = placeholderImage;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (placeholderBackgroundColor) {
+                    weakSelf.backgroundColor = placeholderBackgroundColor;
+                }
+                weakSelf.contentMode = placeholderContentMode;
+                weakSelf.image = placeholderImage;
+            });
             return;
         }
         [self _setZzHash:_zzKey.hash];
         
         // 设置Placeholder背景颜色
-        if (placeholderBackgroundColor) {
-            self.backgroundColor = placeholderBackgroundColor;
-        }
         // 设置Placeholder ContentMode
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.contentMode = placeholderContentMode;
+            if (placeholderBackgroundColor) {
+                weakSelf.backgroundColor = placeholderBackgroundColor;
+                weakSelf.contentMode = placeholderContentMode;
+            }
         });
         
         [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             
-            // 查询缓存
-            NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:_zzKey];
-            SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
-            switch (format) {
-                case SDImageFormatGIF:
-                {
-                    // 缓存Gif
-                    [weakSelf _setGifImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                    break;
-                }
-                case SDImageFormatWebP:
-                {
-                    // 缓存WebP
-                    [weakSelf _setWebPImage:_data key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                    break;
-                }
-                default:
-                {
-                    if (finishedBackgroundColor) {
-                        weakSelf.backgroundColor = finishedBackgroundColor;
-                    }
-                    weakSelf.contentMode = finishedContentMode;
-                    completion == nil ? : completion(weakSelf, image, nil, error, _zzKey);
-                    break;
-                }
-            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                [weakSelf _complete:image error:error zzKey:_zzKey finishedBackgroundColor:finishedBackgroundColor finishedContentMode:finishedContentMode completion:completion];
+            });
         }];
+    }
+}
+
+- (void)_complete:(UIImage *)image error:(NSError *)error zzKey:(NSString *)zzKey finishedBackgroundColor:(UIColor *)finishedBackgroundColor finishedContentMode:(UIViewContentMode)finishedContentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+    
+    // 查询缓存
+    NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:zzKey];
+    SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
+    switch (format) {
+        case SDImageFormatGIF:
+        {
+            // 缓存Gif
+            [self _setGifImage:_data key:zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+            break;
+        }
+        case SDImageFormatWebP:
+        {
+            // 缓存WebP
+            [self _setWebPImage:_data key:zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+            break;
+        }
+        default:
+        {
+            __weak typeof(self) weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (finishedBackgroundColor) {
+                    weakSelf.backgroundColor = finishedBackgroundColor;
+                }
+                weakSelf.contentMode = finishedContentMode;
+                
+                completion == nil ? : completion(weakSelf, image, nil, error, zzKey);
+            });
+            break;
+        }
     }
 }
 
