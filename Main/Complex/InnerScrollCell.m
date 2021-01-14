@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) ZZSegmentView *segmentView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, assign) NSUInteger page;
 
 @end
 
@@ -61,10 +62,32 @@
             ChildListVC *vc = [[ChildListVC alloc] init];
             vc.id = title;
             vc.tableName = @"inner";
+            vc.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(YES);
             [_scrollView addSubview:vc.view];
+            vc.view.tag = i;
+            if (i == 0) {
+                self.visibleScrollView = vc.tableView;
+            }
+            if (ds.superComplexChildListVC) {
+                vc.subScrollDelegate = (id<ChildSubScrollViewDelegate>)ds.superComplexChildListVC;
+                [ds.superComplexChildListVC addChildViewController:vc];
+            }
             vc.view.frame = CGRectMake(_scrollView.frame.size.width * i, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
         }
         _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * ds.titles.count, _scrollView.frame.size.height);
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    NSUInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    if (self.page != page) {
+        self.page = page;
+        UIView *view = [scrollView.subviews zz_arrayObjectAtIndex:page];
+        ChildListVC *vc = (ChildListVC *)view.nextResponder;
+        if ([vc isKindOfClass:[ChildListVC class]]) {
+            self.visibleScrollView = vc.tableView;
+        }
     }
 }
 

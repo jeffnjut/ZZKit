@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZComplexChildBaseVC.h"
+#import "UIScrollView+Complex.h"
+
+@protocol ChildSubScrollViewDelegate <NSObject>
+
+- (void)subScrollViewDidScroll:(UIScrollView *_Nullable)scrollView;
+
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *tableName;
 @property (nonatomic, strong, readonly) ZZTableView *tableView;
- 
+@property (nonatomic, assign) BOOL shouldRecognizeSimultaneouslyWithGestureRecognizer;
+@property (nonatomic, weak) id<ChildSubScrollViewDelegate> subScrollDelegate;
 
 @end
 

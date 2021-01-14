@@ -12,10 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InnerScrollCell : ZZTableViewCell
 
+@property (nonatomic, weak) UIScrollView *visibleScrollView;
+
 @end
 
 @interface InnerScrollCellDataSource : ZZTableViewCellDataSource
 
+@property (nonatomic, weak) UIViewController *superComplexChildListVC;
 @property (nonatomic, strong) NSArray *titles;
 
 @end

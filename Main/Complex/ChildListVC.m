@@ -9,12 +9,11 @@
 #import "ChildListVC.h"
 #import "DemoBannerCell.h"
 #import "DemoListCell.h"
-#import "ComplexTableView.h"
 #import "ComplexChildListVC.h"
 
 @interface ChildListVC ()
 
-@property (nonatomic, strong) ComplexTableView *tableView;
+@property (nonatomic, strong) ZZTableView *tableView;
 
 @end
 
@@ -24,11 +23,11 @@
     
     ZZ_WEAK_SELF
     [super viewDidLoad];
-    self.tableView = [ComplexTableView zz_quickAdd:ZZTableViewCellEditingStyleNone
-                                   backgroundColor:@"#F8F8F8".zz_color
-                                            onView:self.view
-                                             frame:CGRectZero
-                                   constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
+    self.tableView = [ZZTableView zz_quickAdd:ZZTableViewCellEditingStyleNone
+                              backgroundColor:@"#F8F8F8".zz_color
+                                       onView:self.view
+                                        frame:CGRectZero
+                              constraintBlock:^(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make) {
         make.edges.equalTo(superView);
     } actionBlock:^(ZZTableView * _Nonnull __weak tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action, __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView) {
         
@@ -42,18 +41,14 @@
         
     } scrollBlock:^(ZZTableView * _Nonnull __weak tableView, ZZTableViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
         
-        if (tableView.contentOffset.y < 0) {
-            ComplexChildListVC *complexChildListVC = [tableView zz_findViewController:[ComplexChildListVC class]];
-            NSLog(@"%@",weakSelf.nextResponder);
-            NSLog(@"%@  %f",tableView.name, tableView.contentOffset.y);
-            [complexChildListVC.innerScrollCell setUserInteractionEnabled:NO];
-            tableView.contentOffset = CGPointZero;
+        if ([weakSelf.subScrollDelegate respondsToSelector:@selector(subScrollViewDidScroll:)]) {
+            [weakSelf.subScrollDelegate subScrollViewDidScroll:tableView];
         }
-        
     }];
     if (self.tableName.length > 0) {
         self.tableView.name = self.tableName;
     }
+    self.tableView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(self.shouldRecognizeSimultaneouslyWithGestureRecognizer);
     [self _render];
 }
 

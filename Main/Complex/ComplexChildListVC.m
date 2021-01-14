@@ -46,8 +46,8 @@
 
 - (void)viewDidLoad {
     
-    ZZ_WEAK_SELF
     [super viewDidLoad];
+    __weak typeof(self) weakSelf = self;
     self.tableView = [ZZTableView zz_quickAdd:ZZTableViewCellEditingStyleNone
                               backgroundColor:@"#F8F8F8".zz_color
                                        onView:self.view
@@ -62,6 +62,8 @@
         }
         
     } scrollBlock:^(ZZTableView * _Nonnull __weak tableView, ZZTableViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
+        
+        [weakSelf scrollViewDidScroll:tableView];
         
         if (weakSelf.hiddenSegmentView) {
             if (tableView.contentOffset.y >= 0 && tableView.contentOffset.y <= weakSelf.hiddenSegmentView.frame.size.height) {
@@ -105,14 +107,7 @@
                 
             }];
             
-        }else {
-            NSLog(@"%f  %f", self.innerScrollCell.frame.origin.y, tableView.contentOffset.y);
-            if (tableView.contentOffset.y >= self.innerScrollCell.frame.origin.y) {
-                tableView.contentOffset = CGPointMake(0, self.innerScrollCell.frame.origin.y);
-                [weakSelf.innerScrollCell setUserInteractionEnabled:YES];
-            }
         }
-        
     }];
     [self _render];
 }
@@ -136,12 +131,56 @@
     section = [[ZZTableSectionObject alloc] init];
     [self.tableView zz_addDataSource:section];
     InnerScrollCellDataSource *ds = [[InnerScrollCellDataSource alloc] init];
+    ds.superComplexChildListVC = self;
     ds.titles = @[@"最新推荐", @"美妆个护", @"服饰鞋包", @"直邮中国", @"电子数码", @"日用百货", @"食品保健"];
     
     ds.zzHeight = ZZDevice.zz_screenHeight - self.headViewHeight - ZZ_DEVICE_TAB_BAR_HEIGHT;
     [section.zzCellDataSource addObject:ds];
     [self.tableView zz_refresh];
 }
+
+#pragma mark - ScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *_Nullable)scrollView {
+    
+    if (self.innerScrollCell.visibleScrollView.contentOffset.y == 0 && self.tableView.contentOffset.y == self.innerScrollCell.frame.origin.y) {
+        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(YES);
+    }else {
+        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(NO);
+    }
+    
+    NSLog(@"ScrollView %f", scrollView.contentOffset.y);
+    // NSLog(@"%f  %f", self.innerScrollCell.frame.origin.y, scrollView.contentOffset.y);
+    if (self.innerScrollCell) {
+        
+        if (self.innerScrollCell.visibleScrollView.contentOffset.y > 1) {
+            self.tableView.contentOffset = CGPointMake(0, self.innerScrollCell.frame.origin.y);
+        }
+        
+        if (self.tableView.contentOffset.y > self.innerScrollCell.frame.origin.y) {
+            self.tableView.contentOffset = CGPointMake(0, self.innerScrollCell.frame.origin.y);
+        }
+    }
+}
+
+#pragma mark - ChildSubScrollViewDelegate
+
+- (void)subScrollViewDidScroll:(UIScrollView *_Nullable)scrollView {
+    
+    if (self.innerScrollCell.visibleScrollView.contentOffset.y == 0 && self.tableView.contentOffset.y == self.innerScrollCell.frame.origin.y) {
+        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(YES);
+    }else {
+        self.innerScrollCell.visibleScrollView.shouldRecognizeSimultaneouslyWithGestureRecognizer = @(NO);
+    }
+    
+    if (scrollView.contentOffset.y < 0) {
+        scrollView.contentOffset = CGPointZero;
+    }
+    if (self.tableView.contentOffset.y < self.innerScrollCell.frame.origin.y) {
+        scrollView.contentOffset = CGPointZero;
+    }
+    NSLog(@"SubScrollView %f", scrollView.contentOffset.y);
+}
+
 
 /*
 #pragma mark - Navigation

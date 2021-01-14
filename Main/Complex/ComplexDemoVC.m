@@ -68,6 +68,7 @@
     for (int i = 0; i < vcs.count; i++) {
         UIViewController *vc = [vcs objectAtIndex:i];
         [self.scrollView addSubview:vc.view];
+        [self addChildViewController:vc];
         vc.view.backgroundColor = [UIColor zz_randomColor];
         vc.view.frame = CGRectMake(self.scrollView.frame.size.width * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     }
