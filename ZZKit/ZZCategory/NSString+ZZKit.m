@@ -567,6 +567,50 @@
 }
 
 /**
+ *  判断字符串长度（字符串长度，汉字长度2，其他长度1）
+ */
+- (CGFloat)zz_stringLength{
+    if (self.length == 0) {
+        return  0;
+    }
+    CGFloat count = 0;
+    for (int i= 0; i<self.length; i++) {
+        NSString *str = [self substringWithRange:NSMakeRange(i, 1)];
+        if ([str zz_isChinese]) {
+            count += 2;
+        }else{
+            count += 1;
+        }
+    }
+    return count;
+}
+
+/**
+ *  截取字符串长度（字符串长度，汉字长度2，其他长度1）
+ */
+- (NSString *)zz_stringToIndex:(NSInteger )length{
+    if (self.length == 0) {
+        return @"";
+    }
+    CGFloat count = 0;
+    NSString *resultString = @"";
+    for (int i= 0; i<self.length; i++) {
+        NSString *str = [self substringWithRange:NSMakeRange(i, 1)];
+        if ([str zz_isChinese]) {
+            count += 2;
+        }else{
+            count += 1;
+        }
+        if(count > length){
+            break;
+        }else{
+            resultString = [NSString stringWithFormat:@"%@%@",resultString,str];
+        }
+    }
+    return  resultString;
+}
+
+/**
  *  判断全字母
  */
 - (BOOL)zz_isAlphabetic {

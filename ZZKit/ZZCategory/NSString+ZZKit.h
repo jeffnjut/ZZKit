@@ -203,6 +203,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSUInteger)zz_bytesLength;
 
 /**
+ *  判断字符串长度（字符串长度，汉字长度2，其他长度1）
+ */
+- (CGFloat)zz_stringLength;
+
+/**
+ *  截取字符串长度（字符串长度，汉字长度2，其他长度1）
+ */
+- (NSString *)zz_stringToIndex:(NSInteger)length;
+/**
  *  首字母是否是英文字母
  */
 - (BOOL)zz_isTopCharacterLetter;
