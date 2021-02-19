@@ -346,13 +346,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
+    if (sectionObject == nil) {
+        return 0;
+    }
     return sectionObject.zzCellDataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+    if (sectionObject == nil) {
+        return nil;
+    }
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     NSString *cellClassName = [[self class] getCellName:ds];
     ZZCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellClassName forIndexPath:indexPath];
@@ -378,7 +384,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     __weak ZZCollectionView *weakSelf = self;
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+    if (sectionObject == nil) {
+        return;
+    }
     ZZCollectionViewCellDataSource *data = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     ZZCollectionViewCell *cell = (ZZCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (cell != nil && cell.zzData != nil) {
@@ -406,7 +415,10 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+        ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+        if (sectionObject == nil) {
+            return nil;
+        }
         NSString *headCellName = [[self class] getCellName:sectionObject.zzHeaderData];
         if (headCellName.length > 0) {
             ZZCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headCellName forIndexPath:indexPath];
@@ -427,7 +439,10 @@
             return view;
         }
     }else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+        ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+        if (sectionObject == nil) {
+            return nil;
+        }
         NSString *headCellName = [[self class] getCellName:sectionObject.zzFooterData];
         if (headCellName.length > 0) {
             ZZCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:headCellName forIndexPath:indexPath];
@@ -455,13 +470,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout columnNumberAtSection:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
+    if (sectionObject == nil) {
+        return 0;
+    }
     return sectionObject.zzColumns;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:indexPath.section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+    if (sectionObject == nil) {
+        return CGSizeZero;
+    }
     ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
         return CGSizeMake((self.frame.size.width - sectionObject.zzEdgeInsets.left - sectionObject.zzEdgeInsets.right - (sectionObject.zzColumns - 1) * sectionObject.zzMinimumInteritemSpacing) / sectionObject.zzColumns, ds.zzSize.height);
@@ -472,19 +493,28 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
+    if (sectionObject == nil) {
+        return UIEdgeInsetsZero;
+    }
     return sectionObject.zzEdgeInsets;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
+    if (sectionObject == nil) {
+        return 0;
+    }
     return sectionObject.zzMinimumLineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
-    ZZCollectionSectionObject *sectionObject = [self.zzDataSource objectAtIndex:section];
+    ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:section];
+    if (sectionObject == nil) {
+        return 0;
+    }
     return sectionObject.zzMinimumInteritemSpacing;
 }
 
