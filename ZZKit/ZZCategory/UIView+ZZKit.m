@@ -12,6 +12,7 @@
 #import "NSString+ZZKit.h"
 #import "NSAttributedString+ZZKit.h"
 
+
 #pragma mark - Geometry方法
 
 // CGRect转换成CGPoint
@@ -32,6 +33,10 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     newrect.size = rect.size;
     return newrect;
 }
+
+@implementation ZZShapeLayer
+
+@end
 
 @implementation UIView (ZZKit)
 
@@ -380,6 +385,80 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     self.layer.borderWidth = width;
     self.layer.borderColor = color.CGColor;
     self.layer.masksToBounds = YES;
+}
+
+/**
+ *  设置圆角（角度，边宽，颜色）
+ */
+- (void)zz_cornerRadius:(ZZRectCorner)rectCorner radius:(CGFloat)radius borderWidth:(CGFloat)width boderColor:(nullable UIColor *)color {
+    
+    UIRectCorner _rectCorner;
+    switch (rectCorner) {
+        case ZZRectCornerTopLeft:
+        {
+            _rectCorner = UIRectCornerTopLeft;
+            break;
+        }
+        case ZZRectCornerTopRight:
+        {
+            _rectCorner = UIRectCornerTopRight;
+            break;
+        }
+        case ZZRectCornerTopLeftRight:
+        {
+            _rectCorner = UIRectCornerTopLeft | UIRectCornerTopRight;
+            break;
+        }
+        case ZZRectCornerBottomLeft:
+        {
+            _rectCorner = UIRectCornerBottomLeft;
+            break;
+        }
+        case ZZRectCornerBottomRight:
+        {
+            _rectCorner = UIRectCornerBottomRight;
+            break;
+        }
+        case ZZRectCornerBottomLeftRight:
+        {
+            _rectCorner = UIRectCornerBottomLeft | UIRectCornerBottomRight;
+            break;
+        }
+        default:
+            _rectCorner = UIRectCornerTopLeft | UIRectCornerTopRight;
+            break;
+    }
+    
+    
+    CAShapeLayer *maskLayer = nil;
+    if (self.layer.mask && [self.layer.mask isMemberOfClass:[ZZShapeLayer class]]) {
+        maskLayer = self.layer.mask;
+    }else {
+        maskLayer = [CAShapeLayer layer];
+    }
+    maskLayer.frame = self.bounds;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:_rectCorner cornerRadii:CGSizeMake(radius * 2, radius * 2)];
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+    self.layer.masksToBounds = YES;
+    if (color != nil && width > 0) {
+        ZZShapeLayer *borderLayer = nil;
+        for (ZZShapeLayer *subLayer in self.layer.sublayers) {
+            if ([subLayer isMemberOfClass:[ZZShapeLayer class]]) {
+                borderLayer = subLayer;
+                break;
+            }
+        }
+        if (!borderLayer) {
+            borderLayer = [ZZShapeLayer layer];
+            [self.layer addSublayer:borderLayer];
+        }
+        borderLayer.path = maskPath.CGPath;
+        borderLayer.fillColor = UIColor.clearColor.CGColor;
+        borderLayer.strokeColor = color.CGColor;
+        borderLayer.lineWidth = width;
+        borderLayer.frame = self.bounds;
+    }
 }
 
 /**

@@ -11,6 +11,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, ZZRectCorner) {
+    ZZRectCornerTopLeft,
+    ZZRectCornerTopRight,
+    ZZRectCornerTopLeftRight,
+    ZZRectCornerBottomLeft,
+    ZZRectCornerBottomRight,
+    ZZRectCornerBottomLeftRight
+};
+
+@interface ZZShapeLayer : CAShapeLayer
+
+@end
+
 @interface UIView (ZZKit)
 
 #pragma mark - Geometry
@@ -107,6 +120,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  设置圆角（角度，边宽，颜色）
  */
 - (void)zz_cornerRadius:(CGFloat)radius borderWidth:(CGFloat)width boderColor:(nullable UIColor *)color;
+
+/**
+ *  设置圆角（角度，边宽，颜色）
+ */
+- (void)zz_cornerRadius:(ZZRectCorner)rectCorner radius:(CGFloat)radius borderWidth:(CGFloat)width boderColor:(nullable UIColor *)color;
 
 /**
  *  设置边框（边宽，颜色）
