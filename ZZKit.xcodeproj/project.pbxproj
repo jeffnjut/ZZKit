@@ -423,6 +423,7 @@
 		E7F85F2022C1B7430018A217 /* TestWidgetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F1E22C1B7430018A217 /* TestWidgetVC.m */; };
 		E7F85F2122C1B7430018A217 /* TestWidgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */; };
 		E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */; };
+		E7F8A0BE25DFA7CF00C4C694 /* ZZPerformance.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F8A0BD25DFA7CF00C4C694 /* ZZPerformance.m */; };
 		E7FFCBDC258AFEEC00734785 /* TestZZCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCBDA258AFEEC00734785 /* TestZZCollectionReusableView.m */; };
 		E7FFCBDD258AFEEC00734785 /* TestZZCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCBDB258AFEEC00734785 /* TestZZCollectionReusableView.xib */; };
 		E7FFCBE2258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCBE1258AFF1200734785 /* ZWHCollectionViewFlowWaterfallLayout.m */; };
@@ -1033,6 +1034,8 @@
 		E7F85F1F22C1B7430018A217 /* TestWidgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestWidgetVC.xib; sourceTree = "<group>"; };
 		E7F85F2222C2240E0018A217 /* ZZWidgetProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWidgetProgressView.m; sourceTree = "<group>"; };
 		E7F85F2322C2240E0018A217 /* ZZWidgetProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWidgetProgressView.h; sourceTree = "<group>"; };
+		E7F8A0BC25DFA7CF00C4C694 /* ZZPerformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZPerformance.h; sourceTree = "<group>"; };
+		E7F8A0BD25DFA7CF00C4C694 /* ZZPerformance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZPerformance.m; sourceTree = "<group>"; };
 		E7FFCBD9258AFEEC00734785 /* TestZZCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestZZCollectionReusableView.h; path = Main/TestZZKit/TestZZCollectionReusableView.h; sourceTree = SOURCE_ROOT; };
 		E7FFCBDA258AFEEC00734785 /* TestZZCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestZZCollectionReusableView.m; path = Main/TestZZKit/TestZZCollectionReusableView.m; sourceTree = SOURCE_ROOT; };
 		E7FFCBDB258AFEEC00734785 /* TestZZCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestZZCollectionReusableView.xib; path = Main/TestZZKit/TestZZCollectionReusableView.xib; sourceTree = SOURCE_ROOT; };
@@ -1811,6 +1814,7 @@
 		E7DC5C2E229CD6A500ED8733 /* ZZKit */ = {
 			isa = PBXGroup;
 			children = (
+				E7F8A0BB25DFA71700C4C694 /* ZZPerformance */,
 				E7F2151A22EDAB97007C587B /* ZZLBS */,
 				E788655B22B2199700B20F3E /* ZZCollectionView */,
 				E788655A22B2198D00B20F3E /* ZZTableView */,
@@ -2066,6 +2070,15 @@
 				E72D500B22EEDAD200040AD2 /* ZZLBSBackgroundTask.m */,
 			);
 			path = ZZLBS;
+			sourceTree = "<group>";
+		};
+		E7F8A0BB25DFA71700C4C694 /* ZZPerformance */ = {
+			isa = PBXGroup;
+			children = (
+				E7F8A0BC25DFA7CF00C4C694 /* ZZPerformance.h */,
+				E7F8A0BD25DFA7CF00C4C694 /* ZZPerformance.m */,
+			);
+			path = ZZPerformance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2571,6 +2584,7 @@
 				E759CDE322CC59B4001EC3AE /* TestZZWebView.m in Sources */,
 				E760BEE622F9797000944380 /* ZZNetworkErrorDropSheet.m in Sources */,
 				E7DC5C18229CCC8600ED8733 /* AppDelegate.m in Sources */,
+				E7F8A0BE25DFA7CF00C4C694 /* ZZPerformance.m in Sources */,
 				E76B8B672313E4C3001E4C34 /* TestImageTableViewCell.m in Sources */,
 				E7CE2470232899C100F7C8FE /* BasicCollectionViewCell.m in Sources */,
 				E7F85F2422C2240E0018A217 /* ZZWidgetProgressView.m in Sources */,
