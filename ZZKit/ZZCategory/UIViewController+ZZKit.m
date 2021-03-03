@@ -426,7 +426,7 @@
 - (void)zz_dismiss {
     
     if (@available(iOS 14.0, *)) {
-        [self zz_dismiss:0 animated:NO];
+        [self zz_dismiss:0 animated:YES];
     }else {
         [self zz_dismiss:0 animated:YES];
     }

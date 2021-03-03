@@ -154,6 +154,27 @@
  */
 - (nullable MBProgressHUD *)zz_toast:(nullable NSAttributedString *)message lottiePath:(nullable NSString *)lottiePath lottieViewSize:(CGSize)lottieViewSize edgeInsects:(UIEdgeInsets)edgeInsets imageTextPadding:(CGFloat)imageTextPadding textMaxWidth:(CGFloat)textMaxWidth textMinWidth:(CGFloat)textMinWidth borderColor:(nullable UIColor *)borderColor borderWidth:(CGFloat)borderWidth cornerRadius:(CGFloat)cornerRadius duration:(CGFloat)duration scaleAnimation:(BOOL)scaleAnimation dissmisPreviousHUD:(BOOL)dissmisPreviousHUD otherDisappearAnimationBlock:(nullable void(^)(id contentView, void(^finished)(void)))otherDisappearAnimationBlock  {
     
+    if (![[NSThread currentThread] isMainThread]) {
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf zz_toast:message
+                    lottiePath:lottiePath
+                lottieViewSize:lottieViewSize
+                   edgeInsects:edgeInsets
+              imageTextPadding:imageTextPadding
+                  textMaxWidth:textMaxWidth
+                  textMinWidth:textMinWidth
+                   borderColor:borderColor
+                   borderWidth:borderWidth
+                  cornerRadius:cornerRadius
+                      duration:duration
+                scaleAnimation:scaleAnimation
+            dissmisPreviousHUD:dissmisPreviousHUD
+  otherDisappearAnimationBlock:otherDisappearAnimationBlock];
+        });
+        return nil;
+    }
+    
     if (dissmisPreviousHUD) {
         for (MBProgressHUD *hud in self.subviews) {
             if ([hud isKindOfClass:[MBProgressHUD class]]) {

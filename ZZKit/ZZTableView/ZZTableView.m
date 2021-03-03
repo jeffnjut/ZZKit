@@ -202,7 +202,6 @@
 - (void)zz_addDataSource:(nonnull id)data {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayAddObject:data];
     pthread_mutex_unlock(&_lock);
 }
@@ -210,7 +209,6 @@
 - (void)zz_insertDataSource:(nonnull id)anObject atIndex:(NSUInteger)index {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayInsertObject:anObject atIndex:index];
     pthread_mutex_unlock(&_lock);
 }
@@ -218,7 +216,6 @@
 - (void)zz_removeDataSource:(nonnull id)data {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayRemoveObject:data];
     pthread_mutex_unlock(&_lock);
 }
@@ -226,7 +223,6 @@
 - (void)zz_removeDataSourceObjectAtIndex:(NSInteger)index {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayRemoveObjectAtIndex:index];
     pthread_mutex_unlock(&_lock);
 }
@@ -234,7 +230,6 @@
 - (void)zz_removeFirstDataSource {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayRemoveFirstObject];
     pthread_mutex_unlock(&_lock);
 }
@@ -242,7 +237,6 @@
 - (void)zz_removeLastDataSource {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayRemoveLastObject];
     pthread_mutex_unlock(&_lock);
 }
@@ -250,7 +244,6 @@
 - (void)zz_removeAllDataSource {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource removeAllObjects];
     pthread_mutex_unlock(&_lock);
 }
@@ -258,7 +251,6 @@
 - (void)zz_replaceDataSourceAtIndex:(NSUInteger)index withObject:(nonnull id)data {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayReplaceObjectAtIndex:index withObject:data];
     pthread_mutex_unlock(&_lock);
 }
@@ -266,7 +258,6 @@
 - (void)zz_exchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2 {
     
     pthread_mutex_lock(&_lock);
-    self.scrollEnabled = NO;
     [_zzDataSource zz_arrayExchangeObjectAtIndex:index1 withObjectAtIndex:index2];
     pthread_mutex_unlock(&_lock);
 }
@@ -285,6 +276,10 @@
 - (void)zz_refresh:(BOOL)scrollable {
     
     pthread_mutex_lock(&_lock);
+    ZZ_WEAK_SELF
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.scrollEnabled = NO;
+    });
     if ([_zzDataSource zz_arrayContainsClassType:[ZZTableSectionObject class]]) {
         _sectionEnabled = YES;
         for (ZZTableSectionObject *sectionObject in _zzDataSource) {
@@ -302,8 +297,10 @@
             }
         }
     }
-    [self reloadData];
-    self.scrollEnabled = scrollable;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf reloadData];
+        weakSelf.scrollEnabled = scrollable;
+    });
     [self.resuableCells removeAllObjects];
     pthread_mutex_unlock(&_lock);
 }

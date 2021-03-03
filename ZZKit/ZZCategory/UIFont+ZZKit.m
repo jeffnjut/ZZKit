@@ -82,7 +82,11 @@
         NSString *fontName = CFBridgingRelease(CTFontCopyName(fontRef, kCTFontPostScriptNameKey));
         UIFont *font = [UIFont fontWithName:fontName size:fontSize];
         [customFontArray addObject:font];
+        CFRelease(fontRef);
     }
+    CFRelease(fontPath);
+    CFRelease(fontUrl);
+    CFRelease(fontArray);
     return customFontArray;
 }
 
