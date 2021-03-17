@@ -53,13 +53,13 @@
 /**
  *  唤醒第三方导航（CLLocationCoordinate2D + ZZLocationCoordinateSystem）
  */
-+ (void)zz_startNavigaion:(CLLocationCoordinate2D)destinationCoordinate
-         coordinateSystem:(ZZLocationCoordinateSystem)coordinateSystem
-          destinationName:(nonnull NSString *)destinationName
-            yourAppScheme:(nonnull NSString *)yourAppScheme
-               controller:(nonnull UIViewController *)controller
-                     maps:(nullable NSArray<NSString *> *)maps
-                    block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block {
++ (void)zz_startNavigation:(CLLocationCoordinate2D)destinationCoordinate
+          coordinateSystem:(ZZLocationCoordinateSystem)coordinateSystem
+           destinationName:(nonnull NSString *)destinationName
+             yourAppScheme:(nonnull NSString *)yourAppScheme
+                controller:(nonnull UIViewController *)controller
+                      maps:(nullable NSArray<NSString *> *)maps
+                     block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block {
     
     ZZLocationCoordinate *destCoordinate = [[ZZLocationCoordinate alloc] initWithCoordinate2D:destinationCoordinate coordinateSystem:coordinateSystem];
     [self zz_startNavigaion:destCoordinate destinationName:destinationName yourAppScheme:yourAppScheme controller:controller maps:maps block:block];

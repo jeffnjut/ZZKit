@@ -1019,6 +1019,14 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
 
 @interface ZZPopupView ()
 
+@property (nonatomic, assign) CGRect originalRect;
+
+@property (nonatomic, assign) CGRect extendedRect;
+
+@property (nonatomic, assign) BOOL inAnimation;
+
+@property (nonatomic, assign) BOOL extended;
+
 @end
 
 @implementation ZZPopupView
@@ -1266,6 +1274,64 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     
     self.zzPopupTapCloseBlock == nil ? : self.zzPopupTapCloseBlock();
     self.zzPopupDisappearAnimationBlock == nil ? : self.zzPopupDisappearAnimationBlock(nil);
+}
+
+// 滑动同步方法
+- (void)zz_popupUpdateContentOffset:(UIScrollView *)scrollView {
+    
+    return;
+    
+    NSLog(@"Size(%f, %f), Offset(%f, %f)", scrollView.contentSize.width, scrollView.contentSize.height, scrollView.contentOffset.x, scrollView.contentOffset.y);
+    if (self.zzPopupAppearAnimation == ZZPopupViewAnimationPopBottom || self.zzPopupAppearAnimation == ZZPopupViewAnimationNoneBottom) {
+        if (self.inAnimation) {
+            return;
+        }
+        __weak typeof(self) weakSelf = self;
+        if (scrollView.contentOffset.y >= 100) {
+            
+            weakSelf.frame = weakSelf.zzPopupParentView.bounds;
+            return;
+            
+            if (!self.extended) {
+            
+                if (CGRectEqualToRect(self.originalRect, CGRectZero)) {
+                    self.originalRect = self.frame;
+                }
+                
+                if (CGRectEqualToRect(self.extendedRect, CGRectZero)) {
+                    CGFloat h = weakSelf.zzPopupParentView.frame.size.height - 60.0 - weakSelf.originalRect.size.height;
+                    if (h < 0) {
+                        return;
+                    }
+                    self.extendedRect = CGRectMake(weakSelf.frame.origin.x,
+                                                   weakSelf.frame.origin.y - h,
+                                                   weakSelf.frame.size.width,
+                                                   weakSelf.frame.size.height + h);
+                }
+                weakSelf.inAnimation = YES;
+                weakSelf.extended = NO;
+                [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.frame = weakSelf.extendedRect;
+                } completion:^(BOOL finished) {
+                    weakSelf.inAnimation = NO;
+                    weakSelf.extended = YES;
+                    weakSelf.frame = weakSelf.extendedRect;
+                }];
+            }
+        }else {
+            if (self.extended) {
+                weakSelf.inAnimation = YES;
+                weakSelf.extended = YES;
+                [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.frame = weakSelf.originalRect;
+                } completion:^(BOOL finished) {
+                    weakSelf.inAnimation = NO;
+                    weakSelf.extended = NO;
+                    weakSelf.frame = weakSelf.originalRect;
+                }];
+            }
+        }
+    }
 }
 
 @end

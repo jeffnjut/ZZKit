@@ -42,12 +42,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  唤醒第三方导航（ZZLocationCoordinate）
  */
-+ (void)zz_startNavigaion:(nonnull ZZLocationCoordinate *)destinationCoordinate
-          destinationName:(nonnull NSString *)destinationName
-            yourAppScheme:(nonnull NSString *)yourAppScheme
-               controller:(nullable UIViewController *)controller
-                     maps:(nullable NSArray<NSString *> *)maps
-                    block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
++ (void)zz_startNavigation:(nonnull ZZLocationCoordinate *)destinationCoordinate
+           destinationName:(nonnull NSString *)destinationName
+             yourAppScheme:(nonnull NSString *)yourAppScheme
+                controller:(nullable UIViewController *)controller
+                      maps:(nullable NSArray<NSString *> *)maps
+                     block:(nullable void(^)(NSDictionary *mapURLs, ZZLBSNavigationVoidBlock startNavigationBlock))block;
 
 @end
 

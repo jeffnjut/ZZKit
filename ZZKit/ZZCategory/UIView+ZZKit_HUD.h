@@ -269,6 +269,9 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
 // 关闭PopupView
 - (IBAction)zz_tapClosePopupView:(nullable id)sender;
 
+// 滑动同步方法
+- (void)zz_popupUpdateContentOffset:(UIScrollView *)scrollView;
+
 @end
 
 @interface ZZPopupBlurView : UIView

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notification View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" userLabel="Notification View Controller" customClass="NotificationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="CYA-gr-beG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wmd.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EH5-3P-pz9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="256"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2BE-c3-nQJ"/>
+                        <color key="backgroundColor" red="0.45882353186607361" green="0.74901962280273438" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" id="JaD-ve-zCa"/>
+                            <constraint firstItem="EH5-3P-pz9" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="L9c-Ty-aMM"/>
+                            <constraint firstItem="2BE-c3-nQJ" firstAttribute="bottom" secondItem="EH5-3P-pz9" secondAttribute="bottom" id="NbK-ha-MIp"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="trailing" secondItem="2BE-c3-nQJ" secondAttribute="trailing" id="Tn8-4t-aAT"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="aDB-WM-jfU"/>
+                            <constraint firstItem="2BE-c3-nQJ" firstAttribute="trailing" secondItem="EH5-3P-pz9" secondAttribute="trailing" id="nH3-Qg-Jgn"/>
+                            <constraint firstItem="EH5-3P-pz9" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" id="p8o-Sp-xDt"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="320"/>
+                    <connections>
+                        <outlet property="imageView" destination="EH5-3P-pz9" id="T5T-pc-U4y"/>
+                        <outlet property="label" destination="GcN-lo-r42" id="lpW-cU-7IG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="46.875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="wmd.jpg" width="499" height="332"/>
+    </resources>
+</document>
