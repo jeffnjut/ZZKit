@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, ZZCollectionViewCellAction) {
     ZZCollectionViewCellActionTapped,          // 点击Cell
     ZZCollectionViewCellActionCustomTapped,    // 点击Cell上自定义事件（按钮或其它部件的事件监听）
+    ZZCollectionViewCellActionMoved            // Cell交换
 };
 
 // 定义CollectionView滚动事件类型
@@ -58,6 +59,10 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
                                                   CGPoint targetContentOffset,
                                                   BOOL decelerate);
 
+typedef void (^ZZCollectionViewCellMoveBlock)(__weak ZZCollectionView * _Nonnull collectionView,
+                                              NSIndexPath *from,
+                                              NSIndexPath *to);
+
 #pragma mark - ZZCollectionView
 
 @interface ZZCollectionView : UICollectionView
@@ -70,6 +75,9 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 
 // CollectionView滚动事件Block
 @property (nonatomic, copy) ZZCollectionViewScrollActionBlock zzScrollBlock;
+
+// Cell 交换事件Block
+@property (nonatomic, copy) ZZCollectionViewCellMoveBlock zzMoveBlock;
 
 // CollectionView是否可以拖拽移动
 @property (nonatomic, assign) BOOL zzDraggable;
@@ -99,7 +107,8 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
                      registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
                           constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
                               actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
-                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock;
+                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock
+                                moveBlock:(nullable ZZCollectionViewCellMoveBlock)moveBlock;
 
 /**
  *  一组安全的操作datasource的方法
@@ -159,6 +168,8 @@ typedef void (^ZZCollectionViewScrollActionBlock)(__weak ZZCollectionView * _Non
 
 // Old
 @property (nonatomic, assign) CGSize zzSize;
+
+@property (nonatomic, assign) BOOL zzDraggable;
 
 
 @end

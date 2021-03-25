@@ -81,7 +81,8 @@
                 registerFootersBlock:registerFootersBlock
                      constraintBlock:constraintBlock
                          actionBlock:actionBlock
-                         scrollBlock:scrollBlock];
+                         scrollBlock:scrollBlock
+                           moveBlock:nil];
 }
 
 /**
@@ -96,7 +97,8 @@
                      registerFootersBlock:(nullable NSArray *(^)(void))registerFootersBlock
                           constraintBlock:(nullable void(^)(UIView * _Nonnull superView, MASConstraintMaker * _Nonnull make))constraintBlock
                               actionBlock:(ZZCollectionViewCellActionBlock)actionBlock
-                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock {
+                              scrollBlock:(ZZCollectionViewScrollActionBlock)scrollBlock
+                                moveBlock:(nullable ZZCollectionViewCellMoveBlock)moveBlock {
     
     UICollectionViewFlowLayout *flowLayout = nil;
     if (scrollDirection == UICollectionViewScrollDirectionHorizontal) {
@@ -140,6 +142,7 @@
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot"];
     collectionView.zzActionBlock = actionBlock;
     collectionView.zzScrollBlock = scrollBlock;
+    collectionView.zzMoveBlock = moveBlock;
     collectionView.backgroundColor = backgroundColor;
     return collectionView;
 }
@@ -292,6 +295,13 @@
     CGPoint point = [longp locationInView:self];
     NSIndexPath *index = [self indexPathForItemAtPoint:point];
     ZZCollectionViewCell *cell = (ZZCollectionViewCell*)[self cellForItemAtIndexPath:index];
+    ZZCollectionViewCellDataSource *ds = cell.zzData;
+    if (ds != nil && ds.zzDraggable == NO) {
+        if (@available(iOS 9.0, *)) {
+            [self endInteractiveMovement];
+        }
+        return;
+    }
     switch (longp.state) {
         case UIGestureRecognizerStateBegan:
         {
@@ -310,6 +320,8 @@
             }
             if (!canMove) {
                 break;
+            }else {
+                NSLog(@"can move");
             }
         }
             break;
@@ -399,7 +411,12 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return self.zzDraggable;
+    if (self.zzDraggable) {
+        ZZCollectionSectionObject *sectionObject = [self.zzDataSource zz_arrayObjectAtIndex:indexPath.section];
+        ZZCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:indexPath.row];
+        return ds.zzDraggable;
+    }
+    return NO;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -410,6 +427,7 @@
     
     ZZCollectionSectionObject *destSection = [self.zzDataSource zz_arrayObjectAtIndex:destinationIndexPath.section];
     [destSection.zzCellDataSource zz_arrayInsertObject:tmp atIndex:destinationIndexPath.row];
+    self.zzMoveBlock == nil ? : self.zzMoveBlock(self, sourceIndexPath, destinationIndexPath);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -638,6 +656,15 @@
 #pragma mark - ZZCollectionViewCellDataSource
 
 @implementation ZZCollectionViewCellDataSource : NSObject
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.zzDraggable = YES;
+    }
+    return self;
+}
 
 @end
 

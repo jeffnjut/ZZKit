@@ -341,7 +341,7 @@
             }
         } scrollBlock:^(ZZCollectionView * _Nonnull __weak collectionView, ZZCollectionViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
             
-        }];
+        } moveBlock:nil];
         
         if (ZZPhotoManager.shared.config.cameraButtonType == ZZPhotoLibraryCameraButtonTypeBottom) {
             _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 48.0, 0);

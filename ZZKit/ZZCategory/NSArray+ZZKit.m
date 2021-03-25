@@ -353,7 +353,7 @@
 - (NSString *)zz_toJSONString {
     
     if ([self count] == 0) {
-        return nil;
+        return @"[]";
     }
     NSMutableString *ret = [[NSMutableString alloc] initWithString:@"["];
     for (int i = 0; i < self.count; i++) {
