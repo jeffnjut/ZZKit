@@ -31,8 +31,6 @@
 @property (nonatomic, weak) UIView *superView;
 // ResuableCells
 @property (nonatomic, strong) NSMutableDictionary *resuableCells;
-// Load Complete标记
-@property (nonatomic, assign) BOOL zzLoadCompleteFlag;
 
 @end
 
@@ -176,7 +174,7 @@
     tableView.showsVerticalScrollIndicator = NO;
     tableView.showsHorizontalScrollIndicator = NO;
     tableView.scrollsToTop = YES;
-    tableView.estimatedRowHeight = 0;
+    tableView.estimatedRowHeight = 44.0;
     // 默认分割线贴边
     if ([[[UIDevice currentDevice] systemVersion] intValue] >= 8.0) {
         [tableView setLayoutMargins:UIEdgeInsetsZero];
@@ -300,6 +298,13 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf reloadData];
         weakSelf.scrollEnabled = scrollable;
+        
+        if (weakSelf.zzLoadDidCompleteBlock != nil) {
+            [weakSelf layoutIfNeeded];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                weakSelf.zzLoadDidCompleteBlock();
+            });
+        }
     });
     [self.resuableCells removeAllObjects];
     pthread_mutex_unlock(&_lock);
@@ -782,20 +787,6 @@
     
     [cell setSeparatorInset:UIEdgeInsetsZero];
     [cell setLayoutMargins:UIEdgeInsetsZero];
-    if ([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
-        self.zzLoadCompleteFlag = YES;
-    }else {
-        self.zzLoadCompleteFlag = NO;
-    }
-}
-
-- (void)layoutSubviews {
-    
-    [super layoutSubviews];
-    if (self.zzLoadCompleteFlag && self.zzLoadDidCompleteBlock != nil) {
-        self.zzLoadDidCompleteBlock();
-        self.zzLoadCompleteFlag = NO;
-    }
 }
 
 #pragma mark - UIScrollView
