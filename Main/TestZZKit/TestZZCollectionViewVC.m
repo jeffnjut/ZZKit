@@ -60,7 +60,7 @@
         }
     } scrollBlock:^(ZZCollectionView * _Nonnull __weak collectionView, ZZCollectionViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
         
-    }];
+    } moveBlock:nil];
     
     self.collectionView.zzDraggable = NO;
     ZZCollectionSectionObject *sectionObject = [ZZCollectionSectionObject new];
@@ -138,7 +138,7 @@
         }
     } scrollBlock:^(ZZCollectionView * _Nonnull __weak collectionView, ZZCollectionViewScrollAction action, CGPoint velocity, CGPoint targetContentOffset, BOOL decelerate) {
         
-    }];
+    } moveBlock:nil];
     
     /*
     self.collectionView.zzDraggable = NO;

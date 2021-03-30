@@ -397,7 +397,12 @@
         
         [self.view addSubview:_toolbar];
         [_toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.right.equalTo(weakSelf.view);
+            if (@available(iOS 11.0, *)) {
+                make.bottom.equalTo(weakSelf.view.mas_safeAreaLayoutGuideBottom);
+            } else {
+                make.bottom.equalTo(weakSelf.view);
+            }
+            make.left.right.equalTo(weakSelf.view);
             make.height.equalTo(@167.0);
         }];
         
@@ -408,7 +413,7 @@
     
     // ScrollView
     if (_scrollView == nil) {
-        _scrollView = [[ZZPhotoScrollView alloc] initWithFrame:CGRectMake(0, 0, ZZDevice.zz_screenWidth, ZZDevice.zz_screenHeight - ZZ_DEVICE_NAVIGATION_TOP_HEIGHT - _toolbar.bounds.size.height)];
+        _scrollView = [[ZZPhotoScrollView alloc] initWithFrame:CGRectMake(0, 0, ZZDevice.zz_screenWidth, ZZDevice.zz_screenHeight - ZZ_DEVICE_NAVIGATION_TOP_HEIGHT - _toolbar.bounds.size.height - ZZ_DEVICE_TAB_SAFE_DELTA_X)];
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
         _scrollView.showsVerticalScrollIndicator = NO;

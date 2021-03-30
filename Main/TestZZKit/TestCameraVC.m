@@ -15,6 +15,12 @@
 
 @interface TestCameraVC ()
 
+@property (nonatomic, weak) IBOutlet UISegmentedControl *cameraButtonPosSegmentedControl;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *showDraftSegmentedControl;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *showListOrderSegmentedControl;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *showCropperSegmentedControl;
+@property (nonatomic, weak) IBOutlet UITextField *maxPhotoTf;
+
 @end
 
 @implementation TestCameraVC
@@ -30,15 +36,87 @@
         
         config.mode = ZZPhotoEditModeFilter | ZZPhotoEditModeTag | ZZPhotoEditModeCropprer | ZZPhotoEditModeTuning;
         
-        config.cameraButtonType = ZZPhotoLibraryCameraButtonTypeNone;
+        switch (self.cameraButtonPosSegmentedControl.selectedSegmentIndex) {
+            case 0:
+            {
+                config.cameraButtonType = ZZPhotoLibraryCameraButtonTypeNone;
+                break;
+            }
+            case 1:
+            {
+                config.cameraButtonType = ZZPhotoLibraryCameraButtonTypeCell;
+                break;
+            }
+            case 2:
+            {
+                config.cameraButtonType = ZZPhotoLibraryCameraButtonTypeBottom;
+                break;
+            }
+            default:
+                break;
+        }
         
-        config.showDraft = YES;
+        switch (self.showDraftSegmentedControl.selectedSegmentIndex) {
+            case 0:
+            {
+                config.showDraft = YES;
+                break;
+            }
+            default:
+            {
+                config.showDraft = NO;
+                break;
+            }
+        }
         
-        config.sortType = ZZPhotoLibrarySortTypeModificationDateDesc;
+        switch (self.showListOrderSegmentedControl.selected) {
+            case 0:
+            {
+                config.sortType = ZZPhotoLibrarySortTypeModificationDateDesc;
+                break;
+            }
+            case 1:
+            {
+                config.sortType = ZZPhotoLibrarySortTypeModificationDateAsc;
+                break;
+            }
+            case 2:
+            {
+                config.sortType = ZZPhotoLibrarySortTypeCreationDateDesc;
+                break;
+            }
+            case 3:
+            {
+                config.sortType = ZZPhotoLibrarySortTypeCreationDateAsc;
+                break;
+            }
+                
+            default:
+                break;
+        }
         
-        config.maxSelectionCount = 2;
+        switch (self.showCropperSegmentedControl.selectedSegmentIndex) {
+            case 0:
+            {
+                config.cropperType = ZZPhotoLibraryCropperTypeHiddenUnlimited;
+                break;
+            }
+            case 1:
+            {
+                config.cropperType = ZZPhotoLibraryCropperTypeHiddenLimited;
+                break;
+            }
+            case 2:
+            {
+                config.cropperType = ZZPhotoLibraryCropperTypeShow;
+                break;
+            }
+            default:
+                break;
+        }
         
-        config.cropperType = ZZPhotoLibraryCropperTypeShow;
+        
+        config.maxSelectionCount = self.maxPhotoTf.text.integerValue;
         
         config.userEditSelectTagBlock = ^ZZPhotoSelectTagBaseViewController * _Nonnull(ZZPhotoEditViewController * _Nonnull controller) {
             

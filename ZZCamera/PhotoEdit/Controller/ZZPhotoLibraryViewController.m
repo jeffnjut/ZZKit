@@ -257,7 +257,9 @@
                     ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:item];
                 }
                 if (ds != nil) {
-                    [weakSelf _previewOrTick:&ds section:0 item:item enableTick:NO];
+                    if (ZZPhotoManager.shared.photoQueue.count == 0) {
+                        [weakSelf _tick:&ds section:0 item:item];
+                    }
                 }
             }
         });
@@ -326,15 +328,15 @@
                     if (action == ZZCollectionViewCellActionCustomTapped) {
                         
                         // 选中
-                        [weakSelf _previewOrTick:&ds section:section item:row enableTick:YES];
+                        [weakSelf _tick:&ds section:section item:row];
                     }else if (action == ZZCollectionViewCellActionTapped) {
                         
                         if (ZZPhotoManager.shared.config.cropperType == ZZPhotoLibraryCropperTypeShow) {
                             // 裁切模式
-                            [weakSelf _previewOrTick:&ds section:section item:row enableTick:NO];
+                            [weakSelf _tick:&ds section:section item:row];
                         }else {
                             // 非裁切模式
-                            [weakSelf _previewOrTick:&ds section:section item:row enableTick:YES];
+                            [weakSelf _tick:&ds section:section item:row];
                         }
                     }
                 }
@@ -426,6 +428,7 @@
     sectionObject.zzMinimumLineSpacing = 5.0;
     sectionObject.zzMinimumInteritemSpacing = 5.0;
     sectionObject.zzColumns = ZZPhotoManager.shared.config.column;
+    CGFloat itemW = (ZZDevice.zz_screenWidth - sectionObject.zzEdgeInsets.left - sectionObject.zzEdgeInsets.right - (sectionObject.zzColumns - 1) * sectionObject.zzMinimumInteritemSpacing) / sectionObject.zzColumns;
     [self.collectionView zz_addDataSource:sectionObject];
     if (self.currentPhotoAssetColletion == nil) {
         self.customTitleView.hidden = YES;
@@ -437,6 +440,8 @@
         if (ZZPhotoManager.shared.config.cameraButtonType == ZZPhotoLibraryCameraButtonTypeCell) {
             ZZPhotoCollectionViewCellDataSource *placeholer = [[ZZPhotoCollectionViewCellDataSource alloc] init];
             placeholer.isCameraPlaceholer = YES;
+            placeholer.index = NSIntegerMin;
+            placeholer.zzSize = CGSizeMake(itemW, itemW);
             [sectionObject.zzCellDataSource zz_arrayAddObject:placeholer];
         }
         
@@ -494,7 +499,7 @@
                             ZZCollectionSectionObject *sectionObject = [weakSelf.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
                             ZZPhotoCollectionViewCellDataSource *ds = [sectionObject.zzCellDataSource zz_arrayObjectAtIndex:0];
                             if (ds) {
-                                [weakSelf _previewOrTick:&ds section:0 item:0 enableTick:YES];
+                                [weakSelf _tick:&ds section:0 item:0];
                             }
                         });
                     }else {
@@ -506,7 +511,7 @@
                 ds.isTicked = YES;
             }
             ds.photoAsset = firstAsset;
-            ds.column = ZZPhotoManager.shared.config.column;
+            ds.zzSize = CGSizeMake(itemW, itemW);
             [sectionObject.zzCellDataSource zz_arrayAddObject:ds];
             
             // 选择
@@ -542,7 +547,8 @@
             ds.isMultiSelection = YES;
             ds.isTicked = isTicked;
             ds.photoAsset = asset;
-            ds.column = ZZPhotoManager.shared.config.column;
+            ds.zzSize = CGSizeMake(itemW, itemW);
+            ds.index = i;
             [sectionObject.zzCellDataSource zz_arrayAddObject:ds];
         }
     }
@@ -554,95 +560,12 @@
     [self _checkNextState];
 }
 
-// 预览或者勾选照片（NO:勾选不成功，比如iCloud下载中，YES:勾选成功）
-- (BOOL)_previewOrTick:(ZZPhotoCollectionViewCellDataSource **)cellData section:(NSInteger)section item:(NSInteger)item enableTick:(BOOL)enableTick {
+- (void)_preview:(ZZPhotoCollectionViewCellDataSource **)cellData section:(NSInteger)section item:(NSInteger)item {
     
-    if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
-        enableTick = YES;
-    }
-    
-    ZZPhotoCollectionViewCellDataSource *ds = *cellData;
-    if (ds.isTicked) {
-        if (enableTick) {
-            /// - Tick
-            if ([self _tick:cellData section:section item:item tick:NO] == NO) {
-                return NO;
-            }
-        }else {
-            /// + Highlighted
-            ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
-            for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
-                if ([data isEqual:ds]) {
-                    data.isHighlighted = YES;
-                }else {
-                    data.isHighlighted = NO;
-                }
-            }
-            ZZPhotoCollectionViewCell *cell = (ZZPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:section]];
-            for (ZZPhotoCollectionViewCell *_cell in [self.collectionView visibleCells]) {
-                if ([_cell isEqual:cell]) {
-                    [_cell updateHighlighted:YES];
-                }else {
-                    [_cell updateHighlighted:NO];
-                }
-            }
-        }
-    }else if (ds.isHighlighted) {
-        if (enableTick) {
-            /// + Tick
-            if ([self _tick:cellData section:section item:item tick:YES] == NO) {
-                return NO;
-            }
-        }
-    }else {
-        
-        // 判断是否是iCloud照片
-        UIImage *image = [ds.photoAsset getGeneralTargetImage];
-        if (image == nil) {
-            [self.view zz_toast:@"iCloud照片正在下载中"];
-            return NO;
-        }
-        
-        if (enableTick) {
-            /// + Tick
-            if ([self _tick:cellData section:section item:item tick:YES] == NO) {
-                return NO;
-            }
-        }
-        
-        /// + Highlighted
-        ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
-        for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
-            if ([data isEqual:ds]) {
-                data.isHighlighted = YES;
-            }else {
-                data.isHighlighted = NO;
-            }
-        }
-        ZZPhotoCollectionViewCell *cell = (ZZPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:section]];
-        for (ZZPhotoCollectionViewCell *_cell in [self.collectionView visibleCells]) {
-            if ([_cell isEqual:cell]) {
-                [_cell updateHighlighted:YES];
-            }else {
-                [_cell updateHighlighted:NO];
-            }
-        }
-        
-        /// 更新CropperView
-        if (ZZPhotoManager.shared.config.cropperType == ZZPhotoLibraryCropperTypeShow) {
-            /// 更新CropperView
-            ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
-            model.needCrop = YES;
-            [self.cropperView updateModel:model];
-        }
-    }
-    [self.collectionView zz_refresh];
-    [self _checkNextState];
-    return YES;
 }
 
 // 勾选照片（NO:勾选不成功，比如iCloud下载中，YES:勾选成功）
-- (BOOL)_tick:(ZZPhotoCollectionViewCellDataSource **)cellData section:(NSInteger)section item:(NSInteger)item tick:(BOOL)tick {
+- (BOOL)_tick:(ZZPhotoCollectionViewCellDataSource **)cellData section:(NSInteger)section item:(NSInteger)item {
     
     ZZPhotoCollectionViewCellDataSource *ds = *cellData;
     
@@ -653,59 +576,83 @@
         return NO;
     }
     
-    if (tick) {
-        // 判断是否超出最大选择数量
-        if (ZZPhotoManager.shared.photoQueue.count >= ZZPhotoManager.shared.config.maxSelectionCount) {
-            if (ZZPhotoManager.shared.config.userOverLimitationBlock != nil) {
-                ZZPhotoManager.shared.config.userOverLimitationBlock(self);
-                return NO;
-            }else {
-                if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
-                    
-                    // 清除所有
-                    [ZZPhotoManager.shared.photoQueue removeAllObjects];
-                    // 选中图片
-                    ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
-                    // 添加数据
-                    [ZZPhotoManager.shared addPhotoDistinct:model];
-                    
-                    ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
-                    for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
-                        if ([data isEqual:ds]) {
-                            data.isTicked = YES;
-                            data.isHighlighted = YES;
-                        }else {
-                            data.isTicked = NO;
-                            data.isHighlighted = NO;
-                        }
-                    }
-                    return YES;
-                    
-                }else {
-                    [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
-                    return NO;
+    if (ds.isTicked) {
+        /// - Tick
+        if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
+            // 单选
+            return YES;
+        }else {
+            // 多选
+            ds.isTicked = NO;
+            [ZZPhotoManager.shared removePhoto:ds.photoAsset];
+            for (int i = (int)ZZPhotoManager.shared.photoQueue.count - 1; i >= 0; i--) {
+                ZZPhotoAsset *photoModel = [ZZPhotoManager.shared.photoQueue objectAtIndex:i];
+                if ([photoModel.asset isEqual:ds.photoAsset]) {
+                    [ZZPhotoManager.shared.photoQueue removeObjectAtIndex:i];
+                    break;
                 }
             }
         }
         
-        // 选中图片
-        ds.isTicked = YES;
-        ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
-        // 添加数据
-        [ZZPhotoManager.shared addPhotoDistinct:model];
     }else {
-        ds.isTicked = NO;
-        [ZZPhotoManager.shared removePhoto:ds.photoAsset];
-        for (int i = (int)ZZPhotoManager.shared.photoQueue.count - 1; i >= 0; i--) {
-            ZZPhotoAsset *photoModel = [ZZPhotoManager.shared.photoQueue objectAtIndex:i];
-            if ([photoModel.asset isEqual:ds.photoAsset]) {
-                [ZZPhotoManager.shared.photoQueue removeObjectAtIndex:i];
-                break;
+        /// + Tick
+        if (ZZPhotoManager.shared.config.maxSelectionCount == 1) {
+            // 单选
+            // 清除所有
+            [ZZPhotoManager.shared.photoQueue removeAllObjects];
+            // 选中图片
+            ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
+            // 添加数据
+            [ZZPhotoManager.shared addPhotoDistinct:model];
+            
+            ZZCollectionSectionObject *sectionObject = [self.collectionView.zzDataSource zz_arrayObjectAtIndex:0];
+            for (ZZPhotoCollectionViewCellDataSource *data in sectionObject.zzCellDataSource) {
+                if ([data isEqual:ds]) {
+                    data.isTicked = YES;
+                }else {
+                    data.isTicked = NO;
+                }
+            }
+            
+        }else {
+            // 多选
+            // 判断是否超出最大可选照片数量
+            if (ZZPhotoManager.shared.photoQueue.count >= ZZPhotoManager.shared.config.maxSelectionCount) {
+                if (ZZPhotoManager.shared.config.userOverLimitationBlock != nil) {
+                    ZZPhotoManager.shared.config.userOverLimitationBlock(self);
+                    return NO;
+                }else {
+                    [self.view zz_toast:[NSString stringWithFormat:@"最多可以选择 %lu 张图片", (unsigned long)ZZPhotoManager.shared.config.maxSelectionCount] toastType:ZZToastTypeWarning];
+                    return NO;
+                }
+            }else {
+                // 选中图片
+                ds.isTicked = YES;
+                ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
+                // 添加数据
+                [ZZPhotoManager.shared addPhotoDistinct:model];
             }
         }
     }
+    
+    for (ZZPhotoCollectionViewCell *visibleCell in [self.collectionView visibleCells]) {
+        ZZPhotoCollectionViewCellDataSource *visibleCellDataSource = visibleCell.zzData;
+        [visibleCell updateTicked:visibleCellDataSource.isTicked];
+    }
+    
+    /// 更新CropperView
+    if (ZZPhotoManager.shared.config.cropperType == ZZPhotoLibraryCropperTypeShow) {
+        /// 更新CropperView
+        ZZPhotoAsset *model = [self _getPhotoAssetFromTemporary:ds.photoAsset];
+        model.needCrop = YES;
+        [self.cropperView updateModel:model];
+    }
+    
+    /// 重置下一步按钮状态
+    [self _checkNextState];
     return YES;
 }
+
 
 // 获取Temporary图片列表中的PhotoAsset
 - (ZZPhotoAsset *)_getPhotoAssetFromTemporary:(PHAsset *)asset {

@@ -11,7 +11,7 @@
 
 @interface ZZPhotoCollectionViewCell : ZZCollectionViewCell
 
-- (void)updateHighlighted:(BOOL)isHighlighted;
+- (void)updateTicked:(BOOL)isTicked;
 
 @end
 
@@ -20,8 +20,7 @@
 @property (nonatomic, assign) BOOL isCameraPlaceholer;
 @property (nonatomic, assign) BOOL isMultiSelection;
 @property (nonatomic, assign) BOOL isTicked;
-@property (nonatomic, assign) BOOL isHighlighted;
 @property (nonatomic, strong) PHAsset *photoAsset;
-@property (nonatomic, assign) NSUInteger column;
+@property (nonatomic, assign) NSInteger index;
 
 @end

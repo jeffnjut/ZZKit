@@ -284,38 +284,42 @@ static bool isFirstAccess = YES;
 // 加载到allPhoto（用于退出保存）
 - (void)loadDraftPhotosToAllPhotos:(nonnull ZZDraft *)draft completion:(nullable void(^)(void))completion {
     
-    [self cleanPhotos];
-    if (draft.photos.count > 0) {
-        for (int i = 0; i < draft.photos.count; i++) {
-            ZZDraftPhoto *savingPhotoModel = [draft.photos zz_arrayObjectAtIndex:i];
-            // 查找相册并赋值PHAsset（本地）
-            if (savingPhotoModel.assetIdentifier.length > 0) {
-                PHAsset *findedAsset = [self findByIdentifier:savingPhotoModel.assetIdentifier];
-                UIImage *originalImage = [findedAsset getGeneralTargetImage];
-                [self _addToAllPhotos:draft assetIdentifier:savingPhotoModel.assetIdentifier photoUrl:savingPhotoModel.photoUrl image:originalImage asset:findedAsset completion:completion];
+    ZZ_WEAK_SELF
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [weakSelf cleanPhotos];
+        if (draft.photos.count > 0) {
+            for (int i = 0; i < draft.photos.count; i++) {
+                ZZDraftPhoto *savingPhotoModel = [draft.photos zz_arrayObjectAtIndex:i];
+                // 查找相册并赋值PHAsset（本地）
+                if (savingPhotoModel.assetIdentifier.length > 0) {
+                    PHAsset *findedAsset = [weakSelf findByIdentifier:savingPhotoModel.assetIdentifier];
+                    UIImage *originalImage = [findedAsset getGeneralTargetImage];
+                    [weakSelf _addToAllPhotos:draft assetIdentifier:savingPhotoModel.assetIdentifier photoUrl:savingPhotoModel.photoUrl image:originalImage asset:findedAsset completion:completion];
+                }
+                // 查找SD库(网络图片,异步加载)
+                else if (savingPhotoModel.photoUrl.length > 0) {
+                    [weakSelf findByPhotoUrl:savingPhotoModel.photoUrl completion:^(NSData *imageData, UIImage *image, NSString *url) {
+                        if (image != nil) {
+                            // 成功
+                            [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:image asset:nil completion:completion];
+                        }else {
+                            // 失败
+                            [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:nil asset:nil completion:completion];
+                        }
+                    }];
+                }
+                // 失败
+                else {
+                    [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:nil image:nil asset:nil completion:completion];
+                }
             }
-            // 查找SD库(网络图片,异步加载)
-            else if (savingPhotoModel.photoUrl.length > 0) {
-                ZZ_WEAK_SELF
-                [self findByPhotoUrl:savingPhotoModel.photoUrl completion:^(NSData *imageData, UIImage *image, NSString *url) {
-                    if (image != nil) {
-                        // 成功
-                        [weakSelf _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:image asset:nil completion:completion];
-                    }else {
-                        // 失败
-                        [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:url image:nil asset:nil completion:completion];
-                    }
-                }];
-            }
-            // 失败
-            else {
-                [self _addToAllPhotos:draft assetIdentifier:nil photoUrl:nil image:nil asset:nil completion:completion];
-            }
+        }else {
+            [weakSelf cleanPhotos];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion == nil ? : completion();
+            });
         }
-    }else {
-        [self cleanPhotos];
-        completion == nil ? : completion();
-    }
+    });
 }
 
 - (void)_addToAllPhotos:(nullable ZZDraft *)draft assetIdentifier:(nullable NSString *)assetIdentifier photoUrl:(nullable NSString *)photoUrl image:(nullable UIImage *)image asset:(nullable PHAsset *)asset completion:(nullable void(^)(void))completion {
@@ -400,7 +404,9 @@ static bool isFirstAccess = YES;
             }
         }
         // 完成回调
-        completion == nil ? : completion();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion == nil ? : completion();
+        });
     }
 }
 

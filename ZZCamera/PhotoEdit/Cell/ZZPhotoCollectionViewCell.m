@@ -11,6 +11,7 @@
 #import "ZZDevice.h"
 #import "NSString+ZZKit.h"
 #import "UIView+ZZKit.h"
+#import "ZZPhotoManager.h"
 
 @interface ZZPhotoCollectionViewCell ()
 
@@ -24,10 +25,12 @@
 @implementation ZZPhotoCollectionViewCell
 
 - (void)dealloc {
+    
     self.iv_camera = nil;
     self.v_content = nil;
     self.iv_cover = nil;
     self.iv_tick = nil;
+    
 }
 
 - (void)awakeFromNib {
@@ -55,7 +58,7 @@
     
     // PHAsset
     ZZ_WEAK_SELF
-    CGFloat w = ZZDevice.zz_screenWidth * 2.0 / (CGFloat)ds.column;
+    CGFloat w = ZZDevice.zz_screenWidth * 2.0 / (CGFloat)ZZPhotoManager.shared.config.column;
     CGFloat h = w;
     if (ds.photoAsset && ds.photoAsset.pixelWidth > 0 && ds.photoAsset.pixelHeight > 0) {
         h = w * ((CGFloat)ds.photoAsset.pixelHeight / (CGFloat)ds.photoAsset.pixelWidth);
@@ -70,22 +73,16 @@
         }];
     }
     
-    if (ds.isTicked) {
-        [self.iv_tick setImage:@"ZZPhotoCollectionViewCell.ic_photo_selected".zz_image];
-    }else {
-        [self.iv_tick setImage:@"ZZPhotoCollectionViewCell.ic_photo_unselected".zz_image];
-    }
-    
-    [self updateHighlighted:ds.isHighlighted];
+    [self updateTicked:ds.isTicked];
 }
 
-- (void)updateHighlighted:(BOOL)isHighlighted {
+- (void)updateTicked:(BOOL)isTicked {
     
-    ZZPhotoCollectionViewCellDataSource *ds = self.zzData;
-    ds.isHighlighted = isHighlighted;
-    if (isHighlighted) {
+    if (isTicked) {
+        [self.iv_tick setImage:@"ZZPhotoCollectionViewCell.ic_photo_selected".zz_image];
         [self zz_cornerRadius:2.0 borderWidth:2.0 boderColor:@"#FF7725".zz_color];
     }else {
+        [self.iv_tick setImage:@"ZZPhotoCollectionViewCell.ic_photo_unselected".zz_image];
         [self zz_cornerRadius:0 borderWidth:0 boderColor:[UIColor clearColor]];
     }
 }
@@ -98,18 +95,5 @@
 @end
 
 @implementation ZZPhotoCollectionViewCellDataSource
-
-- (void)setIsTicked:(BOOL)isTicked {
-    _isTicked = isTicked;
-    if (isTicked) {
-        self.isHighlighted = YES;
-    }
-}
-
-- (void)setColumn:(NSUInteger)column {
-    
-    _column = column;
-    self.zzSize = CGSizeMake((ZZDevice.zz_screenWidth - 5.0 * (CGFloat)column) / (CGFloat)column, (ZZDevice.zz_screenWidth - 5.0 * (CGFloat)column) / (CGFloat)column);
-}
 
 @end
