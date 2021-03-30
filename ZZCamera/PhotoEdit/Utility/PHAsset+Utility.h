@@ -11,19 +11,14 @@
 @interface PHAsset (Utility)
 
 /**
- * 同步获取固定尺寸的图片
- */
-- (UIImage *)zz_imageSyncTargetSize:(CGSize)size fast:(BOOL)fast iCloudAsyncDownload:(BOOL)iCloudAsyncDownload;
-
-/**
- * 异步获取固定尺寸的图片
- */
-- (void)zz_imageAsyncTargetSize:(CGSize)size fast:(BOOL)fast iCloud:(BOOL)iCloud progress:(PHAssetImageProgressHandler)progress result:(void(^)(UIImage * image))result;
-
-/**
  * 同步获取固定倍数尺寸的图片
  */
 - (UIImage *)zz_imageSyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast;
+
+/**
+ * 同步获取固定尺寸的图片
+ */
+- (UIImage *)zz_imageSyncTargetSize:(CGSize)size fast:(BOOL)fast iCloudAsyncDownload:(BOOL)iCloudAsyncDownload;
 
 /**
  * 异步获取固定倍数尺寸的图片
@@ -31,8 +26,8 @@
 - (void)zz_imageASyncTargetSize:(CGSize)size multiples:(CGFloat)multiples fast:(BOOL)fast result:(void(^)(UIImage * image))result;
 
 /**
- *  是否是iCloud图片
+ * 异步获取固定尺寸的图片
  */
-- (BOOL)zz_isCloudImage;
+- (void)zz_imageAsyncTargetSize:(CGSize)size fast:(BOOL)fast iCloud:(BOOL)iCloud progress:(PHAssetImageProgressHandler)progress result:(void(^)(UIImage * image))result;
 
 @end

@@ -10,8 +10,8 @@
 #import "PHAsset+Utility.h"
 
 // 用于ZZPhotoEditViewController
-#define ZZCAMERA_IMAGE_WIDTH  (800.0)
-#define ZZCAMERA_IMAGE_HEIGHT (1000.0)
+#define ZZCAMERA_IMAGE_WIDTH  (400.0)
+#define ZZCAMERA_IMAGE_HEIGHT (480.0)
 
 @interface PHAsset (QuickEdit)
 
@@ -24,10 +24,5 @@
  *  同步获取一般尺寸的图片
  */
 - (UIImage *)getGeneralTargetImage;
-
-/**
- *  同步获取一般尺寸的图片
- */
-- (UIImage *)getLargeTargetImage;
 
 @end
