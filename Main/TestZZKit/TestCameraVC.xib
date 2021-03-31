@@ -24,16 +24,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hh-LG-5JW">
-                    <rect key="frame" x="150" y="710" width="100" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="相机 视频 图片"/>
-                    <connections>
-                        <action selector="tapAVCapture:" destination="-1" eventType="touchUpInside" id="fSm-Pb-xlX"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opQ-Wa-KRf">
-                    <rect key="frame" x="4" y="68" width="406" height="340"/>
+                    <rect key="frame" x="4" y="68" width="406" height="280"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IVG-sY-pQO">
                             <rect key="frame" x="76" y="6.5" width="167" height="32"/>
@@ -126,7 +118,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTl-Vu-l0q">
-                            <rect key="frame" x="83.5" y="298" width="239" height="30"/>
+                            <rect key="frame" x="83.5" y="238" width="239" height="30"/>
                             <state key="normal" title="相册 图片 选择 编辑 滤镜 裁切 效果"/>
                             <connections>
                                 <action selector="tapPhotoLibrary:" destination="-1" eventType="touchUpInside" id="mJ9-ld-WX8"/>
@@ -157,14 +149,35 @@
                         <constraint firstItem="C0g-gd-oh6" firstAttribute="leading" secondItem="opQ-Wa-KRf" secondAttribute="leading" constant="2" id="lcu-AR-bkQ"/>
                         <constraint firstItem="lXJ-GR-vUT" firstAttribute="leading" secondItem="9ZP-UV-mto" secondAttribute="trailing" constant="4" id="pxB-gS-QyQ"/>
                         <constraint firstItem="b9v-ND-obe" firstAttribute="leading" secondItem="P5r-YC-yH9" secondAttribute="trailing" constant="4" id="xcI-wf-8Ri"/>
-                        <constraint firstAttribute="height" constant="340" id="zrO-Ng-oh1"/>
+                        <constraint firstAttribute="height" constant="280" id="zrO-Ng-oh1"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLc-Ck-g4p">
+                    <rect key="frame" x="4" y="352" width="406" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hh-LG-5JW">
+                            <rect key="frame" x="153" y="58" width="100" height="30"/>
+                            <state key="normal" title="相机 视频 图片"/>
+                            <connections>
+                                <action selector="tapAVCapture:" destination="-1" eventType="touchUpInside" id="fSm-Pb-xlX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="5hh-LG-5JW" secondAttribute="bottom" constant="12" id="5ZI-mQ-jIm"/>
+                        <constraint firstAttribute="height" constant="100" id="bNG-M8-HHn"/>
+                        <constraint firstItem="5hh-LG-5JW" firstAttribute="centerX" secondItem="wLc-Ck-g4p" secondAttribute="centerX" id="lOI-9J-vWX"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="wLc-Ck-g4p" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="4" id="DY7-j4-T3g"/>
                 <constraint firstItem="opQ-Wa-KRf" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="24" id="GZd-Fg-7Hq"/>
+                <constraint firstItem="wLc-Ck-g4p" firstAttribute="top" secondItem="opQ-Wa-KRf" secondAttribute="bottom" constant="4" id="ICM-mH-2vk"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="wLc-Ck-g4p" secondAttribute="trailing" constant="4" id="UFt-r1-fXp"/>
                 <constraint firstItem="opQ-Wa-KRf" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="4" id="l7a-h1-8Ki"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="opQ-Wa-KRf" secondAttribute="trailing" constant="4" id="rB6-F3-Qug"/>
             </constraints>
