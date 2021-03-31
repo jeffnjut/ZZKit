@@ -46,13 +46,18 @@
 
 - (void)_build:(NSArray *)titles vcs:(NSArray *)vcs {
     
+    ZZ_WEAK_SELF
     self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZZDevice.zz_screenWidth, ZZ_DEVICE_NAVIGATION_TOP_HEIGHT)];
     self.headView.backgroundColor = UIColor.blueColor;
     [self.view addSubview:self.headView];
     
     self.segmentBgView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headView.zzHeight, ZZDevice.zz_screenWidth, 56.0)];
     self.segmentBgView.backgroundColor = UIColor.whiteColor;
-    self.segmentView = [ZZSegmentView create:CGRectMake(0, 12.0, ZZDevice.zz_screenWidth, 32.0) fixedItems:@(5) fixedItemWidth:nil fixedPadding:nil normalTextFont:nil normalTextColor:nil highlightedTextFont:nil highlightedTextColor:nil indicatorColor:nil titles:titles selectedBlock:^(NSString * _Nonnull selectedTitle) {
+    self.segmentView = [ZZSegmentView create:CGRectMake(0, 12.0, ZZDevice.zz_screenWidth, 32.0) fixedItems:@(5) fixedItemWidth:nil fixedPadding:nil normalTextFont:nil normalTextColor:nil highlightedTextFont:nil highlightedTextColor:nil indicatorColor:nil titles:titles selectedBlock:^(NSUInteger index) {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            weakSelf.scrollView.contentOffset = CGPointMake(weakSelf.scrollView.frame.size.width * index, 0);
+        }];
     }];
     [self.segmentBgView addSubview:self.segmentView];
     [self.view addSubview:self.segmentBgView];
@@ -86,6 +91,16 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    NSUInteger page = (NSUInteger)(scrollView.contentOffset.x / scrollView.frame.size.width);
+    [self.segmentView selectIndex:page];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     
 }
 

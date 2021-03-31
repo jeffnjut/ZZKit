@@ -33,6 +33,7 @@
 
 - (void)setZzData:(__kindof ZZTableViewCellDataSource *)zzData {
     
+    ZZ_WEAK_SELF
     [super setZzData:zzData];
     InnerScrollCellDataSource *ds = zzData;
     if (_segmentView == nil || _scrollView == nil) {
@@ -46,7 +47,10 @@
                         highlightedTextColor:UIColor.blackColor
                               indicatorColor:nil
                                       titles:ds.titles
-                               selectedBlock:^(NSString * _Nonnull selectedTitle) {
+                               selectedBlock:^(NSUInteger index) {
+            [UIView animateWithDuration:0.2 animations:^{
+                weakSelf.scrollView.contentOffset = CGPointMake(weakSelf.scrollView.frame.size.width * index, 0);
+            }];
         }];
         [self.contentView addSubview:_segmentView];
 
@@ -89,6 +93,17 @@
             self.visibleScrollView = vc.tableView;
         }
     }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+ 
+    NSUInteger page = (NSUInteger)(scrollView.contentOffset.x / scrollView.frame.size.width);
+    [self.segmentView selectIndex:page];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    
+    
 }
 
 @end

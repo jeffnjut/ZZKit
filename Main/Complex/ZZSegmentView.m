@@ -27,7 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *titleViews;
 @property (nonatomic, assign) NSUInteger currentIndex;
 
-@property(nonatomic, copy) void(^selectedBlock)(NSString * selectedTitle);
+@property(nonatomic, copy) void(^selectedBlock)(NSUInteger index);
 
 @end
 
@@ -64,14 +64,14 @@
      highlightedTextColor:(nullable UIColor *)highlightedTextColor
            indicatorColor:(nullable UIColor *)indicatorColor
                    titles:(nonnull NSArray *)titles
-            selectedBlock:(void(^)(NSString * selectedTitle))selectedBlock {
+            selectedBlock:(void(^)(NSUInteger index))selectedBlock {
     
     ZZSegmentView *segmentView = [[ZZSegmentView alloc] initWithFrame:frame];
     [segmentView _build:fixedItems fixedItemWidth:fixedItemWidth fixedPadding:fixedPadding normalTextFont:normalTextFont normalTextColor:normalTextColor highlightedTextFont:highlightedTextFont highlightedTextColor:highlightedTextColor indicatorColor:indicatorColor titles:titles selectedBlock:selectedBlock];
     return segmentView;
 }
 
-- (void)_build:(nullable NSNumber *)fixedItems fixedItemWidth:(nullable NSNumber *)fixedItemWidth fixedPadding:(nullable NSNumber *)fixedPadding normalTextFont:(nullable UIFont *)normalTextFont normalTextColor:(nullable UIColor *)normalTextColor highlightedTextFont:(nullable UIFont *)highlightedTextFont highlightedTextColor:(nullable UIColor *)highlightedTextColor indicatorColor:(nullable UIColor *)indicatorColor titles:(nonnull NSArray *)titles selectedBlock:(void(^)(NSString * selectedTitle))selectedBlock {
+- (void)_build:(nullable NSNumber *)fixedItems fixedItemWidth:(nullable NSNumber *)fixedItemWidth fixedPadding:(nullable NSNumber *)fixedPadding normalTextFont:(nullable UIFont *)normalTextFont normalTextColor:(nullable UIColor *)normalTextColor highlightedTextFont:(nullable UIFont *)highlightedTextFont highlightedTextColor:(nullable UIColor *)highlightedTextColor indicatorColor:(nullable UIColor *)indicatorColor titles:(nonnull NSArray *)titles selectedBlock:(void(^)(NSUInteger index))selectedBlock {
     
     self.backgroundColor = UIColor.whiteColor;
     self.fixedItems = fixedItems;
@@ -126,6 +126,7 @@
 - (void)_tap:(UIButton *)sender {
     
     [self selectIndex:sender.tag];
+    self.selectedBlock == nil ? : self.selectedBlock(sender.tag);
 }
 
 - (void)selectIndex:(NSUInteger)index {

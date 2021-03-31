@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
      highlightedTextColor:(nullable UIColor *)highlightedTextColor
            indicatorColor:(nullable UIColor *)indicatorColor
                    titles:(nonnull NSArray *)titles
-            selectedBlock:(void(^)(NSString * selectedTitle))selectedBlock;
+            selectedBlock:(void(^)(NSUInteger index))selectedBlock;
 
 - (void)selectIndex:(NSUInteger)index;
 
