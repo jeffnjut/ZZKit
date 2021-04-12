@@ -523,79 +523,6 @@
     return title;
 }
 
-
-#pragma mark - Popup View
-
-/**
- *  Popup动画
- */
-- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
-
-    [self endEditing:YES];
-
-    __weak typeof(self)weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf _popup:popupView blurColor:blurColor userInteractionEnabled:userInteractionEnabled springs:springs actionBlock:actionBlock];
-    });
-}
-
-- (void)_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock {
-
-    
-    @synchronized (self) {
-        
-        if (self.subviews.count >= 1) {
-            int popCnt = 0;
-            for (ZZPopupView *subView in self.subviews) {
-                if ([subView isKindOfClass:[ZZPopupView class]]) {
-                    popCnt++;
-                }
-                if (popCnt > 1) {
-                    return;
-                }
-            }
-            if ([self.subviews.lastObject isKindOfClass:[ZZPopupView class]] && self.subviews.lastObject != popupView) {
-                return;
-            }
-        }
-        
-        if (popupView == nil || popupView.zzPopupAppearAnimationBlock == nil || popupView.zzPopupDisappearAnimationBlock == nil) {
-            return;
-        }
-        popupView.zzPopupParentView = self;
-        popupView.zzPopupActionBlock = actionBlock;
-        if (springs.count == 1) {
-            popupView.zzPopupDuration = springs[0];
-        }
-        else if (springs.count == 3) {
-            popupView.zzPopupDuration = springs[0];
-            popupView.zzPopupSpringDampingRatio = springs[1];
-            popupView.zzPopupSpringVelocity = springs[2];
-        }
-        
-        ZZPopupBlurView *blurView = nil;
-        if (blurColor != nil) {
-            blurView = [[ZZPopupBlurView alloc] init];
-            blurView.backgroundColor = blurColor;
-            blurView.frame = self.bounds;
-            [self addSubview:blurView];
-            if (userInteractionEnabled == YES) {
-                __weak typeof(blurView) weakBlurView = blurView;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [weakBlurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
-                        popupView.zzPopupTapBlurBlock == nil ? : popupView.zzPopupTapBlurBlock();
-                        popupView.zzPopupDisappearAnimationBlock == nil ? : popupView.zzPopupDisappearAnimationBlock(nil);
-                    }];
-                });
-            }
-            popupView.zzPopupBlurView = blurView;
-        }
-        popupView.zzPopupAppearAnimationBlock();
-    }
-}
-
 @end
 
 #pragma mark - ZZDropSheet
@@ -1037,6 +964,7 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     if (self) {
         self.zzPopupAppearAnimation = ZZPopupViewAnimationNoneCenter;
         self.zzPopupDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzDisappearWhenTapBg = YES;
     }
     return self;
 }
@@ -1047,6 +975,7 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     if (self) {
         self.zzPopupAppearAnimation = ZZPopupViewAnimationNoneCenter;
         self.zzPopupDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzDisappearWhenTapBg = YES;
     }
     return self;
 }
@@ -1057,6 +986,7 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
     if (self) {
         self.zzPopupAppearAnimation = ZZPopupViewAnimationNoneCenter;
         self.zzPopupDisappearAnimation = ZZPopupViewAnimationNoneCenter;
+        self.zzDisappearWhenTapBg = YES;
     }
     return self;
 }
@@ -1332,6 +1262,70 @@ static CGFloat kZZSpinnerLoadingViewGap      = 10.0;
             }
         }
     }
+}
+
+/**
+ *  Popup弹框
+ */
+
+- (void)zz_popup:(nullable void(^)(id value))actionBlock {
+    
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    if (window == nil) {
+        return;
+    }
+    [self zz_popup:actionBlock onView:window];
+}
+
+- (void)zz_popup:(nullable void(^)(id value))actionBlock onView:(nullable UIView *)onView {
+    
+    __weak typeof(self) weakSelf = self;
+    if (![[NSThread currentThread] isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf zz_popup:actionBlock onView:onView];
+        });
+        return;
+    }
+    
+    [onView endEditing:YES];
+    
+    if (onView.subviews.count >= 1) {
+        int popCnt = 0;
+        for (ZZPopupView *subView in onView.subviews) {
+            if ([subView isKindOfClass:[ZZPopupView class]]) {
+                popCnt++;
+            }
+            if (popCnt > 1) {
+                return;
+            }
+        }
+        if ([onView.subviews.lastObject isKindOfClass:[ZZPopupView class]] && onView.subviews.lastObject != self) {
+            return;
+        }
+    }
+    
+    if (self.zzPopupAppearAnimationBlock == nil || self.zzPopupDisappearAnimationBlock == nil) {
+        return;
+    }
+    
+    self.zzPopupParentView = onView;
+    self.zzPopupActionBlock = actionBlock;
+    
+    ZZPopupBlurView *blurView = [[ZZPopupBlurView alloc] init];
+    self.zzPopupBlurView = blurView;
+    blurView.backgroundColor = self.zzBgColor == nil ? @"1F1F1FB2".zz_color : self.zzBgColor;
+    blurView.frame = onView.bounds;
+    [onView addSubview:blurView];
+    if (self.zzDisappearWhenTapBg == YES) {
+        __weak typeof(blurView) weakBlurView = blurView;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakBlurView zz_tapBlock:^(UITapGestureRecognizer * _Nonnull tapGesture, __kindof UIView * _Nonnull sender) {
+                weakSelf.zzPopupTapBlurBlock == nil ? : weakSelf.zzPopupTapBlurBlock();
+                weakSelf.zzPopupDisappearAnimationBlock == nil ? : weakSelf.zzPopupDisappearAnimationBlock(nil);
+            }];
+        });
+    }
+    self.zzPopupAppearAnimationBlock();
 }
 
 @end

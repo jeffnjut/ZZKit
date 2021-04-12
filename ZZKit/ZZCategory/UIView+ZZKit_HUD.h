@@ -144,14 +144,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)zz_stopSpinning;
 
-#pragma mark - Popup View
-
-/**
- *  Popup动画
- */
-- (void)zz_popup:(nullable ZZPopupView *)popupView blurColor:(nullable UIColor *)blurColor userInteractionEnabled:(BOOL)userInteractionEnabled springs:(nullable NSArray<NSNumber *> *)springs actionBlock:(nullable void(^)(id value))actionBlock;
-
 @end
+
 
 #pragma mark - ZZDropSheet
 
@@ -266,11 +260,22 @@ typedef NS_ENUM(NSInteger, ZZPopupViewAnimation) {
 // Spring动画参数Velocity
 @property (nonatomic, strong) NSNumber *zzPopupSpringVelocity;
 
+// 背景颜色
+@property (nonatomic, strong) UIColor *zzBgColor;
+
+// 点击背景是否消失
+@property (nonatomic, assign) BOOL zzDisappearWhenTapBg;
+
 // 关闭PopupView
 - (IBAction)zz_tapClosePopupView:(nullable id)sender;
 
 // 滑动同步方法
 - (void)zz_popupUpdateContentOffset:(UIScrollView *)scrollView;
+
+// 弹框
+- (void)zz_popup:(nullable void(^)(id value))actionBlock;
+
+- (void)zz_popup:(nullable void(^)(id value))actionBlock onView:(nullable UIView *)onView;
 
 @end
 

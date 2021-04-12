@@ -19,7 +19,7 @@
     ZZPhotoDraftEditPopupView *view = ZZ_LOAD_NIB(@"ZZPhotoDraftEditPopupView");
     view.frame = CGRectMake(0, 0, ZZDevice.zz_screenWidth, 48.0);
     view.zzPopupAppearAnimation = ZZPopupViewAnimationPopBottom;
-    [ZZ_KEY_WINDOW zz_popup:view blurColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] userInteractionEnabled:YES springs:nil actionBlock:^(id  _Nonnull value) {
+    [view zz_popup:^(id  _Nonnull value) {
         if ([value isEqualToString:@"1"]) {
             editBlock == nil ? : editBlock();
         }
