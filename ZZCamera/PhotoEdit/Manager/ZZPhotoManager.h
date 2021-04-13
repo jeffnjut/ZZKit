@@ -114,6 +114,6 @@
 + (void)presentPhotoEditController:(nonnull UIViewController *)controller keepPrevious:(BOOL)keepPreviois configureBlock:(nullable void(^)(ZZPhotoLibraryConfig * _Nullable config))configureBlock;
 
 // 打开草稿箱
-+ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(UINavigationController * _Nonnull navigationController, ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock;
++ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock;
 
 @end

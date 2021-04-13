@@ -285,7 +285,7 @@ static bool isFirstAccess = YES;
 - (void)loadDraftPhotosToAllPhotos:(nonnull ZZDraft *)draft completion:(nullable void(^)(void))completion {
     
     ZZ_WEAK_SELF
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [weakSelf cleanPhotos];
         if (draft.photos.count > 0) {
             for (int i = 0; i < draft.photos.count; i++) {
@@ -565,7 +565,7 @@ static bool isFirstAccess = YES;
 }
 
 // 打开草稿箱
-+ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(UINavigationController * _Nonnull navigationController, ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock {
++ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock {
     
     ZZPhotoDraftHistoryViewController *draftVC = [[ZZPhotoDraftHistoryViewController alloc] init];
     draftVC.uid = uid;

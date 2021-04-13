@@ -222,8 +222,10 @@
         } actionBlock:^(ZZTableView *__weak  _Nonnull tableView, NSInteger section, NSInteger row, ZZTableViewCellAction action, __kindof ZZTableViewCellDataSource * _Nullable cellData, __kindof ZZTableViewCell * _Nullable cell, __kindof ZZTableViewHeaderFooterViewDataSource * _Nullable headerFooterData, __kindof ZZTableViewHeaderFooterView * _Nullable headerFooterView) {
             if (action == ZZTableViewCellActionTapped) {
                 if ([cellData isKindOfClass:[ZZPhotoDraftCellDataSource class]]) {
-                    ZZPhotoDraftCellDataSource *ds = cellData;
-                    weakSelf.userSelectDraftBlock == nil ? : weakSelf.userSelectDraftBlock(weakSelf.navigationController, ds.data, ds.pictureRemoved);
+                    [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
+                        ZZPhotoDraftCellDataSource *ds = cellData;
+                        weakSelf.userSelectDraftBlock == nil ? : weakSelf.userSelectDraftBlock(ds.data, ds.pictureRemoved);
+                    }];
                 }
             }else if (action == ZZTableViewCellActionDelete) {
                 if ([cellData isKindOfClass:[ZZPhotoDraftCellDataSource class]]) {

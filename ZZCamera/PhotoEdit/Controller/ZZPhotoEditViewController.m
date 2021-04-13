@@ -670,7 +670,11 @@
 // 点击下一步
 - (void)_tapNext {
     
-    ZZPhotoManager.shared.config.userPhotoEditNextBlock == nil ? : ZZPhotoManager.shared.config.userPhotoEditNextBlock(self.navigationController, ZZPhotoManager.shared.photoQueue);
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ZZPhotoManager.shared.config.userNextBlock == nil ? : ZZPhotoManager.shared.config.userNextBlock(ZZPhotoManager.shared.photoQueue);
+        });
+    }];
 }
 
 #pragma mark - UIScrollView Delegate

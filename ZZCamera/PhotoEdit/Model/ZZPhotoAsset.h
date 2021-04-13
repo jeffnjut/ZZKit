@@ -34,8 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 // 压缩图片
 @property (nullable, nonatomic, strong) UIImage *croppedImage;
 
-// 当前图片
+// 当前图片（裁切或原图）
 @property (nullable, nonatomic, strong) UIImage *currentImage;
+
+// 当前图片（滤镜或Tuning的效果后，包括裁切）
+@property (nullable, nonatomic, strong) UIImage *currentFilteredImage;
 
 // 图片参数
 @property (nullable, nonatomic, strong) ZZPhotoTuning *tuningObject;

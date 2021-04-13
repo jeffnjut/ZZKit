@@ -52,6 +52,12 @@
     return self.originalImage;
 }
 
+- (UIImage *)currentFilteredImage {
+    
+    _currentImage = [[ZZPhotoFilterManager shared] image:self.currentImage tuningObject:self.tuningObject appendFilterType:self.tuningObject.filterType];
+    return _currentImage;
+}
+
 - (nonnull NSMutableArray<UIImage *> *)filterThumbImages {
     
     if (_filterThumbImages == nil || _filterThumbImages.count == 0) {

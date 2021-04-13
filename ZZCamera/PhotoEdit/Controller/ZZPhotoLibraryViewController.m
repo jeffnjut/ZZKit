@@ -870,8 +870,12 @@
 // 点击下一步
 - (void)_tapNext:(UIButton *)sender {
     
-    if (ZZPhotoManager.shared.config.userPhotoLibraryNextBlock != nil) {
-        ZZPhotoManager.shared.config.userPhotoLibraryNextBlock(self.navigationController, ZZPhotoManager.shared.photoQueue);
+    if (ZZPhotoManager.shared.config.mode == ZZPhotoEditModeNone && ZZPhotoManager.shared.config.userNextBlock != nil) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ZZPhotoManager.shared.config.userNextBlock(ZZPhotoManager.shared.photoQueue);
+            });
+        }];
     }else {
         // 推出 ZZPhotoEditViewController
         ZZPhotoEditViewController *editVC = [[ZZPhotoEditViewController alloc] init];
