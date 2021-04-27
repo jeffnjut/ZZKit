@@ -116,4 +116,7 @@
 // 打开草稿箱
 + (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock;
 
+// 加载图片
+- (void)loadNetworkPhotosToAllPhotos:(NSArray<NSString *> *)imageUrls completion:(nullable void(^)(void))completion;
+
 @end

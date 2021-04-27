@@ -575,5 +575,58 @@ static bool isFirstAccess = YES;
     [controller presentViewController:nav animated:YES completion:nil];
 }
 
+// 加载图片
+- (void)loadNetworkPhotosToAllPhotos:(NSArray<NSString *> *)imageUrls completion:(nullable void(^)(void))completion {
+    
+    ZZ_WEAK_SELF
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [weakSelf cleanPhotos];
+        if (imageUrls.count > 0) {
+            for (int i = 0; i < imageUrls.count; i++) {
+                NSString *imageUrl = [imageUrls zz_arrayObjectAtIndex:i];
+                if (imageUrl.length > 0) {
+                    [weakSelf findByPhotoUrl:imageUrl completion:^(NSData *imageData, UIImage *image, NSString *url) {
+                        if (image != nil) {
+                            // 成功
+                            [weakSelf _addToAllPhotos:url image:image total:imageUrls.count completion:completion];
+                        }else {
+                            // 失败
+                            [weakSelf _addToAllPhotos:url image:nil total:imageUrls.count completion:completion];
+                        }
+                    }];
+                }
+                // 失败
+                else {
+                    [weakSelf _addToAllPhotos:nil image:nil total:imageUrls.count completion:completion];
+                }
+            }
+        }else {
+            [weakSelf cleanPhotos];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion == nil ? : completion();
+            });
+        }
+    });
+}
+
+- (void)_addToAllPhotos:(nullable NSString *)imageUrl image:(nullable UIImage *)image total:(NSUInteger)total completion:(nullable void(^)(void))completion {
+    
+    ZZPhotoAsset *photoModel = [[ZZPhotoAsset alloc] init];
+    // 赋值照片属性
+    photoModel.photoUrl = imageUrl;
+    if (image) {
+        photoModel.croppedImage = image;
+    }else {
+        photoModel.croppedImage = @"ZZPhotoManager.ic_photo_no_found".zz_image;
+    }
+    [self.photoQueue addObject:photoModel];
+    
+    // 完成回调
+    if (self.photoQueue.count == total) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion == nil ? : completion();
+        });
+    }
+}
 
 @end
