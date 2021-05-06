@@ -21,7 +21,7 @@ typedef void(^ZZWidgetImageBrowserVoidBlock)(void);
 /**
  * 单例方法
  */
-+(ZZWidgetImageBrowser *)shareInstanse;
++(ZZWidgetImageBrowser *)shared;
 
 /**
  * 显示网络图片方法
@@ -101,8 +101,6 @@ typedef void(^ZZWidgetImageBrowserVoidBlock)(void);
 @end
 
 #pragma mark - ZZWidgetImageToolBar
-
-static CGFloat ToolBarHeight = 40.0;
 
 @interface ZZWidgetImageToolBar : UIView
 

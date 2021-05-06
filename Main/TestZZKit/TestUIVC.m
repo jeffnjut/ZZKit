@@ -271,7 +271,7 @@
     TestPopupView *testPopupView = ZZ_LOAD_NIB(@"TestPopupView");
     testPopupView.zzPopupAppearAnimation = ZZPopupViewAnimationPopCenter;
     testPopupView.zzPopupDisappearAnimation = ZZPopupViewAnimationPopBottom;
-    [ZZ_KEY_WINDOW zz_popup:testPopupView blurColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] userInteractionEnabled:YES springs:@[@(0.2), @(0.6), @(2.0)] actionBlock:^(id  _Nonnull value) {
+    [testPopupView zz_popup:^(id  _Nonnull value) {
         NSLog(@"%@", value);
     }];
 }

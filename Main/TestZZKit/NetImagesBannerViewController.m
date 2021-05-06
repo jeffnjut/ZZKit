@@ -104,8 +104,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //利用ZZWidgetImageBrowser显示网络图片
-    if ([ZZWidgetImageBrowser shareInstanse].zzLoadImageBlock == nil) {
-        [ZZWidgetImageBrowser shareInstanse].zzLoadImageBlock = ^(UIImageView *imageView, NSString *imageUrl, ZZWidgetImageLoadingView *loadingView, ZZWidgetImageBrowserVoidBlock finished) {
+    if ([ZZWidgetImageBrowser shared].zzLoadImageBlock == nil) {
+        [ZZWidgetImageBrowser shared].zzLoadImageBlock = ^(UIImageView *imageView, NSString *imageUrl, ZZWidgetImageLoadingView *loadingView, ZZWidgetImageBrowserVoidBlock finished) {
             
             [loadingView zz_hide];
             
@@ -117,7 +117,7 @@
         };
     }
     
-    [[ZZWidgetImageBrowser shareInstanse] zz_showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
+    [[ZZWidgetImageBrowser shared] zz_showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
 }
 
 -(void)clearImageCache {

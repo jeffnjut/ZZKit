@@ -123,7 +123,7 @@
             return nil;
         };
         
-        config.userPhotoEditNextBlock = ^(UINavigationController * _Nonnull navigationController, NSArray<ZZPhotoAsset *> * _Nonnull photoQueue) {
+        config.userNextBlock = ^(NSArray<ZZPhotoAsset *> * _Nonnull photoQueue) {
             NSLog(@"%@", photoQueue);
             
             NSArray *arr = photoQueue.zz_images;

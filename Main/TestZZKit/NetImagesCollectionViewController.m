@@ -94,7 +94,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //利用ZZImageBrowser显示网络图片
-    [[ZZWidgetImageBrowser shareInstanse] zz_showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
+    [[ZZWidgetImageBrowser shared] zz_showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
 }
 
 -(void)clearImageCache {

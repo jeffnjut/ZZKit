@@ -9,6 +9,12 @@
 #import "ZZWidgetImageBrowser.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <Masonry/Masonry.h>
+#import "UIView+ZZKit.h"
+#import "ZZDevice.h"
+
+#define ToolBarLabelHeight 40.0
+#define ToolBarButtonHeight 30.0
+#define ToolBarHeight (ToolBarLabelHeight + ToolBarButtonHeight + 20.0 + ZZ_DEVICE_TAB_SAFE_DELTA_X)
 
 #pragma mark - ZZWidgetImageBrowser
 
@@ -40,7 +46,7 @@ static CGFloat lineSpacing = 10.0f;
 
 @implementation ZZWidgetImageBrowser
 
-+(ZZWidgetImageBrowser *)shareInstanse {
++(ZZWidgetImageBrowser *)shared {
     
     static ZZWidgetImageBrowser *viewer = nil;
     static dispatch_once_t onceToken;
@@ -103,6 +109,7 @@ static CGFloat lineSpacing = 10.0f;
 
 //初始化视图
 -(void)_zz_buildUI {
+    
     //设置ImageViewer属性
     self.frame = [UIScreen mainScreen].bounds;
     
@@ -356,12 +363,12 @@ static CGFloat minPanLength = 100.0f;
     }
     //显示网络图片
     __weak typeof(self) weakSelf = self;
-    if ([ZZWidgetImageBrowser shareInstanse].zzLoadImageBlock != nil) {
+    if ([ZZWidgetImageBrowser shared].zzLoadImageBlock != nil) {
         // 开发者可以自己实现加载逻辑
         ZZWidgetImageBrowserVoidBlock finished = ^{
             [weakSelf _zz_setImageViewFrame];
         };
-        [ZZWidgetImageBrowser shareInstanse].zzLoadImageBlock(_imageView, _imageUrl, _loading, finished);
+        [ZZWidgetImageBrowser shared].zzLoadImageBlock(_imageView, _imageUrl, _loading, finished);
     }else{
         // 默认的加载图片逻辑
         [_imageView sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:nil options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
@@ -625,6 +632,7 @@ static CGFloat minPanLength = 100.0f;
 @implementation ZZWidgetImageToolBar
 {
     UILabel *_pageLabel;
+    UIButton *_saveButton;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -638,7 +646,7 @@ static CGFloat minPanLength = 100.0f;
 -(void)_zz_buildUI {
     
     //显示分页的label
-    _pageLabel = [[UILabel alloc] init];
+    _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, ToolBarLabelHeight)];
     _pageLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
     _pageLabel.layer.cornerRadius = 2.0f;
     _pageLabel.layer.masksToBounds = true;
@@ -647,13 +655,14 @@ static CGFloat minPanLength = 100.0f;
     _pageLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_pageLabel];
     self.alpha = 0;
-    __weak typeof(self) weakSelf = self;
-    [_pageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.mas_top);
-        make.centerX.equalTo(weakSelf.mas_centerX);
-        make.width.equalTo(@50.0);
-        make.height.equalTo(@20.0);
-    }];
+    
+    _saveButton = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - 80.0) / 2.0, ToolBarLabelHeight, 80.0, ToolBarButtonHeight)];
+    [_saveButton zz_cornerRadius:2.0 borderWidth:0.5 boderColor:UIColor.whiteColor];
+    [_saveButton setTitle:@"保存" forState:UIControlStateNormal];
+    [_saveButton setTitle:@"保存" forState:UIControlStateHighlighted];
+    [_saveButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [_saveButton setTitleColor:UIColor.whiteColor forState:UIControlStateHighlighted];
+    [self addSubview:_saveButton];
 }
 
 - (void)setText:(NSString *)text {
