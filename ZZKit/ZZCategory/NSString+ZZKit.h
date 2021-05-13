@@ -378,12 +378,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  UUID - IDFA
  */
-+ (NSString *)zz_uuidIDFA;
+//+ (NSString *)zz_uuidIDFA;
 
 /**
  *  UUID - IDFA Trimming Line
  */
-+ (NSString *)zz_uuidIDFATrimmingLine;
+//+ (NSString *)zz_uuidIDFATrimmingLine;
 
 /**
  *  UUID - IDFV

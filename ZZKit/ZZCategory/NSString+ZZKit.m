@@ -10,7 +10,7 @@
 #import "UIColor+ZZKit.h"
 #import "NSBundle+ZZKit.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import <AdSupport/AdSupport.h>
+// #import <AdSupport/AdSupport.h>
 #import "OpenUDID.h"
 #import "NSArray+ZZKit.h"
 
@@ -903,16 +903,16 @@
 /**
  *  UUID - IDFA
  */
-+ (NSString *)zz_uuidIDFA {
-    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-}
+//+ (NSString *)zz_uuidIDFA {
+//    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+//}
 
 /**
  *  UUID - IDFA Trimming Line
  */
-+ (NSString *)zz_uuidIDFATrimmingLine {
-    return [[self zz_uuidIDFA] stringByReplacingOccurrencesOfString:@"-" withString:@""];
-}
+//+ (NSString *)zz_uuidIDFATrimmingLine {
+//    return [[self zz_uuidIDFA] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//}
 
 /**
  *  UUID - IDFV
