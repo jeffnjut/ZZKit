@@ -128,10 +128,22 @@
         });
         
         [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                [weakSelf _complete:image error:error zzKey:_zzKey finishedBackgroundColor:finishedBackgroundColor finishedContentMode:finishedContentMode completion:completion];
-            });
+            if (error) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:_zzURL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                        UIImage *image = nil;
+                        if (location) {
+                            image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                        }
+                        [weakSelf _complete:image error:error zzKey:_zzKey finishedBackgroundColor:finishedBackgroundColor finishedContentMode:finishedContentMode completion:completion];
+                    }];
+                    [task resume];
+                });
+            }else {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    [weakSelf _complete:image error:error zzKey:_zzKey finishedBackgroundColor:finishedBackgroundColor finishedContentMode:finishedContentMode completion:completion];
+                });
+            }
         }];
     }
 }
@@ -140,7 +152,17 @@
     
     // 查询缓存
     NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:zzKey];
-    SDImageFormat format =  [NSData sd_imageFormatForImageData:_data];
+    SDImageFormat format;
+    if ([zzKey containsString:@".webp"] || (_data == nil && image != nil)) {
+        // from webp
+        format = SDImageFormatWebP;
+        UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:zzKey];
+        if (_image == nil) {
+            [[SDWebImageManager sharedManager].imageCache storeImage:image forKey:zzKey toDisk:YES completion:nil];
+        }
+    }else {
+        format =  [NSData sd_imageFormatForImageData:_data];
+    }
     switch (format) {
         case SDImageFormatGIF:
         {
@@ -151,7 +173,7 @@
         case SDImageFormatWebP:
         {
             // 缓存WebP
-            [self _setWebPImage:_data key:zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+            [self _setWebPImage:(image != nil ? image : _data) key:zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
             break;
         }
         default:
@@ -192,7 +214,7 @@
     });
 }
 
-- (void)_setWebPImage:(nonnull NSData *)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
+- (void)_setWebPImage:(nonnull id)data key:(nonnull NSString *)key backgroundColor:(nullable UIColor *)backgroundColor contentMode:(UIViewContentMode)contentMode completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
     if (key.hash != [self _zzHash]) {
         return;
@@ -200,22 +222,42 @@
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
-        UIImage *_webPImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
         
-        // 设置图片
-        weakSelf.image = _webPImage;
-        
-        // 设置背景颜色
-        if (backgroundColor) {
-            weakSelf.backgroundColor = backgroundColor;
+        if ([data isKindOfClass:[NSData class]]) {
+            YYImageDecoder *decoder = [YYImageDecoder decoderWithData:data scale:[UIScreen mainScreen].scale];
+            UIImage *_webPImage = [decoder frameAtIndex:0 decodeForDisplay:YES].image;
+            
+            // 设置图片
+            weakSelf.image = _webPImage;
+            
+            // 设置背景颜色
+            if (backgroundColor) {
+                weakSelf.backgroundColor = backgroundColor;
+            }
+            
+            // 设置ContentMode
+            weakSelf.contentMode = contentMode;
+            
+            // 回调
+            completion == nil ? : completion(weakSelf, _webPImage, data, nil, key);
+        }else if ([data isKindOfClass:[UIImage class]]) {
+            
+            
+            // 设置图片
+            weakSelf.image = (UIImage *)data;
+            
+            // 设置背景颜色
+            if (backgroundColor) {
+                weakSelf.backgroundColor = backgroundColor;
+            }
+            
+            // 设置ContentMode
+            weakSelf.contentMode = contentMode;
+            
+            // 回调
+            completion == nil ? : completion(weakSelf, data, nil, nil, key);
         }
         
-        // 设置ContentMode
-        weakSelf.contentMode = contentMode;
-        
-        // 回调
-        completion == nil ? : completion(weakSelf, _webPImage, data, nil, key);
     });
 }
 
