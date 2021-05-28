@@ -126,7 +126,13 @@
                 weakSelf.contentMode = placeholderContentMode;
             }
         });
-        
+        if ([_zzKey.lowercaseString containsString:@".webp"]) {
+            UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:_zzKey];
+            if (_image) {
+                [self _setWebPImage:_image key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+                return;
+            }
+        }
         [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             if (error) {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -153,12 +159,15 @@
     // 查询缓存
     NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:zzKey];
     SDImageFormat format;
-    if ([zzKey containsString:@".webp"] || (_data == nil && image != nil)) {
+    if ([zzKey.lowercaseString containsString:@".webp"]) {
+        
         // from webp
         format = SDImageFormatWebP;
         UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:zzKey];
         if (_image == nil) {
             [[SDWebImageManager sharedManager].imageCache storeImage:image forKey:zzKey toDisk:YES completion:nil];
+        }else {
+            return;
         }
     }else {
         format =  [NSData sd_imageFormatForImageData:_data];
