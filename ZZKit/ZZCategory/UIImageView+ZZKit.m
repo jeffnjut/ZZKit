@@ -89,7 +89,6 @@
                          completion:(nullable void(^)(UIImageView * _Nullable imageView, UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSString * _Nullable url))completion {
     
     @synchronized (self) {
-    
         __weak typeof(self) weakSelf = self;
         
         // 处理URL Encode
@@ -126,12 +125,11 @@
                 weakSelf.contentMode = placeholderContentMode;
             }
         });
-        if ([_zzKey.lowercaseString containsString:@".webp"]) {
-            UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:_zzKey];
-            if (_image) {
-                [self _setWebPImage:_image key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
-                return;
-            }
+
+        UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:_zzKey];
+        if (_image) {
+            [self _setWebPImage:_image key:_zzKey backgroundColor:finishedBackgroundColor contentMode:finishedContentMode completion:completion];
+            return;
         }
         [self sd_setImageWithURL:_zzURL placeholderImage:placeholderImage options:0 progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             if (error) {
@@ -159,8 +157,7 @@
     // 查询缓存
     NSData *_data = [[SDWebImageManager sharedManager].imageCache diskImageDataForKey:zzKey];
     SDImageFormat format;
-    if ([zzKey.lowercaseString containsString:@".webp"]) {
-        
+    if (image) {
         // from webp
         format = SDImageFormatWebP;
         UIImage *_image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:zzKey];
