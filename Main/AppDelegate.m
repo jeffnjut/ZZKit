@@ -19,13 +19,26 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self applyNotificationAuth];
+    NSLog(@"%d", [@"" zz_greaterThan:@""] == false);
+    NSLog(@"%d", [@"1" zz_greaterThan:@""] == true);
+    
+    NSLog(@"%d", [@"8.4.2" zz_greaterThan:@"8.4.1"] == true);
+    NSLog(@"%d", [@"8.4.2" zz_greaterThan:@"8.3.9"] == true);
+    NSLog(@"%d", [@"9.4.2" zz_greaterThan:@"8.3.9"] == true);
+    NSLog(@"%d", [@"8.4.2" zz_greaterThan:@"8.4"] == true);
+    NSLog(@"%d", [@"8.5" zz_greaterThan:@"8.4.1"] == true);
+    
+    NSLog(@"%d", [@"8.4.0" zz_greaterThan:@"8.4"] == false);
+    NSLog(@"%d", [@"7.4.2" zz_greaterThan:@"8.3.9"] == false);
+    NSLog(@"%d", [@"8.1.2" zz_greaterThan:@"8.3.9"] == false);
+    NSLog(@"%d", [@"8.3.2" zz_greaterThan:@"8.3.9"] == false);
+    NSLog(@"%d", [@"8.5" zz_greaterThan:@"9"] == false);
     return YES;
 }
 

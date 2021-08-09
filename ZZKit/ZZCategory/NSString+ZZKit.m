@@ -418,6 +418,8 @@
             right = [[rightArr zz_arrayObjectAtIndex:i] intValue];
             if (left > right) {
                 return YES;
+            }else if (left < right) {
+                return NO;
             }
             i++;
         }
@@ -430,32 +432,7 @@
  */
 - (BOOL)zz_greaterThanOrEqualTo:(NSString *)right {
     
-    if (right == nil) {
-        return YES;
-    }else if ([self isEqualToString:right]) {
-        return YES;
-    }else {
-        NSArray *leftArr = [self componentsSeparatedByString:@"."];
-        NSArray *rightArr = [right componentsSeparatedByString:@"."];
-        int left = 0;
-        int right = 0;
-        int i = 0;
-        while (YES) {
-            
-            if ([leftArr zz_arrayObjectAtIndex:i] == nil && [rightArr zz_arrayObjectAtIndex:i] == nil) {
-                break;
-            }
-            left = [[leftArr zz_arrayObjectAtIndex:i] intValue];
-            right = [[rightArr zz_arrayObjectAtIndex:i] intValue];
-            if (left > right) {
-                return YES;
-            }else if (left < right) {
-                return NO;
-            }
-            i++;
-        }
-    }
-    return YES;
+    return [self zz_greaterThan:right] || [self isEqualToString:right];
 }
 
 /**
