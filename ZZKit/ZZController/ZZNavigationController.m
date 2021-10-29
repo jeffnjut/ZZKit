@@ -21,6 +21,16 @@
     // 默认开启侧滑返回
     self.interactivePopGestureRecognizer.delegate = self;
     self.interactivePopGestureRecognizer.enabled = YES;
+    
+    if (@available(iOS 15.0, *)) {
+        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+        [appearance configureWithOpaqueBackground];
+        //设置导航条背景色
+        appearance.backgroundColor = UIColor.whiteColor;
+        
+        [UINavigationBar appearance].standardAppearance = appearance;
+        [UINavigationBar appearance].scrollEdgeAppearance = appearance;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
