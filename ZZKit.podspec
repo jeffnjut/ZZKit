@@ -1,40 +1,36 @@
 Pod::Spec.new do |s|
-    s.name         = 'ZZKit'
-    s.version      = '1.0'
-    s.summary      = '国产高性能轮子'
-    s.homepage     = 'https://gitee.com/jeff_njut/ZZKit'
-    s.license      = 'MIT'
-    s.authors      = {'jeff_njut' => 'jeff_njut@163.com'}
-    s.platform     = :ios, '8.0'
-    s.source       = {:git => 'https://gitee.com/jeff_njut/ZZKit.git', :tag => s.version}
-    
-    s.subspec 'Base' do |ss|
-        ss.requires_arc = false
-        ss.source_files = ['ZZKit/**/*.{h,m,mm,c}','ZZKit-3rd/**/*.{h,m,mm,c}']
-        ss.requires_arc = ['ZZKit/**/*.{h,m,mm,c}']
-        ss.resources    = 'ZZKit/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
-        ss.frameworks   = 'Foundation'
-        ss.frameworks   = 'UIKit'
-        ss.dependency     'Typeset'
-        ss.dependency     'ReactiveObjC'
-        ss.dependency     'Masonry'
-        ss.dependency     'MBProgressHUD'
-        ss.dependency     'lottie-ios'
-        ss.dependency     'SDWebImage'
-        ss.dependency     'YYModel'
-        ss.dependency     'YYImage'
-    end
+  s.name         = 'ZZKit'
+  s.summary      = 'A collection of iOS components.'
+  s.version      = '1.0'
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.authors      = { 'jeff' => 'jeff_njut@163.com' }
+  s.social_media_url = 'jeff_njut@163.com'
+  s.homepage     = 'https://gitee.com/jeff_njut/ZZKit'
+  s.platform     = :ios, '9.0'
+  s.ios.deployment_target = '9.0'
+  s.source       = { :git => 'https://gitee.com/jeff_njut/ZZKit.git', :tag => s.version.to_s }
+  
+  s.requires_arc = true
+  s.source_files = ['ZZKit/**/*.{h,m}', 'ZZCamera/**/*.{h,m}']
+  s.public_header_files = ['ZZKit/**/*.{h}', 'ZZCamera/**/*.{h}']
+  s.resources    = 'ZZKit/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}','ZZCamera/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
 
-    s.subspec 'Camera' do |ss|
-        ss.requires_arc = true
-        ss.source_files = 'ZZCamera/**/*.{h,m,mm,c}'
-        ss.resources    = 'ZZCamera/**/*.{png,jpg,jpeg,gif,xml,json,plist,xib,bundle}'
-        ss.frameworks   = 'Foundation'
-    	ss.frameworks   = 'UIKit'
-    	ss.frameworks   = 'SystemConfiguration'
-    	ss.frameworks   = 'CoreImage'
-    	ss.dependency     'SMPageControl'
-    	ss.dependency     'ZZKit/Base'
-    end
-    
+  non_arc_files = 'ZZKit-3rd/**/*.{h,m,mm,c}'
+  s.ios.exclude_files = non_arc_files
+  s.subspec 'no-arc' do |sna|
+    sna.requires_arc = false
+    sna.source_files = non_arc_files
+  end
+
+  # s.libraries = 'z', 'sqlite3'
+  s.frameworks = 'Foundation', 'UIKit', 'SystemConfiguration', 'CoreImage'
+  s.dependency 'Typeset'
+  s.dependency 'ReactiveObjC'
+  s.dependency 'Masonry'
+  s.dependency 'MBProgressHUD'
+  s.dependency 'lottie-ios'
+  s.dependency 'SDWebImage'
+  s.dependency 'YYModel'
+  s.dependency 'YYImage'
+  s.dependency 'SMPageControl'
 end

@@ -191,7 +191,7 @@
         }
     }
     if (@available(iOS 15.0, *)) {
-        [tableView performSelector:@selector(setSectionHeaderTopPadding:) withObject:@(0)];
+        tableView.sectionHeaderTopPadding = 0;
     }
     
     return tableView;
