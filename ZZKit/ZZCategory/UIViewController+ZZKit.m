@@ -246,6 +246,20 @@
     self.navigationController.navigationBar.barTintColor = barTintColor;
     self.navigationController.navigationBar.translucent = translucent;
     [self _setupBottomLineColor:bottomLineColor];
+    if (@available(iOS 15.0, *)) {
+        UINavigationBarAppearance *navigationBarAppearance = [UINavigationBarAppearance new];
+        navigationBarAppearance.backgroundColor = barTintColor;
+        navigationBarAppearance.backgroundEffect = nil;
+        if (bottomLineColor) {
+            navigationBarAppearance.shadowColor = bottomLineColor;
+            navigationBarAppearance.shadowImage = [UIImage new];
+        }else{
+            navigationBarAppearance.shadowColor = nil;
+            navigationBarAppearance.shadowImage = [UIImage new];
+        }
+        self.navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance;
+        self.navigationController.navigationBar.standardAppearance = navigationBarAppearance;
+    }
 }
 
 /**
