@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 // 照片 URL（下载照片存放在文件系统中，以photoUrl的hash值为文件名）
 @property (nullable, nonatomic, copy) NSString *photoUrl;
 
+@property (nonatomic, assign) float photoWidth;
+
+@property (nonatomic, assign) float photoHeight;
+
 // 原始图片
 @property (nullable, nonatomic, strong) UIImage *originalImage;
 

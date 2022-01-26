@@ -76,6 +76,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 用户ID
 @property (nullable, nonatomic, copy) NSString *uid;
 
+// 草稿ID
+@property (nullable, nonatomic, copy) NSString *draftID;
+
 @end
 
 

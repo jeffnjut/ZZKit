@@ -83,7 +83,7 @@
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
         _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        _imagePickerController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+        _imagePickerController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         _imagePickerController.allowsEditing = NO;
         _imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
@@ -929,11 +929,13 @@
 
 // 打开草稿箱
 - (void)_openDraft {
-    
-    ZZPhotoDraftHistoryViewController *draftVC = [[ZZPhotoDraftHistoryViewController alloc] init];
-    draftVC.uid = self.uid;
-    draftVC.userSelectDraftBlock = ZZPhotoManager.shared.config.userSelectDraftBlock;
-    [self.navigationController pushViewController:draftVC animated:YES];
+    if (ZZPhotoManager.shared.config.userOpenDraftBlock != nil) {
+        ZZPhotoManager.shared.config.userOpenDraftBlock();
+    }else {
+        ZZPhotoDraftHistoryViewController *draftVC = [[ZZPhotoDraftHistoryViewController alloc] init];
+        draftVC.uid = self.uid;
+        [self.navigationController pushViewController:draftVC animated:YES];
+    }
 }
 
 // 检查Next Button的可点击状态

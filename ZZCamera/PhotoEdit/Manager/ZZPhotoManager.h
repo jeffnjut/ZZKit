@@ -114,7 +114,7 @@
 + (void)presentPhotoEditController:(nonnull UIViewController *)controller keepPrevious:(BOOL)keepPreviois configureBlock:(nullable void(^)(ZZPhotoLibraryConfig * _Nullable config))configureBlock;
 
 // 打开草稿箱
-+ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock;
++ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid configureBlock:(nullable void(^)(ZZPhotoLibraryConfig * _Nullable config))configureBlock;
 
 // 加载图片
 - (void)loadNetworkPhotosToAllPhotos:(NSArray<NSString *> *)imageUrls completion:(nullable void(^)(void))completion;

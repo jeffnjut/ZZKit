@@ -565,11 +565,14 @@ static bool isFirstAccess = YES;
 }
 
 // 打开草稿箱
-+ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid userSelectDraftBlock:(nullable void(^)(ZZDraft * _Nullable draft, BOOL pictureRemoved))userSelectDraftBlock {
++ (void)presentDraftController:(nonnull UIViewController *)controller uid:(nonnull NSString *)uid configureBlock:(nullable void(^)(ZZPhotoLibraryConfig * _Nullable config))configureBlock {
     
     ZZPhotoDraftHistoryViewController *draftVC = [[ZZPhotoDraftHistoryViewController alloc] init];
     draftVC.uid = uid;
-    draftVC.userSelectDraftBlock = userSelectDraftBlock;
+    if (ZZPhotoManager.shared.config == nil) {
+        ZZPhotoManager.shared.config = [[ZZPhotoLibraryConfig alloc] init];
+    }
+    configureBlock == nil ? : configureBlock(ZZPhotoManager.shared.config);
     ZZNavigationController *nav = [[ZZNavigationController alloc] initWithRootViewController:draftVC];
     nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [controller presentViewController:nav animated:YES completion:nil];

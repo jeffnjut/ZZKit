@@ -224,7 +224,7 @@
                 if ([cellData isKindOfClass:[ZZPhotoDraftCellDataSource class]]) {
                     [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
                         ZZPhotoDraftCellDataSource *ds = cellData;
-                        weakSelf.userSelectDraftBlock == nil ? : weakSelf.userSelectDraftBlock(ds.data, ds.pictureRemoved);
+                        ZZPhotoManager.shared.config.userSelectDraftBlock == nil ? : ZZPhotoManager.shared.config.userSelectDraftBlock(ds.data, ds.pictureRemoved);
                     }];
                 }
             }else if (action == ZZTableViewCellActionDelete) {

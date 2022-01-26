@@ -14,6 +14,4 @@
 // User ID
 @property (nonatomic, copy, nullable) NSString *uid;
 
-@property (nonatomic, copy, nullable) void(^userSelectDraftBlock)(ZZDraft * _Nullable draft, BOOL pictureRemoved);
-
 @end

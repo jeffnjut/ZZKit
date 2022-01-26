@@ -129,6 +129,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void(^userNoCameraPermissionBlock)(void);
 
 // 用户选择未发布的草稿的Block
+@property (nonatomic, copy) void(^userOpenDraftBlock)(void);
+
+// 用户选择未发布的草稿的Block
 @property (nonatomic, copy) void(^userSelectDraftBlock)(ZZDraft *draft, BOOL pictureRemoved);
 
 // 用户相册浏览 Next Block (PohotoLibrary Controller)
