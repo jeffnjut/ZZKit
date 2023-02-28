@@ -133,6 +133,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)zz_isSimulator;
 
+/// StatusBar
++ (CGFloat)statusBarHeight;
+
+/// NavigationTop
++ (CGFloat)navigationTopHeight;
+
+/// 底部安全区高度
++ (CGFloat)safeDistanceBottom;
+
+/// 底部导航栏高度（包括安全区）
++ (CGFloat)tabBarFullHeight;
+
+/// 底部导航栏高度
++ (CGFloat)tabBarHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

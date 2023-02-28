@@ -216,4 +216,44 @@
     }
 }
 
+/// StatusBar
++ (CGFloat)statusBarHeight {
+    if (@available(iOS 13.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height;
+    }
+    return [UIApplication sharedApplication].statusBarFrame.size.height;
+}
+
+/// NavigationTop
++ (CGFloat)navigationTopHeight{
+    if (@available(iOS 13.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height + 44.0f;
+    }
+    return [UIApplication sharedApplication].statusBarFrame.size.height + 44.0f;
+}
+
+/// 底部安全区高度
++ (CGFloat)safeDistanceBottom {
+    if (@available(iOS 13.0, *)) {
+        NSSet *set = [UIApplication sharedApplication].connectedScenes;
+        UIWindowScene *windowScene = [set anyObject];
+        UIWindow *window = windowScene.windows.firstObject;
+        return window.safeAreaInsets.bottom;
+    } else if (@available(iOS 11.0, *)) {
+        UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+        return window.safeAreaInsets.bottom;
+    }
+    return 0;
+}
+
+/// 底部导航栏高度（包括安全区）
++ (CGFloat)tabBarFullHeight {
+    return [ZZDevice tabBarHeight] + [ZZDevice safeDistanceBottom];
+}
+
+/// 底部导航栏高度
++ (CGFloat)tabBarHeight {
+    return 49.0f;
+}
+
 @end
