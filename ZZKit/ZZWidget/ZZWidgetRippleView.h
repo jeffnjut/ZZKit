@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public
 
+-(instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image rippleColor:(UIColor *)rippleColor cycleFillColor:(UIColor *)cycleFillColor scaledxy:(CGFloat)scaledxy animation:(NSTimeInterval)animation interval:(NSTimeInterval)interval;
+
 /**
  *  停止Ripple动画（默认一次）
  */

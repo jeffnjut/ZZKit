@@ -38,6 +38,7 @@
 #define ZZ_STR_TO_FLOAT_ACCURACY_2(num)       [NSString stringWithFormat:@"%.2f",num]
 #define ZZ_STR_TO_FLOAT_ACCURACY_3(num)       [NSString stringWithFormat:@"%.3f",num]
 #define ZZ_STR_TO_FLOAT_ACCURACY_4(num)       [NSString stringWithFormat:@"%.4f",num]
+#define ZZ_STR_FORMAT(str)                    (str == nil ? @"" : [NSString stringWithFormat:@"%@",str])
 
 // Object Helper
 #define ZZ_OBJECT_NIL_TO_EMPTY(object)        (object == nil ? @"" : [NSString stringWithFormat:@"%@",object])

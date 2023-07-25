@@ -100,6 +100,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)zz_arrayIsEmpty;
 
 /**
+ *  NSArray是否为非空
+ */
+- (BOOL)zz_arrayIsNotEmpty;
+
+/**
  *  NSArray是否含有Class类型的对象
  */
 - (BOOL)zz_arrayContainsClassType:(nonnull Class)cls;
